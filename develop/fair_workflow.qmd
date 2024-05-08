@@ -1,0 +1,81 @@
+---
+title: FAIR computational pipelines
+format: 
+  html:
+    toc: false
+date-modified: last-modified
+date-format: long
+date: 2023-11-30
+summary: workflow
+---
+
+:::{.callout-note title="Course Overview"}
+- ⏰ **Total Time Estimation:** X hours  
+- 📁 **Supporting Materials:**  
+- 👨‍💻 **Target Audience:** Ph.D., MSc, anyone interested in workflow management systems for High-Throughput data or other related fields within bioinformatics.
+- 👩‍🎓 **Level:** Advanced.
+- 🔒 **License:** [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license.](https://creativecommons.org/licenses/by-sa/4.0/legalcode)  
+- 💰 **Funding:** This project was funded by the Novo Nordisk Fonden (NNF20OC0063268).
+:::
+
+
+:::{.callout-warning title="Course Requirements"}
+- Command Line experience
+- Programming experience (Python)
+:::
+
+::: {.callout-tip title="Course Goals"}
+- Create analysis pipelines
+- Specify software and computational resource needs 
+- Customise your pipeline to accept user-defined configurations (params)
+- Create reproducible analyses that can be adapted to new data with little effort
+:::
+
+Data analysis typically involves the use of different tools, algorithms, and scripts. It often requires multiple steps to transform, filter, aggregate, and visualize data. The process can be time-consuming because each tool may demand specific inputs and parameter settings. As analyses become more complex, the importance of reproducible and scalable automated workflow management increases. Workflow management encompasses tasks such as parallelization, resumption, logging, and data provenance.
+
+If you develop your own software make sure you follow FAIR principles. We highly endorse following these [FAIR recommendations](https://fair-software.nl/endorse) and to register your computational workflow [here](https://workflowhub.eu/). 
+
+Using workflow managers, you ensure:
+
+- automation
+- convenience
+- portability
+- reproducibility 
+- scalability
+- readable
+
+Popular workflow management systems such as Snakemake, Nextflow, and Galaxy can be scaled effortlessly across server, cluster, and cloud environments without altering the workflow definition. They also allow for specifying the necessary software, ensuring the workflows can be deployed in any setting.
+
+During this lesson, you will learn about:
+
+- **Syntax**: understand the syntax of two workflow languages.
+- **Defining steps**: how to define a step in each of the language (rule in Snakemake, process in Nextflow), including specifying input, outputs and execution statements.
+- **Generalizing steps**: explore how to generalise steps and create a chain of dependency across multiple steps using wildcards (Snakemake) or parameters and channel operators (Nextflow).
+- **Advanced Customisation**: gain knowledge of advanced pipeline customisation using configuration files and custom-made functions
+- **Scaling workflows**: understand how to scale workflows to compute servers and clusters while adapting to hardware-specific constraints
+
+## Good practices
+Remember to create portable code and use relative paths to ensure transferability between users. 
+
+Use [git repositories](https://hds-sandbox.github.io/RDM_NGS_course/develop/05_VC.html) to save your projects and pipelines. Register and publish your scientific computational workflow on [WorkflowHub](https://workflowhub.eu/). 
+
+
+## Sources
+
+- [Snakemake tutorial](https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html#tutorial)
+- [Snakemake turorial slides by Johannes Koster](https://slides.com/johanneskoester/snakemake-tutorial)
+- https://bioconda.github.io
+- Köster, Johannes and Rahmann, Sven. "Snakemake - A scalable bioinformatics workflow engine". Bioinformatics 2012.
+- Köster, Johannes. "Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis", PhD thesis, TU Dortmund 2014.
+- [faircookbook worflows](https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html)
+- [The turing way - reproducible research](https://the-turing-way.netlify.app/reproducible-research)
+
+<!-- script to open links in a new tab, add at the end -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a');
+    links.forEach(function(link) {
+        link.setAttribute('target', '_blank');
+    });
+});
+</script>

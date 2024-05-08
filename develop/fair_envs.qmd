@@ -1,0 +1,56 @@
+---
+format: 
+  html:
+    toc: false
+date-modified: last-modified
+date-format: long
+date: 2023-11-30
+summary: workflow
+---
+
+## FAIR environments 
+
+Recording and sharing the computational environment is essential for reproducibility and transparency. There are several methods to achieve this, but we are going to focus on two of them, conda (an environment manager) and Docker (a container). Environment managers are user-friendly, easy to share across different systems, and offer lightweight, efficient, and fast start-up times. However, Docker containers provide complete environment isolation (including the operating system), which ensures consistent behavior across various systems.
+
+
+Each computer or HPC (High-Performance Computing) platform has a unique computational environment that includes its operating system, installed software, versions of software packages, and other features. If a research project is moved to a different computer or platform, the analysis might not run or produce consistent results if it depends on any of these factors.
+
+For research to be reproducible, the original computational environment must be recorded so others can replicate it. There are several methods to achieve this: 
+
+- **Containerization platforms** (e.g., Docker, Singularity): allow the researcher to package their software and dependencies into a standardized container image.
+- **Virtual Machines** (e.g., VirtualBox): can share an entire virtualized computing environment (OS, software and dependencies)
+- **Environment managers**: provide an isolated environment with specific packages and dependencies that can be installed without affecting the system-wide configuration. These environments are particularly useful for managing conflicting dependencies and ensuring reproducibility. Configuration files can automate the setup of the computational environment: 
+  - conda: allows users to export environment specifications (software and dependencies) to YAML files enabling easy recreation of the environment on another system
+  - Python `virtualenv`: is a tool for creating isolated environments to manage dependencies specific to a project
+  - requirements.txt: may contain commands for installing packages (such as pip for Python packages or apt-get for system-level dependencies), configuring system settings, and setting environment variables. Package managers can be used to install, upgrade and manage packages. 
+  - R's `renv`: The 'renv' package creates isolated environments in R.
+- **Environment descriptors**
+  - `sessionInfo()` or `devtools::session_info()`: In R, these functions provide detailed information about the current session
+  - `sessionInfo()`, similarly, in Python. Libraries like NumPy and Pandas have `show_versions()` methods to display package versions.
+
+While environment managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, Docker containers provide a full env isolation (including the operating system) which ensures consistent behavior across different systems. 
+
+### Conda
+
+### Docker
+
+Docker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management.
+
+
+## Sources
+
+- https://bioconda.github.io
+- [faircookbook worflows](https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html)
+- [Docker](https://www.docker.com/)
+- [Docker get-started](https://docs.docker.com/get-started/)
+- [The turing way - reproducible research](https://the-turing-way.netlify.app/reproducible-research)
+
+<!-- script to open links in a new tab, add at the end -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a');
+    links.forEach(function(link) {
+        link.setAttribute('target', '_blank');
+    });
+});
+</script>

@@ -1,0 +1,19 @@
+---
+title: Nextflow
+format: 
+  html:
+    toc: false
+date-modified: last-modified
+date-format: long
+summary: workflow
+---
+
+Nextflow is a workfow management system that offers scalable and portable NGS data analysis pipelines, facilitating data processing across diverse computing environments. It streamlines and automates various data analysis steps, enabling parallel processing and seamless integration with existing tools. ç
+
+## nf-core 
+
+Templates
+
+## Sources
+
+- [faircookbook worflows](https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html)

@@ -1,0 +1,49 @@
+project:
+  type: website
+
+website:
+  title: "HPC Lab" 
+  navbar:
+    logo: /img/logo.png
+    background: primary
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "HPC launch"
+        file: develop/hpc_intro.qmd 
+      - text: "HPC pipes"
+        file: develop/fair_workflow.qmd 
+    right: 
+      - icon: github
+        href: https://github.com/hds-sandbox
+        aria-label: GitHub
+      - icon: linkedin
+        href: https://www.linkedin.com/company/ucph-heads/
+        aria-label: LinkedIn
+ 
+  sidebar:
+    - title: "HPC pipes"
+      style: "docked"
+      search: true
+      contents:
+        - section: "Pipeline languages"
+          contents:
+            - develop/fair_workflow.qmd 
+            - develop/smk.qmd
+            - develop/nextflow.qmd
+        - section: "Computational environments"
+          contents:
+            - develop/fair_envs.qmd
+
+
+copyright: CC-BY-SA 4.0 license
+
+format:
+  html:
+    theme: 
+      light: [materia, css/materialight.scss]
+      dark: darkly
+    toc: true
+    code-fold: true
+filters:
+  - css/custom-callout.lua

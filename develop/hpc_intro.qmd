@@ -1,0 +1,34 @@
+---
+title: HPC launch
+format: 
+  html:
+    toc: false
+date-modified: last-modified
+date-format: long
+summary: This is a summary 
+---
+
+:::{.callout-note title="Course Overview"}
+- ⏰ **Total Time Estimation:** X hours  
+- 📁 **Supporting Materials:**  
+- 👨‍💻 **Target Audience:** Ph.D., MSc, anyone interested in workflow management systems for High-Throughput data or other related fields within bioinformatics.
+- 👩‍🎓 **Level:** Advanced.
+- 🔒 **License:** [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license.](https://creativecommons.org/licenses/by-sa/4.0/legalcode)  
+- 💰 **Funding:** This project was funded by the Novo Nordisk Fonden (NNF20OC0063268).
+:::
+
+::: {.callout-tip title="Course Goals"}
+- HPC terminology  
+- National HPC platforms
+:::
+
+## Title
+
+Introduction to the material and HPCs...
+
+
+## Sources
+
+Useful links 
+
+#### Acknowledgements
