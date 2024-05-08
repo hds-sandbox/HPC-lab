@@ -4,6 +4,166 @@
     "href": "index.html",
     "title": "HPC best practices",
     "section": "",
-    "text": "INTRO TO THE DIFFERENT HPC COURSES\n\nHPC launch\nHPC pipes\nHPC ML"
+    "text": "High Performance Computing (HPC) plays a crucial role for researchers by offering the computational speed and power needed to manage large and complex data sets, perform simulations, and address intricate problems that would be impractical or too time-consuming with standard computing methods.\nKnowing which HPC resources are accessible and how to use them efficiently is essential for researchers. Making the most of these resources can significantly expedite research and drive innovation. By becoming proficient with the available tools and technologies, researchers can address complex challenges, analyze extensive data sets, and execute advanced simulations with increased speed and accuracy. This module provides essential knowledge on HPC resources and best practices for their utilization.\nThis module offers content for three distinct courses:\nBy the end of all the modules, you will gain practical skills in promoting reproducibility through comprehensive training in HPC resource management, workflow pipelines, and computing environments."
+  },
+  {
+    "objectID": "index.html#hpc-pipes",
+    "href": "index.html#hpc-pipes",
+    "title": "HPC best practices",
+    "section": "HPC pipes",
+    "text": "HPC pipes\nThe course “HPC pipes” is designed to provide participants with foundational knowledge and practical skills in writing reproducible pipelines. As part of effective data management, it is crucial that researchers create reproducible analyses that enable others to validate and build upon their work. We will explore essential elements of reproducibility and efficiency in computational research, highlighting techniques and tools for creating robust and transparent coding and workflows. By prioritizing reproducibility and replicability, researchers can enhance the credibility and impact of their findings while fostering collaboration and knowledge dissemination within the scientific community. This approach guarantees efficient research management. Explore our content on practical RDM for more details.\n\n\n\n\n\n\nHPC best practices\n\n\n\nWe offer in-person workshops, keep an eye on the upcoming events on the Sandbox website.\n\n\n\nAcknowledgements"
+  },
+  {
+    "objectID": "develop/smk.html",
+    "href": "develop/smk.html",
+    "title": "Snakemake",
+    "section": "",
+    "text": "Snakemake is a text-based tool using python-based language plus domain specific syntax. The workflow is decompose into rules that are define to obtain output files from input files. It infers dependencies and the execution order. 1. Semantics: define rules 2. Generalise the rule: creating wildcards You can refer by index or by name\n\nDependencies are determined top-down\n\nFor a given target, a rule that can be applied to create it, is determined (a job) For the input files of the rule, go on recursively, If no target is specified, snakemake, tries to apply the first rule\n\nRule all: target rule that collects results",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "Snakemake"
+    ]
+  },
+  {
+    "objectID": "develop/smk.html#sources",
+    "href": "develop/smk.html#sources",
+    "title": "Snakemake",
+    "section": "Sources",
+    "text": "Sources\n\nSnakemake tutorial\nSnakemake turorial slides by Johannes Koster\nKöster, Johannes and Rahmann, Sven. “Snakemake - A scalable bioinformatics workflow engine”. Bioinformatics 2012.\nKöster, Johannes. “Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis”, PhD thesis, TU Dortmund 2014.\nfaircookbook worflows",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "Snakemake"
+    ]
+  },
+  {
+    "objectID": "develop/hpc_intro.html",
+    "href": "develop/hpc_intro.html",
+    "title": "HPC launch",
+    "section": "",
+    "text": "Course Overview\n\n\n\n\n⏰ Total Time Estimation: X hours\n\n📁 Supporting Materials:\n\n👨‍💻 Target Audience: Ph.D., MSc, anyone interested in workflow management systems for High-Throughput data or other related fields within bioinformatics.\n👩‍🎓 Level: Advanced.\n🔒 License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license.\n\n💰 Funding: This project was funded by the Novo Nordisk Fonden (NNF20OC0063268)."
+  },
+  {
+    "objectID": "develop/hpc_intro.html#title",
+    "href": "develop/hpc_intro.html#title",
+    "title": "HPC launch",
+    "section": "Title",
+    "text": "Title\nIntroduction to the material and HPCs…"
+  },
+  {
+    "objectID": "develop/hpc_intro.html#sources",
+    "href": "develop/hpc_intro.html#sources",
+    "title": "HPC launch",
+    "section": "Sources",
+    "text": "Sources\nUseful links\n\nAcknowledgements"
+  },
+  {
+    "objectID": "develop/fair_envs.html",
+    "href": "develop/fair_envs.html",
+    "title": "HPC Lab",
+    "section": "",
+    "text": "Recording and sharing the computational environment is essential for reproducibility and transparency. There are several methods to achieve this, but we are going to focus on two of them, conda (an environment manager) and Docker (a container). Environment managers are user-friendly, easy to share across different systems, and offer lightweight, efficient, and fast start-up times. However, Docker containers provide complete environment isolation (including the operating system), which ensures consistent behavior across various systems.\nEach computer or HPC (High-Performance Computing) platform has a unique computational environment that includes its operating system, installed software, versions of software packages, and other features. If a research project is moved to a different computer or platform, the analysis might not run or produce consistent results if it depends on any of these factors.\nFor research to be reproducible, the original computational environment must be recorded so others can replicate it. There are several methods to achieve this:\n\nContainerization platforms (e.g., Docker, Singularity): allow the researcher to package their software and dependencies into a standardized container image.\nVirtual Machines (e.g., VirtualBox): can share an entire virtualized computing environment (OS, software and dependencies)\nEnvironment managers: provide an isolated environment with specific packages and dependencies that can be installed without affecting the system-wide configuration. These environments are particularly useful for managing conflicting dependencies and ensuring reproducibility. Configuration files can automate the setup of the computational environment:\n\nconda: allows users to export environment specifications (software and dependencies) to YAML files enabling easy recreation of the environment on another system\nPython virtualenv: is a tool for creating isolated environments to manage dependencies specific to a project\nrequirements.txt: may contain commands for installing packages (such as pip for Python packages or apt-get for system-level dependencies), configuring system settings, and setting environment variables. Package managers can be used to install, upgrade and manage packages.\nR’s renv: The ‘renv’ package creates isolated environments in R.\n\nEnvironment descriptors\n\nsessionInfo() or devtools::session_info(): In R, these functions provide detailed information about the current session\nsessionInfo(), similarly, in Python. Libraries like NumPy and Pandas have show_versions() methods to display package versions.\n\n\nWhile environment managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, Docker containers provide a full env isolation (including the operating system) which ensures consistent behavior across different systems.\n\n\n\n\n\nDocker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management.",
+    "crumbs": [
+      "HPC pipes",
+      "Computational environments",
+      "FAIR environments"
+    ]
+  },
+  {
+    "objectID": "develop/fair_envs.html#fair-environments",
+    "href": "develop/fair_envs.html#fair-environments",
+    "title": "HPC Lab",
+    "section": "",
+    "text": "Recording and sharing the computational environment is essential for reproducibility and transparency. There are several methods to achieve this, but we are going to focus on two of them, conda (an environment manager) and Docker (a container). Environment managers are user-friendly, easy to share across different systems, and offer lightweight, efficient, and fast start-up times. However, Docker containers provide complete environment isolation (including the operating system), which ensures consistent behavior across various systems.\nEach computer or HPC (High-Performance Computing) platform has a unique computational environment that includes its operating system, installed software, versions of software packages, and other features. If a research project is moved to a different computer or platform, the analysis might not run or produce consistent results if it depends on any of these factors.\nFor research to be reproducible, the original computational environment must be recorded so others can replicate it. There are several methods to achieve this:\n\nContainerization platforms (e.g., Docker, Singularity): allow the researcher to package their software and dependencies into a standardized container image.\nVirtual Machines (e.g., VirtualBox): can share an entire virtualized computing environment (OS, software and dependencies)\nEnvironment managers: provide an isolated environment with specific packages and dependencies that can be installed without affecting the system-wide configuration. These environments are particularly useful for managing conflicting dependencies and ensuring reproducibility. Configuration files can automate the setup of the computational environment:\n\nconda: allows users to export environment specifications (software and dependencies) to YAML files enabling easy recreation of the environment on another system\nPython virtualenv: is a tool for creating isolated environments to manage dependencies specific to a project\nrequirements.txt: may contain commands for installing packages (such as pip for Python packages or apt-get for system-level dependencies), configuring system settings, and setting environment variables. Package managers can be used to install, upgrade and manage packages.\nR’s renv: The ‘renv’ package creates isolated environments in R.\n\nEnvironment descriptors\n\nsessionInfo() or devtools::session_info(): In R, these functions provide detailed information about the current session\nsessionInfo(), similarly, in Python. Libraries like NumPy and Pandas have show_versions() methods to display package versions.\n\n\nWhile environment managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, Docker containers provide a full env isolation (including the operating system) which ensures consistent behavior across different systems.\n\n\n\n\n\nDocker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management.",
+    "crumbs": [
+      "HPC pipes",
+      "Computational environments",
+      "FAIR environments"
+    ]
+  },
+  {
+    "objectID": "develop/fair_envs.html#sources",
+    "href": "develop/fair_envs.html#sources",
+    "title": "HPC Lab",
+    "section": "Sources",
+    "text": "Sources\n\nhttps://bioconda.github.io\nfaircookbook worflows\nDocker\nDocker get-started\nThe turing way - reproducible research",
+    "crumbs": [
+      "HPC pipes",
+      "Computational environments",
+      "FAIR environments"
+    ]
+  },
+  {
+    "objectID": "develop/fair_workflow.html",
+    "href": "develop/fair_workflow.html",
+    "title": "FAIR computational pipelines",
+    "section": "",
+    "text": "Course Overview\n\n\n\n\n⏰ Total Time Estimation: X hours\n\n📁 Supporting Materials:\n\n👨‍💻 Target Audience: Ph.D., MSc, anyone interested in workflow management systems for High-Throughput data or other related fields within bioinformatics.\n👩‍🎓 Level: Advanced.\n🔒 License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license.\n\n💰 Funding: This project was funded by the Novo Nordisk Fonden (NNF20OC0063268).\nData analysis typically involves the use of different tools, algorithms, and scripts. It often requires multiple steps to transform, filter, aggregate, and visualize data. The process can be time-consuming because each tool may demand specific inputs and parameter settings. As analyses become more complex, the importance of reproducible and scalable automated workflow management increases. Workflow management encompasses tasks such as parallelization, resumption, logging, and data provenance.\nIf you develop your own software make sure you follow FAIR principles. We highly endorse following these FAIR recommendations and to register your computational workflow here.\nUsing workflow managers, you ensure:\nPopular workflow management systems such as Snakemake, Nextflow, and Galaxy can be scaled effortlessly across server, cluster, and cloud environments without altering the workflow definition. They also allow for specifying the necessary software, ensuring the workflows can be deployed in any setting.\nDuring this lesson, you will learn about:",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "FAIR computational pipelines"
+    ]
+  },
+  {
+    "objectID": "develop/fair_workflow.html#good-practices",
+    "href": "develop/fair_workflow.html#good-practices",
+    "title": "FAIR computational pipelines",
+    "section": "Good practices",
+    "text": "Good practices\nRemember to create portable code and use relative paths to ensure transferability between users.\nUse git repositories to save your projects and pipelines. Register and publish your scientific computational workflow on WorkflowHub.",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "FAIR computational pipelines"
+    ]
+  },
+  {
+    "objectID": "develop/fair_workflow.html#sources",
+    "href": "develop/fair_workflow.html#sources",
+    "title": "FAIR computational pipelines",
+    "section": "Sources",
+    "text": "Sources\n\nSnakemake tutorial\nSnakemake turorial slides by Johannes Koster\nhttps://bioconda.github.io\nKöster, Johannes and Rahmann, Sven. “Snakemake - A scalable bioinformatics workflow engine”. Bioinformatics 2012.\nKöster, Johannes. “Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis”, PhD thesis, TU Dortmund 2014.\nfaircookbook worflows\nThe turing way - reproducible research",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "FAIR computational pipelines"
+    ]
+  },
+  {
+    "objectID": "develop/nextflow.html",
+    "href": "develop/nextflow.html",
+    "title": "Nextflow",
+    "section": "",
+    "text": "Nextflow is a workfow management system that offers scalable and portable NGS data analysis pipelines, facilitating data processing across diverse computing environments. It streamlines and automates various data analysis steps, enabling parallel processing and seamless integration with existing tools. ç",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "Nextflow"
+    ]
+  },
+  {
+    "objectID": "develop/nextflow.html#nf-core",
+    "href": "develop/nextflow.html#nf-core",
+    "title": "Nextflow",
+    "section": "nf-core",
+    "text": "nf-core\nTemplates",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "Nextflow"
+    ]
+  },
+  {
+    "objectID": "develop/nextflow.html#sources",
+    "href": "develop/nextflow.html#sources",
+    "title": "Nextflow",
+    "section": "Sources",
+    "text": "Sources\n\nfaircookbook worflows",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "Nextflow"
+    ]
   }
 ]

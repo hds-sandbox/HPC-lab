@@ -2,13 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-11-30">
 
-<title>HPC Lab</title>
+<title>HPC Lab - Nextflow</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/fair_envs.html">FAIR environments</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_workflow.html">Pipeline languages</a></li><li class="breadcrumb-item"><a href="../develop/nextflow.html">Nextflow</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -172,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/nextflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../develop/nextflow.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Nextflow</span></a>
   </div>
 </li>
@@ -189,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/fair_envs.html" class="sidebar-item-text sidebar-link active">
+  <a href="../develop/fair_envs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FAIR environments</span></a>
   </div>
 </li>
@@ -204,8 +203,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/fair_envs.html">FAIR environments</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_workflow.html">Pipeline languages</a></li><li class="breadcrumb-item"><a href="../develop/nextflow.html">Nextflow</a></li></ol></nav>
 <div class="quarto-title">
+<h1 class="title">Nextflow</h1>
 </div>
 
 
@@ -213,12 +213,6 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">November 30, 2023</p>
-    </div>
-  </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
@@ -234,54 +228,16 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="fair-environments" class="level2">
-<h2 class="anchored" data-anchor-id="fair-environments">FAIR environments</h2>
-<p>Recording and sharing the computational environment is essential for reproducibility and transparency. There are several methods to achieve this, but we are going to focus on two of them, conda (an environment manager) and Docker (a container). Environment managers are user-friendly, easy to share across different systems, and offer lightweight, efficient, and fast start-up times. However, Docker containers provide complete environment isolation (including the operating system), which ensures consistent behavior across various systems.</p>
-<p>Each computer or HPC (High-Performance Computing) platform has a unique computational environment that includes its operating system, installed software, versions of software packages, and other features. If a research project is moved to a different computer or platform, the analysis might not run or produce consistent results if it depends on any of these factors.</p>
-<p>For research to be reproducible, the original computational environment must be recorded so others can replicate it. There are several methods to achieve this:</p>
-<ul>
-<li><strong>Containerization platforms</strong> (e.g., Docker, Singularity): allow the researcher to package their software and dependencies into a standardized container image.</li>
-<li><strong>Virtual Machines</strong> (e.g., VirtualBox): can share an entire virtualized computing environment (OS, software and dependencies)</li>
-<li><strong>Environment managers</strong>: provide an isolated environment with specific packages and dependencies that can be installed without affecting the system-wide configuration. These environments are particularly useful for managing conflicting dependencies and ensuring reproducibility. Configuration files can automate the setup of the computational environment:
-<ul>
-<li>conda: allows users to export environment specifications (software and dependencies) to YAML files enabling easy recreation of the environment on another system</li>
-<li>Python <code>virtualenv</code>: is a tool for creating isolated environments to manage dependencies specific to a project</li>
-<li>requirements.txt: may contain commands for installing packages (such as pip for Python packages or apt-get for system-level dependencies), configuring system settings, and setting environment variables. Package managers can be used to install, upgrade and manage packages.</li>
-<li>R’s <code>renv</code>: The ‘renv’ package creates isolated environments in R.</li>
-</ul></li>
-<li><strong>Environment descriptors</strong>
-<ul>
-<li><code>sessionInfo()</code> or <code>devtools::session_info()</code>: In R, these functions provide detailed information about the current session</li>
-<li><code>sessionInfo()</code>, similarly, in Python. Libraries like NumPy and Pandas have <code>show_versions()</code> methods to display package versions.</li>
-</ul></li>
-</ul>
-<p>While environment managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, Docker containers provide a full env isolation (including the operating system) which ensures consistent behavior across different systems.</p>
-<section id="conda" class="level3">
-<h3 class="anchored" data-anchor-id="conda">Conda</h3>
-</section>
-<section id="docker" class="level3">
-<h3 class="anchored" data-anchor-id="docker">Docker</h3>
-<p>Docker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management.</p>
-</section>
+<p>Nextflow is a workfow management system that offers scalable and portable NGS data analysis pipelines, facilitating data processing across diverse computing environments. It streamlines and automates various data analysis steps, enabling parallel processing and seamless integration with existing tools. ç</p>
+<section id="nf-core" class="level2">
+<h2 class="anchored" data-anchor-id="nf-core">nf-core</h2>
+<p>Templates</p>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
 <ul>
-<li>https://bioconda.github.io</li>
 <li><a href="https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html">faircookbook worflows</a></li>
-<li><a href="https://www.docker.com/">Docker</a></li>
-<li><a href="https://docs.docker.com/get-started/">Docker get-started</a></li>
-<li><a href="https://the-turing-way.netlify.app/reproducible-research">The turing way - reproducible research</a></li>
 </ul>
-<!-- script to open links in a new tab, add at the end -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    var links = document.querySelectorAll('a');
-    links.forEach(function(link) {
-        link.setAttribute('target', '_blank');
-    });
-});
-</script>
 
 
 </section>
@@ -510,6 +466,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/hds-sandbox\.github\.io\/HPC-lab\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -544,7 +518,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

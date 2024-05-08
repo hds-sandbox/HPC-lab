@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.554">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-11-30">
 
-<title>HPC Lab - Nextflow</title>
+<title>HPC Lab - FAIR computational pipelines</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_workflow.html">Pipeline languages</a></li><li class="breadcrumb-item"><a href="../develop/nextflow.html">Nextflow</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_workflow.html">Pipeline languages</a></li><li class="breadcrumb-item"><a href="../develop/fair_workflow.html">FAIR computational pipelines</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -159,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/fair_workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../develop/fair_workflow.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">FAIR computational pipelines</span></a>
   </div>
 </li>
@@ -171,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/nextflow.html" class="sidebar-item-text sidebar-link active">
+  <a href="../develop/nextflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Nextflow</span></a>
   </div>
 </li>
@@ -203,9 +204,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_workflow.html">Pipeline languages</a></li><li class="breadcrumb-item"><a href="../develop/nextflow.html">Nextflow</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_workflow.html">Pipeline languages</a></li><li class="breadcrumb-item"><a href="../develop/fair_workflow.html">FAIR computational pipelines</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Nextflow</h1>
+<h1 class="title">FAIR computational pipelines</h1>
 </div>
 
 
@@ -213,6 +214,12 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 30, 2023</p>
+    </div>
+  </div>
   
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
@@ -228,16 +235,108 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Nextflow is a workfow management system that offers scalable and portable NGS data analysis pipelines, facilitating data processing across diverse computing environments. It streamlines and automates various data analysis steps, enabling parallel processing and seamless integration with existing tools. ç</p>
-<section id="nf-core" class="level2">
-<h2 class="anchored" data-anchor-id="nf-core">nf-core</h2>
-<p>Templates</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Course Overview">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Course Overview
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>⏰ <strong>Total Time Estimation:</strong> X hours<br>
+</li>
+<li>📁 <strong>Supporting Materials:</strong><br>
+</li>
+<li>👨‍💻 <strong>Target Audience:</strong> Ph.D., MSc, anyone interested in workflow management systems for High-Throughput data or other related fields within bioinformatics.</li>
+<li>👩‍🎓 <strong>Level:</strong> Advanced.</li>
+<li>🔒 <strong>License:</strong> <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license.</a><br>
+</li>
+<li>💰 <strong>Funding:</strong> This project was funded by the Novo Nordisk Fonden (NNF20OC0063268).</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Course Requirements">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Course Requirements
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Command Line experience</li>
+<li>Programming experience (Python)</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Course Goals">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Course Goals
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Create analysis pipelines</li>
+<li>Specify software and computational resource needs</li>
+<li>Customise your pipeline to accept user-defined configurations (params)</li>
+<li>Create reproducible analyses that can be adapted to new data with little effort</li>
+</ul>
+</div>
+</div>
+<p>Data analysis typically involves the use of different tools, algorithms, and scripts. It often requires multiple steps to transform, filter, aggregate, and visualize data. The process can be time-consuming because each tool may demand specific inputs and parameter settings. As analyses become more complex, the importance of reproducible and scalable automated workflow management increases. Workflow management encompasses tasks such as parallelization, resumption, logging, and data provenance.</p>
+<p>If you develop your own software make sure you follow FAIR principles. We highly endorse following these <a href="https://fair-software.nl/endorse">FAIR recommendations</a> and to register your computational workflow <a href="https://workflowhub.eu/">here</a>.</p>
+<p>Using workflow managers, you ensure:</p>
+<ul>
+<li>automation</li>
+<li>convenience</li>
+<li>portability</li>
+<li>reproducibility</li>
+<li>scalability</li>
+<li>readable</li>
+</ul>
+<p>Popular workflow management systems such as Snakemake, Nextflow, and Galaxy can be scaled effortlessly across server, cluster, and cloud environments without altering the workflow definition. They also allow for specifying the necessary software, ensuring the workflows can be deployed in any setting.</p>
+<p>During this lesson, you will learn about:</p>
+<ul>
+<li><strong>Syntax</strong>: understand the syntax of two workflow languages.</li>
+<li><strong>Defining steps</strong>: how to define a step in each of the language (rule in Snakemake, process in Nextflow), including specifying input, outputs and execution statements.</li>
+<li><strong>Generalizing steps</strong>: explore how to generalise steps and create a chain of dependency across multiple steps using wildcards (Snakemake) or parameters and channel operators (Nextflow).</li>
+<li><strong>Advanced Customisation</strong>: gain knowledge of advanced pipeline customisation using configuration files and custom-made functions</li>
+<li><strong>Scaling workflows</strong>: understand how to scale workflows to compute servers and clusters while adapting to hardware-specific constraints</li>
+</ul>
+<section id="good-practices" class="level2">
+<h2 class="anchored" data-anchor-id="good-practices">Good practices</h2>
+<p>Remember to create portable code and use relative paths to ensure transferability between users.</p>
+<p>Use <a href="https://hds-sandbox.github.io/RDM_NGS_course/develop/05_VC.html">git repositories</a> to save your projects and pipelines. Register and publish your scientific computational workflow on <a href="https://workflowhub.eu/">WorkflowHub</a>.</p>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
 <ul>
+<li><a href="https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html#tutorial">Snakemake tutorial</a></li>
+<li><a href="https://slides.com/johanneskoester/snakemake-tutorial">Snakemake turorial slides by Johannes Koster</a></li>
+<li>https://bioconda.github.io</li>
+<li>Köster, Johannes and Rahmann, Sven. “Snakemake - A scalable bioinformatics workflow engine”. Bioinformatics 2012.</li>
+<li>Köster, Johannes. “Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis”, PhD thesis, TU Dortmund 2014.</li>
 <li><a href="https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html">faircookbook worflows</a></li>
+<li><a href="https://the-turing-way.netlify.app/reproducible-research">The turing way - reproducible research</a></li>
 </ul>
+<!-- script to open links in a new tab, add at the end -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a');
+    links.forEach(function(link) {
+        link.setAttribute('target', '_blank');
+    });
+});
+</script>
 
 
 </section>
@@ -466,6 +565,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/hds-sandbox\.github\.io\/HPC-lab\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -500,7 +617,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
