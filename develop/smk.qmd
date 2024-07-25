@@ -119,7 +119,6 @@ source activate myworkflow
 # then execute snakemake
 ```
 
-
 ## Sources
 
 - [Snakemake tutorial](https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html#tutorial)
