@@ -1,0 +1,61 @@
+---
+format: 
+  html:
+    toc: false
+date-modified: last-modified
+date-format: long
+summary: transfers
+---
+
+## Data management on HPC systems
+
+### Efficient file transfers 
+- Overview rsync and scp
+- Basic commands
+- Use cases
+
+When transferring files between servers, it's important to ensure that the files are consistent. Differences in file size can occur due to variations in filesystems, but large differences might indicate an issue. Manually checking file sizes in a terminal (`ls -lh` or `du -sh`) to determine if a transfer was successful might not be ideal, as it doesn't guarantee file integrity. Using checksums provides a more reliable verification method.
+
+You can use md5sum to verify that the file contents are identical on both servers. Run the following command on each server:
+
+```.bash 
+md5sum /path/to/file
+```
+
+Using rsync for Efficient File Transfers
+`rsync` is a powerful alternative to `scp` for transferring files. It only sends data if the file has changed, making it more efficient.
+
+
+```.bash
+# Transferring files between local machine-server
+rsync -avz local/path/to/file user@server:/remote/path/to/file
+# Transferring files between servers
+rsync -azv server1:/path/to/my_folder server2:/path/to/destination_folder
+```
+
+:::{.callout-note}
+To transfer files directly between two servers from your local workstation, ensure your SSH setup (configuration, keys, etc.) allows access to both servers. Check [LINK] if you need help setting up your keys (generating, configuring and managing). 
+:::
+
+#### Advantages of rsync over scp:
+
+- Checksum Verification: rsync checks the hashsums of files and only transfers data if the hashes differ. This ensures that only the changed parts of the files are sent  (so you can rsync a whole folder, and only the changes files will be send).
+- Timestamp Preservation: Using the -a flag with rsync preserves the modified timestamps of files, which is particularly useful for tools like Snakemake.
+
+#### Important rsync options:
+
+- `-a`: Archive mode, preserves file attributes like timestamps and permissions (important if you are using snakemake).
+- `-v`: Verbose mode, provides detailed information during transfer.
+- -`z`: Compresses data during transfer, reducing the amount of data sent over the network.
+- `-c`: Enables checksum checking, ensuring that files are identical by comparing their contents rather than just their size and modification time.
+	
+#### Additional Tools
+
+For users who prefer a graphical interface, tools like Cyberduck and FileZilla can also be used for transferring files between servers.
+
+### Data compression and optimization 
+
+### Data organization 
+- regular expression 
+- cookiecutter
+

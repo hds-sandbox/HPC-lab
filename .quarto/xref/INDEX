@@ -16,5 +16,8 @@
   },
   "develop/nextflow.qmd": {
     "nextflow.html": "1c6f5efa"
+  },
+  "develop/data_management.qmd": {
+    "data_management.html": "f89ed6c2"
   }
 }

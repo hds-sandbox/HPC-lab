@@ -11,15 +11,20 @@ summary: This is a summary
 :::{.callout-note title="Course Overview"}
 - ⏰ **Total Time Estimation:** X hours  
 - 📁 **Supporting Materials:**  
-- 👨‍💻 **Target Audience:** Ph.D., MSc, anyone interested in workflow management systems for High-Throughput data or other related fields within bioinformatics.
+- 👨‍💻 **Target Audience:** Ph.D., MSc, anyone interested in HPC systems.
 - 👩‍🎓 **Level:** Advanced.
 - 🔒 **License:** [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license.](https://creativecommons.org/licenses/by-sa/4.0/legalcode)  
 - 💰 **Funding:** This project was funded by the Novo Nordisk Fonden (NNF20OC0063268).
 :::
 
-::: {.callout-tip title="Course Goals"}
-- HPC terminology  
+::: {.callout-tip title="Course Topics"}
+- HPC systems and HPC architecture  
 - National HPC platforms
+- Setting up HPC environments (software requirements, job scheduling, resource management)
+- Data management and optimization 
+- Programming and parallel computing 
+- Jobs on HPC clusters (submissions, benchmarking, debugging and monitoring)
+- Advanced topics
 :::
 
 ## Title

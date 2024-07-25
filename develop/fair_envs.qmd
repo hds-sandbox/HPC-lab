@@ -3,8 +3,6 @@ format:
   html:
     toc: false
 date-modified: last-modified
-date-format: long
-date: 2023-11-30
 summary: workflow
 ---
 
@@ -44,13 +42,3 @@ Docker helps developers build, share, run, and verify applications anywhere — 
 - [Docker](https://www.docker.com/)
 - [Docker get-started](https://docs.docker.com/get-started/)
 - [The turing way - reproducible research](https://the-turing-way.netlify.app/reproducible-research)
-
-<!-- script to open links in a new tab, add at the end -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    var links = document.querySelectorAll('a');
-    links.forEach(function(link) {
-        link.setAttribute('target', '_blank');
-    });
-});
-</script>

@@ -34,7 +34,12 @@ website:
         - section: "Computational environments"
           contents:
             - develop/fair_envs.qmd
-
+    - title: "HPC launch"
+      style: "docked"
+      search: true
+      contents:
+        - develop/hpc_intro.qmd 
+        - develop/data_management.qmd
 
 copyright: CC-BY-SA 4.0 license
 
