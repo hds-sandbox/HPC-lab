@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">July 25, 2024</p>
+      <p class="date-modified">August 1, 2024</p>
     </div>
   </div>
     
@@ -259,6 +259,7 @@ Note
 </div>
 <section id="advantages-of-rsync-over-scp" class="level4">
 <h4 class="anchored" data-anchor-id="advantages-of-rsync-over-scp">Advantages of rsync over scp:</h4>
+<p><code>rsync</code> is an efficient protocol to compare and copy files between directories or server. It can resume interrupted transfers and compress files on the fly.</p>
 <ul>
 <li>Checksum Verification: rsync checks the hashsums of files and only transfers data if the hashes differ. This ensures that only the changed parts of the files are sent (so you can rsync a whole folder, and only the changes files will be send).</li>
 <li>Timestamp Preservation: Using the -a flag with rsync preserves the modified timestamps of files, which is particularly useful for tools like Snakemake.</li>
