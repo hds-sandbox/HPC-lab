@@ -23,7 +23,7 @@ md5sum /path/to/file
 ```
 
 Using rsync for Efficient File Transfers
-`rsync` is a powerful alternative to `scp` for transferring files. It only sends data if the file has changed, making it more efficient.
+`rsync` is a powerful alternative to `scp` for transferring files. It only sends data if the file has changed, making it more efficient. 
 
 
 ```.bash
@@ -38,6 +38,7 @@ To transfer files directly between two servers from your local workstation, ensu
 :::
 
 #### Advantages of rsync over scp:
+`rsync` is an efficient protocol to compare and copy files between directories or server. It can resume interrupted transfers and compress files on the fly. 
 
 - Checksum Verification: rsync checks the hashsums of files and only transfers data if the hashes differ. This ensures that only the changed parts of the files are sent  (so you can rsync a whole folder, and only the changes files will be send).
 - Timestamp Preservation: Using the -a flag with rsync preserves the modified timestamps of files, which is particularly useful for tools like Snakemake.

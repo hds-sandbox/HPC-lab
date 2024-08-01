@@ -5,7 +5,6 @@ format:
     toc: false
 date-modified: last-modified
 date-format: long
-date: 2023-11-30
 summary: workflow
 ---
 
