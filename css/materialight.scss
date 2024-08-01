@@ -97,6 +97,13 @@ div.callout-readme p{
 
 }
 
+// white background for code blocks 
+.white-background code {
+  background-color: white; /* Set background color to white */
+  border-radius: 4px; /* Optional: Add rounded corners */
+  padding: 8px; /* Optional: Add padding */
+  overflow-x: auto; /* Ensure horizontal scrolling if needed */
+}
 
 // div.callout-hint.callout-style-default {
 //     background-color: #ff0000; /* Change to the desired background color */
