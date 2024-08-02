@@ -22,5 +22,14 @@
   },
   "develop/ssh_keys.qmd": {
     "ssh_keys.html": "3c142f0d"
+  },
+  "develop/data_transfer.qmd": {
+    "data_transfer.html": "9a17cdff"
+  },
+  "develop/data_compression.qmd": {
+    "data_compression.html": "be4bff16"
+  },
+  "develop/exercise.qmd": {
+    "exercise.html": "edd32414"
   }
 }

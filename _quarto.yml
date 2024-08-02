@@ -31,6 +31,7 @@ website:
             - develop/fair_workflow.qmd 
             - develop/smk.qmd
             - develop/nextflow.qmd
+            - develop/exercise.qmd
         - section: "Computational environments"
           contents:
             - develop/fair_envs.qmd
@@ -39,8 +40,10 @@ website:
       search: true
       contents:
         - develop/hpc_intro.qmd 
-        - develop/data_management.qmd
-        - develop/ssh_keys.qmd
+        - section: "Data management"
+          contents: 
+          - develop/data_transfer.qmd
+          - develop/ssh_keys.qmd
 
 copyright: CC-BY-SA 4.0 license
 
@@ -51,5 +54,7 @@ format:
       dark: darkly
     toc: true
     code-fold: true
+    css: include/webex.css
+    include-after-body: include/webex.js
 filters:
   - css/custom-callout.lua

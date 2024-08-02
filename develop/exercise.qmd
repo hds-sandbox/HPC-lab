@@ -1,0 +1,71 @@
+---
+title: Exercises
+format: 
+  html:
+    toc: false
+date-modified: last-modified
+date-format: long
+summary: intro to workflows
+---
+
+```{r, echo = FALSE, results='asis'}
+library(webexercises)
+
+knitr::opts_chunk$set(echo = FALSE)
+
+# Uncomment to change widget colours:
+style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
+```
+
+Put your learning to the test with what you’ve covered so far.
+
+**1. What role does a workflow manager play in computational research??**
+
+```{r}
+#| echo: false
+opts_1 <- c(
+   answer="Automating the execution of complex computational processes",
+   "To manually execute each step of a computation",
+   "Offering real-time and intuitive data analysis",
+   "To minimize the reliance on specific software environments"
+)
+```
+
+`r longmcq(opts_1)`
+
+**2.What is the primary drawback of using shell scripts for automating computations?**
+
+```{r}
+#| echo: false
+opts_2 <- c(
+   answer="Limited error handling and debugging capabilities",
+   "Difficulty in integrating with notebooks",
+   "Not compatible with all operating systems",
+   answer="They re-run all the steps every time",
+   "Insufficient support for parallel processing",
+   "Complex and extensive coding for simple tasks"
+)
+```
+
+`r longmcq(opts_2)`
+
+
+**3. What are the key features of workflow manager in computational research?**
+(Several possible solutions)
+
+```{r}
+#| echo: false
+opts_3 <- c(
+   answer="Executing tasks only when required",
+   answer = "Managing task dependencies",
+   answer = "Overseeing storage and resource allocation",
+   "Providing intuitive graphical interfaces"
+)
+```
+
+`r longmcq(opts_3)`
+
+**4. Workflow managers can run tasks (different) concurrently if there are no dependencies** (True or False) `r torf(TRUE)`
+
+**5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster** (True or False) `r torf(TRUE)`
+

@@ -5,10 +5,10 @@ format:
     code-fold: true
 date-modified: last-modified
 date-format: long
-summary: transfers
+summary: keys
 ---
 
-# Setting up SSH keys
+## SSH keys
 
 Using SSH keys for authentication is recommended for accessing servers and version control platforms such as GitLab, GitHub, or BitBucket. SSH keys provide a more convenient and secure method than passwords, allowing you to avoid typing a password every time you log in.
 
@@ -183,7 +183,7 @@ This will prompt for a password to authenticate with the remote server in order 
 You are set to start using your SSH key. If you are using UCloud, follow the next section; otherwise, you are done with this tutorial.
 :::
 
-### UCloud Users
+### UCloud Users - ssh keys setup
 
 Similarly to what is explained above, copy your key (manually or using e.g. `pbcopy ~/.ssh/id_rsa.pub`) and go to `Resources` (navigation panel on the left) > `SSH keys`. 
 
@@ -219,7 +219,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 Your terminal will look like the image below which means you can starting interacting with the job from the console on your computer.
 ![Copy ssh command](./images/sshkey_step5.png){.black-box}
 
-The connection can be closed using the command
+The connection can be closed using the command:
 
 ```{.bash}
 exit

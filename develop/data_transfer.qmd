@@ -7,12 +7,12 @@ date-format: long
 summary: transfers
 ---
 
-## Data management on HPC systems
+## Data transfer
 
-### Efficient file transfers 
+To ensure efficient file transfers on HPC systems, we will go through: 
+
 - Overview rsync and scp
 - Basic commands
-- Use cases
 
 When transferring files between servers, it's important to ensure that the files are consistent. Differences in file size can occur due to variations in filesystems, but large differences might indicate an issue. Manually checking file sizes in a terminal (`ls -lh` or `du -sh`) to determine if a transfer was successful might not be ideal, as it doesn't guarantee file integrity. Using checksums provides a more reliable verification method.
 
@@ -34,7 +34,7 @@ rsync -azv server1:/path/to/my_folder server2:/path/to/destination_folder
 ```
 
 :::{.callout-note}
-To transfer files directly between two servers from your local workstation, ensure your SSH setup (configuration, keys, etc.) allows access to both servers. Check [LINK] if you need help setting up your keys (generating, configuring and managing). 
+To transfer files directly between two servers from your local workstation, ensure your SSH setup (configuration, keys, etc.) allows access to both servers. Check [this section](./ssh_keys.qmd) if you need help setting up your keys (generating, configuring and managing). 
 :::
 
 #### Advantages of rsync over scp:
@@ -53,10 +53,4 @@ To transfer files directly between two servers from your local workstation, ensu
 #### Additional Tools
 
 For users who prefer a graphical interface, tools like Cyberduck and FileZilla can also be used for transferring files between servers.
-
-### Data compression and optimization 
-
-### Data organization 
-- regular expression 
-- cookiecutter
 
