@@ -8,10 +8,13 @@ date-format: long
 summary: intro to workflows
 ---
 
+In this section, we will guide you through transitioning from bash scripts or notebooks to workflows. This approach is particularly useful as computations become more complex.
+
 #### Basics
-[Snakemake](https://snakemake.readthedocs.io/en/stable/#) is a text-based tool using python-based language plus domain specific syntax. The workflow is decompose into rules that are define to obtain output files from input files.  It infers dependencies and the execution order.
-1. Semantics: define rules 
-2. Generalise the rule: creating wildcards 
+[Snakemake](https://snakemake.readthedocs.io/en/stable/#) is a text-based tool using python-based language plus domain specific syntax. The workflow is decompose into rules that are define to obtain output files from input files. It infers dependencies and the execution order.
+
+1. Semantics: define rules, each rule can use different programs (e.g. bash to run a shell command, python, R, GNU core utilities)
+2. Scaling up - rules generalisation using wildcards (e.g.: from one to several datasets)
 You can refer by index or by name 
 
 3. Dependencies are determined top-down 

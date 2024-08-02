@@ -17,24 +17,68 @@ summary: workflow
 - 💰 **Funding:** This project was funded by the Novo Nordisk Fonden (NNF20OC0063268).
 :::
 
+Data analysis typically involves the use of different tools, algorithms, and scripts. It often requires multiple steps to transform, filter, aggregate, and visualize data. The process can be time-consuming because each tool may demand specific inputs and parameter settings. As analyses become more complex, the importance of reproducible and scalable automated workflow management increases since the key for reproducibility is **automation**. 
 
-:::{.callout-warning title="Course Requirements"}
-- Command Line experience
-- Programming experience (Python)
+####  Why avoid using a shell script? 
+Bash scripts have been widely used for automation in the past and can handle many tasks effectively. Typically, running a bash script requires just one command, which executes all the steps in the script. However, a significant drawback is that it re-runs all steps every time. This can be problematic in certain situations.
+
+:::{.callout-exercise}
+# Exercise 1: Consider these scenarios where re-running all steps can be an issue.
+:::{.callout-hint}
+Here are some examples: 
+
+- **Changing input files**: if only some parts of the pipeline are affected by the changes.
+- **Code bugs**: Issues such as incorrect paths or typos in your code.
+- **Software updates**: newer version released. 
+- **Parameter updates**: test/update parameters in a software tool.
+- **Script Modifications**: For example, if only the plotting section of your script is updated, re-running the entire pipeline could waste significant time and resources.
+:::
 :::
 
-::: {.callout-tip title="Course Goals"}
-- Create analysis pipelines
-- Specify software and computational resource needs 
-- Customise your pipeline to accept user-defined configurations (params)
-- Create reproducible analyses that can be adapted to new data with little effort
+#### Are notebooks better than bash scripts?
+Notebooks might represent an advancement in addressing this issue because they allow you to run individual cells separately. However, this process is manual, and you need to ensure that the cells are executed in the correct order (time-consuming). In practice, it’s easy to make mistakes, and thus, reproducibility is only guaranteed if you run all the cells systematically from top to bottom. This approach can be time-consuming and requires careful management to avoid errors.
+
+:::{.callout-exercise}
+# Exercise 2: What are the notebooks advantages and disadvantages in the following situations?
+1. If your pipeline consist of 100 commands
+2. If your pipeline is only 4 steps but each takes several weeks of computational time 
+3. Benchmarking and testing parameters of new software
+
+:::{.callout-hint}
+Main disadvantage: reproducibility! If you are running block cells by hand, it will be hard to reproduce. 
+
+1. 
+  - Advantages:
+    - can check intermediate outputs and execute incrementally. 
+    - user-friendly interface for visualizing and debugging. 
+  - Disadvantages: 
+    - less efficient for large number of commands compared to bash scripts. 
+    - can become cumbersome and slow intensive code blocks. 
+    - no automation features and lack of advanced version control.
+2. 
+  - Advantages:
+    - simplified interface for quick execution and visualization. 
+    - easier to manage and understand fewer steps.
+    - great for prototyping and testing small workflows. 
+  - Disadvantages:
+    - less straightforward automation.
+3. 
+  - Advantages:
+    - facilitates experimentation and visualizes results instantly. 
+    - easy documentation. 
+    - enables step-by-step execution and modification of parameters.
+  - Disadvantages:
+    - not efficient for extensive benchmarking. 
+    - tracking and managing multiple parameters can become complex. 
 :::
 
-Data analysis typically involves the use of different tools, algorithms, and scripts. It often requires multiple steps to transform, filter, aggregate, and visualize data. The process can be time-consuming because each tool may demand specific inputs and parameter settings. As analyses become more complex, the importance of reproducible and scalable automated workflow management increases. Workflow management encompasses tasks such as parallelization, resumption, logging, and data provenance.
+:::
 
-If you develop your own software make sure you follow FAIR principles. We highly endorse following these [FAIR recommendations](https://fair-software.nl/endorse) and to register your computational workflow [here](https://workflowhub.eu/). 
+#### Workflows crown the stack, making bash scripts and notebooks less attractive
 
-Using workflow managers, you ensure:
+Workflows propose a third option, which is very attractive for computations that are too big to be handled conveniently by scripts or notebooks. A workflow manager, is a suitable computer program that decides which task and when is run. Workflow management encompasses tasks such as parallelization, resumption, logging, and data provenance. 
+
+**One single command** should trigger all necessary steps, ensuring they run in the correct sequence (simple and easy!). Workflows are divided into separate tasks, with each task reading an input and writing an output. A given task needs to be re-run only when its code or input data have changed. Using workflow managers, you ensure:
 
 - automation
 - convenience
@@ -43,21 +87,37 @@ Using workflow managers, you ensure:
 - scalability
 - readable
 
-Popular workflow management systems such as Snakemake, Nextflow, and Galaxy can be scaled effortlessly across server, cluster, and cloud environments without altering the workflow definition. They also allow for specifying the necessary software, ensuring the workflows can be deployed in any setting.
+Popular workflow management systems such as Snakemake, Nextflow, and Galaxy can be scaled effortlessly across server, cluster, and cloud environments without altering the workflow definition. They also allow for specifying the necessary software, ensuring the workflows can be deployed in any setting.  It's important to select a workflow manager that best fits each research project. Therefore, we will provide two sections: one on Snakemake and one on Nextflow, so you can make the best selection for your needs.
 
-During this lesson, you will learn about:
+##### **Resource management**
+
+A key service offered by workflow managers is resource management, essential for executing large computations. They handle parallel execution, running tasks tasks simultaneously when they do not depend on each other and can execute a single parallelized task on multiple nodes in a computing cluster. Workflow managers also handle data storage, managing local files, shared filesystems (storage system within a server), and cloud storage. Additionally, they can manage software environments by interfacing with package managers and running tasks in dedicated containers.
+
+During this module, you will learn about:
 
 - **Syntax**: understand the syntax of two workflow languages.
 - **Defining steps**: how to define a step in each of the language (rule in Snakemake, process in Nextflow), including specifying input, outputs and execution statements.
 - **Generalizing steps**: explore how to generalise steps and create a chain of dependency across multiple steps using wildcards (Snakemake) or parameters and channel operators (Nextflow).
 - **Advanced Customisation**: gain knowledge of advanced pipeline customisation using configuration files and custom-made functions
-- **Scaling workflows**: understand how to scale workflows to compute servers and clusters while adapting to hardware-specific constraints
+- **Scaling workflows**: understand how to scale workflows to compute servers and clusters while adapting to hardware-specific constraints.With multiple CPUs available, you can leverage parallel execution for groups of tasks that are independent of each other. In this context, tasks do not rely on the outputs of other tasks in the same group.data is transferred between tasks using files, it is easy to see how tasks depend on each other (dependencies).
+
+To put this into practice, the first step involves converting a notebook into a shell script that chains several computational tasks (`Exercise 3`). This script will serve as an intermediate stage before you move on to using Snakemake and Nextflow. Make sure to complete this step, as you will use the resulting script as the starting point for exercises in the Snakemake and Nextflow sections.
+
+:::{.callout-exercise}
+# Exercise 3: notebook -> shell script -> workflow
+Consider each task as a Python script that containing the code from one or more cells of a Jupyter Notebook. The key aspect of these tasks is that all data exchange occurs via files. Ideally, a task should be neither too lengthy nor too brief. In a workflow, a task is executed in its entirety or not at all. Long-running tasks can undermine one of the primary advantages of workflows, which is to execute only the necessary computations. Conversely, there is overhead associated with starting a task, reading input files, and writing output files. If the computational work performed by a task is too minimal, this overhead can become disproportionately large.
+
+```{.python}
+# Read csv file, create two df from it and save them into new csv file 
+```
+:::
 
 ## Good practices
-Remember to create portable code and use relative paths to ensure transferability between users. 
+If you develop your own software make sure you follow FAIR principles. We highly endorse following these [FAIR recommendations](https://fair-software.nl/endorse). 
 
-Use [git repositories](https://hds-sandbox.github.io/RDM_NGS_course/develop/05_VC.html) to save your projects and pipelines. Register and publish your scientific computational workflow on [WorkflowHub](https://workflowhub.eu/). 
-
+- Remember to create portable code and use relative paths to ensure transferability between users. 
+- Use [git repositories](https://hds-sandbox.github.io/RDM_NGS_course/develop/05_VC.html) to save your projects and pipelines. 
+- Register and publish your scientific computational workflow on [WorkflowHub](https://workflowhub.eu/). 
 
 ## Sources
 

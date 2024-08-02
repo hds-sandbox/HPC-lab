@@ -1,0 +1,16 @@
+
+---
+format: 
+  html:
+    toc: false
+date-modified: last-modified
+date-format: long
+summary: transfers
+---
+
+## Data compression and optimization 
+
+## Data organization 
+- regular expression 
+- cookiecutter
+

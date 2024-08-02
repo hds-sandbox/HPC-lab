@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -70,6 +104,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="../include/webex.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed fullcontent">
@@ -175,6 +210,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Nextflow</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/exercise.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercises</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -217,7 +258,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">July 25, 2024</p>
+      <p class="date-modified">August 2, 2024</p>
     </div>
   </div>
     
@@ -251,43 +292,156 @@ Course Overview
 </ul>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled" title="Course Requirements">
-<div class="callout-header d-flex align-content-center">
+<p>Data analysis typically involves the use of different tools, algorithms, and scripts. It often requires multiple steps to transform, filter, aggregate, and visualize data. The process can be time-consuming because each tool may demand specific inputs and parameter settings. As analyses become more complex, the importance of reproducible and scalable automated workflow management increases since the key for reproducibility is <strong>automation</strong>.</p>
+<section id="why-avoid-using-a-shell-script" class="level4">
+<h4 class="anchored" data-anchor-id="why-avoid-using-a-shell-script">Why avoid using a shell script?</h4>
+<p>Bash scripts have been widely used for automation in the past and can handle many tasks effectively. Typically, running a bash script requires just one command, which executes all the steps in the script. However, a significant drawback is that it re-runs all steps every time. This can be problematic in certain situations.</p>
+<div class="callout callout-style-default callout-exercise no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Course Requirements
+Exercise 1: Consider these scenarios where re-running all steps can be an issue.
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise">
+<div class="callout callout-style-default callout-hint no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>Here are some examples:</p>
 <ul>
-<li>Command Line experience</li>
-<li>Programming experience (Python)</li>
+<li><strong>Changing input files</strong>: if only some parts of the pipeline are affected by the changes.</li>
+<li><strong>Code bugs</strong>: Issues such as incorrect paths or typos in your code.</li>
+<li><strong>Software updates</strong>: newer version released.</li>
+<li><strong>Parameter updates</strong>: test/update parameters in a software tool.</li>
+<li><strong>Script Modifications</strong>: For example, if only the plotting section of your script is updated, re-running the entire pipeline could waste significant time and resources.</li>
 </ul>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled" title="Course Goals">
-<div class="callout-header d-flex align-content-center">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="are-notebooks-better-than-bash-scripts" class="level4">
+<h4 class="anchored" data-anchor-id="are-notebooks-better-than-bash-scripts">Are notebooks better than bash scripts?</h4>
+<p>Notebooks might represent an advancement in addressing this issue because they allow you to run individual cells separately. However, this process is manual, and you need to ensure that the cells are executed in the correct order (time-consuming). In practice, it’s easy to make mistakes, and thus, reproducibility is only guaranteed if you run all the cells systematically from top to bottom. This approach can be time-consuming and requires careful management to avoid errors.</p>
+<div class="callout callout-style-default callout-exercise no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Course Goals
+Exercise 2: What are the notebooks advantages and disadvantages in the following situations?
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise">
+<ol type="1">
+<li>If your pipeline consist of 100 commands</li>
+<li>If your pipeline is only 4 steps but each takes several weeks of computational time</li>
+<li>Benchmarking and testing parameters of new software</li>
+</ol>
+<div class="callout callout-style-default callout-hint no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>Main disadvantage: reproducibility! If you are running block cells by hand, it will be hard to reproduce.</p>
+<ol type="1">
+<li></li>
+</ol>
 <ul>
-<li>Create analysis pipelines</li>
-<li>Specify software and computational resource needs</li>
-<li>Customise your pipeline to accept user-defined configurations (params)</li>
-<li>Create reproducible analyses that can be adapted to new data with little effort</li>
+<li>Advantages:
+<ul>
+<li>can check intermediate outputs and execute incrementally.</li>
+<li>user-friendly interface for visualizing and debugging.</li>
+</ul></li>
+<li>Disadvantages:
+<ul>
+<li>less efficient for large number of commands compared to bash scripts.</li>
+<li>can become cumbersome and slow intensive code blocks.</li>
+<li>no automation features and lack of advanced version control.</li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<ul>
+<li>Advantages:
+<ul>
+<li>simplified interface for quick execution and visualization.</li>
+<li>easier to manage and understand fewer steps.</li>
+<li>great for prototyping and testing small workflows.</li>
+</ul></li>
+<li>Disadvantages:
+<ul>
+<li>less straightforward automation.</li>
+</ul></li>
+</ul>
+<ol start="3" type="1">
+<li></li>
+</ol>
+<ul>
+<li>Advantages:
+<ul>
+<li>facilitates experimentation and visualizes results instantly.</li>
+<li>easy documentation.</li>
+<li>enables step-by-step execution and modification of parameters.</li>
+</ul></li>
+<li>Disadvantages:
+<ul>
+<li>not efficient for extensive benchmarking.</li>
+<li>tracking and managing multiple parameters can become complex.</li>
+</ul></li>
 </ul>
 </div>
 </div>
-<p>Data analysis typically involves the use of different tools, algorithms, and scripts. It often requires multiple steps to transform, filter, aggregate, and visualize data. The process can be time-consuming because each tool may demand specific inputs and parameter settings. As analyses become more complex, the importance of reproducible and scalable automated workflow management increases. Workflow management encompasses tasks such as parallelization, resumption, logging, and data provenance.</p>
-<p>If you develop your own software make sure you follow FAIR principles. We highly endorse following these <a href="https://fair-software.nl/endorse">FAIR recommendations</a> and to register your computational workflow <a href="https://workflowhub.eu/">here</a>.</p>
-<p>Using workflow managers, you ensure:</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="workflows-crown-the-stack-making-bash-scripts-and-notebooks-less-attractive" class="level4">
+<h4 class="anchored" data-anchor-id="workflows-crown-the-stack-making-bash-scripts-and-notebooks-less-attractive">Workflows crown the stack, making bash scripts and notebooks less attractive</h4>
+<p>Workflows propose a third option, which is very attractive for computations that are too big to be handled conveniently by scripts or notebooks. A workflow manager, is a suitable computer program that decides which task and when is run. Workflow management encompasses tasks such as parallelization, resumption, logging, and data provenance.</p>
+<p><strong>One single command</strong> should trigger all necessary steps, ensuring they run in the correct sequence (simple and easy!). Workflows are divided into separate tasks, with each task reading an input and writing an output. A given task needs to be re-run only when its code or input data have changed. Using workflow managers, you ensure:</p>
 <ul>
 <li>automation</li>
 <li>convenience</li>
@@ -296,19 +450,50 @@ Course Goals
 <li>scalability</li>
 <li>readable</li>
 </ul>
-<p>Popular workflow management systems such as Snakemake, Nextflow, and Galaxy can be scaled effortlessly across server, cluster, and cloud environments without altering the workflow definition. They also allow for specifying the necessary software, ensuring the workflows can be deployed in any setting.</p>
-<p>During this lesson, you will learn about:</p>
+<p>Popular workflow management systems such as Snakemake, Nextflow, and Galaxy can be scaled effortlessly across server, cluster, and cloud environments without altering the workflow definition. They also allow for specifying the necessary software, ensuring the workflows can be deployed in any setting. It’s important to select a workflow manager that best fits each research project. Therefore, we will provide two sections: one on Snakemake and one on Nextflow, so you can make the best selection for your needs.</p>
+<section id="resource-management" class="level5">
+<h5 class="anchored" data-anchor-id="resource-management"><strong>Resource management</strong></h5>
+<p>A key service offered by workflow managers is resource management, essential for executing large computations. They handle parallel execution, running tasks tasks simultaneously when they do not depend on each other and can execute a single parallelized task on multiple nodes in a computing cluster. Workflow managers also handle data storage, managing local files, shared filesystems (storage system within a server), and cloud storage. Additionally, they can manage software environments by interfacing with package managers and running tasks in dedicated containers.</p>
+<p>During this module, you will learn about:</p>
 <ul>
 <li><strong>Syntax</strong>: understand the syntax of two workflow languages.</li>
 <li><strong>Defining steps</strong>: how to define a step in each of the language (rule in Snakemake, process in Nextflow), including specifying input, outputs and execution statements.</li>
 <li><strong>Generalizing steps</strong>: explore how to generalise steps and create a chain of dependency across multiple steps using wildcards (Snakemake) or parameters and channel operators (Nextflow).</li>
 <li><strong>Advanced Customisation</strong>: gain knowledge of advanced pipeline customisation using configuration files and custom-made functions</li>
-<li><strong>Scaling workflows</strong>: understand how to scale workflows to compute servers and clusters while adapting to hardware-specific constraints</li>
+<li><strong>Scaling workflows</strong>: understand how to scale workflows to compute servers and clusters while adapting to hardware-specific constraints.With multiple CPUs available, you can leverage parallel execution for groups of tasks that are independent of each other. In this context, tasks do not rely on the outputs of other tasks in the same group.data is transferred between tasks using files, it is easy to see how tasks depend on each other (dependencies).</li>
 </ul>
+<p>To put this into practice, the first step involves converting a notebook into a shell script that chains several computational tasks (<code>Exercise 3</code>). This script will serve as an intermediate stage before you move on to using Snakemake and Nextflow. Make sure to complete this step, as you will use the resulting script as the starting point for exercises in the Snakemake and Nextflow sections.</p>
+<div class="callout callout-style-default callout-exercise no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 3: notebook -&gt; shell script -&gt; workflow
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise">
+<p>Consider each task as a Python script that containing the code from one or more cells of a Jupyter Notebook. The key aspect of these tasks is that all data exchange occurs via files. Ideally, a task should be neither too lengthy nor too brief. In a workflow, a task is executed in its entirety or not at all. Long-running tasks can undermine one of the primary advantages of workflows, which is to execute only the necessary computations. Conversely, there is overhead associated with starting a task, reading input files, and writing output files. If the computational work performed by a task is too minimal, this overhead can become disproportionately large.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read csv file, create two df from it and save them into new csv file </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
 <section id="good-practices" class="level2">
 <h2 class="anchored" data-anchor-id="good-practices">Good practices</h2>
-<p>Remember to create portable code and use relative paths to ensure transferability between users.</p>
-<p>Use <a href="https://hds-sandbox.github.io/RDM_NGS_course/develop/05_VC.html">git repositories</a> to save your projects and pipelines. Register and publish your scientific computational workflow on <a href="https://workflowhub.eu/">WorkflowHub</a>.</p>
+<p>If you develop your own software make sure you follow FAIR principles. We highly endorse following these <a href="https://fair-software.nl/endorse">FAIR recommendations</a>.</p>
+<ul>
+<li>Remember to create portable code and use relative paths to ensure transferability between users.</li>
+<li>Use <a href="https://hds-sandbox.github.io/RDM_NGS_course/develop/05_VC.html">git repositories</a> to save your projects and pipelines.</li>
+<li>Register and publish your scientific computational workflow on <a href="https://workflowhub.eu/">WorkflowHub</a>.</li>
+</ul>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
@@ -326,6 +511,212 @@ Course Goals
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
