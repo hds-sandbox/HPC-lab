@@ -108,7 +108,7 @@ To put this into practice, the first step involves converting a notebook into a 
 Consider each task as a Python script that containing the code from one or more cells of a Jupyter Notebook. The key aspect of these tasks is that all data exchange occurs via files. Ideally, a task should be neither too lengthy nor too brief. In a workflow, a task is executed in its entirety or not at all. Long-running tasks can undermine one of the primary advantages of workflows, which is to execute only the necessary computations. Conversely, there is overhead associated with starting a task, reading input files, and writing output files. If the computational work performed by a task is too minimal, this overhead can become disproportionately large.
 
 ```{.python}
-# Read csv file, create two df from it and save them into new csv file 
+# Read csv file, create two df from it and save them into new csv file and create empty file with 
 ```
 :::
 
