@@ -258,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 5, 2024</p>
+      <p class="date-modified">August 6, 2024</p>
     </div>
   </div>
     
@@ -460,11 +460,11 @@ Hint
 <li><strong>Defining steps</strong>: how to define a step in each of the language (rule in Snakemake, process in Nextflow), including specifying input, outputs and execution statements.</li>
 <li><strong>Generalizing steps</strong>: explore how to generalise steps and create a chain of dependency across multiple steps using wildcards (Snakemake) or parameters and channel operators (Nextflow).</li>
 <li><strong>Advanced Customisation</strong>: gain knowledge of advanced pipeline customisation using configuration files and custom-made functions</li>
-<li><strong>Scaling workflows</strong>: understand how to scale workflows to compute servers and clusters while adapting to hardware-specific constraints.With multiple CPUs available, you can leverage parallel execution for groups of tasks that are independent of each other. In this context, tasks do not rely on the outputs of other tasks in the same group.data is transferred between tasks using files, it is easy to see how tasks depend on each other (dependencies).</li>
+<li><strong>Scaling workflows</strong>: understand how to scale workflows to compute servers and clusters while adapting to hardware-specific constraints.With multiple CPUs available, you can leverage parallel execution for groups of tasks that are independent of each other. In this context, tasks do not rely on the outputs of other tasks in the same group. Since data is transferred between tasks using files, it is easy to see how tasks depend on each other (dependencies).</li>
 </ul>
-<p>To put this into practice, the first step involves converting a notebook into a shell script that chains several computational tasks (<code>Exercise 3</code>). This script will serve as an intermediate stage before you move on to using Snakemake and Nextflow. Make sure to complete this step, as you will use the resulting script as the starting point for exercises in the Snakemake and Nextflow sections.</p>
+<p>To put this into practice, you will start by scaling up a data analysis from one dataset to a large number of datasets and incorporating an additional analysis step at the aggregate level. The first step involves converting a notebook into a shell script that chains several computational tasks (<code>Exercise 3</code>). This script will serve as an intermediate stage before you move on to using Snakemake and Nextflow. Make sure to complete this step, as you will use the resulting script as the starting point for exercises in the Snakemake and Nextflow sections.</p>
 <div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -473,12 +473,56 @@ Exercise 3: notebook -&gt; shell script -&gt; workflow
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-exercise">
 <p>Consider each task as a Python script that containing the code from one or more cells of a Jupyter Notebook. The key aspect of these tasks is that all data exchange occurs via files. Ideally, a task should be neither too lengthy nor too brief. In a workflow, a task is executed in its entirety or not at all. Long-running tasks can undermine one of the primary advantages of workflows, which is to execute only the necessary computations. Conversely, there is overhead associated with starting a task, reading input files, and writing output files. If the computational work performed by a task is too minimal, this overhead can become disproportionately large.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read csv file, create two df from it and save them into new csv file and create empty file with </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We will use the classic <code>Iris dataset</code> for this exercise. Summarizing, the dataset consists of 150 samples of iris flowers, each described by four features: Sepal Length, Sepal Width, Petal Length, and Petal Width (all in centimeters). These samples are categorized into three species: Setosa, Versicolor, and Virginica. If you are unfamiliar with it, you can read more <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">here</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's import the iris dataset, extract summary statistics of the species "setosa" and save those to a new file </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_iris</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> load_iris() <span class="co"># Load toy dataset</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(iris.data, columns<span class="op">=</span>iris.feature_names) <span class="co"># Create dataframe using feature names</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'species'</span>] <span class="op">=</span> iris.target_names[iris.target] <span class="co"># Map targets to species names and add them to a new column </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df.head() <span class="co"># Display first few rows</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>df_setosa <span class="op">=</span> df[df[<span class="st">'species'</span>] <span class="op">==</span> <span class="st">"setosa"</span>]</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>summary_stats <span class="op">=</span> df_setosa.describe() <span class="co"># Calculate summary statistics</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>summary_stats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<ol type="1">
+<li>Reuse as much as possible from the code above (but remove code fro displaying tables).</li>
+<li>Save the python code to a file (e.g.&nbsp;<a href="./scripts/process_iris.py">process_iris.py</a>)</li>
+<li>Write a shell script and run the python script once for one of the species (e.g.”setosa” | “versicolor” | “virginica” )</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">SPECIES_NAME</span><span class="op">=</span><span class="st">"setosa"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> process_iris.py <span class="va">$SPECIES_NAME</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -499,7 +543,7 @@ Exercise 3: notebook -&gt; shell script -&gt; workflow
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
 <ul>
 <li><a href="https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html#tutorial">Snakemake tutorial</a></li>
-<li><a href="https://slides.com/johanneskoester/snakemake-tutorial">Snakemake turorial slides by Johannes Koster</a></li>
+<li><a href="https://slides.com/johanneskoester/snakemake-tutorial">Snakemake tutorial slides by Johannes Koster</a></li>
 <li>https://bioconda.github.io</li>
 <li>Köster, Johannes and Rahmann, Sven. “Snakemake - A scalable bioinformatics workflow engine”. Bioinformatics 2012.</li>
 <li>Köster, Johannes. “Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis”, PhD thesis, TU Dortmund 2014.</li>
