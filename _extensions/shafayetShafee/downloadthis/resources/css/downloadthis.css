@@ -1,0 +1,20 @@
+.downloadthis:focus,
+  .downloadthis:active  {
+     box-shadow: none !important;
+  }
+  
+  .downloadthis:hover {
+     transition: 0.1s;
+     filter: brightness(0.90);
+  }
+  
+  .downloadthis:active {
+     filter: brightness(0.90);
+}
+
+.small-button {
+   font-size: 1.1em; /* Adjust the size of the text */
+   padding: 6px 12px; /* Adjust padding for smaller size */
+   border-radius: 3px; /* Optional: Adjust border radius for a smaller button */
+   text-transform: none;
+}

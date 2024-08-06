@@ -258,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 2, 2024</p>
+      <p class="date-modified">August 6, 2024</p>
     </div>
   </div>
     
@@ -272,9 +272,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this section, we will guide you through transitioning from bash scripts or notebooks to workflows. This approach is particularly useful as computations become more complex.</p>
 <section id="basics" class="level4">
 <h4 class="anchored" data-anchor-id="basics">Basics</h4>
-<p><a href="https://snakemake.readthedocs.io/en/stable/#">Snakemake</a> is a text-based tool using python-based language plus domain specific syntax. The workflow is decompose into rules that are define to obtain output files from input files. It infers dependencies and the execution order.</p>
+<p><a href="https://snakemake.readthedocs.io/en/stable/#">Snakemake</a> is a text-based workflow management tool that uses a Python-based language with domain-specific syntax. Originally designed for scientific workflows in bioinformatics, Snakemake shares operational principles with <a href="https://www.gnu.org/software/make/"><code>make</code></a>, from which it was inspired. Importantly, workflows in Snakemake are structured around data stored in files, and the tool supports parallel computing, cloud storage, and can manage computational environments.</p>
+<p>The workflow is decomposed into rules that define how to obtain output files from input files. Snakemake infers dependencies and determines the execution order automatically, offering significantly more flexibility than its predecessor, <code>make</code>.</p>
 <ol type="1">
-<li><p>Semantics: define rules, each rule can use different programs (e.g.&nbsp;bash to run a shell command, python, R, GNU core utilities)</p></li>
+<li>Semantics: define rules, each rule can use different programs (e.g.&nbsp;bash to run a shell command, python, R, GNU core utilities)</li>
+</ol>
+<div class="sourceCode" id="cb1" title="Snakefile"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> dw_metadata:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">input:</span> </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">output:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shell:</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"wget {input} {output}"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> split_superpop:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">input:</span> </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">output:</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shell:</span> </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"python process_pops.py {input} {output}"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> avg_gender:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To run the workflow in Snakemake, you can either 1) request Snakemake to generate a specific file (using the exact filename as defined in the rule’s output) or 2) specify the name of a rule or task. The only mandatory flag in Snakemake is the number of cores (<code>-c</code>) or jobs (<code>-j</code>), which indicates the number of processes that can run in parallel.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the workflow: Call either the last rule or the last output, which will trigger the same set of rules.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c2</span> my-plot.png </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c2</span> plotl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
 <li><p>Scaling up - rules generalisation using wildcards (e.g.: from one to several datasets) You can refer by index or by name</p></li>
 <li><p>Dependencies are determined top-down</p></li>
 </ol>
@@ -290,34 +312,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="useful-command-line-interface" class="level4">
 <h4 class="anchored" data-anchor-id="useful-command-line-interface">Useful command line interface</h4>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dry-run (-n), print shell commands (-p)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-n</span> <span class="at">-p</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Snakefile named different in another location </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--snakefile</span> path/to/file.smoker</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dry-run (-n), print execution reason for each job</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-n</span> <span class="at">-r</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualise DAG of jobs using Graphviz dot command</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--dag</span> <span class="kw">|</span> <span class="ex">dot</span> <span class="at">-Tsvg</span> <span class="op">&gt;</span> dag.svg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dry-run (-n), print shell commands (-p)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-n</span> <span class="at">-p</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Snakefile named different in another location </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--snakefile</span> path/to/file.smoker</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dry-run (-n), print execution reason for each job</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-n</span> <span class="at">-r</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualise DAG of jobs using Graphviz dot command</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--dag</span> <span class="kw">|</span> <span class="ex">dot</span> <span class="at">-Tsvg</span> <span class="op">&gt;</span> dag.svg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="defining-resources" class="level4">
 <h4 class="anchored" data-anchor-id="defining-resources">Defining resources</h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> myrule:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">resources:</span> mem_mb= 100 <span class="co">#(100MB memory allocation)</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">threads:</span> X</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shell:</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"command {threads}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> myrule:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">resources:</span> mem_mb= 100 <span class="co">#(100MB memory allocation)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">threads:</span> X</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shell:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"command {threads}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s say you defined our rule myrule needs 4 works, if we execute the workflow with 8 cores as follows:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--cores</span> 8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--cores</span> 8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This means that 2 ‘myrule’ jobs, will be executed in parallel.</p>
 <p>The jobs are schedules to maximize parallelization, high priority jobs will be scheduled first, all while satisfying resource constrains. This means:</p>
 <p>If we allocate 100MB for the execution of ‘myrule’ and we call snakemake as follows:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--resources</span> mem_mb=100 <span class="at">--cores</span> 8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--resources</span> mem_mb=100 <span class="at">--cores</span> 8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Only one ‘myrule’ job can be executed in parallel (you do not provide enough memory resources for 2). The memory resources is useful for jobs that are heavy memory demanding to avoid running out of memory. You will need to benchmark your pipeline to estimate how much memory and time your full workflow will take. We highly recommend doing so, get a subset of your dataset and give it a go! Log files will come very handy for the resource estimation. Of course, the execution of jobs is dependant on the free resources availability (eg. CPU cores).</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> myrule:</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">log:</span> <span class="st">"logs/myrule.log"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">threads:</span> X</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shell:</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"command {threads}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> myrule:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">log:</span> <span class="st">"logs/myrule.log"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">threads:</span> X</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shell:</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"command {threads}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Log files need to define the same wildcards as the output files, otherwise, you will get an error.</p>
 </section>
 <section id="config-files" class="level4">
@@ -327,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="cluster-execution" class="level4">
 <h4 class="anchored" data-anchor-id="cluster-execution">Cluster execution</h4>
 <p>When working from cluster systems you can execute the workflow using -qsub submission command</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--cluster</span> qsub </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--cluster</span> qsub </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="additional-advanced-features" class="level4">
 <h4 class="anchored" data-anchor-id="additional-advanced-features">Additional advanced features</h4>
@@ -343,19 +365,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="create-an-isolated-environment-to-install-dependencies" class="level4">
 <h4 class="anchored" data-anchor-id="create-an-isolated-environment-to-install-dependencies">Create an isolated environment to install dependencies</h4>
 <p>Basic file structure</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> config.yml</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> requirements.txt <span class="er">(</span><span class="ex">commonly</span> also named environment.txt<span class="kw">)</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> rules/</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span>   <span class="kw">|</span> <span class="ex">-</span> myrules.smk</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> scripts/</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span>   <span class="kw">|</span> <span class="ex">-</span> script1.py</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> Snakefile</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> config.yml</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> requirements.txt <span class="er">(</span><span class="ex">commonly</span> also named environment.txt<span class="kw">)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> rules/</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span>   <span class="kw">|</span> <span class="ex">-</span> myrules.smk</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> scripts/</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span>   <span class="kw">|</span> <span class="ex">-</span> script1.py</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> Snakefile</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Create conda environment, one per project!</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create env</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> myworklow <span class="at">--file</span> requirements.txt</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># activate environment</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> activate myworkflow</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># then execute snakemake</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create env</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> myworklow <span class="at">--file</span> requirements.txt</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># activate environment</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> activate myworkflow</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># then execute snakemake</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>

@@ -99,17 +99,46 @@ During this module, you will learn about:
 - **Defining steps**: how to define a step in each of the language (rule in Snakemake, process in Nextflow), including specifying input, outputs and execution statements.
 - **Generalizing steps**: explore how to generalise steps and create a chain of dependency across multiple steps using wildcards (Snakemake) or parameters and channel operators (Nextflow).
 - **Advanced Customisation**: gain knowledge of advanced pipeline customisation using configuration files and custom-made functions
-- **Scaling workflows**: understand how to scale workflows to compute servers and clusters while adapting to hardware-specific constraints.With multiple CPUs available, you can leverage parallel execution for groups of tasks that are independent of each other. In this context, tasks do not rely on the outputs of other tasks in the same group.data is transferred between tasks using files, it is easy to see how tasks depend on each other (dependencies).
+- **Scaling workflows**: understand how to scale workflows to compute servers and clusters while adapting to hardware-specific constraints.With multiple CPUs available, you can leverage parallel execution for groups of tasks that are independent of each other. In this context, tasks do not rely on the outputs of other tasks in the same group. Since data is transferred between tasks using files, it is easy to see how tasks depend on each other (dependencies).
 
-To put this into practice, the first step involves converting a notebook into a shell script that chains several computational tasks (`Exercise 3`). This script will serve as an intermediate stage before you move on to using Snakemake and Nextflow. Make sure to complete this step, as you will use the resulting script as the starting point for exercises in the Snakemake and Nextflow sections.
+To put this into practice, you will start by scaling up a data analysis from one dataset to a large number of datasets and incorporating an additional analysis step at the aggregate level. The first step involves converting a notebook into a shell script that chains several computational tasks (`Exercise 3`). This script will serve as an intermediate stage before you move on to using Snakemake and Nextflow. Make sure to complete this step, as you will use the resulting script as the starting point for exercises in the Snakemake and Nextflow sections.
 
 :::{.callout-exercise}
 # Exercise 3: notebook -> shell script -> workflow
 Consider each task as a Python script that containing the code from one or more cells of a Jupyter Notebook. The key aspect of these tasks is that all data exchange occurs via files. Ideally, a task should be neither too lengthy nor too brief. In a workflow, a task is executed in its entirety or not at all. Long-running tasks can undermine one of the primary advantages of workflows, which is to execute only the necessary computations. Conversely, there is overhead associated with starting a task, reading input files, and writing output files. If the computational work performed by a task is too minimal, this overhead can become disproportionately large.
 
+We will use the classic `Iris dataset` for this exercise. Summarizing, the dataset consists of 150 samples of iris flowers, each described by four features: Sepal Length, Sepal Width, Petal Length, and Petal Width (all in centimeters). These samples are categorized into three species: Setosa, Versicolor, and Virginica. If you are unfamiliar with it, you can read more [here](https://en.wikipedia.org/wiki/Iris_flower_data_set).
+
 ```{.python}
-# Read csv file, create two df from it and save them into new csv file and create empty file with 
+# Let's import the iris dataset, extract summary statistics of the species "setosa" and save those to a new file 
+from sklearn.datasets import load_iris
+import matplotlib.pyplot as plt
+import pandas as pd 
+
+iris = load_iris() # Load toy dataset
+
+df = pd.DataFrame(iris.data, columns=iris.feature_names) # Create dataframe using feature names
+df['species'] = iris.target_names[iris.target] # Map targets to species names and add them to a new column 
+df.head() # Display first few rows
+
+df_setosa = df[df['species'] == "setosa"]
+summary_stats = df_setosa.describe() # Calculate summary statistics
+
+summary_stats
+
 ```
+:::{.callout-hint}
+1. Reuse as much as possible from the code above (but remove code fro displaying tables). 
+2. Save the python code to a file (e.g. [process_iris.py](./scripts/process_iris.py))
+3. Write a shell script and run the python script once for one of the species (e.g."setosa" | "versicolor" | "virginica" )
+```.bash
+#!/bin/bash
+
+SPECIES_NAME="setosa"
+
+python process_iris.py $SPECIES_NAME
+```
+:::
 :::
 
 ## Good practices
@@ -122,7 +151,7 @@ If you develop your own software make sure you follow FAIR principles. We highly
 ## Sources
 
 - [Snakemake tutorial](https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html#tutorial)
-- [Snakemake turorial slides by Johannes Koster](https://slides.com/johanneskoester/snakemake-tutorial)
+- [Snakemake tutorial slides by Johannes Koster](https://slides.com/johanneskoester/snakemake-tutorial)
 - https://bioconda.github.io
 - Köster, Johannes and Rahmann, Sven. "Snakemake - A scalable bioinformatics workflow engine". Bioinformatics 2012.
 - Köster, Johannes. "Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis", PhD thesis, TU Dortmund 2014.

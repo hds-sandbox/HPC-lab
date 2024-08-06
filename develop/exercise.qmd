@@ -19,6 +19,7 @@ style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
 
 Put your learning to the test with what you’ve covered so far.
 
+## General 
 **1. What role does a workflow manager play in computational research??**
 
 ```{r}
@@ -68,4 +69,54 @@ opts_3 <- c(
 **4. Workflow managers can run tasks (different) concurrently if there are no dependencies** (True or False) `r torf(TRUE)`
 
 **5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster** (True or False) `r torf(TRUE)`
+
+## Snakemake
+
+:::{.callout-exercise}
+# Exercise 1S: Exploring Rule Invocation in Snakemake
+In this exercise, we will explore how rules are invoked in a Snakemake workflow. Download the `Snakefile` and data required for this exercise using the links below. 
+
+{{< downloadthis ./scripts/samples_1kgp_test.tsv label="Download data input" class="small-button" dname="samples_1kgp">}}
+{{< downloadthis ./scripts/process_1kgp.smk label="Download Snakefile" class="small-button" dname="process_1kgp">}}
+:::
+
+Now follow these steps and answer the questions: 
+
+- Open the snakefile, named `process_1kgp.smk` and try to understand every single line. **If you request Snakemake to generate the file `results/all_female.txt`, what commands will be executed and in what sequence?**
+- Dry run the workflow: Check the number of jobs that will be executed.
+
+   **6. How many jobs will Snakemake run?** `r fitb(8)`
+
+- Run the workflow: Use the name flag `--snakefile` | `-s` follow by the name of the file. 
+- Verify output: Ensure that the output files are in your working directory.
+- Clean Up: remove all files starting with `EUR` in your results folder.
+- Rerun the workflow: Execute the Snakefile again.
+
+   **7. How many jobs did Snakemake run in this last execution?** `r fitb(3)`
+
+- Remove lines 4-6 in the `process_1kgp.smk`. How else can you run the workflow but to generate instead `all_male.txt` using only the command-line? 
+
+   ```
+   rule all:
+      input:
+         expand("results/all_{gender}.txt", gender=["female"])
+   ```
+   
+   **8. Tip: what is missing at the end of the command ( e.g. what should be added to ensure `all_male.txt` is generated)? `snakemake -s process_1kgp.smk -c1`** `r fitb("results/all_male.txt")`
+
+
+:::{.callout-hint}
+```{.bash}
+# dry run 
+snakemake -s process_1kgp.smk -n 
+# run the workflow 
+snakemake -s process_1kgp.smk-c1 <name_rule|name_output>
+# verify output 
+ls <name_output>
+# remove file belonging to european individuals 
+rm results/EUR.tsv results/all_female.txt
+# rerun again 
+snakemake -s process_1kgp.smk -c1 <name_rule|name_output>
+```
+:::
 
