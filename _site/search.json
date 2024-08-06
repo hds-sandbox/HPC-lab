@@ -155,7 +155,7 @@
     "href": "develop/fair_workflow.html#sources",
     "title": "FAIR computational pipelines",
     "section": "Sources",
-    "text": "Sources\n\nSnakemake tutorial\nSnakemake turorial slides by Johannes Koster\nhttps://bioconda.github.io\nKöster, Johannes and Rahmann, Sven. “Snakemake - A scalable bioinformatics workflow engine”. Bioinformatics 2012.\nKöster, Johannes. “Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis”, PhD thesis, TU Dortmund 2014.\nfaircookbook worflows\nThe turing way - reproducible research",
+    "text": "Sources\n\nSnakemake tutorial\nSnakemake tutorial slides by Johannes Koster\nhttps://bioconda.github.io\nKöster, Johannes and Rahmann, Sven. “Snakemake - A scalable bioinformatics workflow engine”. Bioinformatics 2012.\nKöster, Johannes. “Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis”, PhD thesis, TU Dortmund 2014.\nfaircookbook worflows\nThe turing way - reproducible research",
     "crumbs": [
       "HPC pipes",
       "Pipeline languages",
@@ -288,7 +288,31 @@
     "href": "develop/exercise.html",
     "title": "Exercises",
     "section": "",
-    "text": "Put your learning to the test with what you’ve covered so far.\n1. What role does a workflow manager play in computational research??\n\n Automating the execution of complex computational processes To manually execute each step of a computation Offering real-time and intuitive data analysis To minimize the reliance on specific software environments\n\n2.What is the primary drawback of using shell scripts for automating computations?\n\n Limited error handling and debugging capabilities Difficulty in integrating with notebooks Not compatible with all operating systems They re-run all the steps every time Insufficient support for parallel processing Complex and extensive coding for simple tasks\n\n3. What are the key features of workflow manager in computational research? (Several possible solutions)\n\n Executing tasks only when required Managing task dependencies Overseeing storage and resource allocation Providing intuitive graphical interfaces\n\n4. Workflow managers can run tasks (different) concurrently if there are no dependencies (True or False) TRUEFALSE\n5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster (True or False) TRUEFALSE\n\n\n\nCopyrightCC-BY-SA 4.0 license",
+    "text": "Put your learning to the test with what you’ve covered so far.",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "Exercises"
+    ]
+  },
+  {
+    "objectID": "develop/exercise.html#general",
+    "href": "develop/exercise.html#general",
+    "title": "Exercises",
+    "section": "General",
+    "text": "General\n1. What role does a workflow manager play in computational research??\n\n Automating the execution of complex computational processes To manually execute each step of a computation Offering real-time and intuitive data analysis To minimize the reliance on specific software environments\n\n2.What is the primary drawback of using shell scripts for automating computations?\n\n Limited error handling and debugging capabilities Difficulty in integrating with notebooks Not compatible with all operating systems They re-run all the steps every time Insufficient support for parallel processing Complex and extensive coding for simple tasks\n\n3. What are the key features of workflow manager in computational research? (Several possible solutions)\n\n Executing tasks only when required Managing task dependencies Overseeing storage and resource allocation Providing intuitive graphical interfaces\n\n4. Workflow managers can run tasks (different) concurrently if there are no dependencies (True or False) TRUEFALSE\n5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster (True or False) TRUEFALSE",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "Exercises"
+    ]
+  },
+  {
+    "objectID": "develop/exercise.html#snakemake",
+    "href": "develop/exercise.html#snakemake",
+    "title": "Exercises",
+    "section": "Snakemake",
+    "text": "Snakemake\n\n\n\n\n\n\nExercise 1S: Exploring Rule Invocation in Snakemake\n\n\n\n\n\n\n\nIn this exercise, we will explore how rules are invoked in a Snakemake workflow. Download the Snakefile and data required for this exercise using the links below.\n Download data input   Download Snakefile \n\n\n\n\n\nNow follow these steps and answer the questions:\n\nOpen the snakefile, named process_1kgp.smk and try to understand every single line. If you request Snakemake to generate the file results/all_female.txt, what commands will be executed and in what sequence?\nDry run the workflow: Check the number of jobs that will be executed.\n6. How many jobs will Snakemake run? \nRun the workflow: Use the name flag --snakefile | -s follow by the name of the file.\nVerify output: Ensure that the output files are in your working directory.\nClean Up: remove all files starting with EUR in your results folder.\nRerun the workflow: Execute the Snakefile again.\n7. How many jobs did Snakemake run in this last execution? \nRemove lines 4-6 in the process_1kgp.smk. How else can you run the workflow but to generate instead all_male.txt using only the command-line?\nrule all:\n   input:\n      expand(\"results/all_{gender}.txt\", gender=[\"female\"])\n8. Tip: what is missing at the end of the command ( e.g. what should be added to ensure all_male.txt is generated)? snakemake -s process_1kgp.smk -c1 \n\n\n\n\n\n\n\nHint\n\n\n\n\n\n\n\n# dry run \nsnakemake -s process_1kgp.smk -n \n# run the workflow \nsnakemake -s process_1kgp.smk-c1 &lt;name_rule|name_output&gt;\n# verify output \nls &lt;name_output&gt;\n# remove file belonging to european individuals \nrm results/EUR.tsv results/all_female.txt\n# rerun again \nsnakemake -s process_1kgp.smk -c1 &lt;name_rule|name_output&gt;",
     "crumbs": [
       "HPC pipes",
       "Pipeline languages",

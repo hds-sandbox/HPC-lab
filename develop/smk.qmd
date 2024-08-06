@@ -8,12 +8,42 @@ date-format: long
 summary: intro to workflows
 ---
 
-In this section, we will guide you through transitioning from bash scripts or notebooks to workflows. This approach is particularly useful as computations become more complex.
+In this section, we will guide you through transitioning from bash scripts or notebooks to workflows. This approach is particularly useful as computations become more complex. 
 
 #### Basics
-[Snakemake](https://snakemake.readthedocs.io/en/stable/#) is a text-based tool using python-based language plus domain specific syntax. The workflow is decompose into rules that are define to obtain output files from input files. It infers dependencies and the execution order.
+[Snakemake](https://snakemake.readthedocs.io/en/stable/#)  is a text-based workflow management tool that uses a Python-based language with domain-specific syntax. Originally designed for scientific workflows in bioinformatics, Snakemake shares operational principles with [`make`](https://www.gnu.org/software/make/), from which it was inspired. Importantly, workflows in Snakemake are structured around data stored in files, and the tool supports parallel computing, cloud storage, and can manage computational environments.
+
+The workflow is decomposed into rules that define how to obtain output files from input files. Snakemake infers dependencies and determines the execution order automatically, offering significantly more flexibility than its predecessor, `make`.
 
 1. Semantics: define rules, each rule can use different programs (e.g. bash to run a shell command, python, R, GNU core utilities)
+
+```{.bash title="Snakefile"}
+
+rule dw_metadata:
+  input: 
+  output:
+  shell: 
+    "wget {input} {output}"
+
+rule split_superpop:
+  input: 
+  output:
+  shell: 
+    "python process_pops.py {input} {output}"
+
+rule avg_gender:
+
+```
+
+To run the workflow in Snakemake, you can either 1) request Snakemake to generate a specific file (using the exact filename as defined in the rule's output) or 2) specify the name of a rule or task. The only mandatory flag in Snakemake is the number of cores (`-c`) or jobs (`-j`), which indicates the number of processes that can run in parallel.
+
+```{.bash}
+# Run the workflow: Call either the last rule or the last output, which will trigger the same set of rules.
+snakemake -c2 my-plot.png 
+# or
+snakemake -c2 plotl
+```
+
 2. Scaling up - rules generalisation using wildcards (e.g.: from one to several datasets)
 You can refer by index or by name 
 
