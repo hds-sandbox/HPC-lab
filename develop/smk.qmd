@@ -11,37 +11,55 @@ summary: intro to workflows
 In this section, we will guide you through transitioning from bash scripts or notebooks to workflows. This approach is particularly useful as computations become more complex. 
 
 #### Basics
-[Snakemake](https://snakemake.readthedocs.io/en/stable/#)  is a text-based workflow management tool that uses a Python-based language with domain-specific syntax. Originally designed for scientific workflows in bioinformatics, Snakemake shares operational principles with [`make`](https://www.gnu.org/software/make/), from which it was inspired. Importantly, workflows in Snakemake are structured around data stored in files, and the tool supports parallel computing, cloud storage, and can manage computational environments.
+[Snakemake](https://snakemake.readthedocs.io/en/stable/#) is a text-based workflow management tool that uses a Python-based language with domain-specific syntax. Originally designed for scientific workflows in bioinformatics, Snakemake shares operational principles with [`make`](https://www.gnu.org/software/make/), from which it was inspired. Importantly, workflows in Snakemake are structured around data stored in files, and the tool supports parallel computing, cloud storage, and can manage computational environments.
 
-The workflow is decomposed into rules that define how to obtain output files from input files. Snakemake infers dependencies and determines the execution order automatically, offering significantly more flexibility than its predecessor, `make`.
+The workflow is decomposed into **rules** that define how to obtain output files from input files. Snakemake infers dependencies and determines the execution order automatically, offering significantly more flexibility than its predecessor, `make`.
 
 1. Semantics: define rules, each rule can use different programs (e.g. bash to run a shell command, python, R, GNU core utilities)
 
-```{.bash title="Snakefile"}
-
+```{.bash filename="Snakefile"}
 rule dw_metadata:
-  input: 
-  output:
+  input: path2/filename.tsv
+  output: data/filename.tsv
   shell: 
-    "wget {input} {output}"
+    "wget {input} > {output}"
 
 rule split_superpop:
-  input: 
-  output:
+  input: data/filename.tsv
+  output: data/{superpop}.tsv
   shell: 
     "python process_pops.py {input} {output}"
 
 rule avg_gender:
+  input: data/{superpop}.tsv
+  output: data/{superpop}_{gender}.png
+  shell: 
+    "python statsPlot_gender.py {input} {output}"
 
 ```
 
-To run the workflow in Snakemake, you can either 1) request Snakemake to generate a specific file (using the exact filename as defined in the rule's output) or 2) specify the name of a rule or task. The only mandatory flag in Snakemake is the number of cores (`-c`) or jobs (`-j`), which indicates the number of processes that can run in parallel.
+The only mandatory flag in Snakemake is the number of cores (`-c`) or jobs (`-j`), which indicates the number of processes that can run in parallel. To run the workflow in Snakemake, you can either:
 
-```{.bash}
-# Run the workflow: Call either the last rule or the last output, which will trigger the same set of rules.
-snakemake -c2 my-plot.png 
-# or
-snakemake -c2 plotl
+1. Request Snakemake to generate a specific file (using the exact filename as defined in the rule's output) 
+
+```{.bash .code-overflow-wrap}
+# Call the last output (of the pipeline or the one you want to generate)
+snakemake -c2 data/EUR_female.png
+```
+
+2. Specify the name of a rule or task. You can do this when wildcards are not present
+
+```{.bash .code-overflow-wrap}
+# Call the last rule
+snakemake -c1 dw_metadata
+```
+
+3. Alternatively, in very common practice, determine what you want to run inside a Snakefile 
+
+```{.bash .code-overflow-wrap}
+rule all:
+  input:
+    expand(data/{superpop}_{gender}.png, superpop=["EUR"], gender=["female", "male"])
 ```
 
 2. Scaling up - rules generalisation using wildcards (e.g.: from one to several datasets)

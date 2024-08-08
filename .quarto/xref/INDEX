@@ -31,5 +31,8 @@
   },
   "develop/exercise.qmd": {
     "exercise.html": "edd32414"
+  },
+  "develop/scripts/01.iris.ipynb": {
+    "01.iris.html": "d1ce6c4e"
   }
 }

@@ -101,44 +101,36 @@ During this module, you will learn about:
 - **Advanced Customisation**: gain knowledge of advanced pipeline customisation using configuration files and custom-made functions
 - **Scaling workflows**: understand how to scale workflows to compute servers and clusters while adapting to hardware-specific constraints.With multiple CPUs available, you can leverage parallel execution for groups of tasks that are independent of each other. In this context, tasks do not rely on the outputs of other tasks in the same group. Since data is transferred between tasks using files, it is easy to see how tasks depend on each other (dependencies).
 
-To put this into practice, you will start by scaling up a data analysis from one dataset to a large number of datasets and incorporating an additional analysis step at the aggregate level. The first step involves converting a notebook into a shell script that chains several computational tasks (`Exercise 3`). This script will serve as an intermediate stage before you move on to using Snakemake and Nextflow. Make sure to complete this step, as you will use the resulting script as the starting point for exercises in the Snakemake and Nextflow sections.
+To put this into practice, you will start by scaling up a data analysis from one dataset to a large number of datasets and incorporating additional analysis steps at the aggregate level.However, before you can scale up, the first step involves converting a notebook into a shell script that chains several computational tasks (`Exercise 3`). This script will serve as an intermediate stage before you move on to using Snakemake and Nextflow, and completing it will help you understand how different tasks correspond and are split in these tools.
 
 :::{.callout-exercise}
-# Exercise 3: notebook -> shell script -> workflow
+# Exercise 3: notebook -> shell script 
 Consider each task as a Python script that containing the code from one or more cells of a Jupyter Notebook. The key aspect of these tasks is that all data exchange occurs via files. Ideally, a task should be neither too lengthy nor too brief. In a workflow, a task is executed in its entirety or not at all. Long-running tasks can undermine one of the primary advantages of workflows, which is to execute only the necessary computations. Conversely, there is overhead associated with starting a task, reading input files, and writing output files. If the computational work performed by a task is too minimal, this overhead can become disproportionately large.
 
-We will use the classic `Iris dataset` for this exercise. Summarizing, the dataset consists of 150 samples of iris flowers, each described by four features: Sepal Length, Sepal Width, Petal Length, and Petal Width (all in centimeters). These samples are categorized into three species: Setosa, Versicolor, and Virginica. If you are unfamiliar with it, you can read more [here](https://en.wikipedia.org/wiki/Iris_flower_data_set).
+We will use the classic `Iris dataset` for this exercise. Convert [this Jupyter notebook](./scripts/01.iris.ipynb) to a shell script. 
 
-```{.python}
-# Let's import the iris dataset, extract summary statistics of the species "setosa" and save those to a new file 
-from sklearn.datasets import load_iris
-import matplotlib.pyplot as plt
-import pandas as pd 
-
-iris = load_iris() # Load toy dataset
-
-df = pd.DataFrame(iris.data, columns=iris.feature_names) # Create dataframe using feature names
-df['species'] = iris.target_names[iris.target] # Map targets to species names and add them to a new column 
-df.head() # Display first few rows
-
-df_setosa = df[df['species'] == "setosa"]
-summary_stats = df_setosa.describe() # Calculate summary statistics
-
-summary_stats
-
-```
 :::{.callout-hint}
-1. Reuse as much as possible from the code above (but remove code fro displaying tables). 
-2. Save the python code to a file (e.g. [process_iris.py](./scripts/process_iris.py))
-3. Write a shell script and run the python script once for one of the species (e.g."setosa" | "versicolor" | "virginica" )
+1. Reuse as much as possible from the code above but remove code for displaying tables or plotting figures.  
+2. Leave only comments specifically for the code, create a README.md for the description of the dataset and the objective of the project.
+2. Save the python code to a file (e.g. [process_iris.py](./scripts/process_iris.py or [summaryStats_species.py](develop/scripts/summaryStats_species.py))). 
+3. Write a shell script and run the python script once for one of the species (e.g."setosa" | "versicolor" | "virginica"). 
+:::
+
+:::{.callout-tip title="Solution" collapse="true"}
+Here is one possible approach. You may choose to split the notebook into more or fewer tasks as needed. Remember to make your script executable by running `chmod +x run_iris_analysis.sh` so that you can run it by simply `./run_iris_analysis.sh`.
+
+The reason for splitting the tasks is based on their functionality. We handle plotting and data manipulation or preprocessing in one script, as these tasks are typically performed together. The summary statistics, however, might need to be generated multiple times or for different species. Therefore, we created a separate script specifically for summarizing the data. This separation allows us to run the summary script as needed, either once, multiple times, or for different species, while keeping the data processing and plotting tasks contained in their own script.
+
 ```.bash
 #!/bin/bash
 
-SPECIES_NAME="setosa"
+python process_iris.py
 
-python process_iris.py $SPECIES_NAME
+SPECIES_NAME="setosa"
+python summaryStats_species.py $SPECIES_NAME
 ```
 :::
+
 :::
 
 ## Good practices
