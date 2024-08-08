@@ -74,11 +74,11 @@ opts_3 <- c(
 
 :::{.callout-exercise}
 # Exercise 1S: Exploring Rule Invocation in Snakemake
+:::
 In this exercise, we will explore how rules are invoked in a Snakemake workflow. Download the `Snakefile` and data required for this exercise using the links below. 
 
 {{< downloadthis ./scripts/samples_1kgp_test.tsv label="Download data input" class="small-button" dname="samples_1kgp">}}
 {{< downloadthis ./scripts/process_1kgp.smk label="Download Snakefile" class="small-button" dname="process_1kgp">}}
-:::
 
 Now follow these steps and answer the questions: 
 
