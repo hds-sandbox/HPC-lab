@@ -14,6 +14,77 @@
     "text": "HPC pipes\nThe course “HPC pipes” is designed to provide participants with foundational knowledge and practical skills in writing reproducible pipelines. As part of effective data management, it is crucial that researchers create reproducible analyses that enable others to validate and build upon their work. We will explore essential elements of reproducibility and efficiency in computational research, highlighting techniques and tools for creating robust and transparent coding and workflows. By prioritizing reproducibility and replicability, researchers can enhance the credibility and impact of their findings while fostering collaboration and knowledge dissemination within the scientific community. This approach guarantees efficient research management. Explore our content on practical RDM for more details.\n\n\n\n\n\n\nCourse Requirements\n\n\n\nIt is important to be familiar with unix and python. Follow the tutorials in the links below if you need a refresher.\n\nCommand Line experience (Software Carprentry Shell)\nProgramming experience (Python)\n\n\n\n\n\n\n\n\n\nModule Goals\n\n\n\n\nUnderstand the rol of scientific pipelines\nRun existing pipelines\nImplement and modify pipelines\nSpecify software and computational resource needs\nCustomise your pipeline to accept user-defined configurations (params)\nCreate reproducible analyses that can be adapted to new data with little effort\nIntegrate workflows with software environments\n\n\n\n\nAcknowledgements\nOur exercises are developed using the R packaged developed by Barr and DeBruine (2023)."
   },
   {
+    "objectID": "develop/nextflow.html",
+    "href": "develop/nextflow.html",
+    "title": "Nextflow",
+    "section": "",
+    "text": "Nextflow is a workfow management system that offers scalable and portable NGS data analysis pipelines, facilitating data processing across diverse computing environments. It streamlines and automates various data analysis steps, enabling parallel processing and seamless integration with existing tools. ç",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "Nextflow"
+    ]
+  },
+  {
+    "objectID": "develop/nextflow.html#nf-core",
+    "href": "develop/nextflow.html#nf-core",
+    "title": "Nextflow",
+    "section": "nf-core",
+    "text": "nf-core\nTemplates",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "Nextflow"
+    ]
+  },
+  {
+    "objectID": "develop/nextflow.html#sources",
+    "href": "develop/nextflow.html#sources",
+    "title": "Nextflow",
+    "section": "Sources",
+    "text": "Sources\n\nfaircookbook worflows",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "Nextflow"
+    ]
+  },
+  {
+    "objectID": "develop/scripts/01.iris.html",
+    "href": "develop/scripts/01.iris.html",
+    "title": "Notebook Iris Dataset",
+    "section": "",
+    "text": "Before we dive in, here’s a quick summary: the dataset contains 150 samples of iris flowers, each characterized by four features: Sepal Length, Sepal Width, Petal Length, and Petal Width, all measured in centimeters. These samples are grouped into three species: Setosa, Versicolor, and Virginica. If you’re not familiar with the dataset, you can learn more about it here."
+  },
+  {
+    "objectID": "develop/scripts/01.iris.html#loading-the-dataset",
+    "href": "develop/scripts/01.iris.html#loading-the-dataset",
+    "title": "Notebook Iris Dataset",
+    "section": "1 Loading the dataset",
+    "text": "1 Loading the dataset\nLet’s start by importing the iris dataset and manipulating the dataframe so that the column names match the feature names.\n\nfrom sklearn.datasets import load_iris\nimport matplotlib.pyplot as plt\nimport pandas as pd \n\n# Load toy dataset\niris = load_iris() \n # Create dataframe using feature names\ndf = pd.DataFrame(iris.data, columns=iris.feature_names)"
+  },
+  {
+    "objectID": "develop/scripts/01.iris.html#exploring-the-dataset",
+    "href": "develop/scripts/01.iris.html#exploring-the-dataset",
+    "title": "Notebook Iris Dataset",
+    "section": "2 Exploring the dataset",
+    "text": "2 Exploring the dataset\nLet´s start by exploring the species by plotting the sepal length vs. width in a scatter plot\n\nimport matplotlib.pyplot as plt\n\n_, ax = plt.subplots()\nscatter = ax.scatter(iris.data[:, 0], iris.data[:, 1], c=iris.target)\nax.set(xlabel=iris.feature_names[0], ylabel=iris.feature_names[1])\n_ = ax.legend(\n    scatter.legend_elements()[0], iris.target_names, loc=\"lower right\", title=\"Classes\"\n)\n\n\n\n\n\n\n\n\nYou can already see a pattern regarding the Setosa type, which is easily identifiable based on its short and wide sepal. Only considering these 2 dimensions, sepal width and length, there’s still overlap between the Versicolor and Virginica types."
+  },
+  {
+    "objectID": "develop/scripts/01.iris.html#transforming-the-dataset",
+    "href": "develop/scripts/01.iris.html#transforming-the-dataset",
+    "title": "Notebook Iris Dataset",
+    "section": "3 Transforming the dataset",
+    "text": "3 Transforming the dataset\nWe will now perform feature engineering and create a new feature called petal area (petal length * petal width), and will do the same for the sepal.\n\ndf['sepal_area'] = df['sepal length (cm)'] * df['sepal width (cm)']\ndf['petal_area'] = df['petal length (cm)'] * df['petal width (cm)']\n\nFinally, let’s new information by binning the sepal length into 3 categories (short, medium and long)\n\ndf['sepal_length_bin'] = pd.cut(df['sepal length (cm)'], bins=3, labels=[\"short\", \"medium\", \"long\"])\ndf\n\n\n\n\n\n\n\n\nsepal length (cm)\nsepal width (cm)\npetal length (cm)\npetal width (cm)\nsepal_area\npetal_area\nsepal_length_bin\n\n\n\n\n0\n5.1\n3.5\n1.4\n0.2\n17.85\n0.28\nshort\n\n\n1\n4.9\n3.0\n1.4\n0.2\n14.70\n0.28\nshort\n\n\n2\n4.7\n3.2\n1.3\n0.2\n15.04\n0.26\nshort\n\n\n3\n4.6\n3.1\n1.5\n0.2\n14.26\n0.30\nshort\n\n\n4\n5.0\n3.6\n1.4\n0.2\n18.00\n0.28\nshort\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n145\n6.7\n3.0\n5.2\n2.3\n20.10\n11.96\nmedium\n\n\n146\n6.3\n2.5\n5.0\n1.9\n15.75\n9.50\nmedium\n\n\n147\n6.5\n3.0\n5.2\n2.0\n19.50\n10.40\nmedium\n\n\n148\n6.2\n3.4\n5.4\n2.3\n21.08\n12.42\nmedium\n\n\n149\n5.9\n3.0\n5.1\n1.8\n17.70\n9.18\nmedium\n\n\n\n\n150 rows × 7 columns"
+  },
+  {
+    "objectID": "develop/scripts/01.iris.html#computing-summary-statistics",
+    "href": "develop/scripts/01.iris.html#computing-summary-statistics",
+    "title": "Notebook Iris Dataset",
+    "section": "4 Computing summary statistics",
+    "text": "4 Computing summary statistics\nNow, we can extract summary statistics of the species “setosa” and compare it to another species\n\n# Map targets to species names and add them to a new column \ndf['species'] = iris.target_names[iris.target] \n# Display first few rows\ndf.head() \n\n\n\n\n\n\n\n\nsepal length (cm)\nsepal width (cm)\npetal length (cm)\npetal width (cm)\nsepal_area\npetal_area\nsepal_length_bin\nspecies\n\n\n\n\n0\n5.1\n3.5\n1.4\n0.2\n17.85\n0.28\nshort\nsetosa\n\n\n1\n4.9\n3.0\n1.4\n0.2\n14.70\n0.28\nshort\nsetosa\n\n\n2\n4.7\n3.2\n1.3\n0.2\n15.04\n0.26\nshort\nsetosa\n\n\n3\n4.6\n3.1\n1.5\n0.2\n14.26\n0.30\nshort\nsetosa\n\n\n4\n5.0\n3.6\n1.4\n0.2\n18.00\n0.28\nshort\nsetosa\n\n\n\n\n\n\n\n\n# Select setosa \ndf_setosa = df[df['species'] == \"setosa\"]\nsummary_stats = df_setosa.describe() \n\n# Display summary statistics\nprint(summary_stats)\n\n       sepal length (cm)  sepal width (cm)  petal length (cm)  \\\ncount           50.00000         50.000000          50.000000   \nmean             5.00600          3.428000           1.462000   \nstd              0.35249          0.379064           0.173664   \nmin              4.30000          2.300000           1.000000   \n25%              4.80000          3.200000           1.400000   \n50%              5.00000          3.400000           1.500000   \n75%              5.20000          3.675000           1.575000   \nmax              5.80000          4.400000           1.900000   \n\n       petal width (cm)  sepal_area  petal_area  \ncount         50.000000   50.000000   50.000000  \nmean           0.246000   17.257800    0.365600  \nstd            0.105386    2.933775    0.181155  \nmin            0.100000   10.350000    0.110000  \n25%            0.200000   15.040000    0.280000  \n50%            0.200000   17.170000    0.300000  \n75%            0.300000   19.155000    0.420000  \nmax            0.600000   25.080000    0.960000"
+  },
+  {
     "objectID": "develop/fair_workflow.html",
     "href": "develop/fair_workflow.html",
     "title": "FAIR computational pipelines",
@@ -50,39 +121,63 @@
     ]
   },
   {
-    "objectID": "develop/nextflow.html",
-    "href": "develop/nextflow.html",
-    "title": "Nextflow",
+    "objectID": "develop/exercise.html",
+    "href": "develop/exercise.html",
+    "title": "Exercises",
     "section": "",
-    "text": "Nextflow is a workfow management system that offers scalable and portable NGS data analysis pipelines, facilitating data processing across diverse computing environments. It streamlines and automates various data analysis steps, enabling parallel processing and seamless integration with existing tools. ç",
+    "text": "Put your learning to the test with what you’ve covered so far.",
     "crumbs": [
       "HPC pipes",
       "Pipeline languages",
-      "Nextflow"
+      "Exercises"
     ]
   },
   {
-    "objectID": "develop/nextflow.html#nf-core",
-    "href": "develop/nextflow.html#nf-core",
-    "title": "Nextflow",
-    "section": "nf-core",
-    "text": "nf-core\nTemplates",
+    "objectID": "develop/exercise.html#general",
+    "href": "develop/exercise.html#general",
+    "title": "Exercises",
+    "section": "General",
+    "text": "General\n1. What role does a workflow manager play in computational research??\n\n Automating the execution of complex computational processes To manually execute each step of a computation Offering real-time and intuitive data analysis To minimize the reliance on specific software environments\n\n2.What is the primary drawback of using shell scripts for automating computations?\n\n Limited error handling and debugging capabilities Difficulty in integrating with notebooks Not compatible with all operating systems They re-run all the steps every time Insufficient support for parallel processing Complex and extensive coding for simple tasks\n\n3. What are the key features of workflow manager in computational research? (Several possible solutions)\n\n Executing tasks only when required Managing task dependencies Overseeing storage and resource allocation Providing intuitive graphical interfaces\n\n4. Workflow managers can run tasks (different) concurrently if there are no dependencies (True or False) TRUEFALSE\n5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster (True or False) TRUEFALSE",
     "crumbs": [
       "HPC pipes",
       "Pipeline languages",
-      "Nextflow"
+      "Exercises"
     ]
   },
   {
-    "objectID": "develop/nextflow.html#sources",
-    "href": "develop/nextflow.html#sources",
-    "title": "Nextflow",
+    "objectID": "develop/exercise.html#snakemake",
+    "href": "develop/exercise.html#snakemake",
+    "title": "Exercises",
+    "section": "Snakemake",
+    "text": "Snakemake\n\n\n\n\n\n\nExercise 1S: Exploring Rule Invocation in Snakemake\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn this exercise, we will explore how rules are invoked in a Snakemake workflow. Download the Snakefile and data required for this exercise using the links below.\n Download data input   Download Snakefile \nNow follow these steps and answer the questions:\n\nOpen the snakefile, named process_1kgp.smk and try to understand every single line. If you request Snakemake to generate the file results/all_female.txt, what commands will be executed and in what sequence?\nDry run the workflow: Check the number of jobs that will be executed.\n6. How many jobs will Snakemake run? \nRun the workflow: Use the name flag --snakefile | -s follow by the name of the file.\nVerify output: Ensure that the output files are in your working directory.\nClean Up: remove all files starting with EUR in your results folder.\nRerun the workflow: Execute the Snakefile again.\n7. How many jobs did Snakemake run in this last execution? \nRemove lines 4-6 in the process_1kgp.smk. How else can you run the workflow but to generate instead all_male.txt using only the command-line?\nrule all:\n   input:\n      expand(\"results/all_{gender}.txt\", gender=[\"female\"])\n8. Tip: what is missing at the end of the command ( e.g. what should be added to ensure all_male.txt is generated)? snakemake -s process_1kgp.smk -c1 \n\n\n\n\n\n\n\nHint\n\n\n\n\n\n\n\n# dry run \nsnakemake -s process_1kgp.smk -n \n# run the workflow \nsnakemake -s process_1kgp.smk-c1 &lt;name_rule|name_output&gt;\n# verify output \nls &lt;name_output&gt;\n# remove file belonging to european individuals \nrm results/EUR.tsv results/all_female.txt\n# rerun again \nsnakemake -s process_1kgp.smk -c1 &lt;name_rule|name_output&gt;",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "Exercises"
+    ]
+  },
+  {
+    "objectID": "develop/smk.html",
+    "href": "develop/smk.html",
+    "title": "Snakemake",
+    "section": "",
+    "text": "In this section, we will guide you through transitioning from bash scripts or notebooks to workflows. This approach is particularly useful as computations become more complex.",
+    "crumbs": [
+      "HPC pipes",
+      "Pipeline languages",
+      "Snakemake"
+    ]
+  },
+  {
+    "objectID": "develop/smk.html#sources",
+    "href": "develop/smk.html#sources",
+    "title": "Snakemake",
     "section": "Sources",
-    "text": "Sources\n\nfaircookbook worflows",
+    "text": "Sources\n\nSnakemake tutorial\nSnakemake turorial slides by Johannes Koster\nKöster, Johannes and Rahmann, Sven. “Snakemake - A scalable bioinformatics workflow engine”. Bioinformatics 2012.\nKöster, Johannes. “Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis”, PhD thesis, TU Dortmund 2014.\nfaircookbook worflows",
     "crumbs": [
       "HPC pipes",
       "Pipeline languages",
-      "Nextflow"
+      "Snakemake"
     ]
   },
   {
@@ -123,30 +218,6 @@
     "text": "Data organization\n\nregular expression\ncookiecutter"
   },
   {
-    "objectID": "develop/smk.html",
-    "href": "develop/smk.html",
-    "title": "Snakemake",
-    "section": "",
-    "text": "In this section, we will guide you through transitioning from bash scripts or notebooks to workflows. This approach is particularly useful as computations become more complex.",
-    "crumbs": [
-      "HPC pipes",
-      "Pipeline languages",
-      "Snakemake"
-    ]
-  },
-  {
-    "objectID": "develop/smk.html#sources",
-    "href": "develop/smk.html#sources",
-    "title": "Snakemake",
-    "section": "Sources",
-    "text": "Sources\n\nSnakemake tutorial\nSnakemake turorial slides by Johannes Koster\nKöster, Johannes and Rahmann, Sven. “Snakemake - A scalable bioinformatics workflow engine”. Bioinformatics 2012.\nKöster, Johannes. “Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis”, PhD thesis, TU Dortmund 2014.\nfaircookbook worflows",
-    "crumbs": [
-      "HPC pipes",
-      "Pipeline languages",
-      "Snakemake"
-    ]
-  },
-  {
     "objectID": "develop/ssh_keys.html",
     "href": "develop/ssh_keys.html",
     "title": "HPC Lab",
@@ -168,30 +239,6 @@
       "HPC launch",
       "Data management",
       "SSH keys"
-    ]
-  },
-  {
-    "objectID": "develop/data_transfer.html",
-    "href": "develop/data_transfer.html",
-    "title": "HPC Lab",
-    "section": "",
-    "text": "To ensure efficient file transfers on HPC systems, we will go through:\n\nOverview rsync and scp\nBasic commands\n\nWhen transferring files between servers, it’s important to ensure that the files are consistent. Differences in file size can occur due to variations in filesystems, but large differences might indicate an issue. Manually checking file sizes in a terminal (ls -lh or du -sh) to determine if a transfer was successful might not be ideal, as it doesn’t guarantee file integrity. Using checksums provides a more reliable verification method.\nYou can use md5sum to verify that the file contents are identical on both servers. Run the following command on each server:\nmd5sum /path/to/file\nUsing rsync for Efficient File Transfers rsync is a powerful alternative to scp for transferring files. It only sends data if the file has changed, making it more efficient.\n# Transferring files between local machine-server\nrsync -avz local/path/to/file user@server:/remote/path/to/file\n# Transferring files between servers\nrsync -azv server1:/path/to/my_folder server2:/path/to/destination_folder\n\n\n\n\n\n\nNote\n\n\n\nTo transfer files directly between two servers from your local workstation, ensure your SSH setup (configuration, keys, etc.) allows access to both servers. Check this section if you need help setting up your keys (generating, configuring and managing).\n\n\n\n\nrsync is an efficient protocol to compare and copy files between directories or server. It can resume interrupted transfers and compress files on the fly.\n\nChecksum Verification: rsync checks the hashsums of files and only transfers data if the hashes differ. This ensures that only the changed parts of the files are sent (so you can rsync a whole folder, and only the changes files will be send).\nTimestamp Preservation: Using the -a flag with rsync preserves the modified timestamps of files, which is particularly useful for tools like Snakemake.\n\n\n\n\n\n-a: Archive mode, preserves file attributes like timestamps and permissions (important if you are using snakemake).\n-v: Verbose mode, provides detailed information during transfer.\n-z: Compresses data during transfer, reducing the amount of data sent over the network.\n-c: Enables checksum checking, ensuring that files are identical by comparing their contents rather than just their size and modification time.\n\n\n\n\nFor users who prefer a graphical interface, tools like Cyberduck and FileZilla can also be used for transferring files between servers.",
-    "crumbs": [
-      "HPC launch",
-      "Data management",
-      "Data transfer"
-    ]
-  },
-  {
-    "objectID": "develop/data_transfer.html#data-transfer",
-    "href": "develop/data_transfer.html#data-transfer",
-    "title": "HPC Lab",
-    "section": "",
-    "text": "To ensure efficient file transfers on HPC systems, we will go through:\n\nOverview rsync and scp\nBasic commands\n\nWhen transferring files between servers, it’s important to ensure that the files are consistent. Differences in file size can occur due to variations in filesystems, but large differences might indicate an issue. Manually checking file sizes in a terminal (ls -lh or du -sh) to determine if a transfer was successful might not be ideal, as it doesn’t guarantee file integrity. Using checksums provides a more reliable verification method.\nYou can use md5sum to verify that the file contents are identical on both servers. Run the following command on each server:\nmd5sum /path/to/file\nUsing rsync for Efficient File Transfers rsync is a powerful alternative to scp for transferring files. It only sends data if the file has changed, making it more efficient.\n# Transferring files between local machine-server\nrsync -avz local/path/to/file user@server:/remote/path/to/file\n# Transferring files between servers\nrsync -azv server1:/path/to/my_folder server2:/path/to/destination_folder\n\n\n\n\n\n\nNote\n\n\n\nTo transfer files directly between two servers from your local workstation, ensure your SSH setup (configuration, keys, etc.) allows access to both servers. Check this section if you need help setting up your keys (generating, configuring and managing).\n\n\n\n\nrsync is an efficient protocol to compare and copy files between directories or server. It can resume interrupted transfers and compress files on the fly.\n\nChecksum Verification: rsync checks the hashsums of files and only transfers data if the hashes differ. This ensures that only the changed parts of the files are sent (so you can rsync a whole folder, and only the changes files will be send).\nTimestamp Preservation: Using the -a flag with rsync preserves the modified timestamps of files, which is particularly useful for tools like Snakemake.\n\n\n\n\n\n-a: Archive mode, preserves file attributes like timestamps and permissions (important if you are using snakemake).\n-v: Verbose mode, provides detailed information during transfer.\n-z: Compresses data during transfer, reducing the amount of data sent over the network.\n-c: Enables checksum checking, ensuring that files are identical by comparing their contents rather than just their size and modification time.\n\n\n\n\nFor users who prefer a graphical interface, tools like Cyberduck and FileZilla can also be used for transferring files between servers.",
-    "crumbs": [
-      "HPC launch",
-      "Data management",
-      "Data transfer"
     ]
   },
   {
@@ -231,39 +278,27 @@
     ]
   },
   {
-    "objectID": "develop/exercise.html",
-    "href": "develop/exercise.html",
-    "title": "Exercises",
+    "objectID": "develop/data_transfer.html",
+    "href": "develop/data_transfer.html",
+    "title": "HPC Lab",
     "section": "",
-    "text": "Put your learning to the test with what you’ve covered so far.",
+    "text": "To ensure efficient file transfers on HPC systems, we will go through:\n\nOverview rsync and scp\nBasic commands\n\nWhen transferring files between servers, it’s important to ensure that the files are consistent. Differences in file size can occur due to variations in filesystems, but large differences might indicate an issue. Manually checking file sizes in a terminal (ls -lh or du -sh) to determine if a transfer was successful might not be ideal, as it doesn’t guarantee file integrity. Using checksums provides a more reliable verification method.\nYou can use md5sum to verify that the file contents are identical on both servers. Run the following command on each server:\nmd5sum /path/to/file\nUsing rsync for Efficient File Transfers rsync is a powerful alternative to scp for transferring files. It only sends data if the file has changed, making it more efficient.\n# Transferring files between local machine-server\nrsync -avz local/path/to/file user@server:/remote/path/to/file\n# Transferring files between servers\nrsync -azv server1:/path/to/my_folder server2:/path/to/destination_folder\n\n\n\n\n\n\nNote\n\n\n\nTo transfer files directly between two servers from your local workstation, ensure your SSH setup (configuration, keys, etc.) allows access to both servers. Check this section if you need help setting up your keys (generating, configuring and managing).\n\n\n\n\nrsync is an efficient protocol to compare and copy files between directories or server. It can resume interrupted transfers and compress files on the fly.\n\nChecksum Verification: rsync checks the hashsums of files and only transfers data if the hashes differ. This ensures that only the changed parts of the files are sent (so you can rsync a whole folder, and only the changes files will be send).\nTimestamp Preservation: Using the -a flag with rsync preserves the modified timestamps of files, which is particularly useful for tools like Snakemake.\n\n\n\n\n\n-a: Archive mode, preserves file attributes like timestamps and permissions (important if you are using snakemake).\n-v: Verbose mode, provides detailed information during transfer.\n-z: Compresses data during transfer, reducing the amount of data sent over the network.\n-c: Enables checksum checking, ensuring that files are identical by comparing their contents rather than just their size and modification time.\n\n\n\n\nFor users who prefer a graphical interface, tools like Cyberduck and FileZilla can also be used for transferring files between servers.",
     "crumbs": [
-      "HPC pipes",
-      "Pipeline languages",
-      "Exercises"
+      "HPC launch",
+      "Data management",
+      "Data transfer"
     ]
   },
   {
-    "objectID": "develop/exercise.html#general",
-    "href": "develop/exercise.html#general",
-    "title": "Exercises",
-    "section": "General",
-    "text": "General\n1. What role does a workflow manager play in computational research??\n\n Automating the execution of complex computational processes To manually execute each step of a computation Offering real-time and intuitive data analysis To minimize the reliance on specific software environments\n\n2.What is the primary drawback of using shell scripts for automating computations?\n\n Limited error handling and debugging capabilities Difficulty in integrating with notebooks Not compatible with all operating systems They re-run all the steps every time Insufficient support for parallel processing Complex and extensive coding for simple tasks\n\n3. What are the key features of workflow manager in computational research? (Several possible solutions)\n\n Executing tasks only when required Managing task dependencies Overseeing storage and resource allocation Providing intuitive graphical interfaces\n\n4. Workflow managers can run tasks (different) concurrently if there are no dependencies (True or False) TRUEFALSE\n5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster (True or False) TRUEFALSE",
+    "objectID": "develop/data_transfer.html#data-transfer",
+    "href": "develop/data_transfer.html#data-transfer",
+    "title": "HPC Lab",
+    "section": "",
+    "text": "To ensure efficient file transfers on HPC systems, we will go through:\n\nOverview rsync and scp\nBasic commands\n\nWhen transferring files between servers, it’s important to ensure that the files are consistent. Differences in file size can occur due to variations in filesystems, but large differences might indicate an issue. Manually checking file sizes in a terminal (ls -lh or du -sh) to determine if a transfer was successful might not be ideal, as it doesn’t guarantee file integrity. Using checksums provides a more reliable verification method.\nYou can use md5sum to verify that the file contents are identical on both servers. Run the following command on each server:\nmd5sum /path/to/file\nUsing rsync for Efficient File Transfers rsync is a powerful alternative to scp for transferring files. It only sends data if the file has changed, making it more efficient.\n# Transferring files between local machine-server\nrsync -avz local/path/to/file user@server:/remote/path/to/file\n# Transferring files between servers\nrsync -azv server1:/path/to/my_folder server2:/path/to/destination_folder\n\n\n\n\n\n\nNote\n\n\n\nTo transfer files directly between two servers from your local workstation, ensure your SSH setup (configuration, keys, etc.) allows access to both servers. Check this section if you need help setting up your keys (generating, configuring and managing).\n\n\n\n\nrsync is an efficient protocol to compare and copy files between directories or server. It can resume interrupted transfers and compress files on the fly.\n\nChecksum Verification: rsync checks the hashsums of files and only transfers data if the hashes differ. This ensures that only the changed parts of the files are sent (so you can rsync a whole folder, and only the changes files will be send).\nTimestamp Preservation: Using the -a flag with rsync preserves the modified timestamps of files, which is particularly useful for tools like Snakemake.\n\n\n\n\n\n-a: Archive mode, preserves file attributes like timestamps and permissions (important if you are using snakemake).\n-v: Verbose mode, provides detailed information during transfer.\n-z: Compresses data during transfer, reducing the amount of data sent over the network.\n-c: Enables checksum checking, ensuring that files are identical by comparing their contents rather than just their size and modification time.\n\n\n\n\nFor users who prefer a graphical interface, tools like Cyberduck and FileZilla can also be used for transferring files between servers.",
     "crumbs": [
-      "HPC pipes",
-      "Pipeline languages",
-      "Exercises"
-    ]
-  },
-  {
-    "objectID": "develop/exercise.html#snakemake",
-    "href": "develop/exercise.html#snakemake",
-    "title": "Exercises",
-    "section": "Snakemake",
-    "text": "Snakemake\n\n\n\n\n\n\nExercise 1S: Exploring Rule Invocation in Snakemake\n\n\n\n\n\n\n\nIn this exercise, we will explore how rules are invoked in a Snakemake workflow. Download the Snakefile and data required for this exercise using the links below.\n Download data input   Download Snakefile \n\n\n\n\n\nNow follow these steps and answer the questions:\n\nOpen the snakefile, named process_1kgp.smk and try to understand every single line. If you request Snakemake to generate the file results/all_female.txt, what commands will be executed and in what sequence?\nDry run the workflow: Check the number of jobs that will be executed.\n6. How many jobs will Snakemake run? \nRun the workflow: Use the name flag --snakefile | -s follow by the name of the file.\nVerify output: Ensure that the output files are in your working directory.\nClean Up: remove all files starting with EUR in your results folder.\nRerun the workflow: Execute the Snakefile again.\n7. How many jobs did Snakemake run in this last execution? \nRemove lines 4-6 in the process_1kgp.smk. How else can you run the workflow but to generate instead all_male.txt using only the command-line?\nrule all:\n   input:\n      expand(\"results/all_{gender}.txt\", gender=[\"female\"])\n8. Tip: what is missing at the end of the command ( e.g. what should be added to ensure all_male.txt is generated)? snakemake -s process_1kgp.smk -c1 \n\n\n\n\n\n\n\nHint\n\n\n\n\n\n\n\n# dry run \nsnakemake -s process_1kgp.smk -n \n# run the workflow \nsnakemake -s process_1kgp.smk-c1 &lt;name_rule|name_output&gt;\n# verify output \nls &lt;name_output&gt;\n# remove file belonging to european individuals \nrm results/EUR.tsv results/all_female.txt\n# rerun again \nsnakemake -s process_1kgp.smk -c1 &lt;name_rule|name_output&gt;",
-    "crumbs": [
-      "HPC pipes",
-      "Pipeline languages",
-      "Exercises"
+      "HPC launch",
+      "Data management",
+      "Data transfer"
     ]
   }
 ]
