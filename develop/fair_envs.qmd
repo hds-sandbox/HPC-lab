@@ -8,8 +8,7 @@ summary: workflow
 
 ## FAIR environments 
 
-Recording and sharing the computational environment is essential for reproducibility and transparency. There are several methods to achieve this, but we are going to focus on two of them, conda (an environment manager) and Docker (a container). Environment managers are user-friendly, easy to share across different systems, and offer lightweight, efficient, and fast start-up times. However, Docker containers provide complete environment isolation (including the operating system), which ensures consistent behavior across various systems.
-
+Recording and sharing the computational environment is essential for reproducibility and transparency. There are several methods to achieve this, but we are going to focus on two of them, mamba (an environment manager) and Docker (a container). Environment managers are user-friendly, easy to share across different systems, and offer lightweight, efficient, and fast start-up times. However, Docker containers provide complete environment isolation (including the operating system), which ensures consistent behavior across various systems.
 
 Each computer or HPC (High-Performance Computing) platform has a unique computational environment that includes its operating system, installed software, versions of software packages, and other features. If a research project is moved to a different computer or platform, the analysis might not run or produce consistent results if it depends on any of these factors.
 
@@ -18,27 +17,150 @@ For research to be reproducible, the original computational environment must be 
 - **Containerization platforms** (e.g., Docker, Singularity): allow the researcher to package their software and dependencies into a standardized container image.
 - **Virtual Machines** (e.g., VirtualBox): can share an entire virtualized computing environment (OS, software and dependencies)
 - **Environment managers**: provide an isolated environment with specific packages and dependencies that can be installed without affecting the system-wide configuration. These environments are particularly useful for managing conflicting dependencies and ensuring reproducibility. Configuration files can automate the setup of the computational environment: 
-  - conda: allows users to export environment specifications (software and dependencies) to YAML files enabling easy recreation of the environment on another system
-  - Python `virtualenv`: is a tool for creating isolated environments to manage dependencies specific to a project
+  - conda or mamba: allows users to export environment specifications (software and dependencies) to YAML files enabling easy recreation of the environment on another system
+  - Python `virtualenv` or `pipenv`: is a tool for creating isolated environments to manage dependencies specific to a project
   - requirements.txt: may contain commands for installing packages (such as pip for Python packages or apt-get for system-level dependencies), configuring system settings, and setting environment variables. Package managers can be used to install, upgrade and manage packages. 
   - R's `renv`: The 'renv' package creates isolated environments in R.
 - **Environment descriptors**
   - `sessionInfo()` or `devtools::session_info()`: In R, these functions provide detailed information about the current session
   - `sessionInfo()`, similarly, in Python. Libraries like NumPy and Pandas have `show_versions()` methods to display package versions.
 
-While environment managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, Docker containers provide a full env isolation (including the operating system) which ensures consistent behavior across different systems. 
+While environment managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, Docker containers provide a full env isolation (including the operating system) which ensures consistent behavior across different systems. Check the table below for a full overview. 
 
-### Conda
+![](./images/envs.png)
 
-### Docker
+### Package manager 
+
+[Mamba](https://mamba.readthedocs.io/en/latest/) is a reimplementation of the Conda package manager in C++. While our focus will be on Mamba, it's important to note that it maintains compatibility with Conda by using the same command-line parser, package installation and uninstallation code, and transaction verification routines.
+
+Mamba uses software installation specifications that are maintained by extensive communities of developers, organized into channels, which serve as software repositories. For example, the “bioconda” channel specializes in bioinformatics tools, while “conda-forge” covers a broad range of data science packages.
+
+:::{.callout-tip title="Mamba vs. conda"}
+As previously mentioned, mamba is a newer and faster implementation. The two commands can be used interchangeable (for most tasks). If you use Conda, you should still complete the exercises, as you'll gain experience with both tools. For more information on their ecosystem and advantages [here](https://medium.com/@QuantStack/open-software-packaging-for-science-61cecee7fc23). 
+:::
+
+Mamba allows you to create mutluple software envrinoments, where mutluple pacjage version can co-ecit on your system. 
+
+:::{.callout-exercise}
+# Build your mamba environment
+Follow [mamba instructions](https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html) to install it. Let's also include `bioconda` and `conda-forge` channels which will come very handy. 
+
+```{.bash .code-overflow-wrap}
+conda config --add channels defaults; conda config --add channels bioconda; conda config --add channels conda-forge
+```
+Now you are set to create your first environment. Follow these steps:
+
+1. Create a new environment named myenv
+2. Install the following packages in `myenv`: `bowtie2`, `numpy=1.26.4`, `matplotlib=3.8.3`
+3. Check the environments available 
+4. Load/activate the environment
+5. Check which `python` executable is being used and that bowtie2 is installed. 
+
+:::{.callout-hint}
+Here are some of the commands you need for the exercise. 
+
+```{.bash}
+mamba create <ENV-NAME>
+mamba install --channel <CHANNEL-NAME> --name <ENV-NAME>
+mamba env list
+mamba activate <ENV-NAME>
+```
+:::
+
+:::{.callout-tip title="Solution" collapse="true"}
+
+1. The syntax to create a new environment is: `mamba create --name myenv`
+2. Example “bowtie2”: Go to anaconda.org and search for “bowtie2” to confirm it is available through Mamba and which software channel it is provided from. You will find that it is available via the “bioconda” channel: https://anaconda.org/bioconda/bowtie2. The syntax to install packages is: `mamba install --channel <CHANNEL-NAME> --name <ENV-NAME> <SOFTWARE-NAME>`
+
+`mamba install --name myenv --channel bioconda bowtie2=2.5.3 "matplotlib=3.8.3" "numpy=1.26.4"` 
+
+Do the same with the others. 
+3. To see al environments available `mamba env list`. There will be a "*" showi8ng the one is activated. 
+4. Load the environment `mamba activate myenv`. 
+5. `which python` -> should print the one in the environment that is active (path similar to `/home/mambaforge/envs/myenv/bin/python`). `bowtie2 --help`
+:::
+:::
+
+
+:::{.callout-important}
+# Loading mamba environments in shell scripts
+If you need to activate an environment in a shell script that will be submitted to SLURM, you must first source Mamba's configuration file. For instance, to load the `myenv` environment we created, the script would include the following code:
+
+```{.bash}
+# Always add these two commands to your scripts
+eval "$(conda shell.bash hook)"
+source $CONDA_PREFIX/etc/profile.d/mamba.sh
+
+# then you can activate the environment
+mamba activate myenv
+```
+
+When jobs are submitted to SLURM, they run in a non-interactive shell where Mamba isn't automatically set up. By running the `source` command, you ensure that Mamba's activate function is available. It's important to remember that even if the environment is loaded on the login node, the scripts will execute on a different machine (one of the compute nodes). Therefore, always include the command to load the Mamba environment in your SLURM submission scripts.
+:::
+
+### Containers
+
+Essentially, a container is a self-contained, lightweight package that includes everything needed to run a specific application—such as the operating system, libraries, and the application code itself. Containers operate independently of the host system, which allows them to run the same software across various environments without any conflicts or interference. This isolation ensures that researchers can consistently execute their code on different systems and platforms, without worrying about dependency issues or conflicts with other software on the host machine.
+ 
+:::{.callout-note title="Docker vs. Singularity"}
+The most significant difference is at the permission level required to run them. Docker containers operate as root by default, giving them full access to the host system. While this can be useful in certain situations, it also poses security risks, especially in multi-user environments. In contrast, Singularity containers run as non-root users by default, enhancing security and preventing unauthorized access to the host system. 
+
+- Docker is ideal for building and distributing software across different operating systems
+- Singularity is designed for HPC environments and offers high performance without needing root access
+:::
+
+#### Docker
 
 Docker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management.
 
+#### Singularity on a remote server
+
+While you can build your own Singularity images, many popular software packages already have pre-built images available from public repositories. The two repositories you’ll most likely use or hear about are:  
+
+- [depot.galaxyproject.org](https://depot.galaxyproject.org/singularity/)
+- [Sylabs](https://cloud.sylabs.io/)
+
+
+:::{.callout-tip}
+- We recommend using the pre-installed version provided by your system administrators if you're working on a shared system. If you're working on your own computer, you can install the necessary software using Mamba.
+- They might host different versions of the same software, so it's worth checking both to find the version you need.
+- To download a software container from public repositories, use the `singularity pull` command.
+- To execute a command within the software container, use the `singularity run` command.
+- Good practice: create a directory to save all singularity images together. `.sif` is the standard extension for the images. 
+:::
+
+:::{.callout-exercise}
+Download a singularity image from one of the two repositories listed above (choose a software like bcftools, bedtools, bowtie2, seqkit...) and run the `--help` command. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.
+
+:::{.callout-tip title="Solution" collapse="true"}
+
+```{.bash .code-overflow-wrap}
+# create a directory for our singularity images
+mkdir images
+
+# download the image
+singularity pull images/bowtie2-2.5.4.sif https://depot.galaxyproject.org/singularity/bowtie2%3A2.5.4--he20e202_2
+
+# run the image: singularity run <PATH-TO-IMAGE> <YOUR COMMANDS>
+singularity run images/bowtie2-2.5.4.sif bowtie2 --help
+
+```
+:::
+
+:::
 
 ## Sources
-
-- https://bioconda.github.io
+- [Anaconda](https://docs.anaconda.com/anaconda/pkg-docs/) for searching Mamba/conda packages
+- [Bioconda](https://bioconda.github.io) for installing software package related to biomedical research 
+- [Conda cheat sheet](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html)
 - [faircookbook worflows](https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html)
 - [Docker](https://www.docker.com/)
 - [Docker get-started](https://docs.docker.com/get-started/)
 - [The turing way - reproducible research](https://the-turing-way.netlify.app/reproducible-research)
+
+Find pre-built singularity images: 
+
+- [depot.galaxyproject.org](https://depot.galaxyproject.org/singularity/)
+- [Sylabs](https://cloud.sylabs.io/)
+
+Other training resources: [The turing way - reproducible research](https://book.the-turing-way.org/reproducible-research/) and [HPC intro by Cambridge](https://cambiotraining.github.io/hpc-intro)

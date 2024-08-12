@@ -34,5 +34,14 @@
   },
   "develop/scripts/01.iris.ipynb": {
     "01.iris.html": "d1ce6c4e"
+  },
+  "develop/exercise_pipes.qmd": {
+    "exercise_pipes.html": "d203d94c"
+  },
+  "develop/exercise_launch.qmd": {
+    "exercise_launch.html": "a726e934"
+  },
+  "develop/jobs.qmd": {
+    "jobs.html": "9aa30c49"
   }
 }

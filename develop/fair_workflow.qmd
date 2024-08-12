@@ -23,7 +23,9 @@ Data analysis typically involves the use of different tools, algorithms, and scr
 Bash scripts have been widely used for automation in the past and can handle many tasks effectively. Typically, running a bash script requires just one command, which executes all the steps in the script. However, a significant drawback is that it re-runs all steps every time. This can be problematic in certain situations.
 
 :::{.callout-exercise}
-# Exercise 1: Consider these scenarios where re-running all steps can be an issue.
+# Exercise 1. 
+Consider scenarios where re-running all steps can be an issue (minimum 2).
+
 :::{.callout-hint}
 Here are some examples: 
 
