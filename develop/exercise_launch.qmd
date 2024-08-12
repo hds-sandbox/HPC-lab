@@ -1,0 +1,29 @@
+---
+title: Exercises
+format: 
+  html:
+    toc: false
+date-modified: last-modified
+date-format: long
+summary: intro to workflows
+---
+
+```{r, echo = FALSE, results='asis'}
+library(webexercises)
+
+knitr::opts_chunk$set(echo = FALSE)
+
+# Uncomment to change widget colours:
+style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
+```
+
+Put your learning to the test with what you’ve covered so far.
+
+## General HPC launch 
+**1. Should I run the commmand `unzip myfile.zip` to decompress the file from the *login node*?** `r torf(FALSE)`
+
+:::{.callout-hint}
+Avoid running anything from the login node. Create an interactive session to do this! 
+:::
+
+**2. Is it a good idea to keep data in the scratch folder until the project is finished?** `r torf(FALSE)`

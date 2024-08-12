@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -178,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/exercise.html" class="sidebar-item-text sidebar-link">
+  <a href="../develop/exercise_pipes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exercises</span></a>
   </div>
 </li>
@@ -223,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">July 25, 2024</p>
+      <p class="date-modified">August 12, 2024</p>
     </div>
   </div>
     
@@ -236,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="fair-environments" class="level2">
 <h2 class="anchored" data-anchor-id="fair-environments">FAIR environments</h2>
-<p>Recording and sharing the computational environment is essential for reproducibility and transparency. There are several methods to achieve this, but we are going to focus on two of them, conda (an environment manager) and Docker (a container). Environment managers are user-friendly, easy to share across different systems, and offer lightweight, efficient, and fast start-up times. However, Docker containers provide complete environment isolation (including the operating system), which ensures consistent behavior across various systems.</p>
+<p>Recording and sharing the computational environment is essential for reproducibility and transparency. There are several methods to achieve this, but we are going to focus on two of them, mamba (an environment manager) and Docker (a container). Environment managers are user-friendly, easy to share across different systems, and offer lightweight, efficient, and fast start-up times. However, Docker containers provide complete environment isolation (including the operating system), which ensures consistent behavior across various systems.</p>
 <p>Each computer or HPC (High-Performance Computing) platform has a unique computational environment that includes its operating system, installed software, versions of software packages, and other features. If a research project is moved to a different computer or platform, the analysis might not run or produce consistent results if it depends on any of these factors.</p>
 <p>For research to be reproducible, the original computational environment must be recorded so others can replicate it. There are several methods to achieve this:</p>
 <ul>
@@ -244,8 +278,8 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Virtual Machines</strong> (e.g., VirtualBox): can share an entire virtualized computing environment (OS, software and dependencies)</li>
 <li><strong>Environment managers</strong>: provide an isolated environment with specific packages and dependencies that can be installed without affecting the system-wide configuration. These environments are particularly useful for managing conflicting dependencies and ensuring reproducibility. Configuration files can automate the setup of the computational environment:
 <ul>
-<li>conda: allows users to export environment specifications (software and dependencies) to YAML files enabling easy recreation of the environment on another system</li>
-<li>Python <code>virtualenv</code>: is a tool for creating isolated environments to manage dependencies specific to a project</li>
+<li>conda or mamba: allows users to export environment specifications (software and dependencies) to YAML files enabling easy recreation of the environment on another system</li>
+<li>Python <code>virtualenv</code> or <code>pipenv</code>: is a tool for creating isolated environments to manage dependencies specific to a project</li>
 <li>requirements.txt: may contain commands for installing packages (such as pip for Python packages or apt-get for system-level dependencies), configuring system settings, and setting environment variables. Package managers can be used to install, upgrade and manage packages.</li>
 <li>R’s <code>renv</code>: The ‘renv’ package creates isolated environments in R.</li>
 </ul></li>
@@ -255,24 +289,234 @@ ul.task-list li input[type="checkbox"] {
 <li><code>sessionInfo()</code>, similarly, in Python. Libraries like NumPy and Pandas have <code>show_versions()</code> methods to display package versions.</li>
 </ul></li>
 </ul>
-<p>While environment managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, Docker containers provide a full env isolation (including the operating system) which ensures consistent behavior across different systems.</p>
-<section id="conda" class="level3">
-<h3 class="anchored" data-anchor-id="conda">Conda</h3>
+<p>While environment managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, Docker containers provide a full env isolation (including the operating system) which ensures consistent behavior across different systems. Check the table below for a full overview.</p>
+<p><img src="./images/envs.png" class="img-fluid"></p>
+<section id="package-manager" class="level3">
+<h3 class="anchored" data-anchor-id="package-manager">Package manager</h3>
+<p><a href="https://mamba.readthedocs.io/en/latest/">Mamba</a> is a reimplementation of the Conda package manager in C++. While our focus will be on Mamba, it’s important to note that it maintains compatibility with Conda by using the same command-line parser, package installation and uninstallation code, and transaction verification routines.</p>
+<p>Mamba uses software installation specifications that are maintained by extensive communities of developers, organized into channels, which serve as software repositories. For example, the “bioconda” channel specializes in bioinformatics tools, while “conda-forge” covers a broad range of data science packages.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Mamba vs. conda">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mamba vs.&nbsp;conda
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As previously mentioned, mamba is a newer and faster implementation. The two commands can be used interchangeable (for most tasks). If you use Conda, you should still complete the exercises, as you’ll gain experience with both tools. For more information on their ecosystem and advantages <a href="https://medium.com/@QuantStack/open-software-packaging-for-science-61cecee7fc23">here</a>.</p>
+</div>
+</div>
+<p>Mamba allows you to create mutluple software envrinoments, where mutluple pacjage version can co-ecit on your system.</p>
+<div class="callout callout-style-default callout-exercise no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Build your mamba environment
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise">
+<p>Follow <a href="https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html">mamba instructions</a> to install it. Let’s also include <code>bioconda</code> and <code>conda-forge</code> channels which will come very handy.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels defaults<span class="kw">;</span> <span class="ex">conda</span> config <span class="at">--add</span> channels bioconda<span class="kw">;</span> <span class="ex">conda</span> config <span class="at">--add</span> channels conda-forge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now you are set to create your first environment. Follow these steps:</p>
+<ol type="1">
+<li>Create a new environment named myenv</li>
+<li>Install the following packages in <code>myenv</code>: <code>bowtie2</code>, <code>numpy=1.26.4</code>, <code>matplotlib=3.8.3</code></li>
+<li>Check the environments available</li>
+<li>Load/activate the environment</li>
+<li>Check which <code>python</code> executable is being used and that bowtie2 is installed.</li>
+</ol>
+<div class="callout callout-style-default callout-hint no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>Here are some of the commands you need for the exercise.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="op">&lt;</span>ENV-NAME<span class="op">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">--channel</span> <span class="op">&lt;</span>CHANNEL-NAME<span class="op">&gt;</span> --name <span class="op">&lt;</span>ENV-NAME<span class="op">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env list</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate <span class="op">&lt;</span>ENV-NAME<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>The syntax to create a new environment is: <code>mamba create --name myenv</code></li>
+<li>Example “bowtie2”: Go to anaconda.org and search for “bowtie2” to confirm it is available through Mamba and which software channel it is provided from. You will find that it is available via the “bioconda” channel: https://anaconda.org/bioconda/bowtie2. The syntax to install packages is: <code>mamba install --channel &lt;CHANNEL-NAME&gt; --name &lt;ENV-NAME&gt; &lt;SOFTWARE-NAME&gt;</code></li>
+</ol>
+<p><code>mamba install --name myenv --channel bioconda bowtie2=2.5.3 "matplotlib=3.8.3" "numpy=1.26.4"</code></p>
+<p>Do the same with the others. 3. To see al environments available <code>mamba env list</code>. There will be a “*” showi8ng the one is activated. 4. Load the environment <code>mamba activate myenv</code>. 5. <code>which python</code> -&gt; should print the one in the environment that is active (path similar to <code>/home/mambaforge/envs/myenv/bin/python</code>). <code>bowtie2 --help</code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Loading mamba environments in shell scripts
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you need to activate an environment in a shell script that will be submitted to SLURM, you must first source Mamba’s configuration file. For instance, to load the <code>myenv</code> environment we created, the script would include the following code:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Always add these two commands to your scripts</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="ex">conda</span> shell.bash hook<span class="va">)</span><span class="st">"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="va">$CONDA_PREFIX</span>/etc/profile.d/mamba.sh</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># then you can activate the environment</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate myenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>When jobs are submitted to SLURM, they run in a non-interactive shell where Mamba isn’t automatically set up. By running the <code>source</code> command, you ensure that Mamba’s activate function is available. It’s important to remember that even if the environment is loaded on the login node, the scripts will execute on a different machine (one of the compute nodes). Therefore, always include the command to load the Mamba environment in your SLURM submission scripts.</p>
+</div>
+</div>
 </section>
-<section id="docker" class="level3">
-<h3 class="anchored" data-anchor-id="docker">Docker</h3>
+<section id="containers" class="level3">
+<h3 class="anchored" data-anchor-id="containers">Containers</h3>
+<p>Essentially, a container is a self-contained, lightweight package that includes everything needed to run a specific application—such as the operating system, libraries, and the application code itself. Containers operate independently of the host system, which allows them to run the same software across various environments without any conflicts or interference. This isolation ensures that researchers can consistently execute their code on different systems and platforms, without worrying about dependency issues or conflicts with other software on the host machine.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Docker vs. Singularity">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Docker vs.&nbsp;Singularity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The most significant difference is at the permission level required to run them. Docker containers operate as root by default, giving them full access to the host system. While this can be useful in certain situations, it also poses security risks, especially in multi-user environments. In contrast, Singularity containers run as non-root users by default, enhancing security and preventing unauthorized access to the host system.</p>
+<ul>
+<li>Docker is ideal for building and distributing software across different operating systems</li>
+<li>Singularity is designed for HPC environments and offers high performance without needing root access</li>
+</ul>
+</div>
+</div>
+<section id="docker" class="level4">
+<h4 class="anchored" data-anchor-id="docker">Docker</h4>
 <p>Docker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management.</p>
+</section>
+<section id="singularity-on-a-remote-server" class="level4">
+<h4 class="anchored" data-anchor-id="singularity-on-a-remote-server">Singularity on a remote server</h4>
+<p>While you can build your own Singularity images, many popular software packages already have pre-built images available from public repositories. The two repositories you’ll most likely use or hear about are:</p>
+<ul>
+<li><a href="https://depot.galaxyproject.org/singularity/">depot.galaxyproject.org</a></li>
+<li><a href="https://cloud.sylabs.io/">Sylabs</a></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>We recommend using the pre-installed version provided by your system administrators if you’re working on a shared system. If you’re working on your own computer, you can install the necessary software using Mamba.</li>
+<li>They might host different versions of the same software, so it’s worth checking both to find the version you need.</li>
+<li>To download a software container from public repositories, use the <code>singularity pull</code> command.</li>
+<li>To execute a command within the software container, use the <code>singularity run</code> command.</li>
+<li>Good practice: create a directory to save all singularity images together. <code>.sif</code> is the standard extension for the images.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-exercise no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise">
+<p>Download a singularity image from one of the two repositories listed above (choose a software like bcftools, bedtools, bowtie2, seqkit…) and run the <code>--help</code> command. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory for our singularity images</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> images</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># download the image</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull images/bowtie2-2.5.4.sif https://depot.galaxyproject.org/singularity/bowtie2%3A2.5.4--he20e202_2</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># run the image: singularity run &lt;PATH-TO-IMAGE&gt; &lt;YOUR COMMANDS&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> run images/bowtie2-2.5.4.sif bowtie2 <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
 <ul>
-<li>https://bioconda.github.io</li>
+<li><a href="https://docs.anaconda.com/anaconda/pkg-docs/">Anaconda</a> for searching Mamba/conda packages</li>
+<li><a href="https://bioconda.github.io">Bioconda</a> for installing software package related to biomedical research</li>
+<li><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html">Conda cheat sheet</a></li>
 <li><a href="https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html">faircookbook worflows</a></li>
 <li><a href="https://www.docker.com/">Docker</a></li>
 <li><a href="https://docs.docker.com/get-started/">Docker get-started</a></li>
 <li><a href="https://the-turing-way.netlify.app/reproducible-research">The turing way - reproducible research</a></li>
 </ul>
+<p>Find pre-built singularity images:</p>
+<ul>
+<li><a href="https://depot.galaxyproject.org/singularity/">depot.galaxyproject.org</a></li>
+<li><a href="https://cloud.sylabs.io/">Sylabs</a></li>
+</ul>
+<p>Other training resources: <a href="https://book.the-turing-way.org/reproducible-research/">The turing way - reproducible research</a> and <a href="https://cambiotraining.github.io/hpc-intro">HPC intro by Cambridge</a></p>
 
 
 </section>

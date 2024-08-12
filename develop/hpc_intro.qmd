@@ -17,7 +17,7 @@ summary: This is a summary
 - 💰 **Funding:** This project was funded by the Novo Nordisk Fonden (NNF20OC0063268).
 :::
 
-::: {.callout-tip title="Course Topics"}
+:::{.callout-tip title="Course Topics"}
 - HPC systems and HPC architecture  
 - National HPC platforms
 - Setting up HPC environments (software requirements, job scheduling, resource management)
@@ -29,8 +29,70 @@ summary: This is a summary
 
 ## Title
 
-Introduction to the material and HPCs...
+Introduction High-Performance Computing (HPCs) and HPC cluster.
 
+HPC main resources:
+
+- CPU
+- RAM
+- GPU
+
+Schematic of components of an HPC
+
+### Nodes 
+There are two typoes of nodes on a cluster:
+- login nodes (also known as head or submit nodes).
+- compute nodes (also known as worker nodes).
+
+:::{.callout-tip title="What can I run from a login node"}
+A straightforward rule: do not run anything on the login node to prevent potential problems. If the login node crashes, the entire system may need to be rebooted, affecting everyone. Remember, you're not the only one using the HPC—so be considerate of others. For easy, quick tasks, request an interactive access to one of the compute nodes. 
+:::
+
+### Job scheduler  
+
+:::{.callout-note}
+Several job scheduler programs are available, and `SLURM` is among the most widely used. In the next section, we'll explore SLURM in greater detail, along with general best practices for running jobs.
+:::
+
+### Filesystem 
+
+- Scratch 
+- Users working space 
+
+:::{.callout-exercise}
+I have an omics pipeline that produces a large number of files, resulting in a couple of terabytes of data after processing and analysis. The project will continue for a few more years, and I've decided to store the data in the scratch folder. Do you agree with this decision, and why? What factors should be considered when deciding which data to retain and where to store it?
+
+:::{.callout-hint}
+Typically, scratch storage is not backed up, so it's not advisable to rely on it for important data. At a minimum, ensure you back up the raw data and the scripts used for processing. This way, if some processed files are lost, you can replicate the analyses.
+
+When deciding which data to keep on the HPC, back up, or delete, consider the following:
+
+- Processing Time: Evaluate how long each step of the analysis takes to run. There may be significant computational costs associated with re-running heavy data processing steps.
+- Storage Management: Use tools like Snakemake to manage intermediate files. You can configure Snakemake to automatically delete intermediate files once the final results are produced, helping you manage storage more efficiently.
+:::
+:::
+
+### Before start using an HPC
+
+High-Performance Computing (HPC) systems might be organized differently, but there is typically an HPC administration team you can contact to understand how your specific HPC is structured. Key information you should seek from them includes:
+
+- The types of compute nodes available.
+- The storage options you can access and the amount allocated per user.
+- Whether a job scheduler software is in use, and if so, which one. You can also request a sample submission script to help you get started.
+- The policy on who bears the cost of using the HPC resources.
+- Whether you can install your own software and create custom environments.
+
+:::{.callout-tip title="Be *nice*"}
+If your HPC system doesn't have a job scheduler in place, we recommend using the [nice command](https://man7.org/linux/man-pages/man2/nice.2.html). This command allows you to adjust and **manage the scheduling priority of your processes**, giving you the ability to run tasks with lower priority when sharing resources with others. By using nice, you can ensure that your processes do not dominate the CPU, allowing other users' tasks to run smoothly. This is particularly useful in environments where multiple users are working on the same system without a job scheduler to automatically manage resource allocation.
+:::
+
+:::{.callout-exercise}
+# HPC
+1. Describe how a typical HPC is organised: nodes, job scheduler and filesystem. 
+2. What are the roles of a login node and a compute node? how do they differ?
+3. Describe the role of a job scheduler
+4. What are the differences between *scratch* and *home* storage and when each should be used? 
+:::
 
 ## Sources
 

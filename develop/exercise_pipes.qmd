@@ -19,7 +19,7 @@ style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
 
 Put your learning to the test with what you’ve covered so far.
 
-## General 
+## General HPC pipes 
 **1. What role does a workflow manager play in computational research??**
 
 ```{r}

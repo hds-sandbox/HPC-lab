@@ -31,7 +31,7 @@ website:
             - develop/fair_workflow.qmd 
             - develop/smk.qmd
             - develop/nextflow.qmd
-            - develop/exercise.qmd
+            - develop/exercise_pipes.qmd
         - section: "Computational environments"
           contents:
             - develop/fair_envs.qmd
@@ -39,11 +39,16 @@ website:
       style: "docked"
       search: true
       contents:
-        - develop/hpc_intro.qmd 
+        - section: "HPC systems"
+          contents: 
+          - develop/hpc_intro.qmd 
+          - develop/jobs.qmd
         - section: "Data management"
           contents: 
           - develop/data_transfer.qmd
           - develop/ssh_keys.qmd
+        - develop/exercise_launch.qmd
+
 
 copyright: CC-BY-SA 4.0 license
 
