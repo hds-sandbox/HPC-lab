@@ -129,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/hpc_intro.html">HPC launch</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/hpc_intro.html">HPC systems</a></li><li class="breadcrumb-item"><a href="../develop/hpc_intro.html">HPC launch</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,21 +149,38 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/hpc_intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">HPC launch</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Data management</span></a>
+ <span class="menu-text">HPC systems</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/hpc_intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">HPC launch</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/jobs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HPC jobs</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data management</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../develop/data_transfer.html" class="sidebar-item-text sidebar-link">
@@ -178,6 +195,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/exercise_launch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercises</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -187,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/hpc_intro.html">HPC systems</a></li><li class="breadcrumb-item"><a href="../develop/hpc_intro.html">HPC launch</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">HPC launch</h1>
 </div>
@@ -201,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 8, 2024</p>
+      <p class="date-modified">August 12, 2024</p>
     </div>
   </div>
     
@@ -259,7 +282,148 @@ Course Topics
 </div>
 <section id="title" class="level2">
 <h2 class="anchored" data-anchor-id="title">Title</h2>
-<p>Introduction to the material and HPCs…</p>
+<p>Introduction High-Performance Computing (HPCs) and HPC cluster.</p>
+<p>HPC main resources:</p>
+<ul>
+<li>CPU</li>
+<li>RAM</li>
+<li>GPU</li>
+</ul>
+<p>Schematic of components of an HPC</p>
+<section id="nodes" class="level3">
+<h3 class="anchored" data-anchor-id="nodes">Nodes</h3>
+<p>There are two typoes of nodes on a cluster: - login nodes (also known as head or submit nodes). - compute nodes (also known as worker nodes).</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="What can I run from a login node">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What can I run from a login node
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A straightforward rule: do not run anything on the login node to prevent potential problems. If the login node crashes, the entire system may need to be rebooted, affecting everyone. Remember, you’re not the only one using the HPC—so be considerate of others. For easy, quick tasks, request an interactive access to one of the compute nodes.</p>
+</div>
+</div>
+</section>
+<section id="job-scheduler" class="level3">
+<h3 class="anchored" data-anchor-id="job-scheduler">Job scheduler</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Several job scheduler programs are available, and <code>SLURM</code> is among the most widely used. In the next section, we’ll explore SLURM in greater detail, along with general best practices for running jobs.</p>
+</div>
+</div>
+</section>
+<section id="filesystem" class="level3">
+<h3 class="anchored" data-anchor-id="filesystem">Filesystem</h3>
+<ul>
+<li>Scratch</li>
+<li>Users working space</li>
+</ul>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise">
+<p>I have an omics pipeline that produces a large number of files, resulting in a couple of terabytes of data after processing and analysis. The project will continue for a few more years, and I’ve decided to store the data in the scratch folder. Do you agree with this decision, and why? What factors should be considered when deciding which data to retain and where to store it?</p>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>Typically, scratch storage is not backed up, so it’s not advisable to rely on it for important data. At a minimum, ensure you back up the raw data and the scripts used for processing. This way, if some processed files are lost, you can replicate the analyses.</p>
+<p>When deciding which data to keep on the HPC, back up, or delete, consider the following:</p>
+<ul>
+<li>Processing Time: Evaluate how long each step of the analysis takes to run. There may be significant computational costs associated with re-running heavy data processing steps.</li>
+<li>Storage Management: Use tools like Snakemake to manage intermediate files. You can configure Snakemake to automatically delete intermediate files once the final results are produced, helping you manage storage more efficiently.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="before-start-using-an-hpc" class="level3">
+<h3 class="anchored" data-anchor-id="before-start-using-an-hpc">Before start using an HPC</h3>
+<p>High-Performance Computing (HPC) systems might be organized differently, but there is typically an HPC administration team you can contact to understand how your specific HPC is structured. Key information you should seek from them includes:</p>
+<ul>
+<li>The types of compute nodes available.</li>
+<li>The storage options you can access and the amount allocated per user.</li>
+<li>Whether a job scheduler software is in use, and if so, which one. You can also request a sample submission script to help you get started.</li>
+<li>The policy on who bears the cost of using the HPC resources.</li>
+<li>Whether you can install your own software and create custom environments.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Be *nice*">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Be <em>nice</em>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If your HPC system doesn’t have a job scheduler in place, we recommend using the <a href="https://man7.org/linux/man-pages/man2/nice.2.html">nice command</a>. This command allows you to adjust and <strong>manage the scheduling priority of your processes</strong>, giving you the ability to run tasks with lower priority when sharing resources with others. By using nice, you can ensure that your processes do not dominate the CPU, allowing other users’ tasks to run smoothly. This is particularly useful in environments where multiple users are working on the same system without a job scheduler to automatically manage resource allocation.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+HPC
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise">
+<ol type="1">
+<li>Describe how a typical HPC is organised: nodes, job scheduler and filesystem.</li>
+<li>What are the roles of a login node and a compute node? how do they differ?</li>
+<li>Describe the role of a job scheduler</li>
+<li>What are the differences between <em>scratch</em> and <em>home</em> storage and when each should be used?</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
