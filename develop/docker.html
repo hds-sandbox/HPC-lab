@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Nextflow – HPC Lab</title>
+<title>Docker – HPC Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -129,7 +163,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_workflow.html">Pipeline languages</a></li><li class="breadcrumb-item"><a href="../develop/nextflow.html">Nextflow</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/docker.html">Docker</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -172,7 +206,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/nextflow.html" class="sidebar-item-text sidebar-link active">
+  <a href="../develop/nextflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Nextflow</span></a>
   </div>
 </li>
@@ -201,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/docker.html" class="sidebar-item-text sidebar-link">
+  <a href="../develop/docker.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Docker</span></a>
   </div>
 </li>
@@ -222,9 +256,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_workflow.html">Pipeline languages</a></li><li class="breadcrumb-item"><a href="../develop/nextflow.html">Nextflow</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/docker.html">Docker</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Nextflow</h1>
+<h1 class="title">Docker</h1>
 </div>
 
 
@@ -247,18 +281,182 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Nextflow is a workfow management system that offers scalable and portable NGS data analysis pipelines, facilitating data processing across diverse computing environments. It streamlines and automates various data analysis steps, enabling parallel processing and seamless integration with existing tools. ç</p>
-<section id="nf-core" class="level2">
-<h2 class="anchored" data-anchor-id="nf-core">nf-core</h2>
-<p>Templates</p>
-</section>
-<section id="sources" class="level2">
-<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Register on docker.com and follow the <a href="https://docs.docker.com/desktop/">Docker Desktop guide</a>.</p>
+</div>
+</div>
+<section id="docker" class="level2">
+<h2 class="anchored" data-anchor-id="docker">Docker</h2>
+<p>Docker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management. Before diving into hands-on activities, make sure these three main concepts are clear:</p>
 <ul>
-<li><a href="https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html">faircookbook worflows</a></li>
+<li><strong>Image</strong>: A docker image comprises a filesystem, default environment variables, a default command to execute, , and metadata about the image’s creation and configuration.</li>
+<li><strong>Container</strong>: A container is a running instance of a Docker image. It represents an isolated process that operates independently from other processes on the system, using the image as its environment.</li>
+<li><strong>Registry</strong>: Registry: A registry is a repository for storing Docker images. Docker Hub is a public registry where many images can be found, but each local Docker daemon also maintains its own registry to manage and store images locally.</li>
 </ul>
+<p>Let’s get started with some of the key commands:</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<ol type="1">
+<li>Download an image <code>docker pull &lt;image-name&gt;</code></li>
+<li>Display all docker images currently stored on your local Docker daemon <code>docker images</code></li>
+<li>Run a command (cmd) in a container <code>docker run &lt;image_name&gt; cmd</code></li>
+<li>Start an interactive bash shell <code>docker run -it &lt;image_name&gt; bash</code></li>
+<li>Share the current directory with the container <code>docker run -it --volume=$(pwd):/directory/in/container image_name bash</code>, the output of pwd will be mounted to the /directory/in/container (e.g.&nbsp;data, shared, etc.)</li>
+<li>docker logs <container_id></container_id></li>
+</ol>
+<p>All Docker containers have a <strong>digest</strong> which is the<code>sha256</code> hash of the image. It allows to uniquely identify a docker image and it is great for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise" title="Exercise init">
+<p><strong>1. Get a container image</strong></p>
+<ul>
+<li><p>Pull docker image (using tag stable otherwise, latest will be pulled by default)</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull debian:stable@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>2. Run commands in a container</strong></p></li>
+<li><p>List the content of the container</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> debian@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Check is there is <code>python</code> or <code>perl</code> in this container:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run debian@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e which <span class="at">-a</span> python perl</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p><strong>3. Use docker interactively</strong></p>
+<ul>
+<li><p>Enter the container interactively with a Bash shell</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> debian@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Now, collect info about the packages installed in the environment.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Interactive Docker container</strong></pre>
+</div>
+<div class="sourceCode" id="cb5" data-filename="Interactive Docker container"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span>  </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello world!"</span> <span class="op">&gt;</span> ~/myfile.txt</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span> ~/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>4. Exit and check the container</strong></p></li>
+<li><p>Exit the container</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p>Now, rerun commands from step 3 under “Interactive Docker container”. Does the output look any different?</p>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>You will notice that you are the root bu the name of the machine has now changed and the file that we have created has disappeared.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>5. Inspect the docker image</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image inspect debian:stable@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>6. Inspect Docker Image Details</strong> Identify the date of creation, the name of the field with the digest of the image and command run by default when entering this container.</p>
+<p><strong>7. Remove container</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image docker rmi debian:stable@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>When you exit a container, any changes made are lost because each new container starts in a clean state. Containers are isolated environments that don’t retain memory of past interactions, allowing you to experiment without affecting your system. This immutability ensures that your program will run in the same conditions in the future, even months later. So, how can you retrieve the results of computations performed inside a container?</p>
+<p>Importantly, when running the Docker container using the command for mounting, it is recommended to execute it from the <strong>temporary directory</strong> (e.g.&nbsp;<code>/tmp/</code> ) or a <strong>project-specific</strong> directory rather than your home directory. This way you would keep a clean and isolated environment within the container.</p>
+<section id="named-volumes" class="level4">
+<h4 class="anchored" data-anchor-id="named-volumes">Named volumes</h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -v: mounting only your project-specific dir </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="at">--volumes</span> <span class="op">&lt;</span>project_dir<span class="op">&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Named volumes: are managed by Docker and are isolated from your host file system</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> volume create <span class="op">&lt;</span>my_project_volume<span class="op">&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="at">--volumes</span> <span class="op">&lt;</span>my_project_volume<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, we’re using named volumes or shared directories. When you make changes in these directories within the container, the updates are instantly reflected in the corresponding directory on the host machine. This allows seamless synchronization between the container and the host file system.</p>
+<div class="callout callout-style-default callout-warning callout-titled" title="Why not mounting your home directory">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why not mounting your home directory
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is because the command mounts the current working directory (${PWD}) into the container at /home/rstudio. If you run this command from your home directory, any local packages or configurations (such as R or Python packages installed with install.packages or pip) would be accessible inside the container. This could compromise the isolation benefits of using the container, as it would inadvertently include your personal setup and packages.</p>
+</div>
+</div>
+<p>It is important to store container images in a shared storage area (e.g., with git or git annex).</p>
+<!--
+```{.bash title="Singularity"}
+MAC: export VM=sylabs/singularity-3.0-ubuntu-bionic64 && \
+    vagrant init $VM && \
+    vagrant up && \
+    vagrant ssh
+
+singularity pull docker://debian@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e
+
+# creates a sif 
+singularity shell debian@sha256_c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e.sif
+
+gzip --version # same as docker
+hostname # vagrant (macß) different
+whoami # vagrant (docker is root)
+
+Install 
+singularity shell debian@sha256_c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e.sif
+
+> apt-get install filter
+
+Alternative commands: singularity exec docker://debian@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e bash -c "apt install filter 2>&1 || true "
+```
+:::{.callout-tip}
+# The docker tag step is required as singularity has sometimes trouble handling the sha256: image description
+:::
+
+:::{.callout-exercise}
+1. docker pull rocker/rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+docker run -it rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+
+2. docker rmi rocker/rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+:::
+-->
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
