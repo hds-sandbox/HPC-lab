@@ -9,9 +9,7 @@ summary: workflow
 ---
 
 :::{.callout-note title="Course Overview"}
-- ⏰ **Total Time Estimation:** X hours  
-- 📁 **Supporting Materials:**  
-- 👨‍💻 **Target Audience:** Ph.D., MSc, anyone interested in workflow management systems for High-Throughput data or other related fields within bioinformatics.
+- 👨‍💻 **Target Audience:** PAnyone interested in workflow management systems and software enviroments. 
 - 👩‍🎓 **Level:** Advanced.
 - 🔒 **License:** [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license.](https://creativecommons.org/licenses/by-sa/4.0/legalcode)  
 - 💰 **Funding:** This project was funded by the Novo Nordisk Fonden (NNF20OC0063268).

@@ -56,6 +56,8 @@ Several job scheduler programs are available, and `SLURM` is among the most wide
 
 ### Filesystem 
 
+The filesystem is the content all the directories and files available to a given process.
+
 - Scratch 
 - Users working space 
 
@@ -70,6 +72,21 @@ When deciding which data to keep on the HPC, back up, or delete, consider the fo
 - Processing Time: Evaluate how long each step of the analysis takes to run. There may be significant computational costs associated with re-running heavy data processing steps.
 - Storage Management: Use tools like Snakemake to manage intermediate files. You can configure Snakemake to automatically delete intermediate files once the final results are produced, helping you manage storage more efficiently.
 :::
+:::
+
+### Kernel 
+
+The kernel is essential for managing multiple programs on your machine, each of which runs as a process. Even if you write code assuming full control over the CPU and memory, the kernel ensures that multiple processes can run simultaneously without interfering with each other. It does this by scheduling time for each process and translating virtual memory addresses into physical ones, ensuring security and preventing conflicts.
+
+The kernel also ensures that processes can't access each other's memory or directly modify the hard drive, maintaining system security and stability. For example, when a process needs to write to a file, it asks the kernel to do so through a system call, rather than writing directly.
+
+In conlcusion, it plays a crucial role in managing the CPU, memory, disk, and software environment. By mediating access to these resources, it maintains process isolation, security, and the smooth operation of your system.
+
+:::{.callout-note}
+# Kernel primary roles: 
+- Interfaces with hardware to facilitate program operations
+- Manages and schedules the execution of processes
+- Regulates and allocates system resources among processes
 :::
 
 ### Before start using an HPC
@@ -92,6 +109,7 @@ If your HPC system doesn't have a job scheduler in place, we recommend using the
 2. What are the roles of a login node and a compute node? how do they differ?
 3. Describe the role of a job scheduler
 4. What are the differences between *scratch* and *home* storage and when each should be used? 
+5. What is a kernel? 
 :::
 
 ## Sources

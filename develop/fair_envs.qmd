@@ -1,35 +1,52 @@
 ---
+title: FAIR environments
 format: 
-  html:
-    toc: false
+  html
 date-modified: last-modified
 summary: workflow
 ---
 
-## FAIR environments 
+Computational environments vary significantly from one system to another, encompassing differences in the operating system, installed software, and software package versions. If a research project is moved to a different computer or platform, the analysis might not run or produce consistent results, specially if the software relies on specific configurations or dependencies. Dependencies are libraries or tools that software relies on and can change over time or be poorly documented, leading to hidden variations between setups. Simply knowing a software version might often be insufficient for guaranteeing consistent results across different environments.
 
-Recording and sharing the computational environment is essential for reproducibility and transparency. There are several methods to achieve this, but we are going to focus on two of them, mamba (an environment manager) and Docker (a container). Environment managers are user-friendly, easy to share across different systems, and offer lightweight, efficient, and fast start-up times. However, Docker containers provide complete environment isolation (including the operating system), which ensures consistent behavior across various systems.
+:::{.callout-warning}
+If you're developing your own tools/pipelines, here's is the hard truth:
 
-Each computer or HPC (High-Performance Computing) platform has a unique computational environment that includes its operating system, installed software, versions of software packages, and other features. If a research project is moved to a different computer or platform, the analysis might not run or produce consistent results if it depends on any of these factors.
+- If your code isn’t easy to install, no one will bother using it.
+- If you don’t document how to run it, people will be left guessing—and probably give up.
+- Lastly, if you don’t carefully control and share your software environment, even you might struggle to get the same results later on.
+:::
 
-For research to be reproducible, the original computational environment must be recorded so others can replicate it. There are several methods to achieve this: 
+For research to be reproducible, the original computational environment must be recorded so others can replicate it accurately. This involves making your code easy to install and run by others, document the setup process thoroughly, and carefully manage and share your software environment. There are several methods to achieve this: 
 
 - **Containerization platforms** (e.g., Docker, Singularity): allow the researcher to package their software and dependencies into a standardized container image.
-- **Virtual Machines** (e.g., VirtualBox): can share an entire virtualized computing environment (OS, software and dependencies)
-- **Environment managers**: provide an isolated environment with specific packages and dependencies that can be installed without affecting the system-wide configuration. These environments are particularly useful for managing conflicting dependencies and ensuring reproducibility. Configuration files can automate the setup of the computational environment: 
-  - conda or mamba: allows users to export environment specifications (software and dependencies) to YAML files enabling easy recreation of the environment on another system
-  - Python `virtualenv` or `pipenv`: is a tool for creating isolated environments to manage dependencies specific to a project
+- **Virtual Machines** (e.g., VirtualBox): can share an entire virtualized computing environment (OS, software and dependencies).
+
+:::{.callout-note title="More on Virtual Machine" collapse="true"}
+VMs simulate a complete operating system, including virtualized CPU, RAM, and storage. They are highly isolated, providing a separate environment for each VM. While VMs offer excellent isolation, they can be slow due to the overhead of simulating hardware and have large images that are cumbersome to share. VMs also require data transfer over the network to interact with the host system, which can be inefficient.
+:::
+- **Environment package managers**: provide an isolated environment with specific packages and dependencies that can be installed without affecting the system-wide configuration. These environments are particularly useful for managing conflicting dependencies and ensuring reproducibility. Configuration files can automate the setup of the computational environment: 
+  - conda or mamba: allows users to export environment specifications (software and dependencies) to YAML files enabling easy recreation of the environment on another system. Conda disadvantage: long-term reproducibility. 
+  - Python `virtualenv` or `pipenv`: is a tool for creating isolated environments to manage dependencies specific to a project.
   - requirements.txt: may contain commands for installing packages (such as pip for Python packages or apt-get for system-level dependencies), configuring system settings, and setting environment variables. Package managers can be used to install, upgrade and manage packages. 
   - R's `renv`: The 'renv' package creates isolated environments in R.
-- **Environment descriptors**
-  - `sessionInfo()` or `devtools::session_info()`: In R, these functions provide detailed information about the current session
-  - `sessionInfo()`, similarly, in Python. Libraries like NumPy and Pandas have `show_versions()` methods to display package versions.
+- **Environment descriptors**: refer to various types of metadata or attributes that provide information about the computational environment in which software or applications are running (e.g. `__version__`, `sessionInfo()`). Check more useful commands [here](./cheat_sheet.qmd).   
+- **Kernel mechanisms** such as chroot, namespaces and control groups can also be used for process isolation and resource management. 
 
-While environment managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, Docker containers provide a full env isolation (including the operating system) which ensures consistent behavior across different systems. Check the table below for a full overview. 
+:::{.callout-note collapse="true"}
+# Kernel mechanisms 
+  - Chroot (filesystem isolation): changes the directory for a process, isolating its filesystem view from the rest of the system so that the process can only access files within a specified directory tree.
+  - Namespace (process isolation): isolates processes from each other by creating separate namespaces for various resources such as process IDs, network interfaces, and filesystems. Processes within the same namespace can interact with each other, but they are isolated from processes in other namespaces.
+  - Control groups (resource management): manage and limit the amount of system resources that processes can use which ensures that they cannot exceed their allocation resources and helps maintaining the overall system performance and stability. 
+:::
+
+
+While package managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, containers provide a full environment isolation (including the operating system) which ensures consistent behavior across different systems. Check the table below for a full overview. 
 
 ![](./images/envs.png)
 
-### Package manager 
+Recording and sharing the computational environment is essential for ensuring reproducibility and transparency. Below, we will explore two tools that can help with this: mamba, a package manager, and Docker, a container system. We will explain the differences between them and provide guidance on choosing the right tool for your specific scenario.
+
+## Package managers
 
 [Mamba](https://mamba.readthedocs.io/en/latest/) is a reimplementation of the Conda package manager in C++. While our focus will be on Mamba, it's important to note that it maintains compatibility with Conda by using the same command-line parser, package installation and uninstallation code, and transaction verification routines.
 
@@ -39,7 +56,7 @@ Mamba uses software installation specifications that are maintained by extensive
 As previously mentioned, mamba is a newer and faster implementation. The two commands can be used interchangeable (for most tasks). If you use Conda, you should still complete the exercises, as you'll gain experience with both tools. For more information on their ecosystem and advantages [here](https://medium.com/@QuantStack/open-software-packaging-for-science-61cecee7fc23). 
 :::
 
-Mamba allows you to create mutluple software envrinoments, where mutluple pacjage version can co-ecit on your system. 
+Mamba allows you to create different software environments, where multiple package version can co-exit on your system. 
 
 :::{.callout-exercise}
 # Build your mamba environment
@@ -55,15 +72,18 @@ Now you are set to create your first environment. Follow these steps:
 3. Check the environments available 
 4. Load/activate the environment
 5. Check which `python` executable is being used and that bowtie2 is installed. 
+6. Deactivate the environment 
 
 :::{.callout-hint}
 Here are some of the commands you need for the exercise. 
 
 ```{.bash}
-mamba create <ENV-NAME>
+mamba create -n <ENV-NAME>
 mamba install --channel <CHANNEL-NAME> --name <ENV-NAME>
 mamba env list
+# mamba init 
 mamba activate <ENV-NAME>
+mamba deactivate 
 ```
 :::
 
@@ -78,9 +98,15 @@ Do the same with the others.
 3. To see al environments available `mamba env list`. There will be a "*" showi8ng the one is activated. 
 4. Load the environment `mamba activate myenv`. 
 5. `which python` -> should print the one in the environment that is active (path similar to `/home/mambaforge/envs/myenv/bin/python`). `bowtie2 --help`
+6. Conda deactivate
 :::
 :::
 
+If you have different environments set up for various projects, you can switch between them or run commands directly within a specific environment using:
+
+```{.bash}
+mamba run -n <ENV-NAME> python myscript.py
+````
 
 :::{.callout-important}
 # Loading mamba environments in shell scripts
@@ -98,7 +124,7 @@ mamba activate myenv
 When jobs are submitted to SLURM, they run in a non-interactive shell where Mamba isn't automatically set up. By running the `source` command, you ensure that Mamba's activate function is available. It's important to remember that even if the environment is loaded on the login node, the scripts will execute on a different machine (one of the compute nodes). Therefore, always include the command to load the Mamba environment in your SLURM submission scripts.
 :::
 
-### Containers
+## Containers
 
 Essentially, a container is a self-contained, lightweight package that includes everything needed to run a specific application—such as the operating system, libraries, and the application code itself. Containers operate independently of the host system, which allows them to run the same software across various environments without any conflicts or interference. This isolation ensures that researchers can consistently execute their code on different systems and platforms, without worrying about dependency issues or conflicts with other software on the host machine.
  
@@ -109,17 +135,27 @@ The most significant difference is at the permission level required to run them.
 - Singularity is designed for HPC environments and offers high performance without needing root access
 :::
 
-#### Docker
-
-Docker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management.
+In the following sections, we'll cover how to retrieve environment information, utilize containers, and automate environment setup to improve reproducibility.
 
 #### Singularity on a remote server
 
 While you can build your own Singularity images, many popular software packages already have pre-built images available from public repositories. The two repositories you’ll most likely use or hear about are:  
 
 - [depot.galaxyproject.org](https://depot.galaxyproject.org/singularity/)
-- [Sylabs](https://cloud.sylabs.io/)
+- [Container Library (Sylabs)](https://cloud.sylabs.io/)
+- [Docker Hub](https://hub.docker.com/)
 
+:::{.callout-note title="Installation"}
+- [Singularity installation guides](https://docs.sylabs.io/guides/3.0/user-guide/installation.html#)
+
+```{.bash}
+# You will only need to vagrant init once 
+export VM=sylabs/singularity-3.0-ubuntu-bionic64 && \
+    vagrant init $VM && \
+    vagrant up && \
+    vagrant ssh
+```
+:::
 
 :::{.callout-tip}
 - We recommend using the pre-installed version provided by your system administrators if you're working on a shared system. If you're working on your own computer, you can install the necessary software using Mamba.

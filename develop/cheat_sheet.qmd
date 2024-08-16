@@ -1,0 +1,125 @@
+---
+title: Cheat sheet
+format: 
+  html
+date-modified: last-modified
+summary: workflow
+---
+
+Collection of useful commands for package and environment management.
+
+## Environment descriptors
+
+  - Git: `git log -1` and `git status -u`. In python, use the following command for a specific module version: <module>`.version.git_revision)` or <module>.`__git_version__`. 
+  - R: `sessionInfo()` or `devtools::session_info()`: In R, these functions provide detailed information about the current session and list all dependencies. 
+  - Python: the best way seems to `import sys`, and then, <module>`__version__`, <module>`__file__` which will display package versions and their location without having to list all packages using `pip`. It’s essential to load the package first and then use the following code to print all its dependencies:
+
+## SHELL 
+```{.bash .code-overflow-wrap}
+# finds the location of a command by searching through the PATH environment variable
+which <program>
+
+# lists all occurrences of a command found in the PATH
+which -a <program> 
+
+# shows the shared libraries required by a specific program
+ldd <program> 
+
+# provides detailed system information, including machine name and kernel version
+uname -a 
+
+# displays operating system identification data (such as Debian, Ubuntu, etc.)
+cat /etc/os-release 
+
+# provides operating system identification data and is recommended if available. This command might not be installed by default but is part of the lsb-release package on Debian-based systems
+lsb_release -a 
+
+# Environmental variables for locations 
+$HOME # home directory
+$PYTHONPATH # empty by default
+$PYTHONHOME # python libraries
+$RHOME # R libraries
+$LD_LIBRARY_PATH # dynamic loader for shared libraries when running a program
+```
+
+Understanding `PYTHONPATH`
+
+- PYTHONPATH: you can set the $PYTHONPATH environment variable to include additional directories where Python will look for modules and packages. This allows you to extend the search path beyond the default locations and load packages that has been installed in a different directory. It is highly discouraged to mix different versions of libraries and interpreters! as some libraries are complex packages with dependencies. 
+
+```{.bash}
+export PYTHONPATH=/path/to/packages/
+# unset the variable 
+unset PYTHONPATH
+```
+
+## PIP 
+```{.bash .code-overflow-wrap}
+pip3 show <module>
+pip3 install <module>      # install the latest version (and dependencies)
+pip3 uninstall <module>    # remove
+pip3 freeze                # output installed packages in requirements.txt format (similar to pip3 list) which can conveniently be used with: pip3 install -r requirements.txt
+```
+We highly recommend to avoid using `pip` and start using Python virtualenv management tools, [pipenv](https://pipenv.pypa.io/en/latest/). 
+
+- Advantages: it will generates and checks file hashes for locked dependencies when installing from `Pipfile.lock` and it creates a virtualenv in a standard customizable location. 
+
+
+## PYTHON 
+```{.python .code-overflow-wrap}
+# version info on installed packages
+
+def print_imported_modules():
+  import sys
+  for name, val in sorted(sys.modules.items()):
+      if(hasattr(val, '__version__')): 
+          print(val.__name__, val.__version__)
+      else:
+          print(val.__name__, "(unknown version)")
+
+print("==== Package list after loading pandas ====");
+import <module>
+print_imported_modules()
+```
+
+## R
+```{.r}
+install.packages()     # install a given package
+library()              # loads a given package
+remove.packages()      # install a given package
+```
+
+We highly recommend using [renv](https://rstudio.github.io/renv/articles/renv.html). 
+
+## CONDA
+```
+conda -V
+conda list 
+conda env list 
+```
+
+## DPKG 
+Low-level tool for package management on Debian-based systems 
+```{.bash .code-overflow-wrap}
+dpkg -S package_name # Seach   
+dpkg -I package.deb  # --info
+dpkg -L package_name # --list files installed by a package
+dpkg -i package.deb  # --install   [requires sudo]
+dpkg -r   # --remove:  Remove debian_package        [requires sudo]
+dpkg --get-selections    # List all the packages known by dpkg and whether they are installed or not
+dpkg --set-selections    # Set which package should be installed     [requires sudo]
+dpkg-query -W -f='${Package} == ${Version}\n' # package version 
+```
+
+## APT
+High-level tool for package management on Debian-based systems. It also handles package dependencies and repositories.  
+```{.bash .code-overflow-wrap}
+apt
+apt update                      # Update the package list                  [sudo]
+apt search <package_name>
+apt show <package_name>
+apt install <package_name>      # Install a debian package                 [sudo]
+apt upgrade                     # Upgrade all your packages                [sudo]
+apt clean                       # Delete all the .deb you've downloaded (save some space)
+apt remove --purge <package_name> # Remove a debian package                  [sudo]
+apt-cache search keyword # Search for packages containing a keyword.
+```
