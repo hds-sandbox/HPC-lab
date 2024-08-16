@@ -43,5 +43,14 @@
   },
   "develop/jobs.qmd": {
     "jobs.html": "9aa30c49"
+  },
+  "develop/cheat_sheet.qmd": {
+    "cheat_sheet.html": "a358687c"
+  },
+  "develop/docker.md": {
+    "docker.html": "aa271199"
+  },
+  "develop/docker.qmd": {
+    "docker.html": "9d4fbd9a"
   }
 }

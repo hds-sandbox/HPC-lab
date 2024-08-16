@@ -35,6 +35,8 @@ website:
         - section: "Computational environments"
           contents:
             - develop/fair_envs.qmd
+            - develop/docker.qmd
+            - develop/cheat_sheet.qmd
     - title: "HPC launch"
       style: "docked"
       search: true

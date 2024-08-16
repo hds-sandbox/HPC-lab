@@ -1,0 +1,153 @@
+---
+title: Docker
+format: 
+  html:
+    toc: false
+date-modified: last-modified
+summary: workflow
+---
+
+:::{.callout-warning}
+Register on docker.com and follow the [Docker Desktop guide](https://docs.docker.com/desktop/).  
+:::
+
+## Docker
+
+Docker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management. Before diving into hands-on activities, make sure these three main concepts are clear:
+
+- **Image**: A docker image comprises a filesystem, default environment variables, a default command to execute, , and metadata about the image's creation and configuration.
+- **Container**: A container is a running instance of a Docker image. It represents an isolated process that operates independently from other processes on the system, using the image as its environment.
+- **Registry**: Registry: A registry is a repository for storing Docker images. Docker Hub is a public registry where many images can be found, but each local Docker daemon also maintains its own registry to manage and store images locally.
+
+Let's get started with some of the key commands:
+
+:::{.callout-note appearance="simple"  icon="false"}
+
+1. Download an image `docker pull <image-name>`
+2. Display all docker images currently stored on your local Docker daemon `docker images`
+3. Run a command (cmd) in a container `docker run <image_name> cmd`
+4. Start an interactive bash shell `docker run -it <image_name> bash`
+5. Share the current directory with the container `docker run -it --volume=$(pwd):/directory/in/container image_name bash`, the output of pwd will be mounted to the /directory/in/container (e.g. data, shared, etc.)
+6. docker logs <container_id>
+
+All Docker containers have a **digest** which is the`sha256` hash of the image. It allows to uniquely identify a docker image and it is great for reproducibility.
+
+:::
+
+
+:::{.callout-exercise title="Exercise init"}
+**1. Get a container image**
+
+- Pull docker image (using tag stable otherwise, latest will be pulled by default) 
+  ```{.bash .code-overflow-wrap} 
+  docker pull debian:stable@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e
+  ```
+**2. Run commands in a container**
+- List the content of the container 
+  ```{.bash .code-overflow-wrap} 
+  docker run -it debian@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e ls
+  ```
+- Check is there is `python` or `perl` in this container: 
+  ```{.bash .code-overflow-wrap}
+  docker run debian@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e which -a python perl
+  ```
+
+**3. Use docker interactively** 
+
+- Enter the container interactively with a Bash shell 
+  ```{.bash .code-overflow-wrap}
+  docker run -it debian@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e /bin/bash
+  ```
+- Now, collect info about the packages installed in the environment. 
+  ```{.bash filename="Interactive Docker container"}
+  hostname
+  whoami
+  ls -la ~/
+  python  
+  echo "Hello world!" > ~/myfile.txt
+  ls -la ~/
+  ```
+**4. Exit and check the container** 
+- Exit the container 
+  ```{.bash} 
+  exit
+  ```
+
+Now, rerun commands from step 3 under "Interactive Docker container". Does the output look any different?
+
+:::{.callout-hint}
+  You will notice that you are the root bu the name of the machine has now changed and the file that we have created has disappeared.
+:::
+
+**5. Inspect the docker image** 
+
+  ```{.bash .code-overflow-wrap}
+  docker image inspect debian:stable@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e
+  ```
+**6. Inspect Docker Image Details**
+Identify the date of creation, the name of the field with the digest of the image and command run by default when entering this container.
+
+**7. Remove container**
+
+  ```{.bash .code-overflow-wrap}
+  docker image docker rmi debian:stable@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e
+  ```
+:::
+
+When you exit a container, any changes made are lost because each new container starts in a clean state. Containers are isolated environments that don't retain memory of past interactions, allowing you to experiment without affecting your system. This immutability ensures that your program will run in the same conditions in the future, even months later. So, how can you retrieve the results of computations performed inside a container?
+
+Importantly, when running the Docker container using the command for mounting, it is recommended to execute it from the **temporary directory** (e.g. `/tmp/` ) or a **project-specific** directory rather than your home directory. This way you would keep a clean and isolated environment within the container. 
+
+#### Named volumes 
+```{.bash}
+# -v: mounting only your project-specific dir 
+docker run -it --volumes <project_dir>
+# Named volumes: are managed by Docker and are isolated from your host file system
+docker volume create <my_project_volume>
+docker run -it --volumes <my_project_volume>
+```
+
+Now, we're using named volumes or shared directories. When you make changes in these directories within the container, the updates are instantly reflected in the corresponding directory on the host machine. This allows seamless synchronization between the container and the host file system.
+
+:::{.callout-warning title="Why not mounting your home directory"}
+This is because the command mounts the current working directory (${PWD}) into the container at /home/rstudio. If you run this command from your home directory, any local packages or configurations (such as R or Python packages installed with install.packages or pip) would be accessible inside the container. This could compromise the isolation benefits of using the container, as it would inadvertently include your personal setup and packages.
+:::
+
+It is important to store container images in a shared storage area (e.g., with git or git annex).
+
+<!--
+```{.bash title="Singularity"}
+MAC: export VM=sylabs/singularity-3.0-ubuntu-bionic64 && \
+    vagrant init $VM && \
+    vagrant up && \
+    vagrant ssh
+
+singularity pull docker://debian@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e
+
+# creates a sif 
+singularity shell debian@sha256_c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e.sif
+
+gzip --version # same as docker
+hostname # vagrant (macß) different
+whoami # vagrant (docker is root)
+
+Install 
+singularity shell debian@sha256_c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e.sif
+
+> apt-get install filter
+
+Alternative commands: singularity exec docker://debian@sha256:c1c4bb9bb5914a9a220a9d130966922b177ab552efdc019d7372936c32cc1e2e bash -c "apt install filter 2>&1 || true "
+```
+:::{.callout-tip}
+# The docker tag step is required as singularity has sometimes trouble handling the sha256: image description
+:::
+
+:::{.callout-exercise}
+1. docker pull rocker/rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+docker run -it rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+
+2. docker rmi rocker/rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+:::
+-->
+
+

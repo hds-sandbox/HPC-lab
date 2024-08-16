@@ -224,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 12, 2024</p>
+      <p class="date-modified">August 16, 2024</p>
     </div>
   </div>
     
@@ -325,6 +325,7 @@ Note
 </section>
 <section id="filesystem" class="level3">
 <h3 class="anchored" data-anchor-id="filesystem">Filesystem</h3>
+<p>The filesystem is the content all the directories and files available to a given process.</p>
 <ul>
 <li>Scratch</li>
 <li>Users working space</li>
@@ -375,6 +376,29 @@ Hint
 </div>
 </div>
 </section>
+<section id="kernel" class="level3">
+<h3 class="anchored" data-anchor-id="kernel">Kernel</h3>
+<p>The kernel is essential for managing multiple programs on your machine, each of which runs as a process. Even if you write code assuming full control over the CPU and memory, the kernel ensures that multiple processes can run simultaneously without interfering with each other. It does this by scheduling time for each process and translating virtual memory addresses into physical ones, ensuring security and preventing conflicts.</p>
+<p>The kernel also ensures that processes can’t access each other’s memory or directly modify the hard drive, maintaining system security and stability. For example, when a process needs to write to a file, it asks the kernel to do so through a system call, rather than writing directly.</p>
+<p>In conlcusion, it plays a crucial role in managing the CPU, memory, disk, and software environment. By mediating access to these resources, it maintains process isolation, security, and the smooth operation of your system.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Kernel primary roles:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Interfaces with hardware to facilitate program operations</li>
+<li>Manages and schedules the execution of processes</li>
+<li>Regulates and allocates system resources among processes</li>
+</ul>
+</div>
+</div>
+</section>
 <section id="before-start-using-an-hpc" class="level3">
 <h3 class="anchored" data-anchor-id="before-start-using-an-hpc">Before start using an HPC</h3>
 <p>High-Performance Computing (HPC) systems might be organized differently, but there is typically an HPC administration team you can contact to understand how your specific HPC is structured. Key information you should seek from them includes:</p>
@@ -399,7 +423,7 @@ Be <em>nice</em>
 </div>
 </div>
 <div class="callout callout-style-default callout-exercise no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -408,7 +432,7 @@ HPC
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-exercise">
@@ -417,6 +441,7 @@ HPC
 <li>What are the roles of a login node and a compute node? how do they differ?</li>
 <li>Describe the role of a job scheduler</li>
 <li>What are the differences between <em>scratch</em> and <em>home</em> storage and when each should be used?</li>
+<li>What is a kernel?</li>
 </ol>
 </div>
 </div>
