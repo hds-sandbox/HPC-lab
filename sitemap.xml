@@ -2,62 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://hds-sandbox.github.io/HPC-lab/index.html</loc>
-    <lastmod>2024-08-16T13:35:12.259Z</lastmod>
+    <lastmod>2024-08-20T09:29:02.000Z</lastmod>
   </url>
   <url>
     <loc>https://hds-sandbox.github.io/HPC-lab/develop/jobs.html</loc>
-    <lastmod>2024-08-16T13:35:12.259Z</lastmod>
+    <lastmod>2024-08-20T09:29:02.000Z</lastmod>
   </url>
   <url>
     <loc>https://hds-sandbox.github.io/HPC-lab/develop/exercise_launch.html</loc>
-    <lastmod>2024-08-16T13:35:12.243Z</lastmod>
+    <lastmod>2024-08-20T09:29:01.988Z</lastmod>
   </url>
   <url>
     <loc>https://hds-sandbox.github.io/HPC-lab/develop/nextflow.html</loc>
-    <lastmod>2024-08-16T13:35:12.259Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hds-sandbox.github.io/HPC-lab/develop/cheat_sheet.html</loc>
-    <lastmod>2024-08-16T13:35:12.243Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hds-sandbox.github.io/HPC-lab/develop/ssh_keys.html</loc>
-    <lastmod>2024-08-16T13:35:12.259Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hds-sandbox.github.io/HPC-lab/develop/data_compression.html</loc>
-    <lastmod>2024-08-16T13:35:12.243Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hds-sandbox.github.io/HPC-lab/develop/smk.html</loc>
-    <lastmod>2024-08-16T13:35:12.259Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hds-sandbox.github.io/HPC-lab/develop/hpc_intro.html</loc>
-    <lastmod>2024-08-16T13:35:12.247Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hds-sandbox.github.io/HPC-lab/develop/fair_workflow.html</loc>
-    <lastmod>2024-08-16T13:35:12.243Z</lastmod>
-  </url>
-  <url>
-    <loc>https://hds-sandbox.github.io/HPC-lab/develop/scripts/01.iris.html</loc>
-    <lastmod>2024-08-16T13:35:12.259Z</lastmod>
+    <lastmod>2024-08-20T09:29:02.000Z</lastmod>
   </url>
   <url>
     <loc>https://hds-sandbox.github.io/HPC-lab/develop/fair_envs.html</loc>
-    <lastmod>2024-08-16T13:35:12.243Z</lastmod>
+    <lastmod>2024-08-20T09:29:01.988Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hds-sandbox.github.io/HPC-lab/develop/scripts/01.iris.html</loc>
+    <lastmod>2024-08-20T09:29:02.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hds-sandbox.github.io/HPC-lab/develop/fair_workflow.html</loc>
+    <lastmod>2024-08-20T09:29:01.988Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hds-sandbox.github.io/HPC-lab/develop/hpc_intro.html</loc>
+    <lastmod>2024-08-20T09:29:01.988Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hds-sandbox.github.io/HPC-lab/develop/smk.html</loc>
+    <lastmod>2024-08-20T09:29:02.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hds-sandbox.github.io/HPC-lab/develop/data_compression.html</loc>
+    <lastmod>2024-08-20T09:29:01.988Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hds-sandbox.github.io/HPC-lab/develop/ssh_keys.html</loc>
+    <lastmod>2024-08-20T09:29:02.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hds-sandbox.github.io/HPC-lab/develop/cheat_sheet.html</loc>
+    <lastmod>2024-08-20T09:29:01.988Z</lastmod>
+  </url>
+  <url>
+    <loc>https://hds-sandbox.github.io/HPC-lab/develop/singularity.html</loc>
+    <lastmod>2024-08-20T09:29:02.000Z</lastmod>
   </url>
   <url>
     <loc>https://hds-sandbox.github.io/HPC-lab/develop/exercise_pipes.html</loc>
-    <lastmod>2024-08-16T13:35:12.243Z</lastmod>
+    <lastmod>2024-08-20T09:29:01.988Z</lastmod>
   </url>
   <url>
     <loc>https://hds-sandbox.github.io/HPC-lab/develop/data_transfer.html</loc>
-    <lastmod>2024-08-16T13:35:12.243Z</lastmod>
+    <lastmod>2024-08-20T09:29:01.988Z</lastmod>
   </url>
   <url>
     <loc>https://hds-sandbox.github.io/HPC-lab/develop/docker.html</loc>
-    <lastmod>2024-08-16T13:35:12.243Z</lastmod>
+    <lastmod>2024-08-20T09:29:01.988Z</lastmod>
   </url>
 </urlset>
