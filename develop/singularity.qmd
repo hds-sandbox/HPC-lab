@@ -1,0 +1,13 @@
+---
+title: Singularity
+format: 
+  html
+date-modified: last-modified
+summary: workflow
+---
+
+:::{.callout-warning title="Requirements"}
+Install singularity
+:::
+
+The equivalent to a *Dockerfile* for singularity is *Singularity definition file* where the instructions for the image are specified. 
