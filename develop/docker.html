@@ -241,6 +241,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../develop/singularity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Singularity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/RDM_containers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RDM for containers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../develop/cheat_sheet.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cheat sheet</span></a>
   </div>
@@ -261,7 +273,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#transfer-and-backup-docker-images" id="toc-transfer-and-backup-docker-images" class="nav-link" data-scroll-target="#transfer-and-backup-docker-images">Transfer and backup Docker images</a></li>
   </ul></li>
-  <li><a href="#building-docker-images" id="toc-building-docker-images" class="nav-link" data-scroll-target="#building-docker-images">Building Docker images</a></li>
+  <li><a href="#building-docker-images" id="toc-building-docker-images" class="nav-link" data-scroll-target="#building-docker-images">Building Docker images</a>
+  <ul class="collapse">
+  <li><a href="#testing-the-custom-image" id="toc-testing-the-custom-image" class="nav-link" data-scroll-target="#testing-the-custom-image">Testing the custom image</a></li>
+  <li><a href="#create-a-new-app-from-scratch" id="toc-create-a-new-app-from-scratch" class="nav-link" data-scroll-target="#create-a-new-app-from-scratch">Create a new app from scratch</a></li>
+  <li><a href="#publish-your-docker-image-on-docker-hub" id="toc-publish-your-docker-image-on-docker-hub" class="nav-link" data-scroll-target="#publish-your-docker-image-on-docker-hub">Publish your Docker image on Docker Hub</a></li>
+  </ul></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
   </ul>
 </nav>
     </div>
@@ -282,7 +300,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 20, 2024</p>
+      <p class="date-modified">August 28, 2024</p>
     </div>
   </div>
     
@@ -293,6 +311,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<div class="callout callout-style-default callout-note callout-titled" title="Content">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Content
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section is divided into two main parts:</p>
+<ul>
+<li>Using Docker images</li>
+<li>Building custom Docker images</li>
+</ul>
+<p>Refer to the <a href="../develop/cheat_sheet.html#docker-commandline">Docker commands overview</a> for a handy checklist or quick reference.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-warning callout-titled" title="Requirements">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -306,7 +342,7 @@ Requirements
 <p>Register on Docker Hub at docker.com and follow the <a href="https://docs.docker.com/desktop/">Docker Desktop guide</a> to get started. We recommend going through <a href="https://docker-curriculum.com/">this tutorial</a> before diving in.</p>
 </div>
 </div>
-<p>Docker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management. Before diving into hands-on activities, make sure these three main concepts are clear:</p>
+<p>Docker enables developers build, share, run, and verify applicationsseamlessly across different environments, eliminating the need for complex environment configuration and management. Before diving into hands-on activities, ensure you understand these three key concepts:</p>
 <ul>
 <li><strong>Image</strong>: A docker image comprises a filesystem, default environment variables, a default command to execute, , and metadata about the image’s creation and configuration.</li>
 <li><strong>Container</strong>: A container is a running instance of a Docker image. It represents an isolated process that operates independently from other processes on the system, using the image as its environment.</li>
@@ -314,7 +350,7 @@ Requirements
 </ul>
 <section id="using-docker-images" class="level2">
 <h2 class="anchored" data-anchor-id="using-docker-images">Using Docker images</h2>
-<p>First, we’ll explore some basic commands using existing Docker images available on Docker Hub. This will help you become familiar with Docker’s functionality before we dive into creating our own custom images. People commonly use shorthand Docker commands like <code>docker pull</code> and <code>docker run</code>, though the full versions (e.g., <code>docker image pull</code>, <code>docker container run</code>) can clarify the underlying concepts and their specific functions.</p>
+<p>First, we’ll start by using basic commands with existing Docker images from Docker Hub. This will help you become familiar with Docker’s functionality before we move on to creating our own custom images. While people commonly use shorthand Docker commands like <code>docker pull</code> and <code>docker run</code>, the full versions (e.g., <code>docker image pull</code>, <code>docker container run</code>) provide clearer insights into their underlying concepts and specific functions.</p>
 <p><strong>Docker Hub</strong></p>
 <ul>
 <li>Search for images <code>docker search &lt;name&gt;</code> (e.g.&nbsp;docker search debian)</li>
@@ -341,7 +377,7 @@ Requirements
 </ul>
 <p>All Docker containers have a <strong>digest</strong> which is the<code>sha256</code> hash of the image. It allows to uniquely identify a docker image and it is great for reproducibility.</p>
 <div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -350,11 +386,11 @@ Exercise
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-exercise" title="Exercise init">
-<p>We use a <a href="https://hub.docker.com/layers/library/debian/stable-20240812/images/sha256-540ebf19fb0bbc243e1314edac26b9fe7445e9c203357f27968711a45ea9f1d4?context=explore">Debian stable image</a> (sha256-540ebf19fb0bbc243e1314edac26b9fe7445e9c203357f27968711a45ea9f1d4) as an example for pulling and inspecting because it provides a reliable, minimal base with essential tools. This image includes fundamental utilities like <code>bash</code> for shell scripting and <code>apt</code> for package management. It can be an ideal starting point for developing and testing pipelines or configuring server environments, offering a stable and consistent foundation that can be customized with additional packages as needed.</p>
+<p>In this exercise, we will use a <a href="https://hub.docker.com/layers/library/debian/stable-20240812/images/sha256-540ebf19fb0bbc243e1314edac26b9fe7445e9c203357f27968711a45ea9f1d4?context=explore">Debian stable image</a> (sha256-540ebf19fb0bbc243e1314edac26b9fe7445e9c203357f27968711a45ea9f1d4) as an example for pulling and inspecting Docker images. This image offers a reliable, minimal base with essential tools, including fundamental utilities like <code>bash</code> for shell scripting and <code>apt</code> for package management. It’s an excellent starting point for developing and testing pipelines or configuring server environments, providing a stable foundation that can be customized with additional packages as needed.</p>
 <p><strong>1. Get a container image</strong></p>
 <ul>
 <li><p>Pull docker image (using tag stable otherwise, latest will be pulled by default)</p>
@@ -387,7 +423,7 @@ Exercise
 </ul>
 <p>Now, rerun commands from step 3 under “Interactive Docker container”. Does the output look any different?</p>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -396,7 +432,7 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
@@ -416,16 +452,26 @@ Hint
 </div>
 </div>
 </div>
-<p>When you exit a container, any changes made are lost because each new container starts in a clean state. Containers are isolated environments that don’t retain memory of past interactions, allowing you to experiment without affecting your system. This immutability ensures that your program will run in the same conditions in the future, even months later. So, how can you retrieve the results of computations performed inside a container?</p>
-<p>Importantly, when running the Docker container using the command for mounting, it is recommended to execute it from the <strong>temporary directory</strong> (e.g.&nbsp;<code>/tmp/</code> ) or a <strong>project-specific</strong> directory rather than your home directory. This way you would keep a clean and isolated environment within the container.</p>
+<!--
+:::{.callout-exercise}
+# Extra exercise using rocker/rstudio 
+```
+docker pull rocker/rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+docker run -it rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+docker rmi rocker/rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+```
+:::
+-->
+<p>When you exit a container, any changes made are lost because each new container starts in a clean state. Containers are isolated environments that don’t retain memory of past interactions, allowing you to experiment without affecting your system. This immutability ensures that your program will run under the same conditions in the future, even months later. So, how can you retrieve the results of computations performed inside a container?</p>
+<p>To preserve your work, it is crucial to use Docker’s volume mounting feature. When running a Docker container with the <code>-v</code> (volume) option, it’s best to execute the command from the <strong>temporary directory</strong> (e.g.&nbsp;<code>/tmp/</code> ) or a <strong>project-specific</strong> directory rather than your home directory. This practice helps maintain a clean and isolated environment within the container, while ensuring your results are saved in a designated location outside the container’s ephemeral filesystem.</p>
 <section id="named-volumes" class="level4">
 <h4 class="anchored" data-anchor-id="named-volumes">Named volumes</h4>
+<p>Now, we will be using named volumes or shared directories. When you make changes in these directories within the container, the updates are immediately reflected in the corresponding directory on the host machine. This setup enables seamless synchronization between the container and the host file system.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># -v: mounting only your project-specific dir </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="at">--volumes</span> <span class="op">&lt;</span>project_dir<span class="op">&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Named volumes: are managed by Docker and are isolated from your host file system</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> volume create <span class="op">&lt;</span>my_project_volume<span class="op">&gt;</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="at">--volumes</span> <span class="op">&lt;</span>my_project_volume<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now, we’re using named volumes or shared directories. When you make changes in these directories within the container, the updates are instantly reflected in the corresponding directory on the host machine. This allows seamless synchronization between the container and the host file system.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="Why not mounting your home directory">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -436,14 +482,36 @@ Why not mounting your home directory
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This is because the command mounts the current working directory (${PWD}) into the container at /home/rstudio. If you run this command from your home directory, any local packages or configurations (such as R or Python packages installed with install.packages or pip) would be accessible inside the container. This could compromise the isolation benefits of using the container, as it would inadvertently include your personal setup and packages.</p>
+<p>Mounting your current working directory (${PWD}) into the container at e.g.&nbsp;<code>/home/rstudio</code>can compromise the benefits of container isolation. If you run the command from your home directory, any local packages or configurations (such as R or Python packages installed with <code>install.packages</code> or <code>pip</code>) would be accessible inside the container.This inadvertently includes your personal setup and packages, potentially undermining the container’s intended clean and isolated environment. To maintain effective isolation, it’s better to use a temporary or project-specific directory for mounting.</p>
 </div>
 </div>
-<p>It is important to store container images in a shared storage area (e.g., with git or git annex).</p>
+<p>Alternatively, you can add a volume to a project, by modifying the <code>compose.yaml</code> (also named <code>docker-compose.yml</code>) file. There are two types of volumes:</p>
+<ul>
+<li>Service-level name: specify how volumes are mounted inside the container. In this case, dataset volume (defined at the top-level) will be mounted to the <code>/path/in/container/</code> (e.g.&nbsp;data, results or logs directory) inside the myApp container.</li>
+<li>Top-level volume: volumes shared across multiple services in the compose.yaml file. The volume dataset can be referenced by any service and will be created if it doesn’t exit. If the host path is not specified, Docker will automatically create and manage the volume in a default location on the host machine. However, if you need the volume to be located in a specific directory, you can specify the host path directly (option 2).</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>compose.yaml</strong></pre>
+</div>
+<div class="sourceCode" id="cb10" data-filename="compose.yaml"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Service-level name</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">myApp:</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ...</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">volumes:</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>      <span class="ex">-</span> dataset:/path/in/container/</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Option 2 </span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># - /my/local/path:/path/in/container/</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>                      </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Top-level volume</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ex">volumes:</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">dataset:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In this case, a volume named <code>mydata</code> will be mounted to the /data/ directory inside the container running the todo-databse service.</p>
+<p>Let’s not forget to track changes to container images for reproducibility by using version control. Store your images in a shared storage area, such as with Git or Git Annex, to manage versions and facilitate collaboration.</p>
 </section>
 <section id="transfer-and-backup-docker-images" class="level3">
 <h3 class="anchored" data-anchor-id="transfer-and-backup-docker-images">Transfer and backup Docker images</h3>
-<p>Saving a Docker image as a tar file is useful because it enables you to transfer the image to another system or operating system without needing access to the original Docker registry. The tar file contains several key components:</p>
+<p>Saving a Docker image as a tar file is useful for transferring the image to another system or operating system without requiring access to the original Docker registry. The tar file contains several key components:</p>
 <ul>
 <li>metadata: JSON files essential to reconstruct the image
 <ul>
@@ -452,9 +520,9 @@ Why not mounting your home directory
 <div class="code-with-filename-file">
 <pre><strong>Dockerfile</strong></pre>
 </div>
-<div class="sourceCode" id="cb10" data-filename="Dockerfile"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> ubuntu:20.04 <span class="co"># Layer 1 - base image </span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> python3 <span class="co"># Layer 2 - the result of running the command </span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">COPY</span> . /app <span class="co"># Layer 3 - add application files to the images</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11" data-filename="Dockerfile"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> ubuntu:20.04 <span class="co"># Layer 1 - base image </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt-get update <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> python3 <span class="co"># Layer 2 - the result of running the command </span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">COPY</span> . /app <span class="co"># Layer 3 - add application files to the images</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><strong>tags</strong> pointers to specific image digests or versions.</p></li>
 <li><p><strong>history</strong> of the image and instructions from the DOckerfile that were used to build the image.</p></li>
@@ -462,57 +530,70 @@ Why not mounting your home directory
 </ul></li>
 <li>Filesystem: the actual content, files and directories that make up the image.</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save to tar file </span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image save <span class="at">--output</span><span class="op">=</span>image.tar image_name </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load tar file</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image load <span class="at">--input</span><span class="op">=</span>image.tar  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>In some cases, you might only need to access the content of the filesystem of a Docker image (debugging, backup, repurposing. In such cases, you will need to create the container and export the root’s filesystem to a tar file. Similarly, you can create a new image from the tar file.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> container create <span class="at">--name</span><span class="op">=</span>temp_container image_name</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> container export <span class="at">--output</span><span class="op">=</span>image.tar temp_container</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> container rm temp_container</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># new image importing tar file </span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image import <span class="at">--input</span> image.tar image_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># save to tar file </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image save <span class="at">--output</span><span class="op">=</span>image.tar image_name </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load tar file</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image load <span class="at">--input</span><span class="op">=</span>image.tar  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In some situations, you may need to access the filesystem content of a Docker image for purposes such as debugging, backup, or repurposing. To do this, you should create a container from the image and then export the container’s root filesystem to a tar file. Similarly, you can create a new Docker image from this tar file if needed.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> container create <span class="at">--name</span><span class="op">=</span>temp_container image_name</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> container export <span class="at">--output</span><span class="op">=</span>image.tar temp_container</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> container rm temp_container</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># new image importing tar file </span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> image import <span class="at">--input</span> image.tar image_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="building-docker-images" class="level2">
 <h2 class="anchored" data-anchor-id="building-docker-images">Building Docker images</h2>
 <p>We’re now ready to build custom Docker images. We’ll start with a minimal pre-built image, add the necessary software, and then upload the final image to Docker Hub.</p>
-<p>A common practice is to start with a minimal or pre-configured image from Docker Hub. You then use a <strong>Dockerfile</strong> to modify this base image, specifying instructions for software installation and configuration. he Dockerfile acts as a recipe, providing a list of commands to build the image as needed.</p>
+<p>A common practice is to start with a minimal image from Docker Hub. There are many base images you can use to start building your customized Docker image, and the key difference between them lies in what they already include. For example:</p>
+<ul>
+<li><p>Debian: This is a very minimal base image, including only the most essential utilities and libraries required to run Debian, such as the core Linux utilities and the package manager (apt). It offers a high degree of customization, giving you full control over what you install. However, you’ll need to manually add all the necessary software, making the setup process longer. This image is relatively small in size, making it a good starting point if you want to build your environment from scratch.</p></li>
+<li><p>Data Science-Specific Images: These images come pre-configured with a wide range of tools pre-installed, reducing the amount of customization needed. This allows you to get started much faster, though it also means less flexibility. These images tend to be larger in size due to the pre-installed software. For example:</p>
+<ul>
+<li>tensorflow/tensorflow: This image includes TensorFlow and often other machine learning libraries, making it ideal for deep learning projects.</li>
+<li>jupyter/scipy-notebook: This image is around 2-3 GB and includes Python, Jupyter Notebook, and libraries like NumPy, Pandas, Matplotlib, and more, making it a comprehensive option for data science tasks.</li>
+<li>r-base: This image provides a base for R environments, useful for data analysis and statistical computing.-</li>
+<li>rocker/rstudio: This image includes RStudio and a base R environment, making it perfect for those working in R for statistical computing and data analysis.</li>
+</ul></li>
+</ul>
+<p>Once you have chosen your base image, use a <strong>Dockerfile</strong> to modify its components, specifying commands for software installation and configuration. The Dockerfile acts as a recipe, providing a list of steps to build the image.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Dockerfile</strong></pre>
 </div>
-<div class="sourceCode" id="cb13" data-filename="Dockerfile"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># deploy docker container</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> node</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Info and rights of the app</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">LABEL</span> software=<span class="st">"App_name - sandbox"</span> <span class="dt">\</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    maintainer=<span class="st">"&lt;author.address@sund.ku.dk&gt;"</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># root: needed to install and modify the container </span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="ex">USER</span> 0 </span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co"># run bash commands (eg. installing packages or softwares)</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> mkdir <span class="at">-p</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt update <span class="dt">\</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install <span class="at">-y</span> jupyter-notebook python3-matplotlib python3-pandas python3-numpy  <span class="dt">\</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-fr</span> node_modules <span class="co"># removes dependencies</span></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co"># set working directory (this directory should act as the main application directory)</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /app</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co"># copy files to-from directories</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="ex">COPY</span> /from/path/... /to/path/...</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="co"># set environment variables for Conda</span></span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="ex">ENV</span></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="co"># change up user permissions </span></span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="ex">USER</span> 11042</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14" data-filename="Dockerfile"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># deploy docker container</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> <span class="op">&lt;</span>node<span class="kw">|</span><span class="ex">debian</span><span class="kw">|</span><span class="ex">python</span><span class="kw">|</span><span class="ex">jupyter-base</span><span class="op">&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Info and rights of the app</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">LABEL</span> software=<span class="st">"App_name - sandbox"</span> <span class="dt">\</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    maintainer=<span class="st">"&lt;author.address@sund.ku.dk&gt;"</span>  <span class="dt">\</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    version=<span class="st">"YYYY.MM.DD"</span> </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># root: needed to install and modify the container </span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="ex">USER</span> 0 </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># run bash commands (eg. installing packages or softwares)</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> mkdir <span class="at">-p</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># install packages &amp; dependencies </span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt update <span class="dt">\</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install <span class="at">-y</span> jupyter-notebook python3-matplotlib python3-pandas python3-numpy  <span class="dt">\</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span> <span class="co"># cleanup tmp files created by apt</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-fr</span> node_modules <span class="co"># remove directory which contains Node.js packages &amp; dependencies</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co"># set working directory (this directory should act as the main application directory)</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /app</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co"># copy files to-from directories</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="ex">COPY</span> /from/path/... /to/path/...</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="co"># set environment variables for Conda</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="ex">ENV</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a><span class="co"># switch to user 1000 instead of the default root user </span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a><span class="ex">USER</span> 11042</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In this example, as indicated with the RUN command, it will update the package list and install jupyter and everything else required. It is a common practice to remove dependencies with the command in the example above.</p>
+<p>In this example, the <code>RUN</code> command updates the package list and installs Jupyter along with all necessary dependencies. It’s common practice to remove unnecessary dependencies afterward, as shown in the example above.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Label" data-collpase="true">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -523,7 +604,7 @@ Label
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Key-value pair syntax, where should add at least these labels to the container:</p>
+<p>Use key-value pair syntax to add the following labels to the container:</p>
 <ul>
 <li>software = name of the app</li>
 <li>author = maintainer or author of the app</li>
@@ -533,43 +614,162 @@ Label
 </ul>
 </div>
 </div>
-<p>After preparing your Dockerfile, run <code>docker build</code> to create a new image based on these instructions. Docker’s isolation ensures that any changes made within a container are lost when you exit. Nevertheless, you can use <code>docker commit</code> to save these changes by creating a new image from the updated container. This new image can then be used to create containers with your modifications.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>-p: port to use, usually 8787:8787 works for R studio - R studio: 8787:8787 - JupyterLab: 8888:8888</p>
-<!--
-```{.bash title="Singularity"}
-MAC: export VM=sylabs/singularity-3.0-ubuntu-bionic64 && \
-    vagrant init $VM && \
-    vagrant up && \
-    vagrant ssh
-
-singularity pull docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912
-
-# creates a sif 
-singularity shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif
-
-gzip --version # same as docker
-hostname # vagrant (macß) different
-whoami # vagrant (docker is root)
-
-Install 
-singularity shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif
-
-> apt-get install filter
-
-Alternative commands: singularity exec docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912 bash -c "apt install filter 2>&1 || true "
-```
-:::{.callout-tip}
-# The docker tag step is required as singularity has sometimes trouble handling the sha256: image description
-:::
-
-:::{.callout-exercise}
-1. docker pull rocker/rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
-docker run -it rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
-
-2. docker rmi rocker/rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
-:::
--->
+<p>After preparing your Dockerfile, use the <code>docker build</code> command to create a new image based on those instructions. Docker’s isolation ensures that any changes made within a container are lost when you exit it. Nevertheless, you can use <code>docker commit</code> to save these changes by creating a new image from the updated container.This new image will retain your modifications and can be used to launch new container.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> <span class="op">&lt;</span>account/app:version<span class="op">&gt;</span> <span class="op">&lt;</span>directory_docker<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled" data-collpase="true">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Example of a tag name
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For the <code>docker build -t</code> flag, the format of the tag is used to specify both the repository and the version of the Docker image. It consists of three different elements (e.g.: <code>albarema/sandbox_app:v1.0</code>):</p>
+<ul>
+<li>Repository name where the image will be stored, account in Docker registry (e.g.&nbsp;albarema)</li>
+<li>Name of the image (e.g.&nbsp;sandbox_app)</li>
+<li>Version label for the image (e.g.&nbsp;v1.0, test, etc.)</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise" title="Exercise 1: create your docker image">
+<ol type="1">
+<li>Create a Dockerfile in a project-specific dir (e.g.: sandbox-debian-jupyter). We will add a command to clean up the package after after installation used to reduce the image size.</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> debian:stable </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">LABEL</span> maintainer=<span class="st">"Name Surname &lt;abd123@ku.dk&gt;"</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Update package list and install necessary packages</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt update <span class="dt">\</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install <span class="at">-y</span> jupyter-notebook <span class="dt">\</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                      python3-matplotlib <span class="dt">\</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                      python3-pandas <span class="dt">\</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                      python3-numpy <span class="dt">\</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> clean <span class="dt">\</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span> <span class="co"># cleanup tmp files created by apt</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># You may consider adding a working directory</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /notebooks</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co"># and a command to start Jupyter Notebook</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="co"># CMD ["jupyter-notebook", "--ip=0.0.0.0", "--allow-root"]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Build the Docker image using, for example, <code>docker build -t albarema/sandbox-debian-jupyter:1.0 sandbox-debian-jupyter</code></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="testing-the-custom-image" class="level3">
+<h3 class="anchored" data-anchor-id="testing-the-custom-image">Testing the custom image</h3>
+<p>Let’s verify if the custom image functions as expected, running the following command:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb17" data-filename="Terminal"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-p</span> 8888:8888 <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/root albarema/sandbox-debian-jupyter:1.0 jupyter-notebook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Jupyter typically refuses to run as root or accept network connections by default. To address this, you need to either add <code>--ip=0.0.0.0 --allow-root</code> when starting Jupyter to the command above or uncomment the last line in the Dockerfile above (<code>CMD ["jupyter-notebook", "--ip=0.0.0.0", "--allow-root"]</code>). Alternatively, you can run the container with the flag <code>--user=$(id -u):$(id -g)</code>to ensure that files created in the container have matching user and group ownership with those on the host machine, preventing permission issues. However, this restricts the container from performing root-level operations. For broader usability and security, it is advisable to create a non-root user (e.g.&nbsp;jovyan) within the Docker image by adding user setup commands to the Dockerfile (see below). This approach makes the image more user-friendly and avoids file ownership conflicts.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Dockerfile</strong></pre>
+</div>
+<div class="sourceCode" id="cb18" data-filename="Dockerfile"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a group &amp; user</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> addgroup <span class="at">--gid</span> 1000 user <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">adduser</span> <span class="at">--uid</span> 1000 <span class="at">--gid</span> 1000 <span class="at">--gecos</span> <span class="st">""</span> <span class="at">--disabled-password</span> jovyan</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting active user </span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ex">USER</span> jovyan</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># setting working directory </span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /home/jovyan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Use <code>--rm</code> flag to remove automatically the container once it stops running to avoid clustering your system with stopped containers.</li>
+<li>Use <code>--volume</code> to mount data into the container (<code>/root</code>), for example, your working directory</li>
+<li>Use <code>--file</code> flag to test to dockerfile versions (default:“PATH/Dockerfile”)</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> albarema/sandbox-debian-jupyter:2.0 sandbox-debian-jupyter <span class="at">-f</span> sandbox-debian-jupyter/Dockerfile2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>Now that we have fixed that problem, we will test A. using a port to launch a Jupyter Notebook (or Rstudio server) and B. starting a bash shell interactively.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option A. Start jupyter-notebook or on the server </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-p</span> 8888:8888 <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/home/jovyan albarema/sandbox-debian-jupyter:1.0 jupyter-notebook <span class="at">--ip</span><span class="op">=</span>0.0.0.0 <span class="at">--allow-root</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Option B. Start an interactive shells instead </span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="at">--rm</span> sandbox-debian-jupyter:1.0 /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Which port to use?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Which port to use?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>-p</code> option in Docker allows services (e.g.: Jupyter Notebooks) running inside the container to be accessible from outside (through <code>localhost:1234</code> on your local machine).</p>
+<ul>
+<li><code>-p host_port:container_port</code> # port mappings between the host machine and the container</li>
+<li><code>-p 8787:8787</code> # connect port <code>8787</code> on the host machine to port <code>8787</code> inside the container. This setup allows you to access <strong>RStudio</strong>, which is running inside the container, by navigating to http://localhost:8787 on your host machine</li>
+<li><code>-p 8888:8888</code> # similarly, this setup enables you to access <strong>JupyterLab</strong>, which is running inside the container, by going to http://localhost:8888 on your host machine.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="create-a-new-app-from-scratch" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-new-app-from-scratch">Create a new app from scratch</h3>
+<p>When working with containers, you usually need to create a Dockerfile to define your image and compose.yaml file that defines how to run it. As an alternative to starting with a base image and modifying it, you can use the following command:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This utility will walk you through creating the following files with sensible defaults for your project:</p>
+<pre><code>- .dockerignore
+- Dockerfile
+- compose.yaml
+- README.Docker.made</code></pre>
+</section>
+<section id="publish-your-docker-image-on-docker-hub" class="level3">
+<h3 class="anchored" data-anchor-id="publish-your-docker-image-on-docker-hub">Publish your Docker image on Docker Hub</h3>
+<p>Publishing your Docker image on Docker Hub is straightforward. You just need a Docker Hub account—preferably linked to your GitHub account if you have one. For detailed instructions, refer to the <a href="https://docs.docker.com/reference/cli/docker/image/push/">documentation</a>. The process involves only a few commands.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># login</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> login <span class="co"># &lt;username&gt; &lt;pw&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># optional change tag</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># docker tag &lt;old&gt; &lt;new&gt;</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># push image </span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> push albarema/sandbox-debian-jupyter:1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In Docker, the file system of an image is built using several layers, or <strong>overlays</strong>. Each layer represents a set of changes or additions made to the image. When you update software or packages within a Docker container, a new layer is created with only the new or changed content, rather than modifying the existing layers.</p>
+<p>You are now ready to share the link to your Docker image with your colleagues, ensuring that everyone uses the exact same environment.</p>
+</section>
+</section>
+<section id="sources" class="level2">
+<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<ul>
+<li><a href="https://hub.docker.com/">Docker Hub</a></li>
+</ul>
 
 
 </section>

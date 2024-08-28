@@ -241,6 +241,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../develop/singularity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Singularity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/RDM_containers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RDM for containers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../develop/cheat_sheet.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Cheat sheet</span></a>
   </div>
@@ -265,6 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#conda" id="toc-conda" class="nav-link" data-scroll-target="#conda">CONDA</a></li>
   <li><a href="#dpkg" id="toc-dpkg" class="nav-link" data-scroll-target="#dpkg">DPKG</a></li>
   <li><a href="#apt" id="toc-apt" class="nav-link" data-scroll-target="#apt">APT</a></li>
+  <li><a href="#docker-commandline" id="toc-docker-commandline" class="nav-link" data-scroll-target="#docker-commandline">Docker</a></li>
   </ul>
 </nav>
     </div>
@@ -285,7 +298,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 20, 2024</p>
+      <p class="date-modified">August 28, 2024</p>
     </div>
   </div>
     
@@ -403,6 +416,27 @@ conda env list </code></pre>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> clean                       <span class="co"># Delete all the .deb you've downloaded (save some space)</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> remove <span class="at">--purge</span> <span class="op">&lt;</span>package_name<span class="op">&gt;</span> <span class="co"># Remove a debian package                  [sudo]</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-cache</span> search keyword <span class="co"># Search for packages containing a keyword.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="docker-commandline" class="level2">
+<h2 class="anchored" data-anchor-id="docker-commandline">Docker</h2>
+<p>Useful commands to build and deploy a Docker image.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull         <span class="co"># download image from a registry e.g. Docker Hub </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images       <span class="co"># list all Docker images on your local machine</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="op">&lt;</span>image_name<span class="op">&gt;</span>  <span class="co"># creates and starts a new container from the specified Docker image, -it flag means interactive virtual machine which is very useful during the development-phase for testing the container </span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> <span class="op">&lt;</span>my-app<span class="op">&gt;</span>  <span class="co"># build a Docker image form a Dockerfile and a context </span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> tag <span class="op">&lt;</span>my-app<span class="op">&gt;</span> <span class="op">&lt;</span>myrepo/my-app:v1.0<span class="op">&gt;</span> <span class="co"># creates an new alias for an existing Docker image. Useful for versioning</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> push         <span class="co"># upload image from local machine to Docker registry </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> login        <span class="co"># logs you into a Docker register (after pull and push), username and pw needed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Other common commands use in Dockerfiles to clean up the image and reduce its size:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Dockerfile</strong></pre>
+</div>
+<div class="sourceCode" id="cb10" data-filename="Dockerfile"><pre class="sourceCode bash coder-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt-get <span class="at">-y</span> autoclean <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> autoremove <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rm</span> <span class="at">-rf</span> /var/cache/apt/archives/<span class="pp">*</span>deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
