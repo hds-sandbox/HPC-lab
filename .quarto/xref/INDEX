@@ -52,5 +52,11 @@
   },
   "develop/docker.qmd": {
     "docker.html": "9d4fbd9a"
+  },
+  "develop/singularity.qmd": {
+    "singularity.html": "cc514e06"
+  },
+  "develop/RDM_containers.qmd": {
+    "RDM_containers.html": "d7c3aea9"
   }
 }

@@ -36,6 +36,8 @@ website:
           contents:
             - develop/fair_envs.qmd
             - develop/docker.qmd
+            - develop/singularity.qmd
+            - develop/RDM_containers.qmd
             - develop/cheat_sheet.qmd
     - title: "HPC launch"
       style: "docked"

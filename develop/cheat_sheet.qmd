@@ -123,3 +123,24 @@ apt clean                       # Delete all the .deb you've downloaded (save so
 apt remove --purge <package_name> # Remove a debian package                  [sudo]
 apt-cache search keyword # Search for packages containing a keyword.
 ```
+
+## Docker {#docker-commandline}
+Useful commands to build and deploy a Docker image. 
+```{.bash .code-overflow-wrap}
+docker pull         # download image from a registry e.g. Docker Hub 
+docker images       # list all Docker images on your local machine
+docker run -it <image_name>  # creates and starts a new container from the specified Docker image, -it flag means interactive virtual machine which is very useful during the development-phase for testing the container 
+docker build -t <my-app>  # build a Docker image form a Dockerfile and a context 
+docker tag <my-app> <myrepo/my-app:v1.0> # creates an new alias for an existing Docker image. Useful for versioning
+docker push         # upload image from local machine to Docker registry 
+docker login        # logs you into a Docker register (after pull and push), username and pw needed
+```
+
+Other common commands use in Dockerfiles to clean up the image and reduce its size: 
+
+```{.bash .coder-overflow-wrap filename="Dockerfile"}
+RUN apt-get -y autoclean && \
+    apt-get -y autoremove && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/cache/apt/archives/*deb
+```
