@@ -199,4 +199,7 @@ Find pre-built singularity images:
 - [depot.galaxyproject.org](https://depot.galaxyproject.org/singularity/)
 - [Sylabs](https://cloud.sylabs.io/)
 
-Other training resources: [The turing way - reproducible research](https://book.the-turing-way.org/reproducible-research/) and [HPC intro by Cambridge](https://cambiotraining.github.io/hpc-intro)
+Other training resources: 
+- [The turing way - reproducible research](https://book.the-turing-way.org/reproducible-research/) 
+- [HPC intro by Cambridge](https://cambiotraining.github.io/hpc-intro)
+- Highly recommend *Reproducible Research II: Practices and Tools for Managing Computations and Data* by members of France Université Numérique. 

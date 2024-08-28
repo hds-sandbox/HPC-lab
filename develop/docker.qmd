@@ -6,19 +6,29 @@ date-modified: last-modified
 summary: workflow
 ---
 
+:::{.callout-note title="Content"}
+This section is divided into two main parts: 
+
+- Using Docker images 
+- Building custom Docker images 
+
+Refer to the [Docker commands overview](cheat_sheet.qmd#docker-commandline) for a handy checklist or quick reference. 
+:::
+
 :::{.callout-warning title="Requirements"}
 Register on Docker Hub at docker.com and follow the [Docker Desktop guide](https://docs.docker.com/desktop/) to get started. We recommend going through [this tutorial](https://docker-curriculum.com/) before diving in. 
 :::
 
-Docker helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management. Before diving into hands-on activities, make sure these three main concepts are clear:
+Docker enables developers build, share, run, and verify applicationsseamlessly across different environments, eliminating the need for complex environment configuration and management. Before diving into hands-on activities, ensure you understand these three key concepts:
 
 - **Image**: A docker image comprises a filesystem, default environment variables, a default command to execute, , and metadata about the image's creation and configuration.
 - **Container**: A container is a running instance of a Docker image. It represents an isolated process that operates independently from other processes on the system, using the image as its environment.
 - **Registry**: Registry: A registry is a repository for storing Docker images. Docker Hub is a public registry where many images can be found, but each local Docker daemon also maintains its own registry to manage and store images locally.
 
+
 ## Using Docker images 
 
-First, we’ll explore some basic commands using existing Docker images available on Docker Hub. This will help you become familiar with Docker's functionality before we dive into creating our own custom images. People commonly use shorthand Docker commands like `docker pull` and `docker run`, though the full versions (e.g., `docker image pull`, `docker container run`) can clarify the underlying concepts and their specific functions.
+First, we'll start by using basic commands with existing Docker images from Docker Hub. This will help you become familiar with Docker's functionality before we move on to creating our own custom images. While people commonly use shorthand Docker commands like `docker pull` and `docker run`, the full versions (e.g., `docker image pull`, `docker container run`) provide clearer insights into their underlying concepts and specific functions.
 
 **Docker Hub**
 
@@ -45,7 +55,7 @@ All Docker containers have a **digest** which is the`sha256` hash of the image. 
 
 
 :::{.callout-exercise title="Exercise init"}
-We use a [Debian stable image](https://hub.docker.com/layers/library/debian/stable-20240812/images/sha256-540ebf19fb0bbc243e1314edac26b9fe7445e9c203357f27968711a45ea9f1d4?context=explore) (sha256-540ebf19fb0bbc243e1314edac26b9fe7445e9c203357f27968711a45ea9f1d4) as an example for pulling and inspecting because it provides a reliable, minimal base with essential tools. This image includes fundamental utilities like `bash` for shell scripting and `apt` for package management. It can be an ideal starting point for developing and testing pipelines or configuring server environments, offering a stable and consistent foundation that can be customized with additional packages as needed.
+In this exercise, we will use a [Debian stable image](https://hub.docker.com/layers/library/debian/stable-20240812/images/sha256-540ebf19fb0bbc243e1314edac26b9fe7445e9c203357f27968711a45ea9f1d4?context=explore) (sha256-540ebf19fb0bbc243e1314edac26b9fe7445e9c203357f27968711a45ea9f1d4) as an example for pulling and inspecting Docker images. This image offers a reliable, minimal base with essential tools, including fundamental utilities like `bash` for shell scripting and `apt` for package management.  It's an excellent starting point for developing and testing pipelines or configuring server environments, providing a stable foundation that can be customized with additional packages as needed.
 
 **1. Get a container image**
 
@@ -105,11 +115,25 @@ Identify the date of creation, the name of the field with the digest of the imag
   ```
 :::
 
-When you exit a container, any changes made are lost because each new container starts in a clean state. Containers are isolated environments that don't retain memory of past interactions, allowing you to experiment without affecting your system. This immutability ensures that your program will run in the same conditions in the future, even months later. So, how can you retrieve the results of computations performed inside a container?
+<!--
+:::{.callout-exercise}
+# Extra exercise using rocker/rstudio 
+```
+docker pull rocker/rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+docker run -it rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+docker rmi rocker/rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+```
+:::
+-->
 
-Importantly, when running the Docker container using the command for mounting, it is recommended to execute it from the **temporary directory** (e.g. `/tmp/` ) or a **project-specific** directory rather than your home directory. This way you would keep a clean and isolated environment within the container. 
+When you exit a container, any changes made are lost because each new container starts in a clean state. Containers are isolated environments that don't retain memory of past interactions, allowing you to experiment without affecting your system. This immutability ensures that your program will run under the same conditions in the future, even months later. So, how can you retrieve the results of computations performed inside a container?
+
+To preserve your work, it is crucial to use Docker’s volume mounting feature. When running a Docker container with the `-v` (volume) option, it's best to execute the command from the **temporary directory** (e.g. `/tmp/` ) or a **project-specific** directory rather than your home directory. This practice helps maintain a clean and isolated environment within the container, while ensuring your results are saved in a designated location outside the container's ephemeral filesystem.
 
 #### Named volumes 
+
+Now, we will be using named volumes or shared directories. When you make changes in these directories within the container, the updates are immediately reflected in the corresponding directory on the host machine. This setup enables seamless synchronization between the container and the host file system.
+
 ```{.bash}
 # -v: mounting only your project-specific dir 
 docker run -it --volumes <project_dir>
@@ -118,17 +142,36 @@ docker volume create <my_project_volume>
 docker run -it --volumes <my_project_volume>
 ```
 
-Now, we're using named volumes or shared directories. When you make changes in these directories within the container, the updates are instantly reflected in the corresponding directory on the host machine. This allows seamless synchronization between the container and the host file system.
-
 :::{.callout-warning title="Why not mounting your home directory"}
-This is because the command mounts the current working directory (${PWD}) into the container at /home/rstudio. If you run this command from your home directory, any local packages or configurations (such as R or Python packages installed with install.packages or pip) would be accessible inside the container. This could compromise the isolation benefits of using the container, as it would inadvertently include your personal setup and packages.
+Mounting your current working directory (${PWD}) into the container at e.g. `/home/rstudio`can compromise the benefits of container isolation. If you run the command from your home directory, any local packages or configurations (such as R or Python packages installed with `install.packages` or `pip`) would be accessible inside the container.This inadvertently includes your personal setup and packages, potentially undermining the container’s intended clean and isolated environment. To maintain effective isolation, it's better to use a temporary or project-specific directory for mounting.
 :::
 
-It is important to store container images in a shared storage area (e.g., with git or git annex).
+Alternatively, you can add a volume to a project, by modifying the `compose.yaml` (also named `docker-compose.yml`) file. There are two types of volumes: 
+
+- Service-level name: specify how volumes are mounted inside the container. In this case, dataset volume (defined at the top-level) will be mounted to the `/path/in/container/` (e.g. data, results or logs directory) inside the myApp container. 
+- Top-level volume: volumes shared across multiple services in the compose.yaml file. The volume dataset can be referenced by any service and will be created if it doesn't exit. If the host path is not specified, Docker will automatically create and manage the volume in a default location on the host machine. However, if you need the volume to be located in a specific directory, you can specify the host path directly (option 2).  
+
+```{.bash filename="compose.yaml"}
+# Service-level name
+myApp:
+    # ...
+    volumes:
+      - dataset:/path/in/container/
+    # Option 2 
+    # - /my/local/path:/path/in/container/
+                      
+# Top-level volume
+volumes:
+  dataset:
+```
+
+In this case, a volume named `mydata` will be mounted to the /data/ directory inside the container running the todo-databse service. 
+
+Let’s not forget to track changes to container images for reproducibility by using version control. Store your images in a shared storage area, such as with Git or Git Annex, to manage versions and facilitate collaboration.
 
 ### Transfer and backup Docker images 
 
-Saving a Docker image as a tar file is useful because it enables you to transfer the image to another system or operating system without needing access to the original Docker registry. The tar file contains several key components: 
+Saving a Docker image as a tar file is useful for transferring the image to another system or operating system without requiring access to the original Docker registry. The tar file contains several key components: 
 
 - metadata: JSON files essential to reconstruct the image 
   - **layer information** with each layer associated with metadata that includes which commands are used to create the later.
@@ -148,8 +191,7 @@ docker image save --output=image.tar image_name
 # load tar file
 docker image load --input=image.tar  
 ```
-
-In some cases, you might only need to access the content of the filesystem of a Docker image (debugging, backup, repurposing. In such cases, you will need to create the container and export the root's filesystem to a tar file. Similarly, you can create a new image from the tar file. 
+In some situations, you may need to access the filesystem content of a Docker image for purposes such as debugging, backup, or repurposing. To do this, you should create a container from the image and then export the container's root filesystem to a tar file. Similarly, you can create a new Docker image from this tar file if needed.
 
 ```{.bash}
 docker container create --name=temp_container image_name
@@ -163,15 +205,28 @@ docker image import --input image.tar image_name
 
 We’re now ready to build custom Docker images. We’ll start with a minimal pre-built image, add the necessary software, and then upload the final image to Docker Hub. 
 
-A common practice is to start with a minimal or pre-configured image from Docker Hub. You then use a **Dockerfile** to modify this base image, specifying instructions for software installation and configuration. he Dockerfile acts as a recipe, providing a list of commands to build the image as needed.
+A common practice is to start with a minimal image from Docker Hub. There are many base images you can use to start building your customized Docker image, and the key difference between them lies in what they already include. For example:
+
+- Debian: This is a very minimal base image, including only the most essential utilities and libraries required to run Debian, such as the core Linux utilities and the package manager (apt). It offers a high degree of customization, giving you full control over what you install. However, you'll need to manually add all the necessary software, making the setup process longer. This image is relatively small in size, making it a good starting point if you want to build your environment from scratch.
+
+- Data Science-Specific Images: These images come pre-configured with a wide range of tools pre-installed, reducing the amount of customization needed. This allows you to get started much faster, though it also means less flexibility. These images tend to be larger in size due to the pre-installed software. For example:
+
+  - tensorflow/tensorflow: This image includes TensorFlow and often other machine learning libraries, making it ideal for deep learning projects.
+  - jupyter/scipy-notebook: This image is around 2-3 GB and includes Python, Jupyter Notebook, and libraries like NumPy, Pandas, Matplotlib, and more, making it a comprehensive option for data science tasks.
+  - r-base: This image provides a base for R environments, useful for data analysis and statistical computing.- 
+  - rocker/rstudio: This image includes RStudio and a base R environment, making it perfect for those working in R for statistical computing and data analysis.
+
+
+Once you have chosen your base image, use a **Dockerfile** to modify its components, specifying commands for software installation and configuration. The Dockerfile acts as a recipe, providing a list of steps to build the image.
 
 ```{.bash filename="Dockerfile"}
 # deploy docker container
-FROM node
+FROM <node|debian|python|jupyter-base>
 
 # Info and rights of the app
 LABEL software="App_name - sandbox" \
-    maintainer="<author.address@sund.ku.dk>"
+    maintainer="<author.address@sund.ku.dk>"  \
+    version="YYYY.MM.DD" 
 
 # root: needed to install and modify the container 
 USER 0 
@@ -179,10 +234,11 @@ USER 0
 # run bash commands (eg. installing packages or softwares)
 RUN mkdir -p
 
-# 
+# install packages & dependencies 
 RUN apt update \
     && apt install -y jupyter-notebook python3-matplotlib python3-pandas python3-numpy  \
-    && rm -fr node_modules # removes dependencies
+    && rm -rf /var/lib/apt/lists/* # cleanup tmp files created by apt
+    && rm -fr node_modules # remove directory which contains Node.js packages & dependencies
 
 # set working directory (this directory should act as the main application directory)
 WORKDIR /app
@@ -193,14 +249,14 @@ COPY /from/path/... /to/path/...
 # set environment variables for Conda
 ENV
 
-# change up user permissions 
+# switch to user 1000 instead of the default root user 
 USER 11042
 ```
 
-In this example, as indicated with the RUN  command, it will update the package list and install jupyter and everything else required. It is a common practice to remove dependencies with the command in the example above. 
+In this example, the `RUN` command updates the package list and installs Jupyter along with all necessary dependencies. It's common practice to remove unnecessary dependencies afterward, as shown in the example above.
 
 :::{.callout-note title="Label" collpase="true"}
-Key-value pair syntax, where should add at least these labels to the container:
+Use key-value pair syntax to add the following labels to the container:
 
 - software = name of the app
 - author = maintainer or author of the app
@@ -209,51 +265,129 @@ Key-value pair syntax, where should add at least these labels to the container:
 - description = very short description of the app
 :::
 
-After preparing your Dockerfile, run `docker build` to create a new image based on these instructions. Docker’s isolation ensures that any changes made within a container are lost when you exit. Nevertheless, you can use `docker commit` to save these changes by creating a new image from the updated container. This new image can then be used to create containers with your modifications.
+After preparing your Dockerfile, use the `docker build` command to create a new image based on those instructions. Docker’s isolation ensures that any changes made within a container are lost when you exit it. Nevertheless, you can use `docker commit` to save these changes by creating a new image from the updated container.This new image will retain your modifications and can be used to launch new container.
 
 ```{.bash}
-docker build -t 
+docker build -t <account/app:version> <directory_docker>
 ```
 
--p: port to use, usually 8787:8787 works for R studio
-  - R studio: 8787:8787
-  - JupyterLab: 8888:8888
+:::{.callout-note collpase="true"}
+# Example of a tag name
+For the `docker build -t` flag, the format of the tag is used to specify both the repository and the version of the Docker image. It consists of three different elements (e.g.: `albarema/sandbox_app:v1.0`): 
 
+- Repository name where the image will be stored, account in Docker registry (e.g. albarema)
+- Name of the image (e.g. sandbox_app)
+- Version label for the image (e.g. v1.0, test, etc.)
+:::
 
+:::{.callout-exercise title="Exercise 1: create your docker image"}
+1. Create a Dockerfile in a project-specific dir (e.g.: sandbox-debian-jupyter). We will add a command to clean up the package after after installation used to reduce the image size.  
 
-<!--
-```{.bash title="Singularity"}
-MAC: export VM=sylabs/singularity-3.0-ubuntu-bionic64 && \
-    vagrant init $VM && \
-    vagrant up && \
-    vagrant ssh
+```{.bash}
+FROM debian:stable 
 
-singularity pull docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912
+LABEL maintainer="Name Surname <abd123@ku.dk>"
 
-# creates a sif 
-singularity shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif
+# Update package list and install necessary packages
+RUN apt update \
+    && apt install -y jupyter-notebook \
+                      python3-matplotlib \
+                      python3-pandas \
+                      python3-numpy \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* # cleanup tmp files created by apt
 
-gzip --version # same as docker
-hostname # vagrant (macß) different
-whoami # vagrant (docker is root)
+# You may consider adding a working directory
+WORKDIR /notebooks
 
-Install 
-singularity shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif
-
-> apt-get install filter
-
-Alternative commands: singularity exec docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912 bash -c "apt install filter 2>&1 || true "
+# and a command to start Jupyter Notebook
+# CMD ["jupyter-notebook", "--ip=0.0.0.0", "--allow-root"]
 ```
+2. Build the Docker image using, for example, `docker build -t albarema/sandbox-debian-jupyter:1.0 sandbox-debian-jupyter`
+:::
+
+### Testing the custom image 
+
+Let's verify if the custom image functions as expected, running the following command: 
+```{.bash .code-overflow-wrap filename="Terminal"}
+docker run --rm -p 8888:8888 --volume=$(pwd):/root albarema/sandbox-debian-jupyter:1.0 jupyter-notebook
+```
+
+Jupyter typically refuses to run as root or accept network connections by default. To address this, you need to either add `--ip=0.0.0.0 --allow-root` when starting Jupyter to the command above or uncomment the last line in the Dockerfile above (`CMD ["jupyter-notebook", "--ip=0.0.0.0", "--allow-root"]`). Alternatively, you can run the container with the flag `--user=$(id -u):$(id -g)`to ensure that files created in the container have matching user and group ownership with those on the host machine, preventing permission issues. However, this restricts the container from performing root-level operations. For broader usability and security, it is advisable to create a non-root user (e.g. jovyan) within the Docker image by adding user setup commands to the Dockerfile (see below). This approach makes the image more user-friendly and avoids file ownership conflicts.
+
+```{.bash filename="Dockerfile"}
+# Creating a group & user
+RUN addgroup --gid 1000 user && \
+    adduser --uid 1000 --gid 1000 --gecos "" --disabled-password jovyan
+# Setting active user 
+USER jovyan
+# setting working directory 
+WORKDIR /home/jovyan
+```
+
 :::{.callout-tip}
-# The docker tag step is required as singularity has sometimes trouble handling the sha256: image description
+- Use `--rm` flag to remove automatically the container once it stops running to avoid clustering your system with stopped containers.
+- Use `--volume` to mount data into the container (`/root`), for example, your working directory 
+- Use `--file` flag to test to dockerfile versions (default:"PATH/Dockerfile")
+```{.bash .code-overflow-wrap}
+docker build -t albarema/sandbox-debian-jupyter:2.0 sandbox-debian-jupyter -f sandbox-debian-jupyter/Dockerfile2
+```
 :::
 
-:::{.callout-exercise}
-1. docker pull rocker/rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
-docker run -it rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+Now that we have fixed that problem, we will test A. using a port to launch a Jupyter Notebook (or Rstudio server) and B. starting a bash shell interactively. 
 
-2. docker rmi rocker/rstudio@sha256:74cd0a76855cb1065dd04293df990e7f8003db2e97c2f0cc740062d445d9fcf4
+```{.bash .code-overflow-wrap}
+# Option A. Start jupyter-notebook or on the server 
+docker run --rm -p 8888:8888 --volume=$(pwd):/home/jovyan albarema/sandbox-debian-jupyter:1.0 jupyter-notebook --ip=0.0.0.0 --allow-root
+
+# Option B. Start an interactive shells instead 
+docker run -it --rm sandbox-debian-jupyter:1.0 /bin/bash
+```
+
+:::{.callout-warning title="Which port to use?"}
+The `-p` option in Docker allows services (e.g.: Jupyter Notebooks) running inside the container to be accessible from outside (through `localhost:1234` on your local machine). 
+
+- `-p host_port:container_port` # port mappings between the host machine and the container
+- `-p 8787:8787` # connect port `8787` on the host machine to port `8787` inside the container. This setup allows you to access **RStudio**, which is running inside the container, by navigating to http://localhost:8787 on your host machine
+- `-p 8888:8888` # similarly, this setup enables you to access **JupyterLab**, which is running inside the container, by going to http://localhost:8888 on your host machine.
 :::
--->
+
+### Create a new app from scratch 
+
+When working with containers, you usually need to create a Dockerfile to define your image and compose.yaml file that defines how to run it. As an alternative to starting with a base image and modifying it, you can use the following command:
+
+```{.bash}
+docker init
+```
+
+This utility will walk you through creating the following files with sensible defaults for your project:
+
+```
+- .dockerignore
+- Dockerfile
+- compose.yaml
+- README.Docker.made
+```
+
+### Publish your Docker image on Docker Hub
+
+Publishing your Docker image on Docker Hub is straightforward. You just need a Docker Hub account—preferably linked to your GitHub account if you have one. For detailed instructions, refer to the [documentation](https://docs.docker.com/reference/cli/docker/image/push/). The process involves only a few commands.
+
+```{.bash .code-overflow-wrap}
+# login
+docker login # <username> <pw>
+# optional change tag
+# docker tag <old> <new>
+# push image 
+docker push albarema/sandbox-debian-jupyter:1.0
+```
+
+In Docker, the file system of an image is built using several layers, or **overlays**. Each layer represents a set of changes or additions made to the image. When you update software or packages within a Docker container, a new layer is created with only the new or changed content, rather than modifying the existing layers. 
+
+You are now ready to share the link to your Docker image with your colleagues, ensuring that everyone uses the exact same environment.
 
 
+
+## Sources
+
+- [Docker Hub](https://hub.docker.com/)

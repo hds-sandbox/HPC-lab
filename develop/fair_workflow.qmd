@@ -149,3 +149,4 @@ If you develop your own software make sure you follow FAIR principles. We highly
 - Köster, Johannes. "Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis", PhD thesis, TU Dortmund 2014.
 - [faircookbook worflows](https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html)
 - [The turing way - reproducible research](https://the-turing-way.netlify.app/reproducible-research)
+- Parts of the content are inspired by *Reproducible Research II: Practices and Tools for Managing Computations and Data* by members of France Université Numérique. Enroll [here](https://www.fun-mooc.fr/en/courses/reproducible-research-ii-practices-and-tools-for-managing-comput/). 

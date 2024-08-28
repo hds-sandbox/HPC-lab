@@ -7,7 +7,84 @@ summary: workflow
 ---
 
 :::{.callout-warning title="Requirements"}
-Install singularity
+- Install [singularity](https://docs.sylabs.io/guides/3.5/user-guide/quick_start.html#quick-installation-steps)
+- Read the [documentation](https://docs.sylabs.io/guides/3.5/user-guide/introduction.html)
 :::
 
+## Building SIF images 
+
 The equivalent to a *Dockerfile* for singularity is *Singularity definition file* where the instructions for the image are specified. 
+
+```{.bash .code-overflow-wrap}
+Bootstrap: docker
+From: debian:stable
+Stage: build
+
+%post
+    apt-get update && apt-get install -y jupyter-notebook python3-matplotlib python3-pandas python3-numpy
+%labels
+    Author Name Surname <abc123@ku.dk>
+    Version v1.0
+```
+
+```{.bash}
+# Build the image
+singularity build --fakeroot  <my-app>.sif <my-app>.def
+# Run the container 
+singularity run <my-app>.sif jupyter-notebook 
+```
+
+:::{.callout-note title="Tips"}
+Limitations
+
+- Keep in mind that Singularity always operates using your user ID, meaning you cannot switch to the root user inside a Singularity container. This will cause troubles when installing package managers like `apt`. 
+- SIF images are not writable by default. 
+
+Solution
+
+- `--fakeroot` option is used to create a container image with root-like permissions without requiring actual root access on the host system. This is particularly useful for users who need to build or modify containers (installing software) in environments where they do not have superuser privileges. 
+:::
+
+## Using Docker images 
+
+Let's use the same docker image as in the Docker section. 
+
+```{.bash .code-overflow-wrap}
+singularity pull docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912
+
+# creates a sif 
+singularity shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif
+
+# Let's check a couple commands on the host machine  (as we did in the previous module)
+
+gzip --version # same as docker
+hostname # vagrant (macß) different
+whoami # vagrant (docker is root)
+
+# deploy the container  
+singularity shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif
+
+# Install filter in the container 
+apt-get install filter
+
+# Alternative command to install filter
+singularity exec docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912 bash -c "apt install filter 2>&1 || true "
+```
+
+:::{.callout-tip}
+The docker tag (`docker://`) step is required as singularity has sometimes trouble handling the sha256, image description. 
+
+Other important information to consider: 
+
+- Singularity Hub is no longer maintained. Alternatives: git-annex for hosting images. 
+- SIF images are much smaller than Docker images. 
+:::
+
+<!--
+```{.bash title="Singularity on MAC OS"}
+export VM=sylabs/singularity-3.0-ubuntu-bionic64 && \
+vagrant init $VM && \
+vagrant up && \
+vagrant ssh
+```
+-->

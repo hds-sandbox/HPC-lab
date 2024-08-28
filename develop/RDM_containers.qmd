@@ -1,0 +1,51 @@
+---
+title: RDM for containers
+format: 
+  html
+date-modified: last-modified
+summary: container
+---
+
+Now that you're familiar with containers, it's time to focus on making them reproducible and ensuring good Research Data Management (RDM) practices.
+
+- **Be cautious with base images**: If you're using a tag like debian:stable, keep in mind that the content will change over time as Debian updates its stable release. What you use today might differ in a few days or weeks.
+- When you run apt update, you refresh the list of available packages. Even in a Debian Stable branch, the package list can change over time, particularly if sources like stable-updates or stable-security are included. As a result, the packages available for installation today might differ from those available a few days later. This variability is even more significant if you are using the Unstable or Testing branches, where package lists are updated more frequently.
+- **Verify external downloads**: When using tools like wget or curl to download resources, always back them up with checks to verify the content of the URLs. This ensures you're getting the expected files, as content from external sources can change.
+
+The current approach that we introduce on the Docker lesson has a significant drawback: it doesn't ensure a reproducible environment because it depends on external servers and services that frequently update. If you lose your Docker image, you might not be able to rebuild it or even know precisely what was in it. You could save the output of the commands below alongside your Dockerfile. This information will be crucial if you need to rebuild the image.
+
+```{.bash .code-overflow-wrap}
+# Retrieve info on when the image was built: 
+docker image history albarema/sandbox-debian-jupyter:1.0 --human=false
+# List version of software installed 
+docker run albarema/sandbox-debian-jupyter:1.0 dpkg --list
+
+```
+**How do we improve reproducibility?**
+- **Specify the versioned base image**: use a specific version of your base image in the Dockerfile (e.g., FROM debian:stable-20240812). Be aware that even with a versioned tag, maintainers or Docker Hub admins could introduce silent changes and update the image.
+- **Use a SHA256 Digest**: for the highest level of reproducibility, specify the base image using its SHA256 digest, which is a unique identifier. This ensures that you're using the exact same image every time, with no risk of unexpected changes.
+
+```{.bash filename="Dockerfile" .code-overflow-wrap}
+FROM debian:stable-20240812@:sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912
+```
+
+<!--
+To ensure a consistent package list in your Docker image, use [Debian’s snapshot service](https://snapshot.debian.org/) to reference archived package states from specific dates `docker run debian:stable-20240812 sed /etc/apt/sources.list -e '/^deb /d' -e 's|^# deb|deb|'`.Adding this command before `apt update` to your Dockerfile, allows you to maintain reproducibility and control over the packages installed, regardless of updates or changes in the main Debian repositories.
+
+```{.bash filename="Dockerfile.reproducible"}
+RUN sed -i /etc/apt/sources.list -e '/^deb /d' -e 's|^# deb|deb|'
+RUN apt update -o Acquire::Check-Valid-Until=false \
+    && apt install -y jupyter-notebook python3-matplotlib python3-pandas python3-numpy
+```
+
+:::{.callout-note}
+You’ll likely find that downloading from snapshot.debian.org is slower compared to traditional Debian mirrors, as it may not be as well-resourced in terms of computing and network capacity. Please use this service responsibly to avoid overloading it.
+
+`-o Acquire::Check-Valid-Until=false` option prevents warnings related to the release being expired and not being able to update. Read more on the topic in this [example](https://unix.stackexchange.com/questions/2544/how-to-work-around-release-file-expired-problem-on-a-local-mirror). 
+:::
+--> 
+
+## Sources
+
+- Content adapted from *Reproducible Research II: Practices and tools for managing computations and data* by members of France Universite Numerique. 
+
