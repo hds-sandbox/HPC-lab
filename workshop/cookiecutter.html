@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Singularity – HPC Lab</title>
+<title>Data structure – HPC Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -136,11 +136,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">HPC launch</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../develop/pipes_intro.html" aria-current="page"> 
+    <a class="nav-link" href="../develop/pipes_intro.html"> 
 <span class="menu-text">HPC pipes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../workshop/cookiecutter.html"> 
+    <a class="nav-link active" href="../workshop/cookiecutter.html" aria-current="page"> 
 <span class="menu-text">Workshop</span></a>
   </li>  
 </ul>
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/singularity.html">Singularity</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">Data structure</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -187,16 +187,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/pipes_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Computational environments</span></a>
+ <span class="menu-text">HPC Launch</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -204,73 +198,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/fair_envs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FAIR environments</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/docker.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Docker</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/singularity.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Singularity</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/RDM_containers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">RDM for containers</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/cheat_sheet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cheat sheet</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Pipeline languages</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/fair_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FAIR computational pipelines</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/smk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Snakemake</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/nextflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Nextflow</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/workflow_envs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workflows &amp; environments</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/exercise_pipes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exercises</span></a>
+  <a href="../workshop/cookiecutter.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data structure</span></a>
   </div>
 </li>
       </ul>
@@ -280,22 +209,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#building-sif-images" id="toc-building-sif-images" class="nav-link active" data-scroll-target="#building-sif-images">Building SIF images</a></li>
-  <li><a href="#using-docker-images" id="toc-using-docker-images" class="nav-link" data-scroll-target="#using-docker-images">Using Docker images</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/singularity.html">Singularity</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">Data structure</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Singularity</h1>
+<h1 class="title">Data structure</h1>
 </div>
 
 
@@ -318,7 +238,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-warning callout-titled" title="Requirements">
+<section id="collect-document" class="level2">
+<h2 class="anchored" data-anchor-id="collect-document">Collect &amp; Document</h2>
+<p>Let’s start with some practical exercises focused on implementing tools that will help you with the collect &amp; document data life cycle phase.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -328,100 +251,257 @@ Requirements
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>You are expect to complete the required setup, including tool installation and account creation.</p>
 <ul>
-<li>Install <a href="https://docs.sylabs.io/guides/3.5/user-guide/quick_start.html#quick-installation-steps">singularity</a></li>
-<li>Read the <a href="https://docs.sylabs.io/guides/3.5/user-guide/introduction.html">documentation</a></li>
+<li>A <a href="https://github.com/">GitHub account</a> for hosting and collaborating on projects</li>
+<li><a href="https://git-scm.com/downloads">Git</a> for version control of your projects</li>
+<li>A <a href="https://zenodo.org/">Zenodo account</a> for archiving and sharing your research outputs</li>
+<li><a href="https://www.python.org/">Python</a></li>
+<li><a href="https://pip.pypa.io/en/stable/installation/">pip</a> for managing Python packages</li>
+<li><a href="https://cookiecutter.readthedocs.io/en/stable/">Cookicutter</a> for creating folder structure templates (<code>pip install cookiecutter</code>)</li>
+<li><a href="https://cruft.github.io/cruft/">cruft</a> to version control your templates (<code>pip install cruft</code>)</li>
 </ul>
 </div>
 </div>
-<section id="building-sif-images" class="level2">
-<h2 class="anchored" data-anchor-id="building-sif-images">Building SIF images</h2>
-<p>The equivalent to a <em>Dockerfile</em> for singularity is <em>Singularity definition file</em> where the instructions for the image are specified.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Bootstrap:</span> docker</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">From:</span> debian:stable</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Stage:</span> build</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">%post</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> jupyter-notebook python3-matplotlib python3-pandas python3-numpy</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">%labels</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Author</span> Name Surname <span class="op">&lt;</span>abc123@ku.dk<span class="op">&gt;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Version</span> v1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the image</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> build <span class="at">--fakeroot</span>  <span class="op">&lt;</span>my-app<span class="op">&gt;</span>.sif <span class="op">&lt;</span>my-app<span class="op">&gt;</span>.def</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the container </span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> run <span class="op">&lt;</span>my-app<span class="op">&gt;</span>.sif jupyter-notebook </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-note callout-titled" title="Tips">
+<p>Establishing a consistent file structure and naming conventions will help you efficiently manage your data. We will classify your data and data analyses into two distinct types of folders to ensure the data can be used and shared by many lab members while preventing modifications by any individual:</p>
+<ul>
+<li>Data folders: store raw and processed datasets, the workflow/pipeline used, data provenance, and quality control reports. These folders should be locked and read-only to prevent changes, with MD5 checksums used to verify data integrity.</li>
+<li>Project folders: contain all necessary files for a specific research project (scripts, results, intermediate files, etc.)</li>
+</ul>
+<section id="setting-up-folder-templates" class="level3">
+<h3 class="anchored" data-anchor-id="setting-up-folder-templates">Setting up folder templates</h3>
+<p>Creating a folder template is straightforward with <a href="https://github.com/cookiecutter/cookiecutter">cookiecutter</a> a command-line tool that generates projects from templates (called cookiecutters). You can do it from scratch (see Exercise 1, part B) or opt for one of our pre-made templates available as a Github repository (recommended for this workshop).</p>
+<p>Now, let’s try it out.</p>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1: Get familiar with Cookiecutter
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise">
+<ol type="1">
+<li>Use our cookiecuter-template and fill-up the variables</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cookiecutter</span> https://github.com/hds-sandbox/cookiecutter-template</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Explore the project structure (e.g., <code>ls -l</code>)</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>You’re ready to customize your own template! Explore the following folder structure and the types of files you might encounter. How does it compare to your own setup?</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>project<span class="op">&gt;</span>_<span class="op">&lt;</span>keyword<span class="op">&gt;</span>_YYYYMMDD</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> data                    <span class="co"># symlinks or shorcuts to the actual data files </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └── <span class="op">&lt;</span>ID<span class="op">&gt;</span>_<span class="op">&lt;</span>keyword<span class="op">&gt;</span>_YYYYMMDD</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> documents               <span class="co"># docs and files relevant to the project </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └── research_project_template.docx</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> metadata.yml            <span class="co"># variables or key descriptors of the project or data</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> notebooks               <span class="co"># notebooks containing the data analysis</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └── 01_data_processing.rmd</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └── 02_data_analysis.rmd</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └── 03_data_visualization.rmd</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> README.md               <span class="co"># detailed description of the project</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> reports                 <span class="co"># notebooks rendered as HTML/PDF for sharing </span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └── 01_data_processing.html</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └── 02_data_analysis.html</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  ├── 03_data_visualization.html</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │  └── figures</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │  └── tables</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> requirements.txt // env.yaml <span class="co"># file listing necessary software, libs and deps</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> results                 <span class="co"># output from analyses, figs and tables</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  ├── figures</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │  └── 02_data_analysis/</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │    └── heatmap_sampleCor_20230102.png</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  ├── tables</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │  └── 02_data_analysis/</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │    └── DEA_treat-control_LFC1_p01.tsv</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │    └── SumStats_sampleCor_20230102.tsv</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> pipeline                <span class="co"># pipeline scripts </span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  ├── rules // processes </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │  └── step1_data_processing.smk</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └── pipeline.md</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> scratch                 <span class="co"># temporary files or workspace for dev </span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> scripts                 <span class="co"># other scripts </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tips
+For non-GitHub users
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Limitations</p>
+<p>If you haven’t created a GitHub account or are not comfortable using it yet, you can skip step 1. In step 2, use the sandbox URL instead by running the following command:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/hds-sandbox/cookiecutter-template</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: Use and adapt the Sandbox template
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise">
+<p>While we’ll clone a sample template, you’re encouraged to modify it to fit your specific needs—you’re not limited to following our example exactly.</p>
+<ol type="1">
+<li><p>Go to our <a href="https://github.com/hds-sandbox/cookiecutter-template">Cookicutter template</a> and click on the <strong>Fork</strong> button at the top-right corner of the repository page to create a copy of the repository on your own GitHub account or organization. <img src="./images/fork_repo_project.png" class="img-fluid" alt="fork_repo_example"></p></li>
+<li><p>Open a terminal on your computer, copy the URL of your fork and <strong>clone</strong> the repository to your local machine (the URL should look something like https://github.com/your_username/cookiecutter-template):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>your URL to the template<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you have a GitHub Desktop, click <em>Add</em> and select <em>Clone repository</em> from the options.</p></li>
+<li><p>Navigate to the cloned repository (<code>cd cookiecutter-template</code>) and navigate through the different directories.</p></li>
+<li><p>Modify the contents of the repository as needed to fit your project’s requirements. You can change files, add new ones, remove existing one or adjust the folder structure. For inspiration, review the data structure above under ‘Project folder’. Our Cookiecutter template is missing the ‘reports’ directory or the ‘requirements.txt’ file. Consider creating them, along with a subdirectory named ‘reports/figures’.</p>
+<pre class="plaintext"><code>├── results/
+│   ├── figures/
+├── requirements.txt</code></pre></li>
+</ol>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>Here’s an example of how to do it. Open your terminal and navigate to your template directory</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="dt">\{\{\ </span>cookiecutter.project_name\ \}\}/  </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> reports </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="5" type="1">
+<li>Utilize the template</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb7" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cookiecutter</span> cookiecutter-template</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Fill up the variables and verify that the new structure (and folders) looks like you would expect. Have any new folders been added, or have some been removed?</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Example bash commands</strong></pre>
+</div>
+<div class="sourceCode" id="cb8" data-filename="Example bash commands"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming the name of the project is 'myproject_sep24'</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> myproject_sep24 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Optional (for those already familiar with <code>git</code> and <code>GitHub</code>)</strong></p>
+<ol start="6" type="1">
+<li>Commit and push changes when you are done with your modifications.</li>
+</ol>
 <ul>
-<li>Keep in mind that Singularity always operates using your user ID, meaning you cannot switch to the root user inside a Singularity container. This will cause troubles when installing package managers like <code>apt</code>.</li>
-<li>SIF images are not writable by default.</li>
+<li>Stage the changes with <code>git add</code>.</li>
+<li>Commit the changes with a meaningful commit message <code>git commit -m "update cookicutter template"</code>.</li>
+<li>Push the changes to your forked repository on Github <code>git push origin main</code> (or the appropriate branch name).</li>
 </ul>
-<p>Solution</p>
+<ol start="7" type="1">
+<li>Use cookiecutter on the new template! <code>cookiecutter &lt;URL to your GitHub repository "cookicutter-template"&gt;</code></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>If you’ve completed the tasks quickly and have time left, feel free to tackle the optional final exercise.</p>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bonus exercise
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise">
+<p>Create a template from scratch using this tutorial <a href="https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html">scratch</a>, it can be as basic as this one below or ‘Data folder’:</p>
+<pre class="plaintext"><code>my_template/
+|-- {{cookiecutter.project_name}}
+|   |-- main.py
+|-- tests
+|   |-- test_{{cookiecutter.project_name}}.py
+|-- README.md</code></pre>
 <ul>
-<li><code>--fakeroot</code> option is used to create a container image with root-like permissions without requiring actual root access on the host system. This is particularly useful for users who need to build or modify containers (installing software) in environments where they do not have superuser privileges.</li>
+<li>Step 1: Create a directory for the template (like the one above).</li>
+<li>Step 2: Write a cookiecutter.json file with variables such as project_name and author.</li>
+</ul>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<div class="sourceCode" id="cb10"><pre class="sourceCode json code-overflow-wrap code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"project_name"</span><span class="fu">:</span> <span class="st">"MyProject"</span><span class="fu">,</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"author_name"</span><span class="fu">:</span> <span class="st">"Your Name"</span><span class="fu">,</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"A short description of your project"</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul>
+<li>Step 3: Set up the folder structure by creating subdirectories and files as needed.</li>
+<li>Step 4: Incorporate cookiecutter variables in the names of files (<code>test_{{cookiecutter.project_name}}.py</code>).</li>
+<li>Step 5: Use cookiecutter variables within scripts opr metadata files (e.g., such as printing a message that includes the project name or the metadata file gets automatically populated with the cookiecutter variables),<br>
+</li>
 </ul>
 </div>
 </div>
+</div>
+</div>
+</div>
+
+
 </section>
-<section id="using-docker-images" class="level2">
-<h2 class="anchored" data-anchor-id="using-docker-images">Using Docker images</h2>
-<p>Let’s use the same docker image as in the Docker section.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># creates a sif </span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's check a couple commands on the host machine  (as we did in the previous module)</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">gzip</span> <span class="at">--version</span> <span class="co"># same as docker</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span> <span class="co"># vagrant (macß) different</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span> <span class="co"># vagrant (docker is root)</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># deploy the container  </span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Install filter in the container </span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install filter</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative command to install filter</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912 bash <span class="at">-c</span> <span class="st">"apt install filter 2&gt;&amp;1 || true "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The docker tag (<code>docker://</code>) step is required as singularity has sometimes trouble handling the sha256, image description.</p>
-<p>Other important information to consider:</p>
-<ul>
-<li>Singularity Hub is no longer maintained. Alternatives: git-annex for hosting images.</li>
-<li>SIF images are much smaller than Docker images.</li>
-</ul>
-</div>
-</div>
-<!--
-```{.bash title="Singularity on MAC OS"}
-export VM=sylabs/singularity-3.0-ubuntu-bionic64 && \
-vagrant init $VM && \
-vagrant up && \
-vagrant ssh
-```
--->
-
-
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->

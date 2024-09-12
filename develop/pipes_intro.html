@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Singularity – HPC Lab</title>
+<title>Introduction – HPC Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -107,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -167,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/singularity.html">Singularity</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/pipes_intro.html">Introduction</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -189,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/pipes_intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../develop/pipes_intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -216,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/singularity.html" class="sidebar-item-text sidebar-link active">
+  <a href="../develop/singularity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Singularity</span></a>
   </div>
 </li>
@@ -280,22 +246,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#building-sif-images" id="toc-building-sif-images" class="nav-link active" data-scroll-target="#building-sif-images">Building SIF images</a></li>
-  <li><a href="#using-docker-images" id="toc-using-docker-images" class="nav-link" data-scroll-target="#using-docker-images">Using Docker images</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/singularity.html">Singularity</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Singularity</h1>
+<h1 class="title">Introduction</h1>
 </div>
 
 
@@ -318,108 +275,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-warning callout-titled" title="Requirements">
+<div class="callout callout-style-default callout-note callout-titled" title="Course Overview">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Requirements
+Course Overview
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Install <a href="https://docs.sylabs.io/guides/3.5/user-guide/quick_start.html#quick-installation-steps">singularity</a></li>
-<li>Read the <a href="https://docs.sylabs.io/guides/3.5/user-guide/introduction.html">documentation</a></li>
+<li>👨‍💻 <strong>Target Audience:</strong> Anyone interested in workflow management systems and software environments.</li>
+<li>👩‍🎓 <strong>Level:</strong> Advanced.</li>
+<li>🔒 <strong>License:</strong> <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license.</a><br>
+</li>
+<li>💰 <strong>Funding:</strong> This project was funded by the Novo Nordisk Fonden (NNF20OC0063268).</li>
 </ul>
 </div>
 </div>
-<section id="building-sif-images" class="level2">
-<h2 class="anchored" data-anchor-id="building-sif-images">Building SIF images</h2>
-<p>The equivalent to a <em>Dockerfile</em> for singularity is <em>Singularity definition file</em> where the instructions for the image are specified.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Bootstrap:</span> docker</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">From:</span> debian:stable</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Stage:</span> build</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">%post</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> jupyter-notebook python3-matplotlib python3-pandas python3-numpy</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">%labels</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Author</span> Name Surname <span class="op">&lt;</span>abc123@ku.dk<span class="op">&gt;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Version</span> v1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the image</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> build <span class="at">--fakeroot</span>  <span class="op">&lt;</span>my-app<span class="op">&gt;</span>.sif <span class="op">&lt;</span>my-app<span class="op">&gt;</span>.def</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the container </span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> run <span class="op">&lt;</span>my-app<span class="op">&gt;</span>.sif jupyter-notebook </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-note callout-titled" title="Tips">
+<p>The course “HPC pipes” is designed to provide participants with foundational knowledge and practical skills in writing reproducible pipelines. As part of effective data management, it is crucial that researchers create reproducible analyses that enable others to validate and build upon their work. We will explore essential elements of reproducibility and efficiency in computational research, highlighting techniques and tools for creating robust and transparent coding and workflows. By prioritizing reproducibility and replicability, researchers can enhance the credibility and impact of their findings while fostering collaboration and knowledge dissemination within the scientific community. T, ensuring that you can handle your projects with ease. For more details on practical RDM strategies, explore our on <a href="https://hds-sandbox.github.io/RDM_NGS_course/">practical RDM for biodata</a> for more details.</p>
+<p><strong>HPC-pipes</strong> is divided into two main sections:</p>
+<ul>
+<li><strong>Computational environments</strong></li>
+<li><strong>Pipeline languages</strong></li>
+</ul>
+<div class="callout callout-style-default callout-warning callout-titled" title="Course Requirements">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tips
+Course Requirements
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Limitations</p>
+<p>It is important to be familiar with unix and python. Follow the tutorials in the links below if you need a refresher.</p>
 <ul>
-<li>Keep in mind that Singularity always operates using your user ID, meaning you cannot switch to the root user inside a Singularity container. This will cause troubles when installing package managers like <code>apt</code>.</li>
-<li>SIF images are not writable by default.</li>
-</ul>
-<p>Solution</p>
-<ul>
-<li><code>--fakeroot</code> option is used to create a container image with root-like permissions without requiring actual root access on the host system. This is particularly useful for users who need to build or modify containers (installing software) in environments where they do not have superuser privileges.</li>
+<li>Command Line experience (<a href="https://swcarpentry.github.io/shell-novice/01-intro.html">Software Carprentry Shell</a>)</li>
+<li>Programming experience (<a href="https://swcarpentry.github.io/python-novice-inflammation/">Python</a>)</li>
 </ul>
 </div>
 </div>
-</section>
-<section id="using-docker-images" class="level2">
-<h2 class="anchored" data-anchor-id="using-docker-images">Using Docker images</h2>
-<p>Let’s use the same docker image as in the Docker section.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># creates a sif </span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's check a couple commands on the host machine  (as we did in the previous module)</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">gzip</span> <span class="at">--version</span> <span class="co"># same as docker</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span> <span class="co"># vagrant (macß) different</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span> <span class="co"># vagrant (docker is root)</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># deploy the container  </span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Install filter in the container </span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install filter</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative command to install filter</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912 bash <span class="at">-c</span> <span class="st">"apt install filter 2&gt;&amp;1 || true "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Module Goals">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Module Goals
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The docker tag (<code>docker://</code>) step is required as singularity has sometimes trouble handling the sha256, image description.</p>
-<p>Other important information to consider:</p>
 <ul>
-<li>Singularity Hub is no longer maintained. Alternatives: git-annex for hosting images.</li>
-<li>SIF images are much smaller than Docker images.</li>
+<li>Understand the rol of scientific pipelines</li>
+<li>Run existing pipelines</li>
+<li>Implement and modify pipelines</li>
+<li>Specify software and computational resource needs</li>
+<li>Customise your pipeline to accept user-defined configurations (params)</li>
+<li>Create reproducible analyses that can be adapted to new data with little effort</li>
+<li>Integrate workflows with software environments</li>
 </ul>
 </div>
 </div>
-<!--
-```{.bash title="Singularity on MAC OS"}
-export VM=sylabs/singularity-3.0-ubuntu-bionic64 && \
-vagrant init $VM && \
-vagrant up && \
-vagrant ssh
-```
--->
+<section id="acknowledgements" class="level4">
+<h4 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h4>
 
 
 </section>
