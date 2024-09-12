@@ -5,3 +5,17 @@
 //$navbar-bg: #4266A1;
 //$sidebar-bg: white;
 //$footer-bg: #4266A1;
+
+
+.hero-banner {
+    position: relative;
+    background-color: rgb(240,245,249);
+    display: flex;
+    justify-content: center;
+  }
+  
+  .hero-banner h1 {
+    color: #39729E;
+    font-size: 2.5rem;
+    text-align: center;
+  }

@@ -1,0 +1,30 @@
+---
+title: Workflows & environments
+format: 
+  html
+date-modified: last-modified
+summary: workflow
+---
+
+## Integration between workflows and software environments
+
+Snakemake or Nextflow ipelines are essentially code scripts that require an appropriate computational environment to run properly. Let's explore the challenges of managing computational environments for workflows.
+
+You can use a single common environment for all tasks in a workflow, which is generally recommended unless there are conflicting dependencies (for example, if one task requires a different version of a library than another). Alternatively, you might use separate environments if you're reusing a task from another workflow and don’t want to alter its existing environment, or if a rarely run task has a large environment. In such cases, creating a dedicated environment for that task can help reduce the overall resource usage of the workflow.
+
+Snakemake has built support for tasks environments: 
+- Conda
+- Environment modules 
+- Singularity
+
+
+**Nested environments with Docker for reproducibility** 
+
+Two-level environment: 
+
+- Outer container
+- Inner container 
+
+<!--  
+Guix --nesting 
+-->

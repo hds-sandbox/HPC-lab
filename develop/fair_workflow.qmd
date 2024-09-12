@@ -8,13 +8,6 @@ date-format: long
 summary: workflow
 ---
 
-:::{.callout-note title="Course Overview"}
-- 👨‍💻 **Target Audience:** PAnyone interested in workflow management systems and software enviroments. 
-- 👩‍🎓 **Level:** Advanced.
-- 🔒 **License:** [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license.](https://creativecommons.org/licenses/by-sa/4.0/legalcode)  
-- 💰 **Funding:** This project was funded by the Novo Nordisk Fonden (NNF20OC0063268).
-:::
-
 Data analysis typically involves the use of different tools, algorithms, and scripts. It often requires multiple steps to transform, filter, aggregate, and visualize data. The process can be time-consuming because each tool may demand specific inputs and parameter settings. As analyses become more complex, the importance of reproducible and scalable automated workflow management increases since the key for reproducibility is **automation**. 
 
 ####  Why avoid using a shell script? 
@@ -91,21 +84,25 @@ Popular workflow management systems such as Snakemake, Nextflow, and Galaxy can 
 
 ##### **Resource management**
 
-A key service offered by workflow managers is resource management, essential for executing large computations. They handle parallel execution, running tasks tasks simultaneously when they do not depend on each other and can execute a single parallelized task on multiple nodes in a computing cluster. Workflow managers also handle data storage, managing local files, shared filesystems (storage system within a server), and cloud storage. Additionally, they can manage software environments by interfacing with package managers and running tasks in dedicated containers.
+A key service offered by workflow managers is resource management, essential for executing large computations. They handle parallel execution, running tasks simultaneously when they do not depend on each other and can execute a single parallelized task on multiple nodes in a computing cluster. Workflow managers also handle data storage, managing local files, shared filesystems (storage system within a server), and cloud storage. Additionally, they can manage software environments by interfacing with package managers and running tasks in dedicated containers.
 
 During this module, you will learn about:
 
 - **Syntax**: understand the syntax of two workflow languages.
 - **Defining steps**: how to define a step in each of the language (rule in Snakemake, process in Nextflow), including specifying input, outputs and execution statements.
 - **Generalizing steps**: explore how to generalise steps and create a chain of dependency across multiple steps using wildcards (Snakemake) or parameters and channel operators (Nextflow).
-- **Advanced Customisation**: gain knowledge of advanced pipeline customisation using configuration files and custom-made functions
+- **Advanced Customisation**: gain knowledge of advanced pipeline customisation using configuration files and custom-made functions. 
 - **Scaling workflows**: understand how to scale workflows to compute servers and clusters while adapting to hardware-specific constraints.With multiple CPUs available, you can leverage parallel execution for groups of tasks that are independent of each other. In this context, tasks do not rely on the outputs of other tasks in the same group. Since data is transferred between tasks using files, it is easy to see how tasks depend on each other (dependencies).
 
-To put this into practice, you will start by scaling up a data analysis from one dataset to a large number of datasets and incorporating additional analysis steps at the aggregate level.However, before you can scale up, the first step involves converting a notebook into a shell script that chains several computational tasks (`Exercise 3`). This script will serve as an intermediate stage before you move on to using Snakemake and Nextflow, and completing it will help you understand how different tasks correspond and are split in these tools.
+To put this into practice, you will start by scaling up a data analysis from one dataset to a large number of datasets and incorporating additional analysis steps at the aggregate level. However, before you can scale up, the first step involves converting a notebook into a shell script that chains several computational tasks (`Exercise 3`). This script will serve as an intermediate stage before you move on to using Snakemake and Nextflow, and completing it will help you understand how different tasks correspond and are split in these tools.
+
+:::{.callout-tip title="How to define a good task?"}
+In a workflow, a **task** is executed in its entirety or not at all. Long-running tasks can undermine one of the primary advantages of workflows, which is to *execute only the necessary computations*. Conversely, there is overhead associated with starting a task, reading input files, and writing output files. If the computational work performed by a task is too minimal, this overhead can become disproportionately large. With this in mind, we should also assess the effects of data input/output (I/O) on disk storage and code complexity. When a task involves minimal computation but is heavily dominated by I/O operations, it becomes difficult to understand and modify. Furthermore, a task that requires large amounts of disk storage for its execution can lead to significant costs.
+:::
 
 :::{.callout-exercise}
 # Exercise 3: notebook -> shell script 
-Consider each task as a Python script that containing the code from one or more cells of a Jupyter Notebook. The key aspect of these tasks is that all data exchange occurs via files. Ideally, a task should be neither too lengthy nor too brief. In a workflow, a task is executed in its entirety or not at all. Long-running tasks can undermine one of the primary advantages of workflows, which is to execute only the necessary computations. Conversely, there is overhead associated with starting a task, reading input files, and writing output files. If the computational work performed by a task is too minimal, this overhead can become disproportionately large.
+Consider each task as a Python script containing the code from one or more cells of a Jupyter Notebook. The key aspect of these tasks is that all data exchange occurs via files. Ideally, a task should be neither too lengthy nor too brief. 
 
 We will use the classic `Iris dataset` for this exercise. Convert [this Jupyter notebook](./scripts/01.iris.ipynb) to a shell script. 
 

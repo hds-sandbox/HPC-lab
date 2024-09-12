@@ -1,0 +1,185 @@
+---
+title: Data structure  
+format: 
+  html:
+    toc: false
+date-modified: last-modified
+---
+
+## Collect & Document 
+
+Let's start with some practical exercises focused on implementing tools that will help you with the collect & document data life cycle phase. 
+
+:::{.callout-warning}
+# Requirements 
+You are expect to complete the required setup, including tool installation and account creation. 
+
+- A [GitHub account](https://github.com/) for hosting and collaborating on projects
+- [Git](https://git-scm.com/downloads) for version control of your projects
+- A [Zenodo account](https://zenodo.org/) for archiving and sharing your research outputs
+- [Python](https://www.python.org/)
+- [pip](https://pip.pypa.io/en/stable/installation/) for managing Python packages
+- [Cookicutter](https://cookiecutter.readthedocs.io/en/stable/) for creating folder structure templates (`pip install cookiecutter`)
+- [cruft](https://cruft.github.io/cruft/) to version control your templates (`pip install cruft`)
+:::
+
+Establishing a consistent file structure and naming conventions will help you efficiently manage your data. We will classify your data and data analyses into two distinct types of folders to ensure the data can be used and shared by many lab members while preventing modifications by any individual:
+
+- Data folders: store raw and processed datasets, the workflow/pipeline used, data provenance, and quality control reports. These folders should be locked and read-only to prevent changes, with MD5 checksums used to verify data integrity.
+- Project folders:  contain all necessary files for a specific research project (scripts, results, intermediate files, etc.)
+
+
+### Setting up folder templates 
+
+Creating a folder template is straightforward with [cookiecutter](https://github.com/cookiecutter/cookiecutter) a command-line tool that generates projects from templates (called cookiecutters). You can do it from scratch (see Exercise 1, part B) or opt for one of our pre-made templates available as a Github repository (recommended for this workshop). 
+
+Now, let's try it out. 
+
+:::{.callout-exercise}
+# Exercise 1: Get familiar with Cookiecutter
+
+1. Use our cookiecuter-template and fill-up the variables
+```{.bash filename="Terminal"}
+cookiecutter https://github.com/hds-sandbox/cookiecutter-template
+```
+
+2. Explore the project structure (e.g., `ls -l`)
+:::
+
+You're ready to customize your own template! Explore the following folder structure and the types of files you might encounter. How does it compare to your own setup?
+
+```{.bash}
+<project>_<keyword>_YYYYMMDD
+├── data                    # symlinks or shorcuts to the actual data files 
+│  └── <ID>_<keyword>_YYYYMMDD
+├── documents               # docs and files relevant to the project 
+│  └── research_project_template.docx
+├── metadata.yml            # variables or key descriptors of the project or data
+├── notebooks               # notebooks containing the data analysis
+│  └── 01_data_processing.rmd
+│  └── 02_data_analysis.rmd
+│  └── 03_data_visualization.rmd
+├── README.md               # detailed description of the project
+├── reports                 # notebooks rendered as HTML/PDF for sharing 
+│  └── 01_data_processing.html
+│  └── 02_data_analysis.html
+│  ├── 03_data_visualization.html
+│  │  └── figures
+│  │  └── tables
+├── requirements.txt // env.yaml # file listing necessary software, libs and deps
+├── results                 # output from analyses, figs and tables
+│  ├── figures
+│  │  └── 02_data_analysis/
+│  │    └── heatmap_sampleCor_20230102.png
+│  ├── tables
+│  │  └── 02_data_analysis/
+│  │    └── DEA_treat-control_LFC1_p01.tsv
+│  │    └── SumStats_sampleCor_20230102.tsv
+├── pipeline                # pipeline scripts 
+│  ├── rules // processes 
+│  │  └── step1_data_processing.smk
+│  └── pipeline.md
+├── scratch                 # temporary files or workspace for dev 
+└── scripts                 # other scripts 
+```
+
+:::{.callout-warning}
+# For non-GitHub users
+If you haven’t created a GitHub account or are not comfortable using it yet, you can skip step 1. In step 2, use the sandbox URL instead by running the following command:
+
+```{.bash filename="Terminal"}
+git clone https://github.com/hds-sandbox/cookiecutter-template
+```
+:::
+
+:::{.callout-exercise}
+
+# Exercise 2: Use and adapt the Sandbox template
+
+While we’ll clone a sample template, you’re encouraged to modify it to fit your specific needs—you’re not limited to following our example exactly.
+    
+1. Go to our [Cookicutter template](https://github.com/hds-sandbox/cookiecutter-template) and click on the **Fork** button at the top-right corner of the repository page to create a copy of the repository on your own GitHub account or organization.
+    ![fork_repo_example](./images/fork_repo_project.png)
+2. Open a terminal on your computer, copy the URL of your fork and **clone** the repository to your local machine (the URL should look something like https://github.com/your_username/cookiecutter-template):
+
+    ```{.bash}
+    git clone <your URL to the template>
+    ```
+If you have a GitHub Desktop, click *Add* and select *Clone repository* from the options.
+
+3. Navigate to the cloned repository (`cd cookiecutter-template`) and navigate through the different directories.
+
+4. Modify the contents of the repository as needed to fit your project's requirements. You can change files, add new ones, remove existing one or adjust the folder structure. For inspiration, review the data structure above under 'Project folder'. Our Cookiecutter template is missing the 'reports' directory or the 'requirements.txt' file. Consider creating them, along with a subdirectory named 'reports/figures'. 
+
+    ```plaintext
+    ├── results/
+    │   ├── figures/
+    ├── requirements.txt
+    ```
+
+:::{.callout-hint}
+Here’s an example of how to do it. Open your terminal and navigate to your template directory
+
+```{.bash}
+cd \{\{\ cookiecutter.project_name\ \}\}/  
+mkdir reports 
+touch requirements.txt
+```
+:::
+
+5. Utilize the template
+
+```{.bash filename="Terminal"}
+cookiecutter cookiecutter-template
+```
+
+Fill up the variables and verify that the new structure (and folders) looks like you would expect. Have any new folders been added, or have some been removed?
+
+```{.bash filename="Example bash commands"}
+# Assuming the name of the project is 'myproject_sep24'
+ls -l myproject_sep24 
+```
+
+**Optional (for those already familiar with `git` and `GitHub`)**
+
+6. Commit and push changes when you are done with your modifications.
+- Stage the changes with `git add`.
+- Commit the changes with a meaningful commit message `git commit -m "update cookicutter template" `.
+- Push the changes to your forked repository on Github `git push origin main` (or the appropriate branch name).
+
+7. Use cookiecutter on the new template! `cookiecutter <URL to your GitHub repository "cookicutter-template">`
+:::
+
+If you’ve completed the tasks quickly and have time left, feel free to tackle the optional final exercise.
+
+:::{.callout-exercise}
+# Bonus exercise 
+
+Create a template from scratch using this tutorial [scratch](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html), it can be as basic as this one below or 'Data folder': 
+
+```plaintext
+my_template/
+|-- {{cookiecutter.project_name}}
+|   |-- main.py
+|-- tests
+|   |-- test_{{cookiecutter.project_name}}.py
+|-- README.md
+```
+
+- Step 1: Create a directory for the template (like the one above).
+- Step 2: Write a cookiecutter.json file with variables such as project_name and author.
+
+:::{.callout-hint}
+```{.json .code-overflow-wrap}
+{
+  "project_name": "MyProject",
+  "author_name": "Your Name",
+  "description": "A short description of your project"
+}
+```
+:::
+
+- Step 3: Set up the folder structure by creating subdirectories and files as needed.
+- Step 4: Incorporate cookiecutter variables in the names of files (`test_{{cookiecutter.project_name}}.py`).
+- Step 5: Use cookiecutter variables within scripts opr metadata files (e.g., such as printing a message that includes the project name or the metadata file gets automatically populated with the cookiecutter variables),  
+:::
