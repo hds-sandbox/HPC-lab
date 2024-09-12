@@ -1,5 +1,4 @@
 ---
-title: "HPC best practices"
 format: 
   html:
     toc-location: left
@@ -12,6 +11,10 @@ date-modified: last-modified
 date-format: long
 bibliography: references.bib
 ---
+
+::: {.hero-banner}
+# Welcome to HPC-Lab Hub 
+:::
 
 ### <span style="color: red;">Note: Actively being developed</span>
 
@@ -37,26 +40,6 @@ By the end of this workshop, you should be able to apply the following concepts 
 
 :::{.callout-warning title="HPC best practices"}
 We offer in-person workshops, keep an eye on the upcoming events on the [Sandbox website](https://hds-sandbox.github.io/news.html).
-:::
-
-## HPC pipes
-The course "HPC pipes" is designed to provide participants with foundational knowledge and practical skills in writing reproducible pipelines. As part of effective data management, it is crucial that researchers create reproducible analyses that enable others to validate and build upon their work. We will explore essential elements of reproducibility and efficiency in computational research, highlighting techniques and tools for creating robust and transparent coding and workflows. By prioritizing reproducibility and replicability, researchers can enhance the credibility and impact of their findings while fostering collaboration and knowledge dissemination within the scientific community. This approach guarantees efficient research management. Explore our content on [practical RDM](https://hds-sandbox.github.io/RDM_NGS_course/) for more details.
-
-:::{.callout-warning title="Course Requirements"}
-It is important to be familiar with unix and python. Follow the tutorials in the links below if you need a refresher.
-
-- Command Line experience ([Software Carprentry Shell](https://swcarpentry.github.io/shell-novice/01-intro.html))
-- Programming experience ([Python](https://swcarpentry.github.io/python-novice-inflammation/))
-:::
-
-::: {.callout-tip title="Module Goals"}
-- Understand the rol of scientific pipelines
-- Run existing pipelines
-- Implement and modify pipelines
-- Specify software and computational resource needs 
-- Customise your pipeline to accept user-defined configurations (params)
-- Create reproducible analyses that can be adapted to new data with little effort
-- Integrate workflows with software environments
 :::
 
 

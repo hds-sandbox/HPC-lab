@@ -12,7 +12,9 @@ website:
       - text: "HPC launch"
         file: develop/hpc_intro.qmd 
       - text: "HPC pipes"
-        file: develop/fair_workflow.qmd 
+        file: develop/pipes_intro.qmd
+      - text: "Workshop"
+        file: workshop/cookiecutter.qmd 
     right: 
       - icon: github
         href: https://github.com/hds-sandbox
@@ -26,19 +28,21 @@ website:
       style: "docked"
       search: true
       contents:
-        - section: "Pipeline languages"
-          contents:
-            - develop/fair_workflow.qmd 
-            - develop/smk.qmd
-            - develop/nextflow.qmd
-            - develop/exercise_pipes.qmd
+        - develop/pipes_intro.qmd
         - section: "Computational environments"
           contents:
-            - develop/fair_envs.qmd
-            - develop/docker.qmd
-            - develop/singularity.qmd
-            - develop/RDM_containers.qmd
-            - develop/cheat_sheet.qmd
+          - develop/fair_envs.qmd
+          - develop/docker.qmd
+          - develop/singularity.qmd
+          - develop/RDM_containers.qmd
+          - develop/cheat_sheet.qmd
+        - section: "Pipeline languages"
+          contents:
+          - develop/fair_workflow.qmd 
+          - develop/smk.qmd
+          - develop/nextflow.qmd
+          - develop/workflow_envs.qmd
+          - develop/exercise_pipes.qmd
     - title: "HPC launch"
       style: "docked"
       search: true
@@ -51,7 +55,17 @@ website:
           contents: 
           - develop/data_transfer.qmd
           - develop/ssh_keys.qmd
-        - develop/exercise_launch.qmd
+        - section: "Quizzes"
+          contents:
+          - develop/exercise_launch.qmd
+    - title: "Workshop"
+      style: "docked"
+      search: true
+      contents:
+        - section: "HPC Launch"
+          contents: 
+            - workshop/cookiecutter.qmd
+
 
 
 copyright: CC-BY-SA 4.0 license

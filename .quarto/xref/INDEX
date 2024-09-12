@@ -58,5 +58,14 @@
   },
   "develop/RDM_containers.qmd": {
     "RDM_containers.html": "d7c3aea9"
+  },
+  "develop/workflow_envs.qmd": {
+    "workflow_envs.html": "e57ddce1"
+  },
+  "workshop/cookiecutter.qmd": {
+    "cookiecutter.html": "2b69e370"
+  },
+  "develop/pipes_intro.qmd": {
+    "pipes_intro.html": "8aeda375"
   }
 }

@@ -1,5 +1,5 @@
 ---
-title: HPC launch
+title: HPC intro
 format: 
   html:
     toc: false
@@ -9,7 +9,7 @@ summary: This is a summary
 ---
 
 :::{.callout-note title="Course Overview"}
-- ⏰ **Total Time Estimation:** X hours  
+- ⏰ **Total Time Estimation:** 3 hours  
 - 📁 **Supporting Materials:**  
 - 👨‍💻 **Target Audience:** Ph.D., MSc, anyone interested in HPC systems.
 - 👩‍🎓 **Level:** Advanced.
@@ -17,7 +17,7 @@ summary: This is a summary
 - 💰 **Funding:** This project was funded by the Novo Nordisk Fonden (NNF20OC0063268).
 :::
 
-:::{.callout-tip title="Course Topics"}
+:::{.callout-tip title="Module Topics"}
 - HPC systems and HPC architecture  
 - National HPC platforms
 - Setting up HPC environments (software requirements, job scheduling, resource management)
@@ -27,9 +27,9 @@ summary: This is a summary
 - Advanced topics
 :::
 
-## Title
+## High-Performance Computing (HPCs) and HPC clusters.
 
-Introduction High-Performance Computing (HPCs) and HPC cluster.
+Introduction 
 
 HPC main resources:
 
@@ -37,10 +37,11 @@ HPC main resources:
 - RAM
 - GPU
 
-Schematic of components of an HPC
+Schematic of components of an HPC [IMAGE]
 
 ### Nodes 
-There are two typoes of nodes on a cluster:
+There are two types of nodes on a cluster:
+
 - login nodes (also known as head or submit nodes).
 - compute nodes (also known as worker nodes).
 
@@ -104,7 +105,7 @@ If your HPC system doesn't have a job scheduler in place, we recommend using the
 :::
 
 :::{.callout-exercise}
-# HPC
+# Exercise 1: General HPC
 1. Describe how a typical HPC is organised: nodes, job scheduler and filesystem. 
 2. What are the roles of a login node and a compute node? how do they differ?
 3. Describe the role of a job scheduler

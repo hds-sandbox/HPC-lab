@@ -19,14 +19,17 @@ The current approach that we introduce on the Docker lesson has a significant dr
 docker image history albarema/sandbox-debian-jupyter:1.0 --human=false
 # List version of software installed 
 docker run albarema/sandbox-debian-jupyter:1.0 dpkg --list
-
 ```
+
 **How do we improve reproducibility?**
+
 - **Specify the versioned base image**: use a specific version of your base image in the Dockerfile (e.g., FROM debian:stable-20240812). Be aware that even with a versioned tag, maintainers or Docker Hub admins could introduce silent changes and update the image.
 - **Use a SHA256 Digest**: for the highest level of reproducibility, specify the base image using its SHA256 digest, which is a unique identifier. This ensures that you're using the exact same image every time, with no risk of unexpected changes.
 
 ```{.bash filename="Dockerfile" .code-overflow-wrap}
-FROM debian:stable-20240812@:sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912
+FROM debian:stable-20240812@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912
+# OR: Set the snapshot date for the sources: https://snapshot.debian.org/ 
+ARG SNAPSHOT_DATE=20240812T000000Z
 ```
 
 <!--
