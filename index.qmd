@@ -45,4 +45,5 @@ We offer in-person workshops, keep an eye on the upcoming events on the [Sandbox
 
 #### Acknowledgements
 
-Our exercises are developed using the R packaged developed by @webexercises. 
+Our interactive exercises are developed using the R packaged developed by @webexercises. 
+
