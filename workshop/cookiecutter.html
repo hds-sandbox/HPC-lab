@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data structure – HPC Lab</title>
+<title>Managing data – HPC Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,9 +105,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../include/webex.css">
+<link rel="stylesheet" href="./web.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -167,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">Data structure</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">Managing data</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -199,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/cookiecutter.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Data structure</span></a>
+ <span class="menu-text">Managing data</span></a>
   </div>
 </li>
       </ul>
@@ -209,13 +210,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#project-organization" id="toc-project-organization" class="nav-link active" data-scroll-target="#project-organization">Project organization</a>
+  <ul class="collapse">
+  <li><a href="#data-structure-with-cookiecutter" id="toc-data-structure-with-cookiecutter" class="nav-link" data-scroll-target="#data-structure-with-cookiecutter">Data structure with cookiecutter</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-folder-templates" id="toc-setting-up-folder-templates" class="nav-link" data-scroll-target="#setting-up-folder-templates">Setting up folder templates</a></li>
+  </ul></li>
+  <li><a href="#naming-conventions" id="toc-naming-conventions" class="nav-link" data-scroll-target="#naming-conventions">Naming conventions</a></li>
+  <li><a href="#collect-share-using-checksums" id="toc-collect-share-using-checksums" class="nav-link" data-scroll-target="#collect-share-using-checksums">Collect &amp; share using checksums</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">Data structure</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">Managing data</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Data structure</h1>
+<h1 class="title">Managing data</h1>
 </div>
 
 
@@ -227,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 12, 2024</p>
+      <p class="date-modified">September 16, 2024</p>
     </div>
   </div>
     
@@ -238,8 +256,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="collect-document" class="level2">
-<h2 class="anchored" data-anchor-id="collect-document">Collect &amp; Document</h2>
+<section id="project-organization" class="level1">
+<h1>Project organization</h1>
+<section id="data-structure-with-cookiecutter" class="level2">
+<h2 class="anchored" data-anchor-id="data-structure-with-cookiecutter">Data structure with cookiecutter</h2>
 <p>Let’s start with some practical exercises focused on implementing tools that will help you with the collect &amp; document data life cycle phase.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -270,8 +290,8 @@ Requirements
 </ul>
 <section id="setting-up-folder-templates" class="level3">
 <h3 class="anchored" data-anchor-id="setting-up-folder-templates">Setting up folder templates</h3>
-<p>Creating a folder template is straightforward with <a href="https://github.com/cookiecutter/cookiecutter">cookiecutter</a> a command-line tool that generates projects from templates (called cookiecutters). You can do it from scratch (see Exercise 1, part B) or opt for one of our pre-made templates available as a Github repository (recommended for this workshop).</p>
-<p>Now, let’s try it out.</p>
+<p>Creating a folder template is straightforward with <a href="https://github.com/cookiecutter/cookiecutter">cookiecutter</a> a command-line tool that generates projects from templates (called cookiecutters). You can do it from scratch (see Bonus) or opt for one of our pre-made templates available as a Github repository (recommended for this workshop).</p>
+<p>Let’s give it a try!</p>
 <div class="callout callout-style-default callout-exercise callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -304,8 +324,12 @@ Exercise 1: Get familiar with Cookiecutter
 </div>
 </div>
 <p>You’re ready to customize your own template! Explore the following folder structure and the types of files you might encounter. How does it compare to your own setup?</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>project<span class="op">&gt;</span>_<span class="op">&lt;</span>keyword<span class="op">&gt;</span>_YYYYMMDD</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> data                    <span class="co"># symlinks or shorcuts to the actual data files </span></span>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Project folder structure</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="Project folder structure"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>project<span class="op">&gt;</span>_<span class="op">&lt;</span>keyword<span class="op">&gt;</span>_YYYYMMDD</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> data                    <span class="co"># symlinks or shortcuts to the actual data files </span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └── <span class="op">&lt;</span>ID<span class="op">&gt;</span>_<span class="op">&lt;</span>keyword<span class="op">&gt;</span>_YYYYMMDD</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> documents               <span class="co"># docs and files relevant to the project </span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └── research_project_template.docx</span>
@@ -336,13 +360,14 @@ Exercise 1: Get familiar with Cookiecutter
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └── pipeline.md</span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> scratch                 <span class="co"># temporary files or workspace for dev </span></span>
 <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> scripts                 <span class="co"># other scripts </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-For non-GitHub users
+Exercise 2 for non-GitHub users
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -369,14 +394,14 @@ Exercise 2: Use and adapt the Sandbox template
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-exercise">
-<p>While we’ll clone a sample template, you’re encouraged to modify it to fit your specific needs—you’re not limited to following our example exactly.</p>
+<p>While you’ll clone a sample template, you’re encouraged to modify it to fit your specific needs—you’re not limited to following our example exactly.</p>
 <ol type="1">
 <li><p>Go to our <a href="https://github.com/hds-sandbox/cookiecutter-template">Cookicutter template</a> and click on the <strong>Fork</strong> button at the top-right corner of the repository page to create a copy of the repository on your own GitHub account or organization. <img src="./images/fork_repo_project.png" class="img-fluid" alt="fork_repo_example"></p></li>
 <li><p>Open a terminal on your computer, copy the URL of your fork and <strong>clone</strong> the repository to your local machine (the URL should look something like https://github.com/your_username/cookiecutter-template):</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>your URL to the template<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you have a GitHub Desktop, click <em>Add</em> and select <em>Clone repository</em> from the options.</p></li>
-<li><p>Navigate to the cloned repository (<code>cd cookiecutter-template</code>) and navigate through the different directories.</p></li>
-<li><p>Modify the contents of the repository as needed to fit your project’s requirements. You can change files, add new ones, remove existing one or adjust the folder structure. For inspiration, review the data structure above under ‘Project folder’. Our Cookiecutter template is missing the ‘reports’ directory or the ‘requirements.txt’ file. Consider creating them, along with a subdirectory named ‘reports/figures’.</p>
+<li><p>Access the cloned repository (<code>cd cookiecutter-template</code>) and navigate through the different directories.</p></li>
+<li><p>Modify the content of the template as needed to fit your project’s requirements. You can change files, add new ones, remove existing one or adjust the folder structure. For inspiration, review the data structure above under ‘Project folder structure’. The Cookiecutter template you just cloned is missing the ‘reports’ directory or the ‘requirements.txt’ file. Consider creating them, along with a subdirectory named ‘reports/figures’.</p>
 <pre class="plaintext"><code>├── results/
 │   ├── figures/
 ├── requirements.txt</code></pre></li>
@@ -413,7 +438,7 @@ Hint
 </div>
 <div class="sourceCode" id="cb7" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cookiecutter</span> cookiecutter-template</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Fill up the variables and verify that the new structure (and folders) looks like you would expect. Have any new folders been added, or have some been removed?</p>
+<p>The command <code>cookiecutter cookiecutter-template</code> will initiate an interactive prompt. Fill up the variables and verify that the new structure (and folders) looks like you would expect. Have any new folders been added, or have some been removed?</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Example bash commands</strong></pre>
@@ -422,6 +447,7 @@ Hint
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> myproject_sep24 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Optional (for those already familiar with <code>git</code> and <code>GitHub</code>)</strong></p>
+<p>The following steps enable version control and make it easy to share the structure with other members of your lab.</p>
 <ol start="6" type="1">
 <li>Commit and push changes when you are done with your modifications.</li>
 </ol>
@@ -453,7 +479,7 @@ Bonus exercise
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-exercise">
-<p>Create a template from scratch using this tutorial <a href="https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html">scratch</a>, it can be as basic as this one below or ‘Data folder’:</p>
+<p>Create a template from scratch using this tutorial <a href="https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html">scratch</a>. Your template can be as basic as the example provided or include a data folder structure with directories for raw data, processed data, and the pipeline used for preprocessing.</p>
 <pre class="plaintext"><code>my_template/
 |-- {{cookiecutter.project_name}}
 |   |-- main.py
@@ -499,6 +525,152 @@ Hint
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="naming-conventions" class="level2">
+<h2 class="anchored" data-anchor-id="naming-conventions">Naming conventions</h2>
+<style>
+:root {
+    --incorrect: rgb(255, 0, 0);
+    --incorrect_alpha: rgba(255, 0, 0, 0.25);
+    --correct: rgb(0, 255, 0);
+    --correct_alpha: rgba(0, 255, 0, 0.25);
+    --highlight: rgb(178, 34, 34);
+}
+  .webex-incorrect, input.webex-solveme.webex-incorrect,
+  .webex-radiogroup label.webex-incorrect {
+    border: 2px dotted var(--incorrect);
+    background-color: var(--incorrect_alpha);
+  }
+  .webex-correct, input.webex-solveme.webex-correct,
+  .webex-radiogroup label.webex-correct {
+    border: 2px dotted var(--correct);
+    background-color: var(--correct_alpha);
+  }
+  .webex-box, .webex-solution.open {
+    border: 2px solid var(--highlight);n  }
+  .webex-solution button, .webex-check-button {
+    background-color: var(--highlight);
+  }
+</style>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="webex-check callout-exercise">
+Q1. Which naming conventions should be used and why?
+<div id="radio_VAZKCXHTVY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VAZKCXHTVY" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_VAZKCXHTVY" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_VAZKCXHTVY" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
+</div>
+<div id="radio_UKWXBPTWOD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UKWXBPTWOD" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_UKWXBPTWOD" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_UKWXBPTWOD" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
+</div>
+<div id="radio_ECZPDNOARX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ECZPDNOARX" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_ECZPDNOARX" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_ECZPDNOARX" value=""> <span>i. run_pipeline:20241203.sh</span></label>
+</div>
+Q2. Which file name is more readable?
+<div id="radio_CKRJDDUHRM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CKRJDDUHRM" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_CKRJDDUHRM" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_CKRJDDUHRM" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
+</div>
+<div id="radio_PXUALGZIYP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PXUALGZIYP" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_PXUALGZIYP" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_PXUALGZIYP" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
+</div>
+<div id="radio_MECNQXKPGR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MECNQXKPGR" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_MECNQXKPGR" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_MECNQXKPGR" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Regular expressions are an incredibly powerful tool for string manipulation. We recommend checking out <a href="https://regexone.com/">RegexOne</a> to learn how to create smart file names that will help you parse them more efficiently.</p>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bonus exercise
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="webex-check callout-exercise">
+<p>Which of the regexps below match <strong>ONLY</strong> the filenames shown in bold?</p>
+<ul>
+<li><strong>rna_seq/2021/03/results/Sample_A123_gene_expression.tsv</strong></li>
+<li>proteomics/2020/11/Sample_B234_protein_abundance.tsv</li>
+<li><strong>rna_seq/2021/03/results/Sample_C345_normalized_counts.tsv</strong></li>
+<li>rna_seq/2021/03/results/Sample_D456_quality_report.log</li>
+<li>metabolomics/2019/05/Sample_E567_metabolite_levels.tsv</li>
+<li>rna_seq/2019/12/Sample_F678_raw_reads.fastq</li>
+<li><strong>rna_seq/2021/03/results/Sample_G789_transcript_counts.tsv</strong></li>
+<li>proteomics/2021/02/Sample_H890_protein_quantification.TSV</li>
+</ul>
+<p><code>rna_seq.*\.tsv</code> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
+<p><code>.*\.csv</code> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
+<p><code>.*/2021/03/.*\.tsv</code> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
+<p><code>.*Sample_.*_gene_expression.tsv</code> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
+<p><code>rna_seq/2021/03/results/Sample_.*_.*\.tsv</code> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="collect-share-using-checksums" class="level2">
+<h2 class="anchored" data-anchor-id="collect-share-using-checksums">Collect &amp; share using checksums</h2>
+<p>We will be using the HLA database for this exercise. Click on <a href="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/">this link</a> or google <code>IMGT HLA&gt; Download</code>. We will test how easy and useful checksums are.</p>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Verify a file’s integrity
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise">
+<ol type="1">
+<li>Download and open md5checksum.txt</li>
+<li>Look for the hash for the file <code>hla_prot.fasta</code></li>
+<li>Download the hla_prot.fasta</li>
+<li>Create a file with the hash info</li>
+<li>Verify the file against the checksum</li>
+<li>Verify the file against the downloaded checksum</li>
+<li>Generate the md5 hash &amp; compare to the one you downloaded</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>Click on the examples below and reflect on how effectively the README communicates important information about the project. Some the links lead to README files describing databases, while others pertain to software and tools.</p>
+<ul>
+<li><a href="https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/">1000 Genomes Project</a></li>
+<li><a href="https://ftp.ensembl.org/pub/release-111/fasta/homo_sapiens/dna/README">Homo sapiens, GRCh38</a></li>
+<li><a href="https://github.com/ANHIG/IMGTHLA/blob/Latest/README.md">IPD-IMGT/HLA database</a></li>
+<li><a href="https://github.com/pandas-dev/pandas">Pandas package</a></li>
+<li><a href="https://www.dst.dk/extranet/forskningvariabellister/Oversigt%20over%20registre.html">Danish registers</a></li>
+</ul>
 
 
 </section>
