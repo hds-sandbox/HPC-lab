@@ -67,5 +67,8 @@
   },
   "develop/pipes_intro.qmd": {
     "pipes_intro.html": "8aeda375"
+  },
+  "workshop/requirements.qmd": {
+    "requirements.html": "0def4c42"
   }
 }

@@ -14,7 +14,7 @@ website:
       - text: "HPC pipes"
         file: develop/pipes_intro.qmd
       - text: "Workshop"
-        file: workshop/cookiecutter.qmd 
+        file: workshop/requirements.qmd 
     right: 
       - icon: github
         href: https://github.com/hds-sandbox
@@ -64,6 +64,7 @@ website:
       contents:
         - section: "HPC Launch"
           contents: 
+            - workshop/requirements.qmd
             - workshop/cookiecutter.qmd
 
 
