@@ -141,7 +141,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">HPC pipes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../workshop/cookiecutter.html" aria-current="page"> 
+    <a class="nav-link active" href="../workshop/requirements.html" aria-current="page"> 
 <span class="menu-text">Workshop</span></a>
   </li>  
 </ul>
@@ -168,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">Managing data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">Managing data</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -199,6 +199,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../workshop/requirements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to the HPC-Launch workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../workshop/cookiecutter.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Managing data</span></a>
   </div>
@@ -215,23 +221,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#project-organization" id="toc-project-organization" class="nav-link active" data-scroll-target="#project-organization">Project organization</a>
-  <ul class="collapse">
-  <li><a href="#data-structure-with-cookiecutter" id="toc-data-structure-with-cookiecutter" class="nav-link" data-scroll-target="#data-structure-with-cookiecutter">Data structure with cookiecutter</a>
+  <li><a href="#data-structure-with-cookiecutter" id="toc-data-structure-with-cookiecutter" class="nav-link active" data-scroll-target="#data-structure-with-cookiecutter">Data structure with cookiecutter</a>
   <ul class="collapse">
   <li><a href="#setting-up-folder-templates" id="toc-setting-up-folder-templates" class="nav-link" data-scroll-target="#setting-up-folder-templates">Setting up folder templates</a></li>
   </ul></li>
   <li><a href="#naming-conventions" id="toc-naming-conventions" class="nav-link" data-scroll-target="#naming-conventions">Naming conventions</a></li>
   <li><a href="#collect-share-using-checksums" id="toc-collect-share-using-checksums" class="nav-link" data-scroll-target="#collect-share-using-checksums">Collect &amp; share using checksums</a></li>
   <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">Managing data</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">Managing data</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Managing data</h1>
 </div>
@@ -242,12 +245,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
     
   
-    <div>
-    <div class="quarto-title-meta-heading">Modified</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 16, 2024</p>
-    </div>
-  </div>
     
   </div>
   
@@ -256,33 +253,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="project-organization" class="level1">
-<h1>Project organization</h1>
+<p>Let’s start with some practical exercises focused on implementing tools that will help you with the collect &amp; document data life cycle phase.</p>
 <section id="data-structure-with-cookiecutter" class="level2">
 <h2 class="anchored" data-anchor-id="data-structure-with-cookiecutter">Data structure with cookiecutter</h2>
-<p>Let’s start with some practical exercises focused on implementing tools that will help you with the collect &amp; document data life cycle phase.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Requirements
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You are expect to complete the required setup, including tool installation and account creation.</p>
-<ul>
-<li>A <a href="https://github.com/">GitHub account</a> for hosting and collaborating on projects</li>
-<li><a href="https://git-scm.com/downloads">Git</a> for version control of your projects</li>
-<li>A <a href="https://zenodo.org/">Zenodo account</a> for archiving and sharing your research outputs</li>
-<li><a href="https://www.python.org/">Python</a></li>
-<li><a href="https://pip.pypa.io/en/stable/installation/">pip</a> for managing Python packages</li>
-<li><a href="https://cookiecutter.readthedocs.io/en/stable/">Cookicutter</a> for creating folder structure templates (<code>pip install cookiecutter</code>)</li>
-<li><a href="https://cruft.github.io/cruft/">cruft</a> to version control your templates (<code>pip install cruft</code>)</li>
-</ul>
-</div>
-</div>
 <p>Establishing a consistent file structure and naming conventions will help you efficiently manage your data. We will classify your data and data analyses into two distinct types of folders to ensure the data can be used and shared by many lab members while preventing modifications by any individual:</p>
 <ul>
 <li>Data folders: store raw and processed datasets, the workflow/pipeline used, data provenance, and quality control reports. These folders should be locked and read-only to prevent changes, with MD5 checksums used to verify data integrity.</li>
@@ -293,7 +266,7 @@ Requirements
 <p>Creating a folder template is straightforward with <a href="https://github.com/cookiecutter/cookiecutter">cookiecutter</a> a command-line tool that generates projects from templates (called cookiecutters). You can do it from scratch (see Bonus) or opt for one of our pre-made templates available as a Github repository (recommended for this workshop).</p>
 <p>Let’s give it a try!</p>
 <div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -302,7 +275,7 @@ Exercise 1: Get familiar with Cookiecutter
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-exercise">
@@ -381,7 +354,7 @@ Exercise 2 for non-GitHub users
 </div>
 </div>
 <div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -390,7 +363,7 @@ Exercise 2: Use and adapt the Sandbox template
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-exercise">
@@ -407,7 +380,7 @@ Exercise 2: Use and adapt the Sandbox template
 ├── requirements.txt</code></pre></li>
 </ol>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -416,7 +389,7 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
@@ -465,8 +438,8 @@ Hint
 </div>
 </div>
 <p>If you’ve completed the tasks quickly and have time left, feel free to tackle the optional final exercise.</p>
-<div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -475,10 +448,8 @@ Bonus exercise
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div>
-<div class="callout-exercise">
 <p>Create a template from scratch using this tutorial <a href="https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html">scratch</a>. Your template can be as basic as the example provided or include a data folder structure with directories for raw data, processed data, and the pipeline used for preprocessing.</p>
 <pre class="plaintext"><code>my_template/
 |-- {{cookiecutter.project_name}}
@@ -491,7 +462,7 @@ Bonus exercise
 <li>Step 2: Write a cookiecutter.json file with variables such as project_name and author.</li>
 </ul>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -500,7 +471,7 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
@@ -520,8 +491,6 @@ Hint
 <li>Step 5: Use cookiecutter variables within scripts opr metadata files (e.g., such as printing a message that includes the project name or the metadata file gets automatically populated with the cookiecutter variables),<br>
 </li>
 </ul>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -554,7 +523,7 @@ Hint
   }
 </style>
 <div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -563,29 +532,29 @@ Exercise
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
 <div class="webex-check callout-exercise">
 Q1. Which naming conventions should be used and why?
-<div id="radio_VAZKCXHTVY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_VAZKCXHTVY" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_VAZKCXHTVY" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_VAZKCXHTVY" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
+<div id="radio_ATFYUWORWF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ATFYUWORWF" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_ATFYUWORWF" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_ATFYUWORWF" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
 </div>
-<div id="radio_UKWXBPTWOD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UKWXBPTWOD" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_UKWXBPTWOD" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_UKWXBPTWOD" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
+<div id="radio_VKEHJHXSNP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VKEHJHXSNP" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_VKEHJHXSNP" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_VKEHJHXSNP" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
 </div>
-<div id="radio_ECZPDNOARX" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ECZPDNOARX" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_ECZPDNOARX" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_ECZPDNOARX" value=""> <span>i. run_pipeline:20241203.sh</span></label>
+<div id="radio_IQAHASORCW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IQAHASORCW" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_IQAHASORCW" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_IQAHASORCW" value=""> <span>i. run_pipeline:20241203.sh</span></label>
 </div>
 Q2. Which file name is more readable?
-<div id="radio_CKRJDDUHRM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CKRJDDUHRM" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_CKRJDDUHRM" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_CKRJDDUHRM" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
+<div id="radio_WBLNALOQGH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WBLNALOQGH" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_WBLNALOQGH" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_WBLNALOQGH" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
 </div>
-<div id="radio_PXUALGZIYP" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PXUALGZIYP" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_PXUALGZIYP" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_PXUALGZIYP" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
+<div id="radio_JLFABIRWQV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JLFABIRWQV" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_JLFABIRWQV" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_JLFABIRWQV" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
 </div>
-<div id="radio_MECNQXKPGR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MECNQXKPGR" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_MECNQXKPGR" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_MECNQXKPGR" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
+<div id="radio_EYCPGGRIVY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EYCPGGRIVY" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_EYCPGGRIVY" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_EYCPGGRIVY" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
 </div>
 </div>
 </div>
@@ -593,8 +562,8 @@ Q2. Which file name is more readable?
 </div>
 </div>
 <p>Regular expressions are an incredibly powerful tool for string manipulation. We recommend checking out <a href="https://regexone.com/">RegexOne</a> to learn how to create smart file names that will help you parse them more efficiently.</p>
-<div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
+<div class="webex-check callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -603,10 +572,8 @@ Bonus exercise
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div>
-<div class="webex-check callout-exercise">
 <p>Which of the regexps below match <strong>ONLY</strong> the filenames shown in bold?</p>
 <ul>
 <li><strong>rna_seq/2021/03/results/Sample_A123_gene_expression.tsv</strong></li>
@@ -626,44 +593,127 @@ Bonus exercise
 </div>
 </div>
 </div>
-</div>
-</div>
 </section>
 <section id="collect-share-using-checksums" class="level2">
 <h2 class="anchored" data-anchor-id="collect-share-using-checksums">Collect &amp; share using checksums</h2>
-<p>We will be using the HLA database for this exercise. Click on <a href="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/">this link</a> or google <code>IMGT HLA&gt; Download</code>. We will test how easy and useful checksums are.</p>
+<p>We recommend using <code>md5sum</code> to verify data integrity, particularly when downloading large datasets, as it is a widely used tool. All data and files archived on Zenodo include an MD5 hash for this purpose. Let’s have a look at the content of a newly developed software <code>fastmixture</code> that estimates individual ancestry proportions from genotype data.</p>
 <div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Verify a file’s integrity
+Exercise
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse show">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
-<div class="callout-exercise">
+<div class="webex-check callout-exercise">
 <ol type="1">
-<li>Download and open md5checksum.txt</li>
-<li>Look for the hash for the file <code>hla_prot.fasta</code></li>
-<li>Download the hla_prot.fasta</li>
-<li>Create a file with the hash info</li>
-<li>Verify the file against the checksum</li>
-<li>Verify the file against the downloaded checksum</li>
-<li>Generate the md5 hash &amp; compare to the one you downloaded</li>
+<li>Open this <a href="https://zenodo.org/records/12683372">Zenodo link</a></li>
+<li>Enter the DOI of the repo: <input class="webex-solveme nospaces" size="23" data-answer="[&quot;10.5281/zenodo.12683372&quot;]"></li>
+<li>Zenodo offers an API at https://zenodo.org/api/, which functions similarly to the DOI API. This allows you to retrieve a BibTeX-formatted reference for a specific record (e.g., <code>records/12683371</code>) using either curl or wget.</li>
 </ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb11" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------curl-------</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LH</span> <span class="st">'Accept: application/x-bibtex'</span> https://zenodo.org/api/records/12683372 <span class="dt">\</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">--output</span> meisner_2024.bib</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ------wget-------</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--header</span><span class="op">=</span><span class="st">"Accept: application/x-bibtex"</span> <span class="at">-q</span> <span class="dt">\</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>     https://zenodo.org/api/records/12683372 <span class="at">-O</span> meisner_2024.bib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Does the content of your <code>*.bib</code> file look like this?</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">@misc{meisner_2024_12683372,</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">author</span>       = {Meisner, Jonas},</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">title</span>        = {{Supplemental data for reproducing <span class="st">"Faster model- </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="st">                   based estimation of ancestry proportions"</span>}},</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">month</span>        = jul,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">year</span>         = 2024,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">publisher</span>    = {Zenodo},</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">version</span>      = {v0.6},</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">doi</span>          = {10.5281/zenodo.12683372},</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">url</span>          = {https://doi.org/10.5281/zenodo.12683372}</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>Scroll down to files and download the software zip file (<code>fastmixture-0.6.zip</code>)</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb13" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://zenodo.org/records/12683372/files/fastmixture-0.6.zip<span class="pp">?</span>download=1 <span class="dt">\</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>--output fastmixture.zip </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="5" type="1">
+<li><p>Compute md5 hash and enter the value (no white-spaces) <input class="webex-solveme nospaces" size="32" data-answer="[&quot;22a2789d935745f8a0612cb54fe8bac4&quot;]"></p></li>
+<li><p>Is your value tha same as the one shown on zenodo <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p></li>
+<li><p>Finally, compute the sha256 digest (with program sha256)</p></li>
+</ol>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sha256sum</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and enter the value <input class="webex-solveme nospaces" size="64" data-answer="[&quot;377a4dd252ea5556b39d201145bbacb566909f90451169e7b5f8bd73debc556d&quot;]"></p>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bonus exercise
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We will be using the HLA database for this exercise. Click on <a href="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/">this link</a> or google <code>IMGT HLA&gt; Download</code>. Important: go through the README before downloading! Check if a checksums file is included.</p>
+<ol type="1">
+<li>Download and open the <code>md5checksum.txt</code> (<a href="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/">HLA FTP Directory</a>)</li>
+<li>Look for the hash of the file <code>hla_prot.fasta</code></li>
+<li>Create a file with the hash info (one that only contains the checksums of the target files, in this case, only the one for <code>hla_prot.fasta</code>)</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>md5checksum.txt</strong></pre>
+</div>
+<div class="sourceCode" id="cb15" data-filename="md5checksum.txt"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">7348fbef5ab204f3aca67e91f6c59ed2</span>  hla_prot.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="4" type="1">
+<li>Create a bash script to download the target files (named “dw_resources.sh” in your current directory).</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="va">md5file</span><span class="op">=</span><span class="st">"md5checksum.txt"</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the URL of the files to download</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="va">url</span><span class="op">=</span><span class="st">"ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/hla_prot.fasta"</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (Optional 1) Save the original file name: filename=$(basename "$url")</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co"># (Optional 2) Define a different filename to save the downloaded file (`wget -O $out_filename`)</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># out_filename = "imgt_hla_prot.fasta"</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the file</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="va">$url</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="fu">md5sum</span> <span class="at">--status</span> <span class="at">--check</span> <span class="va">$md5file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>We recommend using the argument <code>--status</code> <strong>only</strong> when you incorporate this sanity check as part of your pipeline so that it only prints the errors (it doesn’t print output when success).</p>
+<ol start="6" type="1">
+<li>Verify the file against the downloaded checksum</li>
+<li>Generate the md5 hash &amp; compare to the one from the original <code>md5checksum.txt</code></li>
+</ol>
 </div>
 </div>
 </div>
 </section>
 <section id="documentation" class="level2">
 <h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
-<p>Click on the examples below and reflect on how effectively the README communicates important information about the project. Some the links lead to README files describing databases, while others pertain to software and tools.</p>
+<p>Explore the examples below and consider how well the README files communicate key information about the project. Some links point to README files describing databases, while others cover software and tools.</p>
 <ul>
 <li><a href="https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/">1000 Genomes Project</a></li>
 <li><a href="https://ftp.ensembl.org/pub/release-111/fasta/homo_sapiens/dna/README">Homo sapiens, GRCh38</a></li>
@@ -671,9 +721,10 @@ Verify a file’s integrity
 <li><a href="https://github.com/pandas-dev/pandas">Pandas package</a></li>
 <li><a href="https://www.dst.dk/extranet/forskningvariabellister/Oversigt%20over%20registre.html">Danish registers</a></li>
 </ul>
+<p>How does your documentation compare to these?</p>
+<p><strong>Done for today!</strong></p>
 
 
-</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
