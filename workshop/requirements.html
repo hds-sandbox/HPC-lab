@@ -209,6 +209,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Managing data</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/UCloud.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using UCloud</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -226,10 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#course-requirements" id="toc-course-requirements" class="nav-link" data-scroll-target="#course-requirements">Course requirements</a>
   <ul class="collapse">
   <li><a href="#using-ucloud-for-exercises" id="toc-using-ucloud-for-exercises" class="nav-link" data-scroll-target="#using-ucloud-for-exercises">Using UCloud for exercises</a></li>
-  </ul></li>
-  <li><a href="#discussion-and-feedback" id="toc-discussion-and-feedback" class="nav-link" data-scroll-target="#discussion-and-feedback">Discussion and feedback</a>
-  <ul class="collapse">
-  <li><a href="#about-the-national-sandbox-project" id="toc-about-the-national-sandbox-project" class="nav-link" data-scroll-target="#about-the-national-sandbox-project">About the National Sandbox project</a></li>
+  <li><a href="#reading-material" id="toc-reading-material" class="nav-link" data-scroll-target="#reading-material">Reading material:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -315,7 +318,6 @@ Required preparation
 <p>You are expected to complete the required setup, including tool installation and account creation.</p>
 <ul>
 <li><p><a href="https://git-scm.com/downloads">Git</a> for version control of your projects</p></li>
-<li><p>A <a href="https://zenodo.org/">Zenodo account</a> for archiving and sharing your research outputs</p></li>
 <li><p><a href="https://www.python.org/">Python</a></p></li>
 <li><p><a href="https://pip.pypa.io/en/stable/installation/">pip</a> for managing Python packages</p></li>
 <li><p><a href="https://cookiecutter.readthedocs.io/en/stable/">Cookicutter</a> for creating folder structure templates (<code>pip install cookiecutter</code>)</p></li>
@@ -333,46 +335,74 @@ Required preparation
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># On macOS</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install coreutils</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
-<li><p><em>Highly recommended</em>: a <a href="https://github.com/">GitHub account</a> for hosting and collaborating on projects</p></li>
 </ul>
-<p>Note: If you encounter any issues, we will grant access to a Danish HPC platform where all the necessary software is pre-installed. Please read the next section carefully.</p>
+<p><em>Highly recommended</em></p>
+<ul>
+<li><a href="https://github.com/">GitHub account</a> for hosting and collaborating on projects</li>
+<li><a href="https://zenodo.org/">Zenodo account</a> for archiving and sharing your research outputs</li>
+</ul>
+<p><strong>If you run into any issues installing the software, don’t worry! We will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. Please read the next section carefully.</strong></p>
 </div>
 </div>
 <section id="using-ucloud-for-exercises" class="level3">
 <h3 class="anchored" data-anchor-id="using-ucloud-for-exercises">Using UCloud for exercises</h3>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Follow the instructions below if you have an account at a Danish university. You will need your institutional email to proceed. Unfortunately, this will not work for those without a university email.</p>
+</div>
+</div>
 <ol type="1">
-<li>Create an account on <a href="https://cloud.sdu.dk/">UCloud</a></li>
+<li>Create an account on <a href="https://cloud.sdu.dk/">UCloud</a> with your institution credentials</li>
 <li>Use the link below to join our workspace where you will find a setup environment<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
 </ol>
 <p>&nbsp;</p>
 <p align="center">
-<a href="https://cloud.sdu.dk/app/projects/invite/b8c2ed67-3c40-4ccb-8a52-1f289c7e3df0" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Invite link to UCloud workspace </a>
+<a href="https://cloud.sdu.dk/app/projects/invite/b1bc6434-8340-48cd-8674-18a6b13eabcc" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Invite link to UCloud workspace </a>
 </p>
 <p>&nbsp;</p>
+<ol start="3" type="1">
+<li>You’re all set! You will receive instructions on how to navigate through UCloud during the course.</li>
+</ol>
 </section>
-</section>
-<section id="discussion-and-feedback" class="level2">
-<h2 class="anchored" data-anchor-id="discussion-and-feedback">Discussion and feedback</h2>
-<p>We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill-up the feedback fork [LINK] before you head out for the day <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</b></p>
-<p>&nbsp;</p>
-<p>You can download our RDM roadmap <a href="https://hds-sandbox.github.io/RDM_biodata_course/develop/cheatSheet.html">here</a>.</p>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<h4 align="center" class="anchored">
-Nice meeting you and we hope to see you again!
-</h4>
-</div>
-</div>
-</div>
-<section id="about-the-national-sandbox-project" class="level3">
-<h3 class="anchored" data-anchor-id="about-the-national-sandbox-project">About the National Sandbox project</h3>
+<section id="reading-material" class="level3">
+<h3 class="anchored" data-anchor-id="reading-material">Reading material:</h3>
+<p>About Research Data Management (RDM):</p>
+<ul>
+<li><a href="https://hds-sandbox.github.io/RDM_biodata_course/">Sandbox Research data management</a></li>
+<li>The turing way: https://the-turing-way.netlify.app/reproducible-research/reproducible-research</li>
+</ul>
+<p>About High-Performance Computing (HPC):</p>
+<ul>
+<li><a href="https://www.nvidia.com/en-us/glossary/high-performance-computing/">Nvidia HPC</a></li>
+<li>HPCs: https://hds-sandbox.github.io/HPC-lab/develop/hpc_intro.html.</li>
+</ul>
+<!-- 
+## Discussion and feedback
+
+We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill-up the feedback fork [LINK] before you head out for the day ^[*link activated on day of the workshop*.].</b>
+
+&nbsp;
+
+You can download our RDM roadmap [here](https://hds-sandbox.github.io/RDM_biodata_course/develop/cheatSheet.html). 
+
+:::{.callout-note  appearance="simple" icon=false} 
+<h4 align=center>Nice meeting you and we hope to see you again!</h4> 
+::: 
+ -->
+<section id="about-the-national-sandbox-project" class="level4">
+<h4 class="anchored" data-anchor-id="about-the-national-sandbox-project">About the National Sandbox project</h4>
 <p>The Health Data Science Sandbox aims to be a <strong>training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets</strong>. We are an active and developing project <strong>seeking interested users</strong> (both trainees and educators). All of our open-source materials are available on our <a href="https://github.com/hds-sandbox">Github page</a> and can be used on a computing cluster! We work with both <a href="https://cloud/sdu.dk">UCloud</a>, <a href="https://genome.au.dk">GenomeDK</a> and <a href="https://www.computerome.dk/">Computerome</a>, the major Danish academic supercomputers.</p>
 
 
+</section>
 </section>
 </section>
 
@@ -381,7 +411,6 @@ Nice meeting you and we hope to see you again!
 
 <ol>
 <li id="fn1"><p><em>link activated a week before the workshop</em>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p><em>link activated on day of the workshop</em>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
 <script>

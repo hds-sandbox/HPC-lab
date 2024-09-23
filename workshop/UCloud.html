@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cheat sheet – HPC Lab</title>
+<title>ucloud – HPC Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -105,6 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../include/webex.css">
+<link rel="stylesheet" href="./web.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -136,11 +103,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">HPC launch</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../develop/pipes_intro.html" aria-current="page"> 
+    <a class="nav-link" href="../develop/pipes_intro.html"> 
 <span class="menu-text">HPC pipes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../workshop/requirements.html"> 
+    <a class="nav-link active" href="../workshop/requirements.html" aria-current="page"> 
 <span class="menu-text">Workshop</span></a>
   </li>  
 </ul>
@@ -167,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/cheat_sheet.html">Cheat sheet</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/UCloud.html">Using UCloud</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -187,16 +154,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/pipes_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Computational environments</span></a>
+ <span class="menu-text">HPC Launch</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -204,73 +165,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/fair_envs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FAIR environments</span></a>
+  <a href="../workshop/requirements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to the HPC-Launch workshop</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/docker.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Docker</span></a>
+  <a href="../workshop/cookiecutter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Managing data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/singularity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Singularity</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/RDM_containers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">RDM for containers</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/cheat_sheet.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Cheat sheet</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Pipeline languages</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/fair_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FAIR computational pipelines</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/smk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Snakemake</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/nextflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Nextflow</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/workflow_envs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workflows &amp; environments</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/exercise_pipes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exercises</span></a>
+  <a href="../workshop/UCloud.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Using UCloud</span></a>
   </div>
 </li>
       </ul>
@@ -285,176 +193,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#environment-descriptors" id="toc-environment-descriptors" class="nav-link active" data-scroll-target="#environment-descriptors">Environment descriptors</a></li>
-  <li><a href="#shell" id="toc-shell" class="nav-link" data-scroll-target="#shell">SHELL</a></li>
-  <li><a href="#pip" id="toc-pip" class="nav-link" data-scroll-target="#pip">PIP</a></li>
-  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">PYTHON</a></li>
-  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
-  <li><a href="#conda" id="toc-conda" class="nav-link" data-scroll-target="#conda">CONDA</a></li>
-  <li><a href="#dpkg" id="toc-dpkg" class="nav-link" data-scroll-target="#dpkg">DPKG</a></li>
-  <li><a href="#apt" id="toc-apt" class="nav-link" data-scroll-target="#apt">APT</a></li>
-  <li><a href="#docker-commandline" id="toc-docker-commandline" class="nav-link" data-scroll-target="#docker-commandline">Docker</a></li>
+  <li><a href="#using-ucloud" id="toc-using-ucloud" class="nav-link active" data-scroll-target="#using-ucloud">Using UCloud</a>
+  <ul class="collapse">
+  <li><a href="#step-1" id="toc-step-1" class="nav-link" data-scroll-target="#step-1">Step 1</a></li>
+  <li><a href="#step-2" id="toc-step-2" class="nav-link" data-scroll-target="#step-2">Step 2</a></li>
+  <li><a href="#step-3" id="toc-step-3" class="nav-link" data-scroll-target="#step-3">Step 3</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/cheat_sheet.html">Cheat sheet</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Cheat sheet</h1>
+
+
+
+<section id="using-ucloud" class="level2">
+<h2 class="anchored" data-anchor-id="using-ucloud">Using UCloud</h2>
+<p><a href="https://cloud.sdu.dk">UCloud</a> is a relatively new HPC platform accessible to all researchers and students at Danish universities (via a WAYF university login). It features a user-friendly graphical interface that simplifies project, user, and resource management. UCloud offers access to numerous tools via selectable apps and a variety of flexible compute resources. Check out UCloud’s extensive user docs <a href="https://docs.cloud.sdu.dk/index.html">here</a>.</p>
+<p>If you’d like a more detailed explanation and guide on UCloud, including how to navigate and understand the dashboard better, feel free to check our guidelines on how to access our sandbox app and get started: <a href="https://hds-sandbox.github.io/access/UCloud.html">Sandbox guidelines</a>.</p>
+<section id="step-1" class="level3">
+<h3 class="anchored" data-anchor-id="step-1">Step 1</h3>
+<p>Log onto UCloud at the address http://cloud.sdu.dk using university credentials.</p>
+</section>
+<section id="step-2" class="level3">
+<h3 class="anchored" data-anchor-id="step-2">Step 2</h3>
+<p>When you are logged in, choose the project from the dashboard (top-right side) from which you would like to utilize compute resources. Every user has their personal workspace (<code>My workspace</code>). You can also provision your own project (check with your local DeiC office if you’re new to UCloud) or you can be invited to someone else’s project. If you’ve previously selected a project, it will be launched by default. If it’s your first time, you’ll be in your workspace.</p>
+<p>If you haven’t joined our workspace yet, please click below:</p>
+<p>&nbsp;</p>
+<p align="center">
+<a href="https://cloud.sdu.dk/app/projects/invite/b1bc6434-8340-48cd-8674-18a6b13eabcc" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Invite link to UCloud workspace </a>
+</p>
+<p>&nbsp;</p>
+<p>For this workshop, you need to select <code>Sandbox Workshop</code> (see image below, top-right corner). This will allow us to provide a pre-configured environment with everything you need installed, along with access to our resources.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/step1.png" class="img-fluid figure-img"></p>
+<figcaption>Dashboard</figcaption>
+</figure>
+</div>
+</section>
+<section id="step-3" class="level3">
+<h3 class="anchored" data-anchor-id="step-3">Step 3</h3>
+<p>Search for the <code>Coder</code> application (you might be familiar with its original name, Visual Studio Code, shown in the image above) using the search bar. Make this app your favorite. You can see all available apps on the cloud by clicking on ‘Apps’ in the left panel, marked by the bag symbol.</p>
+<p>Click on the app button to get into the settings window. You will have to configure the settings as shown below before submitting a job. Follow these steps:</p>
+<ol type="1">
+<li>Name and version of the app to run (<code>Coder - 1.92.2</code>)</li>
+<li>Job settings: enter a job name (descriptive of the task), select the time (in hours) we want to use a node for (it can be modified afterwards!) and the machine type (selecting a 1 CPU standard node with 6GB memory)</li>
+<li>Add folders to access while in this job (select your own drive!)</li>
+</ol>
+<ul>
+<li>You need our access to our shared folder so that you can get the correct software environment</li>
+<li>You need to select your own drive, to save any output from the exercise! You won’t have writing permissions on our shared drive.</li>
+</ul>
+<ol start="4" type="1">
+<li>Choose the file <code>shared/HPCLab_workshop/setup.sh</code>. The initialization file,<code>setup.sh</code>, is located on a different drive than your own.</li>
+<li>Click on the Submit button (and wait!)</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/step2.png" class="img-fluid figure-img"></p>
+<figcaption>Job submission</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Step 2 sets up our computing resources for the period we want to work and can be customized as needed. However, only the time can be modified after submitting the job. <strong>You can always add extra time</strong></li>
+<li>Step 4, you will only have access to the folders added during the job setup, and this cannot be modified after submission! <strong>Do not use our shared drive to create new files or for any other purpose! Please, make sure you save output files in your own drive (<code>Member Files: YourName##1234</code>)</strong></li>
+<li>Refresh the website if the app doesn’t launch automatically.</li>
+</ul>
+</div>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    <div>
-    <div class="quarto-title-meta-heading">Modified</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 23, 2024</p>
-    </div>
-  </div>
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Collection of useful commands for package and environment management.</p>
-<section id="environment-descriptors" class="level2">
-<h2 class="anchored" data-anchor-id="environment-descriptors">Environment descriptors</h2>
-<ul>
-<li>Git: <code>git log -1</code> and <code>git status -u</code>. In python, use the following command for a specific module version: <module><code>.version.git_revision)</code> or <module>.<code>__git_version__</code>.</module></module></li>
-<li>R: <code>sessionInfo()</code> or <code>devtools::session_info()</code>: In R, these functions provide detailed information about the current session and list all dependencies.</li>
-<li>Python: the best way seems to <code>import sys</code>, and then, <module><code>__version__</code>, <module><code>__file__</code> which will display package versions and their location without having to list all packages using <code>pip</code>. It’s essential to load the package first and then use the following code to print all its dependencies:</module></module></li>
-</ul>
 </section>
-<section id="shell" class="level2">
-<h2 class="anchored" data-anchor-id="shell">SHELL</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># finds the location of a command by searching through the PATH environment variable</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> <span class="op">&lt;</span>program<span class="op">&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># lists all occurrences of a command found in the PATH</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> <span class="at">-a</span> <span class="op">&lt;</span>program<span class="op">&gt;</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># shows the shared libraries required by a specific program</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ldd</span> <span class="op">&lt;</span>program<span class="op">&gt;</span> </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># provides detailed system information, including machine name and kernel version</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">uname</span> <span class="at">-a</span> </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># displays operating system identification data (such as Debian, Ubuntu, etc.)</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /etc/os-release </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># provides operating system identification data and is recommended if available. This command might not be installed by default but is part of the lsb-release package on Debian-based systems</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">lsb_release</span> <span class="at">-a</span> </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Environmental variables for locations </span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="va">$HOME</span> <span class="co"># home directory</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="va">$PYTHONPATH</span> <span class="co"># empty by default</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="va">$PYTHONHOME</span> <span class="co"># python libraries</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="va">$RHOME</span> <span class="co"># R libraries</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="va">$LD_LIBRARY_PATH</span> <span class="co"># dynamic loader for shared libraries when running a program</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Understanding <code>PYTHONPATH</code></p>
-<ul>
-<li>PYTHONPATH: you can set the $PYTHONPATH environment variable to include additional directories where Python will look for modules and packages. This allows you to extend the search path beyond the default locations and load packages that has been installed in a different directory. It is highly discouraged to mix different versions of libraries and interpreters! as some libraries are complex packages with dependencies.</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PYTHONPATH</span><span class="op">=</span>/path/to/packages/</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># unset the variable </span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">unset</span> <span class="va">PYTHONPATH</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="pip" class="level2">
-<h2 class="anchored" data-anchor-id="pip">PIP</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> show <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install <span class="op">&lt;</span>module<span class="op">&gt;</span>      <span class="co"># install the latest version (and dependencies)</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> uninstall <span class="op">&lt;</span>module<span class="op">&gt;</span>    <span class="co"># remove</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> freeze                <span class="co"># output installed packages in requirements.txt format (similar to pip3 list) which can conveniently be used with: pip3 install -r requirements.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We highly recommend to avoid using <code>pip</code> and start using Python virtualenv management tools, <a href="https://pipenv.pypa.io/en/latest/">pipenv</a>.</p>
-<ul>
-<li>Advantages: it will generates and checks file hashes for locked dependencies when installing from <code>Pipfile.lock</code> and it creates a virtualenv in a standard customizable location.</li>
-</ul>
-</section>
-<section id="python" class="level2">
-<h2 class="anchored" data-anchor-id="python">PYTHON</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># version info on installed packages</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_imported_modules():</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="im">import</span> sys</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> name, val <span class="kw">in</span> <span class="bu">sorted</span>(sys.modules.items()):</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span>(<span class="bu">hasattr</span>(val, <span class="st">'__version__'</span>)): </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>          <span class="bu">print</span>(val.<span class="va">__name__</span>, val.__version__)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span>:</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>          <span class="bu">print</span>(val.<span class="va">__name__</span>, <span class="st">"(unknown version)"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"==== Package list after loading pandas ===="</span>)<span class="op">;</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>print_imported_modules()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="r" class="level2">
-<h2 class="anchored" data-anchor-id="r">R</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>()     <span class="co"># install a given package</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>()              <span class="co"># loads a given package</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">remove.packages</span>()      <span class="co"># install a given package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We highly recommend using <a href="https://rstudio.github.io/renv/articles/renv.html">renv</a>.</p>
-</section>
-<section id="conda" class="level2">
-<h2 class="anchored" data-anchor-id="conda">CONDA</h2>
-<pre><code>conda -V
-conda list 
-conda env list </code></pre>
-</section>
-<section id="dpkg" class="level2">
-<h2 class="anchored" data-anchor-id="dpkg">DPKG</h2>
-<p>Low-level tool for package management on Debian-based systems</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-S</span> package_name <span class="co"># Seach   </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-I</span> package.deb  <span class="co"># --info</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-L</span> package_name <span class="co"># --list files installed by a package</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-i</span> package.deb  <span class="co"># --install   [requires sudo]</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-r</span>   <span class="co"># --remove:  Remove debian_package        [requires sudo]</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">--get-selections</span>    <span class="co"># List all the packages known by dpkg and whether they are installed or not</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">--set-selections</span>    <span class="co"># Set which package should be installed     [requires sudo]</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg-query</span> <span class="at">-W</span> <span class="at">-f</span><span class="op">=</span><span class="st">'${Package} == ${Version}\n'</span> <span class="co"># package version </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="apt" class="level2">
-<h2 class="anchored" data-anchor-id="apt">APT</h2>
-<p>High-level tool for package management on Debian-based systems. It also handles package dependencies and repositories.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> update                      <span class="co"># Update the package list                  [sudo]</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> search <span class="op">&lt;</span>package_name<span class="op">&gt;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> show <span class="op">&lt;</span>package_name<span class="op">&gt;</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install <span class="op">&lt;</span>package_name<span class="op">&gt;</span>      <span class="co"># Install a debian package                 [sudo]</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> upgrade                     <span class="co"># Upgrade all your packages                [sudo]</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> clean                       <span class="co"># Delete all the .deb you've downloaded (save some space)</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> remove <span class="at">--purge</span> <span class="op">&lt;</span>package_name<span class="op">&gt;</span> <span class="co"># Remove a debian package                  [sudo]</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-cache</span> search keyword <span class="co"># Search for packages containing a keyword.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="docker-commandline" class="level2">
-<h2 class="anchored" data-anchor-id="docker-commandline">Docker</h2>
-<p>Useful commands to build and deploy a Docker image.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull         <span class="co"># download image from a registry e.g. Docker Hub </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images       <span class="co"># list all Docker images on your local machine</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="op">&lt;</span>image_name<span class="op">&gt;</span>  <span class="co"># creates and starts a new container from the specified Docker image, -it flag means interactive virtual machine which is very useful during the development-phase for testing the container </span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> <span class="op">&lt;</span>my-app<span class="op">&gt;</span>  <span class="co"># build a Docker image form a Dockerfile and a context </span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> tag <span class="op">&lt;</span>my-app<span class="op">&gt;</span> <span class="op">&lt;</span>myrepo/my-app:v1.0<span class="op">&gt;</span> <span class="co"># creates an new alias for an existing Docker image. Useful for versioning</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> push         <span class="co"># upload image from local machine to Docker registry </span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> login        <span class="co"># logs you into a Docker register (after pull and push), username and pw needed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Other common commands use in Dockerfiles to clean up the image and reduce its size:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Dockerfile</strong></pre>
-</div>
-<div class="sourceCode" id="cb10" data-filename="Dockerfile"><pre class="sourceCode bash coder-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt-get <span class="at">-y</span> autoclean <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> autoremove <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rm</span> <span class="at">-rf</span> /var/cache/apt/archives/<span class="pp">*</span>deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-
-
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
