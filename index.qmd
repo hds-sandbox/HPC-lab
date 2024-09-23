@@ -10,6 +10,8 @@ authors:
 date-modified: last-modified
 date-format: long
 bibliography: references.bib
+nocite: |
+  @wagner2022fairly, @wratten2021reproducible
 ---
 
 ::: {.hero-banner}
