@@ -228,12 +228,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#welcome-to-the-hpc-launch-workshop" id="toc-welcome-to-the-hpc-launch-workshop" class="nav-link active" data-scroll-target="#welcome-to-the-hpc-launch-workshop">Welcome to the HPC-Launch workshop</a></li>
-  <li><a href="#agenda" id="toc-agenda" class="nav-link" data-scroll-target="#agenda">Agenda</a></li>
   <li><a href="#course-requirements" id="toc-course-requirements" class="nav-link" data-scroll-target="#course-requirements">Course requirements</a>
   <ul class="collapse">
   <li><a href="#using-ucloud-for-exercises" id="toc-using-ucloud-for-exercises" class="nav-link" data-scroll-target="#using-ucloud-for-exercises">Using UCloud for exercises</a></li>
   <li><a href="#reading-material" id="toc-reading-material" class="nav-link" data-scroll-target="#reading-material">Reading material:</a></li>
   </ul></li>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link" data-scroll-target="#agenda">Agenda</a></li>
   </ul>
 </nav>
     </div>
@@ -245,6 +245,92 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="welcome-to-the-hpc-launch-workshop" class="level1 hero-banner">
 <h1>Welcome to the HPC-Launch workshop</h1>
+</section>
+<section id="please-read-before-course" class="level4">
+<h4 class="anchored" data-anchor-id="please-read-before-course"><span style="color: red;">PLEASE READ BEFORE COURSE!</span></h4>
+</section>
+<section id="course-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="course-requirements">Course requirements</h2>
+<div class="callout callout-style-default callout-warning callout-titled" title="Required preparation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Required preparation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You are expected to complete the required setup, including tool installation and account creation.</p>
+<ul>
+<li><p><a href="https://git-scm.com/downloads">Git</a> for version control of your projects</p></li>
+<li><p><a href="https://www.python.org/">Python</a></p></li>
+<li><p><a href="https://pip.pypa.io/en/stable/installation/">pip</a> for managing Python packages</p></li>
+<li><p><a href="https://cookiecutter.readthedocs.io/en/stable/">Cookicutter</a> for creating folder structure templates (<code>pip install cookiecutter</code>)</p></li>
+<li><p><a href="https://www.gnu.org/software/coreutils/manual/html_node/md5sum-invocation.html">md5sum</a></p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- cookiecutter -----</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install cookiecutter</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- md5sum from coreutils package-----</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># On Ubuntu/Debian</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install coreutils</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># On macOS</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install coreutils</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ul>
+<p><em>Highly recommended</em></p>
+<ul>
+<li><a href="https://github.com/">GitHub account</a> for hosting and collaborating on projects</li>
+<li><a href="https://zenodo.org/">Zenodo account</a> for archiving and sharing your research outputs</li>
+<li><a href="https://dmp.deic.dk/plans">DeiC DMP</a></li>
+</ul>
+<p><strong>If you run into any issues installing the software, don’t worry! We will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. Please read the next section carefully.</strong></p>
+</div>
+</div>
+<section id="using-ucloud-for-exercises" class="level3">
+<h3 class="anchored" data-anchor-id="using-ucloud-for-exercises">Using UCloud for exercises</h3>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Follow the instructions below if you have an account at a Danish university. You will need your institutional email to proceed. Unfortunately, this will not work for those without a university email.</p>
+</div>
+</div>
+<ol type="1">
+<li>Create an account on <a href="https://cloud.sdu.dk/">UCloud</a> with your institution’s credentials</li>
+<li>Use the link below to join our workspace where you will find a setup environment<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ol>
+<p>&nbsp;</p>
+<p align="center">
+<a href="https://cloud.sdu.dk/app/projects/invite/b1bc6434-8340-48cd-8674-18a6b13eabcc" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Invite link to UCloud workspace </a>
+</p>
+<p>&nbsp;</p>
+<ol start="3" type="1">
+<li>You’re all set! You will receive instructions on how to navigate through UCloud during the course.</li>
+</ol>
+</section>
+<section id="reading-material" class="level3">
+<h3 class="anchored" data-anchor-id="reading-material">Reading material:</h3>
+<p>About Research Data Management (RDM):</p>
+<ul>
+<li><a href="https://hds-sandbox.github.io/RDM_biodata_course/">Sandbox Research data management</a></li>
+<li><a href="https://the-turing-way.netlify.app/reproducible-research/reproducible-research">The Turing way</a></li>
+</ul>
+<p>About High-Performance Computing (HPC):</p>
+<ul>
+<li><a href="https://www.nvidia.com/en-us/glossary/high-performance-computing/">Nvidia HPC</a></li>
+</ul>
+</section>
 </section>
 <section id="agenda" class="level2">
 <h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
@@ -302,89 +388,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</section>
-<section id="course-requirements" class="level2">
-<h2 class="anchored" data-anchor-id="course-requirements">Course requirements</h2>
-<div class="callout callout-style-default callout-warning callout-titled" title="Required preparation">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Required preparation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You are expected to complete the required setup, including tool installation and account creation.</p>
-<ul>
-<li><p><a href="https://git-scm.com/downloads">Git</a> for version control of your projects</p></li>
-<li><p><a href="https://www.python.org/">Python</a></p></li>
-<li><p><a href="https://pip.pypa.io/en/stable/installation/">pip</a> for managing Python packages</p></li>
-<li><p><a href="https://cookiecutter.readthedocs.io/en/stable/">Cookicutter</a> for creating folder structure templates (<code>pip install cookiecutter</code>)</p></li>
-<li><p><a href="https://www.gnu.org/software/coreutils/manual/html_node/md5sum-invocation.html">md5sum</a></p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Terminal</strong></pre>
-</div>
-<div class="sourceCode" id="cb1" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- cookiecutter -----</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install cookiecutter</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ---- md5sum from coreutils package-----</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># On Ubuntu/Debian</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install coreutils</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># On macOS</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install coreutils</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></li>
-</ul>
-<p><em>Highly recommended</em></p>
-<ul>
-<li><a href="https://github.com/">GitHub account</a> for hosting and collaborating on projects</li>
-<li><a href="https://zenodo.org/">Zenodo account</a> for archiving and sharing your research outputs</li>
-</ul>
-<p><strong>If you run into any issues installing the software, don’t worry! We will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. Please read the next section carefully.</strong></p>
-</div>
-</div>
-<section id="using-ucloud-for-exercises" class="level3">
-<h3 class="anchored" data-anchor-id="using-ucloud-for-exercises">Using UCloud for exercises</h3>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Follow the instructions below if you have an account at a Danish university. You will need your institutional email to proceed. Unfortunately, this will not work for those without a university email.</p>
-</div>
-</div>
-<ol type="1">
-<li>Create an account on <a href="https://cloud.sdu.dk/">UCloud</a> with your institution’s credentials</li>
-<li>Use the link below to join our workspace where you will find a setup environment<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
-</ol>
-<p>&nbsp;</p>
-<p align="center">
-<a href="https://cloud.sdu.dk/app/projects/invite/b1bc6434-8340-48cd-8674-18a6b13eabcc" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Invite link to UCloud workspace </a>
-</p>
-<p>&nbsp;</p>
-<ol start="3" type="1">
-<li>You’re all set! You will receive instructions on how to navigate through UCloud during the course.</li>
-</ol>
-</section>
-<section id="reading-material" class="level3">
-<h3 class="anchored" data-anchor-id="reading-material">Reading material:</h3>
-<p>About Research Data Management (RDM):</p>
-<ul>
-<li><a href="https://hds-sandbox.github.io/RDM_biodata_course/">Sandbox Research data management</a></li>
-<li><a href="https://the-turing-way.netlify.app/reproducible-research/reproducible-research">The Turing way</a></li>
-</ul>
-<p>About High-Performance Computing (HPC):</p>
-<ul>
-<li><a href="https://www.nvidia.com/en-us/glossary/high-performance-computing/">Nvidia HPC</a></li>
-<li><a href="https://hds-sandbox.github.io/HPC-lab/develop/hpc_intro.html">Sandbox HPCs</a> <em>currently under development</em></li>
-</ul>
 <!-- 
+- [Sandbox HPCs](https://hds-sandbox.github.io/HPC-lab/develop/hpc_intro.html) *currently under development*
+
 ## Discussion and feedback
 
 We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill up the feedback fork [LINK] before you head out for the day ^[*link activated on the day of the workshop*.].</b>
@@ -402,7 +408,6 @@ You can download our RDM roadmap [here](https://hds-sandbox.github.io/RDM_biodat
 <p>The Health Data Science Sandbox aims to be a <strong>training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets</strong>. We are an active and developing project <strong>seeking interested users</strong> (both trainees and educators). All of our open-source materials are available on our <a href="https://github.com/hds-sandbox">Github page</a> and can be used on a computing cluster! We work with both <a href="https://cloud/sdu.dk">UCloud</a>, <a href="https://genome.au.dk">GenomeDK</a> and <a href="https://www.computerome.dk/">Computerome</a>, the major Danish academic supercomputers.</p>
 
 
-</section>
 </section>
 </section>
 
