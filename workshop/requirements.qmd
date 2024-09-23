@@ -8,16 +8,7 @@ css: ./web.css
 # Welcome to the HPC-Launch workshop 
 :::
 
-## Agenda
-
-| Time | Activity | Time | Activity |
-|:-|:----|:-|:----|
-| *8:45*	|	*Morning coffee (optional)* |  
-| 9:00	|	Introduction to the Sandbox project | 12:00	|	*Lunch break* |
-| 9:15	|	Introduction to HPC: the basics | 13:00	|	Step-by-step: solutions I |
-| 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
-| 10:30	|	DK HPC resources, access, and intro to UCloud | 14:30	|	Step-by-step: solutions II |
-| 11:15	|	Intro to RDM for health data science | 16:00	|	Discussions & Wrap-up |
+#### <span style="color: red;">PLEASE READ BEFORE COURSE!</span>
 
 ## Course requirements 
 
@@ -44,6 +35,7 @@ You are expected to complete the required setup, including tool installation and
 
 - [GitHub account](https://github.com/) for hosting and collaborating on projects
 - [Zenodo account](https://zenodo.org/) for archiving and sharing your research outputs
+- [DeiC DMP](https://dmp.deic.dk/plans)
 
 **If you run into any issues installing the software, don't worry! We will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. Please read the next section carefully.**
 :::
@@ -80,9 +72,22 @@ About Research Data Management (RDM):
 About High-Performance Computing (HPC): 
 
 - [Nvidia HPC](https://www.nvidia.com/en-us/glossary/high-performance-computing/)
-- [Sandbox HPCs](https://hds-sandbox.github.io/HPC-lab/develop/hpc_intro.html) *currently under development*
+
+
+## Agenda
+
+| Time | Activity | Time | Activity |
+|:-|:----|:-|:----|
+| *8:45*	|	*Morning coffee (optional)* |  
+| 9:00	|	Introduction to the Sandbox project | 12:00	|	*Lunch break* |
+| 9:15	|	Introduction to HPC: the basics | 13:00	|	Step-by-step: solutions I |
+| 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
+| 10:30	|	DK HPC resources, access, and intro to UCloud | 14:30	|	Step-by-step: solutions II |
+| 11:15	|	Intro to RDM for health data science | 16:00	|	Discussions & Wrap-up |
 
 <!-- 
+- [Sandbox HPCs](https://hds-sandbox.github.io/HPC-lab/develop/hpc_intro.html) *currently under development*
+
 ## Discussion and feedback
 
 We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill up the feedback fork [LINK] before you head out for the day ^[*link activated on the day of the workshop*.].</b>
