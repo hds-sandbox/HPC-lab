@@ -1,0 +1,58 @@
+---
+format: 
+  html
+css: ./web.css
+---
+
+## Using UCloud 
+
+[UCloud](https://cloud.sdu.dk) is a relatively new HPC platform accessible to all researchers and students at Danish universities (via a WAYF university login). It features a user-friendly graphical interface that simplifies project, user, and resource management. UCloud offers access to numerous tools via selectable apps and a variety of flexible compute resources. Check out UCloud’s extensive user docs [here](https://docs.cloud.sdu.dk/index.html).
+
+If you’d like a more detailed explanation and guide on UCloud, including how to navigate and understand the dashboard better, feel free to check our guidelines on how to access our sandbox app and get started: [Sandbox guidelines](https://hds-sandbox.github.io/access/UCloud.html).
+
+### Step 1
+Log onto UCloud at the address http://cloud.sdu.dk using university credentials.
+
+### Step 2
+
+When you are logged in, choose the project from the dashboard (top-right side) from which you would like to utilize compute resources. Every user has their personal workspace (`My workspace`). You can also provision your own project (check with your local DeiC office if you’re new to UCloud) or you can be invited to someone else’s project. If you’ve previously selected a project, it will be launched by default. If it’s your first time, you’ll be in your workspace. 
+
+If you haven't joined our workspace yet, please click below:
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://cloud.sdu.dk/app/projects/invite/b1bc6434-8340-48cd-8674-18a6b13eabcc" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Invite link to
+    UCloud workspace
+  </a>
+</p>
+
+&nbsp;
+
+For this workshop, you need to select `Sandbox Workshop` (see image below, top-right corner). This will allow us to provide a pre-configured environment with everything you need installed, along with access to our resources.
+
+
+![Dashboard](./images/step1.png)
+
+### Step 3
+
+Search for the `Coder` application (you might be familiar with its original name, Visual Studio Code, shown in the image above) using the search bar. Make this app your favorite. You can see all available apps on the cloud by clicking on 'Apps' in the left panel, marked by the bag symbol.
+
+Click on the app button to get into the settings window. You will have to configure the settings as shown below before submitting a job. Follow these steps: 
+
+1. Name and version of the app to run (`Coder - 1.92.2`)
+2. Job settings: enter a job name (descriptive of the task), select the time (in hours) we want to use a node for (it can be modified afterwards!) and the machine type (selecting a 1 CPU standard node with 6GB memory)
+3. Add folders to access while in this job (select your own drive!)
+  - You need our access to our shared folder so that you can get the correct software environment
+  - You need to select your own drive, to save any output from the exercise! You won't have writing permissions on our shared drive. 
+4. Choose the file `shared/HPCLab_workshop/setup.sh`. The initialization file,`setup.sh`, is located on a different drive than your own.
+5. Click on the Submit button (and wait!)
+
+![Job submission](./images/step2.png)
+
+:::{.callout-warning}
+- Step 2 sets up our computing resources for the period we want to work and can be customized as needed. However, only the time can be modified after submitting the job. **You can always add extra time**
+- Step 4, you will only have access to the folders added during the job setup, and this cannot be modified after submission! **Do not use our shared drive to create new files or for any other purpose! Please, make sure you save output files in your own drive (`Member Files: YourName##1234`)**
+- Refresh the website if the app doesn't launch automatically.
+:::

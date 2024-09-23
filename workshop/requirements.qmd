@@ -25,7 +25,6 @@ css: ./web.css
 You are expected to complete the required setup, including tool installation and account creation. 
 
 - [Git](https://git-scm.com/downloads) for version control of your projects
-- A [Zenodo account](https://zenodo.org/) for archiving and sharing your research outputs
 - [Python](https://www.python.org/)
 - [pip](https://pip.pypa.io/en/stable/installation/) for managing Python packages
 - [Cookicutter](https://cookiecutter.readthedocs.io/en/stable/) for creating folder structure templates (`pip install cookiecutter`)
@@ -40,20 +39,28 @@ You are expected to complete the required setup, including tool installation and
   # On macOS
   brew install coreutils
   ```
-- *Highly recommended*: a [GitHub account](https://github.com/) for hosting and collaborating on projects
 
-Note: If you encounter any issues, we will grant access to a Danish HPC platform where all the necessary software is pre-installed. Please read the next section carefully.
+*Highly recommended*
+
+- [GitHub account](https://github.com/) for hosting and collaborating on projects
+- [Zenodo account](https://zenodo.org/) for archiving and sharing your research outputs
+
+**If you run into any issues installing the software, don't worry! We will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. Please read the next section carefully.**
 :::
 
 ### Using UCloud for exercises 
 
-1. Create an account on [UCloud](https://cloud.sdu.dk/)
+:::{.callout-warning}
+Follow the instructions below if you have an account at a Danish university. You will need your institutional email to proceed. Unfortunately, this will not work for those without a university email.
+:::
+
+1. Create an account on [UCloud](https://cloud.sdu.dk/) with your institution credentials 
 2. Use the link below to join our workspace where you will find a setup environment^[*link activated a week before the workshop*.]
 
 &nbsp;
 
  <p align="center">
-  <a href="https://cloud.sdu.dk/app/projects/invite/b8c2ed67-3c40-4ccb-8a52-1f289c7e3df0" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+  <a href="https://cloud.sdu.dk/app/projects/invite/b1bc6434-8340-48cd-8674-18a6b13eabcc" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
     Invite link to
     UCloud workspace
   </a>
@@ -61,7 +68,21 @@ Note: If you encounter any issues, we will grant access to a Danish HPC platform
 
 &nbsp;
 
+3. You’re all set! You will receive instructions on how to navigate through UCloud during the course.
 
+### Reading material:  
+
+About Research Data Management (RDM): 
+
+- [Sandbox Research data management](https://hds-sandbox.github.io/RDM_biodata_course/)
+- The turing way: https://the-turing-way.netlify.app/reproducible-research/reproducible-research  
+
+About High-Performance Computing (HPC): 
+
+- [Nvidia HPC](https://www.nvidia.com/en-us/glossary/high-performance-computing/)
+- HPCs: https://hds-sandbox.github.io/HPC-lab/develop/hpc_intro.html.  
+
+<!-- 
 ## Discussion and feedback
 
 We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill-up the feedback fork [LINK] before you head out for the day ^[*link activated on day of the workshop*.].</b>
@@ -73,7 +94,8 @@ You can download our RDM roadmap [here](https://hds-sandbox.github.io/RDM_biodat
 :::{.callout-note  appearance="simple" icon=false} 
 <h4 align=center>Nice meeting you and we hope to see you again!</h4> 
 ::: 
+ -->
 
-### About the National Sandbox project 
+#### About the National Sandbox project 
 
 The Health Data Science Sandbox aims to be a **training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets**. We are an active and developing project **seeking interested users** (both trainees and educators). All of our open-source materials are available on our [Github page](https://github.com/hds-sandbox) and can be used on a computing cluster! We work with both [UCloud](https://cloud/sdu.dk), [GenomeDK](https://genome.au.dk) and [Computerome](https://www.computerome.dk/), the major Danish academic supercomputers.

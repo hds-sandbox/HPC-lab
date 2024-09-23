@@ -70,5 +70,8 @@
   },
   "workshop/requirements.qmd": {
     "requirements.html": "0def4c42"
+  },
+  "workshop/UCloud.qmd": {
+    "UCloud.html": "5b61a7a0"
   }
 }
