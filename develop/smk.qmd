@@ -131,7 +131,13 @@ rule myrule:
 Log files need to define the same wildcards as the output files, otherwise, you will get an error. 
 
 #### Config files
-You can also define values for wildcards or parameters in the config file. This is recommended when the pipeline might be used several times at different time points, to avoid unwanted modifications to the workflow. parameterization is key for such cases. 
+You can also define values for wildcards or parameters in the config file (YAML or JSON). This is recommended when the pipeline might be used several times at different time points, to avoid unwanted modifications to the workflow. parameterization is key for such cases. 
+
+It can be loaded with: `configfile: "path/to/config.yaml"`
+
+:::{.callout-warning}
+The given path is interpreted relative to the working directory, not relative to the location of the snakefile that contains the statement. 
+:::
 
 #### Cluster execution
 When working from cluster systems you can execute the workflow using -qsub submission command
@@ -170,10 +176,33 @@ source activate myworkflow
 # then execute snakemake
 ```
 
+### Best Practices recommended by Snakemake 
+
+- Snakemake (v5.11+) includes a linter to check code quality, helping ensure best practices, readability, and reproducibility. Use the linter before publishing or seeking help. Run it with:
+```{.bash}
+snakemake --lint
+```
+- Apply **snakefmt** to format workflows prior to publication. 
+- Always include test data when publishing on GitHub and configure [GitHub Actions](https://github.com/features/actions) for continuos testing. Predefined actions for testing and linting ([here](https://github.com/snakemake/snakemake-github-action)), and formatting ([here](https://github.com/snakemake/snakefmt#github-actions)) are available. 
+- To improve discoverability, follow Snakemake’s recommended [workflow structure](https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#distribution-and-reproducibility). 
+- Use [config files](https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html#snakefiles-standard-configuration) and, if needed, tabular configuration for metadata and experiment information.  
+- Use command-line arguments for runtime settings like threads, resources or output folders such as `--set-threads`, `--set-resources`, `--set-default-resources`, and `--directory`. This makes workflows more readable, scalable, and portable.
+- Keep filenames short and consistent, but informative. Avoid mixing of too many special characters (e.g. decide whether to use _ or - as a separator and do that consistently throughout the workflow).
+- separate Python code like helper functions from rules (e.g. in a workflow/rules/common.smk file). This approach helps non-experts understand the workflow without having to dig into unnecessary internal details.
+- Avoid lambda expressions inside of rules.
+- Where possible, use [Snakemake wrappers](https://snakemake-wrappers.readthedocs.io/en/stable/) to simplify recurring tasks.
+
+
 ## Sources
 
 - [Snakemake tutorial](https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html#tutorial)
 - [Snakemake turorial slides by Johannes Koster](https://slides.com/johanneskoester/snakemake-tutorial)
+- [faircookbook worflows](https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html)
+- Formatter [snakefmt](https://github.com/snakemake/snakefmt)
+- [Snakemake workflow catalog](https://snakemake.github.io/snakemake-workflow-catalog/)
+- [Rules for inclusion in Snakemake workflow catalog](https://snakemake.github.io/snakemake-workflow-catalog/?rules=true)
+
+Recommended reading: 
+
 - Köster, Johannes and Rahmann, Sven. "Snakemake - A scalable bioinformatics workflow engine". Bioinformatics 2012.
 - Köster, Johannes. "Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis", PhD thesis, TU Dortmund 2014.
-- [faircookbook worflows](https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html)

@@ -73,5 +73,11 @@
   },
   "workshop/UCloud.qmd": {
     "UCloud.html": "5b61a7a0"
+  },
+  "develop/hpc_jobs.qmd": {
+    "hpc_jobs.html": "5f0c3bd2"
+  },
+  "develop/hpc_programming.qmd": {
+    "hpc_programming.html": "bb45298d"
   }
 }

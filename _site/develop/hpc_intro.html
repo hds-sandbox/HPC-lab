@@ -73,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -106,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">HPC pipes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../workshop/cookiecutter.html"> 
+    <a class="nav-link" href="../workshop/requirements.html"> 
 <span class="menu-text">Workshop</span></a>
   </li>  
 </ul>
@@ -170,8 +170,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/jobs.html" class="sidebar-item-text sidebar-link">
+  <a href="../develop/hpc_jobs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HPC jobs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/hpc_programming.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HPC coding</span></a>
   </div>
 </li>
       </ul>
@@ -221,7 +227,26 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basics-of-high-performance-computing-hpcs" id="toc-basics-of-high-performance-computing-hpcs" class="nav-link active" data-scroll-target="#basics-of-high-performance-computing-hpcs">Basics of High-Performance Computing (HPCs)</a>
+  <ul class="collapse">
+  <li><a href="#nodes" id="toc-nodes" class="nav-link" data-scroll-target="#nodes">Nodes</a></li>
+  <li><a href="#job-scheduler" id="toc-job-scheduler" class="nav-link" data-scroll-target="#job-scheduler">Job scheduler</a></li>
+  <li><a href="#filesystem" id="toc-filesystem" class="nav-link" data-scroll-target="#filesystem">Filesystem</a></li>
+  <li><a href="#kernel" id="toc-kernel" class="nav-link" data-scroll-target="#kernel">Kernel</a></li>
+  <li><a href="#before-start-using-an-hpc" id="toc-before-start-using-an-hpc" class="nav-link" data-scroll-target="#before-start-using-an-hpc">Before start using an HPC</a></li>
+  <li><a href="#key-areas-of-hpc-use" id="toc-key-areas-of-hpc-use" class="nav-link" data-scroll-target="#key-areas-of-hpc-use">Key areas of HPC use</a></li>
+  <li><a href="#academic-applications" id="toc-academic-applications" class="nav-link" data-scroll-target="#academic-applications">Academic applications</a></li>
+  </ul></li>
+  <li><a href="#hpc-access" id="toc-hpc-access" class="nav-link" data-scroll-target="#hpc-access">HPC access</a></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -239,7 +264,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 12, 2024</p>
+      <p class="date-modified">October 2, 2024</p>
     </div>
   </div>
     
@@ -295,14 +320,19 @@ Module Topics
 </ul>
 </div>
 </div>
-<section id="high-performance-computing-hpcs-and-hpc-clusters." class="level2">
-<h2 class="anchored" data-anchor-id="high-performance-computing-hpcs-and-hpc-clusters.">High-Performance Computing (HPCs) and HPC clusters.</h2>
-<p>Introduction</p>
-<p>HPC main resources:</p>
+<section id="basics-of-high-performance-computing-hpcs" class="level2">
+<h2 class="anchored" data-anchor-id="basics-of-high-performance-computing-hpcs">Basics of High-Performance Computing (HPCs)</h2>
+<p>High-Performance Computing (HPC) involves connecting a large number of computing hardware components to execute many operations simultaneously. A supercomputer consists of various hardware types, typically organized in this hierarchy:</p>
 <ul>
-<li>CPU</li>
-<li>RAM</li>
-<li>GPU</li>
+<li><strong>CPU</strong>: The unit that executes a sequence of instructions. A CPU may contain multiple cores, allowing independent execution of several instruction chains.</li>
+<li><strong>Node</strong>: A single computer within an HPC system.</li>
+<li><strong>Cluster</strong>: A group of interconnected nodes that communicate and can work together on a single task.</li>
+</ul>
+<p>HPC systems also have a dedicated storage component connected to one or more types of storage hardware, typically referred to as a parallel file system or distributed storage system.</p>
+<p>A <strong>node</strong> can consist of one or multiple CPUs and RAM memory. The <strong>RAM</strong> (Random Access Memory) serves as temporary storage that helps manage the data required for running tasks quickly but does not perform computations or persist data after the system shuts down. There are other types of nodes containing different hardware combinations. The most common hardware that can be found in a node beyond RAM and CPUs is:</p>
+<ul>
+<li><strong>GPU</strong>: A graphics processing unit, originally designed for gaming and graphic software, but now used for its computational power. It is particularly efficient in executing repetitive linear algebra operations across multiple parallel processes. Nvidia and AMD are the primary GPU manufacturers.</li>
+<li><strong>FPGA</strong>: A programmable hardware component capable of accelerating specific operations far faster than a CPU. It is often used to optimize processes traditionally handled by CPUs.</li>
 </ul>
 <p>Schematic of components of an HPC [IMAGE]</p>
 <section id="nodes" class="level3">
@@ -312,19 +342,6 @@ Module Topics
 <li>login nodes (also known as head or submit nodes).</li>
 <li>compute nodes (also known as worker nodes).</li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled" title="What can I run from a login node">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-What can I run from a login node
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A straightforward rule: do not run anything on the login node to prevent potential problems. If the login node crashes, the entire system may need to be rebooted, affecting everyone. Remember, you’re not the only one using the HPC—so be considerate of others. For easy, quick tasks, request an interactive access to one of the compute nodes.</p>
-</div>
-</div>
 </section>
 <section id="job-scheduler" class="level3">
 <h3 class="anchored" data-anchor-id="job-scheduler">Job scheduler</h3>
@@ -344,13 +361,13 @@ Note
 </section>
 <section id="filesystem" class="level3">
 <h3 class="anchored" data-anchor-id="filesystem">Filesystem</h3>
-<p>The filesystem is the content all the directories and files available to a given process.</p>
+<p>The filesystem consists of all the directories and files accessible to a given process.</p>
 <ul>
 <li>Scratch</li>
 <li>Users working space</li>
 </ul>
 <div class="callout callout-style-default callout-exercise no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -359,13 +376,13 @@ Exercise
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse show">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-exercise">
 <p>I have an omics pipeline that produces a large number of files, resulting in a couple of terabytes of data after processing and analysis. The project will continue for a few more years, and I’ve decided to store the data in the scratch folder. Do you agree with this decision, and why? What factors should be considered when deciding which data to retain and where to store it?</p>
 <div class="callout callout-style-default callout-hint no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -374,7 +391,7 @@ Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
@@ -399,7 +416,7 @@ Hint
 <h3 class="anchored" data-anchor-id="kernel">Kernel</h3>
 <p>The kernel is essential for managing multiple programs on your machine, each of which runs as a process. Even if you write code assuming full control over the CPU and memory, the kernel ensures that multiple processes can run simultaneously without interfering with each other. It does this by scheduling time for each process and translating virtual memory addresses into physical ones, ensuring security and preventing conflicts.</p>
 <p>The kernel also ensures that processes can’t access each other’s memory or directly modify the hard drive, maintaining system security and stability. For example, when a process needs to write to a file, it asks the kernel to do so through a system call, rather than writing directly.</p>
-<p>In conlcusion, it plays a crucial role in managing the CPU, memory, disk, and software environment. By mediating access to these resources, it maintains process isolation, security, and the smooth operation of your system.</p>
+<p>In conclusion, it plays a crucial role in managing the CPU, memory, disk, and software environment. By mediating access to these resources, it maintains process isolation, security, and the smooth operation of your system.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -442,7 +459,7 @@ Be <em>nice</em>
 </div>
 </div>
 <div class="callout callout-style-default callout-exercise no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -451,7 +468,7 @@ Exercise 1: General HPC
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-exercise">
@@ -468,6 +485,150 @@ Exercise 1: General HPC
 </div>
 </div>
 </section>
+<section id="key-areas-of-hpc-use" class="level3">
+<h3 class="anchored" data-anchor-id="key-areas-of-hpc-use">Key areas of HPC use</h3>
+<ul>
+<li>Quantum mechanics</li>
+<li>Complex physical simulations (CFD)</li>
+<li>Weather forecasting</li>
+<li>Molecular modeling</li>
+<li>Machine learning with big data</li>
+<li>Bioinformatics</li>
+</ul>
+</section>
+<section id="academic-applications" class="level3">
+<h3 class="anchored" data-anchor-id="academic-applications">Academic applications</h3>
+<p>HPC systems offer immense computational power, but they are not limited to large-scale projects. You can request anything from a single CPU and some RAM to entire nodes. Danish HPC systems are available for various academic purposes, including:</p>
+<ul>
+<li>Research projects: access to computing power</li>
+<li>Collaboration: Easier data and settings sharing for collaborative projects.</li>
+<li>Student exercises in classroom teaching: Pre-installed software or package management, saving time on configuration, especially in teaching environments where students may face issues with different operating systems or software versions.</li>
+<li>Student projects: students are not authorized to request resources independently. It is the responsibility of the lecturer or professor to obtain resources through the front office or facilitator. Once resources are allocated, students can be invited to access the project.</li>
+</ul>
+<p>The Danish HPC ecosystem emphasizes teaching and training new users, so applications for resources related to courses and student projects are strongly encouraged. As a reminder, students cannot request resources themselves. Professors or lecturers are responsible for obtaining resources through the front office, and students can be granted access to the allocated project.</p>
+<p><strong>Here is an overview of the different Danish HPC systems</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 15%">
+<col style="width: 17%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feature</th>
+<th>Computerome</th>
+<th>GenomeDK</th>
+<th>UCloud</th>
+<th>Gefion</th>
+<th>LUMI</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>CPU Nodes</strong></td>
+<td>692 thin / 55 fat (50k cores)</td>
+<td>52 thin / 60 fat (15k cores)</td>
+<td>6592 vCPUs</td>
+<td>382 / 112 core each</td>
+<td>2048 / 128 core each</td>
+</tr>
+<tr class="even">
+<td><strong>GPU Nodes</strong></td>
+<td>40 NVIDIA V100s</td>
+<td>2 NVIDIA L40S</td>
+<td>16 NVIDIA H100s</td>
+<td>191 NVIDIA DGX / 8 H100s</td>
+<td>2978 / 4 AMD M250x</td>
+</tr>
+<tr class="odd">
+<td><strong>Storage</strong></td>
+<td>50 PB</td>
+<td>23 PB</td>
+<td>3 PB</td>
+<td>? Provided by DDN</td>
+<td>~120 PB</td>
+</tr>
+<tr class="even">
+<td><strong>Security</strong></td>
+<td>ISAE 3000 + ISO 27001</td>
+<td>ISAE 3000 + ISO 27001</td>
+<td>ISO 27001</td>
+<td>NA</td>
+<td>ISAE 3000 + ISO 27001</td>
+</tr>
+<tr class="odd">
+<td><strong>Sandbox</strong></td>
+<td>No</td>
+<td>No</td>
+<td>Yes (1000 core-hours)</td>
+<td>Application based</td>
+<td>Application based</td>
+</tr>
+<tr class="even">
+<td><strong>Sensitive Data</strong></td>
+<td>Yes, private clouds</td>
+<td>Yes, ‘closed zones’</td>
+<td>Yes</td>
+<td>Not yet</td>
+<td>Not yet</td>
+</tr>
+<tr class="odd">
+<td><strong>Env Management</strong></td>
+<td>Conda (&amp; Docker?)</td>
+<td>Singularity/Apptainer</td>
+<td>Conda</td>
+<td>NA</td>
+<td>Singularity/Apptainer</td>
+</tr>
+<tr class="even">
+<td><strong>OS</strong></td>
+<td>CentOS 7</td>
+<td>AlmaLinux 8</td>
+<td>UCloud GUI</td>
+<td>? NVIDIA Enterprise</td>
+<td>SUSE LES 15 / CRAY</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="hpc-access" class="level2">
+<h2 class="anchored" data-anchor-id="hpc-access">HPC access</h2>
+<p>HPC systems allow multiple users to log in simultaneously and utilize a portion of the system’s resources, usually allocated by an administrator. Exceeding these assigned resources will terminate the running software. In Denmark, there are two ways to access an HPC:</p>
+<ul>
+<li><strong>Interactive Interface</strong>: You can log in using a user-friendly interface (<a href="https://cloud.sdu.dk/">UCloud Supercomputer</a> and <a href="https://docs.cloud.sdu.dk/">Documentation</a>).</li>
+<li><strong>Command Line Interface</strong>: Requires knowledge of the UNIX shell language (<a href="https://www.learnenough.com/command-line-tutorial/basics">here a good introduction the command-line</a>).</li>
+</ul>
+<p>Typically, users first access a login node, which has limited computational resources and is used for tasks like file management and small-scale code testing. Users may be assigned:</p>
+<ul>
+<li>A certain number of CPUs (and possibly GPUs or FPGAs)</li>
+<li>A specific amount of RAM</li>
+<li>Storage capacity</li>
+<li>An amount of total time for using these resources</li>
+</ul>
+<p>We recommend to directly contact the local front office to discuss resource availability.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="What can I run from a login node">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What can I run from a login node
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A straightforward rule: do not run anything on the login node to prevent potential problems. If the login node crashes, the entire system may need to be rebooted, affecting everyone. Remember, you’re not the only one using the HPC—so be considerate of others. For easy, quick tasks, request an interactive access to one of the compute nodes.</p>
+<p>In principle, the only activities you should perform on the login node include:</p>
+<ul>
+<li>Your active login session.</li>
+<li>[OPTIONAL] A terminal multiplexer, such as TMUX, SCREEN, or similar.</li>
+<li>Submitting jobs to the queueing system, whether regular or interactive.</li>
+</ul>
+</div>
+</div>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>

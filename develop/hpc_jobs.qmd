@@ -1,0 +1,113 @@
+---
+title: HPC jobs 
+format: 
+  html
+date-modified: last-modified
+date-format: long
+bibliography: ../references.bib
+summary: This is a summary 
+---
+
+## Best practices for running a job on a cluster
+
+This section outlines useful best practices to consider when coding and running applications and pipelines on an HPC.
+
+## Job scheduler  
+
+To execute jobs in most HPC environment, you must first submit them to a queueing system. This system ensures that compute resources are allocated fairly and efficiently among users while scheduling the execution of jobs. Some of the most common queueing system operate using SLURM (utilizing s type commands), TORQUE (utilizing q type commands) and Moab (utilizing m type commands).
+
+|Program| link|
+|:-------|:--------|
+|TORQUE qsub documentation| [Link](https://support.adaptivecomputing.com/wp-content/uploads/2021/02/torque/torque.htm#topics/torque/commands/qsub.htm)|
+|Moab msub documentation| [Link](https://docs.adaptivecomputing.com/8-1-2/enterprise/MAM/help.htm)|
+|SLURM sbatch/Srun documentation| [sbatch](https://slurm.schedmd.com/sbatch.html) and [srun](https://slurm.schedmd.com/srun.html)|
+
+We will focus on SLURM (Simple Linux Utility for Resource Management) which is a widely used open-source job scheduler designed for managing and allocating resources in high-performance computing (HPC) clusters. It efficiently schedules and runs batch jobs, handles job queues, and optimizes resource utilization across multiple users and tasks.
+
+:::{.callout-note}
+Useful SLURM commands:
+
+```{.bash}
+# Submit the job
+sbatch 
+# Check the job is in the queue
+squeue 
+```
+
+Toy example of a bash script to submit
+```{.bash}
+#!/bin/bash
+#SBATCH -D /home/USERNAME/  # working directory
+#SBATCH -c 1        # number of CPUs. Default: 1
+#SBATCH -t 00:10:00 # time for the job HH:MM:SS.
+#SBATCH --mem=1G    # RAM memory
+##SBATCH --array=1-10%4 # this directive submits a job array of 10 tasks, but only 4 of them can run concurrently.
+
+# my commands: software, pipeline, etc.
+snakemake -j1
+```
+
+:::
+
+In the figure below, you can see how the priority assigned to a SLURM job decreases as the requested time increases, while keeping memory and CPU resources constant. Higher values indicate lower priority.
+
+![Slurm priority, figure adapted from @simakov2018slurm](images/slurm_priority.png "SLURM priority based on time requested")
+
+
+|Description| Links|
+|:------|:--------| 
+|Slurm official guide| [Quick start](https://slurm.schedmd.com/quickstart.html)|
+|Slurm cheat sheet|[Cheat Sheet](https://slurm.schedmd.com/pdfs/summary.pdf)|
+|Slurm Universities usage examples|[GenomeDK](https://genome.au.dk/docs/interacting-with-the-queue/) and [Princeton guides](https://researchcomputing.princeton.edu/slurm) |
+| [Gwf, a simple python tool to create interdependent job submissions](https://gwf.app/ )       | Gwf, developed at the University of Aarhus, makes it easy to create Slurm jobs and organize them as a pipeline with dependencies, using the python language (you need python 3.5+). You get to simply create the shell scripts and the dependencies, without the complicating syntax of Slurm. The page contains also a useful guide. |
+
+### Job parallelisation
+
+Job parallelization is crucial for achieving high performance and running jobs effectively on an HPC. Here are two key scenarios where it is particularly important:
+
+- Independent computational tasks: When tasks are independent of each other, job parallelization can enhance efficiency by allowing them to run concurrently.
+- Multi-threaded tools: Some tools are specifically designed to perform parallel computations through multi-threading, enabling them to utilize multiple CPU cores for increased performance.
+
+:::{.callout-tip}
+# Job parallelisation using slurm 
+Jobs arrays `-a` 
+:::
+
+
+## Efficient resource usage 
+
+### Managing large number of short jobs 
+
+Each time a job is submitted to the job manager (e.g., SLURM) in a computing cluster, there's a time overhead required for resource allocation, output preparation, and queue organization. To minimize this overhead, it's often more efficient to group tasks into longer jobs when possible.
+
+However, it's important to strike a balance. If jobs are too long and encounter an issue, significant time and resources can be lost. This risk can be mitigated by tracking outputs at each stage, ensuring you only rerun the necessary portions of the job. For example, by checking whether a specific output already exists, you can prevent redundant computations and reduce wasted effort. 
+
+A particularly powerful feature in queue systems like SLURM is **batch arrays**. These allow you to automate running large numbers of similar jobs. A batch array consists of multiple jobs with identical code and parameters, but with different input files. Each job in the array is assigned a unique index, passed as an argument to the job script. This greatly simplifies managing and executing large-scale tasks. 
+
+|Description| Links|
+|:------|:--------| 
+| SLURM tutorial on job arrays | [Job Array](https://slurm.schedmd.com/job_array.html)|
+|SLURM cheat sheet|[Cheat Sheet](https://slurm.schedmd.com/pdfs/summary.pdf)|
+|SLURM guide| [Quick start](https://slurm.schedmd.com/quickstart.html)|
+
+Workflow managers can also assist in automating and tracking jobs, ensuring that resources are efficiently allocated while reducing overhead and preventing errors in complex workflows.
+
+### Managing large STOUT outputs
+
+Minimize the amount of information printed to the standard output (STDOUT) to avoid overwhelming the terminal screen. Excessive outputs can become problematic, especially when numerous parallel jobs are running, potentially cluttering the home directory and leading to errors or data loss. Instead, consider directing outputs to software-specific data formats (like .RData files for R) or, at the very least, to plain text files. This approach helps maintain a clean workspace and reduces the risk of encountering issues related to excessive STDOUT content.
+
+## Queueing system best practices
+
+- Avoid running jobs or scripts on the login nodes.
+- Submit batch jobs using the `sbatch` command and ensure that your submission scripts primarily consist of queueing system parameters and job executions.
+- Introduce a delay between job submissions when submitting multiple jobs to prevent overwhelming the system.
+- Utilize job arrays for submitting multiple identical jobs efficiently.
+- Use interactive sessions for testing and interactive jobs.
+- Incorporate software modules in your pipelines for improved environment control.
+- Estimate resource requirements before submitting jobs, including CPU, memory, and time, to optimize resource usage. Always test your code with a small, representative sample (toy example) to ensure the pipeline functions correctly before running larger jobs.
+
+## Sources
+
+Useful links 
+
+#### Acknowledgements
