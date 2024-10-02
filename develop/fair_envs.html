@@ -308,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 30, 2024</p>
+      <p class="date-modified">October 2, 2024</p>
     </div>
   </div>
     
@@ -319,7 +319,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Computational environments vary significantly from one system to another, encompassing differences in the operating system, installed software, and software package versions. If a research project is moved to a different computer or platform, the analysis might not run or produce consistent results, specially if the software relies on specific configurations or dependencies. Dependencies are libraries or tools that software relies on and can change over time or be poorly documented, leading to hidden variations between setups. Simply knowing a software version might often be insufficient for guaranteeing consistent results across different environments.</p>
+<p>Understanding the importance of computational environments is crucial for ensuring the consistency and reliability of research outcomes. These environments can vary significantly between systems, including different in operating systems, installed software, and software package versions. When a research project is transferred to a different computer or platform, analyses may fail to run or yield inconsistent results, particularly if the software depends on specific configurations or libraries. Dependencies can evolve over time or lack proper documentation, creating hidden variations between setups. Consequently, merely knowing a software version may not guarantee consistent performance across different environments, highlighting the need for robust management strategies.</p>
+<p>To address these challenges, project and package managers offer valuable solutions for organizing software in isolated environments. For research to be reproducible, the original computational environment must also be recorded so others can replicate it accurately. This involves making your code easy to install and run by others, document the setup process thoroughly, and carefully manage and share your software environment.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -338,41 +339,20 @@ Warning
 </ul>
 </div>
 </div>
-<p>For research to be reproducible, the original computational environment must be recorded so others can replicate it accurately. This involves making your code easy to install and run by others, document the setup process thoroughly, and carefully manage and share your software environment. There are several methods to achieve this:</p>
+<p>There are several methods to achieve this:</p>
 <ul>
-<li><strong>Containerization platforms</strong> (e.g., Docker, Singularity): allow the researcher to package their software and dependencies into a standardized container image.</li>
-<li><strong>Virtual Machines</strong> (e.g., VirtualBox): can share an entire virtualized computing environment (OS, software and dependencies).</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled" title="More on Virtual Machine">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-More on Virtual Machine
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>VMs simulate a complete operating system, including virtualized CPU, RAM, and storage. They are highly isolated, providing a separate environment for each VM. While VMs offer excellent isolation, they can be slow due to the overhead of simulating hardware and have large images that are cumbersome to share. VMs also require data transfer over the network to interact with the host system, which can be inefficient.</p>
-</div>
-</div>
-</div>
-<ul>
-<li><strong>Environment package managers</strong>: provide an isolated environment with specific packages and dependencies that can be installed without affecting the system-wide configuration. These environments are particularly useful for managing conflicting dependencies and ensuring reproducibility. Configuration files can automate the setup of the computational environment:
+<li><p><strong>Environment package managers</strong>: provide an isolated environment with specific packages and dependencies that can be installed without affecting the system-wide configuration. These environments are particularly useful for managing conflicting dependencies and ensuring reproducibility. Configuration files can automate the setup of the computational environment:</p>
 <ul>
 <li>conda or mamba: allows users to export environment specifications (software and dependencies) to YAML files enabling easy recreation of the environment on another system. Conda disadvantage: long-term reproducibility.</li>
-<li>Python <code>virtualenv</code> or <code>pipenv</code>: is a tool for creating isolated environments to manage dependencies specific to a project.</li>
+<li>Python <code>virtualenv</code> and <code>pipenv</code>: are a tool for creating isolated environments to manage dependencies specific to a project.</li>
 <li>requirements.txt: may contain commands for installing packages (such as pip for Python packages or apt-get for system-level dependencies), configuring system settings, and setting environment variables. Package managers can be used to install, upgrade and manage packages.</li>
 <li>R’s <code>renv</code>: The ‘renv’ package creates isolated environments in R.</li>
 </ul></li>
-<li><strong>Environment descriptors</strong>: refer to various types of metadata or attributes that provide information about the computational environment in which software or applications are running (e.g.&nbsp;<code>__version__</code>, <code>sessionInfo()</code>). Check more useful commands <a href="../develop/cheat_sheet.html">here</a>.<br>
-</li>
-<li><strong>Kernel mechanisms</strong> such as chroot, namespaces and control groups can also be used for process isolation and resource management.</li>
-</ul>
+<li><p><strong>Environment descriptors</strong>: refer to various types of metadata or attributes that provide information about the computational environment in which software or applications are running (e.g.&nbsp;<code>__version__</code>, <code>sessionInfo()</code>). Check more useful commands <a href="../develop/cheat_sheet.html">here</a>.<br>
+</p></li>
+<li><p><strong>Kernel mechanisms</strong> such as chroot, namespaces and control groups can also be used for process isolation and resource management.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -381,7 +361,7 @@ Kernel mechanisms
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Chroot (filesystem isolation): changes the directory for a process, isolating its filesystem view from the rest of the system so that the process can only access files within a specified directory tree.</li>
@@ -390,12 +370,100 @@ Kernel mechanisms
 </ul>
 </div>
 </div>
+</div></li>
+<li><p><strong>Containerization platforms</strong> (e.g., Docker, Singularity): allow the researcher to package their software and dependencies into a standardized container image.</p></li>
+<li><p><strong>Virtual Machines</strong> (e.g., VirtualBox): can share an entire virtualized computing environment (OS, software and dependencies).</p>
+<div class="callout callout-style-default callout-note callout-titled" title="More on Virtual Machine">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>While package managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, containers provide a full environment isolation (including the operating system) which ensures consistent behavior across different systems. Check the table below for a full overview.</p>
+<div class="callout-title-container flex-fill">
+More on Virtual Machine
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>VMs simulate a complete operating system, including virtualized CPU, RAM, and storage. They are highly isolated, providing a separate environment for each VM. While VMs offer excellent isolation, they can be slow due to the overhead of simulating hardware and have large images that are cumbersome to share. VMs also require data transfer over the network to interact with the host system, which can be inefficient.</p>
+</div>
+</div>
+</div></li>
+</ul>
+<p>While package managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, containers provide an even greater level of isolation by virtualizing the entire operating system, making it possible to deploy applications seamlessly across various machines without requiring additional installations. Unlike Virtual Machines, which also virtualize hardware, containers encapsulate applications and their dependencies, ensuring that they function uniformly regardless of the underlying infrastructure. This approach enhances reproducibility and streamlines the deployment process, making it a powerful tool for researchers seeking to maintain consistent results in diverse computing environments.</p>
 <p><img src="./images/envs.png" class="img-fluid"></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Link</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://www.docker.com/why-docker">Docker</a></td>
+<td style="text-align: left;">An open source widespread container that is popular both in research and industry</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://www.youtube.com/watch?v=fqMOX6JJhGo">Docker course</a></td>
+<td style="text-align: left;">A course to use Docker, freely hosted on youtube</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://docker-curriculum.com/">Docker curriculum</a></td>
+<td style="text-align: left;">Beginner introduction to docker</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://docs.docker.com/get-started/">Docker basics</a></td>
+<td style="text-align: left;">Introduction tutorials to Docker from the official documentation page</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://sylabs.io/">Singularity</a></td>
+<td style="text-align: left;">Singularity is another containerization tool. It allows you to decide at which degree a container interacts with the hosting system</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://singularity-tutorial.github.io/">Singularity tutorial</a></td>
+<td style="text-align: left;">A well done Singularity tutorial for HPC users</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://www.youtube.com/watch?v=Gowh5pfzOAM">Singularity video tutorial</a></td>
+<td style="text-align: left;">A video tutorial on Singularity</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://www.youtube.com/watch?v=DA87Ba2dpNM">Reproducibility by containerization</a></td>
+<td style="text-align: left;">A video on reproducibility with Singularity containers</td>
+</tr>
+</tbody>
+</table>
 <p>Recording and sharing the computational environment is essential for ensuring reproducibility and transparency. Below, we will explore two tools that can help with this: mamba, a package manager, and Docker, a container system. We will explain the differences between them and provide guidance on choosing the right tool for your specific scenario.</p>
 <section id="package-managers" class="level2">
 <h2 class="anchored" data-anchor-id="package-managers">Package managers</h2>
+<p>When coding, it’s crucial to ensure that projects are developed under consistent software conditions. The packages and libraries (dependencies) used during development should remain unchanged throughout the project to prevent issues like variations in output formats or conflicts from new algorithm implementations, which can be difficult to trace. Environment and package managers allow users to create isolated frameworks (environments) where specific packages can be installed without affecting other software outside the environment. For even greater isolation, containers can be used (see the related section on this page).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Link</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://docs.conda.io/en/latest/">Conda</a></td>
+<td style="text-align: left;">A widely-used and user-friendly environment manager</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html">Getting started with conda</a></td>
+<td style="text-align: left;">Official guide to setting up and using <code>conda</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html">Conda cheat sheet</a></td>
+<td style="text-align: left;">Quick reference for <code>conda</code> usage</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://yarnpkg.com/">YARN</a></td>
+<td style="text-align: left;">An alternative to <code>conda</code></td>
+</tr>
+</tbody>
+</table>
 <p><a href="https://mamba.readthedocs.io/en/latest/">Mamba</a> is a reimplementation of the Conda package manager in C++. While our focus will be on Mamba, it’s important to note that it maintains compatibility with Conda by using the same command-line parser, package installation and uninstallation code, and transaction verification routines.</p>
 <p>Mamba uses software installation specifications that are maintained by extensive communities of developers, organized into channels, which serve as software repositories. For example, the “bioconda” channel specializes in bioinformatics tools, while “conda-forge” covers a broad range of data science packages.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Mamba vs. conda">

@@ -272,7 +272,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">September 30, 2024</p>
+      <p class="date-modified">October 2, 2024</p>
     </div>
   </div>
     
@@ -285,9 +285,14 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="integration-between-workflows-and-software-environments" class="level2">
 <h2 class="anchored" data-anchor-id="integration-between-workflows-and-software-environments">Integration between workflows and software environments</h2>
-<p>Snakemake or Nextflow ipelines are essentially code scripts that require an appropriate computational environment to run properly. Let’s explore the challenges of managing computational environments for workflows.</p>
+<p>Snakemake or Nextflow pipelines are essentially code scripts that require an appropriate computational environment to run properly. Let’s explore the challenges of managing computational environments for workflows.</p>
 <p>You can use a single common environment for all tasks in a workflow, which is generally recommended unless there are conflicting dependencies (for example, if one task requires a different version of a library than another). Alternatively, you might use separate environments if you’re reusing a task from another workflow and don’t want to alter its existing environment, or if a rarely run task has a large environment. In such cases, creating a dedicated environment for that task can help reduce the overall resource usage of the workflow.</p>
-<p>Snakemake has built support for tasks environments: - Conda - Environment modules - Singularity</p>
+<p>Snakemake has built support for tasks environments:</p>
+<ul>
+<li>Conda</li>
+<li>Environment modules</li>
+<li>Singularity</li>
+</ul>
 <p><strong>Nested environments with Docker for reproducibility</strong></p>
 <p>Two-level environment:</p>
 <ul>
