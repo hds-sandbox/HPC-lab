@@ -1,8 +1,7 @@
 ---
 title: HPC intro
 format: 
-  html:
-    toc: false
+  html
 date-modified: last-modified
 date-format: long
 summary: This is a summary 
@@ -27,15 +26,20 @@ summary: This is a summary
 - Advanced topics
 :::
 
-## High-Performance Computing (HPCs) and HPC clusters.
+## Basics of High-Performance Computing (HPCs)
 
-Introduction 
+High-Performance Computing (HPC) involves connecting a large number of computing hardware components to execute many operations simultaneously. A supercomputer consists of various hardware types, typically organized in this hierarchy:
 
-HPC main resources:
+- **CPU**: The unit that executes a sequence of instructions. A CPU may contain multiple cores, allowing independent execution of several instruction chains.
+- **Node**: A single computer within an HPC system.
+- **Cluster**: A group of interconnected nodes that communicate and can work together on a single task.
 
-- CPU
-- RAM
-- GPU
+HPC systems also have a dedicated storage component connected to one or more types of storage hardware, typically referred to as a parallel file system or distributed storage system. 
+
+A **node** can consist of one or multiple CPUs and RAM memory. The **RAM** (Random Access Memory) serves as temporary storage that helps manage the data required for running tasks quickly but does not perform computations or persist data after the system shuts down. There are other types of nodes containing different hardware combinations. The most common hardware that can be found in a node beyond RAM and CPUs is:
+
+- **GPU**: A graphics processing unit, originally designed for gaming and graphic software, but now used for its computational power. It is particularly efficient in executing repetitive linear algebra operations across multiple parallel processes. Nvidia and AMD are the primary GPU manufacturers.
+- **FPGA**: A programmable hardware component capable of accelerating specific operations far faster than a CPU. It is often used to optimize processes traditionally handled by CPUs.
 
 Schematic of components of an HPC [IMAGE]
 
@@ -45,10 +49,6 @@ There are two types of nodes on a cluster:
 - login nodes (also known as head or submit nodes).
 - compute nodes (also known as worker nodes).
 
-:::{.callout-tip title="What can I run from a login node"}
-A straightforward rule: do not run anything on the login node to prevent potential problems. If the login node crashes, the entire system may need to be rebooted, affecting everyone. Remember, you're not the only one using the HPC—so be considerate of others. For easy, quick tasks, request an interactive access to one of the compute nodes. 
-:::
-
 ### Job scheduler  
 
 :::{.callout-note}
@@ -57,7 +57,7 @@ Several job scheduler programs are available, and `SLURM` is among the most wide
 
 ### Filesystem 
 
-The filesystem is the content all the directories and files available to a given process.
+The filesystem consists of all the directories and files accessible to a given process.
 
 - Scratch 
 - Users working space 
@@ -81,7 +81,7 @@ The kernel is essential for managing multiple programs on your machine, each of 
 
 The kernel also ensures that processes can't access each other's memory or directly modify the hard drive, maintaining system security and stability. For example, when a process needs to write to a file, it asks the kernel to do so through a system call, rather than writing directly.
 
-In conlcusion, it plays a crucial role in managing the CPU, memory, disk, and software environment. By mediating access to these resources, it maintains process isolation, security, and the smooth operation of your system.
+In conclusion, it plays a crucial role in managing the CPU, memory, disk, and software environment. By mediating access to these resources, it maintains process isolation, security, and the smooth operation of your system.
 
 :::{.callout-note}
 # Kernel primary roles: 
@@ -112,6 +112,68 @@ If your HPC system doesn't have a job scheduler in place, we recommend using the
 4. What are the differences between *scratch* and *home* storage and when each should be used? 
 5. What is a kernel? 
 :::
+
+### Key areas of HPC use
+
+- Quantum mechanics
+- Complex physical simulations (CFD)
+- Weather forecasting
+- Molecular modeling
+- Machine learning with big data
+- Bioinformatics
+
+### Academic applications 
+
+HPC systems offer immense computational power, but they are not limited to large-scale projects. You can request anything from a single CPU and some RAM to entire nodes. Danish HPC systems are available for various academic purposes, including:
+
+- Research projects: access to computing power 
+- Collaboration: Easier data and settings sharing for collaborative projects. 
+- Student exercises in classroom teaching: Pre-installed software or package management, saving time on configuration, especially in teaching environments where students may face issues with different operating systems or software versions.
+- Student projects: students are not authorized to request resources independently. It is the responsibility of the lecturer or professor to obtain resources through the front office or facilitator. Once resources are allocated, students can be invited to access the project.
+
+The Danish HPC ecosystem emphasizes teaching and training new users, so applications for resources related to courses and student projects are strongly encouraged. As a reminder, students cannot request resources themselves. Professors or lecturers are responsible for obtaining resources through the front office, and students can be granted access to the allocated project.
+
+**Here is an overview of the different Danish HPC systems**
+
+| Feature                | Computerome             | GenomeDK                | UCloud                | Gefion                  | LUMI                  |
+|------------------------|-------------------------|-------------------------|-----------------------|-------------------------|-----------------------|
+| **CPU Nodes**          | 692 thin / 55 fat (50k cores) | 52 thin / 60 fat (15k cores) | 6592 vCPUs            | 382 / 112 core each     | 2048 / 128 core each  |
+| **GPU Nodes**          | 40 NVIDIA V100s        | 2 NVIDIA L40S          | 16 NVIDIA H100s       | 191 NVIDIA DGX / 8 H100s | 2978 / 4 AMD M250x    |
+| **Storage**            | 50 PB                   | 23 PB                   | 3 PB                  | ? Provided by DDN       | ~120 PB               |
+| **Security**           | ISAE 3000 + ISO 27001  | ISAE 3000 + ISO 27001  | ISO 27001             | NA                      | ISAE 3000 + ISO 27001 |
+| **Sandbox**            | No                      | No                      | Yes (1000 core-hours) | Application based        | Application based      |
+| **Sensitive Data**     | Yes, private clouds     | Yes, ‘closed zones’     | Yes                   | Not yet                 | Not yet               |
+| **Env Management**     | Conda (& Docker?)       | Singularity/Apptainer   | Conda                 | NA                      | Singularity/Apptainer  |
+| **OS**                 | CentOS 7                | AlmaLinux 8             | UCloud GUI            | ? NVIDIA Enterprise      | SUSE LES 15 / CRAY    |
+
+
+
+## HPC access
+
+HPC systems allow multiple users to log in simultaneously and utilize a portion of the system's resources, usually allocated by an administrator. Exceeding these assigned resources will terminate the running software. In Denmark, there are two ways to access an HPC:
+
+- **Interactive Interface**: You can log in using a user-friendly interface ([UCloud Supercomputer](https://cloud.sdu.dk/) and [Documentation](https://docs.cloud.sdu.dk/)).
+- **Command Line Interface**: Requires knowledge of the UNIX shell language ([here a good introduction the command-line](https://www.learnenough.com/command-line-tutorial/basics)).
+
+Typically, users first access a login node, which has limited computational resources and is used for tasks like file management and small-scale code testing. Users may be assigned:
+
+- A certain number of CPUs (and possibly GPUs or FPGAs)
+- A specific amount of RAM
+- Storage capacity
+- An amount of total time for using these resources
+
+We recommend to directly contact the local front office to discuss resource availability. 
+
+:::{.callout-tip title="What can I run from a login node"}
+A straightforward rule: do not run anything on the login node to prevent potential problems. If the login node crashes, the entire system may need to be rebooted, affecting everyone. Remember, you're not the only one using the HPC—so be considerate of others. For easy, quick tasks, request an interactive access to one of the compute nodes. 
+
+In principle, the only activities you should perform on the login node include:
+
+- Your active login session.
+- [OPTIONAL] A terminal multiplexer, such as TMUX, SCREEN, or similar.
+- Submitting jobs to the queueing system, whether regular or interactive.
+:::
+
 
 ## Sources
 

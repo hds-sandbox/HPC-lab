@@ -21,10 +21,10 @@ Consider scenarios where re-running all steps can be an issue (minimum 2).
 Here are some examples: 
 
 - **Changing input files**: if only some parts of the pipeline are affected by the changes.
-- **Code bugs**: Issues such as incorrect paths or typos in your code.
+- **Code bugs**: issues such as incorrect paths or typos in your code.
 - **Software updates**: newer version released. 
 - **Parameter updates**: test/update parameters in a software tool.
-- **Script Modifications**: For example, if only the plotting section of your script is updated, re-running the entire pipeline could waste significant time and resources.
+- **Script Modifications**: for example, if only the plotting section of your script is updated, re-running the entire pipeline could waste significant time and resources.
 :::
 :::
 

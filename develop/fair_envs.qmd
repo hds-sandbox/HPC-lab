@@ -6,7 +6,11 @@ date-modified: last-modified
 summary: workflow
 ---
 
-Computational environments vary significantly from one system to another, encompassing differences in the operating system, installed software, and software package versions. If a research project is moved to a different computer or platform, the analysis might not run or produce consistent results, specially if the software relies on specific configurations or dependencies. Dependencies are libraries or tools that software relies on and can change over time or be poorly documented, leading to hidden variations between setups. Simply knowing a software version might often be insufficient for guaranteeing consistent results across different environments.
+
+Understanding the importance of computational environments is crucial for ensuring the consistency and reliability of research outcomes. These environments can vary significantly between systems, including different in operating systems, installed software, and software package versions. When a research project is transferred to a different computer or platform, analyses may fail to run or yield inconsistent results, particularly if the software depends on specific configurations or libraries. Dependencies can evolve over time or lack proper documentation, creating hidden variations between setups. Consequently, merely knowing a software version may not guarantee consistent performance across different environments, highlighting the need for robust management strategies.
+
+To address these challenges, project and package managers offer valuable solutions for organizing software in isolated environments. For research to be reproducible, the original computational environment must also be recorded so others can replicate it accurately. This involves making your code easy to install and run by others, document the setup process thoroughly, and carefully manage and share your software environment. 
+
 
 :::{.callout-warning}
 If you're developing your own tools/pipelines, here's is the hard truth:
@@ -16,37 +20,59 @@ If you're developing your own tools/pipelines, here's is the hard truth:
 - Lastly, if you don’t carefully control and share your software environment, even you might struggle to get the same results later on.
 :::
 
-For research to be reproducible, the original computational environment must be recorded so others can replicate it accurately. This involves making your code easy to install and run by others, document the setup process thoroughly, and carefully manage and share your software environment. There are several methods to achieve this: 
+There are several methods to achieve this: 
 
-- **Containerization platforms** (e.g., Docker, Singularity): allow the researcher to package their software and dependencies into a standardized container image.
-- **Virtual Machines** (e.g., VirtualBox): can share an entire virtualized computing environment (OS, software and dependencies).
-
-:::{.callout-note title="More on Virtual Machine" collapse="true"}
-VMs simulate a complete operating system, including virtualized CPU, RAM, and storage. They are highly isolated, providing a separate environment for each VM. While VMs offer excellent isolation, they can be slow due to the overhead of simulating hardware and have large images that are cumbersome to share. VMs also require data transfer over the network to interact with the host system, which can be inefficient.
-:::
 - **Environment package managers**: provide an isolated environment with specific packages and dependencies that can be installed without affecting the system-wide configuration. These environments are particularly useful for managing conflicting dependencies and ensuring reproducibility. Configuration files can automate the setup of the computational environment: 
   - conda or mamba: allows users to export environment specifications (software and dependencies) to YAML files enabling easy recreation of the environment on another system. Conda disadvantage: long-term reproducibility. 
-  - Python `virtualenv` or `pipenv`: is a tool for creating isolated environments to manage dependencies specific to a project.
+  - Python `virtualenv` and `pipenv`: are a tool for creating isolated environments to manage dependencies specific to a project.
   - requirements.txt: may contain commands for installing packages (such as pip for Python packages or apt-get for system-level dependencies), configuring system settings, and setting environment variables. Package managers can be used to install, upgrade and manage packages. 
   - R's `renv`: The 'renv' package creates isolated environments in R.
 - **Environment descriptors**: refer to various types of metadata or attributes that provide information about the computational environment in which software or applications are running (e.g. `__version__`, `sessionInfo()`). Check more useful commands [here](./cheat_sheet.qmd).   
 - **Kernel mechanisms** such as chroot, namespaces and control groups can also be used for process isolation and resource management. 
 
-:::{.callout-note collapse="true"}
-# Kernel mechanisms 
+  :::{.callout-note collapse="true"}
+  # Kernel mechanisms 
   - Chroot (filesystem isolation): changes the directory for a process, isolating its filesystem view from the rest of the system so that the process can only access files within a specified directory tree.
   - Namespace (process isolation): isolates processes from each other by creating separate namespaces for various resources such as process IDs, network interfaces, and filesystems. Processes within the same namespace can interact with each other, but they are isolated from processes in other namespaces.
   - Control groups (resource management): manage and limit the amount of system resources that processes can use which ensures that they cannot exceed their allocation resources and helps maintaining the overall system performance and stability. 
-:::
+  :::
 
+- **Containerization platforms** (e.g., Docker, Singularity): allow the researcher to package their software and dependencies into a standardized container image.
+- **Virtual Machines** (e.g., VirtualBox): can share an entire virtualized computing environment (OS, software and dependencies).
 
-While package managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, containers provide a full environment isolation (including the operating system) which ensures consistent behavior across different systems. Check the table below for a full overview. 
+  :::{.callout-note title="More on Virtual Machine" collapse="true"}
+  VMs simulate a complete operating system, including virtualized CPU, RAM, and storage. They are highly isolated, providing a separate environment for each VM. While VMs offer excellent isolation, they can be slow due to the overhead of simulating hardware and have large images that are cumbersome to share. VMs also require data transfer over the network to interact with the host system, which can be inefficient.
+  :::
+
+While package managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, containers provide an even greater level of isolation by virtualizing the entire operating system, making it possible to deploy applications seamlessly across various machines without requiring additional installations. Unlike Virtual Machines, which also virtualize hardware, containers encapsulate applications and their dependencies, ensuring that they function uniformly regardless of the underlying infrastructure. This approach enhances reproducibility and streamlines the deployment process, making it a powerful tool for researchers seeking to maintain consistent results in diverse computing environments.
+
 
 ![](./images/envs.png)
+
+| Link      | Description                          |
+| :---------- | :----------------------------------- |
+| [Docker](https://www.docker.com/why-docker) | An open source widespread container that is popular both in research and industry |
+| [Docker course](https://www.youtube.com/watch?v=fqMOX6JJhGo)      | A course to use Docker, freely hosted on youtube |
+| [Docker curriculum](https://docker-curriculum.com/)      | Beginner introduction to docker |
+| [Docker basics](https://docs.docker.com/get-started/)      | Introduction tutorials to Docker from the official documentation page |
+| [Singularity](https://sylabs.io/) | Singularity is another containerization tool. It allows you to decide at which degree a container interacts with the hosting system |
+| [Singularity tutorial](https://singularity-tutorial.github.io/) | A well done Singularity tutorial for HPC users|
+| [Singularity video tutorial](https://www.youtube.com/watch?v=Gowh5pfzOAM) | A video tutorial on Singularity |
+| [Reproducibility by containerization](https://www.youtube.com/watch?v=DA87Ba2dpNM) | A video on reproducibility with Singularity containers |
 
 Recording and sharing the computational environment is essential for ensuring reproducibility and transparency. Below, we will explore two tools that can help with this: mamba, a package manager, and Docker, a container system. We will explain the differences between them and provide guidance on choosing the right tool for your specific scenario.
 
 ## Package managers
+
+When coding, it's crucial to ensure that projects are developed under consistent software conditions. The packages and libraries (dependencies) used during development should remain unchanged throughout the project to prevent issues like variations in output formats or conflicts from new algorithm implementations, which can be difficult to trace. Environment and package managers allow users to create isolated frameworks (environments) where specific packages can be installed without affecting other software outside the environment. For even greater isolation, containers can be used (see the related section on this page).
+
+| Link      | Description                          |
+| :---------- | :----------------------------------- |
+| [Conda](https://docs.conda.io/en/latest/) | A widely-used and user-friendly environment manager  |
+| [Getting started with conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) | Official guide to setting up and using `conda` |
+| [Conda cheat sheet](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html) | Quick reference for `conda` usage |
+| [YARN](https://yarnpkg.com/) | An alternative to `conda` |
+
 
 [Mamba](https://mamba.readthedocs.io/en/latest/) is a reimplementation of the Conda package manager in C++. While our focus will be on Mamba, it's important to note that it maintains compatibility with Conda by using the same command-line parser, package installation and uninstallation code, and transaction verification routines.
 

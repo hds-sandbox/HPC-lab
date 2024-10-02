@@ -1,0 +1,161 @@
+---
+title: HPC coding 
+format: 
+  html:
+    toc-location: left
+date-modified: last-modified
+date-format: long
+bibliography: ../references.bib
+summary: This is a summary 
+---
+
+This section outlines useful best practices to consider when coding and writing new software on an HPC.
+
+## Coding practices 
+
+### Code coverage, testing, and continuous integration
+
+Testing is a critical aspect of coding that should be performed regularly throughout a project. Here are some primary types of tests to consider:
+
+- **Regression Test**: Given a specific input, the code is tested to reproduce the expected output.
+- **Unit Test**: Tests the smallest units of the software (e.g., individual functions) to identify bugs, particularly under extreme input and output conditions.
+- **Continuous Integration**: A suite of tests runs automatically every time the software code is updated, helping to catch bugs before anyone uses the code.
+
+Additional aspects to test include the performance and scalability of the code, usability, and response to all intended types of input data.
+
+While unit and regression tests are valuable, they may become unfeasible as the codebase grows in size and complexity. Therefore, it's advisable to use continuous integration and implement simple yet representative tests that cover the entire codebase, enabling the early detection of bugs before end-users encounter them. Code coverage tools are available for various programming languages and can also be used for testing code deployed on GitHub version control.
+
+| Link           | Description                    |
+| :---------------------- | :----------------------- |
+| [pyTest](https://pytest.org/)       | Package to test `python` code  |
+| [Cmake](https://cmake.org/Wiki/CMake/Testing_With_CTest)      | Tool to test both `C`, `C++` and `Fortran code` |
+| [Travis CI](https://www.travis-ci.com/)      | Tool for continuous integration in most of the used programming languages. Works on Git version control. |
+| [covr](https://github.com/r-lib/covr)      | Package to test coverage reports for R |
+
+
+### Code styling 
+
+An essential aspect of code is its readability by others. To achieve this, a clean and consistent coding style should be employed throughout the project. Some languages have established preferred coding styles, which can often be enforced in certain IDEs (e.g. [Visual Studio Code](https://code.visualstudio.com/docs/editor/codebasics#_formatting)). While you can adopt your own coding style, it should prioritize readability and be consistently applied across the entire project. Here are some general code styling tools: 
+
+| Tool & Link      | Description                          |
+| :---------------------- | :--------------------------- |
+| [styleguide](https://google.github.io/styleguide/)       | Google guide for coding styles of the major programming languages  |
+| [awesome guidelines](https://kristories.gitbook.io/awesome-guidelines/)      | A guide to coding styles covering also documentations, tools and development environments |
+
+Click on the callout below if you want to learn about language-specific tools for code formatting.
+
+:::{.callout-note title="Formatting tools" collapse="true"}
+| Language | Formatted tools |
+|:-|:----|
+| Python | [Black](https://black.readthedocs.io/en/stable/), [yapf](https://pypi.org/project/yapf/), read intro [Pythonic rules](https://docs.python-guide.org/writing/style/) |
+| R | [formatR](https://yihui.org/formatr/), read post [R style](https://www.r-bloggers.com/2019/01/%F0%9F%96%8A-r-coding-style-guide/) |
+| Snakemake | [Snakefmt](https://github.com/snakemake/snakefmt) |
+| Bash/Shell | [ShellIndent](https://www.bolthole.com/AWK.html) |
+| C/C++ | [GNUIndent](https://www.gnu.org/software/indent/), [GreatCode](https://sourceforge.net/projects/gcgreatcode/)|
+| Perl | [PerlTidy](https://perltidy.sourceforge.net/)|
+|Javascript |[beautifier](https://beautifier.io/)|
+| MATLAB/Octove |[MISS_HIT](https://florianschanda.github.io/miss_hit/)|
+|Java | [Google Java format](https://github.com/google/google-java-format), [JIndent](https://www.newforms-tech.com/products/jindent/about)|
+|CSS|[CSSTidy](https://csstidy.sourceforge.net/)|
+|HTML| [Tidy](https://sourceforge.net/projects/html-tidy.mirror/)|
+:::
+
+:::{.callout-tip}
+Quick Tip: If you use VS Code as your main text editor, you can enable automatic code formatting in your browser. Go to your preferences page in JSON mode and add:
+
+```{.json filename="json"}
+"editor.formatOnSave": true
+```
+:::
+
+### Packaging a coding project
+When developing software that includes multiple newly implemented functions, organizing these functions into a package can be beneficial for reuse and easy sharing. This approach is particularly straightforward for coding projects in both Python and R, allowing developers to streamline their workflow and enhance collaboration.
+
+| Link      | Description                          |
+| :---------- | :----------------------------------- |
+| [pyPA](https://packaging.python.org/tutorials/packaging-projects/) | `python` packaging user guide  |
+| [R package development](https://support.rstudio.com/hc/en-us/articles/200486488-Developing-Packages-with-RStudio)       | Develop an `R` package using `Rstudio`  |
+
+
+### Code documentation 
+
+When developing software, it's essential to create documentation that clearly explains the usage of each code element. For software packages, there are tools available that can automatically generate documentation by utilizing function declarations and any accompanying text included as strings within the code.
+
+| Tool & Link | Description |
+| :------------ | :------------ |
+| [MkDocs](https://www.mkdocs.org/) | A generator for static webpages, with design and themes targeted to documentation pages, but also other type of websites. This website is itself made with MkDocs. |
+| [Python - mkdocstrings](https://github.com/pawamoy/mkdocstrings) | Python handler to automatically generate documentation with MkDocs |
+| [pdoc3](https://pdoc3.github.io/pdoc/)      | A package who creates automatically the documentation for your coding projects. It is semi automatic (infers your dependencies, classes, ... but adds a description based on your docstrings) |
+| [pdoc3 101](https://www.scivision.dev/pdoc-python-quickstart/)      | How to run pdoc to create an html documentation |
+| [R-Roxygen2](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html) | A package to generate `R` documentation - it can be used also with `Rcpp` |
+| [Sphinx](https://www.sphinx-doc.org/en/master/) | Another tool to write documentation - it produces also printable outputs. `Sphinx` was first created to write the `python` language documentation. Even though it is a tool especially thought for `python` code, it can be used to generate static webpages for other projects.|
+
+
+## Parallel programming
+
+An HPC system can be used for both sequential and parallel programming. Sequential programming involves writing computer programs that execute one instruction at a time, following a logical sequence of steps. In contrast, parallel programming allows multiple instructions to run simultaneously.
+
+While there is typically only one approach to writing sequential code, there are various methods for creating parallelized code.
+## Parallel Programming
+
+### OpenMP (Multithreading)
+
+One popular approach to parallel programming is through **OpenMP**, where developers write sequential code and identify specific sections that can be parallelized into **threads** using a fork-join mechanism. Each thread operates independently and has its own allocated memory, as illustrated in the figure below from [ADMIN magazine](https://www.admin-magazine.com/layout/set/print/HPC/Articles/Pymp-OpenMP-like-Python-Programming).
+
+![OpenMP Diagram](https://www.admin-magazine.com/var/ezflow_site/storage/images/media/images/pymp_01/172579-1-eng-US/Pymp_01_reference.png)
+
+If the execution times of threads vary, some may have to wait for others to complete when they need to be joined (e.g. to collect data), leading to inefficient use of execution time. It is the programmer's responsibility to balance the distribution of threads to optimize performance. 
+
+Modern CPUs inherently support OpenMP, particularly multicore CPUs, which can run threads independently. OpenMP is available as an extension for programming languages such as C and Fortran, and is commonly used to parallelize for loops that create performance bottlenecks in software execution.
+
+| Link      | Description                          |
+| :---------- | :----------------------------------- |
+| [Video Course](https://www.youtube.com/watch?v=2GwZKJ4QpME)       | A video course hosted by ARCHER UK, linked to the first lesson with access to all subsequent lessons. |
+| [OpenMP Starter Guide](https://chryswoods.com/beginning_openmp/)      | A beginner's guide to OpenMP. |
+| [Wikitolearn OpenMP Course](https://en.wikitolearn.org/Course:Parallel_programming_with_OpenMP_and_MPI)      | An OpenMP course available on Wikitolearn. |
+| [MIT OpenMP Course](https://ocw.mit.edu/courses/earth-atmospheric-and-planetary-sciences/12-950-parallel-programming-for-multicore-machines-using-openmp-and-mpi-january-iap-2010/)      | A comprehensive course from MIT that also covers MPI usage. |
+
+### MPI (Message Passing Interface)
+
+MPI facilitates the distribution of data among different processes that cannot otherwise access it. This is illustrated in the image below from [LLNL](https://computing.llnl.gov/tutorials/mpi/).
+
+![MPI Diagram](https://hpc-tutorials.llnl.gov/mpi/images/distributed_mem.gif)
+
+Although MPI is often considered difficult to learn, this reputation stems from the explicit programming required for message passing.
+
+| Link      | Description                          |
+| :---------- | :----------------------------------- |
+| [Video Course](https://www.youtube.com/watch?v=R5rIoAkEJBE)       | A video course hosted by ARCHER UK, linked to the first lesson with access to all subsequent lessons. |
+| [MPI Starter Guide](https://chryswoods.com/beginning_mpi/)      | A beginner's guide to MPI. |
+| [PRACE Course](https://www.futurelearn.com/info/courses/python-in-hpc/0/steps/65139)      | A PRACE course on the MOCC platform, FutureLearn. |
+
+### GPU Programming
+
+GPUs (Graphics Processing Unit) serve as computing accelerators, significantly enhancing the performance of heavy linear algebra applications, such as deep learning. A GPU typically comprises numerous specialized processing units, enabling extreme parallelization of computer code, as shown in the figure below from [astrocomputing](http://www.astrocompute.wordpress.com).
+
+![GPU Computing](https://astrocompute.files.wordpress.com/2011/03/gpu-computing-feature.jpg)
+
+AMD and Nvidia are the two primary GPU manufacturers, with Nvidia maintaining a dominant position in the market for many years. Danish HPCs Type 1 and 2 feature various Nvidia graphic card models, while Type 5 (LUMI) includes the latest AMD Instinct cards. The distinction between AMD and Nvidia primarily lies in their programming dialects, necessitating specific coding for multithreading tailored to each GPU brand.
+
+#### Nvidia CUDA
+
+CUDA is a dialect of C++ that also offers various libraries for popular languages and frameworks (e.g., Python, PyTorch, MATLAB, etc.).
+
+| Link      | Description                          |
+| :---------- | :----------------------------------- |
+| [Nvidia Developer Training](https://developer.nvidia.com/cuda-education-training)       | Training resources for CUDA programming provided by Nvidia. |
+| [CUDA Book Archive](https://developer.nvidia.com/cuda-books-archive)      | An archive of books focused on CUDA programming. |
+| [Advanced CUDA Books](https://bookauthority.org/books/new-cuda-books)      | A collection of advanced books for CUDA programming. |
+| [pyCUDA](https://developer.nvidia.com/how-to-cuda-python)      | Resources for coding in CUDA using Python. |
+
+#### AMD HIP
+
+HIP is a newly introduced dialect for AMD GPUs that can be compiled for both AMD and Nvidia hardware. The advantage of HIP is that it allows CUDA code to be converted to HIP code with minimal adjustments by the programmer.
+
+The LUMI HPC consortium has organized courses focused on HIP programming and CUDA-to-HIP conversion. Check their page for upcoming courses.
+
+| Link      | Description                          |
+| :---------- | :----------------------------------- |
+| [Video Introduction 1](https://www.youtube.com/watch?v=3ZXbRJVvgJs)       | An introductory video on HIP programming. |
+| [Video Introduction 2](https://www.youtube.com/watch?v=57FwfePRd-Y)      | A second introductory video on HIP programming. |
+| [AMD Programming Guide](https://rocmdocs.amd.com/en/latest/Programming_Guides/Programming-Guides.html)      | The official programming guide for HIP from AMD. |

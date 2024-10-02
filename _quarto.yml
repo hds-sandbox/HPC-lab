@@ -50,7 +50,8 @@ website:
         - section: "HPC systems"
           contents: 
           - develop/hpc_intro.qmd 
-          - develop/jobs.qmd
+          - develop/hpc_jobs.qmd
+          - develop/hpc_programming.qmd
         - section: "Data management"
           contents: 
           - develop/data_transfer.qmd
