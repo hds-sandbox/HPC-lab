@@ -19,7 +19,7 @@ You are expected to complete the required setup, including tool installation and
 - [Python](https://www.python.org/)
 - [pip](https://pip.pypa.io/en/stable/installation/) for managing Python packages
 - [Cookicutter](https://cookiecutter.readthedocs.io/en/stable/) for creating folder structure templates (`pip install cookiecutter`)
-- [md5sum](https://www.gnu.org/software/coreutils/manual/html_node/md5sum-invocation.html)
+- [md5sum](https://www.gnu.org/software/coreutils/manual/html_node/md5sum-invocation.html). See below how to install
   ```{.bash filename="Terminal"}
   # ---- cookiecutter -----
   pip install cookiecutter
@@ -85,12 +85,9 @@ About High-Performance Computing (HPC):
 | 10:30	|	DK HPC resources, access, and intro to UCloud | 14:30	|	Step-by-step: solutions II |
 | 11:15	|	Intro to RDM for health data science | 16:00	|	Discussions & Wrap-up |
 
-<!-- 
-- [Sandbox HPCs](https://hds-sandbox.github.io/HPC-lab/develop/hpc_intro.html) *currently under development*
-
 ## Discussion and feedback
 
-We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill up the feedback fork [LINK] before you head out for the day ^[*link activated on the day of the workshop*.].</b>
+We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill up the [feedback form](https://forms.office.com/e/USfA9JLSrP) before you head out for the day ^[*link activated on the day of the workshop*.].</b>
 
 &nbsp;
 
@@ -99,7 +96,6 @@ You can download our RDM roadmap [here](https://hds-sandbox.github.io/RDM_biodat
 :::{.callout-note  appearance="simple" icon=false} 
 <h4 align=center>Nice meeting you and we hope to see you again!</h4> 
 ::: 
- -->
 
 #### About the National Sandbox project 
 
