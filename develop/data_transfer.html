@@ -278,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 3, 2024</p>
+      <p class="date-modified">October 7, 2024</p>
     </div>
   </div>
     
@@ -299,11 +299,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>When transferring files between servers, it’s important to ensure that the files are consistent. Differences in file size can occur due to variations in filesystems, but large differences might indicate an issue. Manually checking file sizes in a terminal (<code>ls -lh</code> or <code>du -sh</code>) to determine if a transfer was successful might not be ideal, as it doesn’t guarantee file integrity. Using checksums provides a more reliable verification method.</p>
 <p>You can use md5sum to verify that the file contents are identical on both servers. Run the following command on each server:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">md5sum</span> /path/to/file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Using rsync for Efficient File Transfers <code>rsync</code> is a powerful alternative to <code>scp</code> for transferring files. It only sends data if the file has changed, making it more efficient.</p>
+<p>Using rsync for <strong>efficient file transfers</strong> <code>rsync</code> is a powerful alternative to <code>scp</code> for transferring files. It only sends data if the file has changed, making it more efficient.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transferring files between local machine-server</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avz</span> local/path/to/file user@server:/remote/path/to/file</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Transferring files between servers</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-azv</span> server1:/path/to/my_folder server2:/path/to/destination_folder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avz</span> server1:/path/to/my_folder server2:/path/to/destination_folder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>-avz</code> flags are commonly used together for efficient file synchronization:</p>
+<ul>
+<li><code>-a</code> (archive): preserves symbolic links, permissions, timestamps, groups, owners, and devices while transferring files</li>
+<li><code>-v</code> (verbose): display detailed information about the transfer (which files are being copied or updated)</li>
+<li><code>-z</code> (compress): enables compression during transfer</li>
+</ul>
+<p>Other useful flags are:</p>
+<ul>
+<li><code>--progress</code>: display a progress bar (transfer speed, percentage completed, estimated time remaining, …)</li>
+<li><code>--partial</code>: ensures that partially transferred files are not discarded if the transfer is interrupted, allowing <code>rsync</code> to resume the transfer from where it left off the next time the command is run</li>
+</ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -324,6 +335,15 @@ Note
 <li>Checksum Verification: rsync checks the hashsums of files and only transfers data if the hashes differ. This ensures that only the changed parts of the files are sent (so you can rsync a whole folder, and only the changes files will be send).</li>
 <li>Timestamp Preservation: Using the -a flag with rsync preserves the modified timestamps of files, which is particularly useful for tools like Snakemake.</li>
 </ul>
+<p>If you prefer using SCP (Secure Copy Protocol) for transferring files between a local and remote host, or between two remote hosts, here are some useful commands:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># copy from local to remote</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> /home/my_laptop/files.txt username@login.server.dk:/home/username/myproject/</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># If you want to copy an entire folder, use the option -r (recursive copy)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> /home/my_laptop/myfolder username@login.server.dk:/home/username/myproject/</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># check other options available </span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">--help</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="important-rsync-options" class="level4">
 <h4 class="anchored" data-anchor-id="important-rsync-options">Important rsync options:</h4>
@@ -334,12 +354,26 @@ Note
 <li><code>-c</code>: Enables checksum checking, ensuring that files are identical by comparing their contents rather than just their size and modification time.</li>
 </ul>
 </section>
-<section id="additional-tools" class="level4">
-<h4 class="anchored" data-anchor-id="additional-tools">Additional Tools</h4>
-<p>For users who prefer a graphical interface, tools like Cyberduck and FileZilla can also be used for transferring files between servers.</p>
-
-
 </section>
+<section id="interactive-transfer" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-transfer">Interactive transfer</h2>
+<p>For users who prefer a graphical interface, tools like Cyberduck and FileZilla can also be used for transferring files between servers.</p>
+<ol type="1">
+<li>Download Filezilla <a href="https://filezilla-project.org/download.php?type=client">here</a> or Cyberduck <a href="https://cyberduck.io/download/">here</a></li>
+<li>Open the app and configure the access information for your host machine (including password, username, ssh keys (if relevant) and <code>port: 22</code>).
+<ul>
+<li>Select SFTP (SSH File Transfer Protocol) option on Cyberduck</li>
+</ul></li>
+<li>Quick connect</li>
+</ol>
+<p>This will establish a secure connection to your host. You can navigate through your folders and files. Right-click on any file you want to download or preview.</p>
+<ul>
+<li>Filezilla: your local files will be display on the left-side of the dashboard. Right-click on them to upload or add it them to a transfer queue. If you have created a queue, this will be shown at the bottom of the window as a list. You can inspect destination folders from there and choose other options such as transfer priority. To start a queue, use <code>CTRL + P, Transfer --&gt; Process Queue</code> or use the toolbar.<br>
+</li>
+<li>Cyberduck: you can drag files from your local to the host, choose the directory where you want them located.</li>
+</ul>
+
+
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->

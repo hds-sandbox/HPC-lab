@@ -289,15 +289,16 @@ div.csl-indent {
   <li><a href="#best-practices-for-running-a-job-on-a-cluster" id="toc-best-practices-for-running-a-job-on-a-cluster" class="nav-link active" data-scroll-target="#best-practices-for-running-a-job-on-a-cluster">Best practices for running a job on a cluster</a></li>
   <li><a href="#job-scheduler" id="toc-job-scheduler" class="nav-link" data-scroll-target="#job-scheduler">Job scheduler</a>
   <ul class="collapse">
+  <li><a href="#submitting-jobs-using-sbatch" id="toc-submitting-jobs-using-sbatch" class="nav-link" data-scroll-target="#submitting-jobs-using-sbatch">Submitting Jobs using ‘sbatch’</a></li>
   <li><a href="#job-parallelisation" id="toc-job-parallelisation" class="nav-link" data-scroll-target="#job-parallelisation">Job parallelisation</a></li>
   </ul></li>
+  <li><a href="#interactive-jobs" id="toc-interactive-jobs" class="nav-link" data-scroll-target="#interactive-jobs">Interactive jobs</a></li>
   <li><a href="#efficient-resource-usage" id="toc-efficient-resource-usage" class="nav-link" data-scroll-target="#efficient-resource-usage">Efficient resource usage</a>
   <ul class="collapse">
   <li><a href="#managing-large-number-of-short-jobs" id="toc-managing-large-number-of-short-jobs" class="nav-link" data-scroll-target="#managing-large-number-of-short-jobs">Managing large number of short jobs</a></li>
   <li><a href="#managing-large-stout-outputs" id="toc-managing-large-stout-outputs" class="nav-link" data-scroll-target="#managing-large-stout-outputs">Managing large STOUT outputs</a></li>
   </ul></li>
   <li><a href="#queueing-system-best-practices" id="toc-queueing-system-best-practices" class="nav-link" data-scroll-target="#queueing-system-best-practices">Queueing system best practices</a></li>
-  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
   </ul>
 </nav>
     </div>
@@ -318,7 +319,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 3, 2024</p>
+      <p class="date-modified">October 7, 2024</p>
     </div>
   </div>
     
@@ -359,6 +360,13 @@ div.csl-indent {
 </tbody>
 </table>
 <p>We will focus on SLURM (Simple Linux Utility for Resource Management) which is a widely used open-source job scheduler designed for managing and allocating resources in high-performance computing (HPC) clusters. It efficiently schedules and runs batch jobs, handles job queues, and optimizes resource utilization across multiple users and tasks.</p>
+<section id="submitting-jobs-using-sbatch" class="level3">
+<h3 class="anchored" data-anchor-id="submitting-jobs-using-sbatch">Submitting Jobs using ‘sbatch’</h3>
+<p>Ideal for running programs non-interactively, typically for tasks that require more time than a brief interactive session. A batch script includes:</p>
+<ul>
+<li>The requested resources</li>
+<li>A sequence of commands to execute</li>
+</ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -372,20 +380,54 @@ Note
 <p>Useful SLURM commands:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Submit the job</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the job is in the queue</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Toy example of a bash script to submit</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -D /home/USERNAME/  # working directory</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -c 1        # number of CPUs. Default: 1</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -t 00:10:00 # time for the job HH:MM:SS.</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=1G    # RAM memory</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">##SBATCH --array=1-10%4 # this directive submits a job array of 10 tasks, but only 4 of them can run concurrently.</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># my commands: software, pipeline, etc.</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-j1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This will show you the status of your job, including its current state, the amount of time it has been running, and the amount of resources it is currently using.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-j</span> job_id</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Cancel a job</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> job_id1, job_id2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Toy example of a bash script to submit to the queueing system:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>mybash.sh</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="mybash.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=myjob</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=myjob.out</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=myjob.err</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -D /home/USERNAME/  # working directory</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 1        # number of CPUs. Commonly default: 1</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time 00:10:00 # time for the job HH:MM:SS.</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=1G    # RAM memory</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">##SBATCH --array=1-10%4 # this directive submits a job array of 10 tasks, but only 4 of them can run concurrently. Alternative: #SBATCH --ntasks=1</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Activate environment</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="ex">conda</span> shell.bash hook<span class="va">)</span><span class="st">"</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate bam_tools</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># My commands: software, pipeline, etc.</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-j1</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The first line of the script (#!/bin/bash) tells the system that this is a bash script. The remaining lines starting with #SBATCH are directives for ‘sbatch’ that specify various options for the job.</p>
+<p>Finally, we can submit your job to the queueing system:</p>
+<p><code>{.bash filename=""Terminal} sbatch mybash.sh</code></p>
+<pre><code>Submitted batch job 39712574</code></pre>
+<p>Check details about a specific job (e.g.&nbsp;39712574) using the following command:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jobinfo</span> 39712574</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can also include email notifications in your bash script by adding the following options:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=begin        # send email when job begins</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=end          # send email when job ends</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=fail         # send email if job fails</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-user=your mail address</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+<p>To monitor the job’s output in real time, refresh the last few lines of its log file using:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">watch</span> tail align.sh-39712574.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To view the entire log file (not in real time), you can check it anytime with:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> <span class="at">-S</span> align.sh-39712574.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Reviewing the log files is helpful for debugging, especially when a command encounters an error and causes the job to terminate prematurely.</p>
 <p>In the figure below, you can see how the priority assigned to a SLURM job decreases as the requested time increases, while keeping memory and CPU resources constant. Higher values indicate lower priority.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -419,6 +461,7 @@ Note
 </tr>
 </tbody>
 </table>
+</section>
 <section id="job-parallelisation" class="level3">
 <h3 class="anchored" data-anchor-id="job-parallelisation">Job parallelisation</h3>
 <p>Job parallelization is crucial for achieving high performance and running jobs effectively on an HPC. Here are two key scenarios where it is particularly important:</p>
@@ -440,6 +483,38 @@ Job parallelisation using slurm
 </div>
 </div>
 </section>
+</section>
+<section id="interactive-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-jobs">Interactive jobs</h2>
+<p>Use this option when you need to execute tasks that don’t require automation or repetitive scheduling. You can work interactively, monitor progress, and adjust commands as needed in real time. Examples:</p>
+<ul>
+<li>Splitting a BAM file by chromosome for further analysis.</li>
+<li>Running exploratory or simple statistical analysis in Python or R.</li>
+<li>Compressing or decompressing multiple files in parallel required as input for a pipeline.</li>
+</ul>
+<p>Keep in mind, once you exit the session, any processes running within it will stop automatically. This makes it ideal for tasks that require manual intervention or those that don’t need continuous execution after logging out.</p>
+<p><strong>How do interactive jobs work?</strong></p>
+<p>The queuing system schedules your job based on the resources you request (such as CPU, memory, and time requirements) and the current workload of the nodes. Once a node is assigned, the requested resources will be available to you, and the node’s name will appear in your terminal prompt.</p>
+<p>Slurm provides the ‘srun -pty bash’ command to submit interactive jobs on a compute node.Specify the resource requirements by including one or more of the following options:</p>
+<ul>
+<li><code>--cpus-per-task</code>: Number of CPUs per task</li>
+<li><code>--mem</code>: Memory per node (e.g., <code>--mem=4G</code>)</li>
+<li><code>--time</code>: Time limit for the job (e.g., <code>--time=2:00:00</code> for 2 hours)</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb8" data-filename="Terminal"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Slurm example</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--mem</span><span class="op">=&lt;</span>GB_of_RAM<span class="op">&gt;</span>g <span class="at">-c</span> <span class="op">&lt;</span>n_cores<span class="op">&gt;</span> --time=<span class="op">&lt;</span>days-h:min:sec<span class="op">&gt;</span> --pty /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For example, to request 2 CPUs, 4 GB of memory and 1 hour walltime, use the following command:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>slurm example</strong></pre>
+</div>
+<div class="sourceCode" id="cb9" data-filename="slurm example"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--cpus-per-task</span><span class="op">=</span>2 <span class="at">--mem</span><span class="op">=</span>4G <span class="at">--time</span><span class="op">=</span>1:00:00 <span class="at">--pty</span> bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="efficient-resource-usage" class="level2">
 <h2 class="anchored" data-anchor-id="efficient-resource-usage">Efficient resource usage</h2>
@@ -488,10 +563,6 @@ Job parallelisation using slurm
 <li>Incorporate software modules in your pipelines for improved environment control.</li>
 <li>Estimate resource requirements before submitting jobs, including CPU, memory, and time, to optimize resource usage. Always test your code with a small, representative sample (toy example) to ensure the pipeline functions correctly before running larger jobs.</li>
 </ul>
-</section>
-<section id="sources" class="level2">
-<h2 class="anchored" data-anchor-id="sources">Sources</h2>
-<p>Useful links</p>
 <section id="acknowledgements" class="level4">
 
 
