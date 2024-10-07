@@ -308,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 2, 2024</p>
+      <p class="date-modified">October 4, 2024</p>
     </div>
   </div>
     
@@ -392,48 +392,6 @@ More on Virtual Machine
 </ul>
 <p>While package managers are very easy to use and share across different systems, and are lightweight and efficient, offering fast start-up times, containers provide an even greater level of isolation by virtualizing the entire operating system, making it possible to deploy applications seamlessly across various machines without requiring additional installations. Unlike Virtual Machines, which also virtualize hardware, containers encapsulate applications and their dependencies, ensuring that they function uniformly regardless of the underlying infrastructure. This approach enhances reproducibility and streamlines the deployment process, making it a powerful tool for researchers seeking to maintain consistent results in diverse computing environments.</p>
 <p><img src="./images/envs.png" class="img-fluid"></p>
-<table class="table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Link</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://www.docker.com/why-docker">Docker</a></td>
-<td style="text-align: left;">An open source widespread container that is popular both in research and industry</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://www.youtube.com/watch?v=fqMOX6JJhGo">Docker course</a></td>
-<td style="text-align: left;">A course to use Docker, freely hosted on youtube</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://docker-curriculum.com/">Docker curriculum</a></td>
-<td style="text-align: left;">Beginner introduction to docker</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://docs.docker.com/get-started/">Docker basics</a></td>
-<td style="text-align: left;">Introduction tutorials to Docker from the official documentation page</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://sylabs.io/">Singularity</a></td>
-<td style="text-align: left;">Singularity is another containerization tool. It allows you to decide at which degree a container interacts with the hosting system</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://singularity-tutorial.github.io/">Singularity tutorial</a></td>
-<td style="text-align: left;">A well done Singularity tutorial for HPC users</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><a href="https://www.youtube.com/watch?v=Gowh5pfzOAM">Singularity video tutorial</a></td>
-<td style="text-align: left;">A video tutorial on Singularity</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://www.youtube.com/watch?v=DA87Ba2dpNM">Reproducibility by containerization</a></td>
-<td style="text-align: left;">A video on reproducibility with Singularity containers</td>
-</tr>
-</tbody>
-</table>
 <p>Recording and sharing the computational environment is essential for ensuring reproducibility and transparency. Below, we will explore two tools that can help with this: mamba, a package manager, and Docker, a container system. We will explain the differences between them and provide guidance on choosing the right tool for your specific scenario.</p>
 <section id="package-managers" class="level2">
 <h2 class="anchored" data-anchor-id="package-managers">Package managers</h2>
@@ -579,10 +537,78 @@ Loading mamba environments in shell scripts
 <p>When jobs are submitted to SLURM, they run in a non-interactive shell where Mamba isn’t automatically set up. By running the <code>source</code> command, you ensure that Mamba’s activate function is available. It’s important to remember that even if the environment is loaded on the login node, the scripts will execute on a different machine (one of the compute nodes). Therefore, always include the command to load the Mamba environment in your SLURM submission scripts.</p>
 </div>
 </div>
+<section id="base-environment" class="level4">
+<h4 class="anchored" data-anchor-id="base-environment">Base environment</h4>
+<p>It is the primary environment that contains the conda package manager itself. It is activated by default unless indicated.</p>
+<p>Your command prompt will show which env is activated within parentheses.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">[username@node-01</span> ~]$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To enhance package installation performance, we will update conda to utilize the <code>libmamba solver</code> (check documentation <a href="https://github.com/conda/conda-libmamba-solver">here</a>), which significantly improves the speed of installing multiple packages concurrently.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Installation </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-n</span> base <span class="at">--yes</span> conda-libmamba-solver</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># configuration </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--set</span> solver libmamba </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Avoid modifications to the base environment</strong>. This is the only instance where you should perform installations within the base environment, as any further changes could jeopardize the integrity of the conda installation.</p>
+</div>
+</div>
+<p>A common practice is to disable the automatic activation of the base environment. There are several reasons but it helps creating a more organized and efficient workflow (e.g.&nbsp;activation time), reduce potential errors (e.g.&nbsp;unintended modifications), and maintain better control over your development environment.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--set</span> auto_activate_base false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="containers" class="level2">
 <h2 class="anchored" data-anchor-id="containers">Containers</h2>
 <p>Essentially, a container is a self-contained, lightweight package that includes everything needed to run a specific application—such as the operating system, libraries, and the application code itself. Containers operate independently of the host system, which allows them to run the same software across various environments without any conflicts or interference. This isolation ensures that researchers can consistently execute their code on different systems and platforms, without worrying about dependency issues or conflicts with other software on the host machine.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Link</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://www.docker.com/why-docker">Docker</a></td>
+<td style="text-align: left;">An open source widespread container that is popular both in research and industry</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://www.youtube.com/watch?v=fqMOX6JJhGo">Docker course</a></td>
+<td style="text-align: left;">A course to use Docker, freely hosted on youtube</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://docker-curriculum.com/">Docker curriculum</a></td>
+<td style="text-align: left;">Beginner introduction to docker</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://docs.docker.com/get-started/">Docker basics</a></td>
+<td style="text-align: left;">Introduction tutorials to Docker from the official documentation page</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://sylabs.io/">Singularity</a></td>
+<td style="text-align: left;">Singularity is another containerization tool. It allows you to decide at which degree a container interacts with the hosting system</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://singularity-tutorial.github.io/">Singularity tutorial</a></td>
+<td style="text-align: left;">A well done Singularity tutorial for HPC users</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><a href="https://www.youtube.com/watch?v=Gowh5pfzOAM">Singularity video tutorial</a></td>
+<td style="text-align: left;">A video tutorial on Singularity</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><a href="https://www.youtube.com/watch?v=DA87Ba2dpNM">Reproducibility by containerization</a></td>
+<td style="text-align: left;">A video on reproducibility with Singularity containers</td>
+</tr>
+</tbody>
+</table>
 <div class="callout callout-style-default callout-note callout-titled" title="Docker vs. Singularity">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -622,11 +648,11 @@ Installation
 <ul>
 <li><a href="https://docs.sylabs.io/guides/3.0/user-guide/installation.html#">Singularity installation guides</a></li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You will only need to vagrant init once </span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">VM</span><span class="op">=</span>sylabs/singularity-3.0-ubuntu-bionic64 <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">vagrant</span> init <span class="va">$VM</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">vagrant</span> up <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">vagrant</span> ssh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You will only need to vagrant init once </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">VM</span><span class="op">=</span>sylabs/singularity-3.0-ubuntu-bionic64 <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">vagrant</span> init <span class="va">$VM</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">vagrant</span> up <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">vagrant</span> ssh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -649,7 +675,7 @@ Tip
 </div>
 </div>
 <div class="callout callout-style-default callout-exercise no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -658,13 +684,13 @@ Exercise
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse show">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-exercise">
 <p>Download a singularity image from one of the two repositories listed above (choose a software like bcftools, bedtools, bowtie2, seqkit…) and run the <code>--help</code> command. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -673,16 +699,16 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory for our singularity images</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> images</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># download the image</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull images/bowtie2-2.5.4.sif https://depot.galaxyproject.org/singularity/bowtie2%3A2.5.4--he20e202_2</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># run the image: singularity run &lt;PATH-TO-IMAGE&gt; &lt;YOUR COMMANDS&gt;</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> run images/bowtie2-2.5.4.sif bowtie2 <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory for our singularity images</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> images</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># download the image</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull images/bowtie2-2.5.4.sif https://depot.galaxyproject.org/singularity/bowtie2%3A2.5.4--he20e202_2</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># run the image: singularity run &lt;PATH-TO-IMAGE&gt; &lt;YOUR COMMANDS&gt;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> run images/bowtie2-2.5.4.sif bowtie2 <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>

@@ -24,30 +24,87 @@ To execute jobs in most HPC environment, you must first submit them to a queuein
 
 We will focus on SLURM (Simple Linux Utility for Resource Management) which is a widely used open-source job scheduler designed for managing and allocating resources in high-performance computing (HPC) clusters. It efficiently schedules and runs batch jobs, handles job queues, and optimizes resource utilization across multiple users and tasks.
 
+### Submitting Jobs using 'sbatch'
+
+Ideal for running programs non-interactively, typically for tasks that require more time than a brief interactive session. A batch script includes:
+
+- The requested resources
+- A sequence of commands to execute
+
 :::{.callout-note}
 Useful SLURM commands:
 
 ```{.bash}
 # Submit the job
 sbatch 
-# Check the job is in the queue
-squeue 
+
+# This will show you the status of your job, including its current state, the amount of time it has been running, and the amount of resources it is currently using.
+squeue -j job_id
+
+# Cancel a job
+scancel job_id1, job_id2
 ```
 
-Toy example of a bash script to submit
-```{.bash}
+Toy example of a bash script to submit to the queueing system:
+
+```{.bash filename="mybash.sh"}
 #!/bin/bash
+#SBATCH --job-name=myjob
+#SBATCH --output=myjob.out
+#SBATCH --error=myjob.err
 #SBATCH -D /home/USERNAME/  # working directory
-#SBATCH -c 1        # number of CPUs. Default: 1
-#SBATCH -t 00:10:00 # time for the job HH:MM:SS.
+#SBATCH --cpus-per-task 1        # number of CPUs. Commonly default: 1
+#SBATCH --time 00:10:00 # time for the job HH:MM:SS.
 #SBATCH --mem=1G    # RAM memory
-##SBATCH --array=1-10%4 # this directive submits a job array of 10 tasks, but only 4 of them can run concurrently.
+##SBATCH --array=1-10%4 # this directive submits a job array of 10 tasks, but only 4 of them can run concurrently. Alternative: #SBATCH --ntasks=1
 
-# my commands: software, pipeline, etc.
+# Activate environment
+eval "$(conda shell.bash hook)"
+conda activate bam_tools
+
+# My commands: software, pipeline, etc.
 snakemake -j1
+
+exit 0
+```
+The first line of the script (#!/bin/bash) tells the system that this is a bash script. The remaining lines starting with #SBATCH are directives for 'sbatch' that specify various options for the job. 
+
+Finally, we can submit your job to the queueing system:
+
+```{.bash filename=""Terminal}
+sbatch mybash.sh
+```
+```
+Submitted batch job 39712574
 ```
 
+Check details about a specific job (e.g. 39712574) using the following command:
+```{.bash}
+jobinfo 39712574
+```
+
+You can also include email notifications in your bash script by adding the following options:
+
+```{.bash}
+#SBATCH --mail-type=begin        # send email when job begins
+#SBATCH --mail-type=end          # send email when job ends
+#SBATCH --mail-type=fail         # send email if job fails
+#SBATCH --mail-user=your mail address
+```
 :::
+
+To monitor the job's output in real time, refresh the last few lines of its log file using:
+
+```{.bash}
+watch tail align.sh-39712574.out
+````
+To view the entire log file (not in real time), you can check it anytime with:
+
+```{.bash}
+less -S align.sh-39712574.out
+```
+
+Reviewing the log files is helpful for debugging, especially when a command encounters an error and causes the job to terminate prematurely.
 
 In the figure below, you can see how the priority assigned to a SLURM job decreases as the requested time increases, while keeping memory and CPU resources constant. Higher values indicate lower priority.
 
@@ -73,6 +130,35 @@ Job parallelization is crucial for achieving high performance and running jobs e
 Jobs arrays `-a` 
 :::
 
+## Interactive jobs  
+
+Use this option when you need to execute tasks that don’t require automation or repetitive scheduling. You can work interactively, monitor progress, and adjust commands as needed in real time. Examples: 
+
+- Splitting a BAM file by chromosome for further analysis.
+- Running exploratory or simple statistical analysis in Python or R.
+- Compressing or decompressing multiple files in parallel required as input for a pipeline.
+
+Keep in mind, once you exit the session, any processes running within it will stop automatically. This makes it ideal for tasks that require manual intervention or those that don’t need continuous execution after logging out.
+
+**How do interactive jobs work?**
+
+The queuing system schedules your job based on the resources you request (such as CPU, memory, and time requirements) and the current workload of the nodes. Once a node is assigned, the requested resources will be available to you, and the node's name will appear in your terminal prompt.
+
+Slurm provides the 'srun -pty bash' command to submit interactive jobs on a compute node.Specify the resource requirements by including one or more of the following options:
+
+- `--cpus-per-task`: Number of CPUs per task
+- `--mem`: Memory per node (e.g., `--mem=4G`)
+- `--time`: Time limit for the job (e.g., `--time=2:00:00` for 2 hours)
+
+```{.bash filename="Terminal" .code-overflow-wrap}
+# Slurm example
+srun --mem=<GB_of_RAM>g -c <n_cores> --time=<days-h:min:sec> --pty /bin/bash
+```
+For example, to request 2 CPUs, 4 GB of memory and 1 hour walltime, use the following command:
+
+```{.bash filename="slurm example"}
+srun --cpus-per-task=2 --mem=4G --time=1:00:00 --pty bash
+```
 
 ## Efficient resource usage 
 
@@ -106,8 +192,6 @@ Minimize the amount of information printed to the standard output (STDOUT) to av
 - Incorporate software modules in your pipelines for improved environment control.
 - Estimate resource requirements before submitting jobs, including CPU, memory, and time, to optimize resource usage. Always test your code with a small, representative sample (toy example) to ensure the pipeline functions correctly before running larger jobs.
 
-## Sources
 
-Useful links 
 
 #### Acknowledgements
