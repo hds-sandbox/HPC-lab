@@ -1,20 +1,20 @@
 ---
 title: HPC jobs 
 format: 
-  html
+  html:
+    toc: true
+    toc-location: left
 date-modified: last-modified
 date-format: long
 bibliography: ../references.bib
 summary: This is a summary 
 ---
 
-## Best practices for running a job on a cluster
-
 This section outlines useful best practices to consider when coding and running applications and pipelines on an HPC.
 
 ## Job scheduler  
 
-To execute jobs in most HPC environment, you must first submit them to a queueing system. This system ensures that compute resources are allocated fairly and efficiently among users while scheduling the execution of jobs. Some of the most common queueing system operate using SLURM (utilizing s type commands), TORQUE (utilizing q type commands) and Moab (utilizing m type commands).
+To execute jobs in most HPC environments, you must first submit them to a queueing system. This system ensures that compute resources are allocated fairly and efficiently among users while scheduling the execution of jobs. Some of the most common queueing systems operate using SLURM (utilizing s-type commands), TORQUE (utilizing q-type commands), and Moab (utilizing m-type commands).
 
 |Program| link|
 |:-------|:--------|
@@ -22,11 +22,11 @@ To execute jobs in most HPC environment, you must first submit them to a queuein
 |Moab msub documentation| [Link](https://docs.adaptivecomputing.com/8-1-2/enterprise/MAM/help.htm)|
 |SLURM sbatch/Srun documentation| [sbatch](https://slurm.schedmd.com/sbatch.html) and [srun](https://slurm.schedmd.com/srun.html)|
 
-We will focus on SLURM (Simple Linux Utility for Resource Management) which is a widely used open-source job scheduler designed for managing and allocating resources in high-performance computing (HPC) clusters. It efficiently schedules and runs batch jobs, handles job queues, and optimizes resource utilization across multiple users and tasks.
+We will focus on SLURM (Simple Linux Utility for Resource Management), a widely used open-source job scheduler designed to manage and allocate resources in high-performance computing (HPC) clusters. It efficiently schedules and runs batch jobs, handles job queues and optimizes resource utilization across multiple users and tasks.
 
 ### Submitting Jobs using 'sbatch'
 
-Ideal for running programs non-interactively, typically for tasks that require more time than a brief interactive session. A batch script includes:
+It is ideal for running programs non-interactively, typically for tasks that require more time than a brief interactive session. A batch script includes:
 
 - The requested resources
 - A sequence of commands to execute
@@ -45,7 +45,7 @@ squeue -j job_id
 scancel job_id1, job_id2
 ```
 
-Toy example of a bash script to submit to the queueing system:
+Here is example of a bash script to submit to the queueing system:
 
 ```{.bash filename="mybash.sh"}
 #!/bin/bash
@@ -93,12 +93,12 @@ You can also include email notifications in your bash script by adding the follo
 ```
 :::
 
-To monitor the job's output in real time, refresh the last few lines of its log file using:
+To monitor the job's output in real-time, refresh the last few lines of its log file using:
 
 ```{.bash}
 watch tail align.sh-39712574.out
 ````
-To view the entire log file (not in real time), you can check it anytime with:
+To view the entire log file (not in real-time), you can check it anytime with:
 
 ```{.bash}
 less -S align.sh-39712574.out
@@ -118,7 +118,7 @@ In the figure below, you can see how the priority assigned to a SLURM job decrea
 |Slurm Universities usage examples|[GenomeDK](https://genome.au.dk/docs/interacting-with-the-queue/) and [Princeton guides](https://researchcomputing.princeton.edu/slurm) |
 | [Gwf, a simple python tool to create interdependent job submissions](https://gwf.app/ )       | Gwf, developed at the University of Aarhus, makes it easy to create Slurm jobs and organize them as a pipeline with dependencies, using the python language (you need python 3.5+). You get to simply create the shell scripts and the dependencies, without the complicating syntax of Slurm. The page contains also a useful guide. |
 
-### Job parallelisation
+### Job parallelization
 
 Job parallelization is crucial for achieving high performance and running jobs effectively on an HPC. Here are two key scenarios where it is particularly important:
 
@@ -126,25 +126,25 @@ Job parallelization is crucial for achieving high performance and running jobs e
 - Multi-threaded tools: Some tools are specifically designed to perform parallel computations through multi-threading, enabling them to utilize multiple CPU cores for increased performance.
 
 :::{.callout-tip}
-# Job parallelisation using slurm 
+# Job parallelization using slurm 
 Jobs arrays `-a` 
 :::
 
 ## Interactive jobs  
 
-Use this option when you need to execute tasks that don’t require automation or repetitive scheduling. You can work interactively, monitor progress, and adjust commands as needed in real time. Examples: 
+Use this option when you need to execute tasks that don’t require automation or repetitive scheduling. You can work interactively, monitor progress, and adjust commands as needed in real-time. Examples: 
 
 - Splitting a BAM file by chromosome for further analysis.
 - Running exploratory or simple statistical analysis in Python or R.
 - Compressing or decompressing multiple files in parallel required as input for a pipeline.
 
-Keep in mind, once you exit the session, any processes running within it will stop automatically. This makes it ideal for tasks that require manual intervention or those that don’t need continuous execution after logging out.
+Keep in mind, that once you exit the session, any processes running within it will stop automatically. This makes it ideal for tasks that require manual intervention or those that don’t need continuous execution after logging out.
 
 **How do interactive jobs work?**
 
 The queuing system schedules your job based on the resources you request (such as CPU, memory, and time requirements) and the current workload of the nodes. Once a node is assigned, the requested resources will be available to you, and the node's name will appear in your terminal prompt.
 
-Slurm provides the 'srun -pty bash' command to submit interactive jobs on a compute node.Specify the resource requirements by including one or more of the following options:
+Slurm provides the 'srun -pty bash' command to submit interactive jobs on a compute node. Specify the resource requirements by including one or more of the following options:
 
 - `--cpus-per-task`: Number of CPUs per task
 - `--mem`: Memory per node (e.g., `--mem=4G`)
@@ -154,7 +154,7 @@ Slurm provides the 'srun -pty bash' command to submit interactive jobs on a comp
 # Slurm example
 srun --mem=<GB_of_RAM>g -c <n_cores> --time=<days-h:min:sec> --pty /bin/bash
 ```
-For example, to request 2 CPUs, 4 GB of memory and 1 hour walltime, use the following command:
+For example, to request 2 CPUs, 4 GB of memory, and 1 hour wall time, use the following command:
 
 ```{.bash filename="slurm example"}
 srun --cpus-per-task=2 --mem=4G --time=1:00:00 --pty bash
@@ -162,13 +162,13 @@ srun --cpus-per-task=2 --mem=4G --time=1:00:00 --pty bash
 
 ## Efficient resource usage 
 
-### Managing large number of short jobs 
+### Managing a large number of short jobs 
 
 Each time a job is submitted to the job manager (e.g., SLURM) in a computing cluster, there's a time overhead required for resource allocation, output preparation, and queue organization. To minimize this overhead, it's often more efficient to group tasks into longer jobs when possible.
 
 However, it's important to strike a balance. If jobs are too long and encounter an issue, significant time and resources can be lost. This risk can be mitigated by tracking outputs at each stage, ensuring you only rerun the necessary portions of the job. For example, by checking whether a specific output already exists, you can prevent redundant computations and reduce wasted effort. 
 
-A particularly powerful feature in queue systems like SLURM is **batch arrays**. These allow you to automate running large numbers of similar jobs. A batch array consists of multiple jobs with identical code and parameters, but with different input files. Each job in the array is assigned a unique index, passed as an argument to the job script. This greatly simplifies managing and executing large-scale tasks. 
+A particularly powerful feature in queue systems like SLURM is **batch arrays**. These allow you to automate running large numbers of similar jobs. A batch array consists of multiple jobs with identical code and parameters but with different input files. Each job in the array is assigned a unique index, passed as an argument to the job script. This greatly simplifies managing and executing large-scale tasks. 
 
 |Description| Links|
 |:------|:--------| 
@@ -191,7 +191,5 @@ Minimize the amount of information printed to the standard output (STDOUT) to av
 - Use interactive sessions for testing and interactive jobs.
 - Incorporate software modules in your pipelines for improved environment control.
 - Estimate resource requirements before submitting jobs, including CPU, memory, and time, to optimize resource usage. Always test your code with a small, representative sample (toy example) to ensure the pipeline functions correctly before running larger jobs.
-
-
 
 #### Acknowledgements
