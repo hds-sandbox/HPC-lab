@@ -621,7 +621,7 @@
     "href": "develop/hpc_jobs.html",
     "title": "HPC jobs",
     "section": "",
-    "text": "Best practices for running a job on a cluster\nThis section outlines useful best practices to consider when coding and running applications and pipelines on an HPC.",
+    "text": "This section outlines useful best practices to consider when coding and running applications and pipelines on an HPC.",
     "crumbs": [
       "HPC launch",
       "HPC systems",
