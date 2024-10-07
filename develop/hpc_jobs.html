@@ -278,29 +278,28 @@ div.csl-indent {
   </li>
     </ul>
     </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#best-practices-for-running-a-job-on-a-cluster" id="toc-best-practices-for-running-a-job-on-a-cluster" class="nav-link active" data-scroll-target="#best-practices-for-running-a-job-on-a-cluster">Best practices for running a job on a cluster</a></li>
-  <li><a href="#job-scheduler" id="toc-job-scheduler" class="nav-link" data-scroll-target="#job-scheduler">Job scheduler</a>
+  <li><a href="#job-scheduler" id="toc-job-scheduler" class="nav-link active" data-scroll-target="#job-scheduler">Job scheduler</a>
   <ul class="collapse">
   <li><a href="#submitting-jobs-using-sbatch" id="toc-submitting-jobs-using-sbatch" class="nav-link" data-scroll-target="#submitting-jobs-using-sbatch">Submitting Jobs using ‘sbatch’</a></li>
-  <li><a href="#job-parallelisation" id="toc-job-parallelisation" class="nav-link" data-scroll-target="#job-parallelisation">Job parallelisation</a></li>
+  <li><a href="#job-parallelization" id="toc-job-parallelization" class="nav-link" data-scroll-target="#job-parallelization">Job parallelization</a></li>
   </ul></li>
   <li><a href="#interactive-jobs" id="toc-interactive-jobs" class="nav-link" data-scroll-target="#interactive-jobs">Interactive jobs</a></li>
   <li><a href="#efficient-resource-usage" id="toc-efficient-resource-usage" class="nav-link" data-scroll-target="#efficient-resource-usage">Efficient resource usage</a>
   <ul class="collapse">
-  <li><a href="#managing-large-number-of-short-jobs" id="toc-managing-large-number-of-short-jobs" class="nav-link" data-scroll-target="#managing-large-number-of-short-jobs">Managing large number of short jobs</a></li>
+  <li><a href="#managing-a-large-number-of-short-jobs" id="toc-managing-a-large-number-of-short-jobs" class="nav-link" data-scroll-target="#managing-a-large-number-of-short-jobs">Managing a large number of short jobs</a></li>
   <li><a href="#managing-large-stout-outputs" id="toc-managing-large-stout-outputs" class="nav-link" data-scroll-target="#managing-large-stout-outputs">Managing large STOUT outputs</a></li>
   </ul></li>
   <li><a href="#queueing-system-best-practices" id="toc-queueing-system-best-practices" class="nav-link" data-scroll-target="#queueing-system-best-practices">Queueing system best practices</a></li>
   </ul>
 </nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -330,13 +329,11 @@ div.csl-indent {
 </header>
 
 
-<section id="best-practices-for-running-a-job-on-a-cluster" class="level2">
-<h2 class="anchored" data-anchor-id="best-practices-for-running-a-job-on-a-cluster">Best practices for running a job on a cluster</h2>
+<p><strong>Best practices for running a job on a cluster</strong></p>
 <p>This section outlines useful best practices to consider when coding and running applications and pipelines on an HPC.</p>
-</section>
 <section id="job-scheduler" class="level2">
 <h2 class="anchored" data-anchor-id="job-scheduler">Job scheduler</h2>
-<p>To execute jobs in most HPC environment, you must first submit them to a queueing system. This system ensures that compute resources are allocated fairly and efficiently among users while scheduling the execution of jobs. Some of the most common queueing system operate using SLURM (utilizing s type commands), TORQUE (utilizing q type commands) and Moab (utilizing m type commands).</p>
+<p>To execute jobs in most HPC environments, you must first submit them to a queueing system. This system ensures that compute resources are allocated fairly and efficiently among users while scheduling the execution of jobs. Some of the most common queueing systems operate using SLURM (utilizing s-type commands), TORQUE (utilizing q-type commands), and Moab (utilizing m-type commands).</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -359,10 +356,10 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<p>We will focus on SLURM (Simple Linux Utility for Resource Management) which is a widely used open-source job scheduler designed for managing and allocating resources in high-performance computing (HPC) clusters. It efficiently schedules and runs batch jobs, handles job queues, and optimizes resource utilization across multiple users and tasks.</p>
+<p>We will focus on SLURM (Simple Linux Utility for Resource Management), a widely used open-source job scheduler designed to manage and allocate resources in high-performance computing (HPC) clusters. It efficiently schedules and runs batch jobs, handles job queues and optimizes resource utilization across multiple users and tasks.</p>
 <section id="submitting-jobs-using-sbatch" class="level3">
 <h3 class="anchored" data-anchor-id="submitting-jobs-using-sbatch">Submitting Jobs using ‘sbatch’</h3>
-<p>Ideal for running programs non-interactively, typically for tasks that require more time than a brief interactive session. A batch script includes:</p>
+<p>It is ideal for running programs non-interactively, typically for tasks that require more time than a brief interactive session. A batch script includes:</p>
 <ul>
 <li>The requested resources</li>
 <li>A sequence of commands to execute</li>
@@ -386,7 +383,7 @@ Note
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Cancel a job</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> job_id1, job_id2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Toy example of a bash script to submit to the queueing system:</p>
+<p>Here is example of a bash script to submit to the queueing system:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>mybash.sh</strong></pre>
@@ -423,9 +420,9 @@ Note
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-user=your mail address</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>To monitor the job’s output in real time, refresh the last few lines of its log file using:</p>
+<p>To monitor the job’s output in real-time, refresh the last few lines of its log file using:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">watch</span> tail align.sh-39712574.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To view the entire log file (not in real time), you can check it anytime with:</p>
+<p>To view the entire log file (not in real-time), you can check it anytime with:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> <span class="at">-S</span> align.sh-39712574.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Reviewing the log files is helpful for debugging, especially when a command encounters an error and causes the job to terminate prematurely.</p>
 <p>In the figure below, you can see how the priority assigned to a SLURM job decreases as the requested time increases, while keeping memory and CPU resources constant. Higher values indicate lower priority.</p>
@@ -462,8 +459,8 @@ Note
 </tbody>
 </table>
 </section>
-<section id="job-parallelisation" class="level3">
-<h3 class="anchored" data-anchor-id="job-parallelisation">Job parallelisation</h3>
+<section id="job-parallelization" class="level3">
+<h3 class="anchored" data-anchor-id="job-parallelization">Job parallelization</h3>
 <p>Job parallelization is crucial for achieving high performance and running jobs effectively on an HPC. Here are two key scenarios where it is particularly important:</p>
 <ul>
 <li>Independent computational tasks: When tasks are independent of each other, job parallelization can enhance efficiency by allowing them to run concurrently.</li>
@@ -475,7 +472,7 @@ Note
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Job parallelisation using slurm
+Job parallelization using slurm
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -486,16 +483,16 @@ Job parallelisation using slurm
 </section>
 <section id="interactive-jobs" class="level2">
 <h2 class="anchored" data-anchor-id="interactive-jobs">Interactive jobs</h2>
-<p>Use this option when you need to execute tasks that don’t require automation or repetitive scheduling. You can work interactively, monitor progress, and adjust commands as needed in real time. Examples:</p>
+<p>Use this option when you need to execute tasks that don’t require automation or repetitive scheduling. You can work interactively, monitor progress, and adjust commands as needed in real-time. Examples:</p>
 <ul>
 <li>Splitting a BAM file by chromosome for further analysis.</li>
 <li>Running exploratory or simple statistical analysis in Python or R.</li>
 <li>Compressing or decompressing multiple files in parallel required as input for a pipeline.</li>
 </ul>
-<p>Keep in mind, once you exit the session, any processes running within it will stop automatically. This makes it ideal for tasks that require manual intervention or those that don’t need continuous execution after logging out.</p>
+<p>Keep in mind, that once you exit the session, any processes running within it will stop automatically. This makes it ideal for tasks that require manual intervention or those that don’t need continuous execution after logging out.</p>
 <p><strong>How do interactive jobs work?</strong></p>
 <p>The queuing system schedules your job based on the resources you request (such as CPU, memory, and time requirements) and the current workload of the nodes. Once a node is assigned, the requested resources will be available to you, and the node’s name will appear in your terminal prompt.</p>
-<p>Slurm provides the ‘srun -pty bash’ command to submit interactive jobs on a compute node.Specify the resource requirements by including one or more of the following options:</p>
+<p>Slurm provides the ‘srun -pty bash’ command to submit interactive jobs on a compute node. Specify the resource requirements by including one or more of the following options:</p>
 <ul>
 <li><code>--cpus-per-task</code>: Number of CPUs per task</li>
 <li><code>--mem</code>: Memory per node (e.g., <code>--mem=4G</code>)</li>
@@ -508,7 +505,7 @@ Job parallelisation using slurm
 <div class="sourceCode" id="cb8" data-filename="Terminal"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Slurm example</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--mem</span><span class="op">=&lt;</span>GB_of_RAM<span class="op">&gt;</span>g <span class="at">-c</span> <span class="op">&lt;</span>n_cores<span class="op">&gt;</span> --time=<span class="op">&lt;</span>days-h:min:sec<span class="op">&gt;</span> --pty /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>For example, to request 2 CPUs, 4 GB of memory and 1 hour walltime, use the following command:</p>
+<p>For example, to request 2 CPUs, 4 GB of memory, and 1 hour wall time, use the following command:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>slurm example</strong></pre>
@@ -518,11 +515,11 @@ Job parallelisation using slurm
 </section>
 <section id="efficient-resource-usage" class="level2">
 <h2 class="anchored" data-anchor-id="efficient-resource-usage">Efficient resource usage</h2>
-<section id="managing-large-number-of-short-jobs" class="level3">
-<h3 class="anchored" data-anchor-id="managing-large-number-of-short-jobs">Managing large number of short jobs</h3>
+<section id="managing-a-large-number-of-short-jobs" class="level3">
+<h3 class="anchored" data-anchor-id="managing-a-large-number-of-short-jobs">Managing a large number of short jobs</h3>
 <p>Each time a job is submitted to the job manager (e.g., SLURM) in a computing cluster, there’s a time overhead required for resource allocation, output preparation, and queue organization. To minimize this overhead, it’s often more efficient to group tasks into longer jobs when possible.</p>
 <p>However, it’s important to strike a balance. If jobs are too long and encounter an issue, significant time and resources can be lost. This risk can be mitigated by tracking outputs at each stage, ensuring you only rerun the necessary portions of the job. For example, by checking whether a specific output already exists, you can prevent redundant computations and reduce wasted effort.</p>
-<p>A particularly powerful feature in queue systems like SLURM is <strong>batch arrays</strong>. These allow you to automate running large numbers of similar jobs. A batch array consists of multiple jobs with identical code and parameters, but with different input files. Each job in the array is assigned a unique index, passed as an argument to the job script. This greatly simplifies managing and executing large-scale tasks.</p>
+<p>A particularly powerful feature in queue systems like SLURM is <strong>batch arrays</strong>. These allow you to automate running large numbers of similar jobs. A batch array consists of multiple jobs with identical code and parameters but with different input files. Each job in the array is assigned a unique index, passed as an argument to the job script. This greatly simplifies managing and executing large-scale tasks.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
