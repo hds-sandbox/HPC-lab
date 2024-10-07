@@ -10,8 +10,6 @@ bibliography: ../references.bib
 summary: This is a summary 
 ---
 
-**Best practices for running a job on a cluster**
-
 This section outlines useful best practices to consider when coding and running applications and pipelines on an HPC.
 
 ## Job scheduler  
