@@ -49,17 +49,6 @@ While package managers are very easy to use and share across different systems, 
 
 ![](./images/envs.png)
 
-| Link      | Description                          |
-| :---------- | :----------------------------------- |
-| [Docker](https://www.docker.com/why-docker) | An open source widespread container that is popular both in research and industry |
-| [Docker course](https://www.youtube.com/watch?v=fqMOX6JJhGo)      | A course to use Docker, freely hosted on youtube |
-| [Docker curriculum](https://docker-curriculum.com/)      | Beginner introduction to docker |
-| [Docker basics](https://docs.docker.com/get-started/)      | Introduction tutorials to Docker from the official documentation page |
-| [Singularity](https://sylabs.io/) | Singularity is another containerization tool. It allows you to decide at which degree a container interacts with the hosting system |
-| [Singularity tutorial](https://singularity-tutorial.github.io/) | A well done Singularity tutorial for HPC users|
-| [Singularity video tutorial](https://www.youtube.com/watch?v=Gowh5pfzOAM) | A video tutorial on Singularity |
-| [Reproducibility by containerization](https://www.youtube.com/watch?v=DA87Ba2dpNM) | A video on reproducibility with Singularity containers |
-
 Recording and sharing the computational environment is essential for ensuring reproducibility and transparency. Below, we will explore two tools that can help with this: mamba, a package manager, and Docker, a container system. We will explain the differences between them and provide guidance on choosing the right tool for your specific scenario.
 
 ## Package managers
@@ -150,10 +139,49 @@ mamba activate myenv
 When jobs are submitted to SLURM, they run in a non-interactive shell where Mamba isn't automatically set up. By running the `source` command, you ensure that Mamba's activate function is available. It's important to remember that even if the environment is loaded on the login node, the scripts will execute on a different machine (one of the compute nodes). Therefore, always include the command to load the Mamba environment in your SLURM submission scripts.
 :::
 
+#### Base environment 
+
+It is the primary environment that contains the conda package manager itself. It is activated by default unless indicated. 
+
+Your command prompt will show which env is activated within parentheses.
+```{.bash}
+(base) [username@node-01 ~]$
+```
+
+To enhance package installation performance, we will update conda to utilize the `libmamba solver` (check documentation [here](https://github.com/conda/conda-libmamba-solver)), which significantly improves the speed of installing multiple packages concurrently.
+
+```{.bash}
+# Installation 
+conda install -n base --yes conda-libmamba-solver
+# configuration 
+conda config --set solver libmamba 
+```
+
+:::{.callout-warning}
+**Avoid modifications to the base environment**. This is the only instance where you should perform installations within the base environment, as any further changes could jeopardize the integrity of the conda installation.
+:::
+
+A common practice is to disable the automatic activation of the base environment. There are several reasons but it helps creating a more organized and efficient workflow (e.g. activation time), reduce potential errors (e.g. unintended modifications), and maintain better control over your development environment. 
+
+```{.bash}
+conda config --set auto_activate_base false
+```
+
 ## Containers
 
 Essentially, a container is a self-contained, lightweight package that includes everything needed to run a specific application—such as the operating system, libraries, and the application code itself. Containers operate independently of the host system, which allows them to run the same software across various environments without any conflicts or interference. This isolation ensures that researchers can consistently execute their code on different systems and platforms, without worrying about dependency issues or conflicts with other software on the host machine.
- 
+
+| Link      | Description                          |
+| :---------- | :----------------------------------- |
+| [Docker](https://www.docker.com/why-docker) | An open source widespread container that is popular both in research and industry |
+| [Docker course](https://www.youtube.com/watch?v=fqMOX6JJhGo)      | A course to use Docker, freely hosted on youtube |
+| [Docker curriculum](https://docker-curriculum.com/)      | Beginner introduction to docker |
+| [Docker basics](https://docs.docker.com/get-started/)      | Introduction tutorials to Docker from the official documentation page |
+| [Singularity](https://sylabs.io/) | Singularity is another containerization tool. It allows you to decide at which degree a container interacts with the hosting system |
+| [Singularity tutorial](https://singularity-tutorial.github.io/) | A well done Singularity tutorial for HPC users|
+| [Singularity video tutorial](https://www.youtube.com/watch?v=Gowh5pfzOAM) | A video tutorial on Singularity |
+| [Reproducibility by containerization](https://www.youtube.com/watch?v=DA87Ba2dpNM) | A video on reproducibility with Singularity containers |
+
 :::{.callout-note title="Docker vs. Singularity"}
 The most significant difference is at the permission level required to run them. Docker containers operate as root by default, giving them full access to the host system. While this can be useful in certain situations, it also poses security risks, especially in multi-user environments. In contrast, Singularity containers run as non-root users by default, enhancing security and preventing unauthorized access to the host system. 
 

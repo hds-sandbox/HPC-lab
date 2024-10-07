@@ -22,7 +22,7 @@ You can use md5sum to verify that the file contents are identical on both server
 md5sum /path/to/file
 ```
 
-Using rsync for Efficient File Transfers
+Using rsync for **efficient file transfers**
 `rsync` is a powerful alternative to `scp` for transferring files. It only sends data if the file has changed, making it more efficient. 
 
 
@@ -30,8 +30,18 @@ Using rsync for Efficient File Transfers
 # Transferring files between local machine-server
 rsync -avz local/path/to/file user@server:/remote/path/to/file
 # Transferring files between servers
-rsync -azv server1:/path/to/my_folder server2:/path/to/destination_folder
+rsync -avz server1:/path/to/my_folder server2:/path/to/destination_folder
 ```
+The `-avz` flags are commonly used together for efficient file synchronization:
+
+- `-a` (archive): preserves symbolic links, permissions, timestamps, groups, owners, and devices while transferring files
+- `-v` (verbose): display detailed information about the transfer (which files are being copied or updated)
+- `-z` (compress): enables compression during transfer 
+
+Other useful flags are: 
+
+- `--progress`: display a progress bar (transfer speed, percentage completed, estimated time remaining, ...)
+- `--partial`: ensures that partially transferred files are not discarded if the transfer is interrupted, allowing `rsync` to resume the transfer from where it left off the next time the command is run
 
 :::{.callout-note}
 To transfer files directly between two servers from your local workstation, ensure your SSH setup (configuration, keys, etc.) allows access to both servers. Check [this section](./ssh_keys.qmd) if you need help setting up your keys (generating, configuring and managing). 
@@ -43,6 +53,19 @@ To transfer files directly between two servers from your local workstation, ensu
 - Checksum Verification: rsync checks the hashsums of files and only transfers data if the hashes differ. This ensures that only the changed parts of the files are sent  (so you can rsync a whole folder, and only the changes files will be send).
 - Timestamp Preservation: Using the -a flag with rsync preserves the modified timestamps of files, which is particularly useful for tools like Snakemake.
 
+If you prefer using SCP (Secure Copy Protocol) for transferring files between a local and remote host, or between two remote hosts, here are some useful commands:
+
+```{.bash}
+# copy from local to remote
+scp /home/my_laptop/files.txt username@login.server.dk:/home/username/myproject/
+
+# If you want to copy an entire folder, use the option -r (recursive copy)
+scp -r /home/my_laptop/myfolder username@login.server.dk:/home/username/myproject/
+
+# check other options available 
+scp --help 
+```
+
 #### Important rsync options:
 
 - `-a`: Archive mode, preserves file attributes like timestamps and permissions (important if you are using snakemake).
@@ -50,7 +73,16 @@ To transfer files directly between two servers from your local workstation, ensu
 - -`z`: Compresses data during transfer, reducing the amount of data sent over the network.
 - `-c`: Enables checksum checking, ensuring that files are identical by comparing their contents rather than just their size and modification time.
 	
-#### Additional Tools
+## Interactive transfer
 
 For users who prefer a graphical interface, tools like Cyberduck and FileZilla can also be used for transferring files between servers.
 
+1. Download Filezilla [here](https://filezilla-project.org/download.php?type=client) or Cyberduck [here](https://cyberduck.io/download/)
+2. Open the app and configure the access information for your host machine (including password, username, ssh keys (if relevant) and `port: 22`). 
+    - Select SFTP (SSH File Transfer Protocol) option on Cyberduck
+3. Quick connect
+
+This will establish a secure connection to your host. You can navigate through your folders and files. Right-click on any file  you want to download or preview.
+
+- Filezilla: your local files will be display on the left-side of the dashboard. Right-click on them to upload or add it them to a transfer queue. If you have created a queue, this will be shown at the bottom of the window as a list. You can inspect destination folders from there and choose other options such as transfer priority. To start a queue, use `CTRL + P, Transfer --> Process Queue` or use the toolbar.  
+- Cyberduck: you can drag files from your local to the host, choose the directory where you want them located. 
