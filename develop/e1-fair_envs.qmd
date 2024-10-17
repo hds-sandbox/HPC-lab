@@ -102,7 +102,8 @@ mamba deactivate
 ```
 :::
 
-:::{.callout-tip title="Solution" collapse="true"}
+:::{.callout-hint}
+# Solution
 
 1. The syntax to create a new environment is: `mamba create --name myenv`
 2. Example “bowtie2”: Go to anaconda.org and search for “bowtie2” to confirm it is available through Mamba and which software channel it is provided from. You will find that it is available via the “bioconda” channel: https://anaconda.org/bioconda/bowtie2. The syntax to install packages is: `mamba install --channel <CHANNEL-NAME> --name <ENV-NAME> <SOFTWARE-NAME>`
@@ -222,7 +223,8 @@ export VM=sylabs/singularity-3.0-ubuntu-bionic64 && \
 :::{.callout-exercise}
 Download a singularity image from one of the two repositories listed above (choose a software like bcftools, bedtools, bowtie2, seqkit...) and run the `--help` command. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.
 
-:::{.callout-tip title="Solution" collapse="true"}
+:::{.callout-hint}
+# Solution
 
 ```{.bash .code-overflow-wrap}
 # create a directory for our singularity images
@@ -236,7 +238,6 @@ singularity run images/bowtie2-2.5.4.sif bowtie2 --help
 
 ```
 :::
-
 :::
 
 ## Sources
@@ -244,9 +245,9 @@ singularity run images/bowtie2-2.5.4.sif bowtie2 --help
 - [Bioconda](https://bioconda.github.io) for installing software package related to biomedical research 
 - [Conda cheat sheet](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html)
 - [faircookbook worflows](https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html)
+- [Conda blog freecodecamp](https://www.freecodecamp.org/news/why-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c/)
 - [Docker](https://www.docker.com/)
 - [Docker get-started](https://docs.docker.com/get-started/)
-- [The turing way - reproducible research](https://the-turing-way.netlify.app/reproducible-research)
 
 Find pre-built singularity images: 
 
@@ -254,6 +255,7 @@ Find pre-built singularity images:
 - [Sylabs](https://cloud.sylabs.io/)
 
 Other training resources: 
+
 - [The turing way - reproducible research](https://book.the-turing-way.org/reproducible-research/) 
 - [HPC intro by Cambridge](https://cambiotraining.github.io/hpc-intro)
 - Highly recommend *Reproducible Research II: Practices and Tools for Managing Computations and Data* by members of France Université Numérique. 

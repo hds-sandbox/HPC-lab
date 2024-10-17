@@ -1,0 +1,45 @@
+---
+title: Day 1 - Exercise 1
+format: 
+  html: default
+summary: intro to workflows
+css: ./web.css
+---
+
+```{r, echo = FALSE, results='asis'}
+library(webexercises)
+
+knitr::opts_chunk$set(echo = FALSE)
+
+# Uncomment to change widget colours:
+style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
+
+```
+
+Put your learning to the test with what you’ve covered so far.
+
+## A. General environment 
+
+::: {.webex-check .callout-exercise}
+# General knowledge 
+
+```{r, results='asis', echo = FALSE}
+
+opts_1 <- c(
+   answer="Automating the execution of complex computational processes",
+   "To manually execute each step of a computation",
+   "Offering real-time and intuitive data analysis",
+   "To minimize the reliance on specific software environments"
+)
+
+cat("**G.1. What role does a workflow manager play in computational research??**", longmcq(opts_1))
+```
+
+**G.4. Workflow managers can run tasks (different) concurrently if there are no dependencies** (True or False) `r torf(TRUE)`
+
+:::
+
+## B. Conda
+
+
+## C. Containers 

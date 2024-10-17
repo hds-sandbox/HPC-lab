@@ -1,11 +1,9 @@
 ---
-title: Exercises
+title: Day 1 - Exercise 2
 format: 
-  html:
-    toc: false
-date-modified: last-modified
-date-format: long
+  html: default
 summary: intro to workflows
+css: ./web.css
 ---
 
 ```{r, echo = FALSE, results='asis'}
@@ -15,29 +13,31 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Uncomment to change widget colours:
 style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
+
 ```
 
 Put your learning to the test with what you’ve covered so far.
 
-## General HPC pipes 
-**1. What role does a workflow manager play in computational research??**
+## A. General pipelines 
 
-```{r}
-#| echo: false
+::: {.webex-check .callout-exercise}
+# General knowledge 
+
+```{r, results='asis', echo = FALSE}
+
 opts_1 <- c(
    answer="Automating the execution of complex computational processes",
    "To manually execute each step of a computation",
    "Offering real-time and intuitive data analysis",
    "To minimize the reliance on specific software environments"
 )
+
+cat("**G.1. What role does a workflow manager play in computational research??**", longmcq(opts_1))
 ```
 
-`r longmcq(opts_1)`
 
-**2.What is the primary drawback of using shell scripts for automating computations?**
+```{r, results='asis', echo = FALSE}
 
-```{r}
-#| echo: false
 opts_2 <- c(
    answer="Limited error handling and debugging capabilities",
    "Difficulty in integrating with notebooks",
@@ -46,15 +46,12 @@ opts_2 <- c(
    "Insufficient support for parallel processing",
    "Complex and extensive coding for simple tasks"
 )
+
+cat("**G.2.What is the primary drawback of using shell scripts for automating computations?**", longmcq(opts_2))
+
 ```
 
-`r longmcq(opts_2)`
-
-
-**3. What are the key features of workflow manager in computational research?**
-(Several possible solutions)
-
-```{r}
+```{r, results='asis', echo = FALSE}
 #| echo: false
 opts_3 <- c(
    answer="Executing tasks only when required",
@@ -62,37 +59,46 @@ opts_3 <- c(
    answer = "Overseeing storage and resource allocation",
    "Providing intuitive graphical interfaces"
 )
+
+cat("**G.3. What are the key features of workflow manager in computational research?**
+(Several possible solutions)",  longmcq(opts_3))
 ```
 
-`r longmcq(opts_3)`
+**G.4. Workflow managers can run tasks (different) concurrently if there are no dependencies** (True or False) `r torf(TRUE)`
 
-**4. Workflow managers can run tasks (different) concurrently if there are no dependencies** (True or False) `r torf(TRUE)`
-
-**5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster** (True or False) `r torf(TRUE)`
-
-## Snakemake
-
-:::{.callout-exercise}
-# Exercise 1S: Exploring Rule Invocation in Snakemake
+**G.5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster** (True or False) `r torf(TRUE)`
 :::
+
+## B. Snakemake
+
+::: {.webex-check .callout-exercise}
+# Exploring Rule Invocation in Snakemake
+
 In this exercise, we will explore how rules are invoked in a Snakemake workflow. Download the `Snakefile` and data required for this exercise using the links below. 
 
-{{< downloadthis ./scripts/samples_1kgp_test.tsv label="Download data input" class="small-button" dname="samples_1kgp">}}
-{{< downloadthis ./scripts/process_1kgp.smk label="Download Snakefile" class="small-button" dname="process_1kgp">}}
+<div style="display: flex; gap: 10px;">
+  <a href="../develop/scripts/samples_1kgp_test.tsv" download="samples_1kgp_test.tsv">
+    <button class="btn small-button">Download data input</button>
+  </a>
+
+  <a href="../develop/scripts/process_1kgp.smk" download="process_1kgp.smk">
+    <button class="btn small-button">Download Snakefile</button>
+  </a>
+</div>
 
 Now follow these steps and answer the questions: 
 
 - Open the snakefile, named `process_1kgp.smk` and try to understand every single line. **If you request Snakemake to generate the file `results/all_female.txt`, what commands will be executed and in what sequence?**
 - Dry run the workflow: Check the number of jobs that will be executed.
 
-   **6. How many jobs will Snakemake run?** `r fitb(8)`
+   **S.1. How many jobs will Snakemake run?** `r fitb(8)`
 
 - Run the workflow: Use the name flag `--snakefile` | `-s` follow by the name of the file. 
 - Verify output: Ensure that the output files are in your working directory.
 - Clean Up: remove all files starting with `EUR` in your results folder.
 - Rerun the workflow: Execute the Snakefile again.
 
-   **7. How many jobs did Snakemake run in this last execution?** `r fitb(3)`
+   **S.2. How many jobs did Snakemake run in this last execution?** `r fitb(3)`
 
 - Remove lines 4-6 in the `process_1kgp.smk`. How else can you run the workflow but to generate instead `all_male.txt` using only the command-line? 
 
@@ -102,7 +108,7 @@ Now follow these steps and answer the questions:
          expand("results/all_{gender}.txt", gender=["female"])
    ```
    
-   **8. Tip: what is missing at the end of the command ( e.g. what should be added to ensure `all_male.txt` is generated)? `snakemake -s process_1kgp.smk -c1`** `r fitb("results/all_male.txt")`
+   **S.3. Tip: what is missing at the end of the command ( e.g. what should be added to ensure `all_male.txt` is generated)? `snakemake -s process_1kgp.smk -c1`** `r fitb("results/all_male.txt")`
 
 
 :::{.callout-hint}
@@ -118,4 +124,6 @@ rm results/EUR.tsv results/all_female.txt
 # rerun again 
 snakemake -s process_1kgp.smk -c1 <name_rule|name_output>
 ```
+:::
+
 :::

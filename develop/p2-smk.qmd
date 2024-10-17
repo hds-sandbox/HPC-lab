@@ -201,8 +201,9 @@ snakemake --lint
 - Formatter [snakefmt](https://github.com/snakemake/snakefmt)
 - [Snakemake workflow catalog](https://snakemake.github.io/snakemake-workflow-catalog/)
 - [Rules for inclusion in Snakemake workflow catalog](https://snakemake.github.io/snakemake-workflow-catalog/?rules=true)
+- [Snakemake github template](https://github.com/snakemake-workflows/snakemake-workflow-template/tree/main)
 
-Recommended reading: 
+Recommended reading:
 
 - Köster, Johannes and Rahmann, Sven. "Snakemake - A scalable bioinformatics workflow engine". Bioinformatics 2012.
 - Köster, Johannes. "Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis", PhD thesis, TU Dortmund 2014.
