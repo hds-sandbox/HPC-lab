@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HPC jobs – HPC Lab</title>
+<title>Day 1 - Exercise 1 – HPC Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,61 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -125,6 +71,7 @@ div.csl-indent {
 
 
 <link rel="stylesheet" href="../include/webex.css">
+<link rel="stylesheet" href="./web.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -152,15 +99,15 @@ div.csl-indent {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../develop/hpc_intro.html" aria-current="page"> 
-<span class="menu-text">HPC launch</span></a>
+    <a class="nav-link" href="../develop/hpc-intro.html"> 
+<span class="menu-text">HPC Launch</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../develop/pipes_intro.html"> 
-<span class="menu-text">HPC pipes</span></a>
+    <a class="nav-link" href="../develop/p0-intro.html"> 
+<span class="menu-text">HPC Pipes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../workshop/requirements.html"> 
+    <a class="nav-link active" href="../workshop/pipes-requirements.html" aria-current="page"> 
 <span class="menu-text">Workshop</span></a>
   </li>  
 </ul>
@@ -187,7 +134,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/hpc_intro.html">HPC systems</a></li><li class="breadcrumb-item"><a href="../develop/hpc_jobs.html">HPC jobs</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs.html">Day 1 - Exercise 1</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -210,7 +157,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">HPC systems</span></a>
+ <span class="menu-text">HPC Pipes</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -218,20 +165,20 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/hpc_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">HPC intro</span></a>
+  <a href="../workshop/pipes-requirements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to the HPC-Pipes workshop</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/hpc_jobs.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">HPC jobs</span></a>
+  <a href="../workshop/pipes-ex-envs.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Day 1 - Exercise 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/hpc_programming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">HPC coding</span></a>
+  <a href="../workshop/pipes-ex-smk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 1 - Exercise 2</span></a>
   </div>
 </li>
       </ul>
@@ -239,7 +186,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Data management</span></a>
+ <span class="menu-text">HPC Launch</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -247,66 +194,46 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/data_transfer.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data transfer</span></a>
+  <a href="../workshop/launch-requirements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to the HPC-Launch workshop</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/ssh_keys.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SSH keys</span></a>
+  <a href="../workshop/cookiecutter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Managing data</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Quizzes</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/exercise_launch.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Knowledge Checks</span></a>
+  <a href="../workshop/UCloud.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using UCloud</span></a>
   </div>
 </li>
-      </ul>
-  </li>
     </ul>
     </div>
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#job-scheduler" id="toc-job-scheduler" class="nav-link active" data-scroll-target="#job-scheduler">Job scheduler</a>
-  <ul class="collapse">
-  <li><a href="#submitting-jobs-using-sbatch" id="toc-submitting-jobs-using-sbatch" class="nav-link" data-scroll-target="#submitting-jobs-using-sbatch">Submitting Jobs using ‘sbatch’</a></li>
-  <li><a href="#job-parallelization" id="toc-job-parallelization" class="nav-link" data-scroll-target="#job-parallelization">Job parallelization</a></li>
-  </ul></li>
-  <li><a href="#interactive-jobs" id="toc-interactive-jobs" class="nav-link" data-scroll-target="#interactive-jobs">Interactive jobs</a></li>
-  <li><a href="#efficient-resource-usage" id="toc-efficient-resource-usage" class="nav-link" data-scroll-target="#efficient-resource-usage">Efficient resource usage</a>
-  <ul class="collapse">
-  <li><a href="#managing-a-large-number-of-short-jobs" id="toc-managing-a-large-number-of-short-jobs" class="nav-link" data-scroll-target="#managing-a-large-number-of-short-jobs">Managing a large number of short jobs</a></li>
-  <li><a href="#managing-large-stout-outputs" id="toc-managing-large-stout-outputs" class="nav-link" data-scroll-target="#managing-large-stout-outputs">Managing large STOUT outputs</a></li>
-  </ul></li>
-  <li><a href="#queueing-system-best-practices" id="toc-queueing-system-best-practices" class="nav-link" data-scroll-target="#queueing-system-best-practices">Queueing system best practices</a></li>
-  </ul>
-</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#a.-general-environment" id="toc-a.-general-environment" class="nav-link active" data-scroll-target="#a.-general-environment">A. General environment</a></li>
+  <li><a href="#b.-conda" id="toc-b.-conda" class="nav-link" data-scroll-target="#b.-conda">B. Conda</a></li>
+  <li><a href="#c.-containers" id="toc-c.-containers" class="nav-link" data-scroll-target="#c.-containers">C. Containers</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/hpc_intro.html">HPC systems</a></li><li class="breadcrumb-item"><a href="../develop/hpc_jobs.html">HPC jobs</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs.html">Day 1 - Exercise 1</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">HPC jobs</h1>
+<h1 class="title">Day 1 - Exercise 1</h1>
 </div>
 
 
@@ -315,12 +242,6 @@ div.csl-indent {
 
     
   
-    <div>
-    <div class="quarto-title-meta-heading">Modified</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 7, 2024</p>
-    </div>
-  </div>
     
   </div>
   
@@ -329,249 +250,68 @@ div.csl-indent {
 </header>
 
 
-<p>This section outlines useful best practices to consider when coding and running applications and pipelines on an HPC.</p>
-<section id="job-scheduler" class="level2">
-<h2 class="anchored" data-anchor-id="job-scheduler">Job scheduler</h2>
-<p>To execute jobs in most HPC environments, you must first submit them to a queueing system. This system ensures that compute resources are allocated fairly and efficiently among users while scheduling the execution of jobs. Some of the most common queueing systems operate using SLURM (utilizing s-type commands), TORQUE (utilizing q-type commands), and Moab (utilizing m-type commands).</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Program</th>
-<th style="text-align: left;">link</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">TORQUE qsub documentation</td>
-<td style="text-align: left;"><a href="https://support.adaptivecomputing.com/wp-content/uploads/2021/02/torque/torque.htm#topics/torque/commands/qsub.htm">Link</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Moab msub documentation</td>
-<td style="text-align: left;"><a href="https://docs.adaptivecomputing.com/8-1-2/enterprise/MAM/help.htm">Link</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">SLURM sbatch/Srun documentation</td>
-<td style="text-align: left;"><a href="https://slurm.schedmd.com/sbatch.html">sbatch</a> and <a href="https://slurm.schedmd.com/srun.html">srun</a></td>
-</tr>
-</tbody>
-</table>
-<p>We will focus on SLURM (Simple Linux Utility for Resource Management), a widely used open-source job scheduler designed to manage and allocate resources in high-performance computing (HPC) clusters. It efficiently schedules and runs batch jobs, handles job queues and optimizes resource utilization across multiple users and tasks.</p>
-<section id="submitting-jobs-using-sbatch" class="level3">
-<h3 class="anchored" data-anchor-id="submitting-jobs-using-sbatch">Submitting Jobs using ‘sbatch’</h3>
-<p>It is ideal for running programs non-interactively, typically for tasks that require more time than a brief interactive session. A batch script includes:</p>
-<ul>
-<li>The requested resources</li>
-<li>A sequence of commands to execute</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<style>
+:root {
+    --incorrect: rgb(255, 0, 0);
+    --incorrect_alpha: rgba(255, 0, 0, 0.25);
+    --correct: rgb(0, 255, 0);
+    --correct_alpha: rgba(0, 255, 0, 0.25);
+    --highlight: rgb(178, 34, 34);
+}
+  .webex-incorrect, input.webex-solveme.webex-incorrect,
+  .webex-radiogroup label.webex-incorrect {
+    border: 2px dotted var(--incorrect);
+    background-color: var(--incorrect_alpha);
+  }
+  .webex-correct, input.webex-solveme.webex-correct,
+  .webex-radiogroup label.webex-correct {
+    border: 2px dotted var(--correct);
+    background-color: var(--correct_alpha);
+  }
+  .webex-box, .webex-solution.open {
+    border: 2px solid var(--highlight);n  }
+  .webex-solution button, .webex-check-button {
+    background-color: var(--highlight);
+  }
+</style>
+<p>Put your learning to the test with what you’ve covered so far.</p>
+<section id="a.-general-environment" class="level2">
+<h2 class="anchored" data-anchor-id="a.-general-environment">A. General environment</h2>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+General knowledge
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>Useful SLURM commands:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Submit the job</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This will show you the status of your job, including its current state, the amount of time it has been running, and the amount of resources it is currently using.</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-j</span> job_id</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Cancel a job</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> job_id1, job_id2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Here is example of a bash script to submit to the queueing system:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>mybash.sh</strong></pre>
+<div>
+<div class="webex-check callout-exercise">
+<strong>G.1. What role does a workflow manager play in computational research??</strong>
+<div id="radio_LOBLTBDBNJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LOBLTBDBNJ" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_LOBLTBDBNJ" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_LOBLTBDBNJ" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_LOBLTBDBNJ" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
-<div class="sourceCode" id="cb2" data-filename="mybash.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=myjob</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=myjob.out</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=myjob.err</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH -D /home/USERNAME/  # working directory</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task 1        # number of CPUs. Commonly default: 1</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time 00:10:00 # time for the job HH:MM:SS.</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=1G    # RAM memory</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">##SBATCH --array=1-10%4 # this directive submits a job array of 10 tasks, but only 4 of them can run concurrently. Alternative: #SBATCH --ntasks=1</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Activate environment</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="ex">conda</span> shell.bash hook<span class="va">)</span><span class="st">"</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate bam_tools</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># My commands: software, pipeline, etc.</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-j1</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The first line of the script (#!/bin/bash) tells the system that this is a bash script. The remaining lines starting with #SBATCH are directives for ‘sbatch’ that specify various options for the job.</p>
-<p>Finally, we can submit your job to the queueing system:</p>
-<p><code>{.bash filename=""Terminal} sbatch mybash.sh</code></p>
-<pre><code>Submitted batch job 39712574</code></pre>
-<p>Check details about a specific job (e.g.&nbsp;39712574) using the following command:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jobinfo</span> 39712574</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can also include email notifications in your bash script by adding the following options:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=begin        # send email when job begins</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=end          # send email when job ends</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-type=fail         # send email if job fails</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mail-user=your mail address</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>G.4. Workflow managers can run tasks (different) concurrently if there are no dependencies</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 </div>
 </div>
-<p>To monitor the job’s output in real-time, refresh the last few lines of its log file using:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">watch</span> tail align.sh-39712574.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To view the entire log file (not in real-time), you can check it anytime with:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> <span class="at">-S</span> align.sh-39712574.out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Reviewing the log files is helpful for debugging, especially when a command encounters an error and causes the job to terminate prematurely.</p>
-<p>In the figure below, you can see how the priority assigned to a SLURM job decreases as the requested time increases, while keeping memory and CPU resources constant. Higher values indicate lower priority.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/slurm_priority.png" title="SLURM priority based on time requested" class="img-fluid figure-img"></p>
-<figcaption>Slurm priority, figure adapted from <span class="citation" data-cites="simakov2018slurm">Simakov et al. (<a href="#ref-simakov2018slurm" role="doc-biblioref">2018</a>)</span></figcaption>
-</figure>
 </div>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Links</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Slurm official guide</td>
-<td style="text-align: left;"><a href="https://slurm.schedmd.com/quickstart.html">Quick start</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Slurm cheat sheet</td>
-<td style="text-align: left;"><a href="https://slurm.schedmd.com/pdfs/summary.pdf">Cheat Sheet</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Slurm Universities usage examples</td>
-<td style="text-align: left;"><a href="https://genome.au.dk/docs/interacting-with-the-queue/">GenomeDK</a> and <a href="https://researchcomputing.princeton.edu/slurm">Princeton guides</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><a href="https://gwf.app/">Gwf, a simple python tool to create interdependent job submissions</a></td>
-<td style="text-align: left;">Gwf, developed at the University of Aarhus, makes it easy to create Slurm jobs and organize them as a pipeline with dependencies, using the python language (you need python 3.5+). You get to simply create the shell scripts and the dependencies, without the complicating syntax of Slurm. The page contains also a useful guide.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="job-parallelization" class="level3">
-<h3 class="anchored" data-anchor-id="job-parallelization">Job parallelization</h3>
-<p>Job parallelization is crucial for achieving high performance and running jobs effectively on an HPC. Here are two key scenarios where it is particularly important:</p>
-<ul>
-<li>Independent computational tasks: When tasks are independent of each other, job parallelization can enhance efficiency by allowing them to run concurrently.</li>
-<li>Multi-threaded tools: Some tools are specifically designed to perform parallel computations through multi-threading, enabling them to utilize multiple CPU cores for increased performance.</li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Job parallelization using slurm
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Jobs arrays <code>-a</code></p>
 </div>
 </div>
 </section>
+<section id="b.-conda" class="level2">
+<h2 class="anchored" data-anchor-id="b.-conda">B. Conda</h2>
 </section>
-<section id="interactive-jobs" class="level2">
-<h2 class="anchored" data-anchor-id="interactive-jobs">Interactive jobs</h2>
-<p>Use this option when you need to execute tasks that don’t require automation or repetitive scheduling. You can work interactively, monitor progress, and adjust commands as needed in real-time. Examples:</p>
-<ul>
-<li>Splitting a BAM file by chromosome for further analysis.</li>
-<li>Running exploratory or simple statistical analysis in Python or R.</li>
-<li>Compressing or decompressing multiple files in parallel required as input for a pipeline.</li>
-</ul>
-<p>Keep in mind, that once you exit the session, any processes running within it will stop automatically. This makes it ideal for tasks that require manual intervention or those that don’t need continuous execution after logging out.</p>
-<p><strong>How do interactive jobs work?</strong></p>
-<p>The queuing system schedules your job based on the resources you request (such as CPU, memory, and time requirements) and the current workload of the nodes. Once a node is assigned, the requested resources will be available to you, and the node’s name will appear in your terminal prompt.</p>
-<p>Slurm provides the ‘srun -pty bash’ command to submit interactive jobs on a compute node. Specify the resource requirements by including one or more of the following options:</p>
-<ul>
-<li><code>--cpus-per-task</code>: Number of CPUs per task</li>
-<li><code>--mem</code>: Memory per node (e.g., <code>--mem=4G</code>)</li>
-<li><code>--time</code>: Time limit for the job (e.g., <code>--time=2:00:00</code> for 2 hours)</li>
-</ul>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Terminal</strong></pre>
-</div>
-<div class="sourceCode" id="cb8" data-filename="Terminal"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Slurm example</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--mem</span><span class="op">=&lt;</span>GB_of_RAM<span class="op">&gt;</span>g <span class="at">-c</span> <span class="op">&lt;</span>n_cores<span class="op">&gt;</span> --time=<span class="op">&lt;</span>days-h:min:sec<span class="op">&gt;</span> --pty /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>For example, to request 2 CPUs, 4 GB of memory, and 1 hour wall time, use the following command:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>slurm example</strong></pre>
-</div>
-<div class="sourceCode" id="cb9" data-filename="slurm example"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--cpus-per-task</span><span class="op">=</span>2 <span class="at">--mem</span><span class="op">=</span>4G <span class="at">--time</span><span class="op">=</span>1:00:00 <span class="at">--pty</span> bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="efficient-resource-usage" class="level2">
-<h2 class="anchored" data-anchor-id="efficient-resource-usage">Efficient resource usage</h2>
-<section id="managing-a-large-number-of-short-jobs" class="level3">
-<h3 class="anchored" data-anchor-id="managing-a-large-number-of-short-jobs">Managing a large number of short jobs</h3>
-<p>Each time a job is submitted to the job manager (e.g., SLURM) in a computing cluster, there’s a time overhead required for resource allocation, output preparation, and queue organization. To minimize this overhead, it’s often more efficient to group tasks into longer jobs when possible.</p>
-<p>However, it’s important to strike a balance. If jobs are too long and encounter an issue, significant time and resources can be lost. This risk can be mitigated by tracking outputs at each stage, ensuring you only rerun the necessary portions of the job. For example, by checking whether a specific output already exists, you can prevent redundant computations and reduce wasted effort.</p>
-<p>A particularly powerful feature in queue systems like SLURM is <strong>batch arrays</strong>. These allow you to automate running large numbers of similar jobs. A batch array consists of multiple jobs with identical code and parameters but with different input files. Each job in the array is assigned a unique index, passed as an argument to the job script. This greatly simplifies managing and executing large-scale tasks.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Description</th>
-<th style="text-align: left;">Links</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">SLURM tutorial on job arrays</td>
-<td style="text-align: left;"><a href="https://slurm.schedmd.com/job_array.html">Job Array</a></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">SLURM cheat sheet</td>
-<td style="text-align: left;"><a href="https://slurm.schedmd.com/pdfs/summary.pdf">Cheat Sheet</a></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">SLURM guide</td>
-<td style="text-align: left;"><a href="https://slurm.schedmd.com/quickstart.html">Quick start</a></td>
-</tr>
-</tbody>
-</table>
-<p>Workflow managers can also assist in automating and tracking jobs, ensuring that resources are efficiently allocated while reducing overhead and preventing errors in complex workflows.</p>
-</section>
-<section id="managing-large-stout-outputs" class="level3">
-<h3 class="anchored" data-anchor-id="managing-large-stout-outputs">Managing large STOUT outputs</h3>
-<p>Minimize the amount of information printed to the standard output (STDOUT) to avoid overwhelming the terminal screen. Excessive outputs can become problematic, especially when numerous parallel jobs are running, potentially cluttering the home directory and leading to errors or data loss. Instead, consider directing outputs to software-specific data formats (like .RData files for R) or, at the very least, to plain text files. This approach helps maintain a clean workspace and reduces the risk of encountering issues related to excessive STDOUT content.</p>
-</section>
-</section>
-<section id="queueing-system-best-practices" class="level2">
-<h2 class="anchored" data-anchor-id="queueing-system-best-practices">Queueing system best practices</h2>
-<ul>
-<li>Avoid running jobs or scripts on the login nodes.</li>
-<li>Submit batch jobs using the <code>sbatch</code> command and ensure that your submission scripts primarily consist of queueing system parameters and job executions.</li>
-<li>Introduce a delay between job submissions when submitting multiple jobs to prevent overwhelming the system.</li>
-<li>Utilize job arrays for submitting multiple identical jobs efficiently.</li>
-<li>Use interactive sessions for testing and interactive jobs.</li>
-<li>Incorporate software modules in your pipelines for improved environment control.</li>
-<li>Estimate resource requirements before submitting jobs, including CPU, memory, and time, to optimize resource usage. Always test your code with a small, representative sample (toy example) to ensure the pipeline functions correctly before running larger jobs.</li>
-</ul>
-<section id="acknowledgements" class="level4">
-
-
+<section id="c.-containers" class="level2">
+<h2 class="anchored" data-anchor-id="c.-containers">C. Containers</h2>
 
 
 </section>
-</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Acknowledgements</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-simakov2018slurm" class="csl-entry" role="listitem">
-Simakov, Nikolay A, Martins D Innus, Matthew D Jones, Robert L DeLeon, Joseph P White, Steven M Gallo, Abani K Patra, and Thomas R Furlani. 2018. <span>“A Slurm Simulator: Implementation and Parametric Analysis.”</span> In <em>High Performance Computing Systems. Performance Modeling, Benchmarking, and Simulation: 8th International Workshop, PMBS 2017, Denver, CO, USA, November 13, 2017, Proceedings 8</em>, 197–217. Springer.
-</div>
-</div></section><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
 <script>
 
 /* update total correct if #webex-total_correct exists */

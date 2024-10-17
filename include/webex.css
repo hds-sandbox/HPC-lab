@@ -10,9 +10,9 @@
 
 .webex-box {
   border: 2px solid var(--highlight);
-  padding: 0.5em 0.25em;
-  margin: 1em 0;
-  border-radius: .25em;
+  padding: 0.5em 0.5em;
+  margin: 1em 1em;
+  border-radius: .5em;
   background-color: rgba(127, 127, 127, 0.05);
 }
 
@@ -87,12 +87,12 @@ input.webex-solveme.webex-correct,
     border-radius: 5px;
 }
 .webex-solution button, .webex-check-button {
-    height: 2em;
-    margin-bottom: 0.5em;
+    height: 2.5em;
+    margin-bottom: 1.75em;
     border-radius: 0.5em;
     background-color: var(--highlight);
     color: white;
-    padding: 0 0.5em;
+    padding: 1 1em;
 }
 .webex-solution pre.sourceCode {
     border-color: var(--correct);

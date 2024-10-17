@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>data_transfer – HPC Lab</title>
+<title>Singularity – HPC Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -132,15 +132,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../develop/hpc_intro.html" aria-current="page"> 
-<span class="menu-text">HPC launch</span></a>
+    <a class="nav-link" href="../develop/hpc-intro.html"> 
+<span class="menu-text">HPC Launch</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../develop/pipes_intro.html"> 
-<span class="menu-text">HPC pipes</span></a>
+    <a class="nav-link active" href="../develop/p0-intro.html" aria-current="page"> 
+<span class="menu-text">HPC Pipes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../workshop/requirements.html"> 
+    <a class="nav-link" href="../workshop/pipes-requirements.html"> 
 <span class="menu-text">Workshop</span></a>
   </li>  
 </ul>
@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/data_transfer.html">Data management</a></li><li class="breadcrumb-item"><a href="../develop/data_transfer.html">Data transfer</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/e1-fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/e3-singularity.html">Singularity</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -187,10 +187,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/p0-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">HPC systems</span></a>
+ <span class="menu-text">Computational environments</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -198,20 +204,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/hpc_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">HPC intro</span></a>
+  <a href="../develop/e1-fair_envs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAIR environments</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/hpc_jobs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">HPC jobs</span></a>
+  <a href="../develop/e2-docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Docker</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/hpc_programming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">HPC coding</span></a>
+  <a href="../develop/e3-singularity.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Singularity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/e4-RDM_containers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RDM for containers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/cheat_sheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cheat sheet</span></a>
   </div>
 </li>
       </ul>
@@ -219,7 +237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Data management</span></a>
+ <span class="menu-text">Pipeline languages</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -227,31 +245,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/data_transfer.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Data transfer</span></a>
+  <a href="../develop/p1-fair_workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAIR computational pipelines</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/ssh_keys.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">SSH keys</span></a>
+  <a href="../develop/p2-smk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Snakemake</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Quizzes</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/exercise_launch.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Knowledge Checks</span></a>
+  <a href="../develop/p3-nextflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nextflow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/p4-workflow_envs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workflows &amp; environments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/exercise_pipes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercises</span></a>
   </div>
 </li>
       </ul>
@@ -261,12 +280,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#building-sif-images" id="toc-building-sif-images" class="nav-link active" data-scroll-target="#building-sif-images">Building SIF images</a></li>
+  <li><a href="#using-docker-images" id="toc-using-docker-images" class="nav-link" data-scroll-target="#using-docker-images">Using Docker images</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/data_transfer.html">Data management</a></li><li class="breadcrumb-item"><a href="../develop/data_transfer.html">Data transfer</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/e1-fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/e3-singularity.html">Singularity</a></li></ol></nav>
 <div class="quarto-title">
+<h1 class="title">Singularity</h1>
 </div>
 
 
@@ -278,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 7, 2024</p>
+      <p class="date-modified">October 17, 2024</p>
     </div>
   </div>
     
@@ -289,89 +318,108 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="data-transfer" class="level2">
-<h2 class="anchored" data-anchor-id="data-transfer">Data transfer</h2>
-<p>To ensure efficient file transfers on HPC systems, we will go through:</p>
-<ul>
-<li>Overview rsync and scp</li>
-<li>Basic commands</li>
-</ul>
-<p>When transferring files between servers, it’s important to ensure that the files are consistent. Differences in file size can occur due to variations in filesystems, but large differences might indicate an issue. Manually checking file sizes in a terminal (<code>ls -lh</code> or <code>du -sh</code>) to determine if a transfer was successful might not be ideal, as it doesn’t guarantee file integrity. Using checksums provides a more reliable verification method.</p>
-<p>You can use md5sum to verify that the file contents are identical on both servers. Run the following command on each server:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">md5sum</span> /path/to/file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Using rsync for <strong>efficient file transfers</strong> <code>rsync</code> is a powerful alternative to <code>scp</code> for transferring files. It only sends data if the file has changed, making it more efficient.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transferring files between local machine-server</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avz</span> local/path/to/file user@server:/remote/path/to/file</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Transferring files between servers</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avz</span> server1:/path/to/my_folder server2:/path/to/destination_folder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The <code>-avz</code> flags are commonly used together for efficient file synchronization:</p>
-<ul>
-<li><code>-a</code> (archive): preserves symbolic links, permissions, timestamps, groups, owners, and devices while transferring files</li>
-<li><code>-v</code> (verbose): display detailed information about the transfer (which files are being copied or updated)</li>
-<li><code>-z</code> (compress): enables compression during transfer</li>
-</ul>
-<p>Other useful flags are:</p>
-<ul>
-<li><code>--progress</code>: display a progress bar (transfer speed, percentage completed, estimated time remaining, …)</li>
-<li><code>--partial</code>: ensures that partially transferred files are not discarded if the transfer is interrupted, allowing <code>rsync</code> to resume the transfer from where it left off the next time the command is run</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-default callout-warning callout-titled" title="Requirements">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+Requirements
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>To transfer files directly between two servers from your local workstation, ensure your SSH setup (configuration, keys, etc.) allows access to both servers. Check <a href="../develop/ssh_keys.html">this section</a> if you need help setting up your keys (generating, configuring and managing).</p>
+<ul>
+<li>Install <a href="https://docs.sylabs.io/guides/3.5/user-guide/quick_start.html#quick-installation-steps">singularity</a></li>
+<li>Read the <a href="https://docs.sylabs.io/guides/3.5/user-guide/introduction.html">documentation</a></li>
+</ul>
 </div>
 </div>
-<section id="advantages-of-rsync-over-scp" class="level4">
-<h4 class="anchored" data-anchor-id="advantages-of-rsync-over-scp">Advantages of rsync over scp:</h4>
-<p><code>rsync</code> is an efficient protocol to compare and copy files between directories or server. It can resume interrupted transfers and compress files on the fly.</p>
+<section id="building-sif-images" class="level2">
+<h2 class="anchored" data-anchor-id="building-sif-images">Building SIF images</h2>
+<p>The equivalent to a <em>Dockerfile</em> for singularity is <em>Singularity definition file</em> where the instructions for the image are specified.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Bootstrap:</span> docker</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">From:</span> debian:stable</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Stage:</span> build</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">%post</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> jupyter-notebook python3-matplotlib python3-pandas python3-numpy</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">%labels</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Author</span> Name Surname <span class="op">&lt;</span>abc123@ku.dk<span class="op">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Version</span> v1.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the image</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> build <span class="at">--fakeroot</span>  <span class="op">&lt;</span>my-app<span class="op">&gt;</span>.sif <span class="op">&lt;</span>my-app<span class="op">&gt;</span>.def</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the container </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> run <span class="op">&lt;</span>my-app<span class="op">&gt;</span>.sif jupyter-notebook </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled" title="Tips">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Limitations</p>
 <ul>
-<li>Checksum Verification: rsync checks the hashsums of files and only transfers data if the hashes differ. This ensures that only the changed parts of the files are sent (so you can rsync a whole folder, and only the changes files will be send).</li>
-<li>Timestamp Preservation: Using the -a flag with rsync preserves the modified timestamps of files, which is particularly useful for tools like Snakemake.</li>
+<li>Keep in mind that Singularity always operates using your user ID, meaning you cannot switch to the root user inside a Singularity container. This will cause troubles when installing package managers like <code>apt</code>.</li>
+<li>SIF images are not writable by default.</li>
 </ul>
-<p>If you prefer using SCP (Secure Copy Protocol) for transferring files between a local and remote host, or between two remote hosts, here are some useful commands:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># copy from local to remote</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> /home/my_laptop/files.txt username@login.server.dk:/home/username/myproject/</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># If you want to copy an entire folder, use the option -r (recursive copy)</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> /home/my_laptop/myfolder username@login.server.dk:/home/username/myproject/</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># check other options available </span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">--help</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="important-rsync-options" class="level4">
-<h4 class="anchored" data-anchor-id="important-rsync-options">Important rsync options:</h4>
+<p>Solution</p>
 <ul>
-<li><code>-a</code>: Archive mode, preserves file attributes like timestamps and permissions (important if you are using snakemake).</li>
-<li><code>-v</code>: Verbose mode, provides detailed information during transfer.</li>
-<li>-<code>z</code>: Compresses data during transfer, reducing the amount of data sent over the network.</li>
-<li><code>-c</code>: Enables checksum checking, ensuring that files are identical by comparing their contents rather than just their size and modification time.</li>
+<li><code>--fakeroot</code> option is used to create a container image with root-like permissions without requiring actual root access on the host system. This is particularly useful for users who need to build or modify containers (installing software) in environments where they do not have superuser privileges.</li>
 </ul>
+</div>
+</div>
 </section>
-</section>
-<section id="interactive-transfer" class="level2">
-<h2 class="anchored" data-anchor-id="interactive-transfer">Interactive transfer</h2>
-<p>For users who prefer a graphical interface, tools like Cyberduck and FileZilla can also be used for transferring files between servers.</p>
-<ol type="1">
-<li>Download Filezilla <a href="https://filezilla-project.org/download.php?type=client">here</a> or Cyberduck <a href="https://cyberduck.io/download/">here</a></li>
-<li>Open the app and configure the access information for your host machine (including password, username, ssh keys (if relevant) and <code>port: 22</code>).
+<section id="using-docker-images" class="level2">
+<h2 class="anchored" data-anchor-id="using-docker-images">Using Docker images</h2>
+<p>Let’s use the same docker image as in the Docker section.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># creates a sif </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's check a couple commands on the host machine  (as we did in the previous module)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">gzip</span> <span class="at">--version</span> <span class="co"># same as docker</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span> <span class="co"># vagrant (macß) different</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span> <span class="co"># vagrant (docker is root)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># deploy the container  </span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Install filter in the container </span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install filter</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative command to install filter</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912 bash <span class="at">-c</span> <span class="st">"apt install filter 2&gt;&amp;1 || true "</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The docker tag (<code>docker://</code>) step is required as singularity has sometimes trouble handling the sha256, image description.</p>
+<p>Other important information to consider:</p>
 <ul>
-<li>Select SFTP (SSH File Transfer Protocol) option on Cyberduck</li>
-</ul></li>
-<li>Quick connect</li>
-</ol>
-<p>This will establish a secure connection to your host. You can navigate through your folders and files. Right-click on any file you want to download or preview.</p>
-<ul>
-<li>Filezilla: your local files will be display on the left-side of the dashboard. Right-click on them to upload or add it them to a transfer queue. If you have created a queue, this will be shown at the bottom of the window as a list. You can inspect destination folders from there and choose other options such as transfer priority. To start a queue, use <code>CTRL + P, Transfer --&gt; Process Queue</code> or use the toolbar.<br>
-</li>
-<li>Cyberduck: you can drag files from your local to the host, choose the directory where you want them located.</li>
+<li>Singularity Hub is no longer maintained. Alternatives: git-annex for hosting images.</li>
+<li>SIF images are much smaller than Docker images.</li>
 </ul>
+</div>
+</div>
+<!--
+```{.bash title="Singularity on MAC OS"}
+export VM=sylabs/singularity-3.0-ubuntu-bionic64 && \
+vagrant init $VM && \
+vagrant up && \
+vagrant ssh
+```
+-->
 
 
 </section>

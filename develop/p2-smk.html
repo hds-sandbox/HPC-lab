@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>data_compression – HPC Lab</title>
+<title>Snakemake – HPC Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -73,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -98,15 +132,15 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../develop/hpc_intro.html"> 
-<span class="menu-text">HPC launch</span></a>
+    <a class="nav-link" href="../develop/hpc-intro.html"> 
+<span class="menu-text">HPC Launch</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../develop/pipes_intro.html"> 
-<span class="menu-text">HPC pipes</span></a>
+    <a class="nav-link active" href="../develop/p0-intro.html" aria-current="page"> 
+<span class="menu-text">HPC Pipes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../workshop/requirements.html"> 
+    <a class="nav-link" href="../workshop/pipes-requirements.html"> 
 <span class="menu-text">Workshop</span></a>
   </li>  
 </ul>
@@ -128,17 +162,131 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/p1-fair_workflow.html">Pipeline languages</a></li><li class="breadcrumb-item"><a href="../develop/p2-smk.html">Snakemake</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/p0-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Computational environments</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/e1-fair_envs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAIR environments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/e2-docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Docker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/e3-singularity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Singularity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/e4-RDM_containers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RDM for containers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/cheat_sheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cheat sheet</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Pipeline languages</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/p1-fair_workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAIR computational pipelines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/p2-smk.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Snakemake</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/p3-nextflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nextflow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/p4-workflow_envs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workflows &amp; environments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/exercise_pipes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/p1-fair_workflow.html">Pipeline languages</a></li><li class="breadcrumb-item"><a href="../develop/p2-smk.html">Snakemake</a></li></ol></nav>
 <div class="quarto-title">
+<h1 class="title">Snakemake</h1>
 </div>
 
 
@@ -150,7 +298,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 7, 2024</p>
+      <p class="date-modified">October 17, 2024</p>
     </div>
   </div>
     
@@ -161,14 +309,184 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="data-compression-and-optimization" class="level2">
-<h2 class="anchored" data-anchor-id="data-compression-and-optimization">Data compression and optimization</h2>
+<p>In this section, we will guide you through transitioning from bash scripts or notebooks to workflows. This approach is particularly useful as computations become more complex.</p>
+<section id="basics" class="level4">
+<h4 class="anchored" data-anchor-id="basics">Basics</h4>
+<p><a href="https://snakemake.readthedocs.io/en/stable/#">Snakemake</a> is a text-based workflow management tool that uses a Python-based language with domain-specific syntax. Originally designed for scientific workflows in bioinformatics, Snakemake shares operational principles with <a href="https://www.gnu.org/software/make/"><code>make</code></a>, from which it was inspired. Importantly, workflows in Snakemake are structured around data stored in files, and the tool supports parallel computing, cloud storage, and can manage computational environments.</p>
+<p>The workflow is decomposed into <strong>rules</strong> that define how to obtain output files from input files. Snakemake infers dependencies and determines the execution order automatically, offering significantly more flexibility than its predecessor, <code>make</code>.</p>
+<ol type="1">
+<li>Semantics: define rules, each rule can use different programs (e.g.&nbsp;bash to run a shell command, python, R, GNU core utilities)</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Snakefile</strong></pre>
+</div>
+<div class="sourceCode" id="cb1" data-filename="Snakefile"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> dw_metadata:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">input:</span> path2/filename.tsv</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">output:</span> data/filename.tsv</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shell:</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"wget {input} &gt; {output}"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> split_superpop:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">input:</span> data/filename.tsv</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">output:</span> data/{superpop}.tsv</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shell:</span> </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"python process_pops.py {input} {output}"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> avg_gender:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">input:</span> data/{superpop}.tsv</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">output:</span> data/{superpop}_{gender}.png</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shell:</span> </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"python statsPlot_gender.py {input} {output}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The only mandatory flag in Snakemake is the number of cores (<code>-c</code>) or jobs (<code>-j</code>), which indicates the number of processes that can run in parallel. To run the workflow in Snakemake, you can either:</p>
+<ol type="1">
+<li>Request Snakemake to generate a specific file (using the exact filename as defined in the rule’s output)</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the last output (of the pipeline or the one you want to generate)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c2</span> data/EUR_female.png</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Specify the name of a rule or task. You can do this when wildcards are not present</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the last rule</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> dw_metadata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Alternatively, in very common practice, determine what you want to run inside a Snakefile</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> all:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">input:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expand</span><span class="er">(</span><span class="ex">data/{superpop}_{gender}.png,</span> superpop=<span class="pp">[</span><span class="st">"EUR"</span><span class="pp">]</span>, gender=[<span class="st">"female"</span>, <span class="st">"male"</span>]<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li><p>Scaling up - rules generalisation using wildcards (e.g.: from one to several datasets) You can refer by index or by name</p></li>
+<li><p>Dependencies are determined top-down</p></li>
+</ol>
+<p>For a given target, a rule that can be applied to create it, is determined (a job) For the input files of the rule, go on recursively, If no target is specified, snakemake, tries to apply the first rule</p>
+<ol start="4" type="1">
+<li>Rule all: target rule that collects results</li>
+</ol>
 </section>
-<section id="data-organization" class="level2">
-<h2 class="anchored" data-anchor-id="data-organization">Data organization</h2>
+<section id="job-execution" class="level4">
+<h4 class="anchored" data-anchor-id="job-execution">Job execution</h4>
+<p>A job is executed if and only if: - otuput file is target and does not exist - output file needed by another executed job and does not exist - input file newer than output file - input file will be updated by other job (eg. changes in rules) - execution is force (‘–force-all’)</p>
+<p>You can plot the DAG (directed acyclic graph) of the jobs</p>
+</section>
+<section id="useful-command-line-interface" class="level4">
+<h4 class="anchored" data-anchor-id="useful-command-line-interface">Useful command line interface</h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dry-run (-n), print shell commands (-p)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-n</span> <span class="at">-p</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Snakefile named different in another location </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--snakefile</span> path/to/file.smoker</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dry-run (-n), print execution reason for each job</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-n</span> <span class="at">-r</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualise DAG of jobs using Graphviz dot command</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--dag</span> <span class="kw">|</span> <span class="ex">dot</span> <span class="at">-Tsvg</span> <span class="op">&gt;</span> dag.svg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="defining-resources" class="level4">
+<h4 class="anchored" data-anchor-id="defining-resources">Defining resources</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> myrule:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">resources:</span> mem_mb= 100 <span class="co">#(100MB memory allocation)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">threads:</span> X</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shell:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"command {threads}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Let’s say you defined our rule myrule needs 4 works, if we execute the workflow with 8 cores as follows:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--cores</span> 8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This means that 2 ‘myrule’ jobs, will be executed in parallel.</p>
+<p>The jobs are schedules to maximize parallelization, high priority jobs will be scheduled first, all while satisfying resource constrains. This means:</p>
+<p>If we allocate 100MB for the execution of ‘myrule’ and we call snakemake as follows:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--resources</span> mem_mb=100 <span class="at">--cores</span> 8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Only one ‘myrule’ job can be executed in parallel (you do not provide enough memory resources for 2). The memory resources is useful for jobs that are heavy memory demanding to avoid running out of memory. You will need to benchmark your pipeline to estimate how much memory and time your full workflow will take. We highly recommend doing so, get a subset of your dataset and give it a go! Log files will come very handy for the resource estimation. Of course, the execution of jobs is dependant on the free resources availability (eg. CPU cores).</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> myrule:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">log:</span> <span class="st">"logs/myrule.log"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">threads:</span> X</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shell:</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"command {threads}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Log files need to define the same wildcards as the output files, otherwise, you will get an error.</p>
+</section>
+<section id="config-files" class="level4">
+<h4 class="anchored" data-anchor-id="config-files">Config files</h4>
+<p>You can also define values for wildcards or parameters in the config file (YAML or JSON). This is recommended when the pipeline might be used several times at different time points, to avoid unwanted modifications to the workflow. parameterization is key for such cases.</p>
+<p>It can be loaded with: <code>configfile: "path/to/config.yaml"</code></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The given path is interpreted relative to the working directory, not relative to the location of the snakefile that contains the statement.</p>
+</div>
+</div>
+</section>
+<section id="cluster-execution" class="level4">
+<h4 class="anchored" data-anchor-id="cluster-execution">Cluster execution</h4>
+<p>When working from cluster systems you can execute the workflow using -qsub submission command</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--cluster</span> qsub </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="additional-advanced-features" class="level4">
+<h4 class="anchored" data-anchor-id="additional-advanced-features">Additional advanced features</h4>
 <ul>
-<li>regular expression</li>
-<li>cookiecutter</li>
+<li>modularization</li>
+<li>handling temporary and protected files: very important for intermediate files that filled up our memory and are not used in the long run and can be deleted once the final output is generated. This is automatically done by snakemake if you defined them in your pipeline HTML5 reports</li>
+<li>rule parameters</li>
+<li>tracking tool versions and code changes: will force rerunning older jobs when code and software are modified/updated.</li>
+<li>data provenance information per file</li>
+<li>python API for embedding snakemake in other tools</li>
+</ul>
+</section>
+<section id="create-an-isolated-environment-to-install-dependencies" class="level4">
+<h4 class="anchored" data-anchor-id="create-an-isolated-environment-to-install-dependencies">Create an isolated environment to install dependencies</h4>
+<p>Basic file structure</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> config.yml</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> requirements.txt <span class="er">(</span><span class="ex">commonly</span> also named environment.txt<span class="kw">)</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> rules/</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span>   <span class="kw">|</span> <span class="ex">-</span> myrules.smk</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> scripts/</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span>   <span class="kw">|</span> <span class="ex">-</span> script1.py</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">|</span> <span class="ex">-</span> Snakefile</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Create conda environment, one per project!</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create env</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> myworklow <span class="at">--file</span> requirements.txt</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># activate environment</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> activate myworkflow</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># then execute snakemake</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="best-practices-recommended-by-snakemake" class="level3">
+<h3 class="anchored" data-anchor-id="best-practices-recommended-by-snakemake">Best Practices recommended by Snakemake</h3>
+<ul>
+<li>Snakemake (v5.11+) includes a linter to check code quality, helping ensure best practices, readability, and reproducibility. Use the linter before publishing or seeking help. Run it with:</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--lint</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Apply <strong>snakefmt</strong> to format workflows prior to publication.</li>
+<li>Always include test data when publishing on GitHub and configure <a href="https://github.com/features/actions">GitHub Actions</a> for continuos testing. Predefined actions for testing and linting (<a href="https://github.com/snakemake/snakemake-github-action">here</a>), and formatting (<a href="https://github.com/snakemake/snakefmt#github-actions">here</a>) are available.</li>
+<li>To improve discoverability, follow Snakemake’s recommended <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#distribution-and-reproducibility">workflow structure</a>.</li>
+<li>Use <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html#snakefiles-standard-configuration">config files</a> and, if needed, tabular configuration for metadata and experiment information.<br>
+</li>
+<li>Use command-line arguments for runtime settings like threads, resources or output folders such as <code>--set-threads</code>, <code>--set-resources</code>, <code>--set-default-resources</code>, and <code>--directory</code>. This makes workflows more readable, scalable, and portable.</li>
+<li>Keep filenames short and consistent, but informative. Avoid mixing of too many special characters (e.g.&nbsp;decide whether to use _ or - as a separator and do that consistently throughout the workflow).</li>
+<li>separate Python code like helper functions from rules (e.g.&nbsp;in a workflow/rules/common.smk file). This approach helps non-experts understand the workflow without having to dig into unnecessary internal details.</li>
+<li>Avoid lambda expressions inside of rules.</li>
+<li>Where possible, use <a href="https://snakemake-wrappers.readthedocs.io/en/stable/">Snakemake wrappers</a> to simplify recurring tasks.</li>
+</ul>
+</section>
+<section id="sources" class="level2">
+<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<ul>
+<li><a href="https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html#tutorial">Snakemake tutorial</a></li>
+<li><a href="https://slides.com/johanneskoester/snakemake-tutorial">Snakemake turorial slides by Johannes Koster</a></li>
+<li><a href="https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html">faircookbook worflows</a></li>
+<li>Formatter <a href="https://github.com/snakemake/snakefmt">snakefmt</a></li>
+<li><a href="https://snakemake.github.io/snakemake-workflow-catalog/">Snakemake workflow catalog</a></li>
+<li><a href="https://snakemake.github.io/snakemake-workflow-catalog/?rules=true">Rules for inclusion in Snakemake workflow catalog</a></li>
+<li><a href="https://github.com/snakemake-workflows/snakemake-workflow-template/tree/main">Snakemake github template</a></li>
+</ul>
+<p>Recommended reading:</p>
+<ul>
+<li>Köster, Johannes and Rahmann, Sven. “Snakemake - A scalable bioinformatics workflow engine”. Bioinformatics 2012.</li>
+<li>Köster, Johannes. “Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis”, PhD thesis, TU Dortmund 2014.</li>
 </ul>
 
 

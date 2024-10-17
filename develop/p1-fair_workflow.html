@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HPC Lab</title>
+<title>FAIR computational pipelines – HPC Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,47 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -90,20 +104,20 @@ div.csl-indent {
 }</script>
 
 
-<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./img/logo.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../img/logo.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">HPC Lab</span>
     </a>
   </div>
@@ -114,19 +128,19 @@ div.csl-indent {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./develop/hpc-intro.html"> 
+    <a class="nav-link" href="../develop/hpc-intro.html"> 
 <span class="menu-text">HPC Launch</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./develop/p0-intro.html"> 
+    <a class="nav-link active" href="../develop/p0-intro.html" aria-current="page"> 
 <span class="menu-text">HPC Pipes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./workshop/pipes-requirements.html"> 
+    <a class="nav-link" href="../workshop/pipes-requirements.html"> 
 <span class="menu-text">Workshop</span></a>
   </li>  
 </ul>
@@ -148,43 +162,137 @@ div.csl-indent {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/p1-fair_workflow.html">Pipeline languages</a></li><li class="breadcrumb-item"><a href="../develop/p1-fair_workflow.html">FAIR computational pipelines</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#welcome-to-hpc-lab-hub" id="toc-welcome-to-hpc-lab-hub" class="nav-link active" data-scroll-target="#welcome-to-hpc-lab-hub">Welcome to HPC-Lab Hub</a></li>
-  <li><a href="#note-actively-being-developed" id="toc-note-actively-being-developed" class="nav-link" data-scroll-target="#note-actively-being-developed"><span style="color: red;">Note: Actively being developed</span></a></li>
-  </ul>
-</nav>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/p0-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Computational environments</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/e1-fair_envs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FAIR environments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/e2-docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Docker</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/e3-singularity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Singularity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/e4-RDM_containers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">RDM for containers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/cheat_sheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cheat sheet</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Pipeline languages</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/p1-fair_workflow.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">FAIR computational pipelines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/p2-smk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Snakemake</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/p3-nextflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nextflow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/p4-workflow_envs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workflows &amp; environments</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/exercise_pipes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/p1-fair_workflow.html">Pipeline languages</a></li><li class="breadcrumb-item"><a href="../develop/p1-fair_workflow.html">FAIR computational pipelines</a></li></ol></nav>
 <div class="quarto-title">
+<h1 class="title">FAIR computational pipelines</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p>Alba Refoyo Martinez <a href="https://orcid.org/0000-0002-3674-4007" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-             <p>Jennifer Bartell <a href="https://orcid.org/0000-0003-2750-9678" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-             <p>Samuele Soraggi <a href="https://orcid.org/0000-0002-1159-5535" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-          </div>
-  </div>
     
   
     <div>
@@ -201,71 +309,301 @@ div.csl-indent {
 </header>
 
 
-<section id="welcome-to-hpc-lab-hub" class="level1 hero-banner">
-<h1>Welcome to HPC-Lab Hub</h1>
-</section>
-<section id="note-actively-being-developed" class="level3">
-<h3 class="anchored" data-anchor-id="note-actively-being-developed"><span style="color: red;">Note: Actively being developed</span></h3>
-<p>High Performance Computing (HPC) plays a crucial role for researchers by offering the computational speed and power needed to manage large and complex data sets, perform simulations, and address intricate problems that would be impractical or too time-consuming with standard computing methods.</p>
-<p>Knowing which HPC resources are accessible and how to use them efficiently is essential for researchers. Making the most of these resources can significantly expedite research and drive innovation. By becoming proficient with the available tools and technologies, researchers can address complex challenges, analyze extensive data sets, and execute advanced simulations with increased speed and accuracy. This module provides essential knowledge on HPC resources and best practices for their utilization.</p>
-<p>This module offers content for three distinct courses:</p>
+<p>Data analysis typically involves the use of different tools, algorithms, and scripts. It often requires multiple steps to transform, filter, aggregate, and visualize data. The process can be time-consuming because each tool may demand specific inputs and parameter settings. As analyses become more complex, the importance of reproducible and scalable automated workflow management increases since the key for reproducibility is <strong>automation</strong>.</p>
+<section id="why-avoid-using-a-shell-script" class="level4">
+<h4 class="anchored" data-anchor-id="why-avoid-using-a-shell-script">Why avoid using a shell script?</h4>
+<p>Bash scripts have been widely used for automation in the past and can handle many tasks effectively. Typically, running a bash script requires just one command, which executes all the steps in the script. However, a significant drawback is that it re-runs all steps every time. This can be problematic in certain situations.</p>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 1.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise">
+<p>Consider scenarios where re-running all steps can be an issue (minimum 2).</p>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>Here are some examples:</p>
 <ul>
-<li><strong>HPC Launch</strong>: Foundations on HPC and essential knowledge on national HPC resources</li>
-<li><strong>HPC Pipes</strong>: Best practices for using workflow management systems and computational environments with HPC</li>
-<li><strong>HPC ML (Machine Learning)</strong>: Insights into applying HPC for machine learning tasks, including model training, data analysis, and optimization techniques.</li>
+<li><strong>Changing input files</strong>: if only some parts of the pipeline are affected by the changes.</li>
+<li><strong>Code bugs</strong>: issues such as incorrect paths or typos in your code.</li>
+<li><strong>Software updates</strong>: newer version released.</li>
+<li><strong>Parameter updates</strong>: test/update parameters in a software tool.</li>
+<li><strong>Script Modifications</strong>: for example, if only the plotting section of your script is updated, re-running the entire pipeline could waste significant time and resources.</li>
 </ul>
-<p>By the end of all the modules, you will gain practical skills in promoting reproducibility through comprehensive training in HPC resource management, workflow pipelines, and computing environments.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="General Course Goals">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="are-notebooks-better-than-bash-scripts" class="level4">
+<h4 class="anchored" data-anchor-id="are-notebooks-better-than-bash-scripts">Are notebooks better than bash scripts?</h4>
+<p>Notebooks might represent an advancement in addressing this issue because they allow you to run individual cells separately. However, this process is manual, and you need to ensure that the cells are executed in the correct order (time-consuming). In practice, it’s easy to make mistakes, and thus, reproducibility is only guaranteed if you run all the cells systematically from top to bottom. This approach can be time-consuming and requires careful management to avoid errors.</p>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 2: What are the notebooks advantages and disadvantages in the following situations?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-exercise">
+<ol type="1">
+<li>If your pipeline consist of 100 commands</li>
+<li>If your pipeline is only 4 steps but each takes several weeks of computational time</li>
+<li>Benchmarking and testing parameters of new software</li>
+</ol>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>Main disadvantage: reproducibility! If you are running block cells by hand, it will be hard to reproduce.</p>
+<ol type="1">
+<li></li>
+</ol>
+<ul>
+<li>Advantages:
+<ul>
+<li>can check intermediate outputs and execute incrementally.</li>
+<li>user-friendly interface for visualizing and debugging.</li>
+</ul></li>
+<li>Disadvantages:
+<ul>
+<li>less efficient for large number of commands compared to bash scripts.</li>
+<li>can become cumbersome and slow intensive code blocks.</li>
+<li>no automation features and lack of advanced version control.</li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li></li>
+</ol>
+<ul>
+<li>Advantages:
+<ul>
+<li>simplified interface for quick execution and visualization.</li>
+<li>easier to manage and understand fewer steps.</li>
+<li>great for prototyping and testing small workflows.</li>
+</ul></li>
+<li>Disadvantages:
+<ul>
+<li>less straightforward automation.</li>
+</ul></li>
+</ul>
+<ol start="3" type="1">
+<li></li>
+</ol>
+<ul>
+<li>Advantages:
+<ul>
+<li>facilitates experimentation and visualizes results instantly.</li>
+<li>easy documentation.</li>
+<li>enables step-by-step execution and modification of parameters.</li>
+</ul></li>
+<li>Disadvantages:
+<ul>
+<li>not efficient for extensive benchmarking.</li>
+<li>tracking and managing multiple parameters can become complex.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="workflows-crown-the-stack-making-bash-scripts-and-notebooks-less-attractive" class="level4">
+<h4 class="anchored" data-anchor-id="workflows-crown-the-stack-making-bash-scripts-and-notebooks-less-attractive">Workflows crown the stack, making bash scripts and notebooks less attractive</h4>
+<p>Workflows propose a third option, which is very attractive for computations that are too big to be handled conveniently by scripts or notebooks. A workflow manager, is a suitable computer program that decides which task and when is run. Workflow management encompasses tasks such as parallelization, resumption, logging, and data provenance.</p>
+<p><strong>One single command</strong> should trigger all necessary steps, ensuring they run in the correct sequence (simple and easy!). Workflows are divided into separate tasks, with each task reading an input and writing an output. A given task needs to be re-run only when its code or input data have changed. Using workflow managers, you ensure:</p>
+<ul>
+<li>automation</li>
+<li>convenience</li>
+<li>portability</li>
+<li>reproducibility</li>
+<li>scalability</li>
+<li>readable</li>
+</ul>
+<p>Popular workflow management systems such as Snakemake, Nextflow, and Galaxy can be scaled effortlessly across server, cluster, and cloud environments without altering the workflow definition. They also allow for specifying the necessary software, ensuring the workflows can be deployed in any setting. It’s important to select a workflow manager that best fits each research project. Therefore, we will provide two sections: one on Snakemake and one on Nextflow, so you can make the best selection for your needs.</p>
+<section id="resource-management" class="level5">
+<h5 class="anchored" data-anchor-id="resource-management"><strong>Resource management</strong></h5>
+<p>A key service offered by workflow managers is resource management, essential for executing large computations. They handle parallel execution, running tasks simultaneously when they do not depend on each other and can execute a single parallelized task on multiple nodes in a computing cluster. Workflow managers also handle data storage, managing local files, shared filesystems (storage system within a server), and cloud storage. Additionally, they can manage software environments by interfacing with package managers and running tasks in dedicated containers.</p>
+<p>During this module, you will learn about:</p>
+<ul>
+<li><strong>Syntax</strong>: understand the syntax of two workflow languages.</li>
+<li><strong>Defining steps</strong>: how to define a step in each of the language (rule in Snakemake, process in Nextflow), including specifying input, outputs and execution statements.</li>
+<li><strong>Generalizing steps</strong>: explore how to generalise steps and create a chain of dependency across multiple steps using wildcards (Snakemake) or parameters and channel operators (Nextflow).</li>
+<li><strong>Advanced Customisation</strong>: gain knowledge of advanced pipeline customisation using configuration files and custom-made functions.</li>
+<li><strong>Scaling workflows</strong>: understand how to scale workflows to compute servers and clusters while adapting to hardware-specific constraints.With multiple CPUs available, you can leverage parallel execution for groups of tasks that are independent of each other. In this context, tasks do not rely on the outputs of other tasks in the same group. Since data is transferred between tasks using files, it is easy to see how tasks depend on each other (dependencies).</li>
+</ul>
+<p>To put this into practice, you will start by scaling up a data analysis from one dataset to a large number of datasets and incorporating additional analysis steps at the aggregate level. However, before you can scale up, the first step involves converting a notebook into a shell script that chains several computational tasks (<code>Exercise 3</code>). This script will serve as an intermediate stage before you move on to using Snakemake and Nextflow, and completing it will help you understand how different tasks correspond and are split in these tools.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="How to define a good task?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-General Course Goals
+How to define a good task?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>By the end of this workshop, you should be able to apply the following concepts in the context of Next Generation Sequencing data:</p>
-<ul>
-<li>Understand the Importance of Research Data Management (RDM)</li>
-<li>Make your data analysis and workflows reproducible and FAIR</li>
-<li>Make FAIR environment using conda or Docker</li>
-</ul>
+<p>In a workflow, a <strong>task</strong> is executed in its entirety or not at all. Long-running tasks can undermine one of the primary advantages of workflows, which is to <em>execute only the necessary computations</em>. Conversely, there is overhead associated with starting a task, reading input files, and writing output files. If the computational work performed by a task is too minimal, this overhead can become disproportionately large. With this in mind, we should also assess the effects of data input/output (I/O) on disk storage and code complexity. When a task involves minimal computation but is heavily dominated by I/O operations, it becomes difficult to understand and modify. Furthermore, a task that requires large amounts of disk storage for its execution can lead to significant costs.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled" title="HPC best practices">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-HPC best practices
+Exercise 3: notebook -&gt; shell script
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<p>We offer in-person workshops, keep an eye on the upcoming events on the <a href="https://hds-sandbox.github.io/news.html">Sandbox website</a>.</p>
+<div>
+<div class="callout-exercise">
+<p>Consider each task as a Python script containing the code from one or more cells of a Jupyter Notebook. The key aspect of these tasks is that all data exchange occurs via files. Ideally, a task should be neither too lengthy nor too brief.</p>
+<p>We will use the classic <code>Iris dataset</code> for this exercise. Convert <a href="../develop/scripts/01.iris.html">this Jupyter notebook</a> to a shell script.</p>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<ol type="1">
+<li>Reuse as much as possible from the code above but remove code for displaying tables or plotting figures.<br>
+</li>
+<li>Leave only comments specifically for the code, create a README.md for the description of the dataset and the objective of the project.</li>
+<li>Save the python code to a file (e.g.&nbsp;<a href="./scripts/process_iris.py or [summaryStats_species.py](develop/scripts/summaryStats_species.py)">process_iris.py</a>).</li>
+<li>Write a shell script and run the python script once for one of the species (e.g.”setosa” | “versicolor” | “virginica”).</li>
+</ol>
 </div>
 </div>
-<section id="acknowledgements" class="level4">
-<h4 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h4>
-<p>Our interactive exercises are developed using the R packaged developed by <span class="citation" data-cites="webexercises">Barr and DeBruine (<a href="#ref-webexercises" role="doc-biblioref">2023</a>)</span>.</p>
-
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>Here is one possible approach. You may choose to split the notebook into more or fewer tasks as needed. Remember to make your script executable by running <code>chmod +x run_iris_analysis.sh</code> so that you can run it by simply <code>./run_iris_analysis.sh</code>.</p>
+<p>The reason for splitting the tasks is based on their functionality. We handle plotting and data manipulation or preprocessing in one script, as these tasks are typically performed together. The summary statistics, however, might need to be generated multiple times or for different species. Therefore, we created a separate script specifically for summarizing the data. This separation allows us to run the summary script as needed, either once, multiple times, or for different species, while keeping the data processing and plotting tasks contained in their own script.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> process_iris.py</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="va">SPECIES_NAME</span><span class="op">=</span><span class="st">"setosa"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> summaryStats_species.py <span class="va">$SPECIES_NAME</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="good-practices" class="level2">
+<h2 class="anchored" data-anchor-id="good-practices">Good practices</h2>
+<p>If you develop your own software make sure you follow FAIR principles. We highly endorse following these <a href="https://fair-software.nl/endorse">FAIR recommendations</a>.</p>
+<ul>
+<li>Remember to create portable code and use relative paths to ensure transferability between users.</li>
+<li>Use <a href="https://hds-sandbox.github.io/RDM_NGS_course/develop/05_VC.html">git repositories</a> to save your projects and pipelines.</li>
+<li>Register and publish your scientific computational workflow on <a href="https://workflowhub.eu/">WorkflowHub</a>.</li>
+</ul>
+</section>
+<section id="sources" class="level2">
+<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<ul>
+<li><a href="https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html#tutorial">Snakemake tutorial</a></li>
+<li><a href="https://slides.com/johanneskoester/snakemake-tutorial">Snakemake tutorial slides by Johannes Koster</a></li>
+<li><a href="https://bioconda.github.io">bioconda</a></li>
+</ul>
+<p><strong>RDM best practices for computations</strong></p>
+<ul>
+<li><a href="https://the-turing-way.netlify.app/reproducible-research">The turing way - reproducible research</a></li>
+<li><a href="https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html">faircookbook worflows</a></li>
+<li><a href="https://rdmkit.elixir-europe.org/data_analysis">RDM - data analysis, Elixir</a></li>
+</ul>
+<p>Parts of the content are inspired by <em>Reproducible Research II: Practices and Tools for Managing Computations and Data</em> by members of France Université Numérique. Enroll <a href="https://www.fun-mooc.fr/en/courses/reproducible-research-ii-practices-and-tools-for-managing-comput/">here</a>.</p>
+<p><strong>Scientific articles</strong></p>
+<ul>
+<li>Wratten, Laura, Andreas Wilm, and Jonathan Göke. “Reproducible, scalable, and shareable analysis pipelines with bioinformatics workflow managers.” Nature methods 2021.</li>
+<li>Köster, Johannes and Rahmann, Sven. “Snakemake - A scalable bioinformatics workflow engine”. Bioinformatics 2012.</li>
+<li>Köster, Johannes. “Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis”, PhD thesis, TU Dortmund 2014.</li>
+</ul>
 
 
 </section>
-</section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-webexercises" class="csl-entry" role="listitem">
-Barr, Dale, and Lisa DeBruine. 2023. <em>Webexercises: Create Interactive Web Exercises in r Markdown (Formerly Webex)</em>. <a href="https://github.com/psyteachr/webexercises">https://github.com/psyteachr/webexercises</a>.
-</div>
-<div id="ref-wagner2022fairly" class="csl-entry" role="listitem">
-Wagner, Adina S, Laura K Waite, Małgorzata Wierzba, Felix Hoffstaedter, Alexander Q Waite, Benjamin Poldrack, Simon B Eickhoff, and Michael Hanke. 2022. <span>“FAIRly Big: A Framework for Computationally Reproducible Processing of Large-Scale Data.”</span> <em>Scientific Data</em> 9 (1): 80.
-</div>
-<div id="ref-wratten2021reproducible" class="csl-entry" role="listitem">
-Wratten, Laura, Andreas Wilm, and Jonathan Göke. 2021. <span>“Reproducible, Scalable, and Shareable Analysis Pipelines with Bioinformatics Workflow Managers.”</span> <em>Nature Methods</em> 18 (10): 1161–68.
-</div>
-</div></section><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
 <script>
 
 /* update total correct if #webex-total_correct exists */

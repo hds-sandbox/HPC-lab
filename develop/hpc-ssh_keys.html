@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Cheat sheet – HPC Lab</title>
+<title>hpc-ssh_keys – HPC Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,6 +75,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -132,11 +135,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../develop/hpc-intro.html"> 
+    <a class="nav-link active" href="../develop/hpc-intro.html" aria-current="page"> 
 <span class="menu-text">HPC Launch</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../develop/p0-intro.html" aria-current="page"> 
+    <a class="nav-link" href="../develop/p0-intro.html"> 
 <span class="menu-text">HPC Pipes</span></a>
   </li>  
   <li class="nav-item">
@@ -167,7 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/e1-fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/cheat_sheet.html">Cheat sheet</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/hpc-data_transfer.html">Data management</a></li><li class="breadcrumb-item"><a href="../develop/hpc-ssh_keys.html">SSH keys</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -187,16 +190,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/p0-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Computational environments</span></a>
+ <span class="menu-text">HPC systems</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -204,32 +201,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/e1-fair_envs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FAIR environments</span></a>
+  <a href="../develop/hpc-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HPC intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/e2-docker.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Docker</span></a>
+  <a href="../develop/hpc-jobs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HPC jobs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/e3-singularity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Singularity</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/e4-RDM_containers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">RDM for containers</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/cheat_sheet.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Cheat sheet</span></a>
+  <a href="../develop/hpc-programming.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HPC coding</span></a>
   </div>
 </li>
       </ul>
@@ -237,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Pipeline languages</span></a>
+ <span class="menu-text">Data management</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -245,32 +230,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/p1-fair_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FAIR computational pipelines</span></a>
+  <a href="../develop/hpc-data_transfer.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data transfer</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/p2-smk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Snakemake</span></a>
+  <a href="../develop/hpc-ssh_keys.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">SSH keys</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Quizzes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/p3-nextflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Nextflow</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/p4-workflow_envs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workflows &amp; environments</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/exercise_pipes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exercises</span></a>
+  <a href="../develop/exercise_launch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Knowledge Checks</span></a>
   </div>
 </li>
       </ul>
@@ -285,24 +269,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#environment-descriptors" id="toc-environment-descriptors" class="nav-link active" data-scroll-target="#environment-descriptors">Environment descriptors</a></li>
-  <li><a href="#shell" id="toc-shell" class="nav-link" data-scroll-target="#shell">SHELL</a></li>
-  <li><a href="#pip" id="toc-pip" class="nav-link" data-scroll-target="#pip">PIP</a></li>
-  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">PYTHON</a></li>
-  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
-  <li><a href="#conda" id="toc-conda" class="nav-link" data-scroll-target="#conda">CONDA</a></li>
-  <li><a href="#dpkg" id="toc-dpkg" class="nav-link" data-scroll-target="#dpkg">DPKG</a></li>
-  <li><a href="#apt" id="toc-apt" class="nav-link" data-scroll-target="#apt">APT</a></li>
-  <li><a href="#docker-commandline" id="toc-docker-commandline" class="nav-link" data-scroll-target="#docker-commandline">Docker</a></li>
+  <li><a href="#ssh-keys" id="toc-ssh-keys" class="nav-link active" data-scroll-target="#ssh-keys">SSH keys</a>
+  <ul class="collapse">
+  <li><a href="#what-is-an-ssh-key" id="toc-what-is-an-ssh-key" class="nav-link" data-scroll-target="#what-is-an-ssh-key">What is an SSH key?</a></li>
+  <li><a href="#how-do-i-create-an-ssh-key" id="toc-how-do-i-create-an-ssh-key" class="nav-link" data-scroll-target="#how-do-i-create-an-ssh-key">How do I create an SSH key?</a></li>
+  <li><a href="#ucloud-users---ssh-keys-setup" id="toc-ucloud-users---ssh-keys-setup" class="nav-link" data-scroll-target="#ucloud-users---ssh-keys-setup">UCloud Users - ssh keys setup</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/e1-fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/cheat_sheet.html">Cheat sheet</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/hpc-data_transfer.html">Data management</a></li><li class="breadcrumb-item"><a href="../develop/hpc-ssh_keys.html">SSH keys</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Cheat sheet</h1>
 </div>
 
 
@@ -325,136 +305,242 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Collection of useful commands for package and environment management.</p>
-<section id="environment-descriptors" class="level2">
-<h2 class="anchored" data-anchor-id="environment-descriptors">Environment descriptors</h2>
+<section id="ssh-keys" class="level2">
+<h2 class="anchored" data-anchor-id="ssh-keys">SSH keys</h2>
+<p>Using SSH keys for authentication is recommended for accessing servers and version control platforms such as GitLab, GitHub, or BitBucket. SSH keys provide a more convenient and secure method than passwords, allowing you to avoid typing a password every time you log in.</p>
+<p>This tutorial guides you through configuring SSH keys, using GitHub as an example.</p>
+<section id="what-is-an-ssh-key" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-an-ssh-key">What is an SSH key?</h3>
+<p>An SSH (Secure Shell) is a network protocol that allows you to execute commands on a remote server securely. SSH keys are <strong>cryptographic keys used for authenticating a user or device within the SSH protocol</strong>. They come in pairs: the “private” key and the “public” key.</p>
 <ul>
-<li>Git: <code>git log -1</code> and <code>git status -u</code>. In python, use the following command for a specific module version: <module><code>.version.git_revision)</code> or <module>.<code>__git_version__</code>.</module></module></li>
-<li>R: <code>sessionInfo()</code> or <code>devtools::session_info()</code>: In R, these functions provide detailed information about the current session and list all dependencies.</li>
-<li>Python: the best way seems to <code>import sys</code>, and then, <module><code>__version__</code>, <module><code>__file__</code> which will display package versions and their location without having to list all packages using <code>pip</code>. It’s essential to load the package first and then use the following code to print all its dependencies:</module></module></li>
+<li>Public Key: This key can be freely shared with anyone and is added to the ~/.ssh/authorized_keys file on the remote server you wish to access.</li>
+<li>Private Key: This key should remain on your local machine and be carefully protested, similar to a password. It should never be shared.</li>
 </ul>
-</section>
-<section id="shell" class="level2">
-<h2 class="anchored" data-anchor-id="shell">SHELL</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># finds the location of a command by searching through the PATH environment variable</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> <span class="op">&lt;</span>program<span class="op">&gt;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># lists all occurrences of a command found in the PATH</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> <span class="at">-a</span> <span class="op">&lt;</span>program<span class="op">&gt;</span> </span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># shows the shared libraries required by a specific program</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ldd</span> <span class="op">&lt;</span>program<span class="op">&gt;</span> </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># provides detailed system information, including machine name and kernel version</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">uname</span> <span class="at">-a</span> </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># displays operating system identification data (such as Debian, Ubuntu, etc.)</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /etc/os-release </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># provides operating system identification data and is recommended if available. This command might not be installed by default but is part of the lsb-release package on Debian-based systems</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">lsb_release</span> <span class="at">-a</span> </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Environmental variables for locations </span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="va">$HOME</span> <span class="co"># home directory</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="va">$PYTHONPATH</span> <span class="co"># empty by default</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="va">$PYTHONHOME</span> <span class="co"># python libraries</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="va">$RHOME</span> <span class="co"># R libraries</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="va">$LD_LIBRARY_PATH</span> <span class="co"># dynamic loader for shared libraries when running a program</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Understanding <code>PYTHONPATH</code></p>
-<ul>
-<li>PYTHONPATH: you can set the $PYTHONPATH environment variable to include additional directories where Python will look for modules and packages. This allows you to extend the search path beyond the default locations and load packages that has been installed in a different directory. It is highly discouraged to mix different versions of libraries and interpreters! as some libraries are complex packages with dependencies.</li>
-</ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PYTHONPATH</span><span class="op">=</span>/path/to/packages/</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># unset the variable </span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">unset</span> <span class="va">PYTHONPATH</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="pip" class="level2">
-<h2 class="anchored" data-anchor-id="pip">PIP</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> show <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install <span class="op">&lt;</span>module<span class="op">&gt;</span>      <span class="co"># install the latest version (and dependencies)</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> uninstall <span class="op">&lt;</span>module<span class="op">&gt;</span>    <span class="co"># remove</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> freeze                <span class="co"># output installed packages in requirements.txt format (similar to pip3 list) which can conveniently be used with: pip3 install -r requirements.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We highly recommend to avoid using <code>pip</code> and start using Python virtualenv management tools, <a href="https://pipenv.pypa.io/en/latest/">pipenv</a>.</p>
-<ul>
-<li>Advantages: it will generates and checks file hashes for locked dependencies when installing from <code>Pipfile.lock</code> and it creates a virtualenv in a standard customizable location.</li>
-</ul>
-</section>
-<section id="python" class="level2">
-<h2 class="anchored" data-anchor-id="python">PYTHON</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># version info on installed packages</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_imported_modules():</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="im">import</span> sys</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> name, val <span class="kw">in</span> <span class="bu">sorted</span>(sys.modules.items()):</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span>(<span class="bu">hasattr</span>(val, <span class="st">'__version__'</span>)): </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>          <span class="bu">print</span>(val.<span class="va">__name__</span>, val.__version__)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span>:</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>          <span class="bu">print</span>(val.<span class="va">__name__</span>, <span class="st">"(unknown version)"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"==== Package list after loading pandas ===="</span>)<span class="op">;</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>print_imported_modules()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="r" class="level2">
-<h2 class="anchored" data-anchor-id="r">R</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>()     <span class="co"># install a given package</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>()              <span class="co"># loads a given package</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">remove.packages</span>()      <span class="co"># install a given package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>We highly recommend using <a href="https://rstudio.github.io/renv/articles/renv.html">renv</a>.</p>
-</section>
-<section id="conda" class="level2">
-<h2 class="anchored" data-anchor-id="conda">CONDA</h2>
-<pre><code>conda -V
-conda list 
-conda env list </code></pre>
-</section>
-<section id="dpkg" class="level2">
-<h2 class="anchored" data-anchor-id="dpkg">DPKG</h2>
-<p>Low-level tool for package management on Debian-based systems</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-S</span> package_name <span class="co"># Seach   </span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-I</span> package.deb  <span class="co"># --info</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-L</span> package_name <span class="co"># --list files installed by a package</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-i</span> package.deb  <span class="co"># --install   [requires sudo]</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-r</span>   <span class="co"># --remove:  Remove debian_package        [requires sudo]</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">--get-selections</span>    <span class="co"># List all the packages known by dpkg and whether they are installed or not</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">--set-selections</span>    <span class="co"># Set which package should be installed     [requires sudo]</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg-query</span> <span class="at">-W</span> <span class="at">-f</span><span class="op">=</span><span class="st">'${Package} == ${Version}\n'</span> <span class="co"># package version </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="apt" class="level2">
-<h2 class="anchored" data-anchor-id="apt">APT</h2>
-<p>High-level tool for package management on Debian-based systems. It also handles package dependencies and repositories.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> update                      <span class="co"># Update the package list                  [sudo]</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> search <span class="op">&lt;</span>package_name<span class="op">&gt;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> show <span class="op">&lt;</span>package_name<span class="op">&gt;</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install <span class="op">&lt;</span>package_name<span class="op">&gt;</span>      <span class="co"># Install a debian package                 [sudo]</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> upgrade                     <span class="co"># Upgrade all your packages                [sudo]</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> clean                       <span class="co"># Delete all the .deb you've downloaded (save some space)</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> remove <span class="at">--purge</span> <span class="op">&lt;</span>package_name<span class="op">&gt;</span> <span class="co"># Remove a debian package                  [sudo]</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-cache</span> search keyword <span class="co"># Search for packages containing a keyword.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="docker-commandline" class="level2">
-<h2 class="anchored" data-anchor-id="docker-commandline">Docker</h2>
-<p>Useful commands to build and deploy a Docker image.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull         <span class="co"># download image from a registry e.g. Docker Hub </span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images       <span class="co"># list all Docker images on your local machine</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="op">&lt;</span>image_name<span class="op">&gt;</span>  <span class="co"># creates and starts a new container from the specified Docker image, -it flag means interactive virtual machine which is very useful during the development-phase for testing the container </span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> <span class="op">&lt;</span>my-app<span class="op">&gt;</span>  <span class="co"># build a Docker image form a Dockerfile and a context </span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> tag <span class="op">&lt;</span>my-app<span class="op">&gt;</span> <span class="op">&lt;</span>myrepo/my-app:v1.0<span class="op">&gt;</span> <span class="co"># creates an new alias for an existing Docker image. Useful for versioning</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> push         <span class="co"># upload image from local machine to Docker registry </span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> login        <span class="co"># logs you into a Docker register (after pull and push), username and pw needed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Other common commands use in Dockerfiles to clean up the image and reduce its size:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Dockerfile</strong></pre>
+<p>The holder of the private key can authenticate with any remote system that has the corresponding public key. For example, you can use a single public/private key pair to authenticate with the cluster at your research center and your GitHub account.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="sourceCode" id="cb10" data-filename="Dockerfile"><pre class="sourceCode bash coder-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt-get <span class="at">-y</span> autoclean <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> autoremove <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rm</span> <span class="at">-rf</span> /var/cache/apt/archives/<span class="pp">*</span>deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout-title-container flex-fill">
+How SSH keys work
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Think of the public key as a complex number <code>x</code>, and the private key as its inverse <code>1/x</code>. Encrypting a message <code>m</code> with your public key is like multiplying your message by <code>x</code>, making <code>mx</code> completely unreadable. Using the private key, you can decrypt <code>m</code> by multiplying <code>mx</code> by <code>1/x</code>. This process is secure because you cannot derive <code>1/x</code> from <code>x</code>. Therefore, you can safely distribute the public key to the machines you want to access while keeping the private key on your machine.</p>
+</div>
+</div>
+</section>
+<section id="how-do-i-create-an-ssh-key" class="level3">
+<h3 class="anchored" data-anchor-id="how-do-i-create-an-ssh-key">How do I create an SSH key?</h3>
+<section id="step-1-creating-a-publicprivate-key-pair" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-creating-a-publicprivate-key-pair"><strong>Step 1: Creating a public/private key pair</strong></h4>
+<p>On your (Mac or Linux) workstation, create the public/private key pair. There are several types of keys and by default you will get an RSA pair. When prompted for a passphrase, just hit enter so that you won’t need a password when logging in.</p>
+<p>When prompted, press <code>Enter</code> to store the keys in <code>.ssh/id_rsa</code> (we recommend not to modify this). Press <code>Enter</code> twice again to skip setting a passphrase, which otherwise would require you to enter it each time you use <code>git push</code> or <code>git pull</code>. This process generates two files: the public key (<code>~/.ssh/id_rsa.pub</code>) and the private key (<code>~/.ssh/id_rsa</code>).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Generating</span> public/private rsa key pair.</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> file in which to save the key <span class="er">(</span><span class="ex">/Users/abc123/.ssh/id_rsa</span><span class="kw">)</span><span class="bu">:</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Created</span> directory <span class="st">'/Users/abc123/.ssh'</span>.</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> passphrase <span class="er">(</span><span class="ex">empty</span> for no passphrase<span class="kw">)</span><span class="bu">:</span> </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> same passphrase again: </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Your</span> identification has been saved in /Users/abc123/.ssh/id_rsa</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Your</span> public key has been saved in /Users/abc123/.ssh/id_rsa.pub</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">The</span> key fingerprint is:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ex">SHA256:w8JIQXafdq6scMiNZefNd8lVz9UmIzm0eiO+pvGOM6A</span> abc123@c9b1d769db6e</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">The</span> key<span class="st">'s randomart image is:</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="st">+---[RSA 3072]----+</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="st">|   .+ .     .    |</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="st">|   . o . . . o  .|</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="st">|    .   + . = o =|</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st">|   . o o o . o =+|</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="st">|    . = S + o   +|</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="st">|   . *.= * o o o |</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="st">|    =.o.= + . +  |</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="st">|    Eo .o+.o .   |</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="st">|      . o*+      |</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="st">+----[SHA256]-----+</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="kw">`</span><span class="ex">~/.ssh/id_rsa.pub</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssh-rsa</span> AAAAB3NzaC1yc2EAAAADAQABAAABgQCs3nqhRr7FyB8UKxqQ5mA3Gk60oty5lGdzcpVxjL08QmjLz15X6Odo2EotmJQuzCyYbzPw4Tq404N3NOmVqYywrn03i3kmCnZd5MYq8yi72Zsk9qFfgEt7pxpf5WJ+AWSDXwUkUQK2FFby2RWbi4gwTmRHfkB999j8F3F/d5EpB0llQfxmZWIIrX9ampgxfI8+yTIyeG8gpx5028h1oR5qukEFJk6nAoj5on+/vBqHdc0AVPd6jNoNCDZ6ur4xwUPam8iQ6A4NfbnCVUPa95Wqt+QWEF6Mn4UB1WIvly+blDzg5rVXvd9B685bZjQWfUsxSiRPkhtV6X2yImklt+KjV0ufB/Yl1O+x6S8r2+I41WSxwJNr5h5L588l3GH4ehT79uCtrxiu4zas+4s9OW02Ox3auCfLi1/jp/CJ5IsuLwM/jPBXrgzw+HREKM2gtm9d12gU2b9o9bmASZVhEKqeTb0aRPjcTYYdnjOWUl+pqkdVPyB7mJs8NAQemN/shvM= abc123@c9b1d769db6e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The public key can be safely displayed <code>cat</code> and shared with any achine where it will function as a personal lock that can be only opened with your private key.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Tip 1</strong>: If you provided a passphrase when generating your keys, you would need to enter this passphrase each time you use your private key. The passphrase adds an extra layer of security in case your private key is compromised. For simplicity, we not always recommend using a passphrase unless you are working in environments where people not part of the project might have access.</p>
+<p><strong>Tip 2</strong>: DSA keys should be avoided. <strong>An RSA key with at least 2048 bits should provide sufficient security</strong>. Finally, ecdsa and ed25519 keys are also fine (don’t worry about the number of bits for these keys).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recommended</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa <span class="at">-b</span> 4096</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><strong>Using an existing public/private key pair</strong></p>
+<p>If you already have an SSH key pair, you can use it without generating a new one. To check the details of your existing key, use the <code>ssh-keygen</code> command to display the key’s fingerprint.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-l</span> <span class="at">-f</span> ~/.ssh/id_rsa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">2048</span> SHA256:7l0HauYJVRaQhuzmti8XEZImnRbzipu3NKGnE6tDFRk grg@t430s <span class="er">(</span><span class="ex">RSA</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Alternatively, check the content of the ssh directory: - Mac/Unix: <code>ls -la ~/.ssh/</code> - Windows: <code>ls ~/.ssh/</code></p>
+</section>
+<section id="step-2-adding-your-ssh-key-to-the-ssh-agent" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-adding-your-ssh-key-to-the-ssh-agent"><strong>Step 2: Adding your SSH key to the ssh-agent</strong></h4>
+<p>Follow the steps below if you are using Mac or Linux.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Windows users: follow <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=windows">these instructions</a> instead, the process is very similar.</li>
+<li>If you are getting errors when running the commands below, please read carefully <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">these guidelines</a> as GitHUb provides instructions on what to do with common issues users run into for this specific step 2.</li>
+<li><a href="https://docs.github.com/en/authentication/troubleshooting-ssh">General GitHUbtroubleshooting</a></li>
+</ul>
+</div>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ONLY if you need to start the ssh agent. First, verify it is not already running: </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pgrep -u $USER ssh-agent</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># If that command returns a process ID, your SSH agent is running! If not, run the command below: </span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># eval "$(ssh-agent -s)"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Manually modify the `~/.ssh/config` file to automatically load keys into ssh-agent, like in the example below. For GitHub, the User is **git**, do not write your own. </span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> github.com</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">AddKeysToAgent</span> yes</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">IdentityFile</span> ~/.ssh/id_rsa</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: if the file does not `touch ~/.ssh/config`to create the file. </span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the SSH private to the ssh-agent</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_rsa</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional, verify the keys are loaded</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled" title="Other tips">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Other tips
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong><code>~/.ssh/config</code></strong>: add several hosts (servers, GitLab, GitHUb, etc.).</li>
+</ul>
+<p>Edit the SSH config file Create and use a ~/.ssh/config file on your workstation. E.g., using a password-less ssh key for authentication and the following ~/.ssh/config, user abc123 can login with the ssh xyz command.</p>
+<pre><code>Host xyz
+    Hostname ssh-myserver.dk
+    User abc123
+    ServerAliveInterval 60
+    ForwardX11 yes
+    ForwardX11Trusted yes</code></pre>
+<ul>
+<li><strong>Using paraphrases</strong>: store paraphrases in your keychain if you are using one. Please, follow the instructions <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">here</a>.</li>
+</ul>
+</div>
+</div>
+<p><strong>Step 3: Transferring the key</strong></p>
+<p><strong>A. Transfer the key to GitHub/GitLab</strong></p>
+<p>Copy your SSH public key <code>~/.ssh/id_rsa.pub</code> with your favorite editor, go to your GitHub profile (top left side) &gt; <code>Settings &gt; Access &gt; SSH and GPG keys &gt; New/Add SSH key</code>. You just need to fill up the title (e.g.: Personal laptop) and paste the copied key (e.g.&nbsp;ssh-rsa or ecdsa-xxx).</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mac/Linux: copy key </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_rsa.pub <span class="kw">|</span> <span class="ex">pbcopy</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_rsa.pub <span class="kw">|</span> <span class="ex">clip</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-note callout-titled" title="GitHub Guidelines Links">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+GitHub Guidelines Links
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">General</a></li>
+<li><a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">Last step, key transfer</a></li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>B: Transfer the key to a remote server</strong></p>
+<p>Transfer the public part of your key pair to the remote server. This can be done manually, but the easiest way is using <code>ssh-copy-id</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssh-copy-id</span> <span class="at">-i</span> ~/.ssh/id_rsa.pub <span class="op">&lt;</span>userid<span class="op">&gt;</span>@ssh-myserver.dk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will prompt for a password to authenticate with the remote server in order to copy the file. Once successful though, future logins will use the key pair for authentication, and will not prompt for a password (assuming you login from your workstation, which has the private part of your key pair).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>ssh-copy-id</code> will blindly append the given key file to the remote <code>~/.ssh/authorized_keys</code> file. If you made a mistake or copied the same key multiple times, you may want to edit this file! Each line in the file corresponds to one key.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You are set to start using your SSH key. If you are using UCloud, follow the next section; otherwise, you are done with this tutorial.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="ucloud-users---ssh-keys-setup" class="level3">
+<h3 class="anchored" data-anchor-id="ucloud-users---ssh-keys-setup">UCloud Users - ssh keys setup</h3>
+<p>Similarly to what is explained above, copy your key (manually or using e.g.&nbsp;<code>pbcopy ~/.ssh/id_rsa.pub</code>) and go to <code>Resources</code> (navigation panel on the left) &gt; <code>SSH keys</code>.</p>
+<p><img src="./images/sshkey_step1.png" alt="Description of the image" width="30%"></p>
+<p>Paste the public key here and give a title to your key as in the image below:</p>
+<p><a href="./images/sshkey_step2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./images/sshkey_step2.png" class="black-box img-fluid" alt="paste public key"></a></p>
+<p>When you have added the public part of the SSH key pair to your UCloud account, you can access jobs from your local computer if SSH access is possible for the given app and enabled upon job submission. Open Visual Studio Code to test this yourself! You will need to click on “Enable SSH Server” when submitting the job as follows:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./images/sshkey_step3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Select “Enable SSH server”"><img src="./images/sshkey_step3.png" class="black-box img-fluid figure-img" alt="Select “Enable SSH server”"></a></p>
+<figcaption>Select “Enable SSH server”</figcaption>
+</figure>
+</div>
+<p>When a job with SSH access enabled starts, the command for accessing the job from your local computer via SSH is displayed from the job’s progress view.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./images/sshkey_step4.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Copy ssh command"><img src="./images/sshkey_step4.png" class="black-box img-fluid figure-img" alt="Copy ssh command"></a></p>
+<figcaption>Copy ssh command</figcaption>
+</figure>
+</div>
+<p>Now, open a terminal and run the command:</p>
+<div class="sourceCode" id="cb12" title="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the 4 digits will change everytime you start a new job</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> ucloud@ssh.cloud.sdu.dk <span class="at">-p</span> 2465</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If it is the first time you do this, this message will prompt, write <code>yes</code></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">The</span> authenticity of host <span class="st">'[ssh.cloud.sdu.dk]:2465 ([130.225.164.106]:2465)'</span> can<span class="st">'t be established.</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="st">ED25519 key fingerprint is SHA256:0Q5WMne+hzOwj5bEfssH/gQrxFDz2fvclCGsQbfLLb8.</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="st">This key is not known by any other names.</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="st">Are you sure you want to continue connecting (yes/no/[fingerprint])?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Your terminal will look like the image below which means you can starting interacting with the job from the console on your computer. <img src="./images/sshkey_step5.png" class="black-box img-fluid" alt="Copy ssh command"></p>
+<p>The connection can be closed using the command:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
@@ -1229,6 +1315,38 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"openEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 
