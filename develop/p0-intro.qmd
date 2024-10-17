@@ -40,5 +40,3 @@ It is important to be familiar with unix and python. Follow the tutorials in the
 - Integrate workflows with software environments
 :::
 
-
-#### Acknowledgements

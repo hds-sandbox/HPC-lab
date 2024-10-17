@@ -113,7 +113,8 @@ We will use the classic `Iris dataset` for this exercise. Convert [this Jupyter 
 3. Write a shell script and run the python script once for one of the species (e.g."setosa" | "versicolor" | "virginica"). 
 :::
 
-:::{.callout-tip title="Solution" collapse="true"}
+:::{.callout-hint}
+# Solution
 Here is one possible approach. You may choose to split the notebook into more or fewer tasks as needed. Remember to make your script executable by running `chmod +x run_iris_analysis.sh` so that you can run it by simply `./run_iris_analysis.sh`.
 
 The reason for splitting the tasks is based on their functionality. We handle plotting and data manipulation or preprocessing in one script, as these tasks are typically performed together. The summary statistics, however, might need to be generated multiple times or for different species. Therefore, we created a separate script specifically for summarizing the data. This separation allows us to run the summary script as needed, either once, multiple times, or for different species, while keeping the data processing and plotting tasks contained in their own script.
@@ -141,9 +142,18 @@ If you develop your own software make sure you follow FAIR principles. We highly
 
 - [Snakemake tutorial](https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html#tutorial)
 - [Snakemake tutorial slides by Johannes Koster](https://slides.com/johanneskoester/snakemake-tutorial)
-- https://bioconda.github.io
+- [bioconda](https://bioconda.github.io)
+
+**RDM best practices for computations**
+
+- [The turing way - reproducible research](https://the-turing-way.netlify.app/reproducible-research)
+- [faircookbook worflows](https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html)
+- [RDM - data analysis, Elixir](https://rdmkit.elixir-europe.org/data_analysis)
+
+Parts of the content are inspired by *Reproducible Research II: Practices and Tools for Managing Computations and Data* by members of France Université Numérique. Enroll [here](https://www.fun-mooc.fr/en/courses/reproducible-research-ii-practices-and-tools-for-managing-comput/). 
+
+**Scientific articles**
+
+- Wratten, Laura, Andreas Wilm, and Jonathan Göke. "Reproducible, scalable, and shareable analysis pipelines with bioinformatics workflow managers." Nature methods 2021. 
 - Köster, Johannes and Rahmann, Sven. "Snakemake - A scalable bioinformatics workflow engine". Bioinformatics 2012.
 - Köster, Johannes. "Parallelization, Scalability, and Reproducibility in Next-Generation Sequencing Analysis", PhD thesis, TU Dortmund 2014.
-- [faircookbook worflows](https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html)
-- [The turing way - reproducible research](https://the-turing-way.netlify.app/reproducible-research)
-- Parts of the content are inspired by *Reproducible Research II: Practices and Tools for Managing Computations and Data* by members of France Université Numérique. Enroll [here](https://www.fun-mooc.fr/en/courses/reproducible-research-ii-practices-and-tools-for-managing-comput/). 

@@ -79,5 +79,71 @@
   },
   "develop/hpc_programming.qmd": {
     "hpc_programming.html": "bb45298d"
+  },
+  "workshop/requirements_launch.qmd": {
+    "requirements_launch.html": "04c2dda2"
+  },
+  "workshop/requirements_pipes.qmd": {
+    "requirements_pipes.html": "c41911d0"
+  },
+  "workshop/launch-requirements.qmd": {
+    "launch-requirements.html": "f8ba9dfa"
+  },
+  "workshop/pipes-requirements.qmd": {
+    "pipes-requirements.html": "f597d90a"
+  },
+  "develop/p1-fair_workflow.qmd": {
+    "p1-fair_workflow.html": "7ad508b4"
+  },
+  "develop/p0-intro.qmd": {
+    "p0-intro.html": "62062439"
+  },
+  "develop/e4-RDM_containers.qmd": {
+    "e4-RDM_containers.html": "c6e7abd4"
+  },
+  "develop/p3-nextflow.qmd": {
+    "p3-nextflow.html": "c5902d42"
+  },
+  "develop/e3-singularity.qmd": {
+    "e3-singularity.html": "2a35cf7f"
+  },
+  "develop/p4-workflow_envs.qmd": {
+    "p4-workflow_envs.html": "10aceb1c"
+  },
+  "develop/hpc-jobs.qmd": {
+    "hpc-jobs.html": "ac22c3f8"
+  },
+  "develop/hpc-data_transfer.qmd": {
+    "hpc-data_transfer.html": "ac2a7267"
+  },
+  "develop/hpc-programming.qmd": {
+    "hpc-programming.html": "4b289b9f"
+  },
+  "develop/e2-docker.qmd": {
+    "e2-docker.html": "d2183b04"
+  },
+  "develop/hpc-ssh_keys.qmd": {
+    "hpc-ssh_keys.html": "b3fd9f0f"
+  },
+  "develop/p2-smk.qmd": {
+    "p2-smk.html": "31eac67a"
+  },
+  "develop/e1-fair_envs.qmd": {
+    "e1-fair_envs.html": "58ef94b1"
+  },
+  "develop/hpc-intro.qmd": {
+    "hpc-intro.html": "9011b8df"
+  },
+  "develop/e5-data_compression.qmd": {
+    "e5-data_compression.html": "2c4a313d"
+  },
+  "workshop/pipes-smk-ex1.qmd": {
+    "pipes-smk-ex1.html": "703ed68e"
+  },
+  "workshop/pipes-ex-smk.qmd": {
+    "pipes-ex-smk.html": "271b78e1"
+  },
+  "workshop/pipes-ex-envs.qmd": {
+    "pipes-ex-envs.html": "63ff0e4c"
   }
 }

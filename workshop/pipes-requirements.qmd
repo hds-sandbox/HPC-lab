@@ -1,0 +1,95 @@
+---
+format: 
+  html
+css: ./web.css
+---
+
+:::{.hero-banner}
+# Welcome to the HPC-Pipes workshop 
+:::
+
+#### <span style="color: red;">PLEASE READ BEFORE COURSE!</span>
+
+## Course requirements 
+
+:::{.callout-warning title="Required preparation"}
+You are expected to complete the required setup, including tool installation and account creation. 
+
+- [Singularity](https://docs.sylabs.io/guides/3.0/user-guide/installation.html#)
+- [Docker](https://www.docker.com/products/docker-desktop/) - click on `Download Docker Desktop`
+
+As for other software, we will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. **Please read the next section carefully**. 
+
+**If you prefer to run the exercises on your personal laptop or a different server, please ensure you have the following installed:**
+
+- [conda]()
+- [snakemake]()
+- [nextflow]()
+
+:::
+
+### Using UCloud for exercises 
+
+:::{.callout-warning}
+Follow the instructions below if you have an account at a Danish university. You will need your institutional email to proceed. Unfortunately, this will not work for those without a university email.
+:::
+
+1. Create an account on [UCloud](https://cloud.sdu.dk/) with your institution's credentials 
+2. Use the link below to join our workspace where you will find a setup environment^[*link activated a week before the workshop*.]
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://cloud.sdu.dk/app/projects/invite/b1bc6434-8340-48cd-8674-18a6b13eabcc" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Invite link to
+    UCloud workspace
+  </a>
+</p>
+
+&nbsp;
+
+3. You’re all set! You will receive instructions on how to navigate through UCloud during the course.
+
+### Reading material
+
+- [The Turing way](https://the-turing-way.netlify.app/reproducible-research/reproducible-research)  
+- "Sustainable data analysis with Snakemake", [link to article](https://f1000research.com/articles/10-33/v2) 
+
+
+## Agenda
+
+### Day 1 
+| Time | Activity | Time | Activity |
+|:-|:----|:-|:----|
+| *8:45*	|	*Morning coffee (optional)* |  
+| 9:00	|	Intro to HPC & onboarding | 12:00	|	*Lunch break* |
+| 9:45	|	HPC resources | 13:00	|	Exercise - software mgmt |
+| 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
+| 10:30	|	Software mgmt I | 14:30	|	Computations mgmt I |
+| 11:15	|	Software mgmt II  16:00	|	Discussions & Wrap-up |
+
+### Day 2
+
+| Time | Activity | Time | Activity |
+|:-|:----|:-|:----|
+| *8:45*	|	*Morning coffee (optional)* |  
+| 9:00	|	Computations mgmt II | 12:00	|	*Lunch break* |
+| 9:45	|	Exercise - integration | 13:00	|	Exercise - nextflow |
+| 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
+| 10:30	|	Exercise - implementation | 14:30	|	Build your own pipeline |
+| 11:15	|	Computations mgmt III | 16:00	|	Discussions & Wrap-up |
+
+## Discussion and feedback
+
+We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill up the [feedback form]() before you head out for the day ^[*link activated on the day of the workshop*.].</b>
+
+&nbsp;
+
+
+:::{.callout-note  appearance="simple" icon=false} 
+<h4 align=center>Nice meeting you and we hope to see you again!</h4> 
+::: 
+
+#### About the National Sandbox project 
+
+The Health Data Science Sandbox aims to be a **training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets**. We are an active and developing project **seeking interested users** (both trainees and educators). All of our open-source materials are available on our [Github page](https://github.com/hds-sandbox) and can be used on a computing cluster! We work with both [UCloud](https://cloud/sdu.dk), [GenomeDK](https://genome.au.dk) and [Computerome](https://www.computerome.dk/), the major Danish academic supercomputers.

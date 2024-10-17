@@ -51,4 +51,4 @@ You’ll likely find that downloading from snapshot.debian.org is slower compare
 ## Sources
 
 - Content adapted from *Reproducible Research II: Practices and tools for managing computations and data* by members of France Universite Numerique. 
-
+- [RDM - data analysis, Elixir Europe](https://rdmkit.elixir-europe.org/data_analysis)

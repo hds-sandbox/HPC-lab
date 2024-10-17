@@ -391,3 +391,8 @@ You are now ready to share the link to your Docker image with your colleagues, e
 ## Sources
 
 - [Docker Hub](https://hub.docker.com/)
+- [Containers and HPC](https://hpc.auburn.edu/hpc/docs/hpcdocs/build/html/easley/containers.html)
+
+**Scientific articles**: 
+
+- Alser, Mohammed, et al. "Packaging and containerization of computational methods." Nature Protocols (2024): 1-11.

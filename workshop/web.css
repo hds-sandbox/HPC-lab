@@ -1,8 +1,7 @@
 .webex-select, input.webex-solveme,
 .unchecked .webex-radiogroup label.webex-incorrect,
 .unchecked .webex-radiogroup label.webex-correct{
-    border: 1px dotted rgb(211, 210, 210);
+    border: 1px dotted rgb(211, 210, 210) !important;
     background-color: white;
     border-radius: 0.1em !important;
-    height: 2.5em;
 }
