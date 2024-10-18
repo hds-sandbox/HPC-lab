@@ -35,11 +35,172 @@ opts_1 <- c(
 cat("**G.1. What role does a workflow manager play in computational research??**", longmcq(opts_1))
 ```
 
-**G.4. Workflow managers can run tasks (different) concurrently if there are no dependencies** (True or False) `r torf(TRUE)`
-
 :::
 
 ## B. Conda
 
+For these exercises, you should have submitted a job to UCloud. 
+
+:::{.callout-warning}
+- Is the hpc-lab environment not automatically activated?.
+- Double-check that your personal drive is properly mounted. `ls`. Can you see a directory with your name listed (e.g. NmeSurname#XXXX)? 
+If you encounter issues, restart your job. 
+:::
+
+::: {.webex-check .callout-exercise}
+# Part 1 - Understanding an existing environment 
+
+Type the answers with no white-spaces!
+
+**C.1. What is the version of conda** `r fitb(answer='24.7.1')`
+
+**C.2. List all environments available to you. What is the name of the active environment** `r fitb(answer='hpclab-env')`
+
+**C.3. What is the version of the package `cookiecutter`** `r fitb(answer='2.6.0')`
+
+**C.4. How many packages are available? ** (True or False) `r fitb(answer='118')`
+
+**C.5. Export the environment specifications and save it to your personal drive (e.g.`<yourname-hpclab>`.yml)**
+
+conda search for package? maybe in which one will be avail. 
+
+:::{.callout-hint}
+```{.bash}
+conda info
+conda env list
+conda list cookiecutter
+conda env export 
+```
+:::
+
+:::{.callout-hint}
+# Solution
+C.1. `conda info`, v=24.7.1
+C.2. `conda env list`, the active one will be indicated with an asterisk (*).
+C.3. `conda list cookiecutter`, v=2.6.0
+```.bash
+# packages in environment at /work/HPCLab_workshop/miniconda3/envs/hpclab-env:
+#
+# Name                    Version                   Build  Channel
+cookiecutter              2.6.0              pyhca7485f_0    conda-forge
+```
+C.3. `conda list |grep -v '#' | wc -l`, 118 packages 
+C.4. conda env export --from-history > environment.yml
+:::
+
+:::
+
+:::{.callout-tip collapse="true" appearance="simple"}
+# Bonus exercise 
+
+Inspect the `/work/HPCLab_workshop/miniconda3/envs/hpclab-env/lib/python3.12/site-packages/numpy/version.py`and get the version and the full revision id (git_version).
+
+**B.N.1. Numpy version** `r fitb(answer='2.1.1')`
+**B.N.1. Full ID version** `r fitb(answer='48606ab22bfdb0e9d7ec4ed5eef984b873b7796d')`
+
+:::{.callout-solution}
+1. `cat /work/HPCLab_workshop/miniconda3/envs/hpclab-env/lib/python3.12/site-packages/numpy/version.py`
+
+```.bash
+"""
+Module to expose more detailed version info for the installed `numpy`
+"""
+version = "2.1.1"
+__version__ = version
+full_version = version
+
+git_revision = "48606ab22bfdb0e9d7ec4ed5eef984b873b7796d"
+release = 'dev' not in version and '+' not in version
+short_version = version.split("+")[0]
+```
+:::
+:::
+
+:::{.callout-warning}
+If your session gets disconnected while completing this exercise, you'll need to (re)deactivate `hpclab-env`, activate your own environment, and navigate back to your working directory!
+:::
+
+::: {.webex-check .callout-exercise}
+# Part 2 - Build your conda environment
+
+Let's prepare to build our own environment. First, make sure to deactivate the `hpclab-env` environment. Next, create a new directory by running `mkdir envs` in your mounted personal drive (e.g. AlbaRefoyoMartínez#0753). This directory will be used to save your environments. 
+
+  ```{.bash .code-overflow-wrap}
+  # Deactivate hpclab-env 
+  conda deactivate 
+
+  # Navigate to your personal drive and create a new envs directory with the command mkdir envs
+  cd <yourpersonal-drive> # AlbaRefoyoMartínez#0753
+  mkdir envs 
+  ```
+
+Is the full path of your envs directory `/work/<NameSurname#xxxx>/envs`? `r torf(TRUE)`
+
+Since Miniconda is already pre-installed, you’re ready to create your first environment. Just follow these steps:
+
+1. Create a new environment using `--prefix PATH` (/work/envs/<name-env>) and Proceed yes (or enter).
+N.B you can either name or prefix your environment. We will be using the prefix as miniconda is installed in a directory where you do not have writing privileges. 
+2. Check the available environments. How many environments do you see? `r fitb(answer='3')`
+3. Activate the environment 
+4. Check which python executable is being used (Hint: `which python`)? Does this executable belong to your conda environment?? `r torf(FALSE)`
+5. Look for snakemake in  https://anaconda.org/ and install it in your env. This might take some time! 
+6. Execute the help command: `snakemake -h`. Seems like snakemake is now installed in our environment!
+7. Does the python executable now belong to your conda environment?? `r torf(TRUE)`
+8. Is your python version >= 3.12 and packaged by conda-forge? `r torf(TRUE)`. IF NOT, use one of the following commands: `conda update -c conda-forge python` or `conda install -c conda-forge python=3.12.7`
+9. Let's search for `bowtie2`. Do you get an error? which channel is needed (Hint: search for bowtie2 in https://anaconda.org/)? `r fitb('bioconda')`
+10. Let's add the missing channel: `conda config --add channels xxxx`. Hint: it is a repo  that offers a wide range of bioinformatics software and tools.
+11. Let's search for `bowtie2` again. Is bowtie2 now available? `r torf(TRUE)`
+12. Deactivate the environment 
+
+:::{.callout-hint}
+Here are some of the commands you need for the exercise. 
+
+```{.bash}
+# use conda or mamba commands 
+conda create --prefix /work/envs/<myenv>
+conda install --channel <CHANNEL-NAME> --name <ENV-NAME>
+conda env list # OR conda info --envs
+conda update -c conda-forge python
+conda activate <ENV-NAME>
+conda config --add channels bioconda 
+conda search <PKG-NAME>
+conda deactivate 
+```
+:::
+
+:::{.callout-hint}
+# Solution
+
+1. The syntax to create a new environment is: 
+`conda create --prefix /work/<NameSurname#xxxx>/envs/<test-env>`
+2. There are 2 environments available: `base` and `hpclab-env``
+3. conda activate /work/<NameSurname#xxxx>/envs/<test-env>
+4. The executable is located at `/usr/bin/python` in the system
+5. conda install bioconda::snakemake
+6. snakemake is working!
+7. Yes, now is in the bin of our env: 
+`/work/<NameSurname#xxxx>/envs/<test-env>/bin/python`
+8. It should be! 
+9. `conda search bowtie2`. Yes. Go to anaconda.org and search for “bowtie2” to confirm it is available through conda and which software channel it is provided from. You will find that it is available via the “bioconda” channel: https://anaconda.org/bioconda/bowtie2.
+10. `conda config --add channels bioconda`. Use add, so that it has a higher priority. The syntax to install packages is: 
+`conda install --channel <CHANNELNAME> --name <ENVNAME> <SOFTWARE>`
+11. Yes!
+12. `conda deactivate`
+
+:::
+:::
 
 ## C. Containers 
+
+Download a singularity image from one of the two repositories listed above (choose a software like bcftools, bedtools, bowtie2, seqkit…) and run the --help command. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.
+
+```{.bash}
+# create a directory for our singularity images
+mkdir images
+
+# download the image
+singularity pull images/bowtie2-2.5.4.sif https://depot.galaxyproject.org/singularity/bowtie2%3A2.5.4--he20e202_2
+
+# run the image: singularity run <PATH-TO-IMAGE> <YOUR COMMANDS>
+singularity run images/bowtie2-2.5.4.sif bowtie2 --help
+```

@@ -91,10 +91,23 @@ remove.packages()      # install a given package
 We highly recommend using [renv](https://rstudio.github.io/renv/articles/renv.html). 
 
 ## CONDA
-```
-conda -V
-conda list 
-conda env list 
+Agnostic package manager 
+
+```{.bash .code-overflow-wrap}
+conda info # conda installed version 
+conda list # conda installed packages
+conda env list # list all environments
+conda create --name <envname> # create environment
+conda activate <envname> # activate environment
+conda deactivate 
+conda config --show-sources # channel sources 
+conda config --add channels <channelname>
+conda search <pkgname> --info # search for package
+conda install -c <channelname> pkg1 pkg2=1.2 # install packages from channel  
+conda uninstall pkg1 # uninstall package 
+conda remove -n <envname> # conda remove 
+conda env export --from-history > <myenv>.yml # cross-platform compatinle export of env file
+conda env create -n <envname> --file <myenv>.yml
 ```
 
 ## DPKG 
