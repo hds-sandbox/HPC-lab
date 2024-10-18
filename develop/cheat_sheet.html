@@ -314,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">October 17, 2024</p>
+      <p class="date-modified">October 18, 2024</p>
     </div>
   </div>
     
@@ -404,9 +404,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="conda" class="level2">
 <h2 class="anchored" data-anchor-id="conda">CONDA</h2>
-<pre><code>conda -V
-conda list 
-conda env list </code></pre>
+<p>Agnostic package manager</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> info <span class="co"># conda installed version </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list <span class="co"># conda installed packages</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list <span class="co"># list all environments</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> <span class="op">&lt;</span>envname<span class="op">&gt;</span> <span class="co"># create environment</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate <span class="op">&lt;</span>envname<span class="op">&gt;</span> <span class="co"># activate environment</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--show-sources</span> <span class="co"># channel sources </span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels <span class="op">&lt;</span>channelname<span class="op">&gt;</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> search <span class="op">&lt;</span>pkgname<span class="op">&gt;</span> --info <span class="co"># search for package</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> <span class="op">&lt;</span>channelname<span class="op">&gt;</span> pkg1 pkg2=1.2 <span class="co"># install packages from channel  </span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> uninstall pkg1 <span class="co"># uninstall package </span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove <span class="at">-n</span> <span class="op">&lt;</span>envname<span class="op">&gt;</span> <span class="co"># conda remove </span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="at">--from-history</span> <span class="op">&gt;</span> <span class="op">&lt;</span>myenv<span class="op">&gt;</span>.yml <span class="co"># cross-platform compatinle export of env file</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-n</span> <span class="op">&lt;</span>envname<span class="op">&gt;</span> --file <span class="op">&lt;</span>myenv<span class="op">&gt;</span>.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="dpkg" class="level2">
 <h2 class="anchored" data-anchor-id="dpkg">DPKG</h2>

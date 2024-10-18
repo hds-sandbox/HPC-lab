@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -292,10 +326,9 @@ General knowledge
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_LOBLTBDBNJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_LOBLTBDBNJ" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_LOBLTBDBNJ" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_LOBLTBDBNJ" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_LOBLTBDBNJ" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_JCVQOKAWWK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JCVQOKAWWK" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_JCVQOKAWWK" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_JCVQOKAWWK" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_JCVQOKAWWK" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
-<p><strong>G.4. Workflow managers can run tasks (different) concurrently if there are no dependencies</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 </div>
 </div>
 </div>
@@ -304,9 +337,258 @@ General knowledge
 </section>
 <section id="b.-conda" class="level2">
 <h2 class="anchored" data-anchor-id="b.-conda">B. Conda</h2>
+<p>For these exercises, you should have submitted a job to UCloud.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Is the hpc-lab environment not automatically activated?.</li>
+<li>Double-check that your personal drive is properly mounted. <code>ls</code>. Can you see a directory with your name listed (e.g.&nbsp;NmeSurname#XXXX)? If you encounter issues, restart your job.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Part 1 - Understanding an existing environment
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="webex-check callout-exercise">
+<p>Type the answers with no white-spaces!</p>
+<p><strong>C.1. What is the version of conda</strong> <input class="webex-solveme nospaces" size="6" data-answer="[&quot;24.7.1&quot;]"></p>
+<p><strong>C.2. List all environments available to you. What is the name of the active environment</strong> <input class="webex-solveme nospaces" size="10" data-answer="[&quot;hpclab-env&quot;]"></p>
+<p><strong>C.3. What is the version of the package <code>cookiecutter</code></strong> <input class="webex-solveme nospaces" size="5" data-answer="[&quot;2.6.0&quot;]"></p>
+<p><strong>C.4. How many packages are available? </strong> (True or False) <input class="webex-solveme nospaces" size="3" data-answer="[&quot;118&quot;]"></p>
+<p><strong>C.5. Export the environment specifications and save it to your personal drive (e.g.<code>&lt;yourname-hpclab&gt;</code>.yml)</strong></p>
+<p>conda search for package? maybe in which one will be avail.</p>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> info</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list cookiecutter</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>C.1. <code>conda info</code>, v=24.7.1 C.2. <code>conda env list</code>, the active one will be indicated with an asterisk (*). C.3. <code>conda list cookiecutter</code>, v=2.6.0</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># packages in environment at /work/HPCLab_workshop/miniconda3/envs/hpclab-env:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Name                    Version                   Build  Channel</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">cookiecutter</span>              2.6.0              pyhca7485f_0    conda-forge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>C.3. <code>conda list |grep -v '#' | wc -l</code>, 118 packages C.4. conda env export –from-history &gt; environment.yml</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bonus exercise
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Inspect the <code>/work/HPCLab_workshop/miniconda3/envs/hpclab-env/lib/python3.12/site-packages/numpy/version.py</code>and get the version and the full revision id (git_version).</p>
+<p><strong>B.N.1. Numpy version</strong> <input class="webex-solveme nospaces" size="5" data-answer="[&quot;2.1.1&quot;]"> <strong>B.N.1. Full ID version</strong> <input class="webex-solveme nospaces" size="40" data-answer="[&quot;48606ab22bfdb0e9d7ec4ed5eef984b873b7796d&quot;]"></p>
+<div class="callout-solution">
+<ol type="1">
+<li><code>cat /work/HPCLab_workshop/miniconda3/envs/hpclab-env/lib/python3.12/site-packages/numpy/version.py</code></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">Module to expose more detailed version info for the installed </span><span class="kw">`</span><span class="ex">numpy</span><span class="kw">`</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">version</span> = <span class="st">"2.1.1"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">__version__</span> = version</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">full_version</span> = version</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">git_revision</span> = <span class="st">"48606ab22bfdb0e9d7ec4ed5eef984b873b7796d"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">release</span> = <span class="st">'dev'</span> not in version and <span class="st">'+'</span> not in version</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">short_version</span> = version.split<span class="er">(</span><span class="st">"+"</span><span class="kw">)</span><span class="ex">[0]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If your session gets disconnected while completing this exercise, you’ll need to (re)deactivate <code>hpclab-env</code>, activate your own environment, and navigate back to your working directory!</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Part 2 - Build your conda environment
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="webex-check callout-exercise">
+<p>Let’s prepare to build our own environment. First, make sure to deactivate the <code>hpclab-env</code> environment. Next, create a new directory by running <code>mkdir envs</code> in your mounted personal drive (e.g.&nbsp;AlbaRefoyoMartínez#0753). This directory will be used to save your environments.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Deactivate hpclab-env </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate to your personal drive and create a new envs directory with the command mkdir envs</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="op">&lt;</span>yourpersonal-drive<span class="op">&gt;</span> <span class="co"># AlbaRefoyoMartínez#0753</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> envs </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Is the full path of your envs directory <code>/work/&lt;NameSurname#xxxx&gt;/envs</code>? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
+<p>Since Miniconda is already pre-installed, you’re ready to create your first environment. Just follow these steps:</p>
+<ol type="1">
+<li>Create a new environment using <code>--prefix PATH</code> (/work/envs/<name-env>) and Proceed yes (or enter). N.B you can either name or prefix your environment. We will be using the prefix as miniconda is installed in a directory where you do not have writing privileges.</name-env></li>
+<li>Check the available environments. How many environments do you see? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;3&quot;]"></li>
+<li>Activate the environment</li>
+<li>Check which python executable is being used (Hint: <code>which python</code>)? Does this executable belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
+<li>Look for snakemake in https://anaconda.org/ and install it in your env. This might take some time!</li>
+<li>Execute the help command: <code>snakemake -h</code>. Seems like snakemake is now installed in our environment!</li>
+<li>Does the python executable now belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>Is your python version &gt;= 3.12 and packaged by conda-forge? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select>. IF NOT, use one of the following commands: <code>conda update -c conda-forge python</code> or <code>conda install -c conda-forge python=3.12.7</code></li>
+<li>Let’s search for <code>bowtie2</code>. Do you get an error? which channel is needed (Hint: search for bowtie2 in https://anaconda.org/)? <input class="webex-solveme nospaces" size="8" data-answer="[&quot;bioconda&quot;]"></li>
+<li>Let’s add the missing channel: <code>conda config --add channels xxxx</code>. Hint: it is a repo that offers a wide range of bioinformatics software and tools.</li>
+<li>Let’s search for <code>bowtie2</code> again. Is bowtie2 now available? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>Deactivate the environment</li>
+</ol>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>Here are some of the commands you need for the exercise.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use conda or mamba commands </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--prefix</span> /work/envs/<span class="op">&lt;</span>myenv<span class="op">&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">--channel</span> <span class="op">&lt;</span>CHANNEL-NAME<span class="op">&gt;</span> --name <span class="op">&lt;</span>ENV-NAME<span class="op">&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list <span class="co"># OR conda info --envs</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update <span class="at">-c</span> conda-forge python</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate <span class="op">&lt;</span>ENV-NAME<span class="op">&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels bioconda </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> search <span class="op">&lt;</span>PKG-NAME<span class="op">&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<ol type="1">
+<li>The syntax to create a new environment is: <code>conda create --prefix /work/&lt;NameSurname#xxxx&gt;/envs/&lt;test-env&gt;</code></li>
+<li>There are 2 environments available: <code>base</code> and `hpclab-env``</li>
+<li>conda activate /work/&lt;NameSurname#xxxx&gt;/envs/<test-env></test-env></li>
+<li>The executable is located at <code>/usr/bin/python</code> in the system</li>
+<li>conda install bioconda::snakemake</li>
+<li>snakemake is working!</li>
+<li>Yes, now is in the bin of our env: <code>/work/&lt;NameSurname#xxxx&gt;/envs/&lt;test-env&gt;/bin/python</code></li>
+<li>It should be!</li>
+<li><code>conda search bowtie2</code>. Yes. Go to anaconda.org and search for “bowtie2” to confirm it is available through conda and which software channel it is provided from. You will find that it is available via the “bioconda” channel: https://anaconda.org/bioconda/bowtie2.</li>
+<li><code>conda config --add channels bioconda</code>. Use add, so that it has a higher priority. The syntax to install packages is: <code>conda install --channel &lt;CHANNELNAME&gt; --name &lt;ENVNAME&gt; &lt;SOFTWARE&gt;</code></li>
+<li>Yes!</li>
+<li><code>conda deactivate</code></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="c.-containers" class="level2">
 <h2 class="anchored" data-anchor-id="c.-containers">C. Containers</h2>
+<p>Download a singularity image from one of the two repositories listed above (choose a software like bcftools, bedtools, bowtie2, seqkit…) and run the –help command. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory for our singularity images</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> images</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># download the image</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull images/bowtie2-2.5.4.sif https://depot.galaxyproject.org/singularity/bowtie2%3A2.5.4--he20e202_2</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># run the image: singularity run &lt;PATH-TO-IMAGE&gt; &lt;YOUR COMMANDS&gt;</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> run images/bowtie2-2.5.4.sif bowtie2 <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
