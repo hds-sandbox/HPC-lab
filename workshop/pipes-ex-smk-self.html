@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Day 1 - Part 2 – HPC Lab</title>
+<title>Day 2 - Part 3 – HPC Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -168,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk.html">Day 1 - Part 2</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk-self.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk-self.html">Day 2 - Part 3</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -205,13 +171,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Day 1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/pipes-ex-envs.html" class="sidebar-item-text sidebar-link">
@@ -220,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-smk.html" class="sidebar-item-text sidebar-link active">
+  <a href="../workshop/pipes-ex-smk.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Day 1 - Part 2</span></a>
   </div>
 </li>
@@ -228,16 +194,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Day 2</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-smk-self.html" class="sidebar-item-text sidebar-link">
+  <a href="../workshop/pipes-ex-smk-self.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Day 2 - Part 3</span></a>
   </div>
 </li>
@@ -284,17 +250,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a.-general-knowledge" id="toc-a.-general-knowledge" class="nav-link active" data-scroll-target="#a.-general-knowledge">A. General knowledge</a></li>
-  <li><a href="#b.-snakemake" id="toc-b.-snakemake" class="nav-link" data-scroll-target="#b.-snakemake">B. Snakemake</a></li>
+  <li><a href="#a.-snakemake" id="toc-a.-snakemake" class="nav-link active" data-scroll-target="#a.-snakemake">A. Snakemake</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk.html">Day 1 - Part 2</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk-self.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk-self.html">Day 2 - Part 3</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Day 1 - Part 2</h1>
+<h1 class="title">Day 2 - Part 3</h1>
 </div>
 
 
@@ -335,16 +300,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     background-color: var(--highlight);
   }
 </style>
-<p>Put your learning to the test with what you’ve covered so far.</p>
-<section id="a.-general-knowledge" class="level2">
-<h2 class="anchored" data-anchor-id="a.-general-knowledge">A. General knowledge</h2>
+<p>It’s time to create your own pipeline and experiment with its different components!</p>
+<section id="a.-snakemake" class="level2">
+<h2 class="anchored" data-anchor-id="a.-snakemake">A. Snakemake</h2>
 <div class="callout callout-style-default callout-exercise callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-I - General knowledge
+I - Build your pipeline from scratch
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -352,110 +317,27 @@ I - General knowledge
 <div class="callout-body-container callout-body">
 <div>
 <div class="webex-check callout-exercise">
-<strong>G.1. What role does a workflow manager play in computational research?</strong>
-<div id="radio_MMNEUJPVXL" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MMNEUJPVXL" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_MMNEUJPVXL" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_MMNEUJPVXL" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_MMNEUJPVXL" value=""> <span>To minimize the reliance on specific software environments</span></label>
-</div>
-<strong>G.2.What is the primary drawback of using shell scripts for automating computations?</strong>
-<div id="radio_NQEFTJGBJM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NQEFTJGBJM" value="answer"> <span>Limited error handling and debugging capabilities</span></label><label><input type="radio" autocomplete="off" name="radio_NQEFTJGBJM" value=""> <span>Difficulty in integrating with notebooks</span></label><label><input type="radio" autocomplete="off" name="radio_NQEFTJGBJM" value=""> <span>Not compatible with all operating systems</span></label><label><input type="radio" autocomplete="off" name="radio_NQEFTJGBJM" value="answer"> <span>They re-run all the steps every time</span></label><label><input type="radio" autocomplete="off" name="radio_NQEFTJGBJM" value=""> <span>Insufficient support for parallel processing</span></label><label><input type="radio" autocomplete="off" name="radio_NQEFTJGBJM" value=""> <span>Complex and extensive coding for simple tasks</span></label>
-</div>
-<strong>G.3. What are the key features of workflow manager in computational research?</strong> (Several possible solutions)
-<div id="radio_QNZMFMBYPJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QNZMFMBYPJ" value="answer"> <span>Executing tasks only when required</span></label><label><input type="radio" autocomplete="off" name="radio_QNZMFMBYPJ" value="answer"> <span>Managing task dependencies</span></label><label><input type="radio" autocomplete="off" name="radio_QNZMFMBYPJ" value="answer"> <span>Overseeing storage and resource allocation</span></label><label><input type="radio" autocomplete="off" name="radio_QNZMFMBYPJ" value=""> <span>Providing intuitive graphical interfaces</span></label>
-</div>
-<p><strong>G.4. Workflow managers can run tasks (different) concurrently if there are no dependencies</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
-<p><strong>G.5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
-</div>
-</div>
-</div>
-</div>
-</div>
+<ul>
+<li>incorporate wildcards (several)</li>
+<li>config file for params and the path to dataset?</li>
+<li>params software</li>
+<li>log out // benchmark</li>
+</ul>
+<section id="resources" class="level4">
+<h4 class="anchored" data-anchor-id="resources">Resources</h4>
+<ul>
+<li>cores</li>
+<li>resources related to size of the file</li>
+</ul>
 </section>
-<section id="b.-snakemake" class="level2">
-<h2 class="anchored" data-anchor-id="b.-snakemake">B. Snakemake</h2>
-<div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-II - Exploring rule invocation in Snakemake
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<div>
-<div class="webex-check callout-exercise">
-<p>In this exercise, we will explore how rules are invoked in a Snakemake workflow. Download the <code>Snakefile</code> and data required for this exercise using the links below if you are running things locally.</p>
-<div style="display: flex; gap: 10px;">
-<p><a href="../develop/scripts/samples_1kgp_test.tsv" download="samples_1kgp_test.tsv"> <button class="btn small-button">Download data input</button> </a></p>
-<p><a href="../develop/scripts/process_1kgp.smk" download="process_1kgp.smk"> <button class="btn small-button">Download Snakefile</button> </a></p>
-</div>
-<p>Alternatively, start a new job in UCloud, ensuring that you mount both your personal drive and the shared <code>hpclab-workshop</code> shared drive. The snakemake file is located at: <code>/work/HPCLab_workshop/rules/process_1kgp.smk</code>.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Why do we need to mount two drives for the exercises?
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<section id="environment-integration" class="level4">
+<h4 class="anchored" data-anchor-id="environment-integration">Environment integration</h4>
 <ul>
-<li>YourNameSurname#xxxx: save your results here or any other file.</li>
-<li>hpclab-workshop: this is where the input files are located; you can read from this directory but do not have write permissions.</li>
+<li>conda env</li>
+<li>create another smk with preprocessing to use include:</li>
+<li>wildcards constrains?</li>
 </ul>
-</div>
-</div>
-<p>Now follow these steps and answer the questions:</p>
-<ul>
-<li><p>Open the snakefile, named <code>process_1kgp.smk</code> and try to understand every single line. <strong>If you request Snakemake to generate the file <code>results/all_female.txt</code>, what commands will be executed and in what sequence?</strong></p></li>
-<li><p>Open a terminal and navigate to your personal drive <code>cd /work/YourNameSurname#xxxx</code>. Create a subdir called, for example, <code>hpclab</code> and make it your working directory. You can to save all results here!</p></li>
-<li><p><strong>Dry-run</strong> the workflow: Check the number of jobs that will be executed.</p>
-<p><strong>S.1. How many jobs will Snakemake run?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;8&quot;]"></p></li>
-<li><p>Run the workflow from your the directory <code>hpclab</code> you have created on your drive. Use the name flag <code>--snakefile &lt;snakefile.smk&gt; --jobs 1</code> | <code>-s &lt;snakefile.smk&gt; -j 1</code>.</p></li>
-<li><p>Verify output: Ensure that the output files are in your working directory.</p></li>
-<li><p>Clean Up: remove all files starting with <code>EUR</code> in your results folder.</p></li>
-<li><p>Rerun the workflow: Execute the Snakefile again.</p>
-<p><strong>S.2. How many jobs did Snakemake run in this last execution?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;3&quot;]"></p></li>
-<li><p>Remove lines 4-6 in the <code>process_1kgp.smk</code>. How else can you run the workflow but to generate instead <code>all_male.txt</code> using only the command-line?</p>
-<pre><code>rule all:
-   input:
-      expand("results/all_{gender}.txt", gender=["female"])</code></pre>
-<p><strong>S.3. Tip: what is missing at the end of the command ( e.g.&nbsp;what should be added to ensure <code>all_male.txt</code> is generated)? <code>snakemake -s process_1kgp.smk -c1</code></strong> <input class="webex-solveme nospaces" size="20" data-answer="[&quot;results/all_male.txt&quot;]"></p></li>
-</ul>
-<div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div>
-<div class="callout-hint">
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dry run </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> process_1kgp.smk <span class="at">-n</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># run the workflow </span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> process_1kgp.smk-c1 <span class="op">&lt;</span>name_rule<span class="kw">|</span><span class="ex">name_output</span><span class="op">&gt;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># verify output </span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="op">&lt;</span>name_output<span class="op">&gt;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># remove file belonging to european individuals </span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> results/EUR.tsv results/all_female.txt</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># rerun again </span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> process_1kgp.smk <span class="at">-c1</span> <span class="op">&lt;</span>name_rule<span class="kw">|</span><span class="ex">name_output</span><span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
+</section>
 </div>
 </div>
 </div>

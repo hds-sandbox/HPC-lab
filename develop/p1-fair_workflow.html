@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -280,7 +280,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#good-practices" id="toc-good-practices" class="nav-link" data-scroll-target="#good-practices">Good practices</a></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -309,6 +319,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Data analysis typically involves the use of different tools, algorithms, and scripts. It often requires multiple steps to transform, filter, aggregate, and visualize data. The process can be time-consuming because each tool may demand specific inputs and parameter settings. As analyses become more complex, the importance of reproducible and scalable automated workflow management increases since the key for reproducibility is <strong>automation</strong>.</p>
 <section id="why-avoid-using-a-shell-script" class="level4">
 <h4 class="anchored" data-anchor-id="why-avoid-using-a-shell-script">Why avoid using a shell script?</h4>
@@ -370,7 +382,7 @@ Hint
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 2: What are the notebooks advantages and disadvantages in the following situations?
+Exercise 2: notebooks pros and cons
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -378,6 +390,7 @@ Exercise 2: What are the notebooks advantages and disadvantages in the following
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-exercise">
+<p>What are the notebooks advantages and disadvantages in the following situations?</p>
 <ol type="1">
 <li>If your pipeline consist of 100 commands</li>
 <li>If your pipeline is only 4 steps but each takes several weeks of computational time</li>
@@ -568,6 +581,7 @@ Solution
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 <section id="good-practices" class="level2">

@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -73,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -246,7 +280,25 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basics" id="toc-basics" class="nav-link active" data-scroll-target="#basics">Basics</a>
+  <ul class="collapse">
+  <li><a href="#job-execution" id="toc-job-execution" class="nav-link" data-scroll-target="#job-execution">Job execution</a></li>
+  <li><a href="#useful-command-line-interface" id="toc-useful-command-line-interface" class="nav-link" data-scroll-target="#useful-command-line-interface">Useful command line interface</a></li>
+  <li><a href="#cluster-execution" id="toc-cluster-execution" class="nav-link" data-scroll-target="#cluster-execution">Cluster execution</a></li>
+  <li><a href="#config-files" id="toc-config-files" class="nav-link" data-scroll-target="#config-files">Config files</a></li>
+  <li><a href="#defining-resources" id="toc-defining-resources" class="nav-link" data-scroll-target="#defining-resources">Defining resources</a></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best practices</a></li>
+  </ul></li>
+  <li><a href="#nf-core" id="toc-nf-core" class="nav-link" data-scroll-target="#nf-core">nf-core</a></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -275,15 +327,123 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Nextflow is a workfow management system that offers scalable and portable NGS data analysis pipelines, facilitating data processing across diverse computing environments. It streamlines and automates various data analysis steps, enabling parallel processing and seamless integration with existing tools. ç</p>
+<p>Nextflow is a workfow management system that offers scalable and portable NGS data analysis pipelines, facilitating data processing across diverse computing environments. It streamlines and automates various data analysis steps, enabling parallel processing and seamless integration with existing tools.</p>
+<section id="basics" class="level2">
+<h2 class="anchored" data-anchor-id="basics">Basics</h2>
+<p>Read more about the basics <a href="https://www.nextflow.io/docs/latest/dsl1.html#workflow">here</a>. Let’s talk about the main elements:</p>
+<ul>
+<li><p><a href="https://www.nextflow.io/docs/latest/process.html">processes</a>: are the different tasks from a workflow. They are executed independently, are isolated from each other and can be written in any scripting language.</p></li>
+<li><p><a href="https://www.nextflow.io/docs/latest/channel.html">channels</a>: for example, input and output. Each process can defined one or more!</p></li>
+<li><p><a href="https://www.nextflow.io/docs/latest/module.html">modules</a>: is a script that contains functions, processes, and workflows.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">include</span> { process } from <span class="st">'./process_module'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p>The interaction between the processes, and ultimately the pipeline execution flow itself, is implicitly defined by these input and output declarations.</p>
+<section id="job-execution" class="level3">
+<h3 class="anchored" data-anchor-id="job-execution">Job execution</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> run <span class="op">&lt;</span>pipeline_name<span class="op">&gt;</span> --cpus <span class="op">&lt;</span>n<span class="op">&gt;</span> --mem <span class="op">&lt;</span>n<span class="op">&gt;</span>GB</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If a job fails, the pipeline will stop. However, there are some processes directives that can help you handle some errors.</p>
+<ul>
+<li><a href="https://www.nextflow.io/docs/latest/reference/process.html#errorstrategy"><code>errorStrategy</code></a>: key to record failures but avoid stopping the pipeline.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> ignoreAnyError {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">errorStrategy</span> <span class="st">'ignore'</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>your <span class="bu">command</span> string here<span class="op">&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><a href="https://www.nextflow.io/docs/latest/reference/process.html#maxretries"><code>maxRetries</code></a></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> retryIfFail {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">errorStrategy</span> <span class="st">'retry'</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">maxRetries</span> 2</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">memory</span> { task.attempt <span class="pp">*</span> 10.GB}</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">script:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">&lt;</span>your <span class="bu">command</span> string here<span class="op">&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="useful-command-line-interface" class="level3">
+<h3 class="anchored" data-anchor-id="useful-command-line-interface">Useful command line interface</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dry-run </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> run main.nf <span class="at">-dry-run</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># List processes</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> run main.nf <span class="at">-process.list</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Using configuration file </span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> run main.nf <span class="at">-c</span> my.config</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Trace execution (logging)</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> run main.nf <span class="at">-trace</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Resume previous run (interrupted)</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> run main.nf <span class="at">-resume</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="cluster-execution" class="level3">
+<h3 class="anchored" data-anchor-id="cluster-execution">Cluster execution</h3>
+<p>Whether you run the pipeline locally or on an HPC, you can find the Nextflow <a href="https://www.nextflow.io/docs/latest/executor.html">executor</a> compatible with your environment. Executors manage how and where tasks are executed.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nextflow</span> run <span class="op">&lt;</span>pipeline_name<span class="op">&gt;</span> -profile slurm </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="config-files" class="level3">
+<h3 class="anchored" data-anchor-id="config-files">Config files</h3>
+<p>Configuration files are used to specify settings, parameters and other configurations for the pipeline. Find Nextflow documentation<a href="https://www.nextflow.io/docs/latest/config.html">here</a>.</p>
+<p>Nextflow allows you to define parameters directly within the <code>main.nf</code> file, enabling their use in the workflow logic. Additionally, NextFlow supports the definition of parameters in external configuration files, such as <code>nextflow.config</code>. These parameters can then be accessed and utilized within the <code>.nf</code> file, offering flexibility in managing workflow behavior and ensuring consistency across different runs.</p>
+<p>The hierarchy of how parameters will be used is as follows:</p>
+<ol type="1">
+<li>parameters defined on the command line using <code>--paramname</code></li>
+<li>parameters defined in the user config file(s) supplied via <code>-c my.config</code> (in the order that they are provided)</li>
+<li>parameters defined in the default config file <code>nextflow.config</code></li>
+<li>parameters defined within the <code>.nf</code> file</li>
+</ol>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that if the user specifies <code>-C my.config</code> (capital C) then only that config file will be read, and the <code>nextflow.config</code> file will be ignored.</p>
+</div>
+</div>
+</section>
+<section id="defining-resources" class="level3">
+<h3 class="anchored" data-anchor-id="defining-resources">Defining resources</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">withName:</span> my_task {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="ex">cpus</span> = 4</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="ex">memory</span> = <span class="st">'8 GB'</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">time</span> = <span class="st">'2h'</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">}</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="best-practices" class="level3">
+<h3 class="anchored" data-anchor-id="best-practices">Best practices</h3>
+<ul>
+<li>Document your pipeline: overview fo what the workflow does, description of the outputs (results), description of the input and other required files.</li>
+<li>Metadata: author, doi, name, version.</li>
+<li>Attach a test dataset so that others can easily run it.</li>
+<li>Create a <code>--help</code> documentation for all your Nextflow scripts so others can easily use and understand them.</li>
+<li>Make your workflow easy to read and understand: using whitespaces, comments, name output channels</li>
+<li>Make your workflow modular to avoid duplicate code</li>
+</ul>
+</section>
+</section>
 <section id="nf-core" class="level2">
 <h2 class="anchored" data-anchor-id="nf-core">nf-core</h2>
-<p>Templates</p>
+<p>nf-core is a collaborative platform that provides high-quality, standardized, and peer-reviewed bioinformatics pipelines built using Nextflow. These pipelines are designed to be portable, reproducible, and scalable across various computing environments, from local setups to cloud-based platforms and high-performance computing (HPC) clusters. nf-core also ensures best practices by offering documentation and continuous integration testing for all pipelines, promoting consistency in bioinformatics workflows.</p>
+<p>If you want to contribute, start by building your pipeline using an <a href="https://nf-co.re/docs/guidelines/pipelines/requirements/use_the_template">nf-core template</a>.</p>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
 <ul>
+<li><a href="https://www.nextflow.io/docs/latest/index.html">Nextflow documentation</a></li>
 <li><a href="https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html">faircookbook worflows</a></li>
+<li><a href="https://carpentries-incubator.github.io/Pipeline_Training_with_Nextflow/">training material</a></li>
 </ul>
 
 

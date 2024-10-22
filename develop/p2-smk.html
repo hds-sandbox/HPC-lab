@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -280,7 +280,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#basics" id="toc-basics" class="nav-link active" data-scroll-target="#basics">Basics</a></li>
+  <li><a href="#sources" id="toc-sources" class="nav-link" data-scroll-target="#sources">Sources</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -310,13 +319,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>In this section, we will guide you through transitioning from bash scripts or notebooks to workflows. This approach is particularly useful as computations become more complex.</p>
-<section id="basics" class="level4">
-<h4 class="anchored" data-anchor-id="basics">Basics</h4>
+<section id="basics" class="level2">
+<h2 class="anchored" data-anchor-id="basics">Basics</h2>
 <p><a href="https://snakemake.readthedocs.io/en/stable/#">Snakemake</a> is a text-based workflow management tool that uses a Python-based language with domain-specific syntax. Originally designed for scientific workflows in bioinformatics, Snakemake shares operational principles with <a href="https://www.gnu.org/software/make/"><code>make</code></a>, from which it was inspired. Importantly, workflows in Snakemake are structured around data stored in files, and the tool supports parallel computing, cloud storage, and can manage computational environments.</p>
 <p>The workflow is decomposed into <strong>rules</strong> that define how to obtain output files from input files. Snakemake infers dependencies and determines the execution order automatically, offering significantly more flexibility than its predecessor, <code>make</code>.</p>
-<ol type="1">
-<li>Semantics: define rules, each rule can use different programs (e.g.&nbsp;bash to run a shell command, python, R, GNU core utilities)</li>
-</ol>
+<section id="semantics" class="level4">
+<h4 class="anchored" data-anchor-id="semantics">Semantics</h4>
+<p>Define rules, corresponding to different tasks in a pipeline. Each rule can use different programs (e.g.&nbsp;bash to run a shell command, python, R, GNU core utilities)</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Snakefile</strong></pre>
@@ -358,16 +367,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">expand</span><span class="er">(</span><span class="ex">data/{superpop}_{gender}.png,</span> superpop=<span class="pp">[</span><span class="st">"EUR"</span><span class="pp">]</span>, gender=[<span class="st">"female"</span>, <span class="st">"male"</span>]<span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li><p>Scaling up - rules generalisation using wildcards (e.g.: from one to several datasets) You can refer by index or by name</p></li>
-<li><p>Dependencies are determined top-down</p></li>
-</ol>
-<p>For a given target, a rule that can be applied to create it, is determined (a job) For the input files of the rule, go on recursively, If no target is specified, snakemake, tries to apply the first rule</p>
-<ol start="4" type="1">
-<li>Rule all: target rule that collects results</li>
+<li><p>Dependencies are determined top-down</p>
+<ul>
+<li>For a given target, a rule that can be applied to create it, is determined (a job)</li>
+<li>For the input files of the rule, go on recursively,</li>
+<li>If no target is specified, snakemake, tries to apply the first rule</li>
+</ul></li>
+<li><p>Rule all: target rule that collects results</p></li>
 </ol>
 </section>
 <section id="job-execution" class="level4">
 <h4 class="anchored" data-anchor-id="job-execution">Job execution</h4>
-<p>A job is executed if and only if: - otuput file is target and does not exist - output file needed by another executed job and does not exist - input file newer than output file - input file will be updated by other job (eg. changes in rules) - execution is force (‘–force-all’)</p>
+<p>A job is executed if and only if:</p>
+<ul>
+<li>otuput file is target and does not exist</li>
+<li>output file needed by another executed job and does not exist</li>
+<li>input file newer than output file</li>
+<li>input file will be updated by other job (eg. changes in rules)</li>
+<li>execution is force (‘–force-all’)</li>
+</ul>
 <p>You can plot the DAG (directed acyclic graph) of the jobs</p>
 </section>
 <section id="useful-command-line-interface" class="level4">
@@ -390,11 +408,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"command {threads}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s say you defined our rule myrule needs 4 works, if we execute the workflow with 8 cores as follows:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--cores</span> 8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This means that 2 ‘myrule’ jobs, will be executed in parallel.</p>
+<p>This means that two <code>myrule</code> jobs, will be executed in parallel.</p>
 <p>The jobs are schedules to maximize parallelization, high priority jobs will be scheduled first, all while satisfying resource constrains. This means:</p>
-<p>If we allocate 100MB for the execution of ‘myrule’ and we call snakemake as follows:</p>
+<p>If we allocate 100MB for the execution of <code>myrule</code> and we call snakemake as follows:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">--resources</span> mem_mb=100 <span class="at">--cores</span> 8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Only one ‘myrule’ job can be executed in parallel (you do not provide enough memory resources for 2). The memory resources is useful for jobs that are heavy memory demanding to avoid running out of memory. You will need to benchmark your pipeline to estimate how much memory and time your full workflow will take. We highly recommend doing so, get a subset of your dataset and give it a go! Log files will come very handy for the resource estimation. Of course, the execution of jobs is dependant on the free resources availability (eg. CPU cores).</p>
+<p>Only one <code>myrule</code> job can be executed in parallel (you do not provide enough memory resources for 2). The memory resources is useful for jobs that are heavy memory demanding to avoid running out of memory. You will need to benchmark your pipeline to estimate how much memory and time your full workflow will take. We highly recommend doing so, get a subset of your dataset and give it a go! Log files will come very handy for the resource estimation. Of course, the execution of jobs is dependant on the free resources availability (eg. CPU cores).</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> myrule:</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">log:</span> <span class="st">"logs/myrule.log"</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">threads:</span> X</span>
@@ -453,8 +471,8 @@ Warning
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> activate myworkflow</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># then execute snakemake</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="best-practices-recommended-by-snakemake" class="level3">
-<h3 class="anchored" data-anchor-id="best-practices-recommended-by-snakemake">Best Practices recommended by Snakemake</h3>
+<section id="best-practices-recommended-by-snakemake" class="level4">
+<h4 class="anchored" data-anchor-id="best-practices-recommended-by-snakemake">Best Practices recommended by Snakemake</h4>
 <ul>
 <li>Snakemake (v5.11+) includes a linter to check code quality, helping ensure best practices, readability, and reproducibility. Use the linter before publishing or seeking help. Run it with:</li>
 </ul>
@@ -471,6 +489,7 @@ Warning
 <li>Avoid lambda expressions inside of rules.</li>
 <li>Where possible, use <a href="https://snakemake-wrappers.readthedocs.io/en/stable/">Snakemake wrappers</a> to simplify recurring tasks.</li>
 </ul>
+</section>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>

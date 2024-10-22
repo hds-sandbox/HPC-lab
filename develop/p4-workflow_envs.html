@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -251,7 +285,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#integration-between-workflows-and-software-environments" id="toc-integration-between-workflows-and-software-environments" class="nav-link active" data-scroll-target="#integration-between-workflows-and-software-environments">Integration between workflows and software environments</a></li>
+  <li><a href="#integration-between-workflows-and-software-environments" id="toc-integration-between-workflows-and-software-environments" class="nav-link active" data-scroll-target="#integration-between-workflows-and-software-environments">Integration between workflows and software environments</a>
+  <ul class="collapse">
+  <li><a href="#snakemake" id="toc-snakemake" class="nav-link" data-scroll-target="#snakemake">Snakemake</a></li>
+  <li><a href="#nextflow" id="toc-nextflow" class="nav-link" data-scroll-target="#nextflow">Nextflow</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -287,23 +325,77 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="integration-between-workflows-and-software-environments">Integration between workflows and software environments</h2>
 <p>Snakemake or Nextflow pipelines are essentially code scripts that require an appropriate computational environment to run properly. Let’s explore the challenges of managing computational environments for workflows.</p>
 <p>You can use a single common environment for all tasks in a workflow, which is generally recommended unless there are conflicting dependencies (for example, if one task requires a different version of a library than another). Alternatively, you might use separate environments if you’re reusing a task from another workflow and don’t want to alter its existing environment, or if a rarely run task has a large environment. In such cases, creating a dedicated environment for that task can help reduce the overall resource usage of the workflow.</p>
+<section id="snakemake" class="level3">
+<h3 class="anchored" data-anchor-id="snakemake">Snakemake</h3>
 <p>Snakemake has built support for tasks environments:</p>
 <ul>
 <li>Conda</li>
 <li>Environment modules</li>
 <li>Singularity</li>
 </ul>
-<p><strong>Nested environments with Docker for reproducibility</strong></p>
-<p>Two-level environment:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> ...:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">conda:</span> <span class="st">"path/to/env.yml"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">shell:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"somecommand {output}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Nested environments with Docker for reproducibility</strong> Two-level environment:</p>
 <ul>
 <li>Outer container</li>
 <li>Inner container</li>
 </ul>
+</section>
+<section id="nextflow" class="level3">
+<h3 class="anchored" data-anchor-id="nextflow">Nextflow</h3>
+<p>Enable conda directives in the pipeline configuration file (e.g.&nbsp;<code>nextflow.config</code>).</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda.enabled</span> = true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Alternatively, it can be specified by setting the variable<code>NXF_CONDA_ENABLED=true</code> in your environment or by using the <code>-with-conda</code> command line option.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">process</span> foo {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">conda</span> <span class="st">'bwa samtools multiqc'</span>  <span class="co"># conda package YourNameSurname</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">conda</span> <span class="st">'/path/to/my-env.yaml'</span>  <span class="co"># conda environment file </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">'''</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">  your_command --here</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">  '''</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Environment Manager</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Docker</td>
+<td><a href="https://www.nextflow.io/docs/latest/container.html#docker">Nextflow Containers</a></td>
+</tr>
+<tr class="even">
+<td>Singularity/Apptainer</td>
+<td><a href="https://www.nextflow.io/docs/latest/container.html#apptainer">Nextflow Containers</a></td>
+</tr>
+<tr class="odd">
+<td>Conda</td>
+<td><a href="https://www.nextflow.io/docs/latest/conda.html">Nextflow Conda Integration</a></td>
+</tr>
+</tbody>
+</table>
+<p>It is recommended to specify environments in a separate configuration profile when possible to allow the execution via command line and enhance portability:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">profiles</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">conda</span> {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">process.conda</span> = <span class="st">'samtools'</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="er">}</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">docker</span> {</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">process.container</span> = <span class="st">'biocontainers/samtools'</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">docker.enabled</span> = true</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="er">}</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This allows the execution either with Conda or Docker specifying <code>-profile conda</code> or <code>-profile docker</code> when running the workflow script.</p>
 <!--  
 Guix --nesting 
 -->
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
