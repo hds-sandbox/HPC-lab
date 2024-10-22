@@ -145,5 +145,8 @@
   },
   "workshop/pipes-ex-envs.qmd": {
     "pipes-ex-envs.html": "63ff0e4c"
+  },
+  "workshop/pipes-ex-smk-self.qmd": {
+    "pipes-ex-smk-self.html": "0e2f5e6e"
   }
 }

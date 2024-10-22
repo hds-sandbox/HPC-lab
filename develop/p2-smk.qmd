@@ -2,7 +2,7 @@
 title: Snakemake
 format: 
   html:
-    toc: false
+    toc: true
 date-modified: last-modified
 date-format: long
 summary: intro to workflows
@@ -10,12 +10,14 @@ summary: intro to workflows
 
 In this section, we will guide you through transitioning from bash scripts or notebooks to workflows. This approach is particularly useful as computations become more complex. 
 
-#### Basics
+## Basics
 [Snakemake](https://snakemake.readthedocs.io/en/stable/#) is a text-based workflow management tool that uses a Python-based language with domain-specific syntax. Originally designed for scientific workflows in bioinformatics, Snakemake shares operational principles with [`make`](https://www.gnu.org/software/make/), from which it was inspired. Importantly, workflows in Snakemake are structured around data stored in files, and the tool supports parallel computing, cloud storage, and can manage computational environments.
 
 The workflow is decomposed into **rules** that define how to obtain output files from input files. Snakemake infers dependencies and determines the execution order automatically, offering significantly more flexibility than its predecessor, `make`.
 
-1. Semantics: define rules, each rule can use different programs (e.g. bash to run a shell command, python, R, GNU core utilities)
+#### Semantics 
+
+Define rules, corresponding to different tasks in a pipeline. Each rule can use different programs (e.g. bash to run a shell command, python, R, GNU core utilities)
 
 ```{.bash filename="Snakefile"}
 rule dw_metadata:
@@ -67,14 +69,15 @@ You can refer by index or by name
 
 3. Dependencies are determined top-down 
 
-For a given target, a rule that can be applied to create it, is determined (a job)
-For the input files of the rule, go on recursively, 
-If no target is specified, snakemake, tries to apply the first rule
+    - For a given target, a rule that can be applied to create it, is determined (a job)
+    - For the input files of the rule, go on recursively, 
+    - If no target is specified, snakemake, tries to apply the first rule
 
 4. Rule all: target rule that collects results
 
 #### Job execution
 A job is executed if and only if:
+
 - otuput file is target and does not exist
 - output file needed by another executed job and does not exist
 - input file newer than output file
@@ -109,16 +112,16 @@ Let's say you defined our rule myrule needs 4 works, if we execute the workflow 
 ```{.bash}
 snakemake --cores 8
 ```
-This means that 2 'myrule' jobs, will be executed in parallel.
+This means that two `myrule` jobs, will be executed in parallel.
 
 The jobs are schedules to maximize parallelization, high priority jobs will be scheduled first, all while satisfying resource constrains. This means: 
 
-If we allocate 100MB for the execution of 'myrule' and we call snakemake as follows:
+If we allocate 100MB for the execution of `myrule` and we call snakemake as follows:
 
 ```{.bash}
 snakemake --resources mem_mb=100 --cores 8
 ```
-Only one 'myrule' job can be executed in parallel (you do not provide enough memory resources for 2). The memory resources is useful for jobs that are heavy memory demanding to avoid running out of memory. You will need to benchmark your pipeline to estimate how much memory and time your full workflow will take. We highly recommend doing so, get a subset of your dataset and give it a go! Log files will come very handy for the resource estimation. Of course, the execution of jobs is dependant on the free resources availability (eg. CPU cores). 
+Only one `myrule` job can be executed in parallel (you do not provide enough memory resources for 2). The memory resources is useful for jobs that are heavy memory demanding to avoid running out of memory. You will need to benchmark your pipeline to estimate how much memory and time your full workflow will take. We highly recommend doing so, get a subset of your dataset and give it a go! Log files will come very handy for the resource estimation. Of course, the execution of jobs is dependant on the free resources availability (eg. CPU cores). 
 
 ```{.bash}
 rule myrule:
@@ -176,7 +179,7 @@ source activate myworkflow
 # then execute snakemake
 ```
 
-### Best Practices recommended by Snakemake 
+#### Best Practices recommended by Snakemake 
 
 - Snakemake (v5.11+) includes a linter to check code quality, helping ensure best practices, readability, and reproducibility. Use the linter before publishing or seeking help. Run it with:
 ```{.bash}

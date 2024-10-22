@@ -1,0 +1,41 @@
+---
+title: Day 2 - Part 3 
+format: 
+  html: default
+summary: intro to workflows
+css: ./web.css
+---
+
+```{r, echo = FALSE, results='asis'}
+library(webexercises)
+
+knitr::opts_chunk$set(echo = FALSE)
+
+# Uncomment to change widget colours:
+style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
+
+```
+
+It's time to create your own pipeline and experiment with its different components!
+
+## A. Snakemake 
+
+::: {.webex-check .callout-exercise}
+# I - Build your pipeline from scratch 
+
+- incorporate wildcards (several)
+- config file for params and the path to dataset? 
+- params software 
+- log out // benchmark 
+
+#### Resources 
+- cores 
+- resources related to size of the file 
+
+#### Environment integration 
+- conda env 
+- create another smk with preprocessing to use include: 
+- wildcards constrains? 
+
+:::
+

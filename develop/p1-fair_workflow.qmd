@@ -2,11 +2,13 @@
 title: FAIR computational pipelines
 format: 
   html:
-    toc: false
+    toc: true
 date-modified: last-modified
 date-format: long
 summary: workflow
 ---
+
+## Introduction 
 
 Data analysis typically involves the use of different tools, algorithms, and scripts. It often requires multiple steps to transform, filter, aggregate, and visualize data. The process can be time-consuming because each tool may demand specific inputs and parameter settings. As analyses become more complex, the importance of reproducible and scalable automated workflow management increases since the key for reproducibility is **automation**. 
 
@@ -32,7 +34,9 @@ Here are some examples:
 Notebooks might represent an advancement in addressing this issue because they allow you to run individual cells separately. However, this process is manual, and you need to ensure that the cells are executed in the correct order (time-consuming). In practice, it’s easy to make mistakes, and thus, reproducibility is only guaranteed if you run all the cells systematically from top to bottom. This approach can be time-consuming and requires careful management to avoid errors.
 
 :::{.callout-exercise}
-# Exercise 2: What are the notebooks advantages and disadvantages in the following situations?
+# Exercise 2: notebooks pros and cons
+What are the notebooks advantages and disadvantages in the following situations?
+
 1. If your pipeline consist of 100 commands
 2. If your pipeline is only 4 steps but each takes several weeks of computational time 
 3. Benchmarking and testing parameters of new software

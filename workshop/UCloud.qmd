@@ -56,3 +56,22 @@ Click on the app button to get into the settings window. You will have to config
 - Step 4, you will only have access to the folders added during the job setup, and this cannot be modified after submission! **Do not use our shared drive to create new files or for any other purpose! Please, make sure you save output files in your own drive (`Member Files: YourName##1234`)**
 - Refresh the website if the app doesn't launch automatically.
 :::
+
+:::{.callout-important}
+# Why is it necessary to mount two drives for the exercises?
+
+- YourNameSurname#xxxx: save your results here or any other file. 
+- hpclab-workshop: this is where the input files are located; you can read from this directory but do not have write permissions. 
+:::
+
+:::{.callout-tip}
+# Why do we use an Integrated Development Environment (IDE)?
+
+- User-friendly interface​
+- Support multiple languages (flexibility)​ and notebooks! ​
+- Integrated package management (seamlessly)​
+- Supported version control integration  and formatters tools​
+- File management and navigation ​
+- Debugging tools (access to command-line tools)​
+- Terminal integration ​
+:::

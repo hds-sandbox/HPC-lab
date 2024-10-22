@@ -1,5 +1,5 @@
 ---
-title: Day 1 - Exercise 1
+title: Day 1 - Part 1
 format: 
   html: default
 summary: intro to workflows
@@ -21,7 +21,7 @@ Put your learning to the test with what you’ve covered so far.
 ## A. General environment 
 
 ::: {.webex-check .callout-exercise}
-# General knowledge 
+# I - General knowledge 
 
 ```{r, results='asis', echo = FALSE}
 
@@ -48,7 +48,7 @@ For these exercises, make sure you have submitted a job to UCloud (resources set
 :::
 
 ::: {.webex-check .callout-exercise}
-# Part 1 - Understanding an existing environment 
+# II - Understanding an existing environment 
 
 Type the answers with no white-spaces!
 
@@ -91,7 +91,7 @@ C.4. conda env export --from-history > environment.yml
 :::
 
 :::{.callout-tip collapse="true" appearance="simple"}
-# Bonus exercise 
+# II - Bonus exercise 
 
 Inspect the `/work/HPCLab_workshop/miniconda3/envs/hpclab-env/lib/python3.12/site-packages/numpy/version.py`and get the version and the full revision id (git_version).
 
@@ -117,7 +117,7 @@ short_version = version.split("+")[0]
 :::
 
 ::: {.webex-check .callout-exercise}
-# Part 2 - Build your conda environment
+# III - Build your conda environment
 
 Let's prepare to build our own environment. First, make sure to deactivate the `hpclab-env` environment. Next, create a new directory by running `mkdir envs` in your mounted personal drive (e.g. AlbaRefoyoMartínez#0753). This directory will be used to save your environments. 
 
@@ -191,7 +191,7 @@ conda env export > env.yml
 
 
 ::: {.webex-check .callout-exercise}
-# Part 3 - Adapt a colleague's Conda environment to fit your needs.
+# IV - Adapt a colleague's Conda environment to fit your needs.
 
 If you are running this exercise locally, download the environment yaml file first: 
 
@@ -232,7 +232,7 @@ Refer to the official [Conda cheat sheet](https://docs.docker.com/get-started/do
 
 
 ::: {.webex-check .callout-exercise}
-# Part 4 - Running a docker image
+# V - Running a docker image
 
 In this exercise, we will utilize the `fastmixture` Docker image available on [DockerHUb](https://hub.docker.com/r/albarema/fastmixture). The aim is to **understand how to run containerized software**. In our example, we have selected a fast option and a toy dataset to facilitate learning. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.
 
@@ -306,7 +306,7 @@ Make sure to mount a directory when running a container. This ensures that any d
 
 
 :::{.callout-tip collapse="true"}
-# Bonus 1: Running other containers 
+# V - Bonus 1: Running other containers 
 ## BLAST - Build a BLAST protein database from zebrafish protein sequences.
 
 Zebrafish is a widely used model organism in genetics. This small dataset will facilitate quick results, allowing us to focus on how to run different bioinformatics tools so that you can easily adapt the commands in future projects.
@@ -347,7 +347,7 @@ singularity run images/bowtie2-2.5.4.sif bowtie2 --help
 Are you ready to build your own docker image? Let's get started by building a Jupyter Notebook container! We'll share several helpful tips to guide you through the process effectively. You might not be familiar with all the concepts, but google them if you're uncertain.
 
 :::{.callout-tip collapse="true"}
-# Bonus 2: Building a docker image and run your own container 
+# V - Bonus 2: Building a docker image and run your own container 
 
 1. Create a Dockerfile in a project-specific dir (e.g.: sandbox-debian-jupyter). We will add a command to clean up the package after installation which is a common practice to reduce the image size.  
 

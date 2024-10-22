@@ -1,5 +1,5 @@
 ---
-title: Day 1 - Exercise 2
+title: Day 1 - Part 2 
 format: 
   html: default
 summary: intro to workflows
@@ -18,10 +18,10 @@ style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
 
 Put your learning to the test with what you’ve covered so far.
 
-## A. General pipelines 
+## A. General knowledge
 
 ::: {.webex-check .callout-exercise}
-# General knowledge 
+# I - General knowledge 
 
 ```{r, results='asis', echo = FALSE}
 
@@ -32,7 +32,7 @@ opts_1 <- c(
    "To minimize the reliance on specific software environments"
 )
 
-cat("**G.1. What role does a workflow manager play in computational research??**", longmcq(opts_1))
+cat("**G.1. What role does a workflow manager play in computational research?**", longmcq(opts_1))
 ```
 
 
@@ -72,9 +72,9 @@ cat("**G.3. What are the key features of workflow manager in computational resea
 ## B. Snakemake
 
 ::: {.webex-check .callout-exercise}
-# Exploring Rule Invocation in Snakemake
+# II - Exploring rule invocation in Snakemake
 
-In this exercise, we will explore how rules are invoked in a Snakemake workflow. Download the `Snakefile` and data required for this exercise using the links below. 
+In this exercise, we will explore how rules are invoked in a Snakemake workflow. Download the `Snakefile` and data required for this exercise using the links below if you are running things locally. 
 
 <div style="display: flex; gap: 10px;">
   <a href="../develop/scripts/samples_1kgp_test.tsv" download="samples_1kgp_test.tsv">
@@ -86,14 +86,24 @@ In this exercise, we will explore how rules are invoked in a Snakemake workflow.
   </a>
 </div>
 
+Alternatively, start a new job in UCloud, ensuring that you mount both your personal drive and the shared `hpclab-workshop` shared drive. The snakemake file is located at: `/work/HPCLab_workshop/rules/process_1kgp.smk`. 
+
+:::{.callout-important}
+# Why do we need to mount two drives for the exercises?
+
+- YourNameSurname#xxxx: save your results here or any other file. 
+- hpclab-workshop: this is where the input files are located; you can read from this directory but do not have write permissions. 
+:::
+
 Now follow these steps and answer the questions: 
 
 - Open the snakefile, named `process_1kgp.smk` and try to understand every single line. **If you request Snakemake to generate the file `results/all_female.txt`, what commands will be executed and in what sequence?**
-- Dry run the workflow: Check the number of jobs that will be executed.
+- Open a terminal and navigate to your personal drive `cd /work/YourNameSurname#xxxx`. Create a subdir called, for example, `hpclab` and make it your working directory. You can to save all results here!
+- **Dry-run** the workflow: Check the number of jobs that will be executed.
 
    **S.1. How many jobs will Snakemake run?** `r fitb(8)`
 
-- Run the workflow: Use the name flag `--snakefile` | `-s` follow by the name of the file. 
+- Run the workflow from your the directory `hpclab` you have created on your drive. Use the name flag `--snakefile <snakefile.smk> --jobs 1` | `-s <snakefile.smk> -j 1`. 
 - Verify output: Ensure that the output files are in your working directory.
 - Clean Up: remove all files starting with `EUR` in your results folder.
 - Rerun the workflow: Execute the Snakefile again.
@@ -112,6 +122,7 @@ Now follow these steps and answer the questions:
 
 
 :::{.callout-hint}
+# Solution 
 ```{.bash}
 # dry run 
 snakemake -s process_1kgp.smk -n 
