@@ -2,18 +2,136 @@
 title: Nextflow
 format: 
   html:
-    toc: false
+    toc: true
 date-modified: last-modified
 date-format: long
 summary: workflow
 ---
 
-Nextflow is a workfow management system that offers scalable and portable NGS data analysis pipelines, facilitating data processing across diverse computing environments. It streamlines and automates various data analysis steps, enabling parallel processing and seamless integration with existing tools. ç
+Nextflow is a workfow management system that offers scalable and portable NGS data analysis pipelines, facilitating data processing across diverse computing environments. It streamlines and automates various data analysis steps, enabling parallel processing and seamless integration with existing tools.
+
+## Basics 
+
+Read more about the basics [here](https://www.nextflow.io/docs/latest/dsl1.html#workflow). Let's talk about the main elements: 
+
+- [processes](https://www.nextflow.io/docs/latest/process.html): are the different tasks from a workflow. They are executed independently, are isolated from each other and can be written in any scripting language. 
+- [channels](https://www.nextflow.io/docs/latest/channel.html): for example, input and output. Each process can defined one or more!
+- [modules](https://www.nextflow.io/docs/latest/module.html): is a script that contains functions, processes, and workflows. 
+  ```{.bash}
+  include { process } from './process_module'
+  ```
+
+The interaction between the processes, and ultimately the pipeline execution flow itself, is implicitly defined by these input and output declarations.
+
+
+### Job execution 
+
+```{.bash}
+nextflow run <pipeline_name> --cpus <n> --mem <n>GB
+```
+
+If a job fails, the pipeline will stop. However, there are some processes directives that can help you handle some errors. 
+
+- [`errorStrategy`](https://www.nextflow.io/docs/latest/reference/process.html#errorstrategy): key to record failures but avoid stopping the pipeline. 
+```{.bash}
+process ignoreAnyError {
+  errorStrategy 'ignore'
+
+  script:
+  <your command string here>
+}
+```
+
+- [`maxRetries`](https://www.nextflow.io/docs/latest/reference/process.html#maxretries)
+
+```{.bash}
+process retryIfFail {
+  errorStrategy 'retry'
+  maxRetries 2
+  memory { task.attempt * 10.GB}
+
+  script:
+  <your command string here>
+}
+```
+
+
+### Useful command line interface 
+
+```{.bash}
+# dry-run 
+nextflow run main.nf -dry-run
+
+# List processes
+nextflow run main.nf -process.list
+
+# Using configuration file 
+nextflow run main.nf -c my.config
+
+# Trace execution (logging)
+nextflow run main.nf -trace
+
+# Resume previous run (interrupted)
+nextflow run main.nf -resume
+
+
+```
+
+### Cluster execution 
+
+Whether you run the pipeline locally or on an HPC, you can find the Nextflow [executor](https://www.nextflow.io/docs/latest/executor.html) compatible with your environment. Executors manage how and where tasks are executed. 
+
+
+```{.bash}
+nextflow run <pipeline_name> -profile slurm 
+```
+
+### Config files
+
+Configuration files are used to specify settings, parameters and other configurations for the pipeline. Find Nextflow documentation[here](https://www.nextflow.io/docs/latest/config.html). 
+
+Nextflow allows you to define parameters directly within the `main.nf` file, enabling their use in the workflow logic. Additionally, NextFlow supports the definition of parameters in external configuration files, such as `nextflow.config`. These parameters can then be accessed and utilized within the `.nf` file, offering flexibility in managing workflow behavior and ensuring consistency across different runs.
+
+The hierarchy of how parameters will be used is as follows: 
+
+1. parameters defined on the command line using `--paramname`
+2. parameters defined in the user config file(s) supplied via `-c my.config` (in the order that they are provided)
+3. parameters defined in the default config file `nextflow.config`
+4. parameters defined within the `.nf` file
+
+:::{.callout-important}
+Note that if the user specifies `-C my.config` (capital C) then only that config file will be read, and the `nextflow.config` file will be ignored.
+:::
+
+### Defining resources 
+
+```{.bash}
+process {
+    withName: my_task {
+        cpus = 4
+        memory = '8 GB'
+        time = '2h'
+    }
+}
+```
+
+### Best practices 
+
+- Document your pipeline: overview fo what the workflow does, description of the outputs (results), description of the input and other required files. 
+- Metadata: author, doi, name, version.
+- Attach a test dataset so that others can easily run it.
+- Create a `--help` documentation for all your Nextflow scripts so others can easily use and understand them.
+- Make your workflow easy to read and understand: using whitespaces, comments, name output channels 
+- Make your workflow modular to avoid duplicate code
 
 ## nf-core 
 
-Templates
+nf-core is a collaborative platform that provides high-quality, standardized, and peer-reviewed bioinformatics pipelines built using Nextflow. These pipelines are designed to be portable, reproducible, and scalable across various computing environments, from local setups to cloud-based platforms and high-performance computing (HPC) clusters. nf-core also ensures best practices by offering documentation and continuous integration testing for all pipelines, promoting consistency in bioinformatics workflows. 
+
+If you want to contribute, start by building your pipeline using an [nf-core template](https://nf-co.re/docs/guidelines/pipelines/requirements/use_the_template). 
 
 ## Sources
 
+- [Nextflow documentation](https://www.nextflow.io/docs/latest/index.html)
 - [faircookbook worflows](https://faircookbook.elixir-europe.org/content/recipes/applied-examples/fair-workflows.html)
+- [training material](https://carpentries-incubator.github.io/Pipeline_Training_with_Nextflow/)

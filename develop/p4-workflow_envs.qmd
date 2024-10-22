@@ -12,19 +12,70 @@ Snakemake or Nextflow pipelines are essentially code scripts that require an app
 
 You can use a single common environment for all tasks in a workflow, which is generally recommended unless there are conflicting dependencies (for example, if one task requires a different version of a library than another). Alternatively, you might use separate environments if you're reusing a task from another workflow and don’t want to alter its existing environment, or if a rarely run task has a large environment. In such cases, creating a dedicated environment for that task can help reduce the overall resource usage of the workflow.
 
+### Snakemake 
+
 Snakemake has built support for tasks environments: 
 
 - Conda
 - Environment modules 
 - Singularity
 
+```{.bash}
+rule ...:
+  conda: "path/to/env.yml"
+  shell:
+    "somecommand {output}"
+
+```
 
 **Nested environments with Docker for reproducibility** 
-
 Two-level environment: 
 
 - Outer container
 - Inner container 
+
+### Nextflow 
+
+Enable conda directives in the pipeline configuration file (e.g. `nextflow.config`). 
+
+```{.bash}
+conda.enabled = true
+```
+Alternatively, it can be specified by setting the variable`NXF_CONDA_ENABLED=true` in your environment or by using the `-with-conda` command line option.
+
+```{.bash}
+process foo {
+  conda 'bwa samtools multiqc'  # conda package YourNameSurname
+  conda '/path/to/my-env.yaml'  # conda environment file 
+
+  '''
+  your_command --here
+  '''
+}
+```
+
+| Environment Manager | Link |
+|---------------------|------|
+| Docker              | [Nextflow Containers](https://www.nextflow.io/docs/latest/container.html#docker) |
+| Singularity/Apptainer | [Nextflow Containers](https://www.nextflow.io/docs/latest/container.html#apptainer) |
+| Conda               | [Nextflow Conda Integration](https://www.nextflow.io/docs/latest/conda.html) |
+
+It is recommended to specify environments in a separate configuration profile when possible to allow the execution via command line and enhance portability:
+
+```{.bash}
+profiles {
+  conda {
+    process.conda = 'samtools'
+  }
+
+  docker {
+    process.container = 'biocontainers/samtools'
+    docker.enabled = true
+  }
+}
+```
+
+This allows the execution either with Conda or Docker specifying `-profile conda` or `-profile docker` when running the workflow script.
 
 <!--  
 Guix --nesting 

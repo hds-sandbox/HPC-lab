@@ -31,34 +31,34 @@ website:
         - develop/p0-intro.qmd
         - section: "Computational environments"
           contents:
-          - develop/e1-fair_envs.qmd
-          - develop/e2-docker.qmd
-          - develop/e3-singularity.qmd
-          - develop/e4-RDM_containers.qmd
-          - develop/cheat_sheet.qmd
+            - develop/e1-fair_envs.qmd
+            - develop/e2-docker.qmd
+            - develop/e3-singularity.qmd
+            - develop/e4-RDM_containers.qmd
+            - develop/cheat_sheet.qmd
         - section: "Pipeline languages"
           contents:
-          - develop/p1-fair_workflow.qmd 
-          - develop/p2-smk.qmd
-          - develop/p3-nextflow.qmd
-          - develop/p4-workflow_envs.qmd
-          - develop/exercise_pipes.qmd
+            - develop/p1-fair_workflow.qmd 
+            - develop/p2-smk.qmd
+            - develop/p3-nextflow.qmd
+            - develop/p4-workflow_envs.qmd
+            - develop/exercise_pipes.qmd
     - title: "HPC Launch"
       style: "docked"
       search: true
       contents:
         - section: "HPC systems"
           contents: 
-          - develop/hpc-intro.qmd 
-          - develop/hpc-jobs.qmd
-          - develop/hpc-programming.qmd
+            - develop/hpc-intro.qmd 
+            - develop/hpc-jobs.qmd
+            - develop/hpc-programming.qmd
         - section: "Data management"
           contents: 
-          - develop/hpc-data_transfer.qmd
-          - develop/hpc-ssh_keys.qmd
+            - develop/hpc-data_transfer.qmd
+            - develop/hpc-ssh_keys.qmd
         - section: "Quizzes"
           contents:
-          - develop/exercise_launch.qmd
+            - develop/exercise_launch.qmd
     - title: "Workshop"
       style: "docked"
       search: true
@@ -66,13 +66,19 @@ website:
         - section: "HPC Pipes"
           contents: 
             - workshop/pipes-requirements.qmd
-            - workshop/pipes-ex-envs.qmd
-            - workshop/pipes-ex-smk.qmd
+            - section: "Day 1"
+              contents: 
+                - workshop/pipes-ex-envs.qmd
+                - workshop/pipes-ex-smk.qmd
+            - section: "Day 2"
+              contents:             
+                - workshop/pipes-ex-smk-self.qmd
         - section: "HPC Launch"
           contents: 
             - workshop/launch-requirements.qmd
             - workshop/cookiecutter.qmd
-        - workshop/UCloud.qmd
+        - text: "UCloud setup"
+          href: workshop/UCloud.qmd
 
 
 copyright: CC-BY-SA 4.0 license
