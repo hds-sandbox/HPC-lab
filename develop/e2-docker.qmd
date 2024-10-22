@@ -143,7 +143,7 @@ docker run -it --volumes <my_project_volume>
 ```
 
 :::{.callout-warning title="Why not mounting your home directory"}
-Mounting your current working directory (${PWD}) into the container at e.g. `/home/rstudio`can compromise the benefits of container isolation. If you run the command from your home directory, any local packages or configurations (such as R or Python packages installed with `install.packages` or `pip`) would be accessible inside the container.This inadvertently includes your personal setup and packages, potentially undermining the container’s intended clean and isolated environment. To maintain effective isolation, it's better to use a temporary or project-specific directory for mounting.
+Mounting your current working directory (${PWD}) into the container at e.g. `/home/rstudio` can compromise the benefits of container isolation. If you run the command from your home directory, any local packages or configurations (such as R or Python packages installed with `install.packages` or `pip`) would be accessible inside the container. This inadvertently includes your personal setup and packages, potentially undermining the container’s intended clean and isolated environment. To maintain effective isolation, it's better to use a temporary or project-specific directory for mounting.
 :::
 
 Alternatively, you can add a volume to a project, by modifying the `compose.yaml` (also named `docker-compose.yml`) file. There are two types of volumes: 
@@ -278,6 +278,8 @@ For the `docker build -t` flag, the format of the tag is used to specify both th
 - Repository name where the image will be stored, account in Docker registry (e.g. albarema)
 - Name of the image (e.g. sandbox_app)
 - Version label for the image (e.g. v1.0, test, etc.)
+
+The repository name can be deferred until the application is ready for publication on Docker Hub. You can also modify the tag at a later time.
 :::
 
 :::{.callout-exercise title="Exercise 1: create your docker image"}
@@ -298,24 +300,27 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists/* # cleanup tmp files created by apt
 
 # You may consider adding a working directory
-WORKDIR /notebooks
+# WORKDIR /notebooks
 
 # and a command to start Jupyter Notebook
 # CMD ["jupyter-notebook", "--ip=0.0.0.0", "--allow-root"]
 ```
-2. Build the Docker image using, for example, `docker build -t albarema/sandbox-debian-jupyter:1.0 sandbox-debian-jupyter`
+2. Build the Docker image using, for example, `docker build -t sandbox-debian-jupyter:1.0 sandbox-debian-jupyter`
 :::
 
 ### Testing the custom image 
 
 Let's verify if the custom image functions as expected, running the following command: 
 ```{.bash .code-overflow-wrap filename="Terminal"}
-docker run --rm -p 8888:8888 --volume=$(pwd):/root albarema/sandbox-debian-jupyter:1.0 jupyter-notebook
+docker run --rm -p 8888:8888 --volume=$(pwd):/root sandbox-debian-jupyter:1.0 jupyter-notebook
 ```
 
 Jupyter typically refuses to run as root or accept network connections by default. To address this, you need to either add `--ip=0.0.0.0 --allow-root` when starting Jupyter to the command above or uncomment the last line in the Dockerfile above (`CMD ["jupyter-notebook", "--ip=0.0.0.0", "--allow-root"]`). Alternatively, you can run the container with the flag `--user=$(id -u):$(id -g)`to ensure that files created in the container have matching user and group ownership with those on the host machine, preventing permission issues. However, this restricts the container from performing root-level operations. For broader usability and security, it is advisable to create a non-root user (e.g. jovyan) within the Docker image by adding user setup commands to the Dockerfile (see below). This approach makes the image more user-friendly and avoids file ownership conflicts.
 
-```{.bash filename="Dockerfile"}
+```{.bash filename="Dockerfile2"}
+
+##-------- ADD CONTENT FROM Dockerfile HERE --------
+
 # Creating a group & user
 RUN addgroup --gid 1000 user && \
     adduser --uid 1000 --gid 1000 --gecos "" --disabled-password jovyan
@@ -323,6 +328,10 @@ RUN addgroup --gid 1000 user && \
 USER jovyan
 # setting working directory 
 WORKDIR /home/jovyan
+
+# OPT: command to open jupyter automatically
+CMD ["jupyter-notebook", "--ip=0.0.0.0"]
+
 ```
 
 :::{.callout-tip}
@@ -330,18 +339,20 @@ WORKDIR /home/jovyan
 - Use `--volume` to mount data into the container (`/root`), for example, your working directory 
 - Use `--file` flag to test to dockerfile versions (default:"PATH/Dockerfile")
 ```{.bash .code-overflow-wrap}
-docker build -t albarema/sandbox-debian-jupyter:2.0 sandbox-debian-jupyter -f sandbox-debian-jupyter/Dockerfile2
+docker build -t sandbox-debian-jupyter:2.0 sandbox-debian-jupyter -f sandbox-debian-jupyter/Dockerfile2
 ```
 :::
 
 Now that we have fixed that problem, we will test A. using a port to launch a Jupyter Notebook (or Rstudio server) and B. starting a bash shell interactively. 
 
 ```{.bash .code-overflow-wrap}
+# Assuming the Dockerfile includes CMD ["jupyter-notebook", "--ip=0.0.0.0"]
+
 # Option A. Start jupyter-notebook or on the server 
-docker run --rm -p 8888:8888 --volume=$(pwd):/home/jovyan albarema/sandbox-debian-jupyter:1.0 jupyter-notebook --ip=0.0.0.0 --allow-root
+docker run --rm -p 8888:8888 --volume=$(pwd):/home/jovyan sandbox-debian-jupyter:2.0 
 
 # Option B. Start an interactive shells instead 
-docker run -it --rm sandbox-debian-jupyter:1.0 /bin/bash
+docker run -it --rm --volume=$(pwd):/home/jovyan sandbox-debian-jupyter:2.0 /bin/bash
 ```
 
 :::{.callout-warning title="Which port to use?"}
@@ -379,7 +390,7 @@ docker login # <username> <pw>
 # optional change tag
 # docker tag <old> <new>
 # push image 
-docker push albarema/sandbox-debian-jupyter:1.0
+docker push sandbox-debian-jupyter:1.0
 ```
 
 In Docker, the file system of an image is built using several layers, or **overlays**. Each layer represents a set of changes or additions made to the image. When you update software or packages within a Docker container, a new layer is created with only the new or changed content, rather than modifying the existing layers. 
