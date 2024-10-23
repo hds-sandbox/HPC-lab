@@ -71,10 +71,26 @@ cat("**G.3. What are the key features of workflow manager in computational resea
 
 ## B. Snakemake
 
-::: {.webex-check .callout-exercise}
-# II - Exploring rule invocation in Snakemake
+:::{.callout-warning}
+# How to run snakemake on UCloud
 
-In this exercise, we will explore how rules are invoked in a Snakemake workflow. Download the `Snakefile` and data required for this exercise using the links below if you are running things locally. 
+First, mount the following two drives, use the `setup.sh` initialization file and ask for 2 CPUs so we can run things in parallel: 
+
+- `YourNameSurname#xxxx`: save your results/files here.  
+- `hpclab-workshop`: this contains the input files, You can read-only access from this directory (no write permissions). 
+
+Next, deactivate `hpclab-env` and activate `snakemake` environment. 
+
+```{.bash}
+conda deactivate 
+# make sure no env is active!
+conda activate snakemake 
+```
+:::
+
+:::{.callout-warning}
+# Are you running the exercises locally?
+Download the `Snakefile` and data required for this exercise using the links below if you are running things locally. 
 
 <div style="display: flex; gap: 10px;">
   <a href="../develop/scripts/samples_1kgp_test.tsv" download="samples_1kgp_test.tsv">
@@ -86,54 +102,77 @@ In this exercise, we will explore how rules are invoked in a Snakemake workflow.
   </a>
 </div>
 
-Alternatively, start a new job in UCloud, ensuring that you mount both your personal drive and the shared `hpclab-workshop` shared drive. The snakemake file is located at: `/work/HPCLab_workshop/rules/process_1kgp.smk`. 
-
-:::{.callout-important}
-# Why do we need to mount two drives for the exercises?
-
-- YourNameSurname#xxxx: save your results here or any other file. 
-- hpclab-workshop: this is where the input files are located; you can read from this directory but do not have write permissions. 
 :::
 
-Now follow these steps and answer the questions: 
+We strongly recommend keeping the [Snakemake documentation](https://snakemake.readthedocs.io/en/stable/) open for reference and guidance.
 
-- Open the snakefile, named `process_1kgp.smk` and try to understand every single line. **If you request Snakemake to generate the file `results/all_female.txt`, what commands will be executed and in what sequence?**
-- Open a terminal and navigate to your personal drive `cd /work/YourNameSurname#xxxx`. Create a subdir called, for example, `hpclab` and make it your working directory. You can to save all results here!
-- **Dry-run** the workflow: Check the number of jobs that will be executed.
+
+::: {.webex-check .callout-exercise}
+# II - Exploring rule invocation in Snakemake
+
+In this exercise, we will explore how rules are invoked in a Snakemake workflow. The snakemake file is located at: `/work/HPCLab_workshop/rules/process_1kgp.smk`. Now follow these steps and answer the questions: 
+
+1. Open the snakefile, named `process_1kgp.smk` and try to understand every single line. If you request Snakemake to generate the file `results/all_female.txt`, **what commands will be executed and in what sequence?**
+2. Open a terminal and navigate to your personal drive `cd /work/YourNameSurname#xxxx`. Create a project directory called, for example, `hpclab` and make it your working directory. You should save all results here!
+3. **Dry-run** the workflow: Check the number of jobs that will be executed.
 
    **S.1. How many jobs will Snakemake run?** `r fitb(8)`
 
-- Run the workflow from your the directory `hpclab` you have created on your drive. Use the name flag `--snakefile <snakefile.smk> --jobs 1` | `-s <snakefile.smk> -j 1`. 
-- Verify output: Ensure that the output files are in your working directory.
-- Clean Up: remove all files starting with `EUR` in your results folder.
-- Rerun the workflow: Execute the Snakefile again.
+4. Run the workflow from the directory `hpclab` (the one you just created on your personal drive). Use the name flag `--snakefile <snakefile>.smk --jobs 1`, or the abbreviated format `-s <snakefile>.smk -j 1`. 
+5. Please verify that the output has been successfully generated and saved in your working directory.
 
-   **S.2. How many jobs did Snakemake run in this last execution?** `r fitb(3)`
+   **S.2. Has Snakemake created a subdirectory that didn't previously exist? What is its name?** `r fitb("results")`
 
-- Remove lines 4-6 in the `process_1kgp.smk`. How else can you run the workflow but to generate instead `all_male.txt` using only the command-line? 
+   **S.3. How many files with the extension `*.tsv` can you find in that subdirectory?** `r fitb(6)`
+6. **Dry-run** the workflow again (from `hpclab`). 
 
+   ```{r, results='asis', echo = FALSE}
+   #| echo: false
+   opts_2 <- c(
+      answer="**No**. There is nothing to be done. All requested files are present and up to date",
+      "**Yes**. Reasons: input files updated by another job (all, combine, split_by_superpop) and output files have to be generated (combine, preprocess, split_by_superpop)"
+   )
+
+   cat("**S.4. Would Snakemake run any jobs based on the results of the dry-run?**",  longmcq(opts_2))
    ```
-   rule all:
-      input:
-         expand("results/all_{gender}.txt", gender=["female"])
+
+7. Remove files starting with `E` in your `results` folder ("EAS.tsv" and "EUR.tsv") and `all_female.txt`. Then, dry-run once more. **S.1. How many jobs will Snakemake run?** `r fitb(4)`
+
+8. Copy the snakefile (`process_1kgp.smk`) to your working directory so that you can edit it! Then, open the file and remove lines 13-15. How else can you run the workflow but to generate instead `all_male.txt` using only the command-line? 
+
+   ```{.bash filename="process_1kgp.smk"} 
+   13 rule all:
+   14    input:
+   15       expand("results/all_{gender}.txt", gender=["female"])
    ```
    
-   **S.3. Tip: what is missing at the end of the command ( e.g. what should be added to ensure `all_male.txt` is generated)? `snakemake -s process_1kgp.smk -c1`** `r fitb("results/all_male.txt")`
+   **S.5. Tip: what is missing at the end of the command ( e.g. what should be added to ensure `all_male.txt` is generated)? `snakemake -s process_1kgp.smk -c1`** `r fitb("results/all_male.txt")`
 
 
 :::{.callout-hint}
 # Solution 
+
+1. Tasks will be executed in this order preprocess (1), split_by_superpop (5) and combine (1). 
+
 ```{.bash}
-# dry run 
-snakemake -s process_1kgp.smk -n 
-# run the workflow 
-snakemake -s process_1kgp.smk-c1 <name_rule|name_output>
-# verify output 
-ls <name_output>
-# remove file belonging to european individuals 
-rm results/EUR.tsv results/all_female.txt
-# rerun again 
-snakemake -s process_1kgp.smk -c1 <name_rule|name_output>
+# 2. Create subdir 
+cd /work/AlbaRefoyoMartínez#0753/
+mkdir hpclab
+cd hpclab
+# 3. dry run 
+snakemake -s /work/HPCLab_workshop/rules/process_1kgp.smk -n 
+# 4. run the workflow 
+snakemake -s HPCLab_workshop/rules/process_1kgp.smk -c2 
+# 5. verify output 
+ls results/*
+# 6. dry run 
+snakemake -s /work/HPCLab_workshop/rules/process_1kgp.smk -n 
+# 7. remove file starting with E  and the all_female.txt
+rm results/E*.tsv results/all_female.txt
+# 8. make a copy of the snakefile and remove the lines 
+cp /work/HPCLab_workshop/rules/process_1kgp.smk .
+# 8. S5. rerun again with the <name_output>
+snakemake -s process_1kgp.smk -c1 results/all_male.txt 
 ```
 :::
 
