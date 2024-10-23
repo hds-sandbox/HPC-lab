@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -300,11 +334,34 @@ ul.task-list li input[type="checkbox"] {
     background-color: var(--highlight);
   }
 </style>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to run snakemake on UCloud
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>First, mount the following two drives, use the <code>setup.sh</code> initialization file and ask for 2 CPUs so we can run things in parallel:</p>
+<ul>
+<li><code>YourNameSurname#xxxx</code>: save your results/files here.<br>
+</li>
+<li><code>hpclab-workshop</code>: this contains the input files, You can read-only access from this directory (no write permissions).</li>
+</ul>
+<p>Next, deactivate <code>hpclab-env</code> and activate <code>snakemake</code> environment.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure no env is active!</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snakemake </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally, navigate to your personal drive and use the project directory you created yesterday to save all the output files from the exercises!</p>
+</div>
+</div>
 <p>It’s time to create your own pipeline and experiment with its different components!</p>
 <section id="a.-snakemake" class="level2">
 <h2 class="anchored" data-anchor-id="a.-snakemake">A. Snakemake</h2>
 <div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -313,16 +370,109 @@ I - Build your pipeline from scratch
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
 <div class="webex-check callout-exercise">
+<p>Let’s define a very simple workflow of one task. This task will concatenate two input files. The name of this rule will be <code>concat</code> and you will save the code as a file called <code>step1_wf.smk</code>. <strong>Do not use wildcards yet</strong>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"sample1"</span> <span class="op">&gt;</span> file1.txt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"sample2"</span> <span class="op">&gt;</span> file2.txt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"sample3"</span> <span class="op">&gt;</span> file3.txt</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This is what the pipeline's task is:</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> file1.txt file2.txt file3.txt <span class="op">&gt;</span> concatenated.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>step1_wf.smk</strong></pre>
+</div>
+<div class="sourceCode" id="cb3" data-filename="step1_wf.smk"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> concat:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">input:</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"file1.txt"</span><span class="ex">,</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"file2.txt"</span><span class="ex">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"file3.txt"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">output:</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"data1/concatenated.txt"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">shell:</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"cat {input} &gt; {output}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Snakemake enables workflow customization by allowing you to define variables that can adjust how your rules behave. For instance, you can modify input files or change tool settings dynamically when running the workflow, providing flexibility and adaptability.</p>
+<section id="wildcards" class="level4">
+<h4 class="anchored" data-anchor-id="wildcards">Wildcards</h4>
+<p>Wildcards are dynamic placeholders in rule definitions that allow for flexible input or output file names. You define them in your rules, and their actual values are determined when the workflow is executed, enabling versatile file handling across different workflow runs.</p>
+<p>Modify the previous rule so that you can run the workflow for different datasets and samples.</p>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>step1_wf.smk</strong></pre>
+</div>
+<div class="sourceCode" id="cb4" data-filename="step1_wf.smk"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">datasets</span> = <span class="pp">[</span><span class="st">"data1"</span><span class="pp">]</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">samples</span> = [<span class="st">"sample1"</span>, <span class="st">"sample2"</span>, <span class="st">"sample3"</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> all:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">input:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">expand</span><span class="er">(</span><span class="st">"results/{sample}/output.txt"</span><span class="ex">,</span> sample=samples<span class="kw">)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> process_sample:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">input:</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"data/{sample}.txt"</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">output:</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"results/{sample}/output.txt"</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">params:</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">parameter1</span><span class="op">=</span>config.get<span class="kw">(</span><span class="st">"parameter1"</span><span class="ex">,</span> 5<span class="kw">)</span><span class="ex">,</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">parameter2</span><span class="op">=</span>config.get<span class="kw">(</span><span class="st">"parameter2"</span><span class="ex">,</span> <span class="st">"abc"</span><span class="kw">)</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="ex">shell:</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"process_data.py {input} {params.parameter1} {params.parameter2} &gt; {output}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="params" class="level4">
+<h4 class="anchored" data-anchor-id="params">Params</h4>
+</section>
+<section id="config-files" class="level4">
+<h4 class="anchored" data-anchor-id="config-files">Config files</h4>
 <ul>
-<li>incorporate wildcards (several)</li>
 <li>config file for params and the path to dataset?</li>
 <li>params software</li>
 <li>log out // benchmark</li>
 </ul>
+</section>
 <section id="resources" class="level4">
 <h4 class="anchored" data-anchor-id="resources">Resources</h4>
 <ul>

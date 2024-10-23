@@ -353,16 +353,16 @@ I - General knowledge
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research?</strong>
-<div id="radio_MMNEUJPVXL" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MMNEUJPVXL" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_MMNEUJPVXL" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_MMNEUJPVXL" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_MMNEUJPVXL" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_QUVZVBTTYK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QUVZVBTTYK" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_QUVZVBTTYK" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_QUVZVBTTYK" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_QUVZVBTTYK" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 <strong>G.2.What is the primary drawback of using shell scripts for automating computations?</strong>
-<div id="radio_NQEFTJGBJM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NQEFTJGBJM" value="answer"> <span>Limited error handling and debugging capabilities</span></label><label><input type="radio" autocomplete="off" name="radio_NQEFTJGBJM" value=""> <span>Difficulty in integrating with notebooks</span></label><label><input type="radio" autocomplete="off" name="radio_NQEFTJGBJM" value=""> <span>Not compatible with all operating systems</span></label><label><input type="radio" autocomplete="off" name="radio_NQEFTJGBJM" value="answer"> <span>They re-run all the steps every time</span></label><label><input type="radio" autocomplete="off" name="radio_NQEFTJGBJM" value=""> <span>Insufficient support for parallel processing</span></label><label><input type="radio" autocomplete="off" name="radio_NQEFTJGBJM" value=""> <span>Complex and extensive coding for simple tasks</span></label>
+<div id="radio_AWXFPMYLLB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_AWXFPMYLLB" value="answer"> <span>Limited error handling and debugging capabilities</span></label><label><input type="radio" autocomplete="off" name="radio_AWXFPMYLLB" value=""> <span>Difficulty in integrating with notebooks</span></label><label><input type="radio" autocomplete="off" name="radio_AWXFPMYLLB" value=""> <span>Not compatible with all operating systems</span></label><label><input type="radio" autocomplete="off" name="radio_AWXFPMYLLB" value="answer"> <span>They re-run all the steps every time</span></label><label><input type="radio" autocomplete="off" name="radio_AWXFPMYLLB" value=""> <span>Insufficient support for parallel processing</span></label><label><input type="radio" autocomplete="off" name="radio_AWXFPMYLLB" value=""> <span>Complex and extensive coding for simple tasks</span></label>
 </div>
 <strong>G.3. What are the key features of workflow manager in computational research?</strong> (Several possible solutions)
-<div id="radio_QNZMFMBYPJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QNZMFMBYPJ" value="answer"> <span>Executing tasks only when required</span></label><label><input type="radio" autocomplete="off" name="radio_QNZMFMBYPJ" value="answer"> <span>Managing task dependencies</span></label><label><input type="radio" autocomplete="off" name="radio_QNZMFMBYPJ" value="answer"> <span>Overseeing storage and resource allocation</span></label><label><input type="radio" autocomplete="off" name="radio_QNZMFMBYPJ" value=""> <span>Providing intuitive graphical interfaces</span></label>
+<div id="radio_EPXTYRPSBJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EPXTYRPSBJ" value="answer"> <span>Executing tasks only when required</span></label><label><input type="radio" autocomplete="off" name="radio_EPXTYRPSBJ" value="answer"> <span>Managing task dependencies</span></label><label><input type="radio" autocomplete="off" name="radio_EPXTYRPSBJ" value="answer"> <span>Overseeing storage and resource allocation</span></label><label><input type="radio" autocomplete="off" name="radio_EPXTYRPSBJ" value=""> <span>Providing intuitive graphical interfaces</span></label>
 </div>
 <p><strong>G.4. Workflow managers can run tasks (different) concurrently if there are no dependencies</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 <p><strong>G.5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
@@ -374,8 +374,48 @@ I - General knowledge
 </section>
 <section id="b.-snakemake" class="level2">
 <h2 class="anchored" data-anchor-id="b.-snakemake">B. Snakemake</h2>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to run snakemake on UCloud
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>First, mount the following two drives, use the <code>setup.sh</code> initialization file and ask for 2 CPUs so we can run things in parallel:</p>
+<ul>
+<li><code>YourNameSurname#xxxx</code>: save your results/files here.<br>
+</li>
+<li><code>hpclab-workshop</code>: this contains the input files, You can read-only access from this directory (no write permissions).</li>
+</ul>
+<p>Next, deactivate <code>hpclab-env</code> and activate <code>snakemake</code> environment.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure no env is active!</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snakemake </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Are you running the exercises locally?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Download the <code>Snakefile</code> and data required for this exercise using the links below if you are running things locally.</p>
+<div style="display: flex; gap: 10px;">
+<p><a href="../develop/scripts/samples_1kgp_test.tsv" download="samples_1kgp_test.tsv"> <button class="btn small-button">Download data input</button> </a></p>
+<p><a href="../develop/scripts/process_1kgp.smk" download="process_1kgp.smk"> <button class="btn small-button">Download Snakefile</button> </a></p>
+</div>
+</div>
+</div>
+<p>We strongly recommend keeping the <a href="https://snakemake.readthedocs.io/en/stable/">Snakemake documentation</a> open for reference and guidance.</p>
 <div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -384,51 +424,39 @@ II - Exploring rule invocation in Snakemake
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
 <div class="webex-check callout-exercise">
-<p>In this exercise, we will explore how rules are invoked in a Snakemake workflow. Download the <code>Snakefile</code> and data required for this exercise using the links below if you are running things locally.</p>
-<div style="display: flex; gap: 10px;">
-<p><a href="../develop/scripts/samples_1kgp_test.tsv" download="samples_1kgp_test.tsv"> <button class="btn small-button">Download data input</button> </a></p>
-<p><a href="../develop/scripts/process_1kgp.smk" download="process_1kgp.smk"> <button class="btn small-button">Download Snakefile</button> </a></p>
-</div>
-<p>Alternatively, start a new job in UCloud, ensuring that you mount both your personal drive and the shared <code>hpclab-workshop</code> shared drive. The snakemake file is located at: <code>/work/HPCLab_workshop/rules/process_1kgp.smk</code>.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Why do we need to mount two drives for the exercises?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>YourNameSurname#xxxx: save your results here or any other file.</li>
-<li>hpclab-workshop: this is where the input files are located; you can read from this directory but do not have write permissions.</li>
-</ul>
-</div>
-</div>
-<p>Now follow these steps and answer the questions:</p>
-<ul>
-<li><p>Open the snakefile, named <code>process_1kgp.smk</code> and try to understand every single line. <strong>If you request Snakemake to generate the file <code>results/all_female.txt</code>, what commands will be executed and in what sequence?</strong></p></li>
-<li><p>Open a terminal and navigate to your personal drive <code>cd /work/YourNameSurname#xxxx</code>. Create a subdir called, for example, <code>hpclab</code> and make it your working directory. You can to save all results here!</p></li>
+<p>In this exercise, we will explore how rules are invoked in a Snakemake workflow. The snakemake file is located at: <code>/work/HPCLab_workshop/rules/process_1kgp.smk</code>. Now follow these steps and answer the questions:</p>
+<ol type="1">
+<li><p>Open the snakefile, named <code>process_1kgp.smk</code> and try to understand every single line. If you request Snakemake to generate the file <code>results/all_female.txt</code>, <strong>what commands will be executed and in what sequence?</strong></p></li>
+<li><p>Open a terminal and navigate to your personal drive <code>cd /work/YourNameSurname#xxxx</code>. Create a project directory called, for example, <code>hpclab</code> and make it your working directory. You should save all results here!</p></li>
 <li><p><strong>Dry-run</strong> the workflow: Check the number of jobs that will be executed.</p>
 <p><strong>S.1. How many jobs will Snakemake run?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;8&quot;]"></p></li>
-<li><p>Run the workflow from your the directory <code>hpclab</code> you have created on your drive. Use the name flag <code>--snakefile &lt;snakefile.smk&gt; --jobs 1</code> | <code>-s &lt;snakefile.smk&gt; -j 1</code>.</p></li>
-<li><p>Verify output: Ensure that the output files are in your working directory.</p></li>
-<li><p>Clean Up: remove all files starting with <code>EUR</code> in your results folder.</p></li>
-<li><p>Rerun the workflow: Execute the Snakefile again.</p>
-<p><strong>S.2. How many jobs did Snakemake run in this last execution?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;3&quot;]"></p></li>
-<li><p>Remove lines 4-6 in the <code>process_1kgp.smk</code>. How else can you run the workflow but to generate instead <code>all_male.txt</code> using only the command-line?</p>
-<pre><code>rule all:
-   input:
-      expand("results/all_{gender}.txt", gender=["female"])</code></pre>
-<p><strong>S.3. Tip: what is missing at the end of the command ( e.g.&nbsp;what should be added to ensure <code>all_male.txt</code> is generated)? <code>snakemake -s process_1kgp.smk -c1</code></strong> <input class="webex-solveme nospaces" size="20" data-answer="[&quot;results/all_male.txt&quot;]"></p></li>
-</ul>
+<li><p>Run the workflow from the directory <code>hpclab</code> (the one you just created on your personal drive). Use the name flag <code>--snakefile &lt;snakefile&gt;.smk --jobs 1</code>, or the abbreviated format <code>-s &lt;snakefile&gt;.smk -j 1</code>.</p></li>
+<li><p>Please verify that the output has been successfully generated and saved in your working directory.</p>
+<p><strong>S.2. Has Snakemake created a subdirectory that didn’t previously exist? What is its name?</strong> <input class="webex-solveme nospaces" size="7" data-answer="[&quot;results&quot;]"></p>
+<p><strong>S.3. How many files with the extension <code>*.tsv</code> can you find in that subdirectory?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;6&quot;]"></p></li>
+<li><p><strong>Dry-run</strong> the workflow again (from <code>hpclab</code>).</p>
+<p><strong>S.4. Would Snakemake run any jobs based on the results of the dry-run?</strong></p>
+<div id="radio_GMBVZUTSKJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GMBVZUTSKJ" value="answer"> <span><strong>No</strong>. There is nothing to be done. All requested files are present and up to date</span></label><label><input type="radio" autocomplete="off" name="radio_GMBVZUTSKJ" value=""> <span><strong>Yes</strong>. Reasons: input files updated by another job (all, combine, split_by_superpop) and output files have to be generated (combine, preprocess, split_by_superpop)</span></label>
+</div></li>
+<li><p>Remove files starting with <code>E</code> in your <code>results</code> folder (“EAS.tsv” and “EUR.tsv”) and <code>all_female.txt</code>. Then, dry-run once more. <strong>S.1. How many jobs will Snakemake run?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;4&quot;]"></p></li>
+<li><p>Copy the snakefile (<code>process_1kgp.smk</code>) to your working directory so that you can edit it! Then, open the file and remove lines 13-15. How else can you run the workflow but to generate instead <code>all_male.txt</code> using only the command-line?</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>process_1kgp.smk</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="process_1kgp.smk"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">13</span> rule all:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">14</span>    input:</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">15</span>       expand<span class="er">(</span><span class="st">"results/all_{gender}.txt"</span><span class="ex">,</span> gender=<span class="pp">[</span><span class="st">"female"</span><span class="pp">]</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>S.5. Tip: what is missing at the end of the command ( e.g.&nbsp;what should be added to ensure <code>all_male.txt</code> is generated)? <code>snakemake -s process_1kgp.smk -c1</code></strong> <input class="webex-solveme nospaces" size="20" data-answer="[&quot;results/all_male.txt&quot;]"></p></li>
+</ol>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -437,20 +465,31 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dry run </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> process_1kgp.smk <span class="at">-n</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># run the workflow </span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> process_1kgp.smk-c1 <span class="op">&lt;</span>name_rule<span class="kw">|</span><span class="ex">name_output</span><span class="op">&gt;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># verify output </span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="op">&lt;</span>name_output<span class="op">&gt;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># remove file belonging to european individuals </span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> results/EUR.tsv results/all_female.txt</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># rerun again </span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> process_1kgp.smk <span class="at">-c1</span> <span class="op">&lt;</span>name_rule<span class="kw">|</span><span class="ex">name_output</span><span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="1">
+<li>Tasks will be executed in this order preprocess (1), split_by_superpop (5) and combine (1).</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create subdir </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /work/AlbaRefoyoMartínez#0753/</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hpclab</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hpclab</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. dry run </span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> /work/HPCLab_workshop/rules/process_1kgp.smk <span class="at">-n</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. run the workflow </span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> HPCLab_workshop/rules/process_1kgp.smk <span class="at">-c2</span> </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. verify output </span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> results/<span class="pp">*</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. dry run </span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> /work/HPCLab_workshop/rules/process_1kgp.smk <span class="at">-n</span> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. remove file starting with E  and the all_female.txt</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> results/E<span class="pp">*</span>.tsv results/all_female.txt</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. make a copy of the snakefile and remove the lines </span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /work/HPCLab_workshop/rules/process_1kgp.smk .</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. S5. rerun again with the &lt;name_output&gt;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> process_1kgp.smk <span class="at">-c1</span> results/all_male.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
