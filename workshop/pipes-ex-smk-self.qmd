@@ -16,6 +16,25 @@ style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
 
 ```
 
+:::{.callout-warning}
+# How to run snakemake on UCloud
+
+First, mount the following two drives, use the `setup.sh` initialization file and ask for 2 CPUs so we can run things in parallel: 
+
+- `YourNameSurname#xxxx`: save your results/files here.  
+- `hpclab-workshop`: this contains the input files, You can read-only access from this directory (no write permissions). 
+
+Next, deactivate `hpclab-env` and activate `snakemake` environment. 
+
+```{.bash}
+conda deactivate 
+# make sure no env is active!
+conda activate snakemake 
+```
+
+Finally, navigate to your personal drive and use the project directory you created yesterday to save all the output files from the exercises!
+:::
+
 It's time to create your own pipeline and experiment with its different components!
 
 ## A. Snakemake 
@@ -23,7 +42,69 @@ It's time to create your own pipeline and experiment with its different componen
 ::: {.webex-check .callout-exercise}
 # I - Build your pipeline from scratch 
 
-- incorporate wildcards (several)
+Let's define a very simple workflow of one task. This task will concatenate two input files. The name of this rule will be `concat` and you will save the code as a file called `step1_wf.smk`. **Do not use wildcards yet**. 
+
+```{.bash}
+echo "sample1" > file1.txt
+echo "sample2" > file2.txt
+echo "sample3" > file3.txt
+
+# This is what the pipeline's task is:
+cat file1.txt file2.txt file3.txt > concatenated.txt
+```
+
+:::{.callout-hint}
+# Solution 
+```{.bash filename="step1_wf.smk"}
+rule concat:
+    input:
+        "file1.txt",
+        "file2.txt",
+        "file3.txt"
+    output:
+        "data1/concatenated.txt"
+    shell:
+        "cat {input} > {output}"
+```
+:::
+
+Snakemake enables workflow customization by allowing you to define variables that can adjust how your rules behave. For instance, you can modify input files or change tool settings dynamically when running the workflow, providing flexibility and adaptability.
+
+#### Wildcards 
+
+Wildcards are dynamic placeholders in rule definitions that allow for flexible input or output file names. You define them in your rules, and their actual values are determined when the workflow is executed, enabling versatile file handling across different workflow runs.
+
+Modify the previous rule so that you can run the workflow for different datasets and samples. 
+
+
+:::{.callout-hint}
+# Solution 
+```{.bash filename="step1_wf.smk"}
+
+datasets = ["data1"]
+samples = ["sample1", "sample2", "sample3"]
+
+rule all:
+    input:
+        expand("results/{sample}/output.txt", sample=samples)
+
+rule process_sample:
+    input:
+        "data/{sample}.txt"
+    output:
+        "results/{sample}/output.txt"
+    params:
+        parameter1=config.get("parameter1", 5),
+        parameter2=config.get("parameter2", "abc")
+    shell:
+        "process_data.py {input} {params.parameter1} {params.parameter2} > {output}"
+```
+:::
+
+#### Params 
+
+#### Config files 
+
 - config file for params and the path to dataset? 
 - params software 
 - log out // benchmark 

@@ -9,9 +9,9 @@
 .webex-check {}
 
 .webex-box {
-  border: 2px solid var(--highlight);
+  border: 3px solid var(--highlight);
   padding: 0.5em 0.5em;
-  margin: 1em 1em;
+  margin: 2em 2em;
   border-radius: .5em;
   background-color: rgba(127, 127, 127, 0.05);
 }
@@ -26,7 +26,7 @@
 
 .unchecked .webex-incorrect,
 .unchecked .webex-correct {
-  border: 2px dotted grey !important;
+  border: 2px dotted rgb(83, 82, 82) !important;
   background-color: white !important;
 }
 
@@ -34,7 +34,7 @@
 .webex-select, input.webex-solveme,
 .unchecked .webex-radiogroup label.webex-incorrect,
 .unchecked .webex-radiogroup label.webex-correct{
-    border: 2px dotted grey;
+    border: 2px dotted rgb(64, 64, 64);
     background-color: white;
     border-radius: 0.25em;
 }
@@ -76,20 +76,22 @@ input.webex-solveme.webex-correct,
 
 /* styles for hidden solutions */
 .webex-solution {
-    height: 2.5em;
+    height: 5em;
     overflow-y: hidden;
+    border: 3px;
+    border-radius: 1em;
     padding: 0.5em;
     margin-bottom: 10px;
 }
 .webex-solution.open {
     height: auto;
-    border: 2px solid var(--highlight);
+    border: 3px solid var(--highlight);
     border-radius: 5px;
 }
 .webex-solution button, .webex-check-button {
-    height: 2.5em;
+    height: 3em;
     margin-bottom: 1.75em;
-    border-radius: 0.5em;
+    border-radius: 1em;
     background-color: var(--highlight);
     color: white;
     padding: 1 1em;
@@ -104,7 +106,7 @@ input.webex-solveme.webex-correct,
   padding-left: 0.5em;
   font-weight: 400;
   display: block;
-  border: 2px solid rgba(255, 255, 255, 0);
+  border: 3px solid rgba(255, 255, 255, 0);
   background-color: inherit;
   border-radius: 0.25em;
 }

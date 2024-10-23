@@ -52,22 +52,25 @@ For these exercises, make sure you have submitted a job to UCloud (resources set
 
 Type the answers with no white-spaces!
 
-**C.1. What is the version of conda** `r fitb(answer='24.7.1')`
+**C.1. What is the version of conda** `r fitb(answer='24.9.2')`
 
-**C.2. List all environments available to you. What is the name of the active environment** `r fitb(answer='hpclab-env')`
+**C.2. List all environments available to you. What is the name of the active environment** `r fitb(answer='base')`
 
-**C.3. What is the version of the package `cookiecutter`** `r fitb(answer='2.6.0')`
+**C.3. Active `hpclab-env` environment**
 
-**C.4. How many packages are available? ** (True or False) `r fitb(answer='118')`
+**C.4. What is the version of the package `cookiecutter`** (use a conda command) `r fitb(answer='2.6.0')`
 
-**C.5. Export the environment specifications and save it to your personal drive (e.g.`<yourname-hpclab>`.yml)**
+**C.5. How many packages are available? ** `r fitb(answer='72')`
 
-conda search for package? maybe in which one will be avail. 
+**C.6. Export the environment specifications and save it to your personal drive (e.g.`<yourname-hpclab>`.yml)**
+
+**C.7. Deactivate the environment**
 
 :::{.callout-hint}
 ```{.bash}
 conda info
-conda env list
+conda env list ; conda info --envs
+conda activate 
 conda list cookiecutter
 conda env export 
 ```
@@ -75,17 +78,27 @@ conda env export
 
 :::{.callout-hint}
 # Solution
-C.1. `conda info`, v=24.7.1
+
+C.1. `conda info`, v=24.9.2
+
 C.2. `conda env list`, the active one will be indicated with an asterisk (*).
-C.3. `conda list cookiecutter`, v=2.6.0
+
+C.3. `conda activate hpclab-env`
+
+C.4. `conda list cookiecutter`, v=2.6.0
+
 ```.bash
 # packages in environment at /work/HPCLab_workshop/miniconda3/envs/hpclab-env:
 #
 # Name                    Version                   Build  Channel
 cookiecutter              2.6.0              pyhca7485f_0    conda-forge
 ```
-C.3. `conda list |grep -v '#' | wc -l`, 118 packages 
-C.4. conda env export --from-history > environment.yml
+C.5. `conda list |grep -v '#' | wc -l`, 72 packages 
+
+C.6. `conda env export --from-history > <yourname-hpclab>.yml`
+
+C.7. `conda deactivate`
+
 :::
 
 :::
@@ -93,23 +106,31 @@ C.4. conda env export --from-history > environment.yml
 :::{.callout-tip collapse="true" appearance="simple"}
 # II - Bonus exercise 
 
-Inspect the `/work/HPCLab_workshop/miniconda3/envs/hpclab-env/lib/python3.12/site-packages/numpy/version.py`and get the version and the full revision id (git_version).
+Inspect `numpy` version installed in the `hpclab-env`. Get the version and the full revision id (git_version). Hint: you can find this information in the `version.py` file! Check the installed libraries (`lib`) and look inside python packages. 
 
-- **Bonus.1. Numpy version** `r fitb(answer='2.1.1')`
-- **Bonus.2. Full ID version** `r fitb(answer='48606ab22bfdb0e9d7ec4ed5eef984b873b7796d')`
+```{.bash}
+/work/HPCLab_workshop/miniconda3/envs/hpclab-env/lib/python3.12/site-packages/numpy/version.py
+```
+
+- **Bonus.1. Numpy version** `r fitb(answer='1.26.4')`
+- **Bonus.2. Full ID version** `r fitb(answer='9815c16f449e12915ef35a8255329ba26dacd5c0')`
 
 :::{.callout-solution}
-1. `cat /work/HPCLab_workshop/miniconda3/envs/hpclab-env/lib/python3.12/site-packages/numpy/version.py`
+1.
+
+```{.bash}
+cat /work/HPCLab_workshop/miniconda3/envs/hpclab-env/lib/python3.12/site-packages/numpy/version.py
+```
 
 ```.bash
 """
 Module to expose more detailed version info for the installed `numpy`
 """
-version = "2.1.1"
+version = "1.26.4"
 __version__ = version
 full_version = version
 
-git_revision = "48606ab22bfdb0e9d7ec4ed5eef984b873b7796d"
+git_revision = "9815c16f449e12915ef35a8255329ba26dacd5c0"
 release = 'dev' not in version and '+' not in version
 short_version = version.split("+")[0]
 ```
@@ -119,7 +140,7 @@ short_version = version.split("+")[0]
 ::: {.webex-check .callout-exercise}
 # III - Build your conda environment
 
-Let's prepare to build our own environment. First, make sure to deactivate the `hpclab-env` environment. Next, create a new directory by running `mkdir envs` in your mounted personal drive (e.g. AlbaRefoyoMartínez#0753). This directory will be used to save your environments. 
+Let's prepare to build our own environment. First, make sure to deactivate the `hpclab-env` environment (if you haven't yet). Next, create a new directory by running `mkdir envs` in your mounted personal drive (e.g. AlbaRefoyoMartínez#0753). This directory will be used to save your environments. 
 
   ```{.bash .code-overflow-wrap}
   # Deactivate hpclab-env 
@@ -134,9 +155,9 @@ Is the full path of your envs directory `/work/<NameSurname#xxxx>/envs`? `r torf
 
 Since Miniconda is already pre-installed, you’re ready to create your first environment. Just follow these steps:
 
-1. Create a new environment using `--prefix PATH` (/work/envs/<name-env>) and Proceed yes (or enter).
+1. Create a new environment using `--prefix PATH` (for example, `/work/<YourNameSurname#xxxx>/envs/<name-env>`) and Proceed yes (`y` or enter).
 N.B you can either name or prefix your environment. We will be using the prefix as miniconda is installed in a directory where you do not have writing privileges. 
-2. Check the available environments. How many environments do you see? `r fitb(answer='3')`
+2. Check the available environments. How many environments do you see? `r fitb(answer='4')`
 3. Activate the environment 
 4. Check which python executable is being used (Hint: `which python`)? Does this executable belong to your conda environment?? `r torf(FALSE)`
 5. Look for snakemake in  https://anaconda.org/ and install it in your env. This might take some time! 
@@ -193,32 +214,39 @@ conda env export > env.yml
 ::: {.webex-check .callout-exercise}
 # IV - Adapt a colleague's Conda environment to fit your needs.
 
-If you are running this exercise locally, download the environment yaml file first: 
+If you are running this exercise locally, download the environment YAML file first: 
 
 <div style="display: flex; gap: 10px;">
-  <a href="./data/test-env.yml" download="test-env.ymlp">
+  <a href="./data/test-env.yml" download="test-env.yml">
     <button class="btn small-button">Download environment file</button>
   </a>
 </div>
 
-Create a Conda environment using the provided 'test-env.yml' file. Please, use the flag `--prefix` for this purpose. After the environment is set up:
-
-- Verify the installed packages (you will also see other dependencies installed)
-- Remove the 'cookiecutter' package
-- Update Python to the latest compatible version. Which version is that? `r fitb(answer='3.7.16')`
-- Try to install the latest numpy version using `conda install numpy=2.1`, could you successfully install it? `r torf(FALSE)`  
-- Once you are done, delete the environment. 
+1. Create a Conda environment using the provided 'test-env.yml' file (`/work/HPCLab_workshop/data/test-env.yml`). Please, use the flag `--prefix` for this purpose. 
+2. Once the environment is set up, activate it (do not forget to deactivate active environments)
+3. Verify the installed packages (you will also see other dependencies installed). Hint: check the `test-env.yml` to see which dependencies are included in this conda environment. 
+4. Uninstall the 'cookiecutter' package from your environment. Then, check again the list of all installed packages. Did you remove cookiecutter successfully? `r torf(TRUE)`
+5. Update Python to the latest compatible version. Which version is that? `r fitb(answer='3.7.16')`
+6. Try to install the latest numpy version using `conda install numpy=2.1`, could you successfully install it? `r torf(FALSE)`  
+7. Once you are done, delete the environment. 
 
 :::{.callout-hint}
 # Solution 
 
+The solution includes commands with my paths. Please modify them accordingly with the name of your personal drive.
+
 ```{.bash}
-conda env create --file test-env.yml --prefix /work/AlbaRefoyoMartínez#0753/envs/test-env
-conda activate /work/AlbaRefoyoMartínez#0753/envs/test-env 
+# 1. 
+conda env create --file /work/HPCLab_workshop/data/test-env.yml --prefix /work/AlbaRefoyoMartínez#0753/envs/test-env
+# 2. 
+conda deactivate; conda activate /work/AlbaRefoyoMartínez#0753/envs/test-env 
+# 3.
 conda list 
-conda remove cookiecutter
-conda list 
+# 4. 
+conda remove cookiecutter ; conda list 
+# 5. 
 conda update python 
+# 6. 
 conda env remove --prefix /work/AlbaRefoyoMartínez#0753/envs/test-env 
 ```
 :::
@@ -249,7 +277,11 @@ In this exercise, we will utilize the `fastmixture` Docker image available on [D
 1. Pull `fastmixture` image from [DockerHUb](https://hub.docker.com/r/albarema/fastmixture). Software GitHub account [here](https://github.com/Rosemeis/fastmixture). 
 2. Download and unzip the toy data 
 3. What is the command you need to run container? Do not forget to mount the data (use the flag `-v /path/toy:/path/mnt`). Before executing the software, verify that the data has been correctly mounted (e.g. running the `ls` command inside the container)
-4. Run fastmixture software, the command to use is: `fastmixture --bfile <input.prefix> --K 3 --threads 4 --seed 1 --out <output.prefix>`. We will set K to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both `--bfile` and `--out`require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named `toy.data.*`; therefore, use `--bfile toy.data`.
+4. Run fastmixture software using the command below. We will set K to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both `--bfile` and `--out`require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named `toy.data.*`; therefore, use `--bfile toy.data`.
+
+```{.bash}
+fastmixture --bfile <input.prefix> --K 3 --threads 4 --seed 1 --out <output.prefix>
+```
 5. Do you have the results in the folder on your local system? You should look for files named `toy.fast.K3.s1.{ext}`, where `{ext}=["Q", "P", "log"]`.
 
 :::{.callout-hint}
@@ -384,8 +416,9 @@ Jupyter typically refuses to run as root or accept network connections by defaul
 For broader usability and security, it is advisable to create a non-root user (e.g. jovyan) within the Docker image by adding user setup commands to the Dockerfile (see below). This approach makes the image more user-friendly and avoids file ownership conflicts.
 
 ```{.bash filename="Dockerfile2"}
-
+##
 ## ----- ADD CONTENT FROM Dockerfile HERE ----- 
+## 
 
 # Creating a group & user
 RUN addgroup --gid 1000 user && \
