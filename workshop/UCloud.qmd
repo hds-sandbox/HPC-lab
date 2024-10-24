@@ -22,7 +22,7 @@ If you haven't joined our workspace yet, please click below:
 &nbsp;
 
  <p align="center">
-  <a href="https://cloud.sdu.dk/app/projects/invite/b1bc6434-8340-48cd-8674-18a6b13eabcc" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+  <a href="https://cloud.sdu.dk/app/projects/invite/d68169ad-6bb1-422d-b0df-d21e2751f8fb" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
     Invite link to
     UCloud workspace
   </a>
