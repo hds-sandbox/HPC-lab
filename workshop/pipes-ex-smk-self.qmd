@@ -16,15 +16,32 @@ style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
 
 ```
 
-:::{.callout-warning}
-# How to run snakemake on UCloud
+::: {.hello-exercise .alt-background}
+:::{.content-block}
 
-First, mount the following two drives, use the `setup.sh` initialization file and ask for 2 CPUs so we can run things in parallel: 
+:::{.hello-exercise-banner}
+
+<ul class="nav nav-pills" id="exercise-guide" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="ucloud-tab" data-bs-toggle="tab" data-bs-target="#ucloud" type="button" role="tab" aria-controls="ucloud" aria-selected="true">UCloud</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="locally-tab" data-bs-toggle="tab" data-bs-target="#locally" type="button" role="tab" aria-controls="locally" aria-selected="false">Local Setup</button>
+  </li>
+</ul>
+:::
+
+
+<div class="tab-content" id="hello-exercise-tabcontent">
+
+<div class="tab-pane fade  show active" id="ucloud" role="tabpanel" aria-labelledby="ucloud-tab">
+
+Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the `setup.sh` initialization file and ask for 2 CPUs so we can run things in parallel: 
 
 - `YourNameSurname#xxxx`: save your results/files here.  
-- `hpclab-workshop`: this contains the input files, You can read-only access from this directory (no write permissions). 
+- `hpclab-workshop`: this contains input files and scripts. You can read-only access from this directory (no write permissions). 
 
-Next, deactivate `hpclab-env` and activate `snakemake` environment. 
+Next, activate `snakemake` environment. 
 
 ```{.bash}
 conda deactivate 
@@ -33,7 +50,20 @@ conda activate snakemake
 ```
 
 Finally, navigate to your personal drive and use the project directory you created yesterday to save all the output files from the exercises!
+
+</div>
+
+<div class="tab-pane fade" id="locally" role="tabpanel" aria-labelledby="locally-tab">
+
+You can choose to run things locally or on an HPC you have access to. 
+
+</div>
+</div>
+
 :::
+:::
+
+
 
 It's time to create your own pipeline and experiment with its different components!
 
