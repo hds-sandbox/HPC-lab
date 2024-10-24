@@ -15,14 +15,14 @@ Log onto UCloud at the address http://cloud.sdu.dk using university credentials.
 
 ### Step 2
 
-When you are logged in, choose the project from the dashboard (top-right side) from which you would like to utilize compute resources. Every user has their personal workspace (`My workspace`). You can also provision your own project (check with your local DeiC office if you’re new to UCloud) or you can be invited to someone else’s project. If you’ve previously selected a project, it will be launched by default. If it’s your first time, you’ll be in your workspace. 
+When logged in, choose the project from the dashboard (top-right side) from which you would like to utilize compute resources. Every user has their personal workspace (`My workspace`). You can also provision your own project (check with your local DeiC office if you’re new to UCloud) or you can be invited to someone else’s project. If you’ve previously selected a project, it will be launched by default. If it’s your first time, you’ll be in your workspace. 
 
 If you haven't joined our workspace yet, please click below:
 
 &nbsp;
 
  <p align="center">
-  <a href="https://cloud.sdu.dk/app/projects/invite/b1bc6434-8340-48cd-8674-18a6b13eabcc" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+  <a href="https://cloud.sdu.dk/app/projects/invite/d68169ad-6bb1-422d-b0df-d21e2751f8fb" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
     Invite link to
     UCloud workspace
   </a>
@@ -41,12 +41,12 @@ Search for the `Coder` application (you might be familiar with its original name
 
 Click on the app button to get into the settings window. You will have to configure the settings as shown below before submitting a job. Follow these steps: 
 
-1. Name and version of the app to run (`Coder - 1.92.2`)
-2. Job settings: enter a job name (descriptive of the task), select the time (in hours) we want to use a node for (it can be modified afterwards!) and the machine type (selecting a 1 CPU standard node with 6GB memory)
+1. Name and version of the app to run (`Coder - 1.93.1`)
+2. Job settings: enter a job name (descriptive of the task), select the time (in hours) we want to use a node for (it can be modified afterward!), and the machine type (selecting a 1 CPU standard node with 6GB memory)
 3. Add folders to access while in this job (select your own drive!)
-  - You need our access to our shared folder so that you can get the correct software environment
+  - You need access to our shared folder so that you can get the correct software environment and other material for the exercises
   - You need to select your own drive, to save any output from the exercise! You won't have writing permissions on our shared drive. 
-4. Choose the file `shared/HPCLab_workshop/setup.sh`. The initialization file,`setup.sh`, is located on a different drive than your own.
+4. Choose the file `shared/HPCLab_workshop/setup.sh`. The initialization file,`setup.sh`, is on a different drive than yours.
 5. Click on the Submit button (and wait!)
 
 ![Job submission](./images/step2.png)
@@ -60,8 +60,8 @@ Click on the app button to get into the settings window. You will have to config
 :::{.callout-important}
 # Why is it necessary to mount two drives for the exercises?
 
-- YourNameSurname#xxxx: save your results here or any other file. 
-- hpclab-workshop: this is where the input files are located; you can read from this directory but do not have write permissions. 
+- `YourNameSurname#xxxx`: save your results here or any other file. 
+- `HPCLab_workshop`: this is where the input files are located; you can read from this directory but do not have write permissions. 
 :::
 
 :::{.callout-tip}
@@ -70,7 +70,7 @@ Click on the app button to get into the settings window. You will have to config
 - User-friendly interface​
 - Support multiple languages (flexibility)​ and notebooks! ​
 - Integrated package management (seamlessly)​
-- Supported version control integration  and formatters tools​
+- Supported version control integration and formatter tools​
 - File management and navigation ​
 - Debugging tools (access to command-line tools)​
 - Terminal integration ​
