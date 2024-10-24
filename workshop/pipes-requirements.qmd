@@ -13,18 +13,18 @@ css: ./web.css
 ## Course requirements 
 
 :::{.callout-warning title="Required preparation"}
-You are expected to complete the required setup, including tool installation and account creation. 
+You are expected to complete the required setup, including tool installation (Docker) and account creation (UCloud). 
 
-- [Singularity](https://docs.sylabs.io/guides/3.0/user-guide/installation.html#)
 - [Docker](https://www.docker.com/products/docker-desktop/) - click on `Download Docker Desktop`
 
 As for other software, we will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. **Please read [Using UCloud for exercises](#using-ucloud-for-exercises) carefully**. 
 
-**If you prefer to run the exercises on your personal laptop or a different server, please ensure you have the following installed:**
+**If you prefer to run the exercises on your personal laptop or a different server, please ensure you have the following software installed:**
 
 - [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) - miniconda or miniforge recommended. 
 - [snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) use conda for this!
 - [nextflow](https://www.nextflow.io/docs/latest/install.html)
+- [Apptainer](https://apptainer.org/docs/admin/latest/installation.html), formerly known as [Singularity](https://docs.sylabs.io/guides/3.0/user-guide/installation.html#).  
 
 :::
 
@@ -68,6 +68,11 @@ Follow the instructions below if you have an account at a Danish university. You
 | 10:30	|	Software mgmt I | 14:30	|	Computations mgmt I |
 | 11:15	|	Software mgmt II  16:00	|	Discussions & Wrap-up |
 
+::: {.hero-buttons}
+[Environments exercises](./pipes-ex-envs.qmd){.btn-action .btn .btn-success .btn-lg role="button"}
+[Snakemake I exercises](./pipes-ex-smk.qmd){.btn-action-smk .btn .btn-info .btn-lg role="button"}
+::: 
+
 ### Day 2
 
 | Time | Activity | Time | Activity |
@@ -78,6 +83,10 @@ Follow the instructions below if you have an account at a Danish university. You
 | 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
 | 10:30	|	Exercise - implementation | 14:30	|	Build your own pipeline |
 | 11:15	|	Computations mgmt III | 16:00	|	Discussions & Wrap-up |
+
+::: {.hero-buttons}
+[Snakemake II exercises](./pipes-ex-smk-self.qmd){.btn-action-smk .btn-action .btn .btn-success .btn-lg role="button"}
+::: 
 
 ## Discussion and feedback
 

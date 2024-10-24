@@ -77,9 +77,9 @@ cat("**G.3. What are the key features of workflow manager in computational resea
 First, mount the following two drives, use the `setup.sh` initialization file and ask for 2 CPUs so we can run things in parallel: 
 
 - `YourNameSurname#xxxx`: save your results/files here.  
-- `hpclab-workshop`: this contains the input files, You can read-only access from this directory (no write permissions). 
+- `hpclab-workshop`: this contains input files and scripts. You can read-only access from this directory (no write permissions). 
 
-Next, deactivate `hpclab-env` and activate `snakemake` environment. 
+Next, activate `snakemake` environment. 
 
 ```{.bash}
 conda deactivate 
