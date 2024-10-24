@@ -334,34 +334,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     background-color: var(--highlight);
   }
 </style>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div class="hello-exercise alt-background">
+<div class="content-block">
+<div class="hello-exercise-banner">
+<ul class="nav nav-pills" id="exercise-guide" role="tablist">
+<li class="nav-item" role="presentation">
+<button class="nav-link active" id="ucloud-tab" data-bs-toggle="tab" data-bs-target="#ucloud" type="button" role="tab" aria-controls="ucloud" aria-selected="true">
+UCloud
+</button>
+</li>
+<li class="nav-item" role="presentation">
+<button class="nav-link" id="locally-tab" data-bs-toggle="tab" data-bs-target="#locally" type="button" role="tab" aria-controls="locally" aria-selected="false">
+Local Setup
+</button>
+</li>
+</ul>
 </div>
-<div class="callout-title-container flex-fill">
-How to run snakemake on UCloud
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>First, mount the following two drives, use the <code>setup.sh</code> initialization file and ask for 2 CPUs so we can run things in parallel:</p>
+<div id="hello-exercise-tabcontent" class="tab-content">
+<div id="ucloud" class="tab-pane fade show active" role="tabpanel" aria-labelledby="ucloud-tab">
+<p>Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the <code>setup.sh</code> initialization file and ask for 2 CPUs so we can run things in parallel:</p>
 <ul>
 <li><code>YourNameSurname#xxxx</code>: save your results/files here.<br>
 </li>
-<li><code>hpclab-workshop</code>: this contains the input files, You can read-only access from this directory (no write permissions).</li>
+<li><code>hpclab-workshop</code>: this contains input files and scripts. You can read-only access from this directory (no write permissions).</li>
 </ul>
-<p>Next, deactivate <code>hpclab-env</code> and activate <code>snakemake</code> environment.</p>
+<p>Next, activate <code>snakemake</code> environment.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure no env is active!</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snakemake </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Finally, navigate to your personal drive and use the project directory you created yesterday to save all the output files from the exercises!</p>
+</div>
+<div id="locally" class="tab-pane fade" role="tabpanel" aria-labelledby="locally-tab">
+<p>You can choose to run things locally or on an HPC you have access to.</p>
+</div>
+</div>
 </div>
 </div>
 <p>It’s time to create your own pipeline and experiment with its different components!</p>
 <section id="a.-snakemake" class="level2">
 <h2 class="anchored" data-anchor-id="a.-snakemake">A. Snakemake</h2>
 <div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -370,7 +383,7 @@ I - Build your pipeline from scratch
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
 <div class="webex-check callout-exercise">
@@ -382,7 +395,7 @@ I - Build your pipeline from scratch
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># This is what the pipeline's task is:</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> file1.txt file2.txt file3.txt <span class="op">&gt;</span> concatenated.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -391,7 +404,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
@@ -420,7 +433,7 @@ Solution
 <p>Wildcards are dynamic placeholders in rule definitions that allow for flexible input or output file names. You define them in your rules, and their actual values are determined when the workflow is executed, enabling versatile file handling across different workflow runs.</p>
 <p>Modify the previous rule so that you can run the workflow for different datasets and samples.</p>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -429,7 +442,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
