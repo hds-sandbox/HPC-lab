@@ -1,6 +1,9 @@
 ---
 format: 
-  html
+    html:
+      toc: true
+      toc-location: left
+      page-layout: full
 css: ./web.css
 ---
 

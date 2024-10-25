@@ -148,5 +148,11 @@
   },
   "workshop/pipes-ex-smk-self.qmd": {
     "pipes-ex-smk-self.html": "0e2f5e6e"
+  },
+  "workshop/pipes_ex-smk-fast.qmd": {
+    "pipes_ex-smk-fast.html": "206f1294"
+  },
+  "workshop/pipes-ex-smk-fast.qmd": {
+    "pipes-ex-smk-fast.html": "249c1da3"
   }
 }
