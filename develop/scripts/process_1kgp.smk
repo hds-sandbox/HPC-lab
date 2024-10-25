@@ -12,35 +12,45 @@ import pandas as pd
 
 rule all:
     input:
-        expand("results/all_{gender}.txt", gender=["female"])
+        expand("results/all_{sex}.txt", sex=["female"])
 
 rule preprocess:
+    """
+    Remove missing from metadata
+    """
     input:
-        "samples_1kgp.tsv"
+        "/work/HPCLab_workshop/data/samples_1kgp.tsv"
     output:
-        tsv="samples_1kgp_cleaned.tsv"
+        tsv="results/samples_1kgp_cleaned.tsv"
     run:
         df = pd.read_csv(input[0], sep='\t') # Read tsv
         df_cleaned = df.dropna() # remove missing 
         df_cleaned.to_csv(output[0], sep='\t', index=False) # save to file
 
 rule split_by_superpop:
+    """
+    Filter the metadata by superpopulation assignments
+    """
     input:
-        "samples_1kgp_cleaned.tsv"
+        "results/samples_1kgp_cleaned.tsv"
     output:
         "results/{superpop}.tsv"
+    threads: 1
     run:
         df = pd.read_csv(input[0], sep='\t') # Read tsv
         df_superpop = df[df['super_pop'] == wildcards.superpop] # filter by superpop
         df_superpop.to_csv(output[0], sep='\t', index=False) # save to file
 
 rule combine:
+    """
+    Concatenate files based on sex
+    """
     input:
-        expand("results/{superpop}.tsv", superpop=["EUR", "EAS", "AFR", "AMR", "SAS"], allow_missing=True)
+        expand("results/{superpop}.tsv", superpop=["EUR", "EAS", "AFR", "AMR", "SAS"])
     output:
-        txt="results/all_{gender}.txt"
+        txt="results/all_{sex}.txt"
     shell:
         """
-        cat {input} | awk -F'\t' '$4 == "{wildcards.gender}"' > {output.txt}
+        cat {input} | awk -F'\t' '$4 == "{wildcards.sex}"' > {output.txt}
         """
         

@@ -1,7 +1,10 @@
 ---
 title: Day 1 - Part 1
 format: 
-  html: default
+    html:
+      toc: true
+      toc-location: left
+      page-layout: full
 summary: intro to workflows
 css: ./web.css
 ---

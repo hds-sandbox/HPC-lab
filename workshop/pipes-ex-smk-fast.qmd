@@ -1,0 +1,45 @@
+---
+title: Day 2 - Part 4 
+format: 
+    html:
+      toc: true
+      toc-location: left
+      page-layout: full
+summary: workflows advance 
+css: ./web.css
+---
+
+```{r, echo = FALSE, results='asis'}
+library(webexercises)
+
+knitr::opts_chunk$set(echo = FALSE)
+
+# Uncomment to change widget colours:
+style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
+
+```
+
+
+::: {.webex-check .callout-exercise}
+# II - Admixture analysis pipeline
+
+Let's run the software `fastmixture` as a snakemake pipeline by converting the following bash pipeline.
+
+#### Resources 
+Specifying the number of used threads
+- fastmixture: 4 cores 
+- plotting results: 1 core 
+- resources related to size of the file 
+
+The number of K, will be determined in the config file so that the software can be used with other ks. 
+
+#### Environment integration 
+- conda env 
+
+#### Set log and benchmark 
+
+- Add a `log` directive to every rule. It is best practice to store all log files in a subdirectory `logs/`, prefixed by the rule or tool name.
+- Add a `benchmark` directive as well. Applying the same best practice. 
+
+:::
+

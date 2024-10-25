@@ -73,6 +73,7 @@ website:
             - section: "Day 2"
               contents:             
                 - workshop/pipes-ex-smk-self.qmd
+                - workshop/pipes-ex-smk-fast.qmd
         - section: "HPC Launch"
           contents: 
             - workshop/launch-requirements.qmd

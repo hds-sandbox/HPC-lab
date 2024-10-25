@@ -1,7 +1,10 @@
 ---
 title: Day 1 - Part 2 
 format: 
-  html: default
+    html:
+      toc: true
+      toc-location: left
+      page-layout: full
 summary: intro to workflows
 css: ./web.css
 ---
@@ -71,6 +74,8 @@ cat("**G.3. What are the key features of workflow manager in computational resea
 
 ## B. Snakemake
 
+In this section, we will be working with a tabulated metadata file, `samples_1kgp_test`, which contains information about the samples from the [1000 Genoems Project](https://www.internationalgenome.org/). Each row represents a sample, and the columns contain various attributes for that sample (ID, population, super population and sex). The file is designed to be simple and small, making it easy to work with and manipulate across tasks. However, the specifics of the data aren’t the primary focus.
+
 :::{.callout-warning}
 # How to run snakemake on UCloud
 
@@ -93,7 +98,7 @@ conda activate snakemake
 Download the `Snakefile` and data required for this exercise using the links below if you are running things locally. 
 
 <div style="display: flex; gap: 10px;">
-  <a href="../develop/scripts/samples_1kgp_test.tsv" download="samples_1kgp_test.tsv">
+  <a href="../develop/scripts/samples_1kgp_test.tsv" download="samples_1kgp.tsv">
     <button class="btn small-button">Download data input</button>
   </a>
 
@@ -143,7 +148,7 @@ In this exercise, we will explore how rules are invoked in a Snakemake workflow.
    ```{.bash filename="process_1kgp.smk"} 
    13 rule all:
    14    input:
-   15       expand("results/all_{gender}.txt", gender=["female"])
+   15       expand("results/all_{sex}.txt", sex=["female"])
    ```
    
    **S.5. Tip: what is missing at the end of the command ( e.g. what should be added to ensure `all_male.txt` is generated)? `snakemake -s process_1kgp.smk -c1`** `r fitb("results/all_male.txt")`
