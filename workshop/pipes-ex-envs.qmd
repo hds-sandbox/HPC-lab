@@ -282,6 +282,13 @@ In this exercise, we will utilize the `fastmixture` Docker image available on [D
 3. What is the command you need to run container? Do not forget to mount the data (use the flag `-v /path/toy:/path/mnt`). Before executing the software, verify that the data has been correctly mounted (e.g. running the `ls` command inside the container)
 4. Run fastmixture software using the command below. We will set K to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both `--bfile` and `--out`require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named `toy.data.*`; therefore, use `--bfile toy.data`.
 
+In `fastmixture`, the main arguments used in this exercise are:
+
+- `--K`: Specifies the number of ancestral components, representing the sources in the mixture model.
+- `--seed`: Sets the random seed to ensure reproducibility of the analysis across different runs.
+- `--bfile`: prefix for PLINK files (.bed, .bim, .fam)
+- `--out`: Prefix output name
+
 ```{.bash}
 fastmixture --bfile <input.prefix> --K 3 --threads 4 --seed 1 --out <output.prefix>
 ```

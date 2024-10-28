@@ -1,0 +1,9 @@
+name: snakemake 
+channels:
+  - defaults
+  - conda-forge
+  - bioconda
+dependencies:
+  - flask
+  - snakemake==8.24.0
+  - yappi

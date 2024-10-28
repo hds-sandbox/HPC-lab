@@ -1,5 +1,4 @@
 ---
-title: Day 2 - Part 3 
 format: 
   html: 
     toc: true
@@ -60,13 +59,20 @@ Finally, navigate to your personal drive and use the project directory you creat
 
 You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.txt) for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment and download the data.
 
+  <a href="./data/snakemake.yml" download="snakemake.yml">
+    <button class="btn small-button">Download environment file</button>
+  </a>
+    <a href="./data/samples_EB.tsv" download="samples_EB.tsv">
+    <button class="btn small-button">Download data</button>
+  </a>
 </div>
+
 </div>
 
 :::
 :::
 
-
+# Day 2 - Part 3 
 
 It's time to create your own pipeline and experiment with its different components! 
 

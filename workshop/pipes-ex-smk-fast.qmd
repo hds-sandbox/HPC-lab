@@ -1,45 +1,222 @@
 ---
-title: Day 2 - Part 4 
 format: 
     html:
-      toc: true
-      toc-location: left
-      page-layout: full
+      toc: false
 summary: workflows advance 
 css: ./web.css
 ---
 
-```{r, echo = FALSE, results='asis'}
-library(webexercises)
+::: {.hello-exercise .alt-background}
+:::{.content-block}
 
-knitr::opts_chunk$set(echo = FALSE)
+:::{.hello-exercise-banner}
 
-# Uncomment to change widget colours:
-style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
+<ul class="nav nav-pills" id="exercise-guide" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="ucloud-tab" data-bs-toggle="tab" data-bs-target="#ucloud" type="button" role="tab" aria-controls="ucloud" aria-selected="true">UCloud</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="locally-tab" data-bs-toggle="tab" data-bs-target="#locally" type="button" role="tab" aria-controls="locally" aria-selected="false">Local Setup</button>
+  </li>
+</ul>
+:::
 
+
+<div class="tab-content" id="hello-exercise-tabcontent">
+
+<div class="tab-pane fade  show active" id="ucloud" role="tabpanel" aria-labelledby="ucloud-tab">
+
+Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the `setup.sh` initialization file and ask for 2 CPUs so we can run things in parallel: 
+
+- `YourNameSurname#xxxx`: save your results/files here.  
+- `hpclab-workshop`: this contains input files and scripts. You can read-only access from this directory (no write permissions). 
+
+Next, activate `snakemake` environment. 
+
+```{.bash}
+# make sure no other env is active!
+conda activate snakemake 
 ```
 
+Finally, navigate to your personal drive and use the project directory you created yesterday `hpclab` to create a new subdir `fastmixture` and save here all files from this exercise (Snakefile, config.yml, output file, etc.).
 
-::: {.webex-check .callout-exercise}
+</div>
+
+<div class="tab-pane fade" id="locally" role="tabpanel" aria-labelledby="locally-tab">
+
+You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.txt) for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment and download the data.
+
+  <a href="./data/snakemake.yml" download="snakemake.yml">
+    <button class="btn small-button">Download environment file</button>
+  </a>
+    <a href="./data/fastmix.zip" download="fastmix.zip">
+    <button class="btn small-button">Download data</button>
+  </a>
+
+</div>
+
+</div>
+
+:::
+:::
+
+# Day 2 - Part 4 
+
+Create workflows that are both **reproducible** and easy to distribute. Use the `config.yml` file to define all variable values, and rely on separate environment YAML files for tasks that use software outside of the provided Conda environment.
+
+
+::: {.callout-exercise}
 # II - Admixture analysis pipeline
 
-Let's run the software `fastmixture` as a snakemake pipeline by converting the following bash pipeline.
+In this exercise, you will run the software `fastmixture` as a Snakemake pipeline by converting the following bash script. Pay attention to the prefix for input and output files and the specified number of cores. 
 
-#### Resources 
-Specifying the number of used threads
-- fastmixture: 4 cores 
-- plotting results: 1 core 
-- resources related to size of the file 
+- File paths for UCloud users: 
+  - Rscript: `/work/HPCLab_workshop/scripts/plotAdmixture.R`
+  - Input PLINK files: `/work/HPCLab_workshop/data/plink_sim/sim.small.*`
 
-The number of K, will be determined in the config file so that the software can be used with other ks. 
+`fastmixture` is not pre-installed in the `snakemake` environment and we don't want to include it for the purpose of this exercise. You will have to git clone the [GitHub repository](https://github.com/Rosemeis/fastmixture). There are two options on how to proceed:
 
-#### Environment integration 
-- conda env 
+1. Use the provided `environment.yml` file to create a new environment, which you are going to name `fastmixture`. Then, use the full path to the `fastmixture` env in the workflow. Is this the best approach? The workflow will rely on this environment being present on a new system where the workflow is executed. Referring to an existing environment can however be useful during development, e.g. when a certain software package is developed in parallel to a workflow that uses it.
+2. Provide the path to `environment.yml` within the workflow. Snakemake will create the env for you which takes some time but will only do this once. This is recommended and preferred for reproducibility reasons. 
 
-#### Set log and benchmark 
+Either way, use the `conda` directive!
+
+Have a look at the `fastmixture.sh` script below. How many different wildcards would you need? Recommended: Specify the values of the wildcard variables in a separate config file. 
+
+```{.bash filename="fastmixture.sh"}
+### Run fastmixture for K=2,3 and three different seeds
+FPREFIX="sim.small"
+THREADS=4 
+
+for k in {2,3}
+do
+	for s in {1..3}
+	do
+		fastmixture --bfile $FPREFIX --K $k --threads $THREADS --seed $s --out $FPREFIX
+	done
+done
+# Saves three files for each run (.Q, .P and .log)
+
+### Plot results and save (using R)
+for k in {2,3}
+do
+	for s in {1..3}
+	do
+		Rscript plotAdmixture.R $FPREFIX.K${k}.s${s}.Q
+	done
+done
+```
+
+In `fastmixture`, the main arguments used in this exercise are:
+
+- `--K`: Specifies the number of ancestral components, representing the sources in the mixture model.
+- `--seed`: Sets the random seed to ensure reproducibility of the analysis across different runs.
+- `--bfile`: prefix for PLINK files (.bed, .bim, .fam)
+- `--out`: Prefix output name
+
+You are set to write your own snakemake pipeline. Need more suggestions?
 
 - Add a `log` directive to every rule. It is best practice to store all log files in a subdirectory `logs/`, prefixed by the rule or tool name.
 - Add a `benchmark` directive as well. Applying the same best practice. 
+- Memory estimated based on the size of the file 
+- After running the workflow for the set of `K` and `s` values shown in the bash script. Use the command line to provide a new seed value: `--config PARAM=<value>`
+
+:::{.callout-hint}
+First, create a config.yaml file to specify the values for the wildcards `k` and `s`, as well as other parameters (such ass the number of threads, and the prefix).
+
+Then, create the Snakemake Workflow, defining two rules for running `fastmixture` and plotting with R. 
+
+`fastmixture` is not pre-installed, check the instructions [`fastmixture` GitHub](https://github.com/Rosemeis/fastmixture). Need more tips? 
+
+```{.bash}
+# git clone on your working dir
+git clone https://github.com/Rosemeis/fastmixture.git
+
+# get the path to the environment file
+# realpath: /work/<NameSurname#xxx>/fastmixture/environment.yml
+cd /work/<NameSurname#xxx>/fastmixture
+conda env create -f environment.yml --prefix /work/<NameSurname#xxx>/envs/fastmixture
+````
+
+Make use of useful directive:
+
+```{.python}
+rule ...:
+  output: "results/{wd2}.tsv"
+  conda: "/path/to/env.yml"
+  log: "logs/{wd1}.log"
+  benchmark: "logs/{wd1}.txt"
+  shell: "somecomamnd {output}"
+```
+
+How to run the file? 
+```{.bash}
+snakemake -c1 --sdm conda --config SEEDS=4
+```
+:::
+
+:::{.callout-hint}
+# My solution 
+This is one possible solution, how does yours look? 
+
+```{.yaml filename="config.yml"}
+PLINKPATH: "/work/HPCLab_workshop/data/plink_sim"
+FPREFIX: "sim.small"
+THREADS_FAST: 2  # Threads for fastmixture
+THREADS_R: 1            # Threads for R plotting
+K_VALUES: [2]        # Values of K
+SEEDS: [1]        # Seed values
+PATH_SCRIPT: "/work/HPCLab_workshop/scripts"
+```
+
+```{.python filename="Snakefile"}
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = "Alba Refoyo Martinez"
+__copyright__ = "Copyright 2024, University of Copenhagen"
+__email__ = "gsd818@@ku.dk"
+__license__ = "MIT"
+configfile: "config.yml"
+
+rule all:
+    input:
+        expand("{FPREFIX}.K{k}.s{s}.png", FPREFIX=config["FPREFIX"], k=config["K_VALUES"], s=config["SEEDS"])
+
+rule fastmixture:
+    output:
+        q="{prefix}.K{k}.s{s}.Q",
+        p="{prefix}.K{k}.s{s}.P",
+        log="{prefix}.K{k}.s{s}.log"
+    params:
+        prefix=config["FPREFIX"],
+        pathIn=config["PLINKPATH"]
+    threads: config["THREADS_FAST"]
+    log:
+        "logs/fastmixture_{prefix}.K{k}.s{s}.log"
+    benchmark:
+        "benchmarks/fastmixture_{prefix}.K{k}.s{s}.txt"
+    conda: 
+        "/work/AlbaRefoyoMartínez#0753/fastmixture/environment.yml"
+    shell:
+        """
+        fastmixture --bfile {params.pathIn}/{params.prefix} --K {wildcards.k} --threads {threads} --seed {wildcards.s} --out {params.prefix} 2> {log}
+        """
+
+rule plot_results:
+    input:
+        q="{prefix}.K{k}.s{s}.Q"
+    output:
+        plot="{prefix}.K{k}.s{s}.png"
+    params:
+        plot_scripts=config["PATH_SCRIPT"]
+    shell:
+        """
+        Rscript {params.plot_scripts}/plotAdmixture.R {input.q}
+        """
+```
+:::
+
 
 :::
 
