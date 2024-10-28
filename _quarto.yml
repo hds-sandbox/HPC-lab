@@ -71,9 +71,11 @@ website:
                 - workshop/pipes-ex-envs.qmd
                 - workshop/pipes-ex-smk.qmd
             - section: "Day 2"
-              contents:             
-                - workshop/pipes-ex-smk-self.qmd
-                - workshop/pipes-ex-smk-fast.qmd
+              contents: 
+                - text: "Day 2 - Part 3"            
+                  href: workshop/pipes-ex-smk-self.qmd
+                - text: "Day 2 - Part 4"
+                  href: workshop/pipes-ex-smk-fast.qmd
         - section: "HPC Launch"
           contents: 
             - workshop/launch-requirements.qmd
