@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Day 2 - Part 4 – HPC Lab</title>
+<title>pipes-ex-smk-fast – HPC Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -74,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="./web.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed">
+<body class="nav-sidebar docked nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -144,7 +178,7 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -248,60 +282,57 @@ ul.task-list li input[type="checkbox"] {
 </li>
     </ul>
     </div>
-    
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-    </div>
+    
 <!-- main -->
-<main class="content column-page-right" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk-self.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk-fast.html">Day 2 - Part 4</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Day 2 - Part 4</h1>
+
+
+
+<div class="hello-exercise alt-background">
+<div class="content-block">
+<div class="hello-exercise-banner">
+<ul class="nav nav-pills" id="exercise-guide" role="tablist">
+<li class="nav-item" role="presentation">
+<button class="nav-link active" id="ucloud-tab" data-bs-toggle="tab" data-bs-target="#ucloud" type="button" role="tab" aria-controls="ucloud" aria-selected="true">
+UCloud
+</button>
+</li>
+<li class="nav-item" role="presentation">
+<button class="nav-link" id="locally-tab" data-bs-toggle="tab" data-bs-target="#locally" type="button" role="tab" aria-controls="locally" aria-selected="false">
+Local Setup
+</button>
+</li>
+</ul>
 </div>
-
-
-
-<div class="quarto-title-meta column-page-right">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<style>
-:root {
-    --incorrect: rgb(255, 0, 0);
-    --incorrect_alpha: rgba(255, 0, 0, 0.25);
-    --correct: rgb(0, 255, 0);
-    --correct_alpha: rgba(0, 255, 0, 0.25);
-    --highlight: rgb(178, 34, 34);
-}
-  .webex-incorrect, input.webex-solveme.webex-incorrect,
-  .webex-radiogroup label.webex-incorrect {
-    border: 2px dotted var(--incorrect);
-    background-color: var(--incorrect_alpha);
-  }
-  .webex-correct, input.webex-solveme.webex-correct,
-  .webex-radiogroup label.webex-correct {
-    border: 2px dotted var(--correct);
-    background-color: var(--correct_alpha);
-  }
-  .webex-box, .webex-solution.open {
-    border: 2px solid var(--highlight);n  }
-  .webex-solution button, .webex-check-button {
-    background-color: var(--highlight);
-  }
-</style>
+<div id="hello-exercise-tabcontent" class="tab-content">
+<div id="ucloud" class="tab-pane fade show active" role="tabpanel" aria-labelledby="ucloud-tab">
+<p>Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the <code>setup.sh</code> initialization file and ask for 2 CPUs so we can run things in parallel:</p>
+<ul>
+<li><code>YourNameSurname#xxxx</code>: save your results/files here.<br>
+</li>
+<li><code>hpclab-workshop</code>: this contains input files and scripts. You can read-only access from this directory (no write permissions).</li>
+</ul>
+<p>Next, activate <code>snakemake</code> environment.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure no other env is active!</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snakemake </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Finally, navigate to your personal drive and use the project directory you created yesterday <code>hpclab</code> to create a new subdir <code>fastmixture</code> and save here all files from this exercise (Snakefile, config.yml, output file, etc.).</p>
+</div>
+<div id="locally" class="tab-pane fade" role="tabpanel" aria-labelledby="locally-tab">
+<p>You can choose to run your tasks either locally or on an accessible HPC. Refer to the <a href="./pipes-requirements.txt">Welcome page</a> for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment and download the data.</p>
+<p><a href="./data/snakemake.yml" download="snakemake.yml"> <button class="btn small-button">Download environment file</button> </a> <a href="./data/fastmix.zip" download="fastmix.zip"> <button class="btn small-button">Download data</button> </a></p>
+</div>
+</div>
+</div>
+</div>
+<section id="day-2---part-4" class="level1">
+<h1>Day 2 - Part 4</h1>
+<p>Create workflows that are both <strong>reproducible</strong> and easy to distribute. Use the <code>config.yml</code> file to define all variable values, and rely on separate environment YAML files for tasks that use software outside of the provided Conda environment.</p>
 <div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -310,36 +341,192 @@ II - Admixture analysis pipeline
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
-<div class="webex-check callout-exercise">
-<p>Let’s run the software <code>fastmixture</code> as a snakemake pipeline by converting the following bash pipeline.</p>
-<section id="resources" class="level4">
-<h4 class="anchored" data-anchor-id="resources">Resources</h4>
-<p>Specifying the number of used threads - fastmixture: 4 cores - plotting results: 1 core - resources related to size of the file</p>
-<p>The number of K, will be determined in the config file so that the software can be used with other ks.</p>
-</section>
-<section id="environment-integration" class="level4">
-<h4 class="anchored" data-anchor-id="environment-integration">Environment integration</h4>
+<div class="callout-exercise">
+<p>In this exercise, you will run the software <code>fastmixture</code> as a Snakemake pipeline by converting the following bash script. Pay attention to the prefix for input and output files and the specified number of cores.</p>
 <ul>
-<li>conda env</li>
+<li>File paths for UCloud users:
+<ul>
+<li>Rscript: <code>/work/HPCLab_workshop/scripts/plotAdmixture.R</code></li>
+<li>Input PLINK files: <code>/work/HPCLab_workshop/data/plink_sim/sim.small.*</code></li>
+</ul></li>
 </ul>
-</section>
-<section id="set-log-and-benchmark" class="level4">
-<h4 class="anchored" data-anchor-id="set-log-and-benchmark">Set log and benchmark</h4>
+<p><code>fastmixture</code> is not pre-installed in the <code>snakemake</code> environment and we don’t want to include it for the purpose of this exercise. You will have to git clone the <a href="https://github.com/Rosemeis/fastmixture">GitHub repository</a>. There are two options on how to proceed:</p>
+<ol type="1">
+<li>Use the provided <code>environment.yml</code> file to create a new environment, which you are going to name <code>fastmixture</code>. Then, use the full path to the <code>fastmixture</code> env in the workflow. Is this the best approach? The workflow will rely on this environment being present on a new system where the workflow is executed. Referring to an existing environment can however be useful during development, e.g.&nbsp;when a certain software package is developed in parallel to a workflow that uses it.</li>
+<li>Provide the path to <code>environment.yml</code> within the workflow. Snakemake will create the env for you which takes some time but will only do this once. This is recommended and preferred for reproducibility reasons.</li>
+</ol>
+<p>Either way, use the <code>conda</code> directive!</p>
+<p>Have a look at the <code>fastmixture.sh</code> script below. How many different wildcards would you need? Recommended: Specify the values of the wildcard variables in a separate config file.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>fastmixture.sh</strong></pre>
+</div>
+<div class="sourceCode" id="cb2" data-filename="fastmixture.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Run fastmixture for K=2,3 and three different seeds</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="va">FPREFIX</span><span class="op">=</span><span class="st">"sim.small"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="va">THREADS</span><span class="op">=</span>4 </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="dt">{2</span><span class="op">,</span><span class="dt">3}</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">3</span><span class="dt">}</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">do</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="ex">fastmixture</span> <span class="at">--bfile</span> <span class="va">$FPREFIX</span> <span class="at">--K</span> <span class="va">$k</span> <span class="at">--threads</span> <span class="va">$THREADS</span> <span class="at">--seed</span> <span class="va">$s</span> <span class="at">--out</span> <span class="va">$FPREFIX</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Saves three files for each run (.Q, .P and .log)</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">### Plot results and save (using R)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="dt">{2</span><span class="op">,</span><span class="dt">3}</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="cf">do</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">3</span><span class="dt">}</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">do</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="ex">Rscript</span> plotAdmixture.R <span class="va">$FPREFIX</span>.K<span class="va">${k}</span>.s<span class="va">${s}</span>.Q</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In <code>fastmixture</code>, the main arguments used in this exercise are:</p>
+<ul>
+<li><code>--K</code>: Specifies the number of ancestral components, representing the sources in the mixture model.</li>
+<li><code>--seed</code>: Sets the random seed to ensure reproducibility of the analysis across different runs.</li>
+<li><code>--bfile</code>: prefix for PLINK files (.bed, .bim, .fam)</li>
+<li><code>--out</code>: Prefix output name</li>
+</ul>
+<p>You are set to write your own snakemake pipeline. Need more suggestions?</p>
 <ul>
 <li>Add a <code>log</code> directive to every rule. It is best practice to store all log files in a subdirectory <code>logs/</code>, prefixed by the rule or tool name.</li>
 <li>Add a <code>benchmark</code> directive as well. Applying the same best practice.</li>
+<li>Memory estimated based on the size of the file</li>
+<li>After running the workflow for the set of <code>K</code> and <code>s</code> values shown in the bash script. Use the command line to provide a new seed value: <code>--config PARAM=&lt;value&gt;</code></li>
 </ul>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>First, create a config.yaml file to specify the values for the wildcards <code>k</code> and <code>s</code>, as well as other parameters (such ass the number of threads, and the prefix).</p>
+<p>Then, create the Snakemake Workflow, defining two rules for running <code>fastmixture</code> and plotting with R.</p>
+<p><code>fastmixture</code> is not pre-installed, check the instructions <a href="https://github.com/Rosemeis/fastmixture"><code>fastmixture</code> GitHub</a>. Need more tips?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># git clone on your working dir</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/Rosemeis/fastmixture.git</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get the path to the environment file</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># realpath: /work/&lt;NameSurname#xxx&gt;/fastmixture/environment.yml</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/fastmixture</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml <span class="at">--prefix</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/envs/fastmixture</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Make use of useful directive:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rule ...:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  output: <span class="st">"results/</span><span class="sc">{wd2}</span><span class="st">.tsv"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  conda: <span class="st">"/path/to/env.yml"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  log: <span class="st">"logs/</span><span class="sc">{wd1}</span><span class="st">.log"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  benchmark: <span class="st">"logs/</span><span class="sc">{wd1}</span><span class="st">.txt"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  shell: <span class="st">"somecomamnd </span><span class="sc">{output}</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>How to run the file?</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--sdm</span> conda <span class="at">--config</span> SEEDS=4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+My solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>This is one possible solution, how does yours look?</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>config.yml</strong></pre>
+</div>
+<div class="sourceCode" id="cb6" data-filename="config.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">PLINKPATH</span><span class="kw">:</span><span class="at"> </span><span class="st">"/work/HPCLab_workshop/data/plink_sim"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FPREFIX</span><span class="kw">:</span><span class="at"> </span><span class="st">"sim.small"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">THREADS_FAST</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span><span class="co">  # Threads for fastmixture</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">THREADS_R</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span><span class="co">            # Threads for R plotting</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">K_VALUES</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">2</span><span class="kw">]</span><span class="co">        # Values of K</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">SEEDS</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">1</span><span class="kw">]</span><span class="co">        # Seed values</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">PATH_SCRIPT</span><span class="kw">:</span><span class="at"> </span><span class="st">"/work/HPCLab_workshop/scripts"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Snakefile</strong></pre>
+</div>
+<div class="sourceCode" id="cb7" data-filename="Snakefile"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># -*- coding: utf-8 -*-</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>__author__ <span class="op">=</span> <span class="st">"Alba Refoyo Martinez"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>__copyright__ <span class="op">=</span> <span class="st">"Copyright 2024, University of Copenhagen"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>__email__ <span class="op">=</span> <span class="st">"gsd818@@ku.dk"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>__license__ <span class="op">=</span> <span class="st">"MIT"</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>configfile: <span class="st">"config.yml"</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>rule <span class="bu">all</span>:</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">input</span>:</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        expand(<span class="st">"</span><span class="sc">{FPREFIX}</span><span class="st">.K</span><span class="sc">{k}</span><span class="st">.s</span><span class="sc">{s}</span><span class="st">.png"</span>, FPREFIX<span class="op">=</span>config[<span class="st">"FPREFIX"</span>], k<span class="op">=</span>config[<span class="st">"K_VALUES"</span>], s<span class="op">=</span>config[<span class="st">"SEEDS"</span>])</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>rule fastmixture:</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    output:</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        q<span class="op">=</span><span class="st">"</span><span class="sc">{prefix}</span><span class="st">.K</span><span class="sc">{k}</span><span class="st">.s</span><span class="sc">{s}</span><span class="st">.Q"</span>,</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        p<span class="op">=</span><span class="st">"</span><span class="sc">{prefix}</span><span class="st">.K</span><span class="sc">{k}</span><span class="st">.s</span><span class="sc">{s}</span><span class="st">.P"</span>,</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        log<span class="op">=</span><span class="st">"</span><span class="sc">{prefix}</span><span class="st">.K</span><span class="sc">{k}</span><span class="st">.s</span><span class="sc">{s}</span><span class="st">.log"</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    params:</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        prefix<span class="op">=</span>config[<span class="st">"FPREFIX"</span>],</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        pathIn<span class="op">=</span>config[<span class="st">"PLINKPATH"</span>]</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    threads: config[<span class="st">"THREADS_FAST"</span>]</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    log:</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="co">"logs/fastmixture_{prefix}.K{k}.s{s}.log"</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    benchmark:</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>        <span class="co">"benchmarks/fastmixture_{prefix}.K{k}.s{s}.txt"</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    conda: </span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        <span class="co">"/work/AlbaRefoyoMartínez#0753/fastmixture/environment.yml"</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    shell:</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co">        fastmixture --bfile {params.pathIn}/{params.prefix} --K {wildcards.k} --threads {threads} --seed {wildcards.s} --out {params.prefix} 2&gt; {log}</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>rule plot_results:</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    <span class="bu">input</span>:</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>        q<span class="op">=</span><span class="st">"</span><span class="sc">{prefix}</span><span class="st">.K</span><span class="sc">{k}</span><span class="st">.s</span><span class="sc">{s}</span><span class="st">.Q"</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    output:</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        plot<span class="op">=</span><span class="st">"</span><span class="sc">{prefix}</span><span class="st">.K</span><span class="sc">{k}</span><span class="st">.s</span><span class="sc">{s}</span><span class="st">.png"</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>    params:</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>        plot_scripts<span class="op">=</span>config[<span class="st">"PATH_SCRIPT"</span>]</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    shell:</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="co">        Rscript {params.plot_scripts}/plotAdmixture.R {input.q}</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
 </section>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
 <script>

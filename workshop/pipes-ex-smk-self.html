@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Day 2 - Part 3 – HPC Lab</title>
+<title>pipes-ex-smk-self – HPC Lab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -286,7 +286,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a.-snakemake" id="toc-a.-snakemake" class="nav-link active" data-scroll-target="#a.-snakemake">A. Snakemake</a></li>
+  <li><a href="#day-2---part-3" id="toc-day-2---part-3" class="nav-link active" data-scroll-target="#day-2---part-3">Day 2 - Part 3</a>
+  <ul class="collapse">
+  <li><a href="#a.-snakemake" id="toc-a.-snakemake" class="nav-link" data-scroll-target="#a.-snakemake">A. Snakemake</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -297,23 +300,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk-self.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk-self.html">Day 2 - Part 3</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Day 2 - Part 3</h1>
-</div>
 
-
-
-<div class="quarto-title-meta column-page-right">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
 
 
 <style>
@@ -372,10 +359,13 @@ Local Setup
 </div>
 <div id="locally" class="tab-pane fade" role="tabpanel" aria-labelledby="locally-tab">
 <p>You can choose to run your tasks either locally or on an accessible HPC. Refer to the <a href="./pipes-requirements.txt">Welcome page</a> for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment and download the data.</p>
+<p><a href="./data/snakemake.yml" download="snakemake.yml"> <button class="btn small-button">Download environment file</button> </a> <a href="./data/samples_EB.tsv" download="samples_EB.tsv"> <button class="btn small-button">Download data</button> </a></p>
 </div>
 </div>
 </div>
 </div>
+<section id="day-2---part-3" class="level1">
+<h1>Day 2 - Part 3</h1>
 <p>It’s time to create your own pipeline and experiment with its different components!</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1025,6 +1015,7 @@ snakemake --config cutoff=2010
 -->
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->

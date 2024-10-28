@@ -363,8 +363,8 @@ I - General knowledge
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_XJXINQZDQR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_XJXINQZDQR" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_XJXINQZDQR" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_XJXINQZDQR" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_XJXINQZDQR" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_ADIGVCKYAU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ADIGVCKYAU" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_ADIGVCKYAU" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_ADIGVCKYAU" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_ADIGVCKYAU" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -718,6 +718,13 @@ V - Running a docker image
 <li>What is the command you need to run container? Do not forget to mount the data (use the flag <code>-v /path/toy:/path/mnt</code>). Before executing the software, verify that the data has been correctly mounted (e.g.&nbsp;running the <code>ls</code> command inside the container)</li>
 <li>Run fastmixture software using the command below. We will set K to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both <code>--bfile</code> and <code>--out</code>require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named <code>toy.data.*</code>; therefore, use <code>--bfile toy.data</code>.</li>
 </ol>
+<p>In <code>fastmixture</code>, the main arguments used in this exercise are:</p>
+<ul>
+<li><code>--K</code>: Specifies the number of ancestral components, representing the sources in the mixture model.</li>
+<li><code>--seed</code>: Sets the random seed to ensure reproducibility of the analysis across different runs.</li>
+<li><code>--bfile</code>: prefix for PLINK files (.bed, .bim, .fam)</li>
+<li><code>--out</code>: Prefix output name</li>
+</ul>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastmixture</span> <span class="at">--bfile</span> <span class="op">&lt;</span>input.prefix<span class="op">&gt;</span> --K 3 <span class="at">--threads</span> 4 <span class="at">--seed</span> 1 <span class="at">--out</span> <span class="op">&lt;</span>output.prefix<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="5" type="1">
 <li>Do you have the results in the folder on your local system? You should look for files named <code>toy.fast.K3.s1.{ext}</code>, where <code>{ext}=["Q", "P", "log"]</code>.</li>
