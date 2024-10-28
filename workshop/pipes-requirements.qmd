@@ -53,11 +53,11 @@ Follow the instructions below if you have an account at a Danish university. You
 
 3. You’re all set! You will receive instructions on how to navigate through UCloud during the course.
 
-### Reading material
+### Reading material (optional)
 
-- [The Turing way](https://the-turing-way.netlify.app/reproducible-research/reproducible-research) . It offers comprehensive guidance on reproducible research practices, including setting up computational environments and managing reproducible workflows. 
-- "Sustainable data analysis with Snakemake", [link to article](https://f1000research.com/articles/10-33/v2). Best practices using Snakemake to develop your pipelines. 
-
+- [The Turing way](https://the-turing-way.netlify.app/reproducible-research/reproducible-research). It offers comprehensive guidance on reproducible research practices, including setting up computational environments and managing reproducible workflows. 
+- Mölder, Felix, et al. "Sustainable data analysis with Snakemake." F1000Research 10 (2021). [Link to article](https://f1000research.com/articles/10-33/v2). Best practices using Snakemake to develop your pipelines. 
+- Check our content on HPC pipes. 
 
 ## Agenda
 
