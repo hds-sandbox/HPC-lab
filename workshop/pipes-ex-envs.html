@@ -363,8 +363,8 @@ I - General knowledge
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_FTXOHLFBNF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FTXOHLFBNF" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_FTXOHLFBNF" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_FTXOHLFBNF" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_FTXOHLFBNF" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_WWAJCNHKDI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WWAJCNHKDI" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_WWAJCNHKDI" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_WWAJCNHKDI" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_WWAJCNHKDI" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -374,7 +374,7 @@ I - General knowledge
 </section>
 <section id="b.-conda" class="level2">
 <h2 class="anchored" data-anchor-id="b.-conda">B. Conda</h2>
-<p>For these exercises, make sure you have submitted a job to UCloud (resources set to 1 CPU and 1 hour). Unsure which command to use? Refer to the official <a href="(https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)">Conda cheat sheet</a> for guidance!</p>
+<p>For these exercises, make sure you have submitted a job to UCloud (resources set to 1 CPU and 1 hour). Unsure which command to use? Refer to the official <a href="https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf">Conda cheat sheet</a> for guidance!</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -538,7 +538,7 @@ III - Build your conda environment
 <li>Check the available environments. How many environments do you see? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;4&quot;]"></li>
 <li>Activate the environment</li>
 <li>Check which python executable is being used (Hint: <code>which python</code>)? Does this executable belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
-<li>Look for snakemake in https://anaconda.org/ and install it in your env. This might take some time!</li>
+<li>Search for snakemake <a href="https://anaconda.org/">https://anaconda.org/</a>. Copy the installation command and run it in your activated conda env. This might take some time!</li>
 <li>Execute the help command: <code>snakemake -h</code>. Seems like snakemake is now installed in our environment!</li>
 <li>Does the python executable now belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
 <li>Is your python version &gt;= 3.12 and packaged by conda-forge? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select>. IF NOT, use one of the following commands: <code>conda update -c conda-forge python</code> or <code>conda install -c conda-forge python=3.12.7</code></li>
@@ -595,7 +595,7 @@ Solution
 <div class="callout-hint">
 <ol type="1">
 <li>The syntax to create a new environment is: <code>conda create --prefix /work/&lt;NameSurname#xxxx&gt;/envs/&lt;test-env&gt;</code></li>
-<li>There are 2 environments available: <code>base</code> and `hpclab-env``</li>
+<li>There are 4 environments available: <code>base</code>, <code>hpclab-env</code>, <code>snakemake</code> and the one you just created.</li>
 <li>conda activate /work/&lt;NameSurname#xxxx&gt;/envs/<test-env></test-env></li>
 <li>The executable is located at <code>/usr/bin/python</code> in the system</li>
 <li>conda install bioconda::snakemake</li>
@@ -641,7 +641,7 @@ IV - Adapt a colleague’s Conda environment to fit your needs.
 <li>Once the environment is set up, activate it (do not forget to deactivate active environments)</li>
 <li>Verify the installed packages (you will also see other dependencies installed). Hint: check the <code>test-env.yml</code> to see which dependencies are included in this conda environment.</li>
 <li>Uninstall the ‘cookiecutter’ package from your environment. Then, check again the list of all installed packages. Did you remove cookiecutter successfully? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
-<li>Update Python to the latest compatible version. Which version is that? <input class="webex-solveme nospaces" size="6" data-answer="[&quot;3.7.16&quot;]"></li>
+<li>Update Python to the latest compatible version. Which version is that? Hint: check the prompt from the <code>conda update</code> command <input class="webex-solveme nospaces" size="6" data-answer="[&quot;3.7.16&quot;]"></li>
 <li>Try to install the latest numpy version using <code>conda install numpy=2.1</code>, could you successfully install it? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select><br>
 </li>
 <li>Once you are done, delete the environment.</li>
@@ -669,10 +669,12 @@ Solution
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list </span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. </span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove cookiecutter <span class="kw">;</span> <span class="ex">conda</span> list </span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. </span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update python </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. </span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">--prefix</span> /work/AlbaRefoyoMartínez#0753/envs/test-env </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Check prompt from running this command </span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update python <span class="co"># 3.7.16</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># OR conda list | grep python </span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="kw">;</span> <span class="ex">conda</span> list python </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. </span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">--prefix</span> /work/AlbaRefoyoMartínez#0753/envs/test-env </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -686,7 +688,7 @@ Solution
 </section>
 <section id="c.-containers" class="level2">
 <h2 class="anchored" data-anchor-id="c.-containers">C. Containers</h2>
-<p>Refer to the official <a href="https://docs.docker.com/get-started/docker_cheatsheet.pdf">Conda cheat sheet</a> for guidance!</p>
+<p>Apptainer/Singularity was specifically designed for HPC platforms; however, the UCloud server does not support it for regular users. As a result, <strong>container exercises will need to be run locally</strong>. We will be using Docker locally, as it is commonly employed for developing images. Please remember to install Docker Desktop, as noted on the <a href="../workshop/pipes-requirements.html">Welcome page</a>. For further guidance, refer to the official <a href="https://docs.docker.com/get-started/docker_cheatsheet.pdf">Docker cheat sheet</a>.</p>
 <div class="callout callout-style-default callout-exercise callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -701,8 +703,13 @@ V - Running a docker image
 <div class="callout-body-container callout-body">
 <div>
 <div class="webex-check callout-exercise">
-<p>In this exercise, we will utilize the <code>fastmixture</code> Docker image available on <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHUb</a>. The aim is to <strong>understand how to run containerized software</strong>. In our example, we have selected a fast option and a toy dataset to facilitate learning. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.</p>
-<p><a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v1">Fastmixture</a> is a software tool designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.</p>
+<p>In this exercise, we will utilize the <code>fastmixture</code> Docker image which is available on <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHub</a>, the repository for docker images. The aim is to <strong>understand how to run containerized software</strong>. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.</p>
+<p><a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v1">Fastmixture</a> is a software designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.</p>
+<p>Here are some optional resources you might typically review before running the software (though not required for this exercise):</p>
+<ul>
+<li>Santander, Cindy G., Alba Refoyo Martinez, and Jonas Meisner. “Faster model-based estimation of ancestry proportions.” bioRxiv (2024): 2024-07 <a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v1">link to Preprint</a>.</li>
+<li>Software GitHub repository <a href="https://github.com/Rosemeis/fastmixture">link</a>.</li>
+</ul>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
 <p><img src="./data/admix_toyData.png" class="img-fluid figure-img" width="500"></p>
@@ -713,21 +720,26 @@ V - Running a docker image
 <p><a href="./data/toy.zip" download="toy.zip"> <button class="btn small-button">Download toy data</button> </a></p>
 </div>
 <ol type="1">
-<li>Pull <code>fastmixture</code> image from <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHUb</a>. Software GitHub account <a href="https://github.com/Rosemeis/fastmixture">here</a>.</li>
-<li>Download and unzip the toy data</li>
-<li>What is the command you need to run container? Do not forget to mount the data (use the flag <code>-v /path/toy:/path/mnt</code>). Before executing the software, verify that the data has been correctly mounted (e.g.&nbsp;running the <code>ls</code> command inside the container)</li>
-<li>Run fastmixture software using the command below. We will set K to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both <code>--bfile</code> and <code>--out</code>require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named <code>toy.data.*</code>; therefore, use <code>--bfile toy.data</code>.</li>
-</ol>
+<li><p>Pull <code>fastmixture</code> image from <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHUb</a> using the following command:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="sourceCode" id="cb9" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull albarema/fastmixture:v0.93.3 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Make sure to pull version <strong>v0.93.3</strong>.</p></li>
+<li><p>Download and unzip the toy data (you may move the files to any preferred folder on your laptop)</p></li>
+<li><p>What is the command you need to run container? Do not forget to mount the data (using the flag <code>-v /path/toy:/path/mnt</code>). Before executing the software, verify that the data has been correctly mounted (e.g.&nbsp;running the <code>ls</code> command inside the container).</p></li>
+<li><p>Run <code>fastmixture</code> software using the command below. We will set <em>K</em> to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both <code>--bfile</code> and <code>--out</code> require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named <code>toy.data.*</code>; therefore, use <code>--bfile toy.data</code>.</p>
 <p>In <code>fastmixture</code>, the main arguments used in this exercise are:</p>
 <ul>
 <li><code>--K</code>: Specifies the number of ancestral components, representing the sources in the mixture model.</li>
 <li><code>--seed</code>: Sets the random seed to ensure reproducibility of the analysis across different runs.</li>
-<li><code>--bfile</code>: prefix for PLINK files (.bed, .bim, .fam)</li>
-<li><code>--out</code>: Prefix output name</li>
+<li><code>--bfile</code>: prefix for PLINK files (.bed, .bim, .fam).</li>
+<li><code>--out</code>: Prefix output name.</li>
 </ul>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastmixture</span> <span class="at">--bfile</span> <span class="op">&lt;</span>input.prefix<span class="op">&gt;</span> --K 3 <span class="at">--threads</span> 4 <span class="at">--seed</span> 1 <span class="at">--out</span> <span class="op">&lt;</span>output.prefix<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="5" type="1">
-<li>Do you have the results in the folder on your local system? You should look for files named <code>toy.fast.K3.s1.{ext}</code>, where <code>{ext}=["Q", "P", "log"]</code>.</li>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastmixture</span> <span class="at">--bfile</span> <span class="op">&lt;</span>input.prefix<span class="op">&gt;</span> --K 3 <span class="at">--threads</span> 4 <span class="at">--seed</span> 1 <span class="at">--out</span> <span class="op">&lt;</span>output.prefix<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Do you have the results in the folder on your local system? You should look for files named <code>toy.fast.K3.s1.{ext}</code>, where <code>{ext}=["Q", "P", "log"]</code>.</p></li>
 </ol>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
@@ -746,19 +758,19 @@ Solution
 <ul>
 <li><strong>Docker</strong></li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull albarema/fastmixture:v0.93.3  <span class="co"># Pull </span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--cpus</span><span class="op">=</span>8 <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/toy/:/data/ albarema/fastmixture:v0.93.3 fastmixture <span class="at">--bfile</span> data/toy.data <span class="at">--K</span> 3 <span class="at">--out</span> data/toy.fast <span class="at">--threads</span> 8 <span class="co"># run the command </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull albarema/fastmixture:v0.93.3  <span class="co"># Pull </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--cpus</span><span class="op">=</span>8 <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/toy/:/data/ albarema/fastmixture:v0.93.3 fastmixture <span class="at">--bfile</span> data/toy.data <span class="at">--K</span> 3 <span class="at">--out</span> data/toy.fast <span class="at">--threads</span> 8 <span class="co"># run the command </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><strong>Apptainer</strong> on HPC / local machine: on your local machine you will need to modify lima.yml to make the current directory (pwd) writable. Alternative, write the data out to /tmp/lima!</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://albarema/fastmixture:v0.93.3</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run fastmixture_v0.93.3.sif fastmixture <span class="at">--version</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># on local machine (using LIMA)</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> toy <span class="co"># from data folder </span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull /tmp/lima/fastmixture.sif docker://albarema/fastmixture:v0.93.3</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run /tmp/lima/fastmixture.sif fastmixture <span class="at">--bfile</span> toy.data <span class="at">--K</span> 3 <span class="at">--out</span> toy.fast <span class="at">--threads</span> 8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://albarema/fastmixture:v0.93.3</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run fastmixture_v0.93.3.sif fastmixture <span class="at">--version</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># on local machine (using LIMA)</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> toy <span class="co"># from data folder </span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull /tmp/lima/fastmixture.sif docker:/albarema/fastmixture:v0.93.3</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run /tmp/lima/fastmixture.sif fastmixture <span class="at">--bfile</span> toy.data <span class="at">--K</span> 3 <span class="at">--out</span> toy.fast <span class="at">--threads</span> 8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -819,28 +831,28 @@ V - Bonus 1: Running other containers
 <h2 class="anchored" data-anchor-id="blast---build-a-blast-protein-database-from-zebrafish-protein-sequences.">BLAST - Build a BLAST protein database from zebrafish protein sequences.</h2>
 <p>Zebrafish is a widely used model organism in genetics. This small dataset will facilitate quick results, allowing us to focus on how to run different bioinformatics tools so that you can easily adapt the commands in future projects.</p>
 <p><strong>Docker</strong>: follow the steps in <em>Running BLAST</em>: https://biocontainers-edu.readthedocs.io/en/latest/running_example.html.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull biocontainers/blast:2.2.31</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run biocontainers/blast:2.2.31 blastp <span class="at">-help</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> zebrafish-ref</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 curl <span class="at">-O</span> ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRNA_Prot/zebrafish.1.protein.faa.gz</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 gunzip zebrafish.1.protein.faa.gz</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 makeblastdb <span class="at">-in</span> zebrafish.1.protein.faa <span class="at">-dbtype</span> prot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Apptainer</strong>: you might need to mount data folders if you test the container on your own computer! Ask if you an in doubt!</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://biocontainers/blast:2.2.31</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run blast_2.2.31.sif blastp <span class="at">-help</span></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull biocontainers/blast:2.2.31</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run biocontainers/blast:2.2.31 blastp <span class="at">-help</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> zebrafish-ref</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run blast_2.2.31.sif curl <span class="at">-O</span> ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRNA_Prot/zebrafish.1.protein.faa.gz</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run gunzip zebrafish.1.protein.faa.gz</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run blast_2.2.31.sif makeblastdb <span class="at">-in</span> zebrafish.1.protein.faa <span class="at">-dbtype</span> prot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 curl <span class="at">-O</span> ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRNA_Prot/zebrafish.1.protein.faa.gz</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 gunzip zebrafish.1.protein.faa.gz</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 makeblastdb <span class="at">-in</span> zebrafish.1.protein.faa <span class="at">-dbtype</span> prot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Apptainer</strong>: you might need to mount data folders if you test the container on your own computer! Ask if you an in doubt!</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://biocontainers/blast:2.2.31</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run blast_2.2.31.sif blastp <span class="at">-help</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> zebrafish-ref</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run blast_2.2.31.sif curl <span class="at">-O</span> ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRNA_Prot/zebrafish.1.protein.faa.gz</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run gunzip zebrafish.1.protein.faa.gz</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run blast_2.2.31.sif makeblastdb <span class="at">-in</span> zebrafish.1.protein.faa <span class="at">-dbtype</span> prot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="bowtie2" class="level2">
 <h2 class="anchored" data-anchor-id="bowtie2">BOWTIE2</h2>
 <p><strong>Singularity</strong>:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download the image</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull images/bowtie2-2.5.4.sif https://depot.galaxyproject.org/singularity/bowtie2%3A2.5.4--he20e202_2</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run the image: singularity run &lt;PATH-TO-IMAGE&gt; &lt;YOUR COMMANDS&gt;</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> run images/bowtie2-2.5.4.sif bowtie2 <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download the image</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull images/bowtie2-2.5.4.sif https://depot.galaxyproject.org/singularity/bowtie2%3A2.5.4--he20e202_2</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run the image: singularity run &lt;PATH-TO-IMAGE&gt; &lt;YOUR COMMANDS&gt;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> run images/bowtie2-2.5.4.sif bowtie2 <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 </div>
@@ -865,21 +877,21 @@ V - Bonus 2: Building a docker image and run your own container
 <div class="code-with-filename-file">
 <pre><strong>Dockerfile</strong></pre>
 </div>
-<div class="sourceCode" id="cb15" data-filename="Dockerfile"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> debian:stable </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">LABEL</span> maintainer=<span class="st">"Name Surname &lt;abd123@ku.dk&gt;"</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Update package list and install necessary packages</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt update <span class="dt">\</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install <span class="at">-y</span> jupyter-notebook <span class="dt">\</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                      python3-matplotlib <span class="dt">\</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                      python3-pandas <span class="dt">\</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                      python3-numpy <span class="dt">\</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> clean <span class="dt">\</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span> <span class="co"># cleanup tmp files created by apt</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># You may consider adding a working directory</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /notebooks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16" data-filename="Dockerfile"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> debian:stable </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="ex">LABEL</span> maintainer=<span class="st">"Name Surname &lt;abd123@ku.dk&gt;"</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Update package list and install necessary packages</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt update <span class="dt">\</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install <span class="at">-y</span> jupyter-notebook <span class="dt">\</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                      python3-matplotlib <span class="dt">\</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                      python3-pandas <span class="dt">\</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                      python3-numpy <span class="dt">\</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> clean <span class="dt">\</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span> <span class="co"># cleanup tmp files created by apt</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># You may consider adding a working directory</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /notebooks</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li><p>From the project-specific dir, build the Docker image using, for example, <code>docker build -t sandbox-debian-jupyter:1.0 .</code></p></li>
@@ -889,7 +901,7 @@ V - Bonus 2: Building a docker image and run your own container
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb16" data-filename="Terminal"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-p</span> 8888:8888 <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/root sandbox-debian-jupyter:1.0 jupyter-notebook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17" data-filename="Terminal"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-p</span> 8888:8888 <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/root sandbox-debian-jupyter:1.0 jupyter-notebook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Jupyter typically refuses to run as root or accept network connections by default. To address this, you need to either add <code>--ip=0.0.0.0 --allow-root</code> when starting Jupyter to the command above or uncomment the last line in the Dockerfile above (<code>CMD ["jupyter-notebook", "--ip=0.0.0.0", "--allow-root"]</code>). Test this before moving on!</p>
 <p><em>Alternatively, you can run the container with the flag <code>--user=$(id -u):$(id -g)</code>to ensure that files created in the container have matching user and group ownership with those on the host machine, preventing permission issues. However, this restricts the container from performing root-level operations.</em></p>
@@ -898,22 +910,22 @@ V - Bonus 2: Building a docker image and run your own container
 <div class="code-with-filename-file">
 <pre><strong>Dockerfile2</strong></pre>
 </div>
-<div class="sourceCode" id="cb17" data-filename="Dockerfile2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">##</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">## ----- ADD CONTENT FROM Dockerfile HERE ----- </span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co">## </span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a group &amp; user</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> addgroup <span class="at">--gid</span> 1000 user <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">adduser</span> <span class="at">--uid</span> 1000 <span class="at">--gid</span> 1000 <span class="at">--gecos</span> <span class="st">""</span> <span class="at">--disabled-password</span> jovyan</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting active user </span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="ex">USER</span> jovyan</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="co"># setting working directory </span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /home/jovyan</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co"># let' automatically start Jupyter Notebook</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="ex">CMD</span> [<span class="st">"jupyter-notebook"</span>, <span class="st">"--ip=0.0.0.0"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18" data-filename="Dockerfile2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">##</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">## ----- ADD CONTENT FROM Dockerfile HERE ----- </span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">## </span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a group &amp; user</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> addgroup <span class="at">--gid</span> 1000 user <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">adduser</span> <span class="at">--uid</span> 1000 <span class="at">--gid</span> 1000 <span class="at">--gecos</span> <span class="st">""</span> <span class="at">--disabled-password</span> jovyan</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting active user </span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="ex">USER</span> jovyan</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># setting working directory </span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /home/jovyan</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="co"># let' automatically start Jupyter Notebook</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="ex">CMD</span> [<span class="st">"jupyter-notebook"</span>, <span class="st">"--ip=0.0.0.0"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -930,15 +942,15 @@ Tip
 <li>Use <code>--volume</code> to mount data into the container (e.g.&nbsp;<code>/home/jovyan</code>)</li>
 <li>Use <code>--file</code> flag to test to dockerfile versions (default:“PATH/Dockerfile”)</li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> sandbox-debian-jupyter:2.0 sandbox-debian-jupyter <span class="at">-f</span> sandbox-debian-jupyter/Dockerfile2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> sandbox-debian-jupyter:2.0 sandbox-debian-jupyter <span class="at">-f</span> sandbox-debian-jupyter/Dockerfile2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <p>Now that we have fixed that problem, we will test A. using a port to launch a Jupyter Notebook (or Rstudio server) and B. starting a bash shell interactively.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option A. Start jupyter-notebook or on the server </span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-p</span> 8888:8888 <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/home/jovyan sandbox-debian-jupyter:2.0 </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Option B. Start an interactive shells instead </span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="at">--rm</span> <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/home/jovyan sandbox-debian-jupyter:2.0 /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option A. Start jupyter-notebook or on the server </span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-p</span> 8888:8888 <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/home/jovyan sandbox-debian-jupyter:2.0 </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Option B. Start an interactive shells instead </span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="at">--rm</span> <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/home/jovyan sandbox-debian-jupyter:2.0 /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you make changes to the container (incl.&nbsp;installing software), you need to commit the changes to a new image (<code>docker commit</code>).</p>
 </div>
 </div>

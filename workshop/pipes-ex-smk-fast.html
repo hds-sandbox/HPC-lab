@@ -312,8 +312,7 @@ Local Setup
 <div id="ucloud" class="tab-pane fade show active" role="tabpanel" aria-labelledby="ucloud-tab">
 <p>Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the <code>setup.sh</code> initialization file and ask for 2 CPUs so we can run things in parallel:</p>
 <ul>
-<li><code>YourNameSurname#xxxx</code>: save your results/files here.<br>
-</li>
+<li><code>YourNameSurname#xxxx</code>: save your results/files here.</li>
 <li><code>hpclab-workshop</code>: this contains input files and scripts. You can read-only access from this directory (no write permissions).</li>
 </ul>
 <p>Next, activate <code>snakemake</code> environment.</p>
@@ -399,6 +398,7 @@ II - Admixture analysis pipeline
 <li>Add a <code>benchmark</code> directive as well. Applying the same best practice.</li>
 <li>Memory estimated based on the size of the file</li>
 <li>After running the workflow for the set of <code>K</code> and <code>s</code> values shown in the bash script. Use the command line to provide a new seed value: <code>--config PARAM=&lt;value&gt;</code></li>
+<li>Make use of the <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#the-multiext-function"><code>multiext</code></a> function to define a set of output or input that only differ by their extension</li>
 </ul>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
