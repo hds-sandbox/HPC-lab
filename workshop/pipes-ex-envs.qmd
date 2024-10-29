@@ -42,7 +42,7 @@ cat("**G.1. What role does a workflow manager play in computational research??**
 
 ## B. Conda
 
-For these exercises, make sure you have submitted a job to UCloud (resources set to 1 CPU and 1 hour). Unsure which command to use? Refer to the official [Conda cheat sheet]((https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)) for guidance! 
+For these exercises, make sure you have submitted a job to UCloud (resources set to 1 CPU and 1 hour). Unsure which command to use? Refer to the official [Conda cheat sheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) for guidance! 
 
 :::{.callout-warning}
 - Is the hpc-lab environment not automatically activated? Restart the job following the instructions. 
@@ -163,7 +163,7 @@ N.B you can either name or prefix your environment. We will be using the prefix 
 2. Check the available environments. How many environments do you see? `r fitb(answer='4')`
 3. Activate the environment 
 4. Check which python executable is being used (Hint: `which python`)? Does this executable belong to your conda environment?? `r torf(FALSE)`
-5. Look for snakemake in  https://anaconda.org/ and install it in your env. This might take some time! 
+5. Search for snakemake [https://anaconda.org/](https://anaconda.org/). Copy the installation command and run it in your activated conda env. This might take some time! 
 6. Execute the help command: `snakemake -h`. Seems like snakemake is now installed in our environment!
 7. Does the python executable now belong to your conda environment?? `r torf(TRUE)`
 8. Is your python version >= 3.12 and packaged by conda-forge? `r torf(TRUE)`. IF NOT, use one of the following commands: `conda update -c conda-forge python` or `conda install -c conda-forge python=3.12.7`
@@ -195,7 +195,7 @@ conda env export > env.yml
 
 1. The syntax to create a new environment is: 
 `conda create --prefix /work/<NameSurname#xxxx>/envs/<test-env>`
-2. There are 2 environments available: `base` and `hpclab-env``
+2. There are 4 environments available: `base`, `hpclab-env`, `snakemake` and the one you just created. 
 3. conda activate /work/<NameSurname#xxxx>/envs/<test-env>
 4. The executable is located at `/usr/bin/python` in the system
 5. conda install bioconda::snakemake
@@ -229,7 +229,7 @@ If you are running this exercise locally, download the environment YAML file fir
 2. Once the environment is set up, activate it (do not forget to deactivate active environments)
 3. Verify the installed packages (you will also see other dependencies installed). Hint: check the `test-env.yml` to see which dependencies are included in this conda environment. 
 4. Uninstall the 'cookiecutter' package from your environment. Then, check again the list of all installed packages. Did you remove cookiecutter successfully? `r torf(TRUE)`
-5. Update Python to the latest compatible version. Which version is that? `r fitb(answer='3.7.16')`
+5. Update Python to the latest compatible version. Which version is that? Hint: check the prompt from the `conda update` command `r fitb(answer='3.7.16')`
 6. Try to install the latest numpy version using `conda install numpy=2.1`, could you successfully install it? `r torf(FALSE)`  
 7. Once you are done, delete the environment. 
 
@@ -247,8 +247,10 @@ conda deactivate; conda activate /work/AlbaRefoyoMartínez#0753/envs/test-env
 conda list 
 # 4. 
 conda remove cookiecutter ; conda list 
-# 5. 
-conda update python 
+# 5. Check prompt from running this command 
+conda update python # 3.7.16
+# OR conda list | grep python 
+; conda list python 
 # 6. 
 conda env remove --prefix /work/AlbaRefoyoMartínez#0753/envs/test-env 
 ```
@@ -258,16 +260,20 @@ conda env remove --prefix /work/AlbaRefoyoMartínez#0753/envs/test-env
 
 ## C. Containers 
 
-Refer to the official [Conda cheat sheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf) for guidance! 
-
+Apptainer/Singularity was specifically designed for HPC platforms; however, the UCloud server does not support it for regular users. As a result, **container exercises will need to be run locally**. We will be using Docker locally, as it is commonly employed for developing images. Please remember to install Docker Desktop, as noted on the [Welcome page](./pipes-requirements.qmd). For further guidance, refer to the official [Docker cheat sheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf). 
 
 
 ::: {.webex-check .callout-exercise}
 # V - Running a docker image
 
-In this exercise, we will utilize the `fastmixture` Docker image available on [DockerHUb](https://hub.docker.com/r/albarema/fastmixture). The aim is to **understand how to run containerized software**. In our example, we have selected a fast option and a toy dataset to facilitate learning. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.
+In this exercise, we will utilize the `fastmixture` Docker image which is available on [DockerHub](https://hub.docker.com/r/albarema/fastmixture), the repository for docker images. The aim is to **understand how to run containerized software**. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.
 
-[Fastmixture](https://www.biorxiv.org/content/10.1101/2024.07.08.602454v1) is a software tool designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.
+[Fastmixture](https://www.biorxiv.org/content/10.1101/2024.07.08.602454v1) is a software designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.
+
+Here are some optional resources you might typically review before running the software (though not required for this exercise):
+
+- Santander, Cindy G., Alba Refoyo Martinez, and Jonas Meisner. "Faster model-based estimation of ancestry proportions." bioRxiv (2024): 2024-07 [link to Preprint](https://www.biorxiv.org/content/10.1101/2024.07.08.602454v1).
+- Software GitHub repository [link](https://github.com/Rosemeis/fastmixture).
 
 ![Admixture proportions](./data/admix_toyData.png){width=500 fig-align="left"}
 
@@ -277,21 +283,28 @@ In this exercise, we will utilize the `fastmixture` Docker image available on [D
   </a>
 </div>
 
-1. Pull `fastmixture` image from [DockerHUb](https://hub.docker.com/r/albarema/fastmixture). Software GitHub account [here](https://github.com/Rosemeis/fastmixture). 
-2. Download and unzip the toy data 
-3. What is the command you need to run container? Do not forget to mount the data (use the flag `-v /path/toy:/path/mnt`). Before executing the software, verify that the data has been correctly mounted (e.g. running the `ls` command inside the container)
-4. Run fastmixture software using the command below. We will set K to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both `--bfile` and `--out`require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named `toy.data.*`; therefore, use `--bfile toy.data`.
 
-In `fastmixture`, the main arguments used in this exercise are:
+1. Pull `fastmixture` image from [DockerHUb](https://hub.docker.com/r/albarema/fastmixture) using the following command: 
+  
+    ```{.bash filename="Terminal"}
+    docker pull albarema/fastmixture:v0.93.3 
+    ```
+    Make sure to pull version **v0.93.3**. 
 
-- `--K`: Specifies the number of ancestral components, representing the sources in the mixture model.
-- `--seed`: Sets the random seed to ensure reproducibility of the analysis across different runs.
-- `--bfile`: prefix for PLINK files (.bed, .bim, .fam)
-- `--out`: Prefix output name
+2. Download and unzip the toy data (you may move the files to any preferred folder on your laptop)
+3. What is the command you need to run container? Do not forget to mount the data (using the flag `-v /path/toy:/path/mnt`). Before executing the software, verify that the data has been correctly mounted (e.g. running the `ls` command inside the container).
+4. Run `fastmixture` software using the command below. We will set *K* to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both `--bfile` and `--out` require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named `toy.data.*`; therefore, use `--bfile toy.data`.
 
-```{.bash}
-fastmixture --bfile <input.prefix> --K 3 --threads 4 --seed 1 --out <output.prefix>
-```
+    In `fastmixture`, the main arguments used in this exercise are:
+
+    - `--K`: Specifies the number of ancestral components, representing the sources in the mixture model.
+    - `--seed`: Sets the random seed to ensure reproducibility of the analysis across different runs.
+    - `--bfile`: prefix for PLINK files (.bed, .bim, .fam).
+    - `--out`: Prefix output name.
+
+    ```{.bash}
+    fastmixture --bfile <input.prefix> --K 3 --threads 4 --seed 1 --out <output.prefix>
+    ```
 5. Do you have the results in the folder on your local system? You should look for files named `toy.fast.K3.s1.{ext}`, where `{ext}=["Q", "P", "log"]`.
 
 :::{.callout-hint}
@@ -312,7 +325,7 @@ apptainer run fastmixture_v0.93.3.sif fastmixture --version
 
 # on local machine (using LIMA)
 cd toy # from data folder 
-apptainer pull /tmp/lima/fastmixture.sif docker://albarema/fastmixture:v0.93.3
+apptainer pull /tmp/lima/fastmixture.sif docker:/albarema/fastmixture:v0.93.3
 apptainer run /tmp/lima/fastmixture.sif fastmixture --bfile toy.data --K 3 --out toy.fast --threads 8
 ```
 :::
