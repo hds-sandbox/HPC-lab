@@ -69,7 +69,7 @@ Follow the instructions below if you have an account at a Danish university. You
 | 9:45	|	HPC resources | 13:00	|	Exercise - software mgmt |
 | 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
 | 10:30	|	Software mgmt I | 14:30	|	Computations mgmt I |
-| 11:15	|	Software mgmt II  16:00	|	Discussions & Wrap-up |
+| 11:15	|	Software mgmt II | 16:00	|	Discussions & Wrap-up |
 
 ::: {.hero-buttons}
 [Environments exercises](./pipes-ex-envs.qmd){.btn-action .btn .btn-success .btn-lg role="button"}
