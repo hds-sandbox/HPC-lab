@@ -122,6 +122,15 @@ You are set to write your own snakemake pipeline. Need more suggestions?
 - After running the workflow for the set of `K` and `s` values shown in the bash script. Use the command line to provide a new seed value: `--config PARAM=<value>`
 - Make use of the [`multiext`](https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#the-multiext-function) function to define a set of output or input that only differ by their extension
 
+
+How to run this workflow? 
+```{.bash}
+# Option A. From the terminal (do not `open interface`)
+snakemake -c1 --sdm conda --config SEEDS=4
+# Option B. From coder interface
+/work/HPCLab_workshop/miniconda3/envs/snakemake/bin/snakemake -c1 --sdm conda --config SEEDS=4
+```
+
 :::{.callout-hint}
 First, create a config.yaml file to specify the values for the wildcards `k` and `s`, as well as other parameters (such ass the number of threads, and the prefix).
 
@@ -149,11 +158,6 @@ rule ...:
   benchmark: "logs/{wd1}.txt"
   shell: "somecomamnd {output}"
 ```
-
-How to run the file? 
-```{.bash}
-snakemake -c1 --sdm conda --config SEEDS=4
-```
 :::
 
 :::{.callout-hint}
@@ -165,8 +169,11 @@ PLINKPATH: "/work/HPCLab_workshop/data/plink_sim"
 FPREFIX: "sim.small"
 THREADS_FAST: 2  # Threads for fastmixture
 THREADS_R: 1            # Threads for R plotting
-K_VALUES: [2]        # Values of K
-SEEDS: [1]        # Seed values
+K_VALUES: [2,3]        # Values of K
+SEEDS:
+  - 1
+  - 2
+  - 3    # Seed values
 PATH_SCRIPT: "/work/HPCLab_workshop/scripts"
 ```
 

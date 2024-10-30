@@ -108,25 +108,49 @@ In this section, we will be working with a tabulated metadata file, `samples_EB.
 
 ::: {.webex-check .callout-exercise}
 # I - Build your pipeline from scratch 
-##### Preparation step 
 
 You will be working and running the workflow from `hpclab`, so make sure it's set as your working directory. Launch Coder application (by selecting `Open interface`). 
 
-![My Coder app](./images/smk_coder.png)
+![My Coder app: ignore the additional subdirectories and files—they are from future exercises.](./images/smk_coder.png)
 
-- Directory Setup: Inside `hpclab`, create a subdirectory called `scripts`. 
-- File creation: open a new file named `step1_wf.smk` and include the following two lines of code:
+##### Preparation step 
 
-```{.bash}
-#!/usr/bin/env python 
-# -*- coding: utf-8 -*-
+- **Directory setup**: Inside `hpclab`, create two subdirectories, `scripts` and `rules`. 
+  - `scripts`: save all python/r external scripts. 
+  - `rules`: save all your snakefiles here!
+- **File creation**: you will need to create two files for this exercise:
+  - Open a new file named `step1_wf.smk` in the `rules` dir and include the following two lines of code:
+
+    ```{.bash}
+    #!/usr/bin/env python 
+      # -*- coding: utf-8 -*-
+    ```
+
+    :::{.callout-hint}
+    # what are those lines for?
+    - `!/usr/bin/env python`: tells the system to use the python interpreter to execute the script
+    - `-*- coding: utf-8 -*-`: specifies the character encoding for the file as UTF-8
+    :::
+
+  - Finally, create a Python file named `preprocess.py` in the `scripts` folder of your project directory. Add this code:
+
+    ```{.python filename="preprocess.py"}
+    #!/usr/bin/env python
+    # -*- coding: utf-8 -*-
+
+    import sys
+    import pandas as pd
+
+    def preprocess(input_file, output_file):
+        df = pd.read_csv(input_file, sep='\t')  # Read the input TSV file
+        df_cleaned = df.dropna()  # Remove rows with missing values
+        df_cleaned.to_csv(output_file, sep='\t', index=False)  # Save the cleaned data to output file
+
+    if __name__ == "__main__":
+        input_file = sys.argv[1]  # First argument: input file
+        output_file = sys.argv[2]  # Second argument: output file
+        preprocess(input_file, output_file)
 ```
-
-:::{.callout-hint}
-# what are those lines for?
-- `!/usr/bin/env python`: tells the system to use the python interpreter to execute the script
-- `-*- coding: utf-8 -*-`: specifies the character encoding for the file as UTF-8
-:::
 
 Your directory layout should look like this:
 
@@ -144,6 +168,7 @@ mypersonaldrive/
     ├── rules/
     │   ├── step1_wf.smk 
     └── scripts 
+        └── preprocess.py
 ```
 
 ##### Part 1: Writing the first rule 
@@ -153,16 +178,16 @@ Let's define a very simple workflow of one task (S.1). With `step1_wf.smk` open,
 - Name of the rule: `preprocess`  
 - **Avoid using wildcards for now**
 - Define inputs and outputs:
-  - Input: metadata file ("/work/HPCLab_workshop/data/samples_EB.tsv")
-  - Output: preprocessed file ("results/samples_EB_cleaned.tsv")
-- Use a `shell` command to run a Python script that removes samples with missing values (NA)
+  - Input: metadata file ('/work/HPCLab_workshop/data/samples_EB.tsv')
+  - Output: preprocessed file ('results/samples_EB_cleaned.tsv')
+- Use the `shell` directive to run a Python script that removes samples with missing values (NA)
 
 ```{.python filename="step1_wf.smk"}
-rule "firstrule":
+rule firstrule:
   input: "/path/to/input"
-  output: "/path/to/input"
+  output: "/path/to/output"
   shell: 
-    "somecommand {input}"
+    "somecommand {output}"
 ```
 
 Your rule should replicate the behavior of the bash script shown below.
@@ -173,26 +198,6 @@ OUTPUT="/work/<nameSurname#xxx>/hpclab/results_eb/samples_EB_cleaned.tsv"
 
 # This is what the pipeline's task is:
 python scripts/preprocess.py $INFILE $OUTFILE
-```
-
-Finally, create a Python file named `preprocess.py` in the `scripts` folder of your project directory. Add this code:
-
-```{.python filename="preprocess.py"}
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-import sys
-import pandas as pd
-
-def preprocess(input_file, output_file):
-    df = pd.read_csv(input_file, sep='\t')  # Read the input TSV file
-    df_cleaned = df.dropna()  # Remove rows with missing values
-    df_cleaned.to_csv(output_file, sep='\t', index=False)  # Save the cleaned data to output file
-
-if __name__ == "__main__":
-    input_file = sys.argv[1]  # First argument: input file
-    output_file = sys.argv[2]  # Second argument: output file
-    preprocess(input_file, output_file)
 ```
 
 ###### Running the workflow 
@@ -280,12 +285,12 @@ snakemake -s rules/step1_wf.smk --force -c1 results/samples_EB_cleaned.tsv
 
 By default, Snakemake always wants to execute the first rule in the Snakefile. This gives rise to "pseudo-rules" at the beginning of the file, which are used to define **targets**. Typically, this rule is named `all`. Let's look at an example: 
 
-```{.python filename="example.smk"}
-DATASETS=["ds1", "ds2", "ds3"]
-
+```{.python filename="example1.smk"}
 rule all:
     input:
-        expand("{dataset}/file.A.gz", dataset=DATASETS)
+        "ds1.file.A.gz",
+        "ds2.file.A.gz",
+        "ds3.file.A.gz",
 
 rule file_conversion:
     input:
@@ -296,13 +301,32 @@ rule file_conversion:
         "somecommand {input} > {output}"
 
 ``` 
+Alternatively, you can use a python list to define the inputs:
 
-Here, for each dataset in the Python list `DATASETS`, the file `{dataset}/file.A.gz` is requested. Snakemake, will recognise that these files can be created my multiple applications (executions) of the rule `file_conversion`. 
+```{.python}
+DATASETS = ["ds1", "ds2", "ds3"]
 
-It's time for you to define the target rule `rule all` within the Snakefile and utilize some helper functions. Instead of using a Python list comprehension to specify input files, Snakemake provides the helpful `expand()` function, use it! 
+rule all:
+    input:
+        [f"{dataset}/file.A.gz" for dataset in DATASETS]
+``` 
+
+But how does it look if we use a helper function, e.g. `expand()`: 
+
+```{.python filename="example.smk"}
+DATASETS=["ds1", "ds2", "ds3"]
+
+rule all:
+    input:
+        expand("{dataset}/file.A.gz", dataset=DATASETS)
+``` 
+
+In all cases, for each dataset in the Python list `DATASETS`, the file `{dataset}/file.A.gz` is requested. Snakemake, will recognise that these files can be created my multiple applications (executions) of the rule `file_conversion`. 
+
+It's time for you to define the target rule `rule all` within the Snakefile and utilize helper functions. Instead of using a Python list comprehension to specify input files please use `expand()` function! 
 
 - Declare the variable DATASETS at the top 
-- Define `rule all` and use the `expand()` function to specify the input files
+- Define `rule all` and use the `expand()` function to specify the input files (our **targets**, corresponding to the last output)
 - If you need it, have a look at [Snakemake documentation](https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#target-rules)
 
 **Does your Snakefile resemble the one in the solution above?** `r torf(TRUE)`
@@ -355,8 +379,8 @@ use rule * from step1_workflow exclude ruleExtra as step1_*
 
 Now it's time to implement it following these steps: 
 
-1. File creation: open a new file named `step2_wf.smk` and define the external workflow `step1_wf.smk` as a module, making all rules available by explicitly importing them and rename them as `step1_*`.
-2. Remove `results/samples_EB_cleaned.tsv` to test the newly implemented feature.
+1. File creation: open a new file named `step2_wf.smk` and define the external workflow `step1_wf.smk` as a module, making all rules available by explicitly importing them and rename them as `step1_*`. Hint: example above. 
+2. Delete the output file `results/samples_EB_cleaned.tsv` to test the newly implemented feature.
 3. Dry-run `step2_wf.smk` using the `-p` command (`--printshellcmds`) 
 
 :::{.callout-hint}
@@ -414,14 +438,14 @@ Many software tools accept arguments to set specific thresholds. For instance, o
 
 #### Params 
 
-Let's add a new rule named `filter_year` that replicates the behavior of the bash script below:
+Let's add a new rule named `filter_year` in `step2_wf.smk` that replicates the behavior of the bash script below:
 
 ```{.bash filename="filter_year.sh"}
 INFILE="results/samples_EB_cleaned.tsv"
-OUTFILE="results/samples_EV_filtered.tsv"
+OUTFILE="results/samples_EB_filtered.tsv"
 
 # python script filters the metadata based on the year the samples were collected 
-python scripts/filter_year.py -i $INFILE -o $OUTFILE -y 2000
+python scripts/filter_year.py -i $INFILE -o $OUTFILE -y $CUTOFF
 ```
 
 Please, use named inputs (e.g. `meta` for the input and `fi` for the output). Named inputs are particularly useful when multiple files are needed for running a software tool.
@@ -463,7 +487,7 @@ if __name__ == "__main__":
 ```
 :::
 
-**How many samples got filtered out?** Compared the `*_cleaned.tsv` vs the `*_filtered.tsv`. `r fitb(answer='2')`
+Now, run `step2_wf.smk`. **How many samples got filtered out?** Compared the `*_cleaned.tsv` vs the `*_filtered.tsv`. `r fitb(answer='2')`
 
 :::{.callout-hint}
 # Solution S.5
@@ -487,7 +511,12 @@ Almost done! We want our workflow to be as customizable as possible, so that it 
 
 #### Config files 
 
-Modify your Snakemake workflow to include a YAML configuration file and use it within the `filter_year` rule. 
+Modify your Snakemake workflow to include a YAML configuration file and use it within the `filter_year` rule. Configuration files are typically located at the top level of the project directory, e.g. `hpclab` (often alongside the Snakefile). While you usually reuse a pipeline, it's advisable to create a new config file for each new dataset or project. This approach helps isolate project-specific configurations and avoids modifying the original pipeline. 
+
+:::{.callout-hint}
+# Not familiar with YAML format? Read this!
+**Whitespace** is a key part of YAML's formatting. Unless otherwise indicated, newlines indicate the end of a field. You structure a YAML document with indentation. The indentation level can be one or more spaces. The specification forbids tabs because tools treat them differently.
+:::
 
 1. Define the YAML config file 
 ```{.bash filename="config_step2.yml"}
