@@ -400,6 +400,11 @@ II - Admixture analysis pipeline
 <li>After running the workflow for the set of <code>K</code> and <code>s</code> values shown in the bash script. Use the command line to provide a new seed value: <code>--config PARAM=&lt;value&gt;</code></li>
 <li>Make use of the <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#the-multiext-function"><code>multiext</code></a> function to define a set of output or input that only differ by their extension</li>
 </ul>
+<p>How to run this workflow?</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option A. From the terminal (do not `open interface`)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--sdm</span> conda <span class="at">--config</span> SEEDS=4</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Option B. From coder interface</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/work/HPCLab_workshop/miniconda3/envs/snakemake/bin/snakemake</span> <span class="at">-c1</span> <span class="at">--sdm</span> conda <span class="at">--config</span> SEEDS=4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -417,22 +422,20 @@ Hint
 <p>First, create a config.yaml file to specify the values for the wildcards <code>k</code> and <code>s</code>, as well as other parameters (such ass the number of threads, and the prefix).</p>
 <p>Then, create the Snakemake Workflow, defining two rules for running <code>fastmixture</code> and plotting with R.</p>
 <p><code>fastmixture</code> is not pre-installed, check the instructions <a href="https://github.com/Rosemeis/fastmixture"><code>fastmixture</code> GitHub</a>. Need more tips?</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># git clone on your working dir</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/Rosemeis/fastmixture.git</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get the path to the environment file</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># realpath: /work/&lt;NameSurname#xxx&gt;/fastmixture/environment.yml</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/fastmixture</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml <span class="at">--prefix</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/envs/fastmixture</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># git clone on your working dir</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/Rosemeis/fastmixture.git</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get the path to the environment file</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># realpath: /work/&lt;NameSurname#xxx&gt;/fastmixture/environment.yml</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/fastmixture</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml <span class="at">--prefix</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/envs/fastmixture</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Make use of useful directive:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>rule ...:</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  output: <span class="st">"results/</span><span class="sc">{wd2}</span><span class="st">.tsv"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  conda: <span class="st">"/path/to/env.yml"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  log: <span class="st">"logs/</span><span class="sc">{wd1}</span><span class="st">.log"</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  benchmark: <span class="st">"logs/</span><span class="sc">{wd1}</span><span class="st">.txt"</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  shell: <span class="st">"somecomamnd </span><span class="sc">{output}</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>How to run the file?</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--sdm</span> conda <span class="at">--config</span> SEEDS=4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rule ...:</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  output: <span class="st">"results/</span><span class="sc">{wd2}</span><span class="st">.tsv"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  conda: <span class="st">"/path/to/env.yml"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  log: <span class="st">"logs/</span><span class="sc">{wd1}</span><span class="st">.log"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  benchmark: <span class="st">"logs/</span><span class="sc">{wd1}</span><span class="st">.txt"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  shell: <span class="st">"somecomamnd </span><span class="sc">{output}</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -461,9 +464,12 @@ My solution
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FPREFIX</span><span class="kw">:</span><span class="at"> </span><span class="st">"sim.small"</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">THREADS_FAST</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span><span class="co">  # Threads for fastmixture</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">THREADS_R</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span><span class="co">            # Threads for R plotting</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">K_VALUES</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">2</span><span class="kw">]</span><span class="co">        # Values of K</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">SEEDS</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">1</span><span class="kw">]</span><span class="co">        # Seed values</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">PATH_SCRIPT</span><span class="kw">:</span><span class="at"> </span><span class="st">"/work/HPCLab_workshop/scripts"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">K_VALUES</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">2</span><span class="kw">,</span><span class="dv">3</span><span class="kw">]</span><span class="co">        # Values of K</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">SEEDS</span><span class="kw">:</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="dv">3</span><span class="co">    # Seed values</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">PATH_SCRIPT</span><span class="kw">:</span><span class="at"> </span><span class="st">"/work/HPCLab_workshop/scripts"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
