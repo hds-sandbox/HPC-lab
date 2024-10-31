@@ -123,13 +123,15 @@ You are set to write your own snakemake pipeline. Need more suggestions?
 - Make use of the [`multiext`](https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#the-multiext-function) function to define a set of output or input that only differ by their extension
 
 
-How to run this workflow? 
+How to run this workflow? See the picture below:
+
 ```{.bash}
 # Option A. From the terminal (do not `open interface`)
 snakemake -c1 --sdm conda --config SEEDS=4
-# Option B. From coder interface
+# Option B. From coder interface (for this option you can click on `open interface`)
 /work/HPCLab_workshop/miniconda3/envs/snakemake/bin/snakemake -c1 --sdm conda --config SEEDS=4
 ```
+![Click on terminal](./images/terminal_vscode.png)
 
 :::{.callout-hint}
 First, create a config.yaml file to specify the values for the wildcards `k` and `s`, as well as other parameters (such ass the number of threads, and the prefix).
