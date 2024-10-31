@@ -400,11 +400,17 @@ II - Admixture analysis pipeline
 <li>After running the workflow for the set of <code>K</code> and <code>s</code> values shown in the bash script. Use the command line to provide a new seed value: <code>--config PARAM=&lt;value&gt;</code></li>
 <li>Make use of the <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#the-multiext-function"><code>multiext</code></a> function to define a set of output or input that only differ by their extension</li>
 </ul>
-<p>How to run this workflow?</p>
+<p>How to run this workflow? See the picture below:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option A. From the terminal (do not `open interface`)</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--sdm</span> conda <span class="at">--config</span> SEEDS=4</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Option B. From coder interface</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Option B. From coder interface (for this option you can click on `open interface`)</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/work/HPCLab_workshop/miniconda3/envs/snakemake/bin/snakemake</span> <span class="at">-c1</span> <span class="at">--sdm</span> conda <span class="at">--config</span> SEEDS=4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/terminal_vscode.png" class="img-fluid figure-img"></p>
+<figcaption>Click on terminal</figcaption>
+</figure>
+</div>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
