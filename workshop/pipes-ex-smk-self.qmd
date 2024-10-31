@@ -290,7 +290,7 @@ rule all:
     input:
         "ds1.file.A.gz",
         "ds2.file.A.gz",
-        "ds3.file.A.gz",
+        "ds3.file.A.gz"
 
 rule file_conversion:
     input:
@@ -303,7 +303,7 @@ rule file_conversion:
 ``` 
 Alternatively, you can use a python list to define the inputs:
 
-```{.python}
+```{.python filename="example1.smk"}
 DATASETS = ["ds1", "ds2", "ds3"]
 
 rule all:
@@ -313,7 +313,7 @@ rule all:
 
 But how does it look if we use a helper function, e.g. `expand()`: 
 
-```{.python filename="example.smk"}
+```{.python filename="example3.smk"}
 DATASETS=["ds1", "ds2", "ds3"]
 
 rule all:
