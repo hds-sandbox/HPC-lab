@@ -38,7 +38,7 @@ style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
 
 <div class="tab-pane fade  show active" id="ucloud" role="tabpanel" aria-labelledby="ucloud-tab">
 
-Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the `setup.sh` initialization file and ask for 2 CPUs so we can run things in parallel: 
+Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the `setup.sh` initialization file, and ask for 2 CPUs so we can run things in parallel: 
 
 - `YourNameSurname#xxxx`: save your results/files here.  
 - `hpclab-workshop`: this contains input files and scripts. You can read-only access from this directory (no write permissions). 
@@ -57,7 +57,7 @@ Finally, navigate to your personal drive and use the project directory you creat
 
 <div class="tab-pane fade" id="locally" role="tabpanel" aria-labelledby="locally-tab">
 
-You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.txt) for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment and download the data.
+You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.txt) for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment, and download the data.
 
   <a href="./data/snakemake.yml" download="snakemake.yml">
     <button class="btn small-button">Download environment file</button>
@@ -109,7 +109,7 @@ In this section, we will be working with a tabulated metadata file, `samples_EB.
 ::: {.webex-check .callout-exercise}
 # I - Build your pipeline from scratch 
 
-You will be working and running the workflow from `hpclab`, so make sure it's set as your working directory. Launch Coder application (by selecting `Open interface`). 
+You will be working and running the workflow from `hpclab`, so make sure it's set as your working directory. Launch the Coder application (by selecting `Open interface`). 
 
 ![My Coder app: ignore the additional subdirectories and files—they are from future exercises.](./images/smk_coder.png)
 
@@ -128,7 +128,7 @@ You will be working and running the workflow from `hpclab`, so make sure it's se
 
     :::{.callout-hint}
     # what are those lines for?
-    - `!/usr/bin/env python`: tells the system to use the python interpreter to execute the script
+    - `!/usr/bin/env python`: tells the system to use the Python interpreter to execute the script
     - `-*- coding: utf-8 -*-`: specifies the character encoding for the file as UTF-8
     :::
 
@@ -236,7 +236,7 @@ rule preprocess:
 What if we wanted to run this same rule for the dataset used in the previous Snakemake exercise? **How could we modify the rule (and so, the workflow) to accommodate other datasets?**
 
 :::{.callout-hint}
-# Details about previous dataset
+# Details about the previous dataset
 - Input: "/work/HPCLab_workshop/data/samples_1kgp.tsv" 
 - Output: "results/samples_1kgp_cleaned.tsv"
 :::
@@ -247,7 +247,7 @@ You can leverage Snakemake's customization by introducing variables through eith
 
 Wildcards are dynamic placeholders in rule definitions that allow for flexible input or output file names. You define them in your rules, and their actual values are determined when the workflow is executed, enabling versatile file handling across different workflow runs.
 
-Modify the previous rule so that you can run the workflow for different datasets. Not sure how?
+Could you modify the previous rule so that you can run the workflow for different datasets? Not sure how?
 
 - Define a wildcard named `dataset` which represents the variable parts of your input or output (e.g. `EB` in this case)
 - Dry-run, is it working  `snakemake -s rules/step1_wf.smk -np results/samples_EB_cleaned.tsv`
@@ -285,7 +285,7 @@ snakemake -s rules/step1_wf.smk --force -c1 results/samples_EB_cleaned.tsv
 
 By default, Snakemake always wants to execute the first rule in the Snakefile. This gives rise to "pseudo-rules" at the beginning of the file, which are used to define **targets**. Typically, this rule is named `all`. Let's look at an example: 
 
-```{.python filename="example1.smk"}
+```{.python filename="option1.smk"}
 rule all:
     input:
         "ds1.file.A.gz",
@@ -301,9 +301,9 @@ rule file_conversion:
         "somecommand {input} > {output}"
 
 ``` 
-Alternatively, you can use a python list to define the inputs:
+Alternatively, you can use a Python list to define the inputs:
 
-```{.python filename="example1.smk"}
+```{.python filename="option2.smk"}
 DATASETS = ["ds1", "ds2", "ds3"]
 
 rule all:
@@ -313,7 +313,7 @@ rule all:
 
 But how does it look if we use a helper function, e.g. `expand()`: 
 
-```{.python filename="example3.smk"}
+```{.python filename="option3.smk"}
 DATASETS=["ds1", "ds2", "ds3"]
 
 rule all:
@@ -321,7 +321,7 @@ rule all:
         expand("{dataset}/file.A.gz", dataset=DATASETS)
 ``` 
 
-In all cases, for each dataset in the Python list `DATASETS`, the file `{dataset}/file.A.gz` is requested. Snakemake, will recognise that these files can be created my multiple applications (executions) of the rule `file_conversion`. 
+In all cases, for each dataset in the Python list `DATASETS`, the file `{dataset}/file.A.gz` is requested. Snakemake, will recognise that these files can be created by multiple applications (executions) of the rule `file_conversion`. 
 
 It's time for you to define the target rule `rule all` within the Snakefile and utilize helper functions. Instead of using a Python list comprehension to specify input files please use `expand()` function! 
 
@@ -358,7 +358,7 @@ rule preprocess:
 :::
 
 
-Let's assume that `step1_wf.smk` includes all the necessary steps for preprocessing our data. Now, let's add other components to the workflow to further process the data. The aim of the next exercise is to modularized our workflow and decorate the workflow using some advanced functionality. 
+Let's assume that `step1_wf.smk` includes all the necessary steps for preprocessing our data. Now, let's add other components to the workflow to further process the data. The aim of the next exercise is to modularise our workflow and decorate the workflow using some advanced functionality. 
 
 
 :::{.webex-check .callout-exercise}
@@ -366,7 +366,7 @@ Let's assume that `step1_wf.smk` includes all the necessary steps for preprocess
 
 ###### Part 4: Modularization 
 
-Let's walk through an example of modularization. In the example below, the statement `module step1_workflow` registers the external workflow as a module by specifying the path to its snakefile. The second statement declares that all rules of that modules are available in the current workflow, expect for `ruleExtra`. The `as step1_*` at the end renames all those rules with a common prefix (e.g. `rule preprocess` would be become `rule step1_preprocess`). This renaming is optional but very useful for avoiding rule name conflicts (e.g. we could have another rule on this new snakefile named `preprocess`). Want to learn more? Click [here](https://snakemake.readthedocs.io/en/stable/snakefiles/modularization.html#includes). 
+Let's walk through an example of modularization. In the example below, the statement `module step1_workflow` registers the external workflow as a module by specifying the path to its snakefile. The second statement declares that all rules of those modules are available in the current workflow, except for `ruleExtra`. The `as step1_*` at the end renames all those rules with a common prefix (e.g. `rule preprocess` would become `rule step1_preprocess`). This renaming is optional but very useful for avoiding rule name conflicts (e.g. we could have another rule on this new snakefile named `preprocess`). Want to learn more? Click [here](https://snakemake.readthedocs.io/en/stable/snakefiles/modularization.html#includes). 
 
 ```{.python filename="example.smk"}
 module step1_workflow:
@@ -379,7 +379,7 @@ use rule * from step1_workflow exclude ruleExtra as step1_*
 
 Now it's time to implement it following these steps: 
 
-1. File creation: open a new file named `step2_wf.smk` and define the external workflow `step1_wf.smk` as a module, making all rules available by explicitly importing them and rename them as `step1_*`. Hint: example above. 
+1. File creation: open a new file named `step2_wf.smk` and define the external workflow `step1_wf.smk` as a module, making all rules available by explicitly importing them and renaming them as `step1_*`. Hint: the example above. 
 2. Delete the output file `results/samples_EB_cleaned.tsv` to test the newly implemented feature.
 3. Dry-run `step2_wf.smk` using the `-p` command (`--printshellcmds`) 
 
@@ -444,16 +444,16 @@ Let's add a new rule named `filter_year` in `step2_wf.smk` that replicates the b
 INFILE="results/samples_EB_cleaned.tsv"
 OUTFILE="results/samples_EB_filtered.tsv"
 
-# python script filters the metadata based on the year the samples were collected 
+# Python script filters the metadata based on the year the samples were collected 
 python scripts/filter_year.py -i $INFILE -o $OUTFILE -y $CUTOFF
 ```
 
 Please, use named inputs (e.g. `meta` for the input and `fi` for the output). Named inputs are particularly useful when multiple files are needed for running a software tool.
 
-You can find the python file on UCloud: `PATH="/work/HPCLab_workshop/scripts/filter_year.py"`. Copy it to your `scripts` directory. 
+You can find the Python file on UCloud: `PATH="/work/HPCLab_workshop/scripts/filter_year.py"`. Copy it to your `scripts` directory. 
 
 :::{.callout-hint}
-# You want to have a look at the python code?  
+# You want to have a look at the Python code?  
 ```{.python filename="filter_year.py"}
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -507,7 +507,7 @@ rule filter_year:
 ```        
 :::
 
-Almost done! We want our workflow to be as customizable as possible, so that it can easily be adapted to new data. For this purpose, snakemake provides a [config file](https://snakemake.readthedocs.io/en/latest/snakefiles/configuration.html) mechanism. 
+Almost done! We want our workflow to be as customizable as possible so that it can easily be adapted to new data. For this purpose, snakemake provides a [config file](https://snakemake.readthedocs.io/en/latest/snakefiles/configuration.html) mechanism. 
 
 #### Config files 
 
