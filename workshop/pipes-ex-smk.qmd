@@ -74,12 +74,12 @@ cat("**G.3. What are the key features of workflow manager in computational resea
 
 ## B. Snakemake
 
-In this section, we will be working with a tabulated metadata file, `samples_1kgp_test`, which contains information about the samples from the [1000 Genomes Project](https://www.internationalgenome.org/). Each row represents a sample, and the columns contain various attributes for that sample (ID, population, super population and sex). The file is designed to be simple and small, making it easy to work with and manipulate across tasks. However, the specifics of the data aren’t the primary focus.
+In this section, we will be working with a tabulated metadata file, `samples_1kgp_test`, which contains information about the samples from the [1000 Genomes Project](https://www.internationalgenome.org/). Each row represents a sample, and the columns contain various attributes for that sample (ID, population, super population, and sex). The file is designed to be simple and small, making it easy to work with and manipulate across tasks. However, the specifics of the data aren’t the primary focus.
 
 :::{.callout-warning}
 # How to run snakemake on UCloud
 
-First, mount the following two drives, use the `setup.sh` initialization file and ask for 2 CPUs so we can run things in parallel: 
+First, mount the following two drives, use the `setup.sh` initialization file, and ask for 2 CPUs so we can run things in parallel: 
 
 - `YourNameSurname#xxxx`: save your results/files here.  
 - `hpclab-workshop`: this contains input files and scripts. You can read-only access from this directory (no write permissions). 
@@ -118,7 +118,7 @@ We strongly recommend keeping the [Snakemake documentation](https://snakemake.re
 In this exercise, we will explore how rules are invoked in a Snakemake workflow. The snakemake file is located at: `/work/HPCLab_workshop/rules/process_1kgp.smk`. Now follow these steps and answer the questions: 
 
 1. Open the snakefile, named `process_1kgp.smk` and try to understand every single line. If you request Snakemake to generate the file `results/all_female.txt`, **what tasks will be executed and in what sequence?**
-2. Open a terminal and navigate to your personal drive `cd /work/YourNameSurname#xxxx`. Create a project directory called, for example, `hpclab` and make it your working directory. You should save all results here!
+2. Open a terminal and navigate to your personal drive `cd /work/YourNameSurname#xxxx`. Create a project directory called, for example, `hpclab` and make it your working directory. You should save all the results here!
 3. **Dry-run** the workflow: Check the number of jobs that will be executed.
 
    **Q.1. How many jobs will Snakemake run?** `r fitb(8)`
@@ -145,7 +145,7 @@ In this exercise, we will explore how rules are invoked in a Snakemake workflow.
    
    **Q.5. How many jobs will Snakemake run?** `r fitb(4)`
 
-8. Under your working directory, create a folder named `rules` and copy the snakefile (`process_1kgp.smk`) to that folder so you can edit it! Then, open the file and remove lines 13-15. How else can you run the workflow but to generate instead `all_male.txt` using only the command-line? 
+8. Under your working directory, create a folder named `rules` and copy the snakefile (`process_1kgp.smk`) to that folder so you can edit it! Then, open the file and remove lines 13-15. How else can you run the workflow but generate instead `all_male.txt` using only the command line? 
 
    ```{.bash filename="process_1kgp.smk"} 
    13 rule all:
@@ -162,7 +162,7 @@ In this exercise, we will explore how rules are invoked in a Snakemake workflow.
 :::{.callout-hint}
 # Solution 
 
-1. Tasks will be executed in this order preprocess (1), split_by_superpop (5) and combine (1). 
+1. Tasks will be executed in this order preprocess (1), split_by_superpop (5), and combine (1). 
 
 ```{.bash}
 # 2. Create subdir 
@@ -177,7 +177,7 @@ snakemake -s HPCLab_workshop/rules/process_1kgp.smk -c1
 ls results/*
 # 6. dry run 
 snakemake -s /work/HPCLab_workshop/rules/process_1kgp.smk -n 
-# 7. remove file starting with E  and the all_female.txt
+# 7. remove file(s) starting with E and the all_female.txt
 rm results/E*.tsv results/all_female.txt
 # 8. make a copy of the snakefile and remove the lines 
 mkdir rules 
