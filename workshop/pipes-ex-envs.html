@@ -363,8 +363,8 @@ I - General knowledge
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_GMVEXLTVDD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GMVEXLTVDD" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_GMVEXLTVDD" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_GMVEXLTVDD" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_GMVEXLTVDD" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_CTOIBIRKFN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CTOIBIRKFN" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_CTOIBIRKFN" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_CTOIBIRKFN" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_CTOIBIRKFN" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -406,7 +406,7 @@ II - Understanding an existing environment
 <div class="callout-body-container callout-body">
 <div>
 <div class="webex-check callout-exercise">
-<p>Type the answers with no white spaces!</p>
+<p>Type the answers with no white-spaces!</p>
 <p><strong>C.1. What is the version of conda</strong> <input class="webex-solveme nospaces" size="6" data-answer="[&quot;24.9.2&quot;]"></p>
 <p><strong>C.2. List all environments available to you. What is the name of the active environment</strong> <input class="webex-solveme nospaces" size="4" data-answer="[&quot;base&quot;]"></p>
 <p><strong>C.3. Active <code>hpclab-env</code> environment</strong></p>
@@ -485,7 +485,7 @@ II - Bonus exercise
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Inspect <code>numpy</code> version installed in the <code>hpclab-env</code>. Get the version and the full revision id (git_version). Hint: you can find this information in the <code>version.py</code> file! Check the installed libraries (<code>lib</code>) and look inside Python packages.</p>
+<p>Inspect <code>numpy</code> version installed in the <code>hpclab-env</code>. Get the version and the full revision id (git_version). Hint: you can find this information in the <code>version.py</code> file! Check the installed libraries (<code>lib</code>) and look inside python packages.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/work/HPCLab_workshop/miniconda3/envs/hpclab-env/lib/python3.12/site-packages/numpy/version.py</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><strong>Bonus.1. Numpy version</strong> <input class="webex-solveme nospaces" size="6" data-answer="[&quot;1.26.4&quot;]"></li>
@@ -528,19 +528,19 @@ III - Build your conda environment
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Deactivate hpclab-env </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate to your personal drive and create a new environment directory with the command mkdir envs</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate to your personal drive and create a new envs directory with the command mkdir envs</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="op">&lt;</span>yourpersonal-drive<span class="op">&gt;</span> <span class="co"># AlbaRefoyoMartínez#0753</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> envs </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Is the full path of your envs directory <code>/work/&lt;NameSurname#xxxx&gt;/envs</code>? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 <p>Since Miniconda is already pre-installed, you’re ready to create your first environment. Just follow these steps:</p>
 <ol type="1">
-<li>Create a new environment using <code>--prefix PATH</code> (for example, <code>/work/&lt;YourNameSurname#xxxx&gt;/envs/&lt;name-env&gt;</code>) and Proceed yes (<code>y</code> or enter). N.B. You can either name or prefix your environment. We will be using the prefix as miniconda is installed in a directory where you do not have writing privileges.</li>
+<li>Create a new environment using <code>--prefix PATH</code> (for example, <code>/work/&lt;YourNameSurname#xxxx&gt;/envs/&lt;name-env&gt;</code>) and Proceed yes (<code>y</code> or enter). N.B you can either name or prefix your environment. We will be using the prefix as miniconda is installed in a directory where you do not have writing privileges.</li>
 <li>Check the available environments. How many environments do you see? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;4&quot;]"></li>
 <li>Activate the environment</li>
 <li>Check which python executable is being used (Hint: <code>which python</code>)? Does this executable belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
 <li>Search for snakemake <a href="https://anaconda.org/">https://anaconda.org/</a>. Copy the installation command and run it in your activated conda env. This might take some time!</li>
 <li>Execute the help command: <code>snakemake -h</code>. Seems like snakemake is now installed in our environment!</li>
-<li>Does the Python executable now belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>Does the python executable now belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
 <li>Is your python version &gt;= 3.12 and packaged by conda-forge? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select>. IF NOT, use one of the following commands: <code>conda update -c conda-forge python</code> or <code>conda install -c conda-forge python=3.12.7</code></li>
 <li>Let’s search for <code>bowtie2</code>. Do you get an error? which channel is needed (Hint: search for bowtie2 in https://anaconda.org/)? <input class="webex-solveme nospaces" size="8" data-answer="[&quot;bioconda&quot;]"></li>
 <li>Let’s add the missing channel: <code>conda config --add channels xxxx</code>. Hint: it is a repo that offers a wide range of bioinformatics software and tools.</li>
@@ -595,7 +595,7 @@ Solution
 <div class="callout-hint">
 <ol type="1">
 <li>The syntax to create a new environment is: <code>conda create --prefix /work/&lt;NameSurname#xxxx&gt;/envs/&lt;test-env&gt;</code></li>
-<li>There are 4 environments available: <code>base</code>, <code>hpclab-env</code>, <code>snakemake</code>, and the one you just created.</li>
+<li>There are 4 environments available: <code>base</code>, <code>hpclab-env</code>, <code>snakemake</code> and the one you just created.</li>
 <li>conda activate /work/&lt;NameSurname#xxxx&gt;/envs/<test-env></test-env></li>
 <li>The executable is located at <code>/usr/bin/python</code> in the system</li>
 <li>conda install bioconda::snakemake</li>
@@ -642,7 +642,7 @@ IV - Adapt a colleague’s Conda environment to fit your needs.
 <li>Verify the installed packages (you will also see other dependencies installed). Hint: check the <code>test-env.yml</code> to see which dependencies are included in this conda environment.</li>
 <li>Uninstall the ‘cookiecutter’ package from your environment. Then, check again the list of all installed packages. Did you remove cookiecutter successfully? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
 <li>Update Python to the latest compatible version. Which version is that? Hint: check the prompt from the <code>conda update</code> command <input class="webex-solveme nospaces" size="6" data-answer="[&quot;3.7.16&quot;]"></li>
-<li>Try to install the latest <code>numpy</code> version using <code>conda install numpy=2.1</code>, could you successfully install it? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select><br>
+<li>Try to install the latest numpy version using <code>conda install numpy=2.1</code>, could you successfully install it? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select><br>
 </li>
 <li>Once you are done, delete the environment.</li>
 </ol>
@@ -729,7 +729,7 @@ V - Running a docker image
 </div>
 <p>Make sure to pull version <strong>v0.93.3</strong>.</p></li>
 <li><p>Download and unzip the toy data (you may move the files to any preferred folder on your laptop)</p></li>
-<li><p>What is the command you need to run the container? Do not forget to mount the data (using the flag <code>-v /path/toy:/path/mnt</code>). Before executing the software, verify that the data has been correctly mounted (e.g.&nbsp;running the <code>ls</code> command inside the container).</p></li>
+<li><p>What is the command you need to run container? Do not forget to mount the data (using the flag <code>-v /path/toy:/path/mnt</code>). Before executing the software, verify that the data has been correctly mounted (e.g.&nbsp;running the <code>ls</code> command inside the container).</p></li>
 <li><p>Run <code>fastmixture</code> software using the command below. We will set <em>K</em> to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both <code>--bfile</code> and <code>--out</code> require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named <code>toy.data.*</code>; therefore, use <code>--bfile toy.data</code>.</p>
 <p>In <code>fastmixture</code>, the main arguments used in this exercise are:</p>
 <ul>
@@ -762,7 +762,7 @@ Solution
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--cpus</span><span class="op">=</span>8 <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/toy/:/data/ albarema/fastmixture:v0.93.3 fastmixture <span class="at">--bfile</span> data/toy.data <span class="at">--K</span> 3 <span class="at">--out</span> data/toy.fast <span class="at">--threads</span> 8 <span class="co"># run the command </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
-<li><strong>Apptainer</strong> on HPC / local machine: on your local machine you will need to modify lima.yml to make the current directory (<code>pwd</code>) writable. Alternatively, write the data out to /tmp/lima!</li>
+<li><strong>Apptainer</strong> on HPC / local machine: on your local machine you will need to modify lima.yml to make the current directory (pwd) writable. Alternative, write the data out to /tmp/lima!</li>
 </ul>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://albarema/fastmixture:v0.93.3</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run fastmixture_v0.93.3.sif fastmixture <span class="at">--version</span></span>
@@ -791,13 +791,13 @@ Solution
 <li><a href="https://singularityhub.github.io/library-api/#/?id=library-api">SingularityHub</a></li>
 <li><a href="https://depot.galaxyproject.org/singularity/">Galaxy-singularity</a></li>
 </ul>
-<p>If you want to run the first bonus exercise locally, use Docker. However, if you have access to an HPC platform, check the documentation to see if Singularity/Apptainer is installed; now would be a great time to give it a try. Don’t hesitate to ask for help if needed!</p>
+<p>If you want to run the first bonu exercise locally, use Docker. However, if you have access to an HPC platform, check the documentation to see if Singularity/Apptainer is installed; now would be a great time to give it a try. Don’t hesitate to ask for help if needed!</p>
 <p>In the first bonus exercise, you will get to test other containerised tools:</p>
 <ul>
 <li><a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">BLAST</a> (local alignment search tool)</li>
 <li><a href="https://bowtie-bio.sourceforge.net/bowtie2/index.shtml">BOWTIE2</a> (sequencing reads aligner to reference)</li>
 </ul>
-<p>Alternatively, explore one of the container image repositories and select a tool that you use regularly. Once you have pulled an image, we recommend starting by running the <code>--help</code> command, as all software have one. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.</p>
+<p>Alternative, explore one of the container images repositories and select a tool that you use regularly. Once you have pulled an image, we recommend starting by running the <code>--help</code> command, as all softwares have one. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -810,7 +810,7 @@ Mounting is key!
 <div class="callout-body-container callout-body">
 <p>Make sure to mount a directory when running a container. This ensures that any data generated will be saved to your host system. If you do not mount a directory and use the <code>--rm</code> command, all generated data will be lost once the container stops.</p>
 <ul>
-<li>Use <code>--rm</code> flag to remove automatically the container once it stops running to avoid cluttering your system with stopped containers.</li>
+<li>Use <code>--rm</code> flag to remove automatically the container once it stops running to avoid clustering your system with stopped containers.</li>
 <li>Use <code>--volume</code> to mount data into the container (e.g.&nbsp;<code>/data</code>), for example, your working directory if you are already located in a project-specific dir.</li>
 </ul>
 </div>
@@ -864,7 +864,7 @@ V - Bonus 1: Running other containers
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-V - Bonus 2: Building a docker image and running your own container
+V - Bonus 2: Building a docker image and run your own container
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -895,7 +895,7 @@ V - Bonus 2: Building a docker image and running your own container
 </div>
 <ol start="2" type="1">
 <li><p>From the project-specific dir, build the Docker image using, for example, <code>docker build -t sandbox-debian-jupyter:1.0 .</code></p></li>
-<li><p>Testing the custom image. Let’s verify if the custom image functions as expected, by running the following command:</p></li>
+<li><p>Testing the custom image. Let’s verify if the custom image functions as expected, running the following command:</p></li>
 </ol>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -904,7 +904,7 @@ V - Bonus 2: Building a docker image and running your own container
 <div class="sourceCode" id="cb17" data-filename="Terminal"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-p</span> 8888:8888 <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/root sandbox-debian-jupyter:1.0 jupyter-notebook</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Jupyter typically refuses to run as root or accept network connections by default. To address this, you need to either add <code>--ip=0.0.0.0 --allow-root</code> when starting Jupyter to the command above or uncomment the last line in the Dockerfile above (<code>CMD ["jupyter-notebook", "--ip=0.0.0.0", "--allow-root"]</code>). Test this before moving on!</p>
-<p><em>Alternatively, you can run the container with the flag <code>--user=$(id -u):$(id -g)</code> to ensure that files created in the container have matching user and group ownership with those on the host machine, preventing permission issues. However, this restricts the container from performing root-level operations.</em></p>
+<p><em>Alternatively, you can run the container with the flag <code>--user=$(id -u):$(id -g)</code>to ensure that files created in the container have matching user and group ownership with those on the host machine, preventing permission issues. However, this restricts the container from performing root-level operations.</em></p>
 <p>For broader usability and security, it is advisable to create a non-root user (e.g.&nbsp;jovyan) within the Docker image by adding user setup commands to the Dockerfile (see below). This approach makes the image more user-friendly and avoids file ownership conflicts.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -940,7 +940,7 @@ Tip
 <ul>
 <li>Use <code>--rm</code> flag to remove automatically the container once it stops running</li>
 <li>Use <code>--volume</code> to mount data into the container (e.g.&nbsp;<code>/home/jovyan</code>)</li>
-<li>Use <code>--file</code> flag to test two dockerfile versions (default:“PATH/Dockerfile”)</li>
+<li>Use <code>--file</code> flag to test to dockerfile versions (default:“PATH/Dockerfile”)</li>
 </ul>
 <div class="sourceCode" id="cb19"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> sandbox-debian-jupyter:2.0 sandbox-debian-jupyter <span class="at">-f</span> sandbox-debian-jupyter/Dockerfile2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
