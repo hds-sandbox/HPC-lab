@@ -26,7 +26,7 @@ css: ./web.css
 
 <div class="tab-pane fade  show active" id="ucloud" role="tabpanel" aria-labelledby="ucloud-tab">
 
-Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the `setup.sh` initialization file and ask for 2 CPUs so we can run things in parallel: 
+Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the `setup.sh` initialization file, and ask for 2 CPUs so we can run things in parallel: 
 
 - `YourNameSurname#xxxx`: save your results/files here. 
 - `hpclab-workshop`: this contains input files and scripts. You can read-only access from this directory (no write permissions). 
@@ -44,7 +44,7 @@ Finally, navigate to your personal drive and use the project directory you creat
 
 <div class="tab-pane fade" id="locally" role="tabpanel" aria-labelledby="locally-tab">
 
-You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.txt) for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment and download the data.
+You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.txt) for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment, and download the data.
 
   <a href="./data/snakemake.yml" download="snakemake.yml">
     <button class="btn small-button">Download environment file</button>
@@ -128,13 +128,13 @@ How to run this workflow? See the picture below:
 ```{.bash}
 # Option A. From the terminal (do not `open interface`)
 snakemake -c1 --sdm conda --config SEEDS=4
-# Option B. From coder interface (for this option you can click on `open interface`)
+# Option B. From the Coder interface (for this option you can click on `open interface`)
 /work/HPCLab_workshop/miniconda3/envs/snakemake/bin/snakemake -c1 --sdm conda --config SEEDS=4
 ```
 ![Click on terminal](./images/terminal_vscode.png)
 
 :::{.callout-hint}
-First, create a config.yaml file to specify the values for the wildcards `k` and `s`, as well as other parameters (such ass the number of threads, and the prefix).
+First, create a config.yaml file to specify the values for the wildcards `k` and `s`, as well as other parameters (such as the number of threads, and the prefix).
 
 Then, create the Snakemake Workflow, defining two rules for running `fastmixture` and plotting with R. 
 
@@ -150,7 +150,7 @@ cd /work/<NameSurname#xxx>/fastmixture
 conda env create -f environment.yml --prefix /work/<NameSurname#xxx>/envs/fastmixture
 ````
 
-Make use of useful directive:
+Make use of useful directives:
 
 ```{.python}
 rule ...:
