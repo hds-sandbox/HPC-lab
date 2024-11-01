@@ -310,7 +310,7 @@ Local Setup
 </div>
 <div id="hello-exercise-tabcontent" class="tab-content">
 <div id="ucloud" class="tab-pane fade show active" role="tabpanel" aria-labelledby="ucloud-tab">
-<p>Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the <code>setup.sh</code> initialization file and ask for 2 CPUs so we can run things in parallel:</p>
+<p>Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the <code>setup.sh</code> initialization file, and ask for 2 CPUs so we can run things in parallel:</p>
 <ul>
 <li><code>YourNameSurname#xxxx</code>: save your results/files here.</li>
 <li><code>hpclab-workshop</code>: this contains input files and scripts. You can read-only access from this directory (no write permissions).</li>
@@ -321,7 +321,7 @@ Local Setup
 <p>Finally, navigate to your personal drive and use the project directory you created yesterday <code>hpclab</code> to create a new subdir <code>fastmixture</code> and save here all files from this exercise (Snakefile, config.yml, output file, etc.).</p>
 </div>
 <div id="locally" class="tab-pane fade" role="tabpanel" aria-labelledby="locally-tab">
-<p>You can choose to run your tasks either locally or on an accessible HPC. Refer to the <a href="./pipes-requirements.txt">Welcome page</a> for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment and download the data.</p>
+<p>You can choose to run your tasks either locally or on an accessible HPC. Refer to the <a href="./pipes-requirements.txt">Welcome page</a> for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment, and download the data.</p>
 <p><a href="./data/snakemake.yml" download="snakemake.yml"> <button class="btn small-button">Download environment file</button> </a> <a href="./data/fastmix.zip" download="fastmix.zip"> <button class="btn small-button">Download data</button> </a></p>
 </div>
 </div>
@@ -403,7 +403,7 @@ II - Admixture analysis pipeline
 <p>How to run this workflow? See the picture below:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option A. From the terminal (do not `open interface`)</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--sdm</span> conda <span class="at">--config</span> SEEDS=4</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Option B. From coder interface (for this option you can click on `open interface`)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Option B. From the Coder interface (for this option you can click on `open interface`)</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/work/HPCLab_workshop/miniconda3/envs/snakemake/bin/snakemake</span> <span class="at">-c1</span> <span class="at">--sdm</span> conda <span class="at">--config</span> SEEDS=4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -425,7 +425,7 @@ Hint
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<p>First, create a config.yaml file to specify the values for the wildcards <code>k</code> and <code>s</code>, as well as other parameters (such ass the number of threads, and the prefix).</p>
+<p>First, create a config.yaml file to specify the values for the wildcards <code>k</code> and <code>s</code>, as well as other parameters (such as the number of threads, and the prefix).</p>
 <p>Then, create the Snakemake Workflow, defining two rules for running <code>fastmixture</code> and plotting with R.</p>
 <p><code>fastmixture</code> is not pre-installed, check the instructions <a href="https://github.com/Rosemeis/fastmixture"><code>fastmixture</code> GitHub</a>. Need more tips?</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># git clone on your working dir</span></span>
@@ -435,7 +435,7 @@ Hint
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># realpath: /work/&lt;NameSurname#xxx&gt;/fastmixture/environment.yml</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/fastmixture</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml <span class="at">--prefix</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/envs/fastmixture</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Make use of useful directive:</p>
+<p>Make use of useful directives:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rule ...:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  output: <span class="st">"results/</span><span class="sc">{wd2}</span><span class="st">.tsv"</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  conda: <span class="st">"/path/to/env.yml"</span></span>
