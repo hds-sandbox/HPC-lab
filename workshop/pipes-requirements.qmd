@@ -95,7 +95,7 @@ Follow the instructions below if you have an account at a Danish university. You
 
 ## Discussion and feedback
 
-We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill up the [feedback form]() before you head out for the day ^[*link activated on the day of the workshop*.].</b>
+We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill up the [feedback form](https://forms.office.com/e/ndK0MtWrwW) before you head out for the day ^[*link activated on the day of the workshop*.].</b>
 
 &nbsp;
 
