@@ -443,6 +443,7 @@ Let's add a new rule named `filter_year` in `step2_wf.smk` that replicates the b
 ```{.bash filename="filter_year.sh"}
 INFILE="results/samples_EB_cleaned.tsv"
 OUTFILE="results/samples_EB_filtered.tsv"
+CUTOFF=2000
 
 # Python script filters the metadata based on the year the samples were collected 
 python scripts/filter_year.py -i $INFILE -o $OUTFILE -y $CUTOFF
