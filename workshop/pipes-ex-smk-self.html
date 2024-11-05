@@ -884,9 +884,10 @@ rule step1_all:
 </div>
 <div class="sourceCode" id="cb20" data-filename="filter_year.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="va">INFILE</span><span class="op">=</span><span class="st">"results/samples_EB_cleaned.tsv"</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="va">OUTFILE</span><span class="op">=</span><span class="st">"results/samples_EB_filtered.tsv"</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Python script filters the metadata based on the year the samples were collected </span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/filter_year.py <span class="at">-i</span> <span class="va">$INFILE</span> <span class="at">-o</span> <span class="va">$OUTFILE</span> <span class="at">-y</span> <span class="va">$CUTOFF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="va">CUTOFF</span><span class="op">=</span>2000</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Python script filters the metadata based on the year the samples were collected </span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/filter_year.py <span class="at">-i</span> <span class="va">$INFILE</span> <span class="at">-o</span> <span class="va">$OUTFILE</span> <span class="at">-y</span> <span class="va">$CUTOFF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Please, use named inputs (e.g.&nbsp;<code>meta</code> for the input and <code>fi</code> for the output). Named inputs are particularly useful when multiple files are needed for running a software tool.</p>
 <p>You can find the Python file on UCloud: <code>PATH="/work/HPCLab_workshop/scripts/filter_year.py"</code>. Copy it to your <code>scripts</code> directory.</p>
