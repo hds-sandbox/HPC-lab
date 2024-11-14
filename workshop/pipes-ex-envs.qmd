@@ -268,7 +268,7 @@ Apptainer/Singularity was specifically designed for HPC platforms; however, the 
 
 In this exercise, we will utilize the `fastmixture` Docker image which is available on [DockerHub](https://hub.docker.com/r/albarema/fastmixture), the repository for docker images. The aim is to **understand how to run containerized software**. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.
 
-[Fastmixture](https://www.biorxiv.org/content/10.1101/2024.07.08.602454v1) is a software designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.
+[Fastmixture](https://www.biorxiv.org/content/10.1101/2024.07.08.602454v2) is a software designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.
 
 Here are some optional resources you might typically review before running the software (though not required for this exercise):
 
@@ -287,9 +287,9 @@ Here are some optional resources you might typically review before running the s
 1. Pull `fastmixture` image from [DockerHUb](https://hub.docker.com/r/albarema/fastmixture) using the following command: 
   
     ```{.bash filename="Terminal"}
-    docker pull albarema/fastmixture:v0.93.3 
+    docker pull albarema/fastmixture
     ```
-    Make sure to pull version **v0.93.3**. 
+    Make sure to pull the latest version. 
 
 2. Download and unzip the toy data (you may move the files to any preferred folder on your laptop)
 3. What is the command you need to run the container? Do not forget to mount the data (using the flag `-v /path/toy:/path/mnt`). Before executing the software, verify that the data has been correctly mounted (e.g. running the `ls` command inside the container).
@@ -312,21 +312,23 @@ Here are some optional resources you might typically review before running the s
 
 - **Docker**
 ```{.bash}
-docker pull albarema/fastmixture:v0.93.3  # Pull 
+docker pull albarema/fastmixture  # Pull 
 
-docker run --cpus=8 -v `pwd`/toy/:/data/ albarema/fastmixture:v0.93.3 fastmixture --bfile data/toy.data --K 3 --out data/toy.fast --threads 8 # run the command 
+docker run --cpus=8 -v `pwd`/toy/:/data/ albarema/fastmixture
+
+fastmixture --bfile data/toy.data --K 3 --out data/toy.fast --threads 8 # run the command 
 ```
 
 - **Apptainer** on HPC / local machine: on your local machine you will need to modify lima.yml to make the current directory (`pwd`) writable. Alternatively, write the data out to /tmp/lima! 
 
 ```{.bash}
-apptainer pull docker://albarema/fastmixture:v0.93.3
-apptainer run fastmixture_v0.93.3.sif fastmixture --version
+apptainer pull docker://albarema/fastmixture
+apptainer run fastmixture_latest.sif fastmixture --version
 
 # on local machine (using LIMA)
 cd toy # from data folder 
-apptainer pull /tmp/lima/fastmixture.sif docker:/albarema/fastmixture:v0.93.3
-apptainer run /tmp/lima/fastmixture.sif fastmixture --bfile toy.data --K 3 --out toy.fast --threads 8
+apptainer pull /tmp/lima/fastmixture_latest.sif docker:/albarema/fastmixture
+apptainer run /tmp/lima/fastmixture_latest.sif fastmixture --bfile toy.data --K 3 --out toy.fast --threads 8
 ```
 :::
 
