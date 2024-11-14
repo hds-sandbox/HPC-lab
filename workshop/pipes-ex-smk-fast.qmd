@@ -126,12 +126,8 @@ You are set to write your own snakemake pipeline. Need more suggestions?
 How to run this workflow? See the picture below:
 
 ```{.bash}
-# Option A. From the terminal (do not `open interface`)
-snakemake -c1 --sdm conda --config SEEDS=4
-# Option B. From the Coder interface (for this option you can click on `open interface`)
-/work/HPCLab_workshop/miniconda3/envs/snakemake/bin/snakemake -c1 --sdm conda --config SEEDS=4
+snakemake -c1 --sdm conda
 ```
-![Click on terminal](./images/terminal_vscode.png)
 
 :::{.callout-hint}
 First, create a config.yaml file to specify the values for the wildcards `k` and `s`, as well as other parameters (such as the number of threads, and the prefix).
@@ -141,14 +137,26 @@ Then, create the Snakemake Workflow, defining two rules for running `fastmixture
 `fastmixture` is not pre-installed, check the instructions [`fastmixture` GitHub](https://github.com/Rosemeis/fastmixture). Need more tips? 
 
 ```{.bash}
-# git clone on your working dir
+# Git clone on your working dir
 git clone https://github.com/Rosemeis/fastmixture.git
 
-# get the path to the environment file
-# realpath: /work/<NameSurname#xxx>/fastmixture/environment.yml
+# OPTION 1: Use the env.yml (recommended)
+# You just need to locate the file and use the the path to the environment file under the conda directive
+rule fast: 
+  input: ...
+  output: ...
+  conda: /work/<NameSurname#xxx>/fastmixture/environment.yml
+
+# OPTION 2: Create the env and use it (useful if you and your colleague are using the same HPC and won't get the pipeline published)
 cd /work/<NameSurname#xxx>/fastmixture
 conda env create -f environment.yml --prefix /work/<NameSurname#xxx>/envs/fastmixture
+# Then use the env path 
+rule fast: 
+  input: ...
+  output: ...
+  conda: /work/<NameSurname#xxx>/envs/fastmixture
 ````
+
 
 Make use of useful directives:
 
