@@ -401,16 +401,7 @@ II - Admixture analysis pipeline
 <li>Make use of the <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#the-multiext-function"><code>multiext</code></a> function to define a set of output or input that only differ by their extension</li>
 </ul>
 <p>How to run this workflow? See the picture below:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option A. From the terminal (do not `open interface`)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--sdm</span> conda <span class="at">--config</span> SEEDS=4</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Option B. From the Coder interface (for this option you can click on `open interface`)</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">/work/HPCLab_workshop/miniconda3/envs/snakemake/bin/snakemake</span> <span class="at">-c1</span> <span class="at">--sdm</span> conda <span class="at">--config</span> SEEDS=4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/terminal_vscode.png" class="img-fluid figure-img"></p>
-<figcaption>Click on terminal</figcaption>
-</figure>
-</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--sdm</span> conda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -428,13 +419,24 @@ Hint
 <p>First, create a config.yaml file to specify the values for the wildcards <code>k</code> and <code>s</code>, as well as other parameters (such as the number of threads, and the prefix).</p>
 <p>Then, create the Snakemake Workflow, defining two rules for running <code>fastmixture</code> and plotting with R.</p>
 <p><code>fastmixture</code> is not pre-installed, check the instructions <a href="https://github.com/Rosemeis/fastmixture"><code>fastmixture</code> GitHub</a>. Need more tips?</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># git clone on your working dir</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Git clone on your working dir</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/Rosemeis/fastmixture.git</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># get the path to the environment file</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># realpath: /work/&lt;NameSurname#xxx&gt;/fastmixture/environment.yml</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/fastmixture</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml <span class="at">--prefix</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/envs/fastmixture</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION 1: Use the env.yml (recommended)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># You just need to locate the file and use the the path to the environment file under the conda directive</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> fast: </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">input:</span> ...</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">output:</span> ...</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">conda:</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/fastmixture/environment.yml</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION 2: Create the env and use it (useful if you and your colleague are using the same HPC and won't get the pipeline published)</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/fastmixture</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml <span class="at">--prefix</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/envs/fastmixture</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Then use the env path </span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> fast: </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">input:</span> ...</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">output:</span> ...</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">conda:</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/envs/fastmixture</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Make use of useful directives:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rule ...:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  output: <span class="st">"results/</span><span class="sc">{wd2}</span><span class="st">.tsv"</span></span>

@@ -363,8 +363,8 @@ I - General knowledge
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_YAPBFXEOVI" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YAPBFXEOVI" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_YAPBFXEOVI" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_YAPBFXEOVI" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_YAPBFXEOVI" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_PUOKTWUPVV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PUOKTWUPVV" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_PUOKTWUPVV" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_PUOKTWUPVV" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_PUOKTWUPVV" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -704,7 +704,7 @@ V - Running a docker image
 <div>
 <div class="webex-check callout-exercise">
 <p>In this exercise, we will utilize the <code>fastmixture</code> Docker image which is available on <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHub</a>, the repository for docker images. The aim is to <strong>understand how to run containerized software</strong>. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.</p>
-<p><a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v1">Fastmixture</a> is a software designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.</p>
+<p><a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v2">Fastmixture</a> is a software designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.</p>
 <p>Here are some optional resources you might typically review before running the software (though not required for this exercise):</p>
 <ul>
 <li>Santander, Cindy G., Alba Refoyo Martinez, and Jonas Meisner. “Faster model-based estimation of ancestry proportions.” bioRxiv (2024): 2024-07 <a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v1">link to Preprint</a>.</li>
@@ -725,9 +725,9 @@ V - Running a docker image
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb9" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull albarema/fastmixture:v0.93.3 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull albarema/fastmixture</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Make sure to pull version <strong>v0.93.3</strong>.</p></li>
+<p>Make sure to pull the latest version.</p></li>
 <li><p>Download and unzip the toy data (you may move the files to any preferred folder on your laptop)</p></li>
 <li><p>What is the command you need to run the container? Do not forget to mount the data (using the flag <code>-v /path/toy:/path/mnt</code>). Before executing the software, verify that the data has been correctly mounted (e.g.&nbsp;running the <code>ls</code> command inside the container).</p></li>
 <li><p>Run <code>fastmixture</code> software using the command below. We will set <em>K</em> to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both <code>--bfile</code> and <code>--out</code> require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named <code>toy.data.*</code>; therefore, use <code>--bfile toy.data</code>.</p>
@@ -758,19 +758,21 @@ Solution
 <ul>
 <li><strong>Docker</strong></li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull albarema/fastmixture:v0.93.3  <span class="co"># Pull </span></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull albarema/fastmixture  <span class="co"># Pull </span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--cpus</span><span class="op">=</span>8 <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/toy/:/data/ albarema/fastmixture:v0.93.3 fastmixture <span class="at">--bfile</span> data/toy.data <span class="at">--K</span> 3 <span class="at">--out</span> data/toy.fast <span class="at">--threads</span> 8 <span class="co"># run the command </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--cpus</span><span class="op">=</span>8 <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/toy/:/data/ albarema/fastmixture</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">fastmixture</span> <span class="at">--bfile</span> data/toy.data <span class="at">--K</span> 3 <span class="at">--out</span> data/toy.fast <span class="at">--threads</span> 8 <span class="co"># run the command </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><strong>Apptainer</strong> on HPC / local machine: on your local machine you will need to modify lima.yml to make the current directory (<code>pwd</code>) writable. Alternatively, write the data out to /tmp/lima!</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://albarema/fastmixture:v0.93.3</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run fastmixture_v0.93.3.sif fastmixture <span class="at">--version</span></span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://albarema/fastmixture</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run fastmixture_latest.sif fastmixture <span class="at">--version</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># on local machine (using LIMA)</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> toy <span class="co"># from data folder </span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull /tmp/lima/fastmixture.sif docker:/albarema/fastmixture:v0.93.3</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run /tmp/lima/fastmixture.sif fastmixture <span class="at">--bfile</span> toy.data <span class="at">--K</span> 3 <span class="at">--out</span> toy.fast <span class="at">--threads</span> 8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull /tmp/lima/fastmixture_latest.sif docker:/albarema/fastmixture</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run /tmp/lima/fastmixture_latest.sif fastmixture <span class="at">--bfile</span> toy.data <span class="at">--K</span> 3 <span class="at">--out</span> toy.fast <span class="at">--threads</span> 8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
