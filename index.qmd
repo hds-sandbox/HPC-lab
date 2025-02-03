@@ -1,7 +1,6 @@
 ---
 format: 
-  html:
-    toc-location: left
+  html
 authors:
   - name: Alba Refoyo Martinez 
     orcid: 0000-0002-3674-4007
