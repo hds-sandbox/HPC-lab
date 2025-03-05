@@ -327,13 +327,7 @@ We will be using the HLA database for this exercise. Click on [this link](ftp://
 
 1. Download and open the `md5checksum.txt` ([HLA FTP Directory](ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/))
 2. Look for the hash of the file `hla_prot.fasta`
-3. Create a file with the hash info (one that only contains the checksums of the target files, in this case, only the one for `hla_prot.fasta`)
-
-```{.bash filename="md5checksum.txt"}
-7348fbef5ab204f3aca67e91f6c59ed2  hla_prot.fasta
-```
-
-4. Create a bash script to download the target files (named "dw_resources.sh" in your current directory). 
+3. Create a bash script to download the target files (named "dw_resources.sh" in your current directory). 
 ```{.bash .code-overflow-wrap} 
 #!/bin/bash
 md5file="md5checksum.txt"
@@ -346,13 +340,14 @@ url="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/hla_prot.fasta"
 # out_filename = "imgt_hla_prot.fasta"
 
 # Download the file
-wget $url && \
-md5sum --status --check $md5file
+wget $url --output $out_filename && \
+md5sum --quiet --ignore-missing --check $md5file
 ````
-We recommend using the argument `--status` **only** when you incorporate this sanity check as part of your pipeline so that it only prints the errors (it doesn't print output when success).
+We recommend using the argument `--quiet` as part of your pipeline so that it only prints the errors (it doesn't print output when success). The `--ignore-missing` argument is useful because it allows us to use the raw checksums file while skipping files we may not want to download.
 
-6. Verify the file against the downloaded checksum 
-7. Generate the md5 hash & compare to the one from the original `md5checksum.txt`
+**Did you get any error?** 
+
+4. Generate the md5 hash & compare to the one from the original `md5checksum.txt`. 
 :::
 
 
