@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,12 +69,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-da1f0f3a2f168e9521c263b030ea5c14.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d63578fe8a621e50d47efdd6270a38ac.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-4d4ae6412f544d06baeae750a1881eab.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-5e10f79eaba3e712890d90f2b975103d.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -438,13 +438,20 @@ Exercise 2: Use and adapt the Sandbox template
 <div class="callout-exercise">
 <p>While you’ll clone a sample template, you’re encouraged to modify it to fit your specific needs—you’re not limited to following our example exactly.</p>
 <ol type="1">
-<li><p>Go to our <a href="https://github.com/hds-sandbox/cookiecutter-template">Cookicutter template</a> and click on the <strong>Fork</strong> button at the top-right corner of the repository page to create a copy of the repository on your own GitHub account or organization. <img src="./images/fork_repo_project.png" class="img-fluid" alt="fork_repo_example"></p></li>
+<li><p>Go to our <a href="https://github.com/hds-sandbox/cookiecutter-template">Cookicutter template</a> and click on the <strong>Fork</strong> button at the top-right corner of the repository page to create a copy of the repository on your own GitHub account or organization.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/fork_repo_project.png" class="img-fluid figure-img"></p>
+<figcaption>fork_repo_example</figcaption>
+</figure>
+</div></li>
 <li><p>Open a terminal on your computer, copy the URL of your fork and <strong>clone</strong> the repository to your local machine (the URL should look something like https://github.com/your_username/cookiecutter-template):</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>your URL to the template<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you have a GitHub Desktop, click <em>Add</em> and select <em>Clone repository</em> from the options.</p></li>
 <li><p>Access the cloned repository (<code>cd cookiecutter-template</code>) and navigate through the different directories.</p></li>
-<li><p>Modify the content of the template as needed to fit your project’s requirements. You can change files, add new ones, remove existing one or adjust the folder structure. For inspiration, review the data structure above under ‘Project folder structure’. The Cookiecutter template you just cloned is missing the ‘reports’ directory or the ‘requirements.txt’ file. Consider creating them, along with a subdirectory named ‘reports/figures’.</p>
-<pre class="plaintext"><code>├── results/
+<li><p>The Cookiecutter template you just cloned is missing the ‘reports’ directory and the ‘requirements.txt’ file. Create these, along with a subdirectory named ‘reports/figures’.</p>
+<pre class="plaintext"><code>│...
+├── results/
 │   ├── figures/
 ├── requirements.txt</code></pre></li>
 </ol>
@@ -471,6 +478,7 @@ Hint
 </div>
 </div>
 </div>
+<p><strong>Feel free to customize the template further to fit your project’s requirements</strong>. You can change files, add new ones, remove existing ones or adjust the folder structure. For inspiration, review the data structure under ‘Project folder structure’ above.</p>
 <ol start="5" type="1">
 <li>Utilize the template</li>
 </ol>
@@ -513,7 +521,7 @@ Hint
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Bonus exercise
+Bonus exercise 2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -567,6 +575,7 @@ Hint
 </section>
 <section id="naming-conventions" class="level2">
 <h2 class="anchored" data-anchor-id="naming-conventions">Naming conventions</h2>
+<p>A well-structured naming system keeps files organized, easy to search, compatible across different systems, and useful for collaboration.</p>
 <style>
 :root {
     --incorrect: rgb(255, 0, 0);
@@ -597,7 +606,7 @@ Hint
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise
+Exercise 3
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -606,24 +615,24 @@ Exercise
 <div>
 <div class="webex-check callout-exercise">
 Q1. Which naming conventions should be used and why?
-<div id="radio_MNPFTZGXTJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MNPFTZGXTJ" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_MNPFTZGXTJ" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_MNPFTZGXTJ" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
+<div id="radio_MUUWXLQMDS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MUUWXLQMDS" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_MUUWXLQMDS" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_MUUWXLQMDS" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
 </div>
-<div id="radio_AJEGNDRXEL" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_AJEGNDRXEL" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_AJEGNDRXEL" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_AJEGNDRXEL" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
+<div id="radio_LFSKVFMIGV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LFSKVFMIGV" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_LFSKVFMIGV" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_LFSKVFMIGV" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
 </div>
-<div id="radio_QDKBEQFLFV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QDKBEQFLFV" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_QDKBEQFLFV" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_QDKBEQFLFV" value=""> <span>i. run_pipeline:20241203.sh</span></label>
+<div id="radio_TZYJBTNYPO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TZYJBTNYPO" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_TZYJBTNYPO" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_TZYJBTNYPO" value=""> <span>i. run_pipeline:20241203.sh</span></label>
 </div>
 Q2. Which file name is more readable?
-<div id="radio_RYCXIVMOPM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RYCXIVMOPM" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_RYCXIVMOPM" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_RYCXIVMOPM" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
+<div id="radio_JVHGMSURVK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JVHGMSURVK" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_JVHGMSURVK" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_JVHGMSURVK" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
 </div>
-<div id="radio_MUJESAAKIC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MUJESAAKIC" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_MUJESAAKIC" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_MUJESAAKIC" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
+<div id="radio_LREYDEGSCA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LREYDEGSCA" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_LREYDEGSCA" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_LREYDEGSCA" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
 </div>
-<div id="radio_BJAGAOEICP" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BJAGAOEICP" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_BJAGAOEICP" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_BJAGAOEICP" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
+<div id="radio_RVNFMYRLTE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RVNFMYRLTE" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_RVNFMYRLTE" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_RVNFMYRLTE" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
 </div>
 </div>
 </div>
@@ -637,7 +646,7 @@ Q2. Which file name is more readable?
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Bonus exercise
+Bonus exercise 3
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -672,7 +681,7 @@ Bonus exercise
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise
+Exercise 4
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -737,7 +746,7 @@ Exercise
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Bonus exercise
+Bonus exercise 4
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
