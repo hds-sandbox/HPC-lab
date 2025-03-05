@@ -88,6 +88,7 @@ git clone https://github.com/hds-sandbox/cookiecutter-template
 While you’ll clone a sample template, you’re encouraged to modify it to fit your specific needs—you’re not limited to following our example exactly.
     
 1. Go to our [Cookicutter template](https://github.com/hds-sandbox/cookiecutter-template) and click on the **Fork** button at the top-right corner of the repository page to create a copy of the repository on your own GitHub account or organization.
+
     ![fork_repo_example](./images/fork_repo_project.png)
 2. Open a terminal on your computer, copy the URL of your fork and **clone** the repository to your local machine (the URL should look something like https://github.com/your_username/cookiecutter-template):
 
@@ -98,9 +99,10 @@ If you have a GitHub Desktop, click *Add* and select *Clone repository* from the
 
 3. Access the cloned repository (`cd cookiecutter-template`) and navigate through the different directories.
 
-4. Modify the content of the template as needed to fit your project's requirements. You can change files, add new ones, remove existing one or adjust the folder structure. For inspiration, review the data structure above under 'Project folder structure'. The Cookiecutter template you just cloned is missing the 'reports' directory or the 'requirements.txt' file. Consider creating them, along with a subdirectory named 'reports/figures'. 
+4. The Cookiecutter template you just cloned is missing the 'reports' directory and the 'requirements.txt' file. Create these, along with a subdirectory named 'reports/figures'. 
 
     ```plaintext
+    │...
     ├── results/
     │   ├── figures/
     ├── requirements.txt
@@ -115,6 +117,8 @@ mkdir reports
 touch requirements.txt
 ```
 :::
+
+**Feel free to customize the template further to fit your project's requirements**. You can change files, add new ones, remove existing ones or adjust the folder structure. For inspiration, review the data structure under 'Project folder structure' above. 
 
 5. Utilize the template
 
@@ -144,7 +148,7 @@ The following steps enable version control and make it easy to share the structu
 If you’ve completed the tasks quickly and have time left, feel free to tackle the optional final exercise.
 
 :::{.callout-tip collapse="true" appearance="simple"}
-# Bonus exercise 
+# Bonus exercise 2
 
 Create a template from scratch using this tutorial [scratch](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). Your template can be as basic as the example provided or include a data folder structure with directories for raw data, processed data, and the pipeline used for preprocessing.
 
@@ -177,6 +181,7 @@ my_template/
 
 
 ## Naming conventions
+A well-structured naming system keeps files organized, easy to search, compatible across different systems, and useful for collaboration.
 
 ```{r, echo = FALSE, results='asis'}
 library(webexercises)
@@ -189,6 +194,7 @@ style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
 ```
 
 ::: {.webex-check .callout-exercise}
+# Exercise 3
 
 ```{r, results='asis', echo = FALSE}
 
@@ -236,7 +242,7 @@ Regular expressions are an incredibly powerful tool for string manipulation. We 
 
 
 :::{.webex-check .callout-tip collapse="true" appearance="simple"}
-# Bonus exercise
+# Bonus exercise 3
 
 Which of the regexps below match **ONLY** the filenames shown in bold?
 
@@ -265,6 +271,7 @@ Which of the regexps below match **ONLY** the filenames shown in bold?
 We recommend using `md5sum` to verify data integrity, particularly when downloading large datasets, as it is a widely used tool. All data and files archived on Zenodo include an MD5 hash for this purpose. Let's have a look at the content of a newly developed software `fastmixture` that estimates individual ancestry proportions from genotype data. 
 
 :::{.webex-check .callout-exercise}
+# Exercise 4
 
 1. Open this [Zenodo link](https://zenodo.org/records/12683372) 
 2. Enter the DOI of the repo: `r fitb(answer='10.5281/zenodo.12683372')`
@@ -314,7 +321,7 @@ and enter the value `r fitb(answer='377a4dd252ea5556b39d201145bbacb566909f904511
 
 
 :::{.callout-tip collapse="true" appearance="simple"}
-# Bonus exercise 
+# Bonus exercise 4
 
 We will be using the HLA database for this exercise. Click on [this link](ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/) or google `IMGT HLA> Download`. Important: go through the README before downloading! Check if a checksums file is included. 
 
