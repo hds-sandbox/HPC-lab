@@ -358,7 +358,7 @@ We recommend using the argument `--status` **only** when you incorporate this sa
 
 ## Documentation 
 
-Explore the examples below and consider how well the README files communicate key information about the project. Some links point to README files describing databases, while others cover software and tools.
+Explore the examples below and consider how effectively the README files communicate key information about the project. Some links point to README files describing databases, while others cover software and tools.
 
 - [1000 Genomes Project](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/)
 - [Homo sapiens, GRCh38](https://ftp.ensembl.org/pub/release-111/fasta/homo_sapiens/dna/README)
