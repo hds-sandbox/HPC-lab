@@ -273,12 +273,12 @@ We recommend using `md5sum` to verify data integrity, particularly when download
 :::{.webex-check .callout-exercise}
 # Exercise 4
 
-1. Open this [Zenodo link](https://zenodo.org/records/12683372) 
-2. Enter the DOI of the repo: `r fitb(answer='10.5281/zenodo.12683372')`
-3. Zenodo offers an API at https://zenodo.org/api/, which functions similarly to the DOI API. This allows you to retrieve a BibTeX-formatted reference for a specific record (e.g., `records/12683371`) using either curl or wget.
+1. Open this [Zenodo link](https://zenodo.org/records/14106454) 
+2. Enter the DOI of the repo (for all versions): `r fitb(answer='10.5281/zenodo.12683371')`
+3. Zenodo offers an API at https://zenodo.org/api/, which functions similarly to the DOI API. This allows you to retrieve a BibTeX-formatted reference for a specific record (e.g., `records/14106454`) using either curl or wget.
 ```{.bash filename="Terminal"}
 # ------curl-------
-curl -LH 'Accept: application/x-bibtex' https://zenodo.org/api/records/12683372 \
+curl -LH 'Accept: application/x-bibtex' https://zenodo.org/api/records/14106454 \
      --output meisner_2024.bib
 
 # ------wget-------
@@ -288,26 +288,26 @@ wget --header="Accept: application/x-bibtex" -q \
 
 Does the content of your `*.bib` file look like this?
 ```{.bash}
-@misc{meisner_2024_12683372,
+@misc{meisner_2024_14106454,
   author       = {Meisner, Jonas},
-  title        = {{Supplemental data for reproducing "Faster model- 
-                   based estimation of ancestry proportions"}},
-  month        = jul,
+  title        = {Supplemental data for reproducing "Faster model-
+                   based estimation of ancestry proportions"},
+  month        = nov,
   year         = 2024,
   publisher    = {Zenodo},
-  version      = {v0.6},
-  doi          = {10.5281/zenodo.12683372},
-  url          = {https://doi.org/10.5281/zenodo.12683372}
+  version      = {v0.93.4},
+  doi          = {10.5281/zenodo.14106454},
+  url          = {https://doi.org/10.5281/zenodo.14106454},
 }
 ```
-4. Scroll down to files and download the software zip file (`fastmixture-0.6.zip`)
+4. Scroll down to files and download the software zip file (`fastmixture-0.93.4.zip`)
 
 ```{.bash filename="Terminal"}
-curl https://zenodo.org/records/12683372/files/fastmixture-0.6.zip?download=1 \
+curl https://zenodo.org/records/14106454/files/fastmixture-0.93.4.zip \
 --output fastmixture.zip 
 ```
 
-5. Compute md5 hash and enter the value (no white-spaces) `r fitb(answer='22a2789d935745f8a0612cb54fe8bac4')`
+5. Compute md5 hash and enter the value (no white-spaces) `r fitb(answer='4b3c22644bd2e1dabbbbab599491a7e5')`
 
 6. Is your value tha same as the one shown on zenodo `r torf(TRUE)`
 
@@ -315,7 +315,7 @@ curl https://zenodo.org/records/12683372/files/fastmixture-0.6.zip?download=1 \
 ```{.bash} 
 sha256sum
 ```
-and enter the value `r fitb(answer='377a4dd252ea5556b39d201145bbacb566909f90451169e7b5f8bd73debc556d')`
+and enter the value `r fitb(answer='37c931cf669033054333ae6c2553cc936db7a28aa13ab776c5adfb1c932bc72b')`
 
 :::
 
