@@ -693,7 +693,7 @@
     "href": "workshop/cookiecutter.html#documentation",
     "title": "Managing data",
     "section": "Documentation",
-    "text": "Documentation\nExplore the examples below and consider how well the README files communicate key information about the project. Some links point to README files describing databases, while others cover software and tools.\n\n1000 Genomes Project\nHomo sapiens, GRCh38\nIPD-IMGT/HLA database\nPandas package\nDanish registers\n\nHow does your documentation compare to these?\nDone for today!",
+    "text": "Documentation\nExplore the examples below and consider how effectively the README files communicate key information about the project. Some links point to README files describing databases, while others cover software and tools.\n\n1000 Genomes Project\nHomo sapiens, GRCh38\nIPD-IMGT/HLA database\nPandas package\nDanish registers\n\nHow does your documentation compare to these?\nDone for today!",
     "crumbs": [
       "Workshop",
       "HPC Launch",
