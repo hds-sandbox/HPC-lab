@@ -1,7 +1,8 @@
 ---
 format: 
   html:
-    toc: false
+    toc: true
+    toc-location: left
 date-modified: last-modified
 date-format: long
 summary: transfers
@@ -44,7 +45,7 @@ Other useful flags are:
 - `--partial`: ensures that partially transferred files are not discarded if the transfer is interrupted, allowing `rsync` to resume the transfer from where it left off the next time the command is run
 
 :::{.callout-note}
-To transfer files directly between two servers from your local workstation, ensure your SSH setup (configuration, keys, etc.) allows access to both servers. Check [this section](./ssh_keys.qmd) if you need help setting up your keys (generating, configuring and managing). 
+To transfer files directly between two servers from your local workstation, ensure your SSH setup (configuration, keys, etc.) allows access to both servers. Check [this section](./hpc-ssh_keys.qmd) if you need help setting up your keys (generating, configuring and managing). 
 :::
 
 #### Advantages of rsync over scp:
@@ -86,3 +87,34 @@ This will establish a secure connection to your host. You can navigate through y
 
 - **Filezilla**: your local files will be display on the left-side of the dashboard. Right-click on them to upload or add it them to a transfer queue. If you have created a queue, this will be shown at the bottom of the window as a list. You can inspect destination folders from there and choose other options such as transfer priority. To start a queue, use `CTRL + P, Transfer --> Process Queue` or use the toolbar.  
 - **Cyberduck**: you can drag files from your local to the host, choose the directory where you want them located. 
+
+## UCloud Users 
+### Data transfer
+
+To transfer files between UCloud and your local machine, you must first configure your SSH keys. If you haven't done so already, follow the instructions in [the SSH keys section](./hpc-ssh_keys.qmd). 
+
+Next, open an application on UCloud (e.g., Terminal) which will display the login command and the **SSH port** for client connections in the job progress view. Note that the SSH port is randomly generated and will be different each time.
+
+```{.bash .code-overflow-wrap}
+# Run these commands on a terminal in your local machine
+# Files from UCloud to local
+rsync -avP -e "ssh -i ~/.ssh/id_rsa -p <port>" ucloud@ssh.cloud.sdu.dk:/work/<path_to_data> ./<path_local_data>
+
+# Files from local to UCloud
+rsync -avP -e "ssh -i ~/.ssh/id_rsa -p <port>" ./<path_local_data> ucloud@ssh.cloud.sdu.dk:/work/<path_to_data>
+```
+
+- `~/.ssh/id_rsa`: path to your SSH private key on the remote host (locally)
+- `<port>`: SSH number, which you will find on UCloud
+- `ucloud@ssh.cloud.sdu.dk`: default user on the remote server must be ucloud.
+- `/work/<path_to_data>/`: data must be synchronized to a folder within the default working directory `work`
+
+To transfer files between two servers, we recommend performing the transfer from a terminal on UCloud. Below is an example of the command for GenomeDK. Please note that this command will prompt you to enter your password, and you may also be asked to complete a two-factor authentication (2FA) process, if enabled.
+
+```{.bash .code-overflow-wrap}
+# From genomeDK to Ucloud
+rsync -avP <username>@login.genome.au.dk:/home/<username>/data /work/<path_to_data>
+```
+
+- `/work/<path_to_data>/`: data must be synchronized to a folder within the default working directory `work`
+- Reverse the order of the command if you need to transfer from UCloud to the GenomeDK server.

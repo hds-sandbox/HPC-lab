@@ -3,6 +3,7 @@ format:
   html:
     code-copy: true
     code-fold: true
+    toc-location: left
 date-modified: last-modified
 date-format: long
 summary: keys
@@ -184,7 +185,8 @@ This will prompt for a password to authenticate with the remote server in order 
 You are set to start using your SSH key. If you are using UCloud, follow the next section; otherwise, you are done with this tutorial.
 :::
 
-### UCloud Users - ssh keys setup
+## UCloud Users 
+### SSH keys setup
 
 Similarly to what is explained above, copy your key (manually or using e.g. `pbcopy ~/.ssh/id_rsa.pub`) and go to `Resources` (navigation panel on the left) > `SSH keys`. 
 
