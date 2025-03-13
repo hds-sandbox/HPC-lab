@@ -84,5 +84,5 @@ For users who prefer a graphical interface, tools like Cyberduck and FileZilla c
 
 This will establish a secure connection to your host. You can navigate through your folders and files. Right-click on any file  you want to download or preview.
 
-- Filezilla: your local files will be display on the left-side of the dashboard. Right-click on them to upload or add it them to a transfer queue. If you have created a queue, this will be shown at the bottom of the window as a list. You can inspect destination folders from there and choose other options such as transfer priority. To start a queue, use `CTRL + P, Transfer --> Process Queue` or use the toolbar.  
-- Cyberduck: you can drag files from your local to the host, choose the directory where you want them located. 
+- **Filezilla**: your local files will be display on the left-side of the dashboard. Right-click on them to upload or add it them to a transfer queue. If you have created a queue, this will be shown at the bottom of the window as a list. You can inspect destination folders from there and choose other options such as transfer priority. To start a queue, use `CTRL + P, Transfer --> Process Queue` or use the toolbar.  
+- **Cyberduck**: you can drag files from your local to the host, choose the directory where you want them located. 
