@@ -294,7 +294,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">March 5, 2025</p>
+      <p class="date-modified">March 13, 2025</p>
     </div>
   </div>
     
@@ -311,10 +311,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This tutorial guides you through configuring SSH keys, using GitHub as an example.</p>
 <section id="what-is-an-ssh-key" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-an-ssh-key">What is an SSH key?</h3>
-<p>An SSH (Secure Shell) is a network protocol that allows you to execute commands on a remote server securely. SSH keys are <strong>cryptographic keys used for authenticating a user or device within the SSH protocol</strong>. They come in pairs: the “private” key and the “public” key.</p>
+<p>An SSH (Secure Shell) is a network protocol that allows you to execute commands on a remote server securely. SSH keys are <strong>cryptographic keys used for authenticating a user or device within the SSH protocol</strong>. They come in pairs: the “private” and the “public” key.</p>
 <ul>
-<li>Public Key: This key can be freely shared with anyone and is added to the ~/.ssh/authorized_keys file on the remote server you wish to access.</li>
-<li>Private Key: This key should remain on your local machine and be carefully protested, similar to a password. It should never be shared.</li>
+<li><strong>Public Key</strong>: This key can be freely shared with anyone and is added to the <code>~/.ssh/authorized_keys</code> file on the remote server you wish to access.</li>
+<li><strong>Private Key</strong>: This key should remain on your local machine and be carefully protested, similar to a password. It should never be shared.</li>
 </ul>
 <p>The holder of the private key can authenticate with any remote system that has the corresponding public key. For example, you can use a single public/private key pair to authenticate with the cluster at your research center and your GitHub account.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -336,7 +336,7 @@ How SSH keys work
 <section id="step-1-creating-a-publicprivate-key-pair" class="level4">
 <h4 class="anchored" data-anchor-id="step-1-creating-a-publicprivate-key-pair"><strong>Step 1: Creating a public/private key pair</strong></h4>
 <p>On your (Mac or Linux) workstation, create the public/private key pair. There are several types of keys and by default you will get an RSA pair. When prompted for a passphrase, just hit enter so that you won’t need a password when logging in.</p>
-<p>When prompted, press <code>Enter</code> to store the keys in <code>.ssh/id_rsa</code> (we recommend not to modify this). Press <code>Enter</code> twice again to skip setting a passphrase, which otherwise would require you to enter it each time you use <code>git push</code> or <code>git pull</code>. This process generates two files: the public key (<code>~/.ssh/id_rsa.pub</code>) and the private key (<code>~/.ssh/id_rsa</code>).</p>
+<p>When prompted, press <code>Enter</code> to store the keys in <code>.ssh/id_rsa</code> (we recommend not to modify this). Press <code>Enter</code> twice again to skip setting a passphrase, which otherwise would require you to enter it each time (e.g.&nbsp;if you set up SSH keys for authentification in GitHub, you will need to enter the passprhase every time you use <code>git push</code> or <code>git pull</code>). This process generates two files: the public key (<code>~/.ssh/id_rsa.pub</code>) and the private key (<code>~/.ssh/id_rsa</code>).</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Generating</span> public/private rsa key pair.</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> file in which to save the key <span class="er">(</span><span class="ex">/Users/abc123/.ssh/id_rsa</span><span class="kw">)</span><span class="bu">:</span> </span>
@@ -361,7 +361,7 @@ How SSH keys work
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="st">+----[SHA256]-----+</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="kw">`</span><span class="ex">~/.ssh/id_rsa.pub</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssh-rsa</span> AAAAB3NzaC1yc2EAAAADAQABAAABgQCs3nqhRr7FyB8UKxqQ5mA3Gk60oty5lGdzcpVxjL08QmjLz15X6Odo2EotmJQuzCyYbzPw4Tq404N3NOmVqYywrn03i3kmCnZd5MYq8yi72Zsk9qFfgEt7pxpf5WJ+AWSDXwUkUQK2FFby2RWbi4gwTmRHfkB999j8F3F/d5EpB0llQfxmZWIIrX9ampgxfI8+yTIyeG8gpx5028h1oR5qukEFJk6nAoj5on+/vBqHdc0AVPd6jNoNCDZ6ur4xwUPam8iQ6A4NfbnCVUPa95Wqt+QWEF6Mn4UB1WIvly+blDzg5rVXvd9B685bZjQWfUsxSiRPkhtV6X2yImklt+KjV0ufB/Yl1O+x6S8r2+I41WSxwJNr5h5L588l3GH4ehT79uCtrxiu4zas+4s9OW02Ox3auCfLi1/jp/CJ5IsuLwM/jPBXrgzw+HREKM2gtm9d12gU2b9o9bmASZVhEKqeTb0aRPjcTYYdnjOWUl+pqkdVPyB7mJs8NAQemN/shvM= abc123@c9b1d769db6e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The public key can be safely displayed <code>cat</code> and shared with any achine where it will function as a personal lock that can be only opened with your private key.</p>
+<p>The public key can be safely displayed <code>cat</code> and shared with any machine where it will function as a personal lock that can be only opened with your private key.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -384,7 +384,11 @@ Tip
 <p>If you already have an SSH key pair, you can use it without generating a new one. To check the details of your existing key, use the <code>ssh-keygen</code> command to display the key’s fingerprint.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-l</span> <span class="at">-f</span> ~/.ssh/id_rsa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">2048</span> SHA256:7l0HauYJVRaQhuzmti8XEZImnRbzipu3NKGnE6tDFRk grg@t430s <span class="er">(</span><span class="ex">RSA</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Alternatively, check the content of the ssh directory: - Mac/Unix: <code>ls -la ~/.ssh/</code> - Windows: <code>ls ~/.ssh/</code></p>
+<p>Alternatively, check the content of the ssh directory:</p>
+<ul>
+<li>Mac/Unix: <code>ls -la ~/.ssh/</code></li>
+<li>Windows: <code>ls ~/.ssh/</code></li>
+</ul>
 </section>
 <section id="step-2-adding-your-ssh-key-to-the-ssh-agent" class="level4">
 <h4 class="anchored" data-anchor-id="step-2-adding-your-ssh-key-to-the-ssh-agent"><strong>Step 2: Adding your SSH key to the ssh-agent</strong></h4>
@@ -401,7 +405,7 @@ Warning
 <div class="callout-body-container callout-body">
 <ul>
 <li>Windows users: follow <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=windows">these instructions</a> instead, the process is very similar.</li>
-<li>If you are getting errors when running the commands below, please read carefully <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">these guidelines</a> as GitHUb provides instructions on what to do with common issues users run into for this specific step 2.</li>
+<li>If you are getting errors when running the commands below, please read carefully <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">these guidelines</a> as GitHub provides instructions on what to do with common issues users run into for this specific step 2.</li>
 <li><a href="https://docs.github.com/en/authentication/troubleshooting-ssh">General GitHUbtroubleshooting</a></li>
 </ul>
 </div>
@@ -417,7 +421,7 @@ Warning
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">AddKeysToAgent</span> yes</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">IdentityFile</span> ~/.ssh/id_rsa</span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: if the file does not `touch ~/.ssh/config`to create the file. </span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: if the file does not exit, run `touch ~/.ssh/config` to create it. </span></span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the SSH private to the ssh-agent</span></span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_rsa</span>
