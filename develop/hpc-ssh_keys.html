@@ -261,11 +261,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
     </ul>
     </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+    <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -273,10 +269,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#what-is-an-ssh-key" id="toc-what-is-an-ssh-key" class="nav-link" data-scroll-target="#what-is-an-ssh-key">What is an SSH key?</a></li>
   <li><a href="#how-do-i-create-an-ssh-key" id="toc-how-do-i-create-an-ssh-key" class="nav-link" data-scroll-target="#how-do-i-create-an-ssh-key">How do I create an SSH key?</a></li>
-  <li><a href="#ucloud-users---ssh-keys-setup" id="toc-ucloud-users---ssh-keys-setup" class="nav-link" data-scroll-target="#ucloud-users---ssh-keys-setup">UCloud Users - ssh keys setup</a></li>
+  </ul></li>
+  <li><a href="#ucloud-users" id="toc-ucloud-users" class="nav-link" data-scroll-target="#ucloud-users">UCloud Users</a>
+  <ul class="collapse">
+  <li><a href="#ssh-keys-setup" id="toc-ssh-keys-setup" class="nav-link" data-scroll-target="#ssh-keys-setup">SSH keys setup</a></li>
   </ul></li>
   </ul>
 </nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -511,8 +514,11 @@ Warning
 </div>
 </section>
 </section>
-<section id="ucloud-users---ssh-keys-setup" class="level3">
-<h3 class="anchored" data-anchor-id="ucloud-users---ssh-keys-setup">UCloud Users - ssh keys setup</h3>
+</section>
+<section id="ucloud-users" class="level2">
+<h2 class="anchored" data-anchor-id="ucloud-users">UCloud Users</h2>
+<section id="ssh-keys-setup" class="level3">
+<h3 class="anchored" data-anchor-id="ssh-keys-setup">SSH keys setup</h3>
 <p>Similarly to what is explained above, copy your key (manually or using e.g.&nbsp;<code>pbcopy ~/.ssh/id_rsa.pub</code>) and go to <code>Resources</code> (navigation panel on the left) &gt; <code>SSH keys</code>.</p>
 <p><img src="./images/sshkey_step1.png" alt="Description of the image" width="30%"></p>
 <p>Paste the public key here and give a title to your key as in the image below:</p>

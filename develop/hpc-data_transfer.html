@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed fullcontent">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -258,10 +258,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
     </ul>
     </div>
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-transfer" id="toc-data-transfer" class="nav-link active" data-scroll-target="#data-transfer">Data transfer</a></li>
+  <li><a href="#interactive-transfer" id="toc-interactive-transfer" class="nav-link" data-scroll-target="#interactive-transfer">Interactive transfer</a></li>
+  <li><a href="#ucloud-users" id="toc-ucloud-users" class="nav-link" data-scroll-target="#ucloud-users">UCloud Users</a>
+  <ul class="collapse">
+  <li><a href="#data-transfer-1" id="toc-data-transfer-1" class="nav-link" data-scroll-target="#data-transfer-1">Data transfer</a></li>
+  </ul></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -325,7 +338,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>To transfer files directly between two servers from your local workstation, ensure your SSH setup (configuration, keys, etc.) allows access to both servers. Check <a href="./ssh_keys.qmd">this section</a> if you need help setting up your keys (generating, configuring and managing).</p>
+<p>To transfer files directly between two servers from your local workstation, ensure your SSH setup (configuration, keys, etc.) allows access to both servers. Check <a href="../develop/hpc-ssh_keys.html">this section</a> if you need help setting up your keys (generating, configuring and managing).</p>
 </div>
 </div>
 <section id="advantages-of-rsync-over-scp" class="level4">
@@ -372,8 +385,35 @@ Note
 </li>
 <li><strong>Cyberduck</strong>: you can drag files from your local to the host, choose the directory where you want them located.</li>
 </ul>
+</section>
+<section id="ucloud-users" class="level2">
+<h2 class="anchored" data-anchor-id="ucloud-users">UCloud Users</h2>
+<section id="data-transfer-1" class="level3">
+<h3 class="anchored" data-anchor-id="data-transfer-1">Data transfer</h3>
+<p>To transfer files between UCloud and your local machine, you must first configure your SSH keys. If you haven’t done so already, follow the instructions in <a href="../develop/hpc-ssh_keys.html">the SSH keys section</a>.</p>
+<p>Next, open an application on UCloud (e.g., Terminal) which will display the login command and the <strong>SSH port</strong> for client connections in the job progress view. Note that the SSH port is randomly generated and will be different each time.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run these commands on a terminal in your local machine</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Files from UCloud to local</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avP</span> <span class="at">-e</span> <span class="st">"ssh -i ~/.ssh/id_rsa -p &lt;port&gt;"</span> ucloud@ssh.cloud.sdu.dk:/work/<span class="op">&lt;</span>path_to_data<span class="op">&gt;</span> ./<span class="op">&lt;</span>path_local_data<span class="op">&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Files from local to UCloud</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avP</span> <span class="at">-e</span> <span class="st">"ssh -i ~/.ssh/id_rsa -p &lt;port&gt;"</span> ./<span class="op">&lt;</span>path_local_data<span class="op">&gt;</span> ucloud@ssh.cloud.sdu.dk:/work/<span class="op">&lt;</span>path_to_data<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>~/.ssh/id_rsa</code>: path to your SSH private key on the remote host (locally)</li>
+<li><code>&lt;port&gt;</code>: SSH number, which you will find on UCloud</li>
+<li><code>ucloud@ssh.cloud.sdu.dk</code>: default user on the remote server must be ucloud.</li>
+<li><code>/work/&lt;path_to_data&gt;/</code>: data must be synchronized to a folder within the default working directory <code>work</code></li>
+</ul>
+<p>To transfer files between two servers, we recommend performing the transfer from a terminal on UCloud. Below is an example of the command for GenomeDK. Please note that this command will prompt you to enter your password, and you may also be asked to complete a two-factor authentication (2FA) process, if enabled.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From genomeDK to Ucloud</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avP</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@login.genome.au.dk:/home/<span class="op">&lt;</span>username<span class="op">&gt;</span>/data /work/<span class="op">&lt;</span>path_to_data<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><code>/work/&lt;path_to_data&gt;/</code>: data must be synchronized to a folder within the default working directory <code>work</code></li>
+<li>Reverse the order of the command if you need to transfer from UCloud to the GenomeDK server.</li>
+</ul>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
