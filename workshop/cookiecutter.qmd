@@ -72,30 +72,31 @@ You're ready to customize your own template! Explore the following folder struct
 └── scripts                 # other scripts 
 ```
 
-:::{.callout-warning}
+:::{.callout-warning collapse="true"}
 # Exercise 2 for non-GitHub users
-If you haven’t created a GitHub account or are not comfortable using it yet, you can skip step 1. In step 2, use the sandbox URL instead by running the following command:
+If you haven’t created a GitHub account or are not comfortable using it yet, you can skip step 1 in Exercise 2 (below). In step 2, use the sandbox URL instead of your owned forked repo by running the following command:
 
 ```{.bash filename="Terminal"}
 git clone https://github.com/hds-sandbox/cookiecutter-template
 ```
+If you have a GitHub Desktop, click *Add* and select *Clone repository* from the options.
+
 :::
 
 :::{.callout-exercise}
 
 # Exercise 2: Use and adapt the Sandbox template
 
-While you’ll clone a sample template, you’re encouraged to modify it to fit your specific needs—you’re not limited to following our example exactly.
+You will first fork our Sandbox repository, and then clone it to UCloud. This allows you to customize the template to fit your specific needs, rather than strictly following our example, and save the changes back to your repository.
     
-1. Go to our [Cookicutter template](https://github.com/hds-sandbox/cookiecutter-template) and click on the **Fork** button at the top-right corner of the repository page to create a copy of the repository on your own GitHub account or organization.
+1. Go to our [Cookicutter template](https://github.com/hds-sandbox/cookiecutter-template) and click on the **Fork** button at the top-right corner of the repository page to create a copy of the repository on your own GitHub account.
 
     ![fork_repo_example](./images/fork_repo_project.png)
-2. Open a terminal on your computer, copy the URL of your fork and **clone** the repository to your local machine (the URL should look something like https://github.com/your_username/cookiecutter-template):
+2. Open the Coder app on UCloud (locally, if you don't have access), copy the URL of your fork and **clone** the repository to your personal drive on UCloud (the URL should look something like https://github.com/your_username/cookiecutter-template):
 
     ```{.bash}
     git clone <your URL to the template>
     ```
-If you have a GitHub Desktop, click *Add* and select *Clone repository* from the options.
 
 3. Access the cloned repository (`cd cookiecutter-template`) and navigate through the different directories.
 
@@ -241,7 +242,7 @@ cat("Q2. Which file name is more readable?", longmcq(opts1), longmcq(opts2),long
 Regular expressions are an incredibly powerful tool for string manipulation. We recommend checking out [RegexOne](https://regexone.com/) to learn how to create smart file names that will help you parse them more efficiently.
 
 
-:::{.webex-check .callout-tip collapse="true" appearance="simple"}
+:::{.webex-check .callout-tip appearance="simple"}
 # Bonus exercise 3
 
 Which of the regexps below match **ONLY** the filenames shown in bold?

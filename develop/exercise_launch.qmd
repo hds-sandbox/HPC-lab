@@ -20,10 +20,28 @@ style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
 Put your learning to the test with what you’ve covered so far.
 
 ## General HPC launch 
-**1. Should I run the commmand `unzip myfile.zip` to decompress the file from the *login node*?** `r torf(FALSE)`
+Which of the following operations I should do from the front-end (login) nodes:
+
+**1. Unzip a large file `unzip myfile.zip` to decompress the file?** `r torf(FALSE)`
+
+**2. Small folders and files managment?** `r torf(TRUE)`
+
+**3. Heavy data transfers?** `r torf(FALSE)`
+
+**4. Run computations?** `r torf(FALSE)`
 
 :::{.callout-hint}
-Avoid running anything from the login node. Create an interactive session to do this! 
+Avoid running anything from the login node as this will slow down all other users. Create instead an **interactive session** to do this! 
 :::
 
-**2. Is it a good idea to keep data in the scratch folder until the project is finished?** `r torf(FALSE)`
+Are the following statements true or false?
+
+**5. Is it a good idea to keep data in the scratch folder until the project is finished?** `r torf(FALSE)`
+
+**6. I must backup all generated files, inlcuding intermediate files, to make sure the analysis are reproducible.** `r torf(FALSE)`
+
+**7. I should not fill up my home folder with data. ** `r torf(TRUE)`
+
+**8. Virtual environments keeps project-specific software and their dependencies separted - without interferring with each other. ** `r torf(TRUE)`
+
+**9. I must always run the analysis/pipeline on a small subset of the data to estimate CPU/RAM resources.** `r torf(TRUE)`

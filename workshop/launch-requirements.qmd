@@ -51,7 +51,7 @@ Our first choice is to run our tutorials on UCloud, the supercomputer located at
 
 &nbsp;
 
-4. Create an account on GitHub. Follow [this instructions](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github). 
+4. Create an account on GitHub. Follow [these instructions](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github). 
 
 5. You’re all set! You will receive instructions on how to navigate through UCloud during the course.
 

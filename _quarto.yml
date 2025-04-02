@@ -68,6 +68,7 @@ website:
           contents: 
             - workshop/launch-requirements.qmd
             - workshop/cookiecutter.qmd
+            - develop/exercise_launch.qmd
         - section: "HPC Pipes"
           contents: 
             - workshop/pipes-requirements.qmd
