@@ -13,9 +13,67 @@ css: ./web.css
 
 #### <span style="color: red;">PLEASE READ BEFORE COURSE!</span>
 
-## Course requirements 
 
 :::{.callout-warning title="Required preparation"}
+You are expected to make sure you can sign in to UCloud, SDU’s HPC platform on which we will be running this course. All data, exercises, and tools will be provided on UCloud. Please use your university ID to sign in (instructions below). If you run into problems, please write us (respond to the email that got you to this page).
+
+A Danish university/institution account is required to create a UCloud account.  If you don't have one, click on *Local setup* below. 
+:::
+
+### Access Sandbox resources
+Our first choice is to run our tutorials on UCloud, the supercomputer located at the University of Southern Denmark. Anyone using these resources needs the following:
+
+ 1. A Danish university ID so you can sign on to UCloud via WAYF^[Other institutions (e.g. hospitals, libraries, ...) can log on through WAYF. See all institutions [here](https://www.wayf.dk/da/institutioner-i-wayf).]. 
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://cloud.sdu.dk" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    for UCloud Access
+    click here
+  </a>
+</p>
+
+&nbsp;
+
+ 2. Basic ability to navigate in Linux. **You don't need to be an expert**, but it is beyond our ambitions (and course material) to teach you how to code from zero.
+
+ 3. Click the invite link below to accept our the invitation to the Sandbox workspace (after accessing UCloud for the first time). This way, we can provide you with compute resources for the active sessions of the workshop^[To use Sandbox materials outside of the workshop: remember that each new user has hundreds of hours of free computing credit and around 50GB of free storage, which can be used to run any UCloud software. If you run out of credit (which takes a long time) you'll need to check with the [local DeiC office at your university](https://www.deic.dk/en/Front-Office) about how to request compute hours on UCloud. Contact us at the Sandbox if you need help or want more information.].
+
+ &nbsp;
+
+ <p align="center">
+  <a href="https://cloud.sdu.dk/app/projects/invite/67a8c23a-4eab-4f3d-8d32-745ab537fe9f" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Invite link to
+    UCloud workspace
+  </a>
+</p>
+
+&nbsp;
+
+4. You’re all set! You will receive instructions on how to navigate through UCloud during the course.
+
+&nbsp;
+
+5. Download the slides (*link active on April 8th*) and RDM figure:
+
+<!--
+ <p align="center">
+  <a href="./GwasSandbox_slides.zip" download="Unavai">
+    <button class="btn small-button">Download slides</button>
+  </a>
+</p>
+-->
+
+- [RDM roadmap](https://hds-sandbox.github.io/RDM_biodata_course/develop/cheatSheet.html)
+
+6. Course evaluation survey - The Novo Nordisk Foundation funds the Sandbox project and is interested in the outcomes of our training activities, so we really appreciate your responses! (*link active on April 8th*)
+
+#### Independent users 
+If you are interested in running the exercises locally, click on the box below. *Not recommended for paritipants in our workshops*.
+
+:::{.callout-warning title="Local setup required if not using UCloud" collapse="true"}
+
 You are expected to complete the required setup, including tool installation and account creation. 
 
 - [Git](https://git-scm.com/downloads) for version control of your projects
@@ -43,28 +101,6 @@ You are expected to complete the required setup, including tool installation and
 **If you run into any issues installing the software, don't worry! We will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. Please read the next section carefully.**
 :::
 
-### Using UCloud for exercises 
-
-:::{.callout-warning}
-Follow the instructions below if you have an account at a Danish university. You will need your institutional email to proceed. Unfortunately, this will not work for those without a university email.
-:::
-
-1. Create an account on [UCloud](https://cloud.sdu.dk/) with your institution's credentials 
-2. Use the link below to join our workspace where you will find a setup environment^[*link activated a week before the workshop*.]
-
-&nbsp;
-
- <p align="center">
-  <a href="https://cloud.sdu.dk/app/projects/invite/b1bc6434-8340-48cd-8674-18a6b13eabcc" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
-    Invite link to
-    UCloud workspace
-  </a>
-</p>
-
-&nbsp;
-
-3. You’re all set! You will receive instructions on how to navigate through UCloud during the course.
-
 ### Reading material
 
 About Research Data Management (RDM): 
@@ -83,18 +119,16 @@ About High-Performance Computing (HPC):
 |:-|:----|:-|:----|
 | *8:45*	|	*Morning coffee (optional)* |  
 | 9:00	|	Introduction to the Sandbox project | 12:00	|	*Lunch break* |
-| 9:15	|	Introduction to HPC: the basics | 13:00	|	Step-by-step: solutions I |
+| 9:15	|	Introduction to HPC: the basics | 13:00	|	RDM Step-by-step I |
 | 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
-| 10:30	|	DK HPC resources, access, and intro to UCloud | 14:30	|	Step-by-step: solutions II |
-| 11:15	|	Intro to RDM for health data science | 16:00	|	Discussions & Wrap-up |
+| 10:30	|	HPC workflow | 14:30	|	RDM Step-by-step II |
+| 11:15	|	Intro to RDM | 15:00	|	DK HPC solutions & resources |
 
 ## Discussion and feedback
 
 We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill up the [feedback form](https://forms.office.com/e/USfA9JLSrP) before you head out for the day ^[*link activated on the day of the workshop*.].</b>
 
 &nbsp;
-
-You can download our RDM roadmap [here](https://hds-sandbox.github.io/RDM_biodata_course/develop/cheatSheet.html). 
 
 :::{.callout-note  appearance="simple" icon=false} 
 <h4 align=center>Nice meeting you and we hope to see you again!</h4> 

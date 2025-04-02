@@ -64,6 +64,10 @@ website:
       style: "docked"
       search: true
       contents:
+        - section: "HPC Launch"
+          contents: 
+            - workshop/launch-requirements.qmd
+            - workshop/cookiecutter.qmd
         - section: "HPC Pipes"
           contents: 
             - workshop/pipes-requirements.qmd
@@ -77,10 +81,6 @@ website:
                   href: workshop/pipes-ex-smk-self.qmd
                 - text: "Day 2 - Part 4"
                   href: workshop/pipes-ex-smk-fast.qmd
-        - section: "HPC Launch"
-          contents: 
-            - workshop/launch-requirements.qmd
-            - workshop/cookiecutter.qmd
         - text: "UCloud setup"
           href: workshop/UCloud.qmd
 

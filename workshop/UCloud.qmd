@@ -20,21 +20,9 @@ Log onto UCloud at the address http://cloud.sdu.dk using university credentials.
 
 When logged in, choose the project from the dashboard (top-right side) from which you would like to utilize compute resources. Every user has their personal workspace (`My workspace`). You can also provision your own project (check with your local DeiC office if you’re new to UCloud) or you can be invited to someone else’s project. If you’ve previously selected a project, it will be launched by default. If it’s your first time, you’ll be in your workspace. 
 
-If you haven't joined our workspace yet, please click below:
-
 &nbsp;
 
- <p align="center">
-  <a href="https://cloud.sdu.dk/app/projects/invite/d68169ad-6bb1-422d-b0df-d21e2751f8fb" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
-    Invite link to
-    UCloud workspace
-  </a>
-</p>
-
-&nbsp;
-
-For this workshop, you need to select `Sandbox Workshop` (see image below, top-right corner). This will allow us to provide a pre-configured environment with everything you need installed, along with access to our resources.
-
+For our workshops, you need to select `Sandbox Workshop` (see image below, top-right corner). This will allow us to provide a pre-configured environment with everything you need installed, along with access to our resources.
 
 ![Dashboard](./images/step1.png)
 
@@ -64,8 +52,12 @@ Click on the app button to get into the settings window. You will have to config
 # Why is it necessary to mount two drives for the exercises?
 
 - `YourNameSurname#xxxx`: save your results here or any other file. 
-- `HPCLab_workshop`: this is where the input files are located; you can read from this directory but do not have write permissions. 
+- `HPCLab_workshop`: this is where the input and environment files are located; you can read from this directory but do not have write permissions. 
 :::
+
+6. Now, open the interface and a new terminal. Then, check all conda environments available and activate `hpclab-env` as shown below. 
+
+![Conda environment](./images/conda.png)
 
 :::{.callout-tip}
 # Why do we use an Integrated Development Environment (IDE)?
@@ -78,3 +70,4 @@ Click on the app button to get into the settings window. You will have to config
 - Debugging tools (access to command-line tools)​
 - Terminal integration ​
 :::
+
