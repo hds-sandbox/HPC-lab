@@ -209,6 +209,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Managing data</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../develop/exercise_launch.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Knowledge Checks</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -404,21 +410,25 @@ Exercise 1: Get familiar with Cookiecutter
 <span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> scripts                 <span class="co"># other scripts </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Exercise 2 for non-GitHub users
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If you haven’t created a GitHub account or are not comfortable using it yet, you can skip step 1. In step 2, use the sandbox URL instead by running the following command:</p>
+<p>If you haven’t created a GitHub account or are not comfortable using it yet, you can skip step 1 in Exercise 2 (below). In step 2, use the sandbox URL instead of your owned forked repo by running the following command:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
 <div class="sourceCode" id="cb3" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/hds-sandbox/cookiecutter-template</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you have a GitHub Desktop, click <em>Add</em> and select <em>Clone repository</em> from the options.</p>
 </div>
 </div>
 </div>
@@ -436,18 +446,17 @@ Exercise 2: Use and adapt the Sandbox template
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-exercise">
-<p>While you’ll clone a sample template, you’re encouraged to modify it to fit your specific needs—you’re not limited to following our example exactly.</p>
+<p>You will first fork our Sandbox repository, and then clone it to UCloud. This allows you to customize the template to fit your specific needs, rather than strictly following our example, and save the changes back to your repository.</p>
 <ol type="1">
-<li><p>Go to our <a href="https://github.com/hds-sandbox/cookiecutter-template">Cookicutter template</a> and click on the <strong>Fork</strong> button at the top-right corner of the repository page to create a copy of the repository on your own GitHub account or organization.</p>
+<li><p>Go to our <a href="https://github.com/hds-sandbox/cookiecutter-template">Cookicutter template</a> and click on the <strong>Fork</strong> button at the top-right corner of the repository page to create a copy of the repository on your own GitHub account.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/fork_repo_project.png" class="img-fluid figure-img"></p>
 <figcaption>fork_repo_example</figcaption>
 </figure>
 </div></li>
-<li><p>Open a terminal on your computer, copy the URL of your fork and <strong>clone</strong> the repository to your local machine (the URL should look something like https://github.com/your_username/cookiecutter-template):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>your URL to the template<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>If you have a GitHub Desktop, click <em>Add</em> and select <em>Clone repository</em> from the options.</p></li>
+<li><p>Open the Coder app on UCloud (locally, if you don’t have access), copy the URL of your fork and <strong>clone</strong> the repository to your personal drive on UCloud (the URL should look something like https://github.com/your_username/cookiecutter-template):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>your URL to the template<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Access the cloned repository (<code>cd cookiecutter-template</code>) and navigate through the different directories.</p></li>
 <li><p>The Cookiecutter template you just cloned is missing the ‘reports’ directory and the ‘requirements.txt’ file. Create these, along with a subdirectory named ‘reports/figures’.</p>
 <pre class="plaintext"><code>│...
@@ -615,24 +624,24 @@ Exercise 3
 <div>
 <div class="webex-check callout-exercise">
 Q1. Which naming conventions should be used and why?
-<div id="radio_IWZIHNGUIY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IWZIHNGUIY" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_IWZIHNGUIY" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_IWZIHNGUIY" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
+<div id="radio_FXRFEVAHRM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FXRFEVAHRM" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_FXRFEVAHRM" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_FXRFEVAHRM" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
 </div>
-<div id="radio_SUVFTEVAUU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_SUVFTEVAUU" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_SUVFTEVAUU" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_SUVFTEVAUU" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
+<div id="radio_KMSTNHRXAA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KMSTNHRXAA" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_KMSTNHRXAA" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_KMSTNHRXAA" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
 </div>
-<div id="radio_UCTSUCDTTT" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UCTSUCDTTT" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_UCTSUCDTTT" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_UCTSUCDTTT" value=""> <span>i. run_pipeline:20241203.sh</span></label>
+<div id="radio_KCCRMYCJBM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KCCRMYCJBM" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_KCCRMYCJBM" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_KCCRMYCJBM" value=""> <span>i. run_pipeline:20241203.sh</span></label>
 </div>
 Q2. Which file name is more readable?
-<div id="radio_FDPYXCEOJU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FDPYXCEOJU" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_FDPYXCEOJU" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_FDPYXCEOJU" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
+<div id="radio_FHOAAJFDRF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FHOAAJFDRF" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_FHOAAJFDRF" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_FHOAAJFDRF" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
 </div>
-<div id="radio_HPCNHCEHFD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HPCNHCEHFD" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_HPCNHCEHFD" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_HPCNHCEHFD" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
+<div id="radio_WHQNVDOZHJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WHQNVDOZHJ" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_WHQNVDOZHJ" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_WHQNVDOZHJ" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
 </div>
-<div id="radio_MWCSVVNPTQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MWCSVVNPTQ" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_MWCSVVNPTQ" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_MWCSVVNPTQ" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
+<div id="radio_KPYGASMXLS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KPYGASMXLS" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_KPYGASMXLS" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_KPYGASMXLS" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
 </div>
 </div>
 </div>
@@ -641,16 +650,14 @@ Q2. Which file name is more readable?
 </div>
 <p>Regular expressions are an incredibly powerful tool for string manipulation. We recommend checking out <a href="https://regexone.com/">RegexOne</a> to learn how to create smart file names that will help you parse them more efficiently.</p>
 <div class="webex-check callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Bonus exercise 3
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Which of the regexps below match <strong>ONLY</strong> the filenames shown in bold?</p>
 <ul>
@@ -668,7 +675,6 @@ Bonus exercise 3
 <p><code>.*/2021/03/.*\.tsv</code> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
 <p><code>.*Sample_.*_gene_expression.tsv</code> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
 <p><code>rna_seq/2021/03/results/Sample_.*_.*\.tsv</code> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
-</div>
 </div>
 </div>
 </section>

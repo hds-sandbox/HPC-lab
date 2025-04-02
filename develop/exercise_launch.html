@@ -283,7 +283,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Put your learning to the test with what you’ve covered so far.</p>
 <section id="general-hpc-launch" class="level2">
 <h2 class="anchored" data-anchor-id="general-hpc-launch">General HPC launch</h2>
-<p><strong>1. Should I run the commmand <code>unzip myfile.zip</code> to decompress the file from the <em>login node</em>?</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
+<p>Which of the following operations I should do from the front-end (login) nodes:</p>
+<p><strong>1. Unzip a large file <code>unzip myfile.zip</code> to decompress the file?</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
+<p><strong>2. Small folders and files managment?</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
+<p><strong>3. Heavy data transfers?</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
+<p><strong>4. Run computations?</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -298,13 +302,18 @@ Hint
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<p>Avoid running anything from the login node. Create an interactive session to do this!</p>
+<p>Avoid running anything from the login node as this will slow down all other users. Create instead an <strong>interactive session</strong> to do this!</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p><strong>2. Is it a good idea to keep data in the scratch folder until the project is finished?</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
+<p>Are the following statements true or false?</p>
+<p><strong>5. Is it a good idea to keep data in the scratch folder until the project is finished?</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
+<p><strong>6. I must backup all generated files, inlcuding intermediate files, to make sure the analysis are reproducible.</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
+<p><strong>7. I should not fill up my home folder with data. </strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
+<p><strong>8. Virtual environments keeps project-specific software and their dependencies separted - without interferring with each other. </strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
+<p><strong>9. I must always run the analysis/pipeline on a small subset of the data to estimate CPU/RAM resources.</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 
 
 </section>
