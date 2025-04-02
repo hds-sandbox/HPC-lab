@@ -67,8 +67,6 @@ Our first choice is to run our tutorials on UCloud, the supercomputer located at
 
 - [RDM roadmap](https://hds-sandbox.github.io/RDM_biodata_course/develop/cheatSheet.html)
 
-6. Course evaluation survey - The Novo Nordisk Foundation funds the Sandbox project and is interested in the outcomes of our training activities, so we really appreciate your responses! (*link active on April 8th*)
-
 #### Independent users 
 If you are interested in running the exercises locally, click on the box below. *Not recommended for paritipants in our workshops*.
 
@@ -126,7 +124,7 @@ About High-Performance Computing (HPC):
 
 ## Discussion and feedback
 
-We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill up the [feedback form](https://forms.office.com/e/USfA9JLSrP) before you head out for the day ^[*link activated on the day of the workshop*.].</b>
+We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill up the [feedback form]() before you head out for the day ^[*link activated on the day of the workshop*.].</b>
 
 &nbsp;
 
