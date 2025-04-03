@@ -94,6 +94,7 @@ You are expected to complete the required setup, including tool installation and
   ```
 
 *Highly recommended*
+
 - [Zenodo account](https://zenodo.org/) for archiving and sharing your research outputs
 - [DeiC DMP](https://dmp.deic.dk/plans)
 
