@@ -217,21 +217,21 @@ Jennifer Bartell
 </section>
 <section id="sandbox-project-workspace" class="slide level2">
 <h2>Sandbox project workspace</h2>
-<p>Click the invite link below to accept our the invitation to the Sandbox workspace:</p>
+<p>Click the invite link below to accept the invitation to the Sandbox workspace:</p>
 <p> </p>
 <div style="text-align: center; margin-top: 20px;">
-<p><a href="https://cloud.sdu.dk/app/projects/invite/2eeabcd0-3d78-440e-a1be-425814d1da8a" target="_blank" style="display: inline-block; background-color: #4266A1; color: #FFFFFF; padding: 30px 30px; border-radius: 20px; font-weight: bold;"> Ucloud unvite to Sandbox workspace </a></p>
+<p><a href="https://cloud.sdu.dk/app/projects/invite/2eeabcd0-3d78-440e-a1be-425814d1da8a" target="_blank" style="display: inline-block; background-color: #4266A1; color: #FFFFFF; padding: 30px 30px; border-radius: 20px; font-weight: bold;"> Ucloud invite to the Sandbox workspace </a></p>
 </div>
 </section>
 <section id="software-management-on-ucloud" class="slide level2">
 <h2>Software management on UCloud</h2>
 <ul>
 <li><p>Every app comes with its pre-defined installed software on UCloud</p></li>
-<li><p>The <code>Terminal</code> app, has <strong>no preinstalled software</strong></p></li>
+<li><p>The <code>Terminal</code> app has <strong>no preinstalled (bio)software</strong></p></li>
 <li><p>You can install and manage your <strong>software and its dependencies</strong> using virtual environments</p></li>
 </ul>
 <h3 id="virtual-environments">Virtual environments</h3>
-<p>Each project needs specific software versions dependent on each other for <strong>reproducibility</strong> - without interferring with other projects.</p>
+<p>Each project needs specific software versions dependent on each other for <strong>reproducibility</strong> - without interfering with other projects.</p>
 <div title="Definition">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -242,8 +242,8 @@ Jennifer Bartell
 <p><strong>Definition</strong></p>
 </div>
 <div class="callout-content">
-<p>A <strong>virtual environment</strong> keeps project-specific softwares and their dependencies separated</p>
-<p>A <strong>package manager</strong> is a software that can retrieve, download, install, upgrade packages <strong>easily and reliably</strong></p>
+<p>A <strong>virtual environment</strong> keeps project-specific software and its dependencies separated.</p>
+<p>A <strong>package manager</strong> is a software that can retrieve, download, install, and upgrade packages <strong>easily and reliably</strong>.</p>
 </div>
 </div>
 </div>
@@ -262,12 +262,12 @@ Jennifer Bartell
 </section>
 <section class="slide level2">
 
-<p>A package manager puts together the dependency trees of requested packages to find all compatible dependencies versions.</p>
+<p>A package manager puts together the dependency trees of requested packages to find all compatible dependency versions.</p>
 
 <img data-src="img/condatree.png" width="800" class="r-stretch quarto-figure-center"><p class="caption">Figure: A package’s dependency tree with required versions on the edges</p></section>
 <section class="slide level2">
 
-<p>To install a specific package in your environment, search it on <a href="https://anaconda.org">anaconda.org</a>:</p>
+<p>To install a specific package in your environment, search for it on <a href="https://anaconda.org">anaconda.org</a>:</p>
 
 <img data-src="img/anaconda1.png" class="quarto-figure quarto-figure-center r-stretch" width="800"><p> </p>
 <div title="Channels">
@@ -280,7 +280,7 @@ Jennifer Bartell
 <p><strong>Channels</strong></p>
 </div>
 <div class="callout-content">
-<p>packages are archived in channels. <code>conda-forge</code> and <code>bioconda</code> include most of the packages for bioinformatics and data science.</p>
+<p>Packages are archived in channels. <code>conda-forge</code> and <code>bioconda</code> include most of the packages for bioinformatics and data science.</p>
 <p><code>conda-forge</code> packages are often the most up-to-date.</p>
 </div>
 </div>
@@ -325,7 +325,7 @@ Jennifer Bartell
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list <span class="kw">|</span><span class="fu">grep</span> <span class="at">-v</span> <span class="st">'#'</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Imagine you need to share your environment with a collaborator so they can replicate your analysis. How do we do this?</p>
 <ul>
-<li>Export the environment specifications and save it to your personal drive (e.g.<yourname-hpclab>.yml)</yourname-hpclab></li>
+<li>Export the environment specifications and save them to your personal drive (e.g., <yourname-hpclab>.yml)</yourname-hpclab></li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="at">--from-history</span> <span class="op">&gt;</span> <span class="op">&lt;</span>yourname-hpclab<span class="op">&gt;</span>.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
@@ -339,7 +339,7 @@ Jennifer Bartell
 <p>Let’s create a new directory in your personal drive:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="op">&lt;</span>path-to-personal-drive<span class="op">&gt;</span></span>
 <span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> envs </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Now, add a new environment using the argument <code>--prefix PATH</code> (e.g.&nbsp;<code>/work/&lt;YourNameSurname#xxxx&gt;/envs/&lt;name-env&gt;</code>). We need to do this as miniconda is installed in a directory that you don’t have write rights.</p>
+<p>Now, add a new environment using the argument <code>--prefix PATH</code> (e.g., <code>/work/&lt;YourNameSurname#xxxx&gt;/envs/&lt;name-env&gt;</code>). We need to do this as miniconda is installed in a directory that you don’t have write rights to.</p>
 <p>Locally, you would typically run the command: <code>conda create --name &lt;myenv&gt;</code></p>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -350,7 +350,7 @@ Jennifer Bartell
 <p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
-<p>Always specify the location using <code>--prefix PATH</code> regardless of the UCloud app you use, especially if the app has conda pre-installed (e.g.&nbsp;Jupterlab). The path must be on your personal drive or a shared drive with colleagues that you have access to. Otherwise, the environment won’t be saved, as you’re working within a temporary container instance.</p>
+<p>Always specify the location using <code>--prefix PATH</code> regardless of the UCloud app you use, especially if the app has conda pre-installed (e.g.&nbsp;Jupyterlab). The path must be on your personal drive or a shared drive with colleagues that you have access to. Otherwise, the environment won’t be saved, as you’re working within a temporary container instance.</p>
 </div>
 </div>
 </div>
@@ -383,7 +383,7 @@ Jennifer Bartell
 <section class="slide level2">
 
 <ul>
-<li>Add the latest python version to the environment</li>
+<li>Add the latest Python version to the environment</li>
 </ul>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
