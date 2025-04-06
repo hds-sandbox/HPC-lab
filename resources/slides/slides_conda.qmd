@@ -18,13 +18,13 @@ navigation-mode: vertical
 ---
 
 ## Sandbox project workspace
-Click the invite link below to accept our the invitation to the Sandbox workspace:
+Click the invite link below to accept the invitation to the Sandbox workspace:
 
 &thinsp;
 
 <div style="text-align: center; margin-top: 20px;">
   <a href="https://cloud.sdu.dk/app/projects/invite/2eeabcd0-3d78-440e-a1be-425814d1da8a" target="_blank" style="display: inline-block; background-color: #4266A1; color: #FFFFFF; padding: 30px 30px; border-radius: 20px; font-weight: bold;">
-    Ucloud unvite to Sandbox workspace
+    Ucloud invite to the Sandbox workspace
   </a>
 </div>
 
@@ -32,18 +32,18 @@ Click the invite link below to accept our the invitation to the Sandbox workspac
 
 - Every app comes with its pre-defined installed software on UCloud
 
-- The `Terminal` app, has **no preinstalled software**
+- The `Terminal` app has **no preinstalled (bio)software**
 
 - You can install and manage your **software and its dependencies** using virtual environments
 
 ### Virtual environments
 
-Each project needs specific software versions dependent on each other for **reproducibility** - without interferring with other projects.
+Each project needs specific software versions dependent on each other for **reproducibility** - without interfering with other projects.
 
 :::{.callout-note title="Definition"}
-A **virtual environment** keeps project-specific softwares and their dependencies separated 
+A **virtual environment** keeps project-specific software and its dependencies separated. 
 
-A **package manager** is a software that can retrieve, download, install, upgrade packages **easily and reliably**
+A **package manager** is a software that can retrieve, download, install, and upgrade packages **easily and reliably**.
 :::
 
 ## Conda
@@ -57,13 +57,13 @@ Conda is **both** a virtual environment and a package manager.
 
 --- 
 
-A package manager puts together the dependency trees of requested packages to find all compatible dependencies versions.
+A package manager puts together the dependency trees of requested packages to find all compatible dependency versions.
 
 ![Figure: A package's dependency tree with required versions on the edges](img/condatree.png){fig-align="center" width="800px"}
 
 ---
 
-To install a specific package in your environment, search it on [anaconda.org](https://anaconda.org):
+To install a specific package in your environment, search for it on [anaconda.org](https://anaconda.org):
 
 ![](img/anaconda1.png){fig-align="center" width="800px"}
 
@@ -71,7 +71,7 @@ To install a specific package in your environment, search it on [anaconda.org](h
 
 :::{.callout-note title="Channels"}
 
-packages are archived in channels. `conda-forge` and `bioconda` include most of the packages for bioinformatics and data science.
+Packages are archived in channels. `conda-forge` and `bioconda` include most of the packages for bioinformatics and data science.
 
 `conda-forge` packages are often the most up-to-date.
 :::
@@ -125,7 +125,7 @@ conda list |grep -v '#' | wc -l
 
 Imagine you need to share your environment with a collaborator so they can replicate your analysis. How do we do this? 
 
-- Export the environment specifications and save it to your personal drive (e.g.<yourname-hpclab>.yml)
+- Export the environment specifications and save them to your personal drive (e.g., <yourname-hpclab>.yml)
 
 ```{.bash}
 conda env export --from-history > <yourname-hpclab>.yml
@@ -148,12 +148,12 @@ cd <path-to-personal-drive>
 mkdir envs 
 ```
 
-Now, add a new environment using the argument `--prefix PATH` (e.g. `/work/<YourNameSurname#xxxx>/envs/<name-env>`). We need to do this as miniconda is installed in a directory that you don't have write rights. 
+Now, add a new environment using the argument `--prefix PATH` (e.g., `/work/<YourNameSurname#xxxx>/envs/<name-env>`). We need to do this as miniconda is installed in a directory that you don't have write rights to. 
 
 Locally, you would typically run the command: `conda create --name <myenv>`
 
 :::{.callout-warning}
-Always specify the location using `--prefix PATH` regardless of the UCloud app you use, especially if the app has conda pre-installed (e.g. Jupterlab). The path must be on your personal drive or a shared drive with colleagues that you have access to. Otherwise, the environment won't be saved, as you're working within a temporary container instance. 
+Always specify the location using `--prefix PATH` regardless of the UCloud app you use, especially if the app has conda pre-installed (e.g. Jupyterlab). The path must be on your personal drive or a shared drive with colleagues that you have access to. Otherwise, the environment won't be saved, as you're working within a temporary container instance. 
 :::
 
 ---
@@ -189,7 +189,7 @@ conda config --add channels conda-forge
 ```
 ---
 
-- Add the latest python version to the environment
+- Add the latest Python version to the environment
 ```{.bash filename="Search available versions"}
 conda search python 
 ```
