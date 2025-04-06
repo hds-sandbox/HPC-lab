@@ -713,6 +713,18 @@
     "text": "Exercise\ntmux was a keyboard-only software. But you can set it up also to change windows and panes with the mouse. Simply write this setting on the configuration file:\necho \"set -g mouse\" &gt;&gt; ~/.tmux.conf\nYou can start a tmux session anywhere. It is easier to navigate sessions giving them a name. For example start a session called example1:\ntmux new -s example1"
   },
   {
+    "objectID": "resources/slides/slides_conda.html#sandbox-project-workspace",
+    "href": "resources/slides/slides_conda.html#sandbox-project-workspace",
+    "title": "Package managers",
+    "section": "Sandbox project workspace",
+    "text": "Sandbox project workspace\nClick the invite link below to accept our the invitation to the Sandbox workspace:\n \n\n Ucloud unvite to Sandbox workspace",
+    "crumbs": [
+      "Workshop",
+      "UCloud setup",
+      "Conda on UCloud"
+    ]
+  },
+  {
     "objectID": "resources/slides/slides_conda.html#software-management-on-ucloud",
     "href": "resources/slides/slides_conda.html#software-management-on-ucloud",
     "title": "Package managers",
