@@ -1366,5 +1366,29 @@
     "title": "Git and Github",
     "section": "Generate SSH key Pair",
     "text": "Generate SSH key Pair\nNavigate to the location where all SSH keys are stored to generate a new one. Use a file name that describes what the key is for and do not enter passphrase for “id_UCloud”.\n# For Mac/Linux\ncd ~/.ssh \n# For Windows\ncd C:\\Users\\&lt;YourUsername&gt;\\.ssh\n\nssh-keygen -t ed25519 \nGenerating public/private ed25519 key pair.\nEnter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud\nYour identification has been saved in id_UCloud\nYour public key has been saved in id_UCloud.pub\n...\nAdd the key to your sytem:\nssh-add id_UCloud\nentity added: id_UCloud (gsd818@SUN1029429)"
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#section",
+    "href": "resources/slides/slides_conda.html#section",
+    "title": "Package managers",
+    "section": "",
+    "text": "Click the invite link below to accept our the invitation to the Sandbox workspace:\n\n Ucloud unvite to Sandbox workspace",
+    "crumbs": [
+      "Workshop",
+      "UCloud setup",
+      "Conda on UCloud"
+    ]
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#sandbox-project-workspace",
+    "href": "resources/slides/slides_conda.html#sandbox-project-workspace",
+    "title": "Package managers",
+    "section": "Sandbox project workspace",
+    "text": "Sandbox project workspace\nClick the invite link below to accept our the invitation to the Sandbox workspace:\n \n\n Ucloud unvite to Sandbox workspace",
+    "crumbs": [
+      "Workshop",
+      "UCloud setup",
+      "Conda on UCloud"
+    ]
   }
 ]

@@ -17,6 +17,17 @@ logo: ../../img/logo.png
 navigation-mode: vertical
 ---
 
+## Sandbox project workspace
+Click the invite link below to accept our the invitation to the Sandbox workspace:
+
+&thinsp;
+
+<div style="text-align: center; margin-top: 20px;">
+  <a href="https://cloud.sdu.dk/app/projects/invite/2eeabcd0-3d78-440e-a1be-425814d1da8a" target="_blank" style="display: inline-block; background-color: #4266A1; color: #FFFFFF; padding: 30px 30px; border-radius: 20px; font-weight: bold;">
+    Ucloud unvite to Sandbox workspace
+  </a>
+</div>
+
 ## Software management on UCloud
 
 - Every app comes with its pre-defined installed software on UCloud
@@ -142,7 +153,7 @@ Now, add a new environment using the argument `--prefix PATH` (e.g. `/work/<Your
 Locally, you would typically run the command: `conda create --name <myenv>`
 
 :::{.callout-warning}
-Always specify the location using `--prefix PATH` regardless of the UCloud app you use, even if the app has conda pre-installed (e.g. Jupterlab). The path has to be one on your personal drive or a share drive with your collagues that you have access. Otherwise, the environemnt wonøt be saved, as you are getting an intance of a container. 
+Always specify the location using `--prefix PATH` regardless of the UCloud app you use, especially if the app has conda pre-installed (e.g. Jupterlab). The path must be on your personal drive or a shared drive with colleagues that you have access to. Otherwise, the environment won't be saved, as you're working within a temporary container instance. 
 :::
 
 ---
