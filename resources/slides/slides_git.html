@@ -216,8 +216,8 @@ Jennifer Bartell
   <p class="date">2025-04-06</p>
 </section>
 <section id="generate-ssh-key-pair" class="slide level2">
-<h2>Generate SSH key Pair</h2>
-<p>Navigate to the location where all SSH keys are stored to generate a new one. Use a file name that describes what the key is for and do not enter passphrase for “id_UCloud”.</p>
+<h2>Generate SSH Key Pair</h2>
+<p>Navigate to the location where all SSH keys are stored to generate a new one. Use a file name that describes what the key is for, and do not enter a passphrase for “id_UCloud”.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># For Mac/Linux</span></span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/.ssh </span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># For Windows</span></span>
@@ -229,7 +229,7 @@ Enter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud
 Your identification has been saved in id_UCloud
 Your public key has been saved in id_UCloud.pub
 ...</code></pre>
-<p>Add the key to your sytem:</p>
+<p>Add the key to your system:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> id_UCloud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre><code>entity added: id_UCloud (gsd818@SUN1029429)</code></pre>
 </section>
@@ -237,21 +237,21 @@ Your public key has been saved in id_UCloud.pub
 
 <p>Then, copy the public key, either using <code>cat</code> to print the content of the file or as follows:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> id_UCloud.pub <span class="kw">|</span> <span class="ex">pbcopy</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>You can now paste the public SSH key on UCloud. You will need to enable SSH access when you submit a job to be able to ssh in.</p>
+<p>You can now paste the public SSH key on UCloud. You’ll need to enable SSH access when you submit a job so you can SSH in.</p>
 
-<img data-src="../../develop/images/sshkey_step2.png" class="r-stretch"><p>When a job with SSH access enabled starts, the command for accessing the job from your local computer via SSH is displayed from the job’s progress view. You can run this on your terminal locally.</p>
+<img data-src="../../develop/images/sshkey_step2.png" class="r-stretch"><p>When a job with SSH access enabled starts, the command for accessing the job from your local computer via SSH is displayed from the job’s progress view. You can run this locally on your terminal.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> ucloud@ssh.cloud.sdu.dk <span class="at">-p</span> <span class="op">&lt;</span>1234<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="connecting-git-and-github" class="slide level2">
 <h2>Connecting Git and GitHub</h2>
-<p>First, we need to create token classic. Go to your profile and on the left-side menu select <code>Settings &gt; Developer settings (at the bottom) &gt; Personal access tokens &gt; Tokens (classic) &gt; Generate new token</code>. Do not set a expiration date and name it as you’d like (e.g.&nbsp;ucloud hpc). Please, remember to <strong>save</strong> the generated token somewhere locally and safe. You won’t be able to see it again.</p>
-<p>Then, we will generate SSH key on UCloud following these steps 1. Submit a new job and mount your personal drive 2. Change directory to your personal drive (e.g.&nbsp;<code>cd /work/myNameXXX/</code>) 3. Create a new folder named <code>ssh</code> 4. Generate a new key (no need for paraphrase) <code>ssh-keygen -t ed25519</code> and save it as <code>id_repo1</code> 5. Copy the public key (<code>id_repo1.pub</code>) 6. Add the key to the repository you have forked from us on GitHub 7. Modify the initialization bash script to include this code</p>
+<p>First, we need to create a classic token. Go to your profile and on the left-side menu select <code>Settings &gt; Developer settings (at the bottom) &gt; Personal access tokens &gt; Tokens (classic) &gt; Generate new token</code>. Do not set an expiration date and name it however you like (e.g., ucloud hpc). Please, remember to <strong>save</strong> the generated token somewhere locally and safely. You won’t be able to see it again.</p>
+<p>Then, we will generate an SSH key on UCloud following these steps 1. Submit a new job and mount your personal drive 2. Change directory to your personal drive (e.g., <code>cd /work/myNameXXX/</code>) 3. Create a new folder named <code>ssh</code> 4. Generate a new key (no need for paraphrase) <code>ssh-keygen -t ed25519</code> and save it as <code>id_repo1</code> 5. Copy the public key (<code>id_repo1.pub</code>) 6. Add the key to the repository you have forked from us on GitHub 7. Modify the initialization bash script to include this code</p>
 <pre><code>eval `ssh-agent -s`
 ssh-add /work/ssh/id_repo1
 git config --global user.name "add here your name"
 git config --global user.email "add here your email"
 bash -i </code></pre>
-<p>You can now git commit and push using the token as password to save all changes to your repository.</p>
+<p>You can now git commit and push using the token as the password to save all changes to your repository.</p>
 
 
 </section>
