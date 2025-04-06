@@ -82,9 +82,14 @@ website:
                   href: workshop/pipes-ex-smk-self.qmd
                 - text: "Day 2 - Part 4"
                   href: workshop/pipes-ex-smk-fast.qmd
-        - text: "UCloud setup"
-          href: workshop/UCloud.qmd
-
+        - section: "UCloud setup"
+          contents: 
+            - text: "UCloud project workspace"
+              href: workshop/UCloud.qmd
+            - text: "Conda on UCloud"
+              href: resources/slides/slides_conda.qmd
+            - text: "Git/GitHub on UCloud"
+              href: resources/slides/slides_git.qmd
 
 copyright: CC-BY-SA 4.0 license
 

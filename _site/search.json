@@ -1124,5 +1124,247 @@
       "Data management",
       "Data transfer"
     ]
+  },
+  {
+    "objectID": "resources/slides/slides.html#when-you-need-to-ask-for-help",
+    "href": "resources/slides/slides.html#when-you-need-to-ask-for-help",
+    "title": "Use GenomeDK",
+    "section": "When you need to ask for help",
+    "text": "When you need to ask for help\n\nPractical help:\nSamuele (BiRC, MBG) - samuele@birc.au.dk\nDrop in hours:\n\nBioinformatics Cafe: https://abc.au.dk, abcafe@au.dk\nSamuele (BiRC, MBG) - samuele@birc.au.dk - we just set up a meeting/zoom\n\nGeneral mail for assistance\nsupport@genome.au.dk"
+  },
+  {
+    "objectID": "resources/slides/slides.html#program",
+    "href": "resources/slides/slides.html#program",
+    "title": "Use GenomeDK",
+    "section": "Program",
+    "text": "Program\n\n10:00-10:15: Workshop Introduction, questions\n10:15-11:00:\n\nrsync download and synchronization\nmultiple virtual terminals on tmux\ncake break\n\n11:10-12:00:\n\nWeb applications, ports, certificates\nContainers (Docker, singularity)\n\n12:45-13:15:\n\nBatch jobs\n\n13:15-14:00:\n\nA pipeline with gwf, pixi and containers"
+  },
+  {
+    "objectID": "resources/slides/slides.html#get-the-slides",
+    "href": "resources/slides/slides.html#get-the-slides",
+    "title": "Use GenomeDK",
+    "section": "Get the slides",
+    "text": "Get the slides\nWebpage: https://hds-sandbox.github.io/GDKworkshops/\n\nSlides will always be up to date in this webpage"
+  },
+  {
+    "objectID": "resources/slides/slides.html#navigate-the-slides",
+    "href": "resources/slides/slides.html#navigate-the-slides",
+    "title": "Use GenomeDK",
+    "section": "Navigate the slides",
+    "text": "Navigate the slides\n\n** Keep slides + a terminal open for the workshop{.smaller}**"
+  },
+  {
+    "objectID": "resources/slides/slides.html#transfer-and-sync-with-rsync",
+    "href": "resources/slides/slides.html#transfer-and-sync-with-rsync",
+    "title": "Use GenomeDK",
+    "section": "transfer and sync with rsync",
+    "text": "transfer and sync with rsync\ntmux is a very versatile tool for\n\ntransfering from remote to local host (and viceversa)\ncopying from local to local host (e.g. data backups/sync)\ntransfering only files which has changed from last copy (incremental copy)\n\n\n\n\n\n\n\nWarning\n\n\nrsync cannot make a transfer between two remote hosts, e.g. running from your PC to transfer data between GenomeDK and Computerome.\n\n\n\nLots of options you can find in the manual (would require a workshop only for that)\n\n rsync manual"
+  },
+  {
+    "objectID": "resources/slides/slides.html#exercise",
+    "href": "resources/slides/slides.html#exercise",
+    "title": "Use GenomeDK",
+    "section": "Exercise",
+    "text": "Exercise\nLog into GenomeDK. Create anywhere you prefere a folder called advancedGDK containing rsync/data\nmkdir -p advancedGDK/rsync/data\ncd advancedGDK/rsync\nCreate 100 files with extensions fastq and log in the data folder\ntouch data/file{1..100}.fastq data/file{1..100}.log"
+  },
+  {
+    "objectID": "resources/slides/slides.html#multiple-terminals-with-tmux",
+    "href": "resources/slides/slides.html#multiple-terminals-with-tmux",
+    "title": "Use GenomeDK",
+    "section": "multiple terminals with tmux",
+    "text": "multiple terminals with tmux\nWith tmux you can\n\nstart a server with multiple sessions\neach session containing one or more windows with multiple terminals (panes)\neach terminal run simultaneously and be accessed (attached) or exited from (detached)\nthe tmux server keeps runninng without a logged user"
+  },
+  {
+    "objectID": "resources/slides/slides.html#exercise-1",
+    "href": "resources/slides/slides.html#exercise-1",
+    "title": "Use GenomeDK",
+    "section": "Exercise",
+    "text": "Exercise\ntmux was a keyboard-only software. But you can set it up also to change windows and panes with the mouse. Simply write this setting on the configuration file:\necho \"set -g mouse\" &gt;&gt; ~/.tmux.conf\nYou can start a tmux session anywhere. It is easier to navigate sessions giving them a name. For example start a session called example1:\ntmux new -s example1"
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#software-management",
+    "href": "resources/slides/slides_conda.html#software-management",
+    "title": "Package managers",
+    "section": "Software management",
+    "text": "Software management\n\nEvery app comes with its pre-defined installed software on UCloud\nThe Terminal app, has no preinstalled software\nYou can install and manage your software and its dependencies using virtual environments",
+    "crumbs": [
+      "Workshop",
+      "UCloud setup",
+      "Conda on UCloud"
+    ]
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#virtual-environments",
+    "href": "resources/slides/slides_conda.html#virtual-environments",
+    "title": "Package managers",
+    "section": "Virtual environments",
+    "text": "Virtual environments\nEach project needs specific software versions dependent on each other for reproducibility - without interferring with other projects.\n \n\n\n\n\n\n\n\nDefinition\n\n\nA virtual environment keeps project-specific softwares and their dependencies separated\nA package manager is a software that can retrieve, download, install, upgrade packages easily and reliably",
+    "crumbs": [
+      "Workshop",
+      "UCloud setup",
+      "Conda on UCloud"
+    ]
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#conda",
+    "href": "resources/slides/slides_conda.html#conda",
+    "title": "Package managers",
+    "section": "Conda",
+    "text": "Conda\nConda is both a virtual environment and a package manager.\n\neasy to use and understand\ncan handle quite big environments\nenvironments are easily shareable\na large archive (Anaconda) of packages\nactive community of people archiving their packages on Anaconda",
+    "crumbs": [
+      "Workshop",
+      "UCloud setup",
+      "Conda on UCloud"
+    ]
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#exercise-contd---download-on-shell",
+    "href": "resources/slides/slides_conda.html#exercise-contd---download-on-shell",
+    "title": "Package managers",
+    "section": "Exercise cont’d - Download on shell",
+    "text": "Exercise cont’d - Download on shell\nHow to download the environment files to our computer? Open a terminal on your computer and run this command:\nscp USERNAME@login.genome.au.dk:/home/USERNAME/GDKintro/environment.zip .\nscp needs your login and the absolute path to the file. We give also the download destination as the WD on the local computer (.)\n\n\n\n\n\n\nTip\n\n\nYou can also upload a file switching the order of origin and destination in scp. E.g.\nscp ./myFile.txt USERNAME@login.genome.au.dk:/home/USERNAME/GDKintro/myFile.txt"
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#gdk-projects",
+    "href": "resources/slides/slides_conda.html#gdk-projects",
+    "title": "Package managers",
+    "section": "GDK projects",
+    "text": "GDK projects\n\n\n\n\n\n\n\nwhat is a project\n\n\nProjects are contained in /faststorage/project/ and linked in your home, and are simple folders with some perks:\n\nyou have to request their creation to GDK administrators\naccess is limited to you, and users you invite\nCPU, GPU, storage and backup usage are registered under the project for each user\nyou can keep track of per-project and -user resource usage"
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#creation",
+    "href": "resources/slides/slides_conda.html#creation",
+    "title": "Package managers",
+    "section": "Creation",
+    "text": "Creation\nRequest a project (after login on GDK) with the command\ngdk-project-request -g &lt;project_name&gt;\n \nAfter GDK approval, a project folder with the desired name appears in ~ and /faststorage/project. You should be able to set the WD into that folder:\ncd &lt;project_name&gt;\nor\ncd ~/&lt;project_name&gt;"
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#folders-management",
+    "href": "resources/slides/slides_conda.html#folders-management",
+    "title": "Package managers",
+    "section": "Folders management",
+    "text": "Folders management\nHave a coherent folder structure - your future self will thank.\n\nExample of structure, which backs up raw data and analysis"
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#what-is-a-job-on-a-hpc",
+    "href": "resources/slides/slides_conda.html#what-is-a-job-on-a-hpc",
+    "title": "Package managers",
+    "section": "What is a job on a HPC",
+    "text": "What is a job on a HPC\nA computational task executed on requested HPC resources (computing nodes), which are handled by the queueing system (SLURM)."
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#interactive-jobs",
+    "href": "resources/slides/slides_conda.html#interactive-jobs",
+    "title": "Package managers",
+    "section": "Interactive jobs",
+    "text": "Interactive jobs\nUseful to run a non-repetitive task interactively\nExamples:\n\nsplitting by chromosome that one bam file you just got\nopen Rstudio and Jupyterlab\ncompress/decompress multiple files, maybe in parallel\n\nOnce you exit from the job, anything running into it will stop."
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#batch-script-sbatch",
+    "href": "resources/slides/slides_conda.html#batch-script-sbatch",
+    "title": "Package managers",
+    "section": "Batch script (sbatch)",
+    "text": "Batch script (sbatch)\nUseful to run a program non-interactively, usually for longer time and without interaction from the user. A batch script contains\n\nthe desired resources\nthe sequence of commands to be executed\n\nand\n\nhas a filename without spaces (forget spaces from now on)"
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#choosing-the-right-cpu-ram",
+    "href": "resources/slides/slides_conda.html#choosing-the-right-cpu-ram",
+    "title": "Package managers",
+    "section": "Choosing the right CPU-RAM",
+    "text": "Choosing the right CPU-RAM\nTry to run a job with a smaller dataset as a test. Or run one of many jobs of the same type. While the job is running\n\nuse squeue --me and look at the node id\nlog into that node from the front-end terminal:\nssh &lt;NODEID&gt;"
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#exercise---conda",
+    "href": "resources/slides/slides_conda.html#exercise---conda",
+    "title": "Package managers",
+    "section": "Exercise - conda",
+    "text": "Exercise - conda\n\n\nPart 1. Exploring an existing environment\nLet’s open the Terminal app. Since Conda is not pre-installed in the Terminal app on UCloud, we will need to:\n\nMount a drive with a pre-installed Miniconda setup.\nRun a bash script to add conda to the search path.",
+    "crumbs": [
+      "Workshop",
+      "UCloud setup",
+      "Conda on UCloud"
+    ]
+  },
+  {
+    "objectID": "resources/slides/slides_rsync_tmux.html#when-you-need-to-ask-for-help",
+    "href": "resources/slides/slides_rsync_tmux.html#when-you-need-to-ask-for-help",
+    "title": "Use GenomeDK",
+    "section": "When you need to ask for help",
+    "text": "When you need to ask for help\n\nPractical help:\nSamuele (BiRC, MBG) - samuele@birc.au.dk\nDrop in hours:\n\nBioinformatics Cafe: https://abc.au.dk, abcafe@au.dk\nSamuele (BiRC, MBG) - samuele@birc.au.dk - we just set up a meeting/zoom\n\nGeneral mail for assistance\nsupport@genome.au.dk"
+  },
+  {
+    "objectID": "resources/slides/slides_rsync_tmux.html#program",
+    "href": "resources/slides/slides_rsync_tmux.html#program",
+    "title": "Use GenomeDK",
+    "section": "Program",
+    "text": "Program\n\n10:00-10:15: Workshop Introduction, questions\n10:15-11:00:\n\nrsync download and synchronization\nmultiple virtual terminals on tmux\ncake break\n\n11:10-12:00:\n\nWeb applications, ports, certificates\nContainers (Docker, singularity)\n\n12:45-13:15:\n\nBatch jobs\n\n13:15-14:00:\n\nA pipeline with gwf, pixi and containers"
+  },
+  {
+    "objectID": "resources/slides/slides_rsync_tmux.html#get-the-slides",
+    "href": "resources/slides/slides_rsync_tmux.html#get-the-slides",
+    "title": "Use GenomeDK",
+    "section": "Get the slides",
+    "text": "Get the slides\nWebpage: https://hds-sandbox.github.io/GDKworkshops/\n\nSlides will always be up to date in this webpage"
+  },
+  {
+    "objectID": "resources/slides/slides_rsync_tmux.html#navigate-the-slides",
+    "href": "resources/slides/slides_rsync_tmux.html#navigate-the-slides",
+    "title": "Use GenomeDK",
+    "section": "Navigate the slides",
+    "text": "Navigate the slides\n\n** Keep slides + a terminal open for the workshop{.smaller}**"
+  },
+  {
+    "objectID": "resources/slides/slides_rsync_tmux.html#transfer-and-sync-with-rsync",
+    "href": "resources/slides/slides_rsync_tmux.html#transfer-and-sync-with-rsync",
+    "title": "Use GenomeDK",
+    "section": "transfer and sync with rsync",
+    "text": "transfer and sync with rsync\ntmux is a very versatile tool for\n\ntransfering from remote to local host (and viceversa)\ncopying from local to local host (e.g. data backups/sync)\ntransfering only files which has changed from last copy (incremental copy)\n\n\n\n\n\n\n\nWarning\n\n\nrsync cannot make a transfer between two remote hosts, e.g. running from your PC to transfer data between GenomeDK and Computerome.\n\n\n\nLots of options you can find in the manual (would require a workshop only for that)\n\n rsync manual"
+  },
+  {
+    "objectID": "resources/slides/slides_rsync_tmux.html#exercise",
+    "href": "resources/slides/slides_rsync_tmux.html#exercise",
+    "title": "Use GenomeDK",
+    "section": "Exercise",
+    "text": "Exercise\nLog into UCloud. Create anywhere you prefere a folder called advancedGDK containing rsync/data\nmkdir -p advancedGDK/rsync/data\ncd advancedGDK/rsync\nCreate 100 files with extensions fastq and log in the data folder\ntouch data/file{1..100}.fastq data/file{1..100}.log"
+  },
+  {
+    "objectID": "resources/slides/slides_rsync_tmux.html#multiple-terminals-with-tmux",
+    "href": "resources/slides/slides_rsync_tmux.html#multiple-terminals-with-tmux",
+    "title": "Use GenomeDK",
+    "section": "multiple terminals with tmux",
+    "text": "multiple terminals with tmux\nWith tmux you can\n\nstart a server with multiple sessions\neach session containing one or more windows with multiple terminals (panes)\neach terminal run simultaneously and be accessed (attached) or exited from (detached)\nthe tmux server keeps runninng without a logged user"
+  },
+  {
+    "objectID": "resources/slides/slides_rsync_tmux.html#exercise-1",
+    "href": "resources/slides/slides_rsync_tmux.html#exercise-1",
+    "title": "Use GenomeDK",
+    "section": "Exercise",
+    "text": "Exercise\ntmux was a keyboard-only software. But you can set it up also to change windows and panes with the mouse. Simply write this setting on the configuration file:\necho \"set -g mouse\" &gt;&gt; ~/.tmux.conf\nYou can start a tmux session anywhere. It is easier to navigate sessions giving them a name. For example start a session called example1:\ntmux new -s example1"
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#software-management-on-ucloud",
+    "href": "resources/slides/slides_conda.html#software-management-on-ucloud",
+    "title": "Package managers",
+    "section": "Software management on UCloud",
+    "text": "Software management on UCloud\n\nEvery app comes with its pre-defined installed software on UCloud\nThe Terminal app, has no preinstalled software\nYou can install and manage your software and its dependencies using virtual environments\n\nVirtual environments\nEach project needs specific software versions dependent on each other for reproducibility - without interferring with other projects.\n\n\n\n\n\n\n\nDefinition\n\n\nA virtual environment keeps project-specific softwares and their dependencies separated\nA package manager is a software that can retrieve, download, install, upgrade packages easily and reliably",
+    "crumbs": [
+      "Workshop",
+      "UCloud setup",
+      "Conda on UCloud"
+    ]
+  },
+  {
+    "objectID": "resources/slides/slides_rsync_tmux.html#syncronizations-downloads-multiple-terminals",
+    "href": "resources/slides/slides_rsync_tmux.html#syncronizations-downloads-multiple-terminals",
+    "title": "Use GenomeDK",
+    "section": "Syncronizations, downloads, multiple terminals",
+    "text": "Syncronizations, downloads, multiple terminals\n\nHow to download/update incrementally using rsync\nUse rsync to create backups and versioning\nCreate and navigate multiple sessions with tmux\nLaunch parallel background downloads with tmux"
+  },
+  {
+    "objectID": "resources/slides/slides_git.html#generate-ssh-key-pair",
+    "href": "resources/slides/slides_git.html#generate-ssh-key-pair",
+    "title": "Git and Github",
+    "section": "Generate SSH key Pair",
+    "text": "Generate SSH key Pair\nNavigate to the location where all SSH keys are stored to generate a new one. Use a file name that describes what the key is for and do not enter passphrase for “id_UCloud”.\n# For Mac/Linux\ncd ~/.ssh \n# For Windows\ncd C:\\Users\\&lt;YourUsername&gt;\\.ssh\n\nssh-keygen -t ed25519 \nGenerating public/private ed25519 key pair.\nEnter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud\nYour identification has been saved in id_UCloud\nYour public key has been saved in id_UCloud.pub\n...\nAdd the key to your sytem:\nssh-add id_UCloud\nentity added: id_UCloud (gsd818@SUN1029429)"
   }
 ]

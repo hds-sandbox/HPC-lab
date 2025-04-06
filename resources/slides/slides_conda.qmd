@@ -1,0 +1,203 @@
+---
+title: "Package managers"
+subtitle: "Basic commands HPC Launch https://hds-sandbox.github.io/HPC-lab/"
+author: 
+    - "Alba Refoyo"
+    - "Jennifer Bartell"
+date: last-modified
+format: 
+  revealjs:
+    chalkboard: true
+    css: styles.css
+toc: false
+toc-depth: 1
+slide-number: h.v
+code-line-numbers: false
+logo: ../../img/logo.png
+navigation-mode: vertical
+---
+
+## Software management on UCloud
+
+- Every app comes with its pre-defined installed software on UCloud
+
+- The `Terminal` app, has **no preinstalled software**
+
+- You can install and manage your **software and its dependencies** using virtual environments
+
+### Virtual environments
+
+Each project needs specific software versions dependent on each other for **reproducibility** - without interferring with other projects.
+
+:::{.callout-note title="Definition"}
+A **virtual environment** keeps project-specific softwares and their dependencies separated 
+
+A **package manager** is a software that can retrieve, download, install, upgrade packages **easily and reliably**
+:::
+
+## Conda
+Conda is **both** a virtual environment and a package manager.
+
+- easy to use and understand
+- can handle quite big environments
+- environments are easily shareable
+- a [large archive](https://anaconda.org) (Anaconda) of packages
+- active community of people archiving their packages on Anaconda
+
+--- 
+
+A package manager puts together the dependency trees of requested packages to find all compatible dependencies versions.
+
+![Figure: A package's dependency tree with required versions on the edges](img/condatree.png){fig-align="center" width="800px"}
+
+---
+
+To install a specific package in your environment, search it on [anaconda.org](https://anaconda.org):
+
+![](img/anaconda1.png){fig-align="center" width="800px"}
+
+&thinsp;
+
+:::{.callout-note title="Channels"}
+
+packages are archived in channels. `conda-forge` and `bioconda` include most of the packages for bioinformatics and data science.
+
+`conda-forge` packages are often the most up-to-date.
+:::
+
+---
+
+### Part 1. Exploring an existing environment
+
+::: {.columns}
+
+::: {.column width=45%" style="margin-right: 30px;"}
+Let's open the Terminal app. Since Conda is not pre-installed in the Terminal app on UCloud, we will need to:  
+
+1. Mount a drive with a pre-installed Miniconda setup.
+2. Run a bash script to add conda to the search path.
+:::
+
+::: {.column width="47%"}
+![](./img/ucloud_setup.png)
+:::
+
+:::
+---
+
+**We will run the following commands to get familiar with Conda environments.**
+
+- What is the conda version?
+
+```{.bash}
+conda info
+```
+- Check the name of all the different environments available to you. 
+
+```{.bash}
+conda env list
+```
+
+- Let's explore one of the environments. To do this, let's activate `hpclab-env` environment
+
+```{.bash}
+conda activate hpclab-env
+```
+
+---
+
+- How many packages are available in this environment? 
+
+```{.bash}
+conda list |grep -v '#' | wc -l
+```
+
+Imagine you need to share your environment with a collaborator so they can replicate your analysis. How do we do this? 
+
+- Export the environment specifications and save it to your personal drive (e.g.<yourname-hpclab>.yml)
+
+```{.bash}
+conda env export --from-history > <yourname-hpclab>.yml
+```
+
+- Deactivate the environment.
+
+```{.bash}
+conda deactivate
+```
+
+---
+
+### Part 2: Building your conda environment
+
+Let's create a new directory in your personal drive:
+
+```{.bash}
+cd <path-to-personal-drive>
+mkdir envs 
+```
+
+Now, add a new environment using the argument `--prefix PATH` (e.g. `/work/<YourNameSurname#xxxx>/envs/<name-env>`). We need to do this as miniconda is installed in a directory that you don't have write rights. 
+
+Locally, you would typically run the command: `conda create --name <myenv>`
+
+:::{.callout-warning}
+Always specify the location using `--prefix PATH` regardless of the UCloud app you use, even if the app has conda pre-installed (e.g. Jupterlab). The path has to be one on your personal drive or a share drive with your collagues that you have access. Otherwise, the environemnt wonøt be saved, as you are getting an intance of a container. 
+:::
+
+---
+
+- Create the environment 
+
+```{.bash}
+conda create --prefix /work/<NameSurname#xxxx>/envs/<test-env>
+```
+
+- Confirm the environment location
+
+```
+Proceed ([y]/n)? y
+```
+
+- Double-check that the new environment exists
+
+```{.bash}
+conda env list
+```
+- Activate the env 
+
+```{.bash}
+conda activate <myenv>
+```
+- By default, we won't have conda-forge or bioconda added to the environment. Let's fix this.
+
+```{.bash}
+conda config --remove channels defaults
+conda config --add channels bioconda 
+conda config --add channels conda-forge
+```
+---
+
+- Add the latest python version to the environment
+```{.bash filename="Search available versions"}
+conda search python 
+```
+
+```{.bash filename="Install the latest"}
+conda install python=3.13.2 
+```
+- Install samtools, a tool for manipulating DNA sequencing data
+
+```{.bash}
+conda install -c bioconda samtools
+```
+
+- Uninstall samtools 
+```{.bash}
+conda remove samtools 
+```
+
+- Deactivate your environment
+```{.bash}
+conda deactivate
+```

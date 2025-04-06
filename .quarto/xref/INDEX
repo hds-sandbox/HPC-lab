@@ -154,5 +154,17 @@
   },
   "workshop/pipes-ex-smk-fast.qmd": {
     "pipes-ex-smk-fast.html": "249c1da3"
+  },
+  "resources/slides/slides.qmd": {
+    "slides.html": "f23c0546"
+  },
+  "resources/slides/slides_conda.qmd": {
+    "slides_conda.html": "3f44b07f"
+  },
+  "resources/slides/slides_rsync_tmux.qmd": {
+    "slides_rsync_tmux.html": "176bc875"
+  },
+  "resources/slides/slides_git.qmd": {
+    "slides_git.html": "14a9db9f"
   }
 }
