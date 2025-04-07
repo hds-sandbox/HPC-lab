@@ -91,7 +91,7 @@ Then, we will generate SSH key on UCloud following these steps
   3. Create a new folder named `ssh`, where you will store your new SSH keys
   4. Generate a new key (no need for paraphrase) and save it as e.g., `id_repo1`
   ```{.bash}
-  `ssh-keygen -t ed25519`
+  ssh-keygen -t ed25519
   ```
   5. Copy the public key (e.g., `id_repo1.pub`)
   6. Add the key to the repository you have created or forked from us on GitHub

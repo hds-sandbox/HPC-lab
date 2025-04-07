@@ -1419,5 +1419,17 @@
       "UCloud setup",
       "Git/GitHub on UCloud"
     ]
+  },
+  {
+    "objectID": "resources/slides/slides_conda.html#ucloud-and-the-sandbox-project-workspace",
+    "href": "resources/slides/slides_conda.html#ucloud-and-the-sandbox-project-workspace",
+    "title": "Package managers",
+    "section": "UCloud and the Sandbox project workspace",
+    "text": "UCloud and the Sandbox project workspace\n\nCreate a UCloud account. You need a Danish university ID so you can sign on to UCloud via WAYF1\n\n\n for UCloud Access click here \n\n\nUse our workspace. Click the invite link below to accept the invitation to the Sandbox workspace:\n\n\n Ucloud invite to the Sandbox workspace \n\nOther institutions (e.g. hospitals, libraries, …) can log on through WAYF. See all institutions here.",
+    "crumbs": [
+      "Workshop",
+      "UCloud setup",
+      "Conda on UCloud"
+    ]
   }
 ]

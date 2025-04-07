@@ -17,10 +17,18 @@ logo: ../../img/logo.png
 navigation-mode: vertical
 ---
 
-## Sandbox project workspace
-Click the invite link below to accept the invitation to the Sandbox workspace:
+## UCloud and the Sandbox project workspace
+1. **Create a UCloud account**. You need a Danish university ID so you can sign on to UCloud via WAYF^[Other institutions (e.g. hospitals, libraries, ...) can log on through WAYF. See all institutions [here](https://www.wayf.dk/da/institutioner-i-wayf).]
 
-&thinsp;
+ <p align="center">
+  <a href="https://cloud.sdu.dk" target="_blank" style="display: inline-block; background-color: #4266A1; color: #FFFFFF; padding: 30px 30px; border-radius: 20px; font-weight: bold;">
+    for UCloud Access
+    click here
+  </a>
+</p>
+
+2. **Use our workspace**. Click the invite link below to accept the invitation to the Sandbox workspace:
+
 
 <div style="text-align: center; margin-top: 20px;">
   <a href="https://cloud.sdu.dk/app/projects/invite/2eeabcd0-3d78-440e-a1be-425814d1da8a" target="_blank" style="display: inline-block; background-color: #4266A1; color: #FFFFFF; padding: 30px 30px; border-radius: 20px; font-weight: bold;">
