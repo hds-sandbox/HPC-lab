@@ -56,26 +56,53 @@ You can now paste the public SSH key on UCloud. You'll need to enable SSH access
 
 ![](../../develop/images/sshkey_step2.png)
 
-When a job with SSH access enabled starts, the command for accessing the job from your local computer via SSH is displayed from the job’s progress view. You can run this on your terminal locally. 
+---
+
+When a job with SSH access enabled starts, the command for accessing the job from your local computer via SSH is displayed from the job’s progress view. 
+
+You can run this on your terminal locally. 
 
 ```{.bash}
 ssh ucloud@ssh.cloud.sdu.dk -p <1234>
 ```
 
-## Connecting Git and GitHub
+## Connecting Git and GitHub with UCloud
 
-First, we need to create token classic. Go to your profile and on the left-side menu select `Settings > Developer settings (at the bottom) > Personal access tokens > Tokens (classic) > Generate new token`. Do not set a expiration date and name it as you'd like (e.g. ucloud hpc). Please, remember to **save** the generated token somewhere locally and safe. You won't be able to see it again. 
+Create a new GitHub account if you don't have one yet. Then, go to repositories and create a new one (e..g, SandboxIntro). Alternatively, you can also fork one of our repositories or if you already have one feel free to use that instead. 
+
+![](./img/github_repo.png)
+
+---
+
+Now, we need to create token classic. Go to your profile and on the left-side menu select:
+
+`Settings > Developer settings (at the bottom) > Personal access tokens > Tokens (classic) > Generate new token`. 
+
+Do not set a expiration date and name it as you'd like (e.g. ucloud hpc). 
+
+Please, remember to **save** the generated token somewhere locally and safe. You won't be able to see/copy it again. 
+
+---
 
 Then, we will generate SSH key on UCloud following these steps
-  1. Submit a new job and mount your personal drive
-  2. Change directory to your personal drive (e.g. `cd /work/myNameXXX/`)
-  3. Create a new folder named `ssh`
-  4. Generate a new key (no need for paraphrase) `ssh-keygen -t ed25519` and save it as `id_repo1`
-  5. Copy the public key (`id_repo1.pub`)
-  6. Add the key to the repository you have forked from us on GitHub
-  7. Modify the initialization bash script to include this code
 
+  1. Submit a new job using the Terminal app and mount your personal drive
+  2. Change directory to your personal drive (e.g. `cd /work/myNameXXX/`)
+  3. Create a new folder named `ssh`, where you will store your new SSH keys
+  4. Generate a new key (no need for paraphrase) and save it as e.g., `id_repo1`
+  ```{.bash}
+  `ssh-keygen -t ed25519`
   ```
+  5. Copy the public key (e.g., `id_repo1.pub`)
+  6. Add the key to the repository you have created or forked from us on GitHub
+
+---
+
+Finally, to streamline pushing changes...
+
+  7. Modify/Create the initialization bash script to include this code
+
+  ```{.bash filename="setup.sh"}
   eval `ssh-agent -s`
   ssh-add /work/ssh/id_repo1
   git config --global user.name "add here your name"
@@ -83,4 +110,25 @@ Then, we will generate SSH key on UCloud following these steps
   bash -i 
   ```
 
-You can now git commit and push using the token as password to save all changes to your repository.
+You can now git commit and push using the token as password to save all changes to your repository. Let's give it a try!
+
+---
+
+Submit a new job on UCloud. Do not forget to mount your personal drive and use the initialization bash script you just created. Once, the job is running, change directory to your personal drive, and clone your repository. 
+
+```{.bash}
+git clone <https://github.com/hds-sandbox/cookiecutter-template>
+```
+
+Now, modify or create a new file in your repository. This is a test to understand how to push changes to GitHub. 
+
+```{.bash}
+git add . 
+git commit -m "added new file"
+git push 
+```
+
+You will be asked to enter your GitHub username and the password. When you work from HPCs, you need to enter the token as your password. 
+
+Go to GitHub and check if those changes are now visible. 
+

@@ -51,8 +51,7 @@ Lots of options you can find in the manual (would require a workshop only for th
 
 ## Exercise
 
-Log into UCloud. Create anywhere you prefere a folder called `sandboxWS` containing
-`rsync/data`
+Log into UCloud. Submit a job using the Terminal app, and mount your personal drive. Once, your job is running, open the terminal and create a folder called `sandboxWS` containing `rsync/data` (in your personal drive) 
 
 ```{.bash}
 mkdir -p sandboxWS/rsync/data
@@ -196,7 +195,7 @@ Now, you have your three panes running in a window.
 
 Create a new window with `Ctrl + b + c`. Or keep right-clicked on the window bar and create a new window.
 
-You should see another window added in the bottom window bar. Again, switch between windows with your mouse (left-click!
+You should see another window added in the bottom window bar. Again, switch between windows with your mouse (left-click!)
 
 In the new window, let's look at which tmux sessions and windows are open. Run
 
