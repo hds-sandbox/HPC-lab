@@ -1365,7 +1365,12 @@
     "href": "resources/slides/slides_git.html#generate-ssh-key-pair",
     "title": "Git and Github",
     "section": "Generate SSH key Pair",
-    "text": "Generate SSH key Pair\nNavigate to the location where all SSH keys are stored to generate a new one. Use a file name that describes what the key is for and do not enter passphrase for “id_UCloud”.\n# For Mac/Linux\ncd ~/.ssh \n# For Windows\ncd C:\\Users\\&lt;YourUsername&gt;\\.ssh\n\nssh-keygen -t ed25519 \nGenerating public/private ed25519 key pair.\nEnter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud\nYour identification has been saved in id_UCloud\nYour public key has been saved in id_UCloud.pub\n...\nAdd the key to your sytem:\nssh-add id_UCloud\nentity added: id_UCloud (gsd818@SUN1029429)"
+    "text": "Generate SSH key Pair\nNavigate to the location where all SSH keys are stored to generate a new one. Use a file name that describes what the key is for and do not enter passphrase for “id_UCloud”.\n# For Mac/Linux\ncd ~/.ssh \n# For Windows\ncd C:\\Users\\&lt;YourUsername&gt;\\.ssh\n\nssh-keygen -t ed25519 \nGenerating public/private ed25519 key pair.\nEnter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud\nYour identification has been saved in id_UCloud\nYour public key has been saved in id_UCloud.pub\n...\nAdd the key to your sytem:\nssh-add id_UCloud\nentity added: id_UCloud (gsd818@SUN1029429)",
+    "crumbs": [
+      "Workshop",
+      "UCloud setup",
+      "Git/GitHub on UCloud"
+    ]
   },
   {
     "objectID": "resources/slides/slides_conda.html#section",
@@ -1389,6 +1394,18 @@
       "Workshop",
       "UCloud setup",
       "Conda on UCloud"
+    ]
+  },
+  {
+    "objectID": "resources/slides/slides_git.html#connecting-git-and-github",
+    "href": "resources/slides/slides_git.html#connecting-git-and-github",
+    "title": "Git and Github",
+    "section": "Connecting Git and GitHub",
+    "text": "Connecting Git and GitHub\nFirst, we need to create token classic. Go to your profile and on the left-side menu select:\nSettings &gt; Developer settings (at the bottom) &gt; Personal access tokens &gt; Tokens (classic) &gt; Generate new token.\nDo not set a expiration date and name it as you’d like (e.g. ucloud hpc).\nPlease, remember to save the generated token somewhere locally and safe. You won’t be able to see/access it again.",
+    "crumbs": [
+      "Workshop",
+      "UCloud setup",
+      "Git/GitHub on UCloud"
     ]
   }
 ]
