@@ -713,11 +713,11 @@
     "text": "Exercise\ntmux was a keyboard-only software. But you can set it up also to change windows and panes with the mouse. Simply write this setting on the configuration file:\necho \"set -g mouse\" &gt;&gt; ~/.tmux.conf\nYou can start a tmux session anywhere. It is easier to navigate sessions giving them a name. For example start a session called example1:\ntmux new -s example1"
   },
   {
-    "objectID": "resources/slides/slides_conda.html#sandbox-project-workspace",
-    "href": "resources/slides/slides_conda.html#sandbox-project-workspace",
+    "objectID": "resources/slides/slides_conda.html#ucloud-and-the-sandbox-project-workspace",
+    "href": "resources/slides/slides_conda.html#ucloud-and-the-sandbox-project-workspace",
     "title": "Package managers",
-    "section": "Sandbox project workspace",
-    "text": "Sandbox project workspace\nClick the invite link below to accept the invitation to the Sandbox workspace:\n \n\n Ucloud invite to the Sandbox workspace",
+    "section": "UCloud and the Sandbox project workspace",
+    "text": "UCloud and the Sandbox project workspace\n\nCreate a UCloud account. You need a Danish university ID so you can sign on to UCloud via WAYF1\n\n\n for UCloud Access click here \n\n\nUse our workspace. Click the invite link below to accept the invitation to the Sandbox workspace:\n\n\n Ucloud invite to the Sandbox workspace \n\nOther institutions (e.g. hospitals, libraries, …) can log on through WAYF. See all institutions here.",
     "crumbs": [
       "Workshop",
       "UCloud setup",
