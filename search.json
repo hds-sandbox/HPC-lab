@@ -659,11 +659,11 @@
     ]
   },
   {
-    "objectID": "resources/slides/slides_git.html#connecting-git-and-github",
-    "href": "resources/slides/slides_git.html#connecting-git-and-github",
+    "objectID": "resources/slides/slides_git.html#connecting-git-and-github-with-ucloud",
+    "href": "resources/slides/slides_git.html#connecting-git-and-github-with-ucloud",
     "title": "Git and Github",
-    "section": "Connecting Git and GitHub",
-    "text": "Connecting Git and GitHub\nFirst, we need to create token classic. Go to your profile and on the left-side menu select Settings &gt; Developer settings (at the bottom) &gt; Personal access tokens &gt; Tokens (classic) &gt; Generate new token. Do not set a expiration date and name it as you’d like (e.g. ucloud hpc). Please, remember to save the generated token somewhere locally and safe. You won’t be able to see it again.\nThen, we will generate SSH key on UCloud following these steps 1. Submit a new job and mount your personal drive 2. Change directory to your personal drive (e.g. cd /work/myNameXXX/) 3. Create a new folder named ssh 4. Generate a new key (no need for paraphrase) ssh-keygen -t ed25519 and save it as id_repo1 5. Copy the public key (id_repo1.pub) 6. Add the key to the repository you have forked from us on GitHub 7. Modify the initialization bash script to include this code\neval `ssh-agent -s`\nssh-add /work/ssh/id_repo1\ngit config --global user.name \"add here your name\"\ngit config --global user.email \"add here your email\"\nbash -i \nYou can now git commit and push using the token as password to save all changes to your repository.",
+    "section": "Connecting Git and GitHub with UCloud",
+    "text": "Connecting Git and GitHub with UCloud\nCreate a new GitHub account if you don’t have one yet. Then, go to repositories and create a new one (e..g, SandboxIntro). Alternatively, you can also fork one of our repositories or if you already have one feel free to use that instead.",
     "crumbs": [
       "Workshop",
       "UCloud setup",
@@ -696,7 +696,7 @@
     "href": "resources/slides/slides_rsync_tmux.html#exercise",
     "title": "Use GenomeDK",
     "section": "Exercise",
-    "text": "Exercise\nLog into UCloud. Create anywhere you prefere a folder called sandboxWS containing rsync/data\nmkdir -p sandboxWS/rsync/data\ncd sandboxWS/rsync\nCreate 100 files with extensions fastq and log in the data folder\ntouch data/file{1..100}.fastq data/file{1..100}.log"
+    "text": "Exercise\nLog into UCloud. Submit a job using the Terminal app, and mount your personal drive. Once, your job is running, open the terminal and create a folder called sandboxWS containing rsync/data (in your personal drive)\nmkdir -p sandboxWS/rsync/data\ncd sandboxWS/rsync\nCreate 100 files with extensions fastq and log in the data folder\ntouch data/file{1..100}.fastq data/file{1..100}.log"
   },
   {
     "objectID": "resources/slides/slides_rsync_tmux.html#multiple-terminals-with-tmux",

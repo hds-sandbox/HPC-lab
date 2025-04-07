@@ -266,7 +266,7 @@ Dan Søndergaard
 </section>
 <section id="exercise" class="slide level2">
 <h2>Exercise</h2>
-<p>Log into UCloud. Create anywhere you prefere a folder called <code>sandboxWS</code> containing <code>rsync/data</code></p>
+<p>Log into UCloud. Submit a job using the Terminal app, and mount your personal drive. Once, your job is running, open the terminal and create a folder called <code>sandboxWS</code> containing <code>rsync/data</code> (in your personal drive)</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> sandboxWS/rsync/data</span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> sandboxWS/rsync</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Create 100 files with extensions <code>fastq</code> and <code>log</code> in the data folder</p>
@@ -379,7 +379,7 @@ Ctrl + b + ""</code></pre>
 
 <p>Now, you have your three panes running in a window.</p>
 <p>Create a new window with <code>Ctrl + b + c</code>. Or keep right-clicked on the window bar and create a new window.</p>
-<p>You should see another window added in the bottom window bar. Again, switch between windows with your mouse (left-click!</p>
+<p>You should see another window added in the bottom window bar. Again, switch between windows with your mouse (left-click!)</p>
 <p>In the new window, let’s look at which tmux sessions and windows are open. Run</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The output will tell you that session <code>example1</code> is in use (attached) and has 2 windows. Something like this:</p>

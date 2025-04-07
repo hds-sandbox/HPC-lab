@@ -239,19 +239,68 @@ Your public key has been saved in id_UCloud.pub
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> id_UCloud.pub <span class="kw">|</span> <span class="ex">pbcopy</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You can now paste the public SSH key on UCloud. You’ll need to enable SSH access when you submit a job so you can SSH in.</p>
 
-<img data-src="../../develop/images/sshkey_step2.png" class="r-stretch"><p>When a job with SSH access enabled starts, the command for accessing the job from your local computer via SSH is displayed from the job’s progress view. You can run this on your terminal locally.</p>
+<img data-src="../../develop/images/sshkey_step2.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>When a job with SSH access enabled starts, the command for accessing the job from your local computer via SSH is displayed from the job’s progress view.</p>
+<p>You can run this on your terminal locally.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> ucloud@ssh.cloud.sdu.dk <span class="at">-p</span> <span class="op">&lt;</span>1234<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="connecting-git-and-github" class="slide level2">
-<h2>Connecting Git and GitHub</h2>
-<p>First, we need to create token classic. Go to your profile and on the left-side menu select <code>Settings &gt; Developer settings (at the bottom) &gt; Personal access tokens &gt; Tokens (classic) &gt; Generate new token</code>. Do not set a expiration date and name it as you’d like (e.g.&nbsp;ucloud hpc). Please, remember to <strong>save</strong> the generated token somewhere locally and safe. You won’t be able to see it again.</p>
-<p>Then, we will generate SSH key on UCloud following these steps 1. Submit a new job and mount your personal drive 2. Change directory to your personal drive (e.g.&nbsp;<code>cd /work/myNameXXX/</code>) 3. Create a new folder named <code>ssh</code> 4. Generate a new key (no need for paraphrase) <code>ssh-keygen -t ed25519</code> and save it as <code>id_repo1</code> 5. Copy the public key (<code>id_repo1.pub</code>) 6. Add the key to the repository you have forked from us on GitHub 7. Modify the initialization bash script to include this code</p>
-<pre><code>eval `ssh-agent -s`
-ssh-add /work/ssh/id_repo1
-git config --global user.name "add here your name"
-git config --global user.email "add here your email"
-bash -i </code></pre>
-<p>You can now git commit and push using the token as password to save all changes to your repository.</p>
+<section id="connecting-git-and-github-with-ucloud" class="slide level2">
+<h2>Connecting Git and GitHub with UCloud</h2>
+<p>Create a new GitHub account if you don’t have one yet. Then, go to repositories and create a new one (e..g, SandboxIntro). Alternatively, you can also fork one of our repositories or if you already have one feel free to use that instead.</p>
+
+<img data-src="./img/github_repo.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<p>Now, we need to create token classic. Go to your profile and on the left-side menu select:</p>
+<p><code>Settings &gt; Developer settings (at the bottom) &gt; Personal access tokens &gt; Tokens (classic) &gt; Generate new token</code>.</p>
+<p>Do not set a expiration date and name it as you’d like (e.g.&nbsp;ucloud hpc).</p>
+<p>Please, remember to <strong>save</strong> the generated token somewhere locally and safe. You won’t be able to see/copy it again.</p>
+</section>
+<section class="slide level2">
+
+<p>Then, we will generate SSH key on UCloud following these steps</p>
+<ol type="1">
+<li>Submit a new job using the Terminal app and mount your personal drive</li>
+<li>Change directory to your personal drive (e.g.&nbsp;<code>cd /work/myNameXXX/</code>)</li>
+<li>Create a new folder named <code>ssh</code>, where you will store your new SSH keys</li>
+<li>Generate a new key (no need for paraphrase) and save it as e.g., <code>id_repo1</code></li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">`</span><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519<span class="kw">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li>Copy the public key (e.g., <code>id_repo1.pub</code>)</li>
+<li>Add the key to the repository you have created or forked from us on GitHub</li>
+</ol>
+</section>
+<section class="slide level2">
+
+<p>Finally, to streamline pushing changes…</p>
+<ol start="7" type="1">
+<li>Modify/Create the initialization bash script to include this code</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>setup.sh</strong></pre>
+</div>
+<div class="sourceCode" id="cb8" data-filename="setup.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="kw">`</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="kw">`</span></span>
+<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> /work/ssh/id_repo1</span>
+<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"add here your name"</span></span>
+<span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"add here your email"</span></span>
+<span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> <span class="at">-i</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can now git commit and push using the token as password to save all changes to your repository. Let’s give it a try!</p>
+</section>
+<section class="slide level2">
+
+<p>Submit a new job on UCloud. Do not forget to mount your personal drive and use the initialization bash script you just created. Once, the job is running, change directory to your personal drive, and clone your repository.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>https://github.com/hds-sandbox/cookiecutter-template<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, modify or create a new file in your repository. This is a test to understand how to push changes to GitHub.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add . </span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"added new file"</span></span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You will be asked to enter your GitHub username and the password. When you work from HPCs, you need to enter the token as your password.</p>
+<p>Go to GitHub and check if those changes are now visible.</p>
 
 
 </section>
