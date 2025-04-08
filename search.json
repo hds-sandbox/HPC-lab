@@ -651,7 +651,19 @@
     "href": "resources/slides/slides_git.html#generate-ssh-key-pair",
     "title": "Git and Github",
     "section": "Generate SSH Key Pair",
-    "text": "Generate SSH Key Pair\nNavigate to the location where all SSH keys are stored to generate a new one. Use a file name that describes what the key is for, and do not enter a passphrase for “id_UCloud”.\n# For Mac/Linux\ncd ~/.ssh \n# For Windows\ncd C:\\Users\\&lt;YourUsername&gt;\\.ssh\n\nssh-keygen -t ed25519 \nGenerating public/private ed25519 key pair.\nEnter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud\nYour identification has been saved in id_UCloud\nYour public key has been saved in id_UCloud.pub\n...\nAdd the key to your system:\nssh-add id_UCloud\nentity added: id_UCloud (gsd818@SUN1029429)",
+    "text": "Generate SSH Key Pair\nNavigate to the location where all SSH keys are stored to generate a new one. Use a file name that describes what the key is for, and do not enter a passphrase for “id_UCloud”.\n\n\nMac/Linux\n\ncd ~/.ssh \n\n \n\n\nWindows\n\ncd C:\\Users\\&lt;YourUsername&gt;\\.ssh\n\n \nssh-keygen -t ed25519 \n \nGenerating public/private ed25519 key pair.\nEnter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud\nYour identification has been saved in id_UCloud\nYour public key has been saved in id_UCloud.pub\n...",
+    "crumbs": [
+      "Workshop",
+      "UCloud setup",
+      "Git/GitHub on UCloud"
+    ]
+  },
+  {
+    "objectID": "resources/slides/slides_git.html#windows-users-on-powershell",
+    "href": "resources/slides/slides_git.html#windows-users-on-powershell",
+    "title": "Git and Github",
+    "section": "Windows users on Powershell",
+    "text": "Windows users on Powershell\n(everyone else skip)\n# By default the ssh-agent service is disabled. Configure it to start automatically.\n# Make sure you're running as an Administrator.\nGet-Service ssh-agent | Set-Service -StartupType Automatic\n\n# Start the service\nStart-Service ssh-agent\n\n# This should return a status of Running\nGet-Service ssh-agent",
     "crumbs": [
       "Workshop",
       "UCloud setup",
