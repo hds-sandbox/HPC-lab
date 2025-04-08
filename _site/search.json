@@ -1346,7 +1346,7 @@
     "href": "resources/slides/slides_conda.html#software-management-on-ucloud",
     "title": "Package managers",
     "section": "Software management on UCloud",
-    "text": "Software management on UCloud\n\nEvery app comes with its pre-defined installed software on UCloud\nThe Terminal app has no preinstalled (bio)software\nYou can install and manage your software and its dependencies using virtual environments\n\nVirtual environments\nEach project needs specific software versions dependent on each other for reproducibility - without interfering with other projects.\n\n\n\n\n\n\n\nDefinition\n\n\nA virtual environment keeps project-specific software and its dependencies separated.\nA package manager is a software that can retrieve, download, install, and upgrade packages easily and reliably.",
+    "text": "Software management on UCloud\n\n\nEvery app comes with its pre-defined installed software on UCloud\nThe Terminal app has no preinstalled (bio)software\nYou can install and manage your software and its dependencies using virtual environments\n\nVirtual environments\nEach project needs specific software versions dependent on each other for reproducibility - without interfering with other projects.\n\n\n\n\n\n\n\nDefinition\n\n\nA virtual environment keeps project-specific software and its dependencies separated.\nA package manager is a software that can retrieve, download, install, and upgrade packages easily and reliably.",
     "crumbs": [
       "Workshop",
       "UCloud setup",
