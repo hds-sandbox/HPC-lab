@@ -21,25 +21,48 @@ navigation-mode: vertical
 
 Navigate to the location where all SSH keys are stored to generate a new one. Use a file name that describes what the key is for, and do not enter a passphrase for "id_UCloud".  
 
-```{.bash}
-# For Mac/Linux
+```{.bash filename="Mac/Linux"}
 cd ~/.ssh 
-# For Windows
+```
+
+```{.bash filename="Windows"}
 cd C:\Users\<YourUsername>\.ssh
 
+```{.bash}
 ssh-keygen -t ed25519 
 ```
+
 ```
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud
 Your identification has been saved in id_UCloud
 Your public key has been saved in id_UCloud.pub
 ...
+
+---
+
+## Windows users on Powershell (everyone else skip)
+
+```{.bash}
+# By default the ssh-agent service is disabled. Configure it to start automatically.
+# Make sure you're running as an Administrator.
+Get-Service ssh-agent | Set-Service -StartupType Automatic
+
+# Start the service
+Start-Service ssh-agent
+
+# This should return a status of Running
+Get-Service ssh-agent
+```
+
+---
 ```
 Add the key to your system:
 ```{.bash}
+## Now load your key files into ssh-agent
 ssh-add id_UCloud
 ```
+
 ```
 entity added: id_UCloud (gsd818@SUN1029429)
 ```
