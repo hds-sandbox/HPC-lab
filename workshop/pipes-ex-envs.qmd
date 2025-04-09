@@ -59,7 +59,7 @@ Type the answers with no white spaces!
 
 **C.2. List all environments available to you. What is the name of the active environment** `r fitb(answer='base')`
 
-**C.3. Active `hpclab-env` environment**
+**C.3. Activate the `hpclab-env` environment**
 
 **C.4. What is the version of the package `cookiecutter`** (use a conda command) `r fitb(answer='2.6.0')`
 

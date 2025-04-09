@@ -24,6 +24,12 @@ Creating a folder template is straightforward with [cookiecutter](https://github
 
 Let’s give it a try!
 
+:::{.callout-warning}
+If you haven't yet, please submit a new job to UCloud, mounting your personal drive and using the initialization script provided by the course instructors. Follow to the guidelines in [UCloud job setup](UCloud.qmd). 
+
+Once the job is ready, run `conda activate hpclab-env` in the terminal to access all the required pre-isntalled software.
+:::
+
 :::{.callout-exercise}
 # Exercise 1: Get familiar with Cookiecutter
 
@@ -104,7 +110,7 @@ You will first fork our Sandbox repository, and then clone it to UCloud. This al
 
     ```plaintext
     │...
-    ├── results/
+    ├── reports/
     │   ├── figures/
     ├── requirements.txt
     ```
@@ -116,6 +122,7 @@ Here’s an example of how to do it. Open your terminal and navigate to your tem
 cd \{\{\ cookiecutter.project_name\ \}\}/  
 mkdir reports 
 touch requirements.txt
+...
 ```
 :::
 
@@ -301,7 +308,7 @@ Does the content of your `*.bib` file look like this?
   url          = {https://doi.org/10.5281/zenodo.14106454},
 }
 ```
-4. Scroll down to files and download the software zip file (`fastmixture-0.93.4.zip`)
+4. Scroll down to files and download the software zip file (`fastmixture-0.93.4.zip`) using the command below: 
 
 ```{.bash filename="Terminal"}
 curl https://zenodo.org/records/14106454/files/fastmixture-0.93.4.zip \

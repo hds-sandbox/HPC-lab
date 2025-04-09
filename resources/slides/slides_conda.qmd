@@ -7,14 +7,13 @@ author:
 date: last-modified
 format: 
   revealjs:
+    slide-number: true
     chalkboard: true
     css: styles.css
+    controls: true
 toc: false
-toc-depth: 1
-slide-number: h.v
 code-line-numbers: false
 logo: ../../img/logo.png
-navigation-mode: vertical
 ---
 
 ## Software management on UCloud

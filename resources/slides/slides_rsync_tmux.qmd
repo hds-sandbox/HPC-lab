@@ -1,25 +1,18 @@
 ---
-title: "Use GenomeDK"
-subtitle: "An introduction to the GDK system and basic commands https://hds-sandbox.github.io/GDKworkshops"
+title: "Tips UCloud"
+subtitle: "Basic commands HPC Launch https://hds-sandbox.github.io/HPC-lab/"
 author: 
-    - "Samuele Soraggi"
-    - "Manuel Vazquez"
-    - "Dan Søndergaard"
-institute:
-    - Health Data Science sandbox, BiRC, AU
-    - Molecular Biology and Genetics, AU
-    - GenomeDK, Health, AU
+    - "Alba Refoyo"
 date: last-modified
 format: 
   revealjs:
+    slide-number: true
     chalkboard: true
+    css: styles.css
+    controls: true
 toc: false
-toc-depth: 1
-slide-number: h.v
 code-line-numbers: false
-logo: img/logos.png
-navigation-mode: vertical
-smaller: true
+logo: ../../img/logo.png
 ---
 
 ## Syncronizations, downloads, multiple terminals

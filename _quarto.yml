@@ -88,8 +88,10 @@ website:
               href: workshop/UCloud.qmd
             - text: "Conda on UCloud"
               href: resources/slides/slides_conda.qmd
-            - text: "Git/GitHub on UCloud"
+              target: _blank
+            - text: "SSH/Git/GitHub on UCloud"
               href: resources/slides/slides_git.qmd
+              target: _blank
 
 copyright: CC-BY-SA 4.0 license
 
