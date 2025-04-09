@@ -11,8 +11,8 @@
 
   <meta name="author" content="Alba Refoyo">
   <meta name="author" content="Jennifer Bartell">
-  <meta name="dcterms.date" content="2025-04-08">
-  <title>HPC Lab – Git and Github</title>
+  <meta name="dcterms.date" content="2025-04-09">
+  <title>HPC Lab – SSH, Git and Github</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -197,8 +197,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Git and Github</h1>
-  <p class="subtitle">Basic commands HPC Launch https://hds-sandbox.github.io/HPC-lab/</p>
+  <h1 class="title">SSH, Git and Github</h1>
+  <p class="subtitle">Basic commands HPC Launch https://hds-sandbox.github. io/HPC-lab/</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -213,11 +213,11 @@ Jennifer Bartell
 </div>
 </div>
 
-  <p class="date">2025-04-08</p>
+  <p class="date">2025-04-09</p>
 </section>
 <section id="generate-ssh-key-pair" class="slide level2">
 <h2>Generate SSH Key Pair</h2>
-<p>Navigate to the location where all SSH keys are stored to generate a new one. Use a file name that describes what the key is for, and do not enter a passphrase for “id_UCloud”.</p>
+<p>Navigate to the location where all SSH keys are stored to generate a new one (<strong>skip</strong> these first two commands if you haven’t used SSH keys before).</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Mac/Linux</strong></pre>
@@ -231,19 +231,21 @@ Jennifer Bartell
 </div>
 <div class="sourceCode" id="cb2" data-filename="Windows"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> C:<span class="dt">\U</span>sers<span class="dt">\&lt;</span>YourUsername<span class="op">&gt;</span><span class="dt">\.</span>ssh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p> </p>
+<p>We will specify the type of key to create with the option <code>-t</code> (default) and use a filename that describes what the key is for (e.g.&nbsp;<code>id_UCloud</code>), and don’t enter a passphrase:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p> </p>
 <pre><code>Generating public/private ed25519 key pair.
 Enter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud
 Your identification has been saved in id_UCloud
 Your public key has been saved in id_UCloud.pub
 ...</code></pre>
 </section>
-<section id="windows-users-on-powershell" class="slide level2">
-<h2>Windows users on Powershell</h2>
-<p>(everyone else skip)</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># By default the ssh-agent service is disabled. Configure it to start automatically.</span></span>
+<section id="windows-users-skip-otherwise" class="slide level2">
+<h2>Windows users (skip otherwise)</h2>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>On Powershell</strong></pre>
+</div>
+<div class="sourceCode" id="cb5" data-filename="On Powershell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># By default the ssh-agent service is disabled. Configure it to start automatically.</span></span>
 <span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure you're running as an Administrator.</span></span>
 <span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Get-Service</span> ssh-agent <span class="kw">|</span> <span class="ex">Set-Service</span> <span class="at">-StartupType</span> Automatic</span>
 <span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a></span>
@@ -252,16 +254,25 @@ Your public key has been saved in id_UCloud.pub
 <span id="cb5-7"><a aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># This should return a status of Running</span></span>
 <span id="cb5-9"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Get-Service</span> ssh-agent</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p> </p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>On WSL</strong></pre>
+</div>
+<div class="sourceCode" id="cb6" data-filename="On WSL"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="kw">`</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="kw">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p> On MombaXterm, follow the instructions <a href="https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/37388673/Creating+and+using+an+SSH+key+pair+with+MobaXterm">here</a>.</p>
 </section>
 <section class="slide level2">
 
 <p>Once, we have generated your SSH keys, add the key to your system:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">## Now load your key files into ssh-agent</span></span>
-<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> id_UCloud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">## Now load your key files into ssh-agent</span></span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> id_UCloud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Do you get a message similar to this?</p>
 <pre><code>entity added: id_UCloud (gsd818@SUN1029429)</code></pre>
 <p>Then, copy the public key, either using <code>cat</code> to print the content of the file or as follows:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> id_UCloud.pub <span class="kw">|</span> <span class="ex">pbcopy</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> id_UCloud.pub <span class="kw">|</span> <span class="ex">pbcopy</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section class="slide level2">
 
@@ -270,21 +281,26 @@ Your public key has been saved in id_UCloud.pub
 <img data-src="../../develop/images/sshkey_step2.png" class="r-stretch"></section>
 <section class="slide level2">
 
-<p>When a job with SSH access enabled starts, the command for accessing the job from your local computer via SSH is displayed from the job’s progress view.</p>
-<p>You can run this on your terminal locally.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> ucloud@ssh.cloud.sdu.dk <span class="at">-p</span> <span class="op">&lt;</span>1234<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Submit a new job on UCloud and configure SSH access <img data-src="./img/enableSSH.png" width="800" height="150"></p>
+<p>Once the job starts, the SSH command appears in the progress view and can be run locally from your terminal <img data-src="./img/sshCommand.png" width="900"></p>
 </section>
-<section id="connecting-git-and-github-with-ucloud" class="slide level2">
-<h2>Connecting Git and GitHub with UCloud</h2>
+<section id="connecting-git-and-github" class="slide level2">
+<h2>Connecting Git and GitHub</h2>
+<p>with UCloud</p>
 <p>Create a new GitHub account if you don’t have one yet. Then, go to repositories and create a new one (e..g, SandboxIntro). Alternatively, you can also fork one of our repositories or if you already have one feel free to use that instead.</p>
 
-<img data-src="./img/github_repo.png" class="r-stretch"></section>
+<img data-src="./img/github_ repo.png" class="r-stretch"></section>
 <section class="slide level2">
 
-<p>Now, we need to create token classic. Go to your profile and on the left-side menu select:</p>
-<p><code>Settings &gt; Developer settings (at the bottom) &gt; Personal access tokens &gt; Tokens (classic) &gt; Generate new token</code>.</p>
-<p>Do not set a expiration date and name it as you’d like (e.g.&nbsp;ucloud hpc).</p>
+<p>Now, we need to create a <strong>token classic</strong> (for general use). Go to your profile and on the right-side menu select:</p>
+<p><code>Settings &gt; Developer settings (at the bottom) &gt; Personal access tokens &gt; Tokens (classic) &gt; Generate new token (classic)</code>.</p>
+<ul>
+<li>Note: <code>git commit UCloud</code></li>
+<li>Select scope: ✅ repo (top option)</li>
+<li>Do not set a expiration date</li>
+</ul>
 <p>Please, remember to <strong>save</strong> the generated token somewhere locally and safe. You won’t be able to see/copy it again.</p>
+<p><strong>Use the token as your password</strong> when performing Git operations like push or commit from the HPC.</p>
 </section>
 <section class="slide level2">
 
@@ -298,7 +314,7 @@ Your public key has been saved in id_UCloud.pub
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="5" type="1">
 <li>Copy the public key (e.g., <code>id_repo1.pub</code>)</li>
-<li>Add the key to the repository you have created or forked from us on GitHub</li>
+<li>Add the key to the repository you have created or forked from us on GitHub: <code>YOUR-REPO &gt; Settings &gt; Deploy keys &gt; Add deploy key</code>. The new deploy key can be named as e.g.&nbsp;<code>UCloud-repo1</code></li>
 </ol>
 </section>
 <section class="slide level2">
@@ -322,7 +338,13 @@ Your public key has been saved in id_UCloud.pub
 <section class="slide level2">
 
 <p>Submit a new job on UCloud. Do not forget to mount your personal drive and use the initialization bash script you just created. Once, the job is running, change directory to your personal drive, and clone your repository.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>https://github.com/hds-sandbox/cookiecutter-template<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Example repo</strong></pre>
+</div>
+<div class="sourceCode" id="cb12" data-filename="Example repo"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>https://github.</span>
+<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">com/hds-sandbox/cookiecutter-template</span><span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Now, modify or create a new file in your repository. This is a test to understand how to push changes to GitHub.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add . </span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"added new file"</span></span>
@@ -362,7 +384,7 @@ Your public key has been saved in id_UCloud.pub
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-'controlsAuto': true,
+'controlsAuto': false,
 'previewLinksAuto': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
@@ -374,7 +396,7 @@ Your public key has been saved in id_UCloud.pub
 'smaller': false,
  
         // Display controls in the bottom right corner
-        controls: false,
+        controls: true,
 
         // Help the user learn the controls by providing hints, for example by
         // bouncing the down arrow when they first encounter a vertical slide
@@ -391,7 +413,7 @@ Your public key has been saved in id_UCloud.pub
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: 'h.v',
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -432,7 +454,7 @@ Your public key has been saved in id_UCloud.pub
         rtl: false,
 
         // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'default',
+        navigationMode: 'linear',
 
         // Randomizes the order of slides each time the presentation loads
         shuffle: false,

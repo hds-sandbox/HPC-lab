@@ -9,11 +9,9 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.43">
 
-  <meta name="author" content="Samuele Soraggi">
-  <meta name="author" content="Manuel Vazquez">
-  <meta name="author" content="Dan Søndergaard">
-  <meta name="dcterms.date" content="2025-04-08">
-  <title>HPC Lab – Use GenomeDK</title>
+  <meta name="author" content="Alba Refoyo">
+  <meta name="dcterms.date" content="2025-04-09">
+  <title>HPC Lab – Tips UCloud</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -98,6 +96,7 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2f366650f320edcfcf53d73c80250a32.css">
+  <link rel="stylesheet" href="styles.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -197,37 +196,18 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Use GenomeDK</h1>
-  <p class="subtitle">An introduction to the GDK system and basic commands https://hds-sandbox.github.io/GDKworkshops</p>
+  <h1 class="title">Tips UCloud</h1>
+  <p class="subtitle">Basic commands HPC Launch https://hds-sandbox.github.io/HPC-lab/</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Samuele Soraggi 
+Alba Refoyo 
 </div>
-        <p class="quarto-title-affiliation">
-            Health Data Science sandbox, BiRC, AU
-          </p>
-    </div>
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Manuel Vazquez 
 </div>
-        <p class="quarto-title-affiliation">
-            Molecular Biology and Genetics, AU
-          </p>
-    </div>
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-Dan Søndergaard 
-</div>
-        <p class="quarto-title-affiliation">
-            GenomeDK, Health, AU
-          </p>
-    </div>
 </div>
 
-  <p class="date">2025-04-08</p>
+  <p class="date">2025-04-09</p>
 </section>
 <section id="syncronizations-downloads-multiple-terminals" class="slide level2">
 <h2>Syncronizations, downloads, multiple terminals</h2>
@@ -414,7 +394,7 @@ Ctrl + b + ""</code></pre>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
-<p><img src="img/logos.png" class="slide-logo"></p>
+<p><img src="../../img/logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
 
 </div>
@@ -442,7 +422,7 @@ Ctrl + b + ""</code></pre>
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-'controlsAuto': true,
+'controlsAuto': false,
 'previewLinksAuto': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
@@ -451,10 +431,10 @@ Ctrl + b + ""</code></pre>
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true},
-'smaller': true,
+'smaller': false,
  
         // Display controls in the bottom right corner
-        controls: false,
+        controls: true,
 
         // Help the user learn the controls by providing hints, for example by
         // bouncing the down arrow when they first encounter a vertical slide
@@ -471,7 +451,7 @@ Ctrl + b + ""</code></pre>
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: 'h.v',
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',
@@ -512,7 +492,7 @@ Ctrl + b + ""</code></pre>
         rtl: false,
 
         // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'default',
+        navigationMode: 'linear',
 
         // Randomizes the order of slides each time the presentation loads
         shuffle: false,

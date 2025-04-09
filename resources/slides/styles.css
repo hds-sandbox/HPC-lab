@@ -6,12 +6,15 @@
     line-height: 1.1; /* Adjust spacing between lines */
     margin-bottom: 36px; /* Space between paragraphs */
     margin-top: 36px; /* Space between paragraphs */
-
   }
 
 
   .reveal ul:not(:first-child) {
     line-height: 1.1; /* Adjust spacing between lines */
     margin-top: 16px; /* Space between paragraphs */
+  }
 
+  img {
+    margin-top: 0em;
+    margin-bottom: 0em;
   }

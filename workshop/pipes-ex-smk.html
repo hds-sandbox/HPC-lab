@@ -297,14 +297,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources/slides/slides_conda.html" class="sidebar-item-text sidebar-link">
+  <a href="../resources/slides/slides_conda.html" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Conda on UCloud</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources/slides/slides_git.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Git/GitHub on UCloud</span></a>
+  <a href="../resources/slides/slides_git.html" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">SSH/Git/GitHub on UCloud</span></a>
   </div>
 </li>
       </ul>
@@ -388,16 +388,16 @@ I - General knowledge
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research?</strong>
-<div id="radio_WQKKYGMLVN" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_WQKKYGMLVN" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_WQKKYGMLVN" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_WQKKYGMLVN" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_WQKKYGMLVN" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_CDVXMPMCEI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CDVXMPMCEI" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_CDVXMPMCEI" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_CDVXMPMCEI" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_CDVXMPMCEI" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 <strong>G.2.What is the primary drawback of using shell scripts for automating computations?</strong>
-<div id="radio_CUDQZUNGGD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CUDQZUNGGD" value="answer"> <span>Limited error handling and debugging capabilities</span></label><label><input type="radio" autocomplete="off" name="radio_CUDQZUNGGD" value=""> <span>Difficulty in integrating with notebooks</span></label><label><input type="radio" autocomplete="off" name="radio_CUDQZUNGGD" value=""> <span>Not compatible with all operating systems</span></label><label><input type="radio" autocomplete="off" name="radio_CUDQZUNGGD" value="answer"> <span>They re-run all the steps every time</span></label><label><input type="radio" autocomplete="off" name="radio_CUDQZUNGGD" value=""> <span>Insufficient support for parallel processing</span></label><label><input type="radio" autocomplete="off" name="radio_CUDQZUNGGD" value=""> <span>Complex and extensive coding for simple tasks</span></label>
+<div id="radio_VTSAWAMZXP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VTSAWAMZXP" value="answer"> <span>Limited error handling and debugging capabilities</span></label><label><input type="radio" autocomplete="off" name="radio_VTSAWAMZXP" value=""> <span>Difficulty in integrating with notebooks</span></label><label><input type="radio" autocomplete="off" name="radio_VTSAWAMZXP" value=""> <span>Not compatible with all operating systems</span></label><label><input type="radio" autocomplete="off" name="radio_VTSAWAMZXP" value="answer"> <span>They re-run all the steps every time</span></label><label><input type="radio" autocomplete="off" name="radio_VTSAWAMZXP" value=""> <span>Insufficient support for parallel processing</span></label><label><input type="radio" autocomplete="off" name="radio_VTSAWAMZXP" value=""> <span>Complex and extensive coding for simple tasks</span></label>
 </div>
 <strong>G.3. What are the key features of workflow manager in computational research?</strong> (Several possible solutions)
-<div id="radio_CNKRYNMOCI" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CNKRYNMOCI" value="answer"> <span>Executing tasks only when required</span></label><label><input type="radio" autocomplete="off" name="radio_CNKRYNMOCI" value="answer"> <span>Managing task dependencies</span></label><label><input type="radio" autocomplete="off" name="radio_CNKRYNMOCI" value="answer"> <span>Overseeing storage and resource allocation</span></label><label><input type="radio" autocomplete="off" name="radio_CNKRYNMOCI" value=""> <span>Providing intuitive graphical interfaces</span></label>
+<div id="radio_FILHIEEBIV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FILHIEEBIV" value="answer"> <span>Executing tasks only when required</span></label><label><input type="radio" autocomplete="off" name="radio_FILHIEEBIV" value="answer"> <span>Managing task dependencies</span></label><label><input type="radio" autocomplete="off" name="radio_FILHIEEBIV" value="answer"> <span>Overseeing storage and resource allocation</span></label><label><input type="radio" autocomplete="off" name="radio_FILHIEEBIV" value=""> <span>Providing intuitive graphical interfaces</span></label>
 </div>
 <p><strong>G.4. Workflow managers can run tasks (different) concurrently if there are no dependencies</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 <p><strong>G.5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
@@ -476,8 +476,8 @@ II - Exploring rule invocation in Snakemake
 <p><strong>Q.3. How many files with the extension <code>*.tsv</code> can you find in that subdirectory?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;6&quot;]"></p></li>
 <li><p><strong>Dry-run</strong> the workflow again (from <code>hpclab</code>).</p>
 <p><strong>Q.4. Would Snakemake run any jobs based on the results of the dry-run?</strong></p>
-<div id="radio_IHRLMNNPHS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IHRLMNNPHS" value="answer"> <span><strong>No</strong>. There is nothing to be done. All requested files are present and up to date</span></label><label><input type="radio" autocomplete="off" name="radio_IHRLMNNPHS" value=""> <span><strong>Yes</strong>. Reasons: input files updated by another job (all, combine, split_by_superpop) and output files have to be generated (combine, preprocess, split_by_superpop)</span></label>
+<div id="radio_OLIWCNPUMN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OLIWCNPUMN" value="answer"> <span><strong>No</strong>. There is nothing to be done. All requested files are present and up to date</span></label><label><input type="radio" autocomplete="off" name="radio_OLIWCNPUMN" value=""> <span><strong>Yes</strong>. Reasons: input files updated by another job (all, combine, split_by_superpop) and output files have to be generated (combine, preprocess, split_by_superpop)</span></label>
 </div></li>
 <li><p>Remove files starting with <code>E</code> in your <code>results</code> folder (“EAS.tsv” and “EUR.tsv”) and <code>all_female.txt</code>. Then, dry-run once more.</p>
 <p><strong>Q.5. How many jobs will Snakemake run?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;4&quot;]"></p></li>
