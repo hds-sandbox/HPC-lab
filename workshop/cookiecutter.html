@@ -494,8 +494,8 @@ Exercise 2: Use and adapt the Sandbox template
 </div></li>
 <li><p>Open the Coder app on UCloud (locally, if you don’t have access), copy the URL of your fork and <strong>clone</strong> the repository to your personal drive on UCloud (the URL should look something like https://github.com/your_username/cookiecutter-template):</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>your URL to the template<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-<li><p>Access the cloned repository (<code>cd cookiecutter-template</code>) and navigate through the different directories.</p></li>
-<li><p>The Cookiecutter template you just cloned is missing the ‘reports’ directory and the ‘requirements.txt’ file. Create these, along with a subdirectory named ‘reports/figures’.</p>
+<li><p>Access the cloned repository (<code>cd cookiecutter-template</code>) and navigate through the different subdirectories.</p></li>
+<li><p>The Cookiecutter template you just cloned is missing the <code>reports</code> directory and the <code>requirements.txt</code> file. Create these, along with a subdirectory named <code>reports/figures</code>.</p>
 <pre class="plaintext"><code>│...
 ├── reports/
 │   ├── figures/
@@ -662,24 +662,24 @@ Exercise 3
 <div>
 <div class="webex-check callout-exercise">
 Q1. Which naming conventions should be used and why?
-<div id="radio_ZZCRUYPEID" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZZCRUYPEID" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_ZZCRUYPEID" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_ZZCRUYPEID" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
+<div id="radio_SFAQXXFUUC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SFAQXXFUUC" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_SFAQXXFUUC" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_SFAQXXFUUC" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
 </div>
-<div id="radio_OWSONLVAVY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_OWSONLVAVY" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_OWSONLVAVY" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_OWSONLVAVY" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
+<div id="radio_JBEVHAMFSR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JBEVHAMFSR" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_JBEVHAMFSR" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_JBEVHAMFSR" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
 </div>
-<div id="radio_XQUIKMTTDD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_XQUIKMTTDD" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_XQUIKMTTDD" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_XQUIKMTTDD" value=""> <span>i. run_pipeline:20241203.sh</span></label>
+<div id="radio_AKAWPRRSTI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_AKAWPRRSTI" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_AKAWPRRSTI" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_AKAWPRRSTI" value=""> <span>i. run_pipeline:20241203.sh</span></label>
 </div>
 Q2. Which file name is more readable?
-<div id="radio_UISFZLRFHX" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UISFZLRFHX" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_UISFZLRFHX" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_UISFZLRFHX" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
+<div id="radio_BMBFGLJUPG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BMBFGLJUPG" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_BMBFGLJUPG" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_BMBFGLJUPG" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
 </div>
-<div id="radio_JSNBJZCYNY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JSNBJZCYNY" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_JSNBJZCYNY" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_JSNBJZCYNY" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
+<div id="radio_GHKIFABMIZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GHKIFABMIZ" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_GHKIFABMIZ" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_GHKIFABMIZ" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
 </div>
-<div id="radio_MRKUYCIEBF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MRKUYCIEBF" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_MRKUYCIEBF" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_MRKUYCIEBF" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
+<div id="radio_EUFFBBJIJZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EUFFBBJIJZ" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_EUFFBBJIJZ" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_EUFFBBJIJZ" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
 </div>
 </div>
 </div>
