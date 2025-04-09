@@ -103,14 +103,12 @@ Once the job starts, the SSH command appears in the progress view and can be run
 ![](./img/sshCommand.png){width="900" height=320"}
 
 
-## Connecting Git and GitHub 
-with UCloud
+## Connecting GitHub with UCloud
 
 Create a new GitHub 
-account if you don't have one yet. Then, go to repositories and create a new one (e..g, SandboxIntro). Alternatively, you can also fork one of our repositories or if you already have one feel free to use that instead. 
+account if you don't have one yet. Then, go to repositories and create a new one (e.g. SandboxIntro). Alternatively, you can also fork one of our repositories or if you already have one feel free to use that instead. 
 
-![](./img/github_
-repo.png)
+![](./img/github_repo.png)
 
 ---
 
@@ -133,11 +131,11 @@ Then, we will generate SSH key on UCloud following these steps
   1. Submit a new job using the Terminal app and mount your personal drive
   2. Change directory to your personal drive (e.g. `cd /work/myNameXXX/`)
   3. Create a new folder named `ssh`, where you will store your new SSH keys
-  4. Generate a new key (no need for paraphrase) and save it as e.g., `id_repo1`
+  4. Generate a new key (no need for paraphrase) and save it as e.g. `id_repo1`
   ```{.bash}
   ssh-keygen -t ed25519
   ```
-  5. Copy the public key (e.g., `id_repo1.pub`)
+  5. Copy the public key (e.g. `id_repo1.pub`)
   6. Add the key to the repository you have created or forked from us on GitHub:
   `YOUR-REPO > Settings > Deploy keys > Add deploy key`. The new deploy key can be named as e.g. `UCloud-repo1`
 

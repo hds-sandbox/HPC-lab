@@ -1493,5 +1493,17 @@
       "UCloud setup",
       "Git/GitHub on UCloud"
     ]
+  },
+  {
+    "objectID": "resources/slides/slides_git.html#connecting-github-with-ucloud",
+    "href": "resources/slides/slides_git.html#connecting-github-with-ucloud",
+    "title": "SSH, Git and Github",
+    "section": "Connecting GitHub with UCloud",
+    "text": "Connecting GitHub with UCloud\nCreate a new GitHub account if you don’t have one yet. Then, go to repositories and create a new one (e.g. SandboxIntro). Alternatively, you can also fork one of our repositories or if you already have one feel free to use that instead.",
+    "crumbs": [
+      "Workshop",
+      "UCloud setup",
+      "SSH/Git/GitHub on UCloud"
+    ]
   }
 ]
