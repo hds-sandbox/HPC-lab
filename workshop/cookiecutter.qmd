@@ -104,9 +104,9 @@ You will first fork our Sandbox repository, and then clone it to UCloud. This al
     git clone <your URL to the template>
     ```
 
-3. Access the cloned repository (`cd cookiecutter-template`) and navigate through the different directories.
+3. Access the cloned repository (`cd cookiecutter-template`) and navigate through the different subdirectories.
 
-4. The Cookiecutter template you just cloned is missing the 'reports' directory and the 'requirements.txt' file. Create these, along with a subdirectory named 'reports/figures'. 
+4. The Cookiecutter template you just cloned is missing the `reports` directory and the `requirements.txt` file. Create these, along with a subdirectory named `reports/figures`. 
 
     ```plaintext
     │...
