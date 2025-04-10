@@ -313,11 +313,23 @@ Here are some optional resources you might typically review before running the s
 - **Docker**
 ```{.bash}
 docker pull albarema/fastmixture  # Pull 
+```
 
+```{.bash filename="Linux/Mac"}
 docker run --cpus=8 -v `pwd`/toy/:/data/ albarema/fastmixture
 
 fastmixture --bfile data/toy.data --K 3 --out data/toy.fast --threads 8 # run the command 
 ```
+
+```{.bash filename="Windows"}
+# Option 1
+docker run --cpus=8 -v ${PWD}\toy:/data albarema/fastmixture
+# Option 2
+docker run --cpus=8 -v C:\Users\YourName\toy:/data albarema/fastmixture
+
+fastmixture --bfile data/toy.data --K 3 --out data/toy.fast --threads 8 # run the command 
+```
+
 
 - **Apptainer** on HPC / local machine: on your local machine you will need to modify lima.yml to make the current directory (`pwd`) writable. Alternatively, write the data out to /tmp/lima! 
 
