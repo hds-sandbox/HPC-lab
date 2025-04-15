@@ -291,7 +291,7 @@ Here are some optional resources you might typically review before running the s
     ```
     Make sure to pull the latest version. 
 
-2. Download and unzip the toy data (you may move the files to any preferred folder on your laptop)
+2. Download and unzip the toy data (you may move the files to any preferred folder on your laptop).
 3. What is the command you need to run the container? Do not forget to mount the data (using the flag `-v /path/toy:/path/mnt`). Before executing the software, verify that the data has been correctly mounted (e.g. running the `ls` command inside the container).
 4. Run `fastmixture` software using the command below. We will set *K* to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both `--bfile` and `--out` require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named `toy.data.*`; therefore, use `--bfile toy.data`.
 
@@ -314,21 +314,28 @@ Here are some optional resources you might typically review before running the s
 ```{.bash}
 docker pull albarema/fastmixture  # Pull 
 ```
+This solution assumes you're running the container from the directory that contains the `toy`data folder: 
 
 ```{.bash filename="Linux/Mac"}
-docker run --cpus=8 -v `pwd`/toy/:/data/ albarema/fastmixture
+docker run -v `pwd`/toy/:/data/ albarema/fastmixture
 
 fastmixture --bfile data/toy.data --K 3 --out data/toy.fast --threads 8 # run the command 
 ```
 
 ```{.bash filename="Windows"}
 # Option 1
-docker run --cpus=8 -v ${PWD}\toy:/data albarema/fastmixture
+docker run -v ${PWD}\toy:/data albarema/fastmixture 
 # Option 2
-docker run --cpus=8 -v C:\Users\YourName\toy:/data albarema/fastmixture
+docker run -v C:\Users\YourName\toy:/data albarema/fastmixture
 
 fastmixture --bfile data/toy.data --K 3 --out data/toy.fast --threads 8 # run the command 
 ```
+
+:::{.callout-warning}
+When mounting the data, ensure that the path you provide actually exists. If you encounter an error indicating that the .bfile does not exist, it likely means the data was not mounted correctly.
+
+Tip for Windows users: The correct path might be `${PWD}\toy\toy` — double-check that the folder structure are accurate.
+:::
 
 
 - **Apptainer** on HPC / local machine: on your local machine you will need to modify lima.yml to make the current directory (`pwd`) writable. Alternatively, write the data out to /tmp/lima! 
