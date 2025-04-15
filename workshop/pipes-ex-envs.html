@@ -392,8 +392,8 @@ I - General knowledge
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_DIALKYZFGT" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DIALKYZFGT" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_DIALKYZFGT" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_DIALKYZFGT" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_DIALKYZFGT" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_LFATKGHEXY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LFATKGHEXY" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_LFATKGHEXY" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_LFATKGHEXY" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_LFATKGHEXY" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -757,7 +757,7 @@ V - Running a docker image
 <div class="sourceCode" id="cb9" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull albarema/fastmixture</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Make sure to pull the latest version.</p></li>
-<li><p>Download and unzip the toy data (you may move the files to any preferred folder on your laptop)</p></li>
+<li><p>Download and unzip the toy data (you may move the files to any preferred folder on your laptop).</p></li>
 <li><p>What is the command you need to run the container? Do not forget to mount the data (using the flag <code>-v /path/toy:/path/mnt</code>). Before executing the software, verify that the data has been correctly mounted (e.g.&nbsp;running the <code>ls</code> command inside the container).</p></li>
 <li><p>Run <code>fastmixture</code> software using the command below. We will set <em>K</em> to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both <code>--bfile</code> and <code>--out</code> require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named <code>toy.data.*</code>; therefore, use <code>--bfile toy.data</code>.</p>
 <p>In <code>fastmixture</code>, the main arguments used in this exercise are:</p>
@@ -788,11 +788,12 @@ Solution
 <li><strong>Docker</strong></li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull albarema/fastmixture  <span class="co"># Pull </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This solution assumes you’re running the container from the directory that contains the <code>toy</code>data folder:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Linux/Mac</strong></pre>
 </div>
-<div class="sourceCode" id="cb12" data-filename="Linux/Mac"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--cpus</span><span class="op">=</span>8 <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/toy/:/data/ albarema/fastmixture</span>
+<div class="sourceCode" id="cb12" data-filename="Linux/Mac"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/toy/:/data/ albarema/fastmixture</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fastmixture</span> <span class="at">--bfile</span> data/toy.data <span class="at">--K</span> 3 <span class="at">--out</span> data/toy.fast <span class="at">--threads</span> 8 <span class="co"># run the command </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -801,12 +802,13 @@ Solution
 <pre><strong>Windows</strong></pre>
 </div>
 <div class="sourceCode" id="cb13" data-filename="Windows"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--cpus</span><span class="op">=</span>8 <span class="at">-v</span> <span class="va">${PWD}</span><span class="dt">\t</span>oy:/data albarema/fastmixture</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="va">${PWD}</span><span class="dt">\t</span>oy:/data albarema/fastmixture </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 2</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--cpus</span><span class="op">=</span>8 <span class="at">-v</span> C:\Users\YourName\toy:/data albarema/fastmixture</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> C:\Users\YourName\toy:/data albarema/fastmixture</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">fastmixture</span> <span class="at">--bfile</span> data/toy.data <span class="at">--K</span> 3 <span class="at">--out</span> data/toy.fast <span class="at">--threads</span> 8 <span class="co"># run the command </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><strong>Note</strong> When mounting the data, ensure that the path you provide actually exists. If you encounter an error indicating that the .bfile does not exist, it likely means the data was not mounted correctly. <em>Tip for Windows users</em>: The correct path might be <code>${PWD}\toy\toy</code> — double-check that the folder structure are accurate.</p>
 <ul>
 <li><strong>Apptainer</strong> on HPC / local machine: on your local machine you will need to modify lima.yml to make the current directory (<code>pwd</code>) writable. Alternatively, write the data out to /tmp/lima!</li>
 </ul>
