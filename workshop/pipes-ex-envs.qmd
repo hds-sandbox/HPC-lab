@@ -331,12 +331,8 @@ docker run -v C:\Users\YourName\toy:/data albarema/fastmixture
 fastmixture --bfile data/toy.data --K 3 --out data/toy.fast --threads 8 # run the command 
 ```
 
-:::{.callout-warning}
-When mounting the data, ensure that the path you provide actually exists. If you encounter an error indicating that the .bfile does not exist, it likely means the data was not mounted correctly.
-
-Tip for Windows users: The correct path might be `${PWD}\toy\toy` — double-check that the folder structure are accurate.
-:::
-
+**Note**
+When mounting the data, ensure that the path you provide actually exists. If you encounter an error indicating that the .bfile does not exist, it likely means the data was not mounted correctly. *Tip for Windows users*: The correct path might be `${PWD}\toy\toy` — double-check that the folder structure are accurate.
 
 - **Apptainer** on HPC / local machine: on your local machine you will need to modify lima.yml to make the current directory (`pwd`) writable. Alternatively, write the data out to /tmp/lima! 
 
