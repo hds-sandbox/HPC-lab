@@ -38,10 +38,10 @@ style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
 
 <div class="tab-pane fade  show active" id="ucloud" role="tabpanel" aria-labelledby="ucloud-tab">
 
-Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the `setup.sh` initialization file, and ask for 2 CPUs so we can run things in parallel: 
+Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the `hpc-pipes/setup.sh` initialization file, and ask for 2 CPUs so we can run things in parallel: 
 
 - `YourNameSurname#xxxx`: save your results/files here.  
-- `hpclab-workshop`: this contains input files and scripts. You can read-only access from this directory (no write permissions). 
+- `shared/hpclab-workshop`: this contains input files and scripts. You can read-only access from this directory (no write permissions). 
 
 Next, activate `snakemake` environment. 
 
@@ -74,13 +74,13 @@ You can choose to run your tasks either locally or on an accessible HPC. Refer t
 
 # Day 2 - Part 3 
 
+## A. Snakemake 
+
 It's time to create your own pipeline and experiment with its different components! 
 
 :::{.callout-tip}
 If you need help, try to find answers to your questions by consulting the [Snakemake documentation](https://snakemake.readthedocs.io/en/stable/), as it is a great resource with many examples. That’s how you would do it in a real-world scenario.
 :::
-
-## A. Snakemake 
 
 In this section, we will be working with a tabulated metadata file, `samples_EB.tsv`, which documents samples from a project on bearded seals (sp. *Erignathus barbatus*). Each row represents a sample, and the columns contain various attributes for that sample. The file is designed to be simple and small, making it easy to work with and manipulate across tasks. However, the specifics of the data aren’t the primary focus.
 

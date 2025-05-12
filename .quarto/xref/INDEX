@@ -166,5 +166,8 @@
   },
   "resources/slides/slides_git.qmd": {
     "slides_git.html": "14a9db9f"
+  },
+  "workshop/pipes-ex-nf.qmd": {
+    "pipes-ex-nf.html": "dcb1e4b1"
   }
 }

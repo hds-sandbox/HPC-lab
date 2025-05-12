@@ -82,6 +82,8 @@ website:
                   href: workshop/pipes-ex-smk-self.qmd
                 - text: "Day 2 - Part 4"
                   href: workshop/pipes-ex-smk-fast.qmd
+                - text: "Day 2 - Part 5"
+                  href: workshop/pipes-ex-nf.qmd
         - section: "UCloud setup"
           contents: 
             - text: "UCloud project workspace"
