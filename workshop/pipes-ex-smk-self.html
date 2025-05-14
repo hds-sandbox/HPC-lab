@@ -551,7 +551,7 @@ Local Setup
 <ul>
 <li><code>YourNameSurname#xxxx</code>: save your results/files here.<br>
 </li>
-<li><code>shared/hpclab-workshop</code>: this contains input files and scripts. You can read-only access from this directory (no write permissions).</li>
+<li><code>shared/hpclab-workshop</code>: contains input files and scripts. You can read-only access from this directory (no write permissions).</li>
 </ul>
 <p>Next, activate <code>snakemake</code> environment.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span>
@@ -648,7 +648,7 @@ I - Build your pipeline from scratch
 <li><code>scripts</code>: save all python/r external scripts.</li>
 <li><code>rules</code>: save all your snakefiles here!</li>
 </ul></li>
-<li><strong>File creation</strong>: you will need to create two files for this exercise:
+<li><strong>File creation</strong>: You will need to create two files for this exercise:
 <ul>
 <li><p>Open a new file named <code>step1_wf.smk</code> in the <code>rules</code> dir and include the following two lines of code:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python </span></span>
@@ -659,7 +659,7 @@ I - Build your pipeline from scratch
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-what are those lines for?
+What are those lines for?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -754,7 +754,7 @@ what are those lines for?
 <h6 class="anchored" data-anchor-id="running-the-workflow">Running the workflow</h6>
 <p>All set! You’re ready to run the workflow now. As a best practice, we recommend starting with a dry-run to ensure everything works correctly before executing the full workflow:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> rules/step1_wf.smk <span class="at">-n</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>If there are no errors, go ahead and run it!</strong>. Since this workflow contains only one rule, defining the target (e.g.&nbsp;through rule all or using the name of the rule) is unnecessary—snakemake will execute the <code>preprocess rule</code> directly with the following command:</p>
+<p><strong>If there are no errors, go ahead and run it!</strong>. Since this workflow contains only one rule, defining the target (e.g., through <code>rule all</code> or using the name of the rule) is unnecessary—snakemake will execute the <code>preprocess rule</code> directly with the following command:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> rules/step1_wf.smk <span class="at">-c1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Did the pipeline create the expected output file in the <code>results</code> folder? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 <div class="callout callout-style-default callout-hint callout-titled">
@@ -824,7 +824,7 @@ Details about the previous dataset
 <p>Wildcards are dynamic placeholders in rule definitions that allow for flexible input or output file names. You define them in your rules, and their actual values are determined when the workflow is executed, enabling versatile file handling across different workflow runs.</p>
 <p>Could you modify the previous rule so that you can run the workflow for different datasets? Not sure how?</p>
 <ul>
-<li>Define a wildcard named <code>dataset</code> which represents the variable parts of your input or output (e.g.&nbsp;<code>EB</code> in this case)</li>
+<li>Define a wildcard named <code>dataset</code> which represents the variable parts of your input or output (e.g., <code>EB</code> in this case)</li>
 <li>Dry-run, is it working <code>snakemake -s rules/step1_wf.smk -np results/samples_EB_cleaned.tsv</code></li>
 </ul>
 <p><strong>Does Snakemake’s dry-run command return the message “Nothing to be done”?</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
@@ -905,7 +905,7 @@ Solution S.2
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">input</span>:</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        [<span class="ss">f"</span><span class="sc">{</span>dataset<span class="sc">}</span><span class="ss">/file.A.gz"</span> <span class="cf">for</span> dataset <span class="kw">in</span> DATASETS]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>But how does it look if we use a helper function, e.g.&nbsp;<code>expand()</code>:</p>
+<p>But how does it look if we use a helper function, e.g., <code>expand()</code>:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>option3.smk</strong></pre>
@@ -916,8 +916,8 @@ Solution S.2
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">input</span>:</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        expand(<span class="st">"</span><span class="sc">{dataset}</span><span class="st">/file.A.gz"</span>, dataset<span class="op">=</span>DATASETS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In all cases, for each dataset in the Python list <code>DATASETS</code>, the file <code>{dataset}/file.A.gz</code> is requested. Snakemake, will recognise that these files can be created by multiple applications (executions) of the rule <code>file_conversion</code>.</p>
-<p>It’s time for you to define the target rule <code>rule all</code> within the Snakefile and utilize helper functions. Instead of using a Python list comprehension to specify input files please use <code>expand()</code> function!</p>
+<p>In all cases, for each dataset in the Python list <code>DATASETS</code>, the file <code>{dataset}/file.A.gz</code> is requested. Snakemake will recognise that these files can be created by multiple applications (executions) of the rule <code>file_conversion</code>.</p>
+<p>It’s time for you to define the target rule <code>rule all</code> within the Snakefile and utilize helper functions. Instead of using a Python list comprehension to specify input files, please use <code>expand()</code> function!</p>
 <ul>
 <li>Declare the variable DATASETS at the top</li>
 <li>Define <code>rule all</code> and use the <code>expand()</code> function to specify the input files (our <strong>targets</strong>, corresponding to the last output)</li>
@@ -988,15 +988,15 @@ II - Extend your pipeline
 <div class="webex-check callout-exercise">
 <section id="part-4-modularization" class="level6">
 <h6 class="anchored" data-anchor-id="part-4-modularization">Part 4: Modularization</h6>
-<p>Let’s walk through an example of modularization. In the example below, the statement <code>module step1_workflow</code> registers the external workflow as a module by specifying the path to its snakefile. The second statement declares that all rules of those modules are available in the current workflow, except for <code>ruleExtra</code>. The <code>as step1_*</code> at the end renames all those rules with a common prefix (e.g.&nbsp;<code>rule preprocess</code> would become <code>rule step1_preprocess</code>). This renaming is optional but very useful for avoiding rule name conflicts (e.g.&nbsp;we could have another rule on this new snakefile named <code>preprocess</code>). Want to learn more? Click <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/modularization.html#includes">here</a>.</p>
+<p>Let’s walk through an example of modularization. In the example below, the statement <code>module step1_workflow</code> registers the external workflow as a module by specifying the path to its Snakefile. The second statement declares that all rules of those modules are available in the current workflow, except for <code>ruleExtra</code>. The <code>as step1_*</code> at the end renames all those rules with a common prefix (e.g., <code>rule preprocess</code> would become <code>rule step1_preprocess</code>). This renaming is optional but very useful for avoiding rule name conflicts (e.g., we could have another rule on this new snakefile named <code>preprocess</code>). Want to learn more? Click <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/modularization.html#includes">here</a>.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>example.smk</strong></pre>
 </div>
 <div class="sourceCode" id="cb16" data-filename="example.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>module step1_workflow:</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    snakefile:</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># you can use plain paths, URL or host code providers (e.g. GitHub)</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"path/to/snakefile"</span> <span class="co"># path relative to current snakefile </span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># You can use plain paths, URL, or host code providers (e.g,. GitHub)</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"path/to/snakefile"</span> <span class="co"># path relative to the current snakefile </span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>use rule <span class="op">*</span> <span class="im">from</span> step1_workflow exclude ruleExtra <span class="im">as</span> step1_<span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1089,7 +1089,7 @@ rule step1_all:
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Python script filters the metadata based on the year the samples were collected </span></span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/filter_year.py <span class="at">-i</span> <span class="va">$INFILE</span> <span class="at">-o</span> <span class="va">$OUTFILE</span> <span class="at">-y</span> <span class="va">$CUTOFF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Please, use named inputs (e.g.&nbsp;<code>meta</code> for the input and <code>fi</code> for the output). Named inputs are particularly useful when multiple files are needed for running a software tool.</p>
+<p>Please, use named inputs (e.g., <code>meta</code> for the input and <code>fi</code> for the output). Named inputs are particularly useful when multiple files are needed for running a software tool.</p>
 <p>You can find the Python file on UCloud: <code>PATH="/work/HPCLab_workshop/scripts/filter_year.py"</code>. Copy it to your <code>scripts</code> directory.</p>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
@@ -1179,7 +1179,7 @@ Solution S.5
 </section>
 <section id="config-files" class="level4">
 <h4 class="anchored" data-anchor-id="config-files">Config files</h4>
-<p>Modify your Snakemake workflow to include a YAML configuration file and use it within the <code>filter_year</code> rule. Configuration files are typically located at the top level of the project directory, e.g.&nbsp;<code>hpclab</code> (often alongside the Snakefile). While you usually reuse a pipeline, it’s advisable to create a new config file for each new dataset or project. This approach helps isolate project-specific configurations and avoids modifying the original pipeline.</p>
+<p>Modify your Snakemake workflow to include a YAML configuration file and use it within the <code>filter_year</code> rule. Configuration files are typically located at the top level of the project directory, e.g., <code>hpclab</code> (often alongside the Snakefile). While you usually reuse a pipeline, it’s advisable to create a new config file for each new dataset or project. This approach helps isolate project-specific configurations and avoids modifying the original pipeline.</p>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
