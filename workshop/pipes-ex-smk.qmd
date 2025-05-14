@@ -82,7 +82,7 @@ In this section, we will be working with a tabulated metadata file, `samples_1kg
 First, mount the following two drives, use the `setup.sh` initialization file, and ask for 2 CPUs so we can run things in parallel: 
 
 - `YourNameSurname#xxxx`: save your results/files here.  
-- `hpclab-workshop`: this contains input files and scripts. You can read-only access from this directory (no write permissions). 
+- `hpclab-workshop`: contains input files and scripts. You can read-only access from this directory (no write permissions). 
 
 Next, activate `snakemake` environment. 
 
@@ -117,7 +117,7 @@ We strongly recommend keeping the [Snakemake documentation](https://snakemake.re
 
 In this exercise, we will explore how rules are invoked in a Snakemake workflow. The snakemake file is located at: `/work/HPCLab_workshop/rules/process_1kgp.smk`. Now follow these steps and answer the questions: 
 
-1. Open the snakefile, named `process_1kgp.smk` and try to understand every single line. If you request Snakemake to generate the file `results/all_female.txt`, **what tasks will be executed and in what sequence?**
+1. Open the snakefile, named `process_1kgp.smk`, and try to understand every single line. If you request Snakemake to generate the file `results/all_female.txt`, **what tasks will be executed and in what sequence?**
 2. Open a terminal and navigate to your personal drive `cd /work/YourNameSurname#xxxx`. Create a project directory called, for example, `hpclab` and make it your working directory. You should save all the results here!
 3. **Dry-run** the workflow: Check the number of jobs that will be executed.
 
@@ -153,38 +153,38 @@ In this exercise, we will explore how rules are invoked in a Snakemake workflow.
    15       expand("results/all_{sex}.txt", sex=["female"])
    ```
    
-   **Q.6. Tip: what is missing at the end of the command ( e.g. what should be added to ensure `all_male.txt` is generated)? `snakemake -s process_1kgp.smk -c1`** `r fitb("results/all_male.txt")`
+   **Q.6. Tip: what is missing at the end of the command (e.g. what should be added to ensure `all_male.txt` is generated)? `snakemake -s process_1kgp.smk -c1`** `r fitb("results/all_male.txt")`
 
-9. Let's add a new rule that concatenates the two files you have generated (`all_female.txt` and `all_male.txt`) and save it into `concatenated.txt`. Remember, all files should be saved into the `results` subdir. Hint: `cat file1.txt file2.txt > output.txt`
+9. Let's add a new rule that concatenates the two files you have generated (`all_female.txt` and `all_male.txt`) and saves them into `concatenated.txt`. Remember, all files should be saved into the `results` subdir. Hint: `cat file1.txt file2.txt > output.txt`
 
 10. Run the pipeline with your own version of the `process_1kgp.smk` file.  
 
 :::{.callout-hint}
 # Solution 
 
-1. Tasks will be executed in this order preprocess (1), split_by_superpop (5), and combine (1). 
+1. Tasks will be executed in this order: preprocess (1), split_by_superpop (5), and combine (1). 
 
 ```{.bash}
 # 2. Create subdir 
 cd /work/AlbaRefoyoMartínez#0753/
 mkdir hpclab
 cd hpclab
-# 3. dry run 
+# 3. Dry run 
 snakemake -s /work/HPCLab_workshop/rules/process_1kgp.smk -n 
-# 4. run the workflow 
+# 4. Run the workflow 
 snakemake -s HPCLab_workshop/rules/process_1kgp.smk -c1 
-# 5. verify output 
+# 5. Verify output 
 ls results/*
-# 6. dry run 
+# 6. Dry run 
 snakemake -s /work/HPCLab_workshop/rules/process_1kgp.smk -n 
-# 7. remove file(s) starting with E and the all_female.txt
+# 7. Remove file(s) starting with E and the all_female.txt
 rm results/E*.tsv results/all_female.txt
-# 8. make a copy of the snakefile and remove the lines 
+# 8. Make a copy of the snakefile and remove the lines 
 mkdir rules 
 cp /work/HPCLab_workshop/rules/process_1kgp.smk rules/
 # 8. S5. rerun again with the <name_output>
 snakemake -s rules/process_1kgp.smk -c1 results/all_male.txt 
-# 9. create rule 
+# 9. Create rule 
 rule concat: 
    input: 
       "results/all_female.txt",
