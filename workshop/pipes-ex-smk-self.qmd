@@ -57,7 +57,7 @@ Finally, navigate to your personal drive and use the project directory you creat
 
 <div class="tab-pane fade" id="locally" role="tabpanel" aria-labelledby="locally-tab">
 
-You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.txt) for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment, and download the data.
+You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.qmd) for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment, and download the data.
 
   <a href="./data/snakemake.yml" download="snakemake.yml">
     <button class="btn small-button">Download environment file</button>
@@ -261,7 +261,6 @@ Let’s explore other commands! You can force a run in Snakemake even if the out
 :::{.callout-hint}
 # Solution S.2
 ```{.python filename="step1_wf.smk"}
-
 rule preprocess:
   input:
     "/work/HPCLab_workshop/data/samples_{dataset}.tsv"
@@ -336,7 +335,6 @@ It's time for you to define the target rule `rule all` within the Snakefile and 
 :::{.callout-hint}
 # Solution S.3
 ```{.python filename="step1_wf.smk"}
-
 DATASETS = ["EB", "1kgp"]
 
 rule all: 

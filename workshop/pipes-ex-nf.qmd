@@ -38,12 +38,17 @@ style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
 
 <div class="tab-pane fade  show active" id="ucloud" role="tabpanel" aria-labelledby="ucloud-tab">
 
-Follow these steps to run the exercises on UCloud. You will be using the `Nextflow` app, version `24.10.5`. First, mount the following two drives, and ask for 2 CPUs so we can run things in parallel: 
+Follow these steps to run the exercises on UCloud. 
+
+You will be using the `Nextflow` app, version `24.10.5`. First, mount the two drives below, and ask for 2 CPUs so we can run things in parallel: 
 
 - `YourNameSurname#xxxx`: save your results/files here.  
 - `/shared/HPCLab_workshop`: this contains input files and scripts. You have read-only access from this directory (no write permissions). 
 
-Then, select two optional parameters: Interactive mode (true) and Initialization (use the `/shared/HPCLab_workshop/hpc-pipes/setup.sh`). 
+Then, select two optional parameters: 
+
+- Interactive mode (true): to get access to a terminal and run the commands yourself.
+- Initialization: use the `/shared/HPCLab_workshop/hpc-pipes/setup.sh`. 
 
 Finally, navigate to your personal drive and use the project directory you created yesterday to save all the output files from the exercises!
 
@@ -51,7 +56,7 @@ Finally, navigate to your personal drive and use the project directory you creat
 
 <div class="tab-pane fade" id="locally" role="tabpanel" aria-labelledby="locally-tab">
 
-You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.txt) for the software you need to install. Next, download the data.
+You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.qmd) for the software you need to install. Next, download the data.
 
 <a href="./data/samples_EB.tsv" download="samples_EB.tsv">
   <button class="btn small-button">Download data</button>
@@ -88,15 +93,14 @@ Two nextflow examples for inspiration:
 :::
 
 ::: {.callout-exercise}
-# Part I
+# Part I. Build your first Nextflow pipeline
 
 ##### Preparation step 
 
-- **Directory setup**: 
-Assuming you've followed the setup instructions and launched the Nextflow app by selecting `Open terminal`, create a new subdirectory—for example,`nf-pipes`, to store your pipeline and resulting outputs inside the `hpclab`. Make sure it's set as your working directory (e.g. `hpclab/nf-pipes`). 
+- **Directory setup**: Assuming you've followed the setup instructions and launched the Nextflow app by selecting `Open terminal`, create a new subdirectory inside `hpclab`—for example,`nf-pipes`, to store your pipeline and resulting outputs. Make sure it's set as your working directory (e.g. `cd hpclab/nf-pipes`). 
 
 - **File creation**: you will need to create two files for this exercise:
-  - Open a new file named `step1.nf` in the `rules` dir and include the following line of code:
+  - Open a new file named `step1.nf` and include the following line of code. The script below shows how to comment out lines as well:
 
     ```{.bash filename="step1.nf"}
     #!/usr/bin/env nextflow
@@ -109,10 +113,12 @@ Assuming you've followed the setup instructions and launched the Nextflow app by
     */
     ```
 
-You’ll now create a simple Nextflow pipeline based on the first version of the `step1_wf.smk` snakemake file we worked with. This version is not generalized and does not use modular pipeline features—we’re starting simple and building up gradually toward something more reproducible and flexible.
+In this task, You’ll now develop a simple Nextflow pipeline based on the first version of the `step1_wf.smk` Snakemake file you worked with (Day 2, Part 3.I). This pipeline preprocesses a sample metadata file using a Python script.
+
+This version is intentionally kept simple: it’s not yet generalized and doesn’t make use of modular pipeline features. We’ll start here and gradually build toward a more flexible and reproducible workflow. Here’s what the original Snakemake pipeline looked like: 
+
 
 ```{.bash filename="step1_wf.smk"}
-
 rule preprocess:
   input:
     "/work/HPCLab_workshop/data/samples_EB.tsv"
@@ -124,30 +130,68 @@ rule preprocess:
     """
 ```
 
+##### Instructions 
 In your Nextflow version:
 
-- The pipeline should consist of just one process, named `PREPROCESS`—we recommend keeping the name the same as in Snakemake.
-- Use only one input parameter that defines the `input_dir`, pointing to the shared input data directory (`/shared/HPCLab_workshop`). For now, you should not to parameterize it or use dynamic logic yet. 
-- Set the HOME environment variable in your terminal to your project directory (e.g., `/work/<YourNameSurname#xxxx>/hpclab/nf-pipes`) and use this as the base for constructing output paths in the pipeline script.
-- The only variable you should define for now is `input_dir`, pointing to the shared input data directory (`/shared/HPCLab_workshop`).
-- Use hardcode the full paths, including for calling the preprocess.py script.
-- Use the `conda` profile to manage the software environment for your pipeline.
+- Open the Nextflow script you just created `step1.nf`and make sure it mirrors the logic of the Snakemake version.
+- Set the `HOME` environment variable in your terminal to your project directory (e.g., `export HOME=/work/<YourNameSurname#xxxx>/hpclab/nf-pipes`). 
+- Define pipeline parameters at the top of the script. These variables help make the workflow more reusable later on: 
+  - Use `params.input_dir` to define the location of the input files, pointing to the shared input data directory (`/shared/HPCLab_workshop`).
+  - Use `params.output_dir` to define where the results should be saved. Use your project directory for outputs (e.g. `${HOME}/results`).
+- Write a single process, named `PREPROCESS`, to run the Python script:
+  - Use `input`: to read samples_EB.tsv
+  - Use `output`: to declare samples_EB_cleaned.tsv
+  - Use `publishDir` to copy the output file to your results directory. `publishDir` makes your output files easier to locate by copying them to a defined location. It also ensures outputs are not buried in .nextflow folders.
+- Use a hardcoded path to the Python script for now: `/work/<YourPersonalDrive>/hpclab/scripts/preprocess.py`
+- Use the `conda` profile to manage the software environment for your pipeline. Among other options, you can include the conda environment within a process itself or specify it from the command line using the `--with-conda` flag, or use a config file to define it. We recommend to specify it via the command line (`--with-conda`), and incorporate the environment within the process in the next exercise once the pipeline is working.
+- The structure of the pipeline should look like: 
+  ```{.bash filename="step1.nf"}
+    process STEP_NAME {
+      publishDir OUTPUT_LOCATION, mode: 'copy'
 
+      input:
+          path some_input
 
-You’ll also need a Nextflow config file. Complex pipelines usually define multiple config files to separate concerns like:
-- Resource definitions (e.g., CPUs, memory)
-- Execution profiles (e.g., local, SLURM) and container environemnts (e.g. conda, singularity)
-- Pipeline parameters 
+      output:
+          path some_output
 
+      script:
+      """
+      some_command $some_input $some_output
+      """
+    }
+
+    workflow {
+        Channel.fromPath() 
+        STEP_NAME()
+    }
+  ```
+
+You’ll also need a Nextflow config file. While simple pipelines may work with just default settings, more complex pipelines typically define one or more config files to separate concerns such as:
+
+- Resource definitions (e.g., cpus, memory, time)
+- Execution profiles (e.g., local, slurm) and container environments (e.g., conda, singularity)
+- Pipeline parameters (e.g., input/output directories, filtering options)
+
+For now, lets just define, the resources we want this pipeline to use:
+
+```{.bash filename="nextflow.config"}
+process {
+  cpus = 1
+  memory = '4 GB'
+  time = '1h'
+}
+```
 Need help with the config file? Check the documentation below: 
 
 :::{.callout-hint}
+
 # Config files
-Nextflow looks for configuration files in multiple locations, it is important to keep in mind in which order they will are applied in: https://www.nextflow.io/docs/latest/config.html. 
+Nextflow searches for configuration files in several locations, and it's important to understand the order in which they are applied. For more details, refer to the official documentation: https://www.nextflow.io/docs/latest/config.html. 
 
-A Nextflow config file may consist of any number of assignments, blocks, and includes.
+A Nextflow configuration file can include any combination of assignments, blocks, and includes.
 
-Blocks may contain multiple configuration options. What is the difference between dot synteax and block syntex. 
+Blocks can contain multiple configuration options. Below, you'll see the difference between dot syntax and block syntax.
 
 ```{.bash filename="nextflow.config"}
 executor.retry.maxAttempt = 2
@@ -158,22 +202,58 @@ executor {
 ```
 :::
 
-:::
+
+Make sure to go through the hint first, as it will provide useful tips and serve as inspiration. There isn't just one solution, so the hint can guide you toward different approaches to solving the problem.
 
 :::{.callout-hint}
 It is very important to set HOME to a directory where you are working - your project directory. This is were Nextflow will look for the pipeline and configuration files among other things. 
 
-How to run this workflow?
+### How to run this workflow?
 
-```{.bash filename="Option 1"}
+```{.bash filename="Example 1"}
 nextflow run step1.nf -with-conda /work/HPCLab_workshop/miniconda3/envs/snakemake
 ```
 
-If we specify the conda environment in the config file, then: 
-```{.bash filename="Option 2"}
-nextflow run step1.nf -c profile_conda.config -profile conda
-```
+### Need help with the pipeline?
 
+In the workflow block, we need to set up a channel to feed the input to the PREPROCESS process; then we can call the process itself to run on the contents of that channel.
+
+```{.bash filename="step1.nf"}
+/*
+ * Pipeline parameters
+ */
+
+// Primary input
+params.input_dir = "path/to/input_dir"
+params.output_dir = "path/to/output_dir"
+
+params.input_file = "path/to/input"
+
+process PREPROCESS {
+
+  publishDir OUTPUT_LOCATION, mode: 'copy'
+
+  input:
+      path some_input
+
+  output:
+      path some_output
+
+  script:
+  """
+  some_command $some_input $some_output
+  """
+}
+
+workflow {
+  // Create input channel from CLI parameter
+  reads_ch = Channel.fromPath(params.read_samples)
+
+  // Connect channel to process
+  PREPROCESS (reads_ch)
+}
+```
+Alternatively, you can pipe the input channel directly into the process in a single line. 
 :::
 
 :::{.callout-hint}
@@ -193,6 +273,7 @@ params.output_dir = "${HOME}/results"
 params.read_samples = "${params.input_dir}/samples_EB.tsv"
 
 process PREPROCESS {
+
     publishDir "${params.output_dir}", mode: 'copy'
 
     input:
@@ -203,7 +284,7 @@ process PREPROCESS {
 
     script:
     """
-    python /work/AlbaRefoyoMartínez#0753/hpclab/scripts/preprocess.py $input_samples samples_EB_cleaned.tsv
+    python /work/<YourNameSurname>/hpclab/scripts/preprocess.py $input_samples samples_EB_cleaned.tsv
     """
 }
 
@@ -213,14 +294,13 @@ workflow {
     }
 ```
 
-2. Config file 
+2. Command-line 
 
-```{.bash filename="profile_conda.config"}
-profiles {
-    conda.enabled = true
-    conda.channels = ['bioconda','conda-forge']
-}
+```{.bash filename="Option 1"}
+nextflow run step1.nf -with-conda /work/HPCLab_workshop/miniconda3/envs/snakemake
 ```
+:::
+
 :::
 
 ### Making the Pipeline Reusable, Reproducible, and Flexible
@@ -231,18 +311,132 @@ We also want to keep the workflow flexible and reusable, so it can easily handle
 
 
 ::: {.callout-exercise}
-# Part II
+# Part II. Making the pipeline reproducible 
 
-Now, we will be testing other functionalities and expand our pipeline. 
+Now it’s time to test additional functionalities and extend your pipeline.
 
-To keep your scripts organized and accessible to Nextflow, create a subfolder called bin inside your pipeline directory. Copy your script files into this `bin` directory and make sure they are executable (using `chmod +x bin/myscript.py`). Nextflow automatically includes the bin directory in the system PATH, allowing you to call these scripts from within your workflow using just their names.
+#### 1. Dynamic output names and paths 
+We’ll now expand the pipeline to support multiple datasets in a reusable way. In Snakemake, you likely used a `wildcard` such as `{dataset}` to dynamically build filenames. Here's a simplified version of that:
 
-To make the pipeline reusable across different datasets, you need to introduce a new variable—this will act like a `dataset` wildcard. The goal is to keep the same pipeline functionalities while allowing flexibility for multiple datasets.
+```{.bash filename="step1_flex.smk"}
+# step1_wf.smk
 
-Next, include the new task `FILTER_YEAR`. We'll configure it with `errorStrategy = 'ignore'` in the config file, so the pipeline can run for both datasets and simply skip filtering when it's not applicable—for example, when working with 1kgp data.
+DATASETS = ["EB", "1kgp"]
+
+rule all: 
+    input:
+        expand("results/samples_{dataset}_cleaned.tsv", dataset=DATASETS)
+
+rule preprocess:
+    input:
+        "/work/HPCLab_workshop/data/samples_{dataset}.tsv"
+    output:
+        tsv="results/samples_{dataset}_cleaned.tsv"
+    shell:
+        """
+        python scripts/preprocess.py {input} {output}
+        """
+```
+To do the same in Nextflow, we introduce a `dataset` variable and use a channel to loop over all datasets—just like the wildcard in Snakemake. The processed output file is dynamically named using the value of `dataset`.
+
+:::{.callout-hint}
+# Example: Dynamic output names and paths 
+Take a look at this pipeline, where they use the cohort name in a similar way to how you'll define the dataset: [Link](https://training.seqera.io/latest/nf4_science/genomics/02_joint_calling/#21-define-the-process-that-will-combine-the-gvcfs). 
+:::
+
+#### 2. Standardizing script management 
+
+To stay organized, create a `bin` subfolder inside your pipeline directory. Move your script files into this folder and make them executable (e.g., `chmod +x bin/myscript.py`). Nextflow automatically adds the bin folder to the system `PATH`, so you can simply refer to script names in your workflow without full paths.
+
+:::{.callout-hint}
+# Bin directory and templates
+
+- Read more about the bin directory [here](https://www.nextflow.io/docs/latest/sharing.html#the-bin-directory)
+- Another way to use scripts in Nextflow is through templates. You can read more about this [here](https://www.nextflow.io/docs/latest/process.html#template).
+:::
+
+#### 3. Configuring conda envs using profiles
+
+In your Nextflow pipeline, specify the Conda environment you want to use for a specific process by including the conda directive. Next, create or update a configuration file (e.g., profiles.config) to enable the Conda profile (using `conda.enabled = true`). 
+
+It is highly recommended to click on the hint below. 
+
+:::{.callout-hint}
+# Conda environments
+Click for Nextflow documentation on [conda](https://www.nextflow.io/docs/latest/conda.html#enabling-conda-environment). 
+
+You can use the conda directive in a process to point to a specific environment, like this:
+```.bash
+process PREPROCESS {
+    conda 'path/to/conda/envs/myenv'
+    ...
+}
+```
+
+You will also need to enable the conda profile using a config file:
+
+```{.bash filename="profiles.config"}
+profiles {
+    conda.enabled = true
+    conda.channels = ['bioconda','conda-forge']
+}
+```
+
+How can you run the pipeline now?
+```{.bash filename="Terminal"}
+nextflow run step1.nf -c profiles.config -profile conda
+```
+:::
+
+
+:::{.callout-hint}
+# My Solution II 
+
+```{.bash filename="step1_flex.nf"}
+#!/usr/bin/env nextflow
+
+// Pipeline parameters
+params.input_dir = "${HOME}/data"
+params.output_dir = "${HOME}/results"
+
+process PREPROCESS {
+    publishDir "${params.output_dir}", mode: 'copy'
+
+    input:
+        val species
+        path input_samples
+    
+    output:
+        path "samples_${species}_cleaned2.tsv"
+
+    script:
+    """
+    python /work/AlbaRefoyoMartínez#0753/hpclab/scripts/preprocess.py $input_samples samples_${species}_cleaned2.tsv
+    """
+}
+
+workflow {
+    ch_species = Channel.of('EB', '1kgp')
+    ch_input   = ch_species.map { sp -> file("${params.input_dir}/samples_${sp}.tsv") }
+
+    PREPROCESS(ch_species, ch_input)
+}
+```
+:::
+
+:::
+
+
+:::{.callout-tip collapse="true"}
+# Bonus exercise: extending the pipeline
+
+You will now add a new task, `FILTER_YEAR`, to your Nextflow pipeline. This task will be responsible for filtering datasets based on the year information (or other criteria). The idea is to use the `errorStrategy = 'ignore'` setting in the config file, allowing the pipeline to skip filtering when it's not applicable, such as when working with the `1kgp` dataset (as this info is not available).
+
+The `filter_year.py` script needs a value for flag cutoff. It's better to define cutoff as a parameter (e.g., `params.cutoff = 2000`), which can then be modified using the config file or the command line. This approach provides flexibility to adjust the value without changing the pipeline code.
+
+Below is a basic template of how the `FILTER_YEAR` task might look:
 
 ```{.bash filename="step1_wf.smk"}
-
 DATASETS = ["EB", "1kgp"]
 
 rule all: 
@@ -271,12 +465,12 @@ rule filter_year:
         python scripts/filter_year.py -i {input.meta} -o {output.fi} -y {params.cutoff}
         """
 ```
-:::
 
 :::{.callout-hint}
-# My solution 
+# My solution III
 
-```{.nf filename="step1.nf"}
+2. Nextflow script 
+```{.nf filename="main.nf"}
 #!/usr/bin/env nextflow
 
 // Pipeline parameters
@@ -330,7 +524,7 @@ workflow {
 
 2. Config file 
 
-```{.config filename="profile_conda.config"}
+```{.config filename="profiles.config"}
 profiles {
     conda.enabled = true
     conda.channels = ['bioconda','conda-forge']
@@ -343,3 +537,5 @@ process {
 }
 
 ```
+:::
+:::

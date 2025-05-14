@@ -44,7 +44,7 @@ Finally, navigate to your personal drive and use the project directory you creat
 
 <div class="tab-pane fade" id="locally" role="tabpanel" aria-labelledby="locally-tab">
 
-You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.txt) for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment, and download the data.
+You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.qmd) for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment, and download the data.
 
   <a href="./data/snakemake.yml" download="snakemake.yml">
     <button class="btn small-button">Download environment file</button>
@@ -238,3 +238,41 @@ rule plot_results:
 
 :::
 
+
+:::{.callout-tip collapse="true"}
+# Bonus exercise: functions and checkpoints
+
+You’ll now modify the pipeline to dynamically select the best K from the fastmixture results using a checkpoint and a Python function.
+
+#### Why the checkpoint? 
+
+Let's assume you don’t know in advance how many files the pipeline will produce or what their names will be, because they depend on parameters like K values that are defined in the config file or runtime. This is handy when we have a python function inspecting the output directory to decide on what to use.
+
+```{.bash}
+checkpoint fastmixture:
+    output:
+        directory("results/fastmixture")
+    params:
+        ...
+    shell:
+        ...
+```
+#### What will the function do?
+
+- Search for all *.log files.
+- Extract the log-likelihood value for each.
+- Select the file corresponding to the best K (e.g., highest likelihood).
+
+#### The rule for plotting 
+You will make use of this function in a downstream rule. The last rule, e.g. bestK_plot, will only plot the admixture proportions for the best result. 
+
+:::{.callout-hint}
+def get_q_file(wildcards):
+  ...
+
+rule bestK_plot:
+    input:
+        q=lambda wildcards: get_q_file(wildcards)
+:::
+
+:::
