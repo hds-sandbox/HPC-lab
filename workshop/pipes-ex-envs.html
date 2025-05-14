@@ -565,8 +565,8 @@ I - General knowledge
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_EGUJPGEJCX" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EGUJPGEJCX" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_EGUJPGEJCX" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_EGUJPGEJCX" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_EGUJPGEJCX" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_JGMSOWCWLJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JGMSOWCWLJ" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_JGMSOWCWLJ" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_JGMSOWCWLJ" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_JGMSOWCWLJ" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -699,7 +699,7 @@ II - Bonus exercise
 </ol>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /work/HPCLab_workshop/miniconda3/envs/hpclab-env/lib/python3.12/site-packages/numpy/version.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">Module to expose more detailed version info for the installed </span><span class="kw">`</span><span class="ex">numpy</span><span class="kw">`</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">Module to expose a more detailed version info for the installed </span><span class="kw">`</span><span class="ex">numpy</span><span class="kw">`</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">version</span> = <span class="st">"1.26.4"</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">__version__</span> = version</span>
@@ -739,13 +739,13 @@ III - Build your conda environment
 <li>Create a new environment using <code>--prefix PATH</code> (for example, <code>/work/&lt;YourNameSurname#xxxx&gt;/envs/&lt;name-env&gt;</code>) and Proceed yes (<code>y</code> or enter). N.B. You can either name or prefix your environment. We will be using the prefix as miniconda is installed in a directory where you do not have writing privileges.</li>
 <li>Check the available environments. How many environments do you see? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;4&quot;]"></li>
 <li>Activate the environment</li>
-<li>Check which python executable is being used (Hint: <code>which python</code>)? Does this executable belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
+<li>Check which Python executable is being used (Hint: <code>which python</code>)? Does this executable belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
 <li>Search for snakemake <a href="https://anaconda.org/">https://anaconda.org/</a>. Copy the installation command and run it in your activated conda env. This might take some time!</li>
 <li>Execute the help command: <code>snakemake -h</code>. Seems like snakemake is now installed in our environment!</li>
 <li>Does the Python executable now belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
 <li>Is your python version &gt;= 3.12 and packaged by conda-forge? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select>. IF NOT, use one of the following commands: <code>conda update -c conda-forge python</code> or <code>conda install -c conda-forge python=3.12.7</code></li>
 <li>Let’s search for <code>bowtie2</code>. Do you get an error? which channel is needed (Hint: search for bowtie2 in https://anaconda.org/)? <input class="webex-solveme nospaces" size="8" data-answer="[&quot;bioconda&quot;]"></li>
-<li>Let’s add the missing channel: <code>conda config --add channels xxxx</code>. Hint: it is a repo that offers a wide range of bioinformatics software and tools.</li>
+<li>Let’s add the missing channel: <code>conda config --add channels xxxx</code>. Hint: It is a repo that offers a wide range of bioinformatics software and tools.</li>
 <li>Let’s search for <code>bowtie2</code> again. Is bowtie2 now available? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
 <li>Export the conda you have created and save the yml. Did you use <code>--from-history</code> command? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select><br>
 </li>
@@ -766,7 +766,7 @@ Hint
 <div>
 <div class="callout-hint">
 <p>Here are some of the commands you need for the exercise.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use conda or mamba commands </span></span>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use conda or mamba commands </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--prefix</span> /work/envs/<span class="op">&lt;</span>myenv<span class="op">&gt;</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">--channel</span> <span class="op">&lt;</span>CHANNEL-NAME<span class="op">&gt;</span> --name <span class="op">&lt;</span>ENV-NAME<span class="op">&gt;</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list <span class="co"># OR conda info --envs</span></span>
@@ -801,13 +801,13 @@ Solution
 <li>conda activate /work/&lt;NameSurname#xxxx&gt;/envs/<test-env></test-env></li>
 <li>The executable is located at <code>/usr/bin/python</code> in the system</li>
 <li>conda install bioconda::snakemake</li>
-<li>snakemake is working!</li>
-<li>Yes, now is in the bin of our env: <code>/work/&lt;NameSurname#xxxx&gt;/envs/&lt;test-env&gt;/bin/python</code></li>
+<li>Snakemake is working!</li>
+<li>Yes, now it is in the bin of our env: <code>/work/&lt;NameSurname#xxxx&gt;/envs/&lt;test-env&gt;/bin/python</code></li>
 <li>It should be!</li>
 <li><code>conda search bowtie2</code>. Yes. Go to anaconda.org and search for “bowtie2” to confirm it is available through conda and which software channel it is provided from. You will find that it is available via the “bioconda” channel: https://anaconda.org/bioconda/bowtie2.</li>
-<li><code>conda config --add channels bioconda</code>. Use add, so that it has a higher priority. The syntax to install packages is: <code>conda install --channel &lt;CHANNELNAME&gt; --name &lt;ENVNAME&gt; &lt;SOFTWARE&gt;</code></li>
+<li><code>conda config --add channels bioconda</code>. Use <code>add</code> so that it has a higher priority. The syntax to install packages is: <code>conda install --channel &lt;CHANNELNAME&gt; --name &lt;ENVNAME&gt; &lt;SOFTWARE&gt;</code></li>
 <li>Yes!</li>
-<li>When using <code>--from history</code> flag, conda only exports explicitly installed packages (without the automatically resolved dependencies). This results in a simpler and smaller file which is more flexible but might lead to slightly different environments on different systems: <code>conda env export --from-history &gt; environment.yml</code>. Not using <code>--from-history</code> would ensure replicability but will also introduce packages that may not be compatible across platforms.</li>
+<li>When using <code>--from history</code> flag, conda only exports explicitly installed packages (without the automatically resolved dependencies). This results in a simpler and smaller file, which is more flexible but might lead to slightly different environments on different systems: <code>conda env export --from-history &gt; environment.yml</code>. Not using <code>--from-history</code> would ensure applicability, but would also introduce packages that may not be compatible across platforms.</li>
 <li><code>conda deactivate</code></li>
 </ol>
 </div>
@@ -870,8 +870,8 @@ Solution
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list </span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. </span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove cookiecutter <span class="kw">;</span> <span class="ex">conda</span> list </span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Check prompt from running this command </span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove cookiecutter<span class="kw">;</span> <span class="ex">conda</span> list </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Check the prompt from running this command </span></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update python <span class="co"># 3.7.16</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># OR conda list | grep python </span></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="kw">;</span> <span class="ex">conda</span> list python </span>
@@ -897,7 +897,7 @@ Solution
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-V - Running a docker image
+V - Running a Docker image
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -905,7 +905,7 @@ V - Running a docker image
 <div class="callout-body-container callout-body">
 <div>
 <div class="webex-check callout-exercise">
-<p>In this exercise, we will utilize the <code>fastmixture</code> Docker image which is available on <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHub</a>, the repository for docker images. The aim is to <strong>understand how to run containerized software</strong>. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.</p>
+<p>In this exercise, we will utilize the <code>fastmixture</code> Docker image which is available on <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHub</a>, the repository for Docker images. The aim is to <strong>understand how to run containerized software</strong>. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.</p>
 <p><a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v2">Fastmixture</a> is a software designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.</p>
 <p>Here are some optional resources you might typically review before running the software (though not required for this exercise):</p>
 <ul>
@@ -922,7 +922,7 @@ V - Running a docker image
 <p><a href="./data/toy.zip" download="toy.zip"> <button class="btn small-button">Download toy data</button> </a></p>
 </div>
 <ol type="1">
-<li><p>Pull <code>fastmixture</code> image from <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHUb</a> using the following command:</p>
+<li><p>Pull <code>fastmixture</code> image from <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHub</a> using the following command:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
@@ -931,7 +931,7 @@ V - Running a docker image
 </div>
 <p>Make sure to pull the latest version.</p></li>
 <li><p>Download and unzip the toy data (you may move the files to any preferred folder on your laptop).</p></li>
-<li><p>What is the command you need to run the container? Do not forget to mount the data (using the flag <code>-v /path/toy:/path/mnt</code>). Before executing the software, verify that the data has been correctly mounted (e.g.&nbsp;running the <code>ls</code> command inside the container).</p></li>
+<li><p>What is the command you need to run the container? Do not forget to mount the data (using the flag <code>-v /path/toy:/path/mnt</code>). Before executing the software, verify that the data has been correctly mounted (e.g., running the <code>ls</code> command inside the container).</p></li>
 <li><p>Run <code>fastmixture</code> software using the command below. We will set <em>K</em> to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both <code>--bfile</code> and <code>--out</code> require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named <code>toy.data.*</code>; therefore, use <code>--bfile toy.data</code>.</p>
 <p>In <code>fastmixture</code>, the main arguments used in this exercise are:</p>
 <ul>
@@ -961,7 +961,7 @@ Solution
 <li><strong>Docker</strong></li>
 </ul>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull albarema/fastmixture  <span class="co"># Pull </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This solution assumes you’re running the container from the directory that contains the <code>toy</code>data folder:</p>
+<p>This solution assumes you’re running the container from the directory that contains the <code>toy</code> data folder:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Linux/Mac</strong></pre>
@@ -1018,7 +1018,7 @@ Solution
 <li><a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">BLAST</a> (local alignment search tool)</li>
 <li><a href="https://bowtie-bio.sourceforge.net/bowtie2/index.shtml">BOWTIE2</a> (sequencing reads aligner to reference)</li>
 </ul>
-<p>Alternatively, explore one of the container image repositories and select a tool that you use regularly. Once you have pulled an image, we recommend starting by running the <code>--help</code> command, as all software have one. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.</p>
+<p>Alternatively, explore one of the container image repositories and select a tool that you use regularly. Once you have pulled an image, we recommend starting by running the <code>--help</code> command, as all software has one. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1032,7 +1032,7 @@ Mounting is key!
 <p>Make sure to mount a directory when running a container. This ensures that any data generated will be saved to your host system. If you do not mount a directory and use the <code>--rm</code> command, all generated data will be lost once the container stops.</p>
 <ul>
 <li>Use <code>--rm</code> flag to remove automatically the container once it stops running to avoid cluttering your system with stopped containers.</li>
-<li>Use <code>--volume</code> to mount data into the container (e.g.&nbsp;<code>/data</code>), for example, your working directory if you are already located in a project-specific dir.</li>
+<li>Use <code>--volume</code> to mount data into the container (e.g., <code>/data</code>), for example, your working directory if you are already located in a project-specific dir.</li>
 </ul>
 </div>
 </div>
@@ -1058,7 +1058,7 @@ V - Bonus 1: Running other containers
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 curl <span class="at">-O</span> ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRNA_Prot/zebrafish.1.protein.faa.gz</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 gunzip zebrafish.1.protein.faa.gz</span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 makeblastdb <span class="at">-in</span> zebrafish.1.protein.faa <span class="at">-dbtype</span> prot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Apptainer</strong>: you might need to mount data folders if you test the container on your own computer! Ask if you an in doubt!</p>
+<p><strong>Apptainer</strong>: You might need to mount data folders if you test the container on your own computer! Ask if you an in doubt!</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://biocontainers/blast:2.2.31</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run blast_2.2.31.sif blastp <span class="at">-help</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> zebrafish-ref</span>
@@ -1078,21 +1078,21 @@ V - Bonus 1: Running other containers
 </div>
 </div>
 </div>
-<p>Are you ready to build your own docker image? Let’s get started by building a Jupyter Notebook container! We’ll share several helpful tips to guide you through the process effectively. You might not be familiar with all the concepts, but google them if you’re uncertain.</p>
+<p>Are you ready to build your own Docker image? Let’s get started by building a Jupyter Notebook container! We’ll share several helpful tips to guide you through the process effectively. You might not be familiar with all the concepts, but Google them if you’re uncertain.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-V - Bonus 2: Building a docker image and running your own container
+V - Bonus 2: Building a Docker image and running your own container
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Create a Dockerfile in a project-specific dir (e.g.: sandbox-debian-jupyter). We will add a command to clean up the package after installation which is a common practice to reduce the image size.</li>
+<li>Create a Dockerfile in a project-specific dir (e.g., sandbox-debian-jupyter). We will add a command to clean up the package after installation, which is a common practice to reduce the image size.</li>
 </ol>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1116,7 +1116,7 @@ V - Bonus 2: Building a docker image and running your own container
 </div>
 <ol start="2" type="1">
 <li><p>From the project-specific dir, build the Docker image using, for example, <code>docker build -t sandbox-debian-jupyter:1.0 .</code></p></li>
-<li><p>Testing the custom image. Let’s verify if the custom image functions as expected, by running the following command:</p></li>
+<li><p>Testing the custom image. Let’s verify if the custom image functions as expected by running the following command:</p></li>
 </ol>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -1126,7 +1126,7 @@ V - Bonus 2: Building a docker image and running your own container
 </div>
 <p>Jupyter typically refuses to run as root or accept network connections by default. To address this, you need to either add <code>--ip=0.0.0.0 --allow-root</code> when starting Jupyter to the command above or uncomment the last line in the Dockerfile above (<code>CMD ["jupyter-notebook", "--ip=0.0.0.0", "--allow-root"]</code>). Test this before moving on!</p>
 <p><em>Alternatively, you can run the container with the flag <code>--user=$(id -u):$(id -g)</code> to ensure that files created in the container have matching user and group ownership with those on the host machine, preventing permission issues. However, this restricts the container from performing root-level operations.</em></p>
-<p>For broader usability and security, it is advisable to create a non-root user (e.g.&nbsp;jovyan) within the Docker image by adding user setup commands to the Dockerfile (see below). This approach makes the image more user-friendly and avoids file ownership conflicts.</p>
+<p>For broader usability and security, it is advisable to create a non-root user (e.g., jovyan) within the Docker image by adding user setup commands to the Dockerfile (see below). This approach makes the image more user-friendly and avoids file ownership conflicts.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Dockerfile2</strong></pre>
@@ -1159,14 +1159,14 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Use <code>--rm</code> flag to remove automatically the container once it stops running</li>
+<li>Use <code>--rm</code> flag to automatically remove the container once it stops running</li>
 <li>Use <code>--volume</code> to mount data into the container (e.g.&nbsp;<code>/home/jovyan</code>)</li>
-<li>Use <code>--file</code> flag to test two dockerfile versions (default:“PATH/Dockerfile”)</li>
+<li>Use <code>--file</code> flag to test two Dockerfile versions (default: “PATH/Dockerfile”)</li>
 </ul>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> sandbox-debian-jupyter:2.0 sandbox-debian-jupyter <span class="at">-f</span> sandbox-debian-jupyter/Dockerfile2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<p>Now that we have fixed that problem, we will test A. using a port to launch a Jupyter Notebook (or Rstudio server) and B. starting a bash shell interactively.</p>
+<p>Now that we have fixed that problem, we will test A. using a port to launch a Jupyter Notebook (or RStudio server) and B. starting a bash shell interactively.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option A. Start jupyter-notebook or on the server </span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-p</span> 8888:8888 <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/home/jovyan sandbox-debian-jupyter:2.0 </span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
