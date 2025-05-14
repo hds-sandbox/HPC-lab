@@ -515,12 +515,12 @@ Local Setup
 <p>Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the <code>setup.sh</code> initialization file, and ask for 2 CPUs so we can run things in parallel:</p>
 <ul>
 <li><code>YourNameSurname#xxxx</code>: save your results/files here.</li>
-<li><code>hpclab-workshop</code>: this contains input files and scripts. You can read-only access from this directory (no write permissions).</li>
+<li><code>hpclab-workshop</code>: contains input files and scripts. You can read-only access from this directory (no write permissions).</li>
 </ul>
 <p>Next, activate <code>snakemake</code> environment.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure no other env is active!</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure no other env is active!</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snakemake </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Finally, navigate to your personal drive and use the project directory you created yesterday <code>hpclab</code> to create a new subdir <code>fastmixture</code> and save here all files from this exercise (Snakefile, config.yml, output file, etc.).</p>
+<p>Finally, navigate to your personal drive and use the project directory you created yesterday, <code>hpclab</code>, to create a new subdirectory <code>fastmixture</code> and save here all files from this exercise (Snakefile, config.yml, output file, etc.).</p>
 </div>
 <div id="locally" class="tab-pane fade" role="tabpanel" aria-labelledby="locally-tab">
 <p>You can choose to run your tasks either locally or on an accessible HPC. Refer to the <a href="../workshop/pipes-requirements.html">Welcome page</a> for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment, and download the data.</p>
@@ -554,10 +554,10 @@ II - Admixture analysis pipeline
 <li>Input PLINK files: <code>/work/HPCLab_workshop/data/plink_sim/sim.small.*</code></li>
 </ul></li>
 </ul>
-<p><code>fastmixture</code> is not pre-installed in the <code>snakemake</code> environment and we don’t want to include it for the purpose of this exercise. You will have to git clone the <a href="https://github.com/Rosemeis/fastmixture">GitHub repository</a>. There are two options on how to proceed:</p>
+<p><code>fastmixture</code> is not pre-installed in the <code>snakemake</code> environment, and we don’t want to include it for the purpose of this exercise. You will have to git clone the <a href="https://github.com/Rosemeis/fastmixture">GitHub repository</a>. There are two options on how to proceed:</p>
 <ol type="1">
-<li>Use the provided <code>environment.yml</code> file to create a new environment, which you are going to name <code>fastmixture</code>. Then, use the full path to the <code>fastmixture</code> env in the workflow. Is this the best approach? The workflow will rely on this environment being present on a new system where the workflow is executed. Referring to an existing environment can however be useful during development, e.g.&nbsp;when a certain software package is developed in parallel to a workflow that uses it.</li>
-<li>Provide the path to <code>environment.yml</code> within the workflow. Snakemake will create the env for you which takes some time but will only do this once. This is recommended and preferred for reproducibility reasons.</li>
+<li>Use the provided <code>environment.yml</code> file to create a new environment, which you are going to name <code>fastmixture</code>. Then, use the full path to the <code>fastmixture</code> env in the workflow. Is this the best approach? The workflow will rely on this environment being present on a new system where the workflow is executed. Referring to an existing environment can, however, be useful during development, e.g., when a certain software package is developed in parallel to a workflow that uses it.</li>
+<li>Provide the path to <code>environment.yml</code> within the workflow. Snakemake will create the environment for you, which takes some time, but will only do this once. This is recommended and preferred for reproducibility reasons.</li>
 </ol>
 <p>Either way, use the <code>conda</code> directive!</p>
 <p>Have a look at the <code>fastmixture.sh</code> script below. How many different wildcards would you need? Recommended: Specify the values of the wildcard variables in a separate config file.</p>
@@ -594,13 +594,13 @@ II - Admixture analysis pipeline
 <li><code>--bfile</code>: prefix for PLINK files (.bed, .bim, .fam)</li>
 <li><code>--out</code>: Prefix output name</li>
 </ul>
-<p>You are set to write your own snakemake pipeline. Need more suggestions?</p>
+<p>You are set to write your own Snakemake pipeline. Need more suggestions?</p>
 <ul>
 <li>Add a <code>log</code> directive to every rule. It is best practice to store all log files in a subdirectory <code>logs/</code>, prefixed by the rule or tool name.</li>
 <li>Add a <code>benchmark</code> directive as well. Applying the same best practice.</li>
 <li>Memory estimated based on the size of the file</li>
 <li>After running the workflow for the set of <code>K</code> and <code>s</code> values shown in the bash script. Use the command line to provide a new seed value: <code>--config PARAM=&lt;value&gt;</code></li>
-<li>Make use of the <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#the-multiext-function"><code>multiext</code></a> function to define a set of output or input that only differ by their extension</li>
+<li>Make use of the <a href="https://snakemake.readthedocs.io/en/stable/snakefiles/rules.html#the-multiext-function"><code>multiext</code></a> function to define a set of outputs or inputs that only differ by their extension</li>
 </ul>
 <p>How to run this workflow? See the picture below:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-c1</span> <span class="at">--sdm</span> conda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -618,14 +618,14 @@ Hint
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<p>First, create a config.yaml file to specify the values for the wildcards <code>k</code> and <code>s</code>, as well as other parameters (such as the number of threads, and the prefix).</p>
+<p>First, create a config.yaml file to specify the values for the wildcards <code>k</code> and <code>s</code>, as well as other parameters (such as the number of threads and the prefix).</p>
 <p>Then, create the Snakemake Workflow, defining two rules for running <code>fastmixture</code> and plotting with R.</p>
 <p><code>fastmixture</code> is not pre-installed, check the instructions <a href="https://github.com/Rosemeis/fastmixture"><code>fastmixture</code> GitHub</a>. Need more tips?</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Git clone on your working dir</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Git clone into your working dir</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/Rosemeis/fastmixture.git</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION 1: Use the env.yml (recommended)</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># You just need to locate the file and use the the path to the environment file under the conda directive</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># You just need to locate the file and use the path to the environment file under the conda directive</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> fast: </span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">input:</span> ...</span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">output:</span> ...</span>
@@ -665,7 +665,7 @@ My solution
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<p>This is one possible solution, how does yours look?</p>
+<p>This is one possible solution. How does yours look?</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>config.yml</strong></pre>
@@ -755,7 +755,7 @@ Bonus exercise: functions and checkpoints
 <p>You’ll now modify the pipeline to dynamically select the best K from the fastmixture results using a checkpoint and a Python function.</p>
 <section id="why-the-checkpoint" class="level4">
 <h4 class="anchored" data-anchor-id="why-the-checkpoint">Why the checkpoint?</h4>
-<p>Let’s assume you don’t know in advance how many files the pipeline will produce or what their names will be, because they depend on parameters like K values that are defined in the config file or runtime. This is handy when we have a python function inspecting the output directory to decide on what to use.</p>
+<p>Let’s assume you don’t know in advance how many files the pipeline will produce or what their names will be, because they depend on parameters like K values that are defined in the config file or runtime. This is handy when we have a Python function inspecting the output directory to decide on what to use.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">checkpoint</span> fastmixture:</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">output:</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="ex">directory</span><span class="er">(</span><span class="st">"results/fastmixture"</span><span class="kw">)</span></span>
@@ -774,7 +774,7 @@ Bonus exercise: functions and checkpoints
 </section>
 <section id="the-rule-for-plotting" class="level4">
 <h4 class="anchored" data-anchor-id="the-rule-for-plotting">The rule for plotting</h4>
-<p>You will make use of this function in a downstream rule. The last rule, e.g.&nbsp;bestK_plot, will only plot the admixture proportions for the best result.</p>
+<p>You will make use of this function in a downstream rule. The last rule, e.g., bestK_plot, will only plot the admixture proportions for the best result.</p>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
