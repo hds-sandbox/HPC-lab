@@ -41,7 +41,7 @@ style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
 Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the `hpc-pipes/setup.sh` initialization file, and ask for 2 CPUs so we can run things in parallel: 
 
 - `YourNameSurname#xxxx`: save your results/files here.  
-- `shared/hpclab-workshop`: this contains input files and scripts. You can read-only access from this directory (no write permissions). 
+- `shared/hpclab-workshop`: contains input files and scripts. You can read-only access from this directory (no write permissions). 
 
 Next, activate `snakemake` environment. 
 
@@ -118,7 +118,7 @@ You will be working and running the workflow from `hpclab`, so make sure it's se
 - **Directory setup**: Inside `hpclab`, create two subdirectories, `scripts` and `rules`. 
   - `scripts`: save all python/r external scripts. 
   - `rules`: save all your snakefiles here!
-- **File creation**: you will need to create two files for this exercise:
+- **File creation**: You will need to create two files for this exercise:
   - Open a new file named `step1_wf.smk` in the `rules` dir and include the following two lines of code:
 
     ```{.bash}
@@ -127,7 +127,7 @@ You will be working and running the workflow from `hpclab`, so make sure it's se
     ```
 
     :::{.callout-hint}
-    # what are those lines for?
+    # What are those lines for?
     - `!/usr/bin/env python`: tells the system to use the Python interpreter to execute the script
     - `-*- coding: utf-8 -*-`: specifies the character encoding for the file as UTF-8
     :::
@@ -208,7 +208,7 @@ All set! You're ready to run the workflow now. As a best practice, we recommend 
 snakemake -s rules/step1_wf.smk -n
 ```
 
-**If there are no errors, go ahead and run it!**. Since this workflow contains only one rule, defining the target (e.g. through rule all or using the name of the rule) is unnecessary—snakemake will execute the `preprocess rule` directly with the following command:
+**If there are no errors, go ahead and run it!**. Since this workflow contains only one rule, defining the target (e.g., through `rule all` or using the name of the rule) is unnecessary—snakemake will execute the `preprocess rule` directly with the following command:
 
 ```{.bash}
 snakemake -s rules/step1_wf.smk -c1
@@ -249,8 +249,8 @@ Wildcards are dynamic placeholders in rule definitions that allow for flexible i
 
 Could you modify the previous rule so that you can run the workflow for different datasets? Not sure how?
 
-- Define a wildcard named `dataset` which represents the variable parts of your input or output (e.g. `EB` in this case)
-- Dry-run, is it working  `snakemake -s rules/step1_wf.smk -np results/samples_EB_cleaned.tsv`
+- Define a wildcard named `dataset` which represents the variable parts of your input or output (e.g., `EB` in this case)
+- Dry-run, is it working `snakemake -s rules/step1_wf.smk -np results/samples_EB_cleaned.tsv`
 
 **Does Snakemake's dry-run command return the message "Nothing to be done"?** `r torf(TRUE)`
 
@@ -310,7 +310,7 @@ rule all:
         [f"{dataset}/file.A.gz" for dataset in DATASETS]
 ``` 
 
-But how does it look if we use a helper function, e.g. `expand()`: 
+But how does it look if we use a helper function, e.g., `expand()`: 
 
 ```{.python filename="option3.smk"}
 DATASETS=["ds1", "ds2", "ds3"]
@@ -320,9 +320,9 @@ rule all:
         expand("{dataset}/file.A.gz", dataset=DATASETS)
 ``` 
 
-In all cases, for each dataset in the Python list `DATASETS`, the file `{dataset}/file.A.gz` is requested. Snakemake, will recognise that these files can be created by multiple applications (executions) of the rule `file_conversion`. 
+In all cases, for each dataset in the Python list `DATASETS`, the file `{dataset}/file.A.gz` is requested. Snakemake will recognise that these files can be created by multiple applications (executions) of the rule `file_conversion`. 
 
-It's time for you to define the target rule `rule all` within the Snakefile and utilize helper functions. Instead of using a Python list comprehension to specify input files please use `expand()` function! 
+It's time for you to define the target rule `rule all` within the Snakefile and utilize helper functions. Instead of using a Python list comprehension to specify input files, please use `expand()` function! 
 
 - Declare the variable DATASETS at the top 
 - Define `rule all` and use the `expand()` function to specify the input files (our **targets**, corresponding to the last output)
@@ -364,13 +364,13 @@ Let's assume that `step1_wf.smk` includes all the necessary steps for preprocess
 
 ###### Part 4: Modularization 
 
-Let's walk through an example of modularization. In the example below, the statement `module step1_workflow` registers the external workflow as a module by specifying the path to its snakefile. The second statement declares that all rules of those modules are available in the current workflow, except for `ruleExtra`. The `as step1_*` at the end renames all those rules with a common prefix (e.g. `rule preprocess` would become `rule step1_preprocess`). This renaming is optional but very useful for avoiding rule name conflicts (e.g. we could have another rule on this new snakefile named `preprocess`). Want to learn more? Click [here](https://snakemake.readthedocs.io/en/stable/snakefiles/modularization.html#includes). 
+Let's walk through an example of modularization. In the example below, the statement `module step1_workflow` registers the external workflow as a module by specifying the path to its Snakefile. The second statement declares that all rules of those modules are available in the current workflow, except for `ruleExtra`. The `as step1_*` at the end renames all those rules with a common prefix (e.g., `rule preprocess` would become `rule step1_preprocess`). This renaming is optional but very useful for avoiding rule name conflicts (e.g., we could have another rule on this new snakefile named `preprocess`). Want to learn more? Click [here](https://snakemake.readthedocs.io/en/stable/snakefiles/modularization.html#includes). 
 
 ```{.python filename="example.smk"}
 module step1_workflow:
     snakefile:
-        # you can use plain paths, URL or host code providers (e.g. GitHub)
-        "path/to/snakefile" # path relative to current snakefile 
+        # You can use plain paths, URL, or host code providers (e.g,. GitHub)
+        "path/to/snakefile" # path relative to the current snakefile 
 
 use rule * from step1_workflow exclude ruleExtra as step1_*
 ```
@@ -447,7 +447,7 @@ CUTOFF=2000
 python scripts/filter_year.py -i $INFILE -o $OUTFILE -y $CUTOFF
 ```
 
-Please, use named inputs (e.g. `meta` for the input and `fi` for the output). Named inputs are particularly useful when multiple files are needed for running a software tool.
+Please, use named inputs (e.g., `meta` for the input and `fi` for the output). Named inputs are particularly useful when multiple files are needed for running a software tool.
 
 You can find the Python file on UCloud: `PATH="/work/HPCLab_workshop/scripts/filter_year.py"`. Copy it to your `scripts` directory. 
 
@@ -510,7 +510,7 @@ Almost done! We want our workflow to be as customizable as possible so that it c
 
 #### Config files 
 
-Modify your Snakemake workflow to include a YAML configuration file and use it within the `filter_year` rule. Configuration files are typically located at the top level of the project directory, e.g. `hpclab` (often alongside the Snakefile). While you usually reuse a pipeline, it's advisable to create a new config file for each new dataset or project. This approach helps isolate project-specific configurations and avoids modifying the original pipeline. 
+Modify your Snakemake workflow to include a YAML configuration file and use it within the `filter_year` rule. Configuration files are typically located at the top level of the project directory, e.g., `hpclab` (often alongside the Snakefile). While you usually reuse a pipeline, it's advisable to create a new config file for each new dataset or project. This approach helps isolate project-specific configurations and avoids modifying the original pipeline. 
 
 :::{.callout-hint}
 # Not familiar with YAML format? Read this!
