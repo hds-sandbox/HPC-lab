@@ -91,10 +91,13 @@ website:
             - text: "Conda on UCloud"
               href: resources/slides/slides_conda.qmd
               target: _blank
-            - text: "SSH/Git/GitHub on UCloud"
-              href: resources/slides/slides_git.qmd
+            - text: "SSH on UCloud"
+              href: resources/slides/slides_ssh.qmd
               target: _blank
-
+            - text: "GitHub on UCloud"
+              href: resources/slides/slides_github.qmd
+              target: _blank
+            
 copyright: CC-BY-SA 4.0 license
 
 format:
