@@ -144,6 +144,7 @@ In your Nextflow version:
   - Use `publishDir` to copy the output file to your results directory. `publishDir` makes your output files easier to locate by copying them to a defined location. It also ensures outputs are not buried in .nextflow folders.
 - Use a hardcoded path to the Python script for now: `/work/<YourPersonalDrive>/hpclab/scripts/preprocess.py`
 - Use the `conda` profile to manage the software environment for your pipeline. Among other options, you can include the conda environment within a process itself or specify it from the command line using the `--with-conda` flag, or use a config file to define it. We recommend specifying it via the command line (`--with-conda`) and incorporating the environment within the process in the next exercise, once the pipeline is working.
+- Take a look inside `work` directory and explore some of the files (e.g. `.command.sh` and `.command.log`). Did Nextflow execute the command you expected? 
 - The structure of the pipeline should look like: 
   ```{.bash filename="step1.nf"}
     process STEP_NAME {
@@ -167,6 +168,19 @@ In your Nextflow version:
     }
   ```
 
+:::{.callout-hint}
+# Why publishDir and mode copy?
+
+The file publishing method. Can be one of the following values:
+
+- 'copy': Copies the output files into the publish directory.
+- 'copyNoFollow': Copies the output files into the publish directory without following symlinks ie. copies the links themselves.
+- 'link': Creates a hard link in the publish directory for each output file.
+- 'move': Moves the output files into the publish directory. Note: this is only supposed to be used for a terminal process i.e. a process whose output is not consumed by any other downstream process.
+- 'rellink': Creates a relative symbolic link in the publish directory for each output file.
+- 'symlink': Creates an absolute symbolic link in the publish directory for each output file (default).
+:::
+
 You’ll also need a Nextflow config file. While simple pipelines may work with just default settings, more complex pipelines typically define one or more config files to separate concerns, such as:
 
 - Resource definitions (e.g., cpus, memory, time)
@@ -177,9 +191,9 @@ For now, let's just define the resources we want this pipeline to use:
 
 ```{.bash filename="nextflow.config"}
 process {
-  cpus = 1
-  memory = '4 GB'
-  time = '1h'
+    cpus = 1
+    memory = '4 GB'
+    time = '1h'
 }
 ```
 Need help with the config file? Check the documentation below: 
@@ -202,8 +216,9 @@ executor {
 ```
 :::
 
+If you are running into errors, make sure to go through the hint before first, as it will provide useful tips and serve as inspiration. There isn't just one solution, so the hint can guide you toward different approaches to solving the problem.
 
-Make sure to go through the hint first, as it will provide useful tips and serve as inspiration. There isn't just one solution, so the hint can guide you toward different approaches to solving the problem.
+Also, don’t forget to look in the **`work` directory and review the log files** (like `.command.sh` and `.command.log`). They’re often very informative and can help you identify and fix issues in your script before giving up.
 
 :::{.callout-hint}
 It is very important to set HOME to a directory where you are working - your project directory. This is where Nextflow will look for the pipeline and configuration files, among other things. 
@@ -377,14 +392,31 @@ You will also need to enable the conda profile using a config file:
 
 ```{.bash filename="profiles.config"}
 profiles {
-    conda.enabled = true
-    conda.channels = ['bioconda','conda-forge']
+    conda {
+        conda.enabled = true
+        conda.channels = ['bioconda','conda-forge']
+    }
 }
 ```
 
 How can you run the pipeline now?
 ```{.bash filename="Terminal"}
 nextflow run step1.nf -c profiles.config -profile conda
+```
+
+If you are expecting to only have one profile (e.g. pipeline only runs with conda, which is not very common for HPC setups), then your config file can look like this: 
+
+```{.bash filename="profile_conda.config"}
+profiles {
+    conda.enabled = true
+    conda.channels = ['bioconda','conda-forge']
+}
+```
+
+In this case, you don’t need to specify `-profile conda` when running the pipeline: 
+
+```{.bash filename="Terminal"}
+nextflow run step1.nf -c profile_conda.config 
 ```
 :::
 
@@ -400,26 +432,28 @@ params.input_dir = "${HOME}/data"
 params.output_dir = "${HOME}/results"
 
 process PREPROCESS {
+    conda '/work/HPCLab_workshop/miniconda3/envs/snakemake'
+
     publishDir "${params.output_dir}", mode: 'copy'
 
     input:
-        val species
+        val dataset
         path input_samples
     
     output:
-        path "samples_${species}_cleaned2.tsv"
+        path "samples_${dataset}_cleaned.tsv"
 
     script:
     """
-    python /work/AlbaRefoyoMartínez#0753/hpclab/scripts/preprocess.py $input_samples samples_${species}_cleaned2.tsv
+    python preprocess.py $input_samples samples_${dataset}_cleaned.tsv
     """
 }
 
 workflow {
-    ch_species = Channel.of('EB', '1kgp')
-    ch_input   = ch_species.map { sp -> file("${params.input_dir}/samples_${sp}.tsv") }
+    ch_dataset = Channel.of('EB', '1kgp')
+    ch_input   = ch_dataset.map { dt -> file("${params.input_dir}/samples_${dt}.tsv") }
 
-    PREPROCESS(ch_species, ch_input)
+    PREPROCESS(ch_dataset, ch_input)
 }
 ```
 :::
@@ -432,11 +466,11 @@ workflow {
 
 You will now add a new task, `FILTER_YEAR`, to your Nextflow pipeline. This task will be responsible for filtering datasets based on the year information (or other criteria). The idea is to use the `errorStrategy = 'ignore'` setting in the config file, allowing the pipeline to skip filtering when it's not applicable, such as when working with the `1kgp` dataset (as this info is not available).
 
-The `filter_year.py` script needs a value for the flag cutoff. It's better to define cutoff as a parameter (e.g., `params.cutoff = 2000`), which can then be modified using the config file or the command line. This approach provides flexibility to adjust the value without changing the pipeline code.
+The `filter_year.py` script needs a value for the flag cutoff. It's better to define cutoff as a parameter (e.g., `params.cutoff = 2000`), which can then be modified using the config file or the command line. This approach provides flexibility to adjust the value without changing the pipeline code. As part of this exercise, run the pipeline twice, first using the default cutoff and then with a different one (e.g. 100).  
 
 Below is a basic template of how the `FILTER_YEAR` task might look:
 
-```{.bash filename="step1_wf.smk"}
+```{.bash filename="allsteps_wf.smk"}
 DATASETS = ["EB", "1kgp"]
 
 rule all: 
@@ -469,8 +503,8 @@ rule filter_year:
 :::{.callout-hint}
 # My solution III
 
-2. Nextflow script 
-```{.nf filename="main.nf"}
+1. Nextflow script 
+```{.nf filename="allsteps_flex.nf"}
 #!/usr/bin/env nextflow
 
 // Pipeline parameters
@@ -537,5 +571,18 @@ process {
 }
 
 ```
+
+3. Nextflow command 
+
+```{.bash filename="Terminal"}
+nextflow run allsteps_flex.nf -c profiles.config
+```
+
+4. You can test different thresholds for the year cutoff using the command-line
+
+```{.bash filename="Terminal"}
+nextflow run allsteps_flex.nf -c profiles.config --cutoff 1000 -resume
+```
+
 :::
 :::
