@@ -12,7 +12,7 @@
   <meta name="author" content="Alba Refoyo">
   <meta name="author" content="Jennifer Bartell">
   <meta name="dcterms.date" content="2025-05-15">
-  <title>HPC Lab – SSH, Git and Github</title>
+  <title>HPC Lab – Github on UCloud</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -198,7 +198,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">SSH, Git and Github</h1>
+  <h1 class="title">Github on UCloud</h1>
   <p class="subtitle">Basic commands HPC Launch https://hds-sandbox.github. io/HPC-lab/</p>
 
 <div class="quarto-title-authors">
@@ -215,72 +215,6 @@ Jennifer Bartell
 </div>
 
   <p class="date">2025-05-15</p>
-</section>
-<section id="generate-ssh-key-pair" class="slide level2">
-<h2>Generate SSH Key Pair</h2>
-<p>Navigate to the location where all SSH keys are stored to generate a new one (<strong>skip</strong> these first two commands if you haven’t used SSH keys before).</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Mac/Linux</strong></pre>
-</div>
-<div class="sourceCode" id="cb1" data-filename="Mac/Linux"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/.ssh </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p> </p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Windows</strong></pre>
-</div>
-<div class="sourceCode" id="cb2" data-filename="Windows"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> C:<span class="dt">\U</span>sers<span class="dt">\&lt;</span>YourUsername<span class="op">&gt;</span><span class="dt">\.</span>ssh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We will specify the type of key to create with the option <code>-t</code> (default) and use a filename that describes what the key is for (e.g.&nbsp;<code>id_UCloud</code>), and don’t enter a passphrase:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<pre><code>Generating public/private ed25519 key pair.
-Enter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud
-Your identification has been saved in id_UCloud
-Your public key has been saved in id_UCloud.pub
-...</code></pre>
-</section>
-<section id="windows-users-skip-otherwise" class="slide level2">
-<h2>Windows users (skip otherwise)</h2>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>On Powershell</strong></pre>
-</div>
-<div class="sourceCode" id="cb5" data-filename="On Powershell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># By default the ssh-agent service is disabled. Configure it to start automatically.</span></span>
-<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure you're running as an Administrator.</span></span>
-<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Get-Service</span> ssh-agent <span class="kw">|</span> <span class="ex">Set-Service</span> <span class="at">-StartupType</span> Automatic</span>
-<span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a><span class="co"># Start the service</span></span>
-<span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Start-Service</span> ssh-agent</span>
-<span id="cb5-7"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a><span class="co"># This should return a status of Running</span></span>
-<span id="cb5-9"><a aria-hidden="true" tabindex="-1"></a><span class="ex">Get-Service</span> ssh-agent</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p> </p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>On WSL</strong></pre>
-</div>
-<div class="sourceCode" id="cb6" data-filename="On WSL"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="kw">`</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="kw">`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p> On MombaXterm, follow the instructions <a href="https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/37388673/Creating+and+using+an+SSH+key+pair+with+MobaXterm">here</a>. —</p>
-<p>Once, we have generated your SSH keys, add the key to your system:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">## Now load your key files into ssh-agent</span></span>
-<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> id_UCloud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Do you get a message similar to this?</p>
-<pre><code>entity added: id_UCloud (gsd818@SUN1029429)</code></pre>
-<p>Then, copy the public key, either using <code>cat</code> to print the content of the file or as follows:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> id_UCloud.pub <span class="kw">|</span> <span class="ex">pbcopy</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section class="slide level2">
-
-<p>You can now paste the public SSH key on UCloud. You’ll need to enable SSH access when you submit a job so you can SSH in.</p>
-
-<img data-src="../../develop/images/sshkey_step2.png" class="r-stretch"></section>
-<section class="slide level2">
-
-<p>Submit a new job on UCloud and configure SSH access <img data-src="./img/enableSSH.png" width="800" height="150"></p>
-<p>Once the job starts, the SSH command appears in the progress view and can be run locally from your terminal <img data-src="./img/sshCommand.png" width="900"></p>
 </section>
 <section id="connecting-github-with-ucloud" class="slide level2">
 <h2>Connecting GitHub with UCloud</h2>
@@ -308,7 +242,7 @@ Your public key has been saved in id_UCloud.pub
 <li>Create a new folder named <code>ssh</code>, where you will store your new SSH keys</li>
 <li>Generate a new key (no need for paraphrase) and save it as e.g.&nbsp;<code>id_repo1</code></li>
 </ol>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="5" type="1">
 <li>Copy the public key (e.g.&nbsp;<code>id_repo1.pub</code>)</li>
 <li>Add the key to the repository you have created or forked from us on GitHub: <code>YOUR-REPO &gt; Settings &gt; Deploy keys &gt; Add deploy key</code>. The new deploy key can be named as e.g.&nbsp;<code>UCloud-repo1</code></li>
@@ -324,11 +258,11 @@ Your public key has been saved in id_UCloud.pub
 <div class="code-with-filename-file">
 <pre><strong>setup.sh</strong></pre>
 </div>
-<div class="sourceCode" id="cb11" data-filename="setup.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="kw">`</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="kw">`</span></span>
-<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> /work/ssh/id_repo1</span>
-<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"add here your name"</span></span>
-<span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"add here your email"</span></span>
-<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> <span class="at">-i</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2" data-filename="setup.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="kw">`</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="kw">`</span></span>
+<span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> /work/ssh/id_repo1</span>
+<span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"add here your name"</span></span>
+<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"add here your email"</span></span>
+<span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> <span class="at">-i</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You can now git commit and push using the token as password to save all changes to your repository. Let’s give it a try!</p>
 </section>
@@ -339,13 +273,13 @@ Your public key has been saved in id_UCloud.pub
 <div class="code-with-filename-file">
 <pre><strong>Example repo</strong></pre>
 </div>
-<div class="sourceCode" id="cb12" data-filename="Example repo"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>https://github.</span>
-<span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">com/hds-sandbox/cookiecutter-template</span><span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3" data-filename="Example repo"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>https://github.</span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">com/hds-sandbox/cookiecutter-template</span><span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, modify or create a new file in your repository. This is a test to understand how to push changes to GitHub.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add . </span>
-<span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"added new file"</span></span>
-<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add . </span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"added new file"</span></span>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You will be asked to enter your GitHub username and the password. When you work from HPCs, you need to enter the token as your password.</p>
 <p>Go to GitHub and check if those changes are now visible.</p>
 
