@@ -11,7 +11,7 @@
 
   <meta name="author" content="Alba Refoyo">
   <meta name="author" content="Jennifer Bartell">
-  <meta name="dcterms.date" content="2025-05-15">
+  <meta name="dcterms.date" content="2025-05-21">
   <title>HPC Lab – Github on UCloud</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -214,7 +214,7 @@ Jennifer Bartell
 </div>
 </div>
 
-  <p class="date">2025-05-15</p>
+  <p class="date">2025-05-21</p>
 </section>
 <section id="connecting-github-with-ucloud" class="slide level2">
 <h2>Connecting GitHub with UCloud</h2>
@@ -237,7 +237,7 @@ Jennifer Bartell
 
 <p>Then, we will generate SSH key on UCloud following these steps</p>
 <ol type="1">
-<li>Submit a new job using the Terminal app and mount your personal drive</li>
+<li>Submit a new job using the <code>Terminal</code> app and mount your personal drive</li>
 <li>Change directory to your personal drive (e.g.&nbsp;<code>cd /work/myNameXXX/</code>)</li>
 <li>Create a new folder named <code>ssh</code>, where you will store your new SSH keys</li>
 <li>Generate a new key (no need for paraphrase) and save it as e.g.&nbsp;<code>id_repo1</code></li>
@@ -252,7 +252,7 @@ Jennifer Bartell
 
 <p>Finally, to streamline pushing changes…</p>
 <ol start="7" type="1">
-<li>Modify/Create the initialization bash script to include this code</li>
+<li>Create a new initialization bash script or modify an existing one to include this code. Here, we named the file <code>setup.sh</code>:</li>
 </ol>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -264,11 +264,12 @@ Jennifer Bartell
 <span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"add here your email"</span></span>
 <span id="cb2-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> <span class="at">-i</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Remember to save this file in your personal drive (<code>/work/myNameXXX/</code>).</p>
 <p>You can now git commit and push using the token as password to save all changes to your repository. Let’s give it a try!</p>
 </section>
 <section class="slide level2">
 
-<p>Submit a new job on UCloud. Do not forget to mount your personal drive and use the initialization bash script you just created. Once, the job is running, change directory to your personal drive, and clone your repository.</p>
+<p>Submit a new job on UCloud (e.g.&nbsp;through the <code>Terminal</code> app). Do not forget to mount your personal drive and use the initialization bash script you just created. Once, the job is running, change directory to your personal drive, and clone your repository.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Example repo</strong></pre>
