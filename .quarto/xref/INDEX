@@ -169,5 +169,11 @@
   },
   "workshop/pipes-ex-nf.qmd": {
     "pipes-ex-nf.html": "dcb1e4b1"
+  },
+  "resources/slides/slides_ssh.qmd": {
+    "slides_ssh.html": "fdd92141"
+  },
+  "resources/slides/slides_github.qmd": {
+    "slides_github.html": "6f159897"
   }
 }

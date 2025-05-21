@@ -43,7 +43,7 @@ Please, remember to **save** the generated token somewhere locally and safe. You
 
 Then, we will generate SSH key on UCloud following these steps
 
-  1. Submit a new job using the Terminal app and mount your personal drive
+  1. Submit a new job using the `Terminal` app and mount your personal drive
   2. Change directory to your personal drive (e.g. `cd /work/myNameXXX/`)
   3. Create a new folder named `ssh`, where you will store your new SSH keys
   4. Generate a new key (no need for paraphrase) and save it as e.g. `id_repo1`
@@ -58,7 +58,7 @@ Then, we will generate SSH key on UCloud following these steps
 
 Finally, to streamline pushing changes...
 
-  7. Modify/Create the initialization bash script to include this code
+  7. Create a new initialization bash script or modify an existing one to include this code. Here, we named the file `setup.sh`: 
 
   ```{.bash filename="setup.sh"}
   eval `ssh-agent -s`
@@ -68,11 +68,13 @@ Finally, to streamline pushing changes...
   bash -i 
   ```
 
+Remember to save this file in your personal drive (`/work/myNameXXX/`). 
+
 You can now git commit and push using the token as password to save all changes to your repository. Let's give it a try!
 
 ---
 
-Submit a new job on UCloud. Do not forget to mount your personal drive and use the initialization bash script you just created. Once, the job is running, change directory to your personal drive, and clone your repository. 
+Submit a new job on UCloud (e.g. through the `Terminal` app). Do not forget to mount your personal drive and use the initialization bash script you just created. Once, the job is running, change directory to your personal drive, and clone your repository. 
 
 ```{.bash filename="Example repo"}
 git clone <https://github.

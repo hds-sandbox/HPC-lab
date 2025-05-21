@@ -15,7 +15,7 @@ website:
       - text: "HPC Pipes"
         file: develop/p0-intro.qmd
       - text: "Workshop"
-        file: workshop/launch-requirements.qmd 
+        file: workshop/UCloud.qmd
     right: 
       - icon: github
         href: https://github.com/hds-sandbox
@@ -64,6 +64,19 @@ website:
       style: "docked"
       search: true
       contents:
+        - section: "UCloud setup"
+          contents: 
+            - text: "UCloud project workspace"
+              href: workshop/UCloud.qmd
+            - text: "SSH on UCloud"
+              href: resources/slides/slides_ssh.qmd
+              target: _blank
+            - text: "GitHub on UCloud"
+              href: resources/slides/slides_github.qmd
+              target: _blank
+            - text: "Conda on UCloud"
+              href: resources/slides/slides_conda.qmd
+              target: _blank
         - section: "HPC Launch"
           contents: 
             - workshop/launch-requirements.qmd
@@ -84,19 +97,7 @@ website:
                   href: workshop/pipes-ex-smk-fast.qmd
                 - text: "Day 2 - Part 5"
                   href: workshop/pipes-ex-nf.qmd
-        - section: "UCloud setup"
-          contents: 
-            - text: "UCloud project workspace"
-              href: workshop/UCloud.qmd
-            - text: "Conda on UCloud"
-              href: resources/slides/slides_conda.qmd
-              target: _blank
-            - text: "SSH on UCloud"
-              href: resources/slides/slides_ssh.qmd
-              target: _blank
-            - text: "GitHub on UCloud"
-              href: resources/slides/slides_github.qmd
-              target: _blank
+
             
 copyright: CC-BY-SA 4.0 license
 
