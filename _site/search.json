@@ -659,7 +659,7 @@
     "href": "workshop/pipes-requirements.html#course-requirements",
     "title": "Welcome to the HPC-Pipes workshop",
     "section": "Course requirements",
-    "text": "Course requirements\n\n\n\n\n\n\nRequired preparation\n\n\n\nYou are expected to complete the required setup, including tool installation (Docker) and account creation (UCloud).\n\nDocker - click on Download Docker Desktop.\n\nNote for Windows users: Installing Docker Desktop requires administrative privileges on your computer. You will be prompted to enter your KU username and password during the installation process. Additionally, Docker Desktop depends on the Windows Subsystem for Linux (WSL), which will also need to be installed.\nAs for other software, we will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. Please read Using UCloud for exercises carefully.\nIf you prefer to run the exercises on your personal laptop or a different server, please ensure you have the following software installed:\n\nconda - miniconda or miniforge recommended.\nsnakemake use conda for this!\nnextflow\nApptainer, formerly known as Singularity.\n\n\n\n\nUsing UCloud for exercises\n\n\n\n\n\n\nWarning\n\n\n\nFollow the instructions below if you have an account at a Danish university. You will need your institutional email to proceed. Unfortunately, this will not work for those without a university email.\n\n\n\nCreate an account on UCloud with your institution’s credentials\nUse the link below to join our workspace where you will find a setup environment1\n\n \n\n Invite link to UCloud workspace \n\n \n\nYou’re all set! You will receive instructions on how to navigate through UCloud during the course.\n\n\n\nReading material (optional)\n\nThe Turing way. It offers comprehensive guidance on reproducible research practices, including setting up computational environments and managing reproducible workflows.\nMölder, Felix, et al. “Sustainable data analysis with Snakemake.” F1000Research 10 (2021). Link to article. Best practices using Snakemake to develop your pipelines.\nCheck our content on HPC pipes.",
+    "text": "Course requirements\n\n\n\n\n\n\nRequired preparation\n\n\n\nYou are expected to complete the required setup, including tool installation (Docker) and account creation (UCloud).\n\nDocker - click on Download Docker Desktop.\n\nNote for Windows users: Installing Docker Desktop requires administrative privileges on your computer. You will be prompted to enter your KU username and password during the installation process. Additionally, Docker Desktop depends on the Windows Subsystem for Linux (WSL), which will also need to be installed.\nAs for other software, we will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. Please read Using UCloud for exercises carefully.\nIf you prefer to run the exercises on your personal laptop or a different server, please ensure you have the following software installed:\n\nconda - miniconda or miniforge recommended.\nsnakemake use conda for this!\nnextflow\nApptainer, formerly known as Singularity.\n\n\n\n\nUsing UCloud for exercises\n\n\n\n\n\n\nWarning\n\n\n\nFollow the instructions below if you have an account at a Danish university. You will need your institutional email to proceed. Unfortunately, this will not work for those without a university email.\n\n\n\nCreate an account on UCloud with your institution’s credentials\nUse the link below to join our workspace where you will find a setup environment1\n\n\n Invite link to UCloud workspace \n\n\nYou’re all set! You will receive instructions on how to navigate through UCloud during the course.\n\n\n\nReading material (optional)\n\nThe Turing way. It offers comprehensive guidance on reproducible research practices, including setting up computational environments and managing reproducible workflows.\nMölder, Felix, et al. “Sustainable data analysis with Snakemake.” F1000Research 10 (2021). Link to article. Best practices using Snakemake to develop your pipelines.\nCheck our content on HPC pipes.",
     "crumbs": [
       "Workshop",
       "HPC Pipes",
@@ -671,7 +671,7 @@
     "href": "workshop/pipes-requirements.html#agenda",
     "title": "Welcome to the HPC-Pipes workshop",
     "section": "Agenda",
-    "text": "Agenda\n\nDay 1\n\n\n\nTime\nActivity\nTime\nActivity\n\n\n\n\n8:45\nMorning coffee (optional)\n\n\n\n\n9:00\nIntro to HPC & onboarding\n12:00\nLunch break\n\n\n9:45\nHPC resources\n13:00\nExercise - software mgmt\n\n\n10:15\nCoffee break\n14:15\nCoffee break\n\n\n10:30\nSoftware mgmt I\n14:30\nComputations mgmt I\n\n\n11:15\nSoftware mgmt II\n16:00\nDiscussions & Wrap-up\n\n\n\n\nEnvironments exercises Snakemake I exercises\n\n\n\nDay 2\n\n\n\n\n\n\n\n\n\nTime\nActivity\nTime\nActivity\n\n\n\n\n8:45\nMorning coffee (optional)\n\n\n\n\n9:00\nComputations mgmt II\n12:00\nLunch break\n\n\n9:45\nExercise - integration\n13:00\nNextflow, nf-core example\n\n\n10:15\nCoffee break\n14:15\nCoffee break\n\n\n10:30\nExercise - implementation\n14:30\nBuild your own pipeline\n\n\n11:15\nComputations mgmt III\n16:00\nDiscussions & Wrap-up\n\n\n\n\nSnakemake II exercises Snakemake III exercises",
+    "text": "Agenda\n\nDay 1\n\n\n\n\n\n\n\n\n\nTime\nActivity\nTime\nActivity\n\n\n\n\n8:45\nMorning coffee (optional)\n\n\n\n\n9:00\nIntro to HPC & onboarding\n13:00\nSoftware mgmt III (docker)\n\n\n9:45\nSoftware mgmt I (conda)\n13:45\nComputations mgmt I (smk)\n\n\n10:30\nCoffee break\n14:15\nCoffee break\n\n\n10:45\nSoftware mgmt II (conda)\n14:30\nComputations mgmt I (smk)\n\n\n12:00\nLunch break\n15:30\nWrap-up\n\n\n\n\nEnvironments exercises Snakemake I exercises\n\n\n\nDay 2\n\n\n\n\n\n\n\n\n\nTime\nActivity\nTime\nActivity\n\n\n\n\n8:45\nMorning coffee (optional)\n\n\n\n\n9:00\nComputations mgmt II (smk)\n12:00\nLunch break\n\n\n9:45\nExercise - smk integration\n13:00\nExercise nf + wrap up\n\n\n10:15\nCoffee break\n14:15\nCoffee break\n\n\n10:30\nExercise - smk implementation\n14:30\nBuild your own pipeline\n\n\n11:15\nComputations mgmt III (nf)\n15:00\nWrap-up\n\n\n\n\nSnakemake II exercises Snakemake III exercises Nextflow I exercises\n\n\n\nDownload the slides\n\n\nDownload slides",
     "crumbs": [
       "Workshop",
       "HPC Pipes",
@@ -1605,6 +1605,18 @@
       "Workshop",
       "UCloud setup",
       "SSH on UCloud"
+    ]
+  },
+  {
+    "objectID": "workshop/pipes-requirements.html#download-the-slides",
+    "href": "workshop/pipes-requirements.html#download-the-slides",
+    "title": "Welcome to the HPC-Pipes workshop",
+    "section": "Download the slides",
+    "text": "Download the slides\n\n Download slides",
+    "crumbs": [
+      "Workshop",
+      "HPC Pipes",
+      "Welcome to the HPC-Pipes workshop"
     ]
   }
 ]

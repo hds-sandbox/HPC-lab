@@ -42,16 +42,11 @@ Follow the instructions below if you have an account at a Danish university. You
 1. Create an account on [UCloud](https://cloud.sdu.dk/) with your institution's credentials 
 2. Use the link below to join our workspace where you will find a setup environment^[*link activated a week before the workshop*.]
 
-&nbsp;
-
- <p align="center">
-  <a href="https://cloud.sdu.dk/app/projects/invite/d68169ad-6bb1-422d-b0df-d21e2751f8fb" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
-    Invite link to
-    UCloud workspace
+<p align="center">
+  <a href="https://cloud.sdu.dk/app/projects/invite/77dabc7d-2077-48ef-a046-f396ca6a32ef">
+    <button class="btn">Invite link to UCloud workspace</button>
   </a>
 </p>
-
-&nbsp;
 
 3. You’re all set! You will receive instructions on how to navigate through UCloud during the course.
 
@@ -67,11 +62,11 @@ Follow the instructions below if you have an account at a Danish university. You
 | Time | Activity | Time | Activity |
 |:-|:----|:-|:----|
 | *8:45*	|	*Morning coffee (optional)* |  
-| 9:00	|	Intro to HPC & onboarding | 12:00	|	*Lunch break* |
-| 9:45	|	HPC resources | 13:00	|	Exercise - software mgmt |
-| 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
-| 10:30	|	Software mgmt I | 14:30	|	Computations mgmt I |
-| 11:15	|	Software mgmt II | 16:00	|	Discussions & Wrap-up |
+| 9:00	|	Intro to HPC & onboarding | 13:00	|	Software mgmt III (docker) |
+| 9:45	|	Software mgmt I (conda) | 13:45	|	Computations mgmt I (smk) |
+| 10:30	|	*Coffee break* |  14:15	|	*Coffee break* |
+| 10:45	|	Software mgmt II (conda) | 14:30	|	Computations mgmt I (smk) |
+| 12:00	|	*Lunch break* | 15:30	|	Wrap-up |
 
 ::: {.hero-buttons}
 [Environments exercises](./pipes-ex-envs.qmd){.btn-action .btn .btn-success .btn-lg role="button"}
@@ -83,17 +78,27 @@ Follow the instructions below if you have an account at a Danish university. You
 | Time | Activity | Time | Activity |
 |:-|:----|:-|:----|
 | *8:45*	|	*Morning coffee (optional)* |  
-| 9:00	|	Computations mgmt II | 12:00	|	*Lunch break* |
-| 9:45	|	Exercise - integration | 13:00	|	Nextflow, nf-core example |
+| 9:00	|	Computations mgmt II (smk) | 12:00	|	*Lunch break* |
+| 9:45	|	Exercise - smk integration | 13:00	|	Exercise nf + wrap up|
 | 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
-| 10:30	|	Exercise - implementation | 14:30	|	Build your own pipeline |
-| 11:15	|	Computations mgmt III | 16:00	|	Discussions & Wrap-up |
+| 10:30	|	Exercise - smk implementation | 14:30	|	Build your own pipeline |
+| 11:15	|	Computations mgmt III (nf) | 15:00	|	Wrap-up |
 
 ::: {.hero-buttons}
 [Snakemake II exercises](./pipes-ex-smk-self.qmd){.btn-action-smk .btn-action .btn .btn-success .btn-lg role="button"}
 [Snakemake III exercises](./pipes-ex-smk-fast.qmd){.btn-action-smk .btn-action .btn .btn-success .btn-lg role="button"}
-
+[Nextflow I exercises](./pipes-ex-nf.qmd){.btn-action-smk .btn-action .btn .btn-success .btn-lg role="button"  style="background-color: #14b393ff !important"}
 ::: 
+
+
+### Download the slides
+
+<p align="center">
+    <button class="btn" disabled>Download slides</button> 
+</p>
+
+<!--  <a href="./hpcpipes-sandbox.zip" download="hpcpipes-sandbox.zip"> -->
+<!--  <a -->
 
 ## Discussion and feedback
 
