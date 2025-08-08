@@ -22,7 +22,7 @@ You are expected to complete the required setup, including tool installation (Do
 
 **Note for Windows users:** Installing Docker Desktop requires administrative privileges on your computer. You will be prompted to enter your KU username and password during the installation process. Additionally, Docker Desktop depends on the Windows Subsystem for Linux (WSL), which will also need to be installed.
 
-As for other software, we will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. **Please read [Using UCloud for exercises](#using-ucloud-for-exercises) carefully**. 
+As for other software, we will provide access to a Danish HPC platform, UCloud, with all necessary software pre-installed. **Please read [Using UCloud for exercises](#using-ucloud-for-exercises) carefully**. 
 
 **If you prefer to run the exercises on your personal laptop or a different server, please ensure you have the following software installed:**
 
