@@ -19,9 +19,7 @@ nocite: |
 # Welcome to HPC-Lab Hub 
 :::
 
-### <span style="color: red;">Note: Actively being developed</span>
-
-High Performance Computing (HPC) plays a crucial role for researchers by offering the computational speed and power needed to manage large and complex data sets, perform simulations, and address intricate problems that would be impractical or too time-consuming with standard computing methods.
+High-Performance Computing (HPC) plays a crucial role for researchers by offering the computational speed and power needed to manage large and complex datasets, perform simulations, and address intricate problems that would be impractical or too time-consuming with standard computing methods.
 
 Knowing which HPC resources are accessible and how to use them efficiently is essential for researchers. Making the most of these resources can significantly expedite research and drive innovation. By becoming proficient with the available tools and technologies, researchers can address complex challenges, analyze extensive data sets, and execute advanced simulations with increased speed and accuracy. This module provides essential knowledge on HPC resources and best practices for their utilization.
 
@@ -42,11 +40,11 @@ By the end of this workshop, you should be able to apply the following concepts 
 :::
 
 :::{.callout-warning title="HPC best practices"}
-We offer in-person workshops, keep an eye on the upcoming events on the [Sandbox website](https://hds-sandbox.github.io/news.html).
+We offer in-person workshops; keep an eye on the upcoming events on the [Sandbox website](https://hds-sandbox.github.io/news.html).
 :::
 
 
 #### Acknowledgements
 
-Our interactive exercises are developed using the R packaged developed by @webexercises. 
+Our interactive exercises are developed using the R package developed by @webexercises. 
 
