@@ -571,8 +571,8 @@ I - General knowledge
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_VGDEDLODGL" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_VGDEDLODGL" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_VGDEDLODGL" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_VGDEDLODGL" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_VGDEDLODGL" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_SGARCWGAZP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SGARCWGAZP" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_SGARCWGAZP" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_SGARCWGAZP" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_SGARCWGAZP" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -742,7 +742,7 @@ III - Build your conda environment
 <p>Is the full path of your envs directory <code>/work/&lt;NameSurname#xxxx&gt;/envs</code>? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 <p>Since Miniconda is already pre-installed, you’re ready to create your first environment. Just follow these steps:</p>
 <ol type="1">
-<li>Create a new environment using <code>--prefix PATH</code> (for example, <code>/work/&lt;YourNameSurname#xxxx&gt;/envs/&lt;name-env&gt;</code>) and Proceed yes (<code>y</code> or enter). N.B. You can either name or prefix your environment. We will be using the prefix as miniconda is installed in a directory where you do not have writing privileges.</li>
+<li>Create a new environment using <code>--prefix PATH</code> (for example, <code>/work/&lt;YourNameSurname#xxxx&gt;/envs/&lt;name-env&gt;</code>) and proceed yes (<code>y</code> or enter). N.B. You can either name or prefix your environment. We will be using the prefix as miniconda is installed in a directory where you do not have writing privileges.</li>
 <li>Check the available environments. How many environments do you see? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;4&quot;]"></li>
 <li>Activate the environment</li>
 <li>Check which Python executable is being used (Hint: <code>which python</code>)? Does this executable belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
@@ -810,7 +810,7 @@ Solution
 <li>Snakemake is working!</li>
 <li>Yes, now it is in the bin of our env: <code>/work/&lt;NameSurname#xxxx&gt;/envs/&lt;test-env&gt;/bin/python</code></li>
 <li>It should be!</li>
-<li><code>conda search bowtie2</code>. Yes. Go to anaconda.org and search for “bowtie2” to confirm it is available through conda and which software channel it is provided from. You will find that it is available via the “bioconda” channel: https://anaconda.org/bioconda/bowtie2.</li>
+<li><code>conda search bowtie2</code>. Yes. Go to anaconda.org and search for “bowtie2” to confirm it is available through conda and which software channel it is provided from. You can find it available via the “bioconda” channel: https://anaconda.org/bioconda/bowtie2.</li>
 <li><code>conda config --add channels bioconda</code>. Use <code>add</code> so that it has a higher priority. The syntax to install packages is: <code>conda install --channel &lt;CHANNELNAME&gt; --name &lt;ENVNAME&gt; &lt;SOFTWARE&gt;</code></li>
 <li>Yes!</li>
 <li>When using <code>--from history</code> flag, conda only exports explicitly installed packages (without the automatically resolved dependencies). This results in a simpler and smaller file, which is more flexible but might lead to slightly different environments on different systems: <code>conda env export --from-history &gt; environment.yml</code>. Not using <code>--from-history</code> would ensure applicability, but would also introduce packages that may not be compatible across platforms.</li>
@@ -911,7 +911,7 @@ V - Running a Docker image
 <div class="callout-body-container callout-body">
 <div>
 <div class="webex-check callout-exercise">
-<p>In this exercise, we will utilize the <code>fastmixture</code> Docker image which is available on <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHub</a>, the repository for Docker images. The aim is to <strong>understand how to run containerized software</strong>. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.</p>
+<p>In this exercise, we will utilize the <code>fastmixture</code> Docker image, which is available on <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHub</a>, the repository for Docker images. The aim is to <strong>understand how to run containerized software</strong>. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.</p>
 <p><a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v2">Fastmixture</a> is a software designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.</p>
 <p>Here are some optional resources you might typically review before running the software (though not required for this exercise):</p>
 <ul>
@@ -989,7 +989,7 @@ Solution
 </div>
 <p><strong>Note</strong> When mounting the data, ensure that the path you provide actually exists. If you encounter an error indicating that the .bfile does not exist, it likely means the data was not mounted correctly. <em>Tip for Windows users</em>: The correct path might be <code>${PWD}\toy\toy</code> — double-check that the folder structure are accurate.</p>
 <ul>
-<li><strong>Apptainer</strong> on HPC / local machine: on your local machine you will need to modify lima.yml to make the current directory (<code>pwd</code>) writable. Alternatively, write the data out to /tmp/lima!</li>
+<li><strong>Apptainer</strong> on HPC / local machine: on your local machine, you will need to modify lima.yml to make the current directory (<code>pwd</code>) writable. Alternatively, write the data out to /tmp/lima!</li>
 </ul>
 <div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://albarema/fastmixture</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run fastmixture_latest.sif fastmixture <span class="at">--version</span></span>
@@ -1037,7 +1037,7 @@ Mounting is key!
 <div class="callout-body-container callout-body">
 <p>Make sure to mount a directory when running a container. This ensures that any data generated will be saved to your host system. If you do not mount a directory and use the <code>--rm</code> command, all generated data will be lost once the container stops.</p>
 <ul>
-<li>Use <code>--rm</code> flag to remove automatically the container once it stops running to avoid cluttering your system with stopped containers.</li>
+<li>Use <code>--rm</code> flag to automatically remove the container once it stops running to avoid cluttering your system with stopped containers.</li>
 <li>Use <code>--volume</code> to mount data into the container (e.g., <code>/data</code>), for example, your working directory if you are already located in a project-specific dir.</li>
 </ul>
 </div>
@@ -1176,7 +1176,7 @@ Tip
 <div class="sourceCode" id="cb22"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option A. Start jupyter-notebook or on the server </span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-p</span> 8888:8888 <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/home/jovyan sandbox-debian-jupyter:2.0 </span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Option B. Start an interactive shells instead </span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Option B. Start an interactive shell instead </span></span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="at">--rm</span> <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/home/jovyan sandbox-debian-jupyter:2.0 /bin/bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If you make changes to the container (incl.&nbsp;installing software), you need to commit the changes to a new image (<code>docker commit</code>).</p>
 </div>
