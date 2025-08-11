@@ -76,9 +76,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e59f99ccebe0c105ebafd0bb6e63cc0e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-693dbad48136c6af4d5a3f699b9c9b7d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-e59f99ccebe0c105ebafd0bb6e63cc0e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-47622e22ebe8bf406fd0e3741e261aa5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-83c8fe0dc834bcf5c02d922e0e7b98cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-47622e22ebe8bf406fd0e3741e261aa5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -571,8 +571,8 @@ I - General knowledge
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_AFOWJZUYBY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_AFOWJZUYBY" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_AFOWJZUYBY" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_AFOWJZUYBY" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_AFOWJZUYBY" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_VGDEDLODGL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VGDEDLODGL" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_VGDEDLODGL" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_VGDEDLODGL" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_VGDEDLODGL" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -595,7 +595,7 @@ Warning
 <div class="callout-body-container callout-body">
 <ul>
 <li>Is the hpc-lab environment not automatically activated? Restart the job following the instructions.</li>
-<li>Double-check that your personal drive is properly mounted (e.g.&nbsp;<code>ls</code>). Can you see a directory with your name listed (e.g.&nbsp;NmeSurname#XXXX)? Restart the job following the instructions.</li>
+<li>Double-check that your personal drive is properly mounted (e.g.&nbsp;<code>ls</code>). Can you see a directory with your name listed (e.g.&nbsp;NameSurname#XXXX)? Restart the job following the instructions.</li>
 <li>If your session gets disconnected while completing exercise: <strong>Part 2 - Build your conda environment</strong>, you’ll need to (re)deactivate <code>hpclab-env</code>, activate your own environment, and navigate back to your working directory!</li>
 </ul>
 </div>
@@ -746,7 +746,7 @@ III - Build your conda environment
 <li>Check the available environments. How many environments do you see? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;4&quot;]"></li>
 <li>Activate the environment</li>
 <li>Check which Python executable is being used (Hint: <code>which python</code>)? Does this executable belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
-<li>Search for snakemake <a href="https://anaconda.org/">https://anaconda.org/</a>. Copy the installation command and run it in your activated conda env. This might take some time!</li>
+<li>Search for snakemake at <a href="https://anaconda.org/">https://anaconda.org/</a>. Copy the installation command and run it in your activated conda env. This might take some time!</li>
 <li>Execute the help command: <code>snakemake -h</code>. Seems like snakemake is now installed in our environment!</li>
 <li>Does the Python executable now belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
 <li>Is your python version &gt;= 3.12 and packaged by conda-forge? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select>. IF NOT, use one of the following commands: <code>conda update -c conda-forge python</code> or <code>conda install -c conda-forge python=3.12.7</code></li>
@@ -915,7 +915,7 @@ V - Running a Docker image
 <p><a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v2">Fastmixture</a> is a software designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.</p>
 <p>Here are some optional resources you might typically review before running the software (though not required for this exercise):</p>
 <ul>
-<li>Santander, Cindy G., Alba Refoyo Martinez, and Jonas Meisner. “Faster model-based estimation of ancestry proportions.” bioRxiv (2024): 2024-07 <a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v1">link to Preprint</a>.</li>
+<li>Santander, C.G., Refoyo Martinez, A. and Meisner, J., 2024. Faster model-based estimation of ancestry proportions. Peer Community Journal, 4. <a href="https://peercommunityjournal.org/item/10_24072_pcjournal_503">link to paper</a>.</li>
 <li>Software GitHub repository <a href="https://github.com/Rosemeis/fastmixture">link</a>.</li>
 </ul>
 <div class="quarto-figure quarto-figure-left">
