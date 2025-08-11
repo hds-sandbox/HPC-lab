@@ -134,7 +134,7 @@ In this exercise, we will explore how rules are invoked in a Snakemake workflow.
    ```{r, results='asis', echo = FALSE}
    #| echo: false
    opts_2 <- c(
-      answer="**No**. There is nothing to be done. All requested files are present and up to date",
+      answer="**No**. There is nothing to be done. All requested files are present and up to date.",
       "**Yes**. Reasons: input files updated by another job (all, combine, split_by_superpop) and output files have to be generated (combine, preprocess, split_by_superpop)"
    )
 
@@ -155,7 +155,7 @@ In this exercise, we will explore how rules are invoked in a Snakemake workflow.
    
    **Q.6. Tip: what is missing at the end of the command (e.g. what should be added to ensure `all_male.txt` is generated)? `snakemake -s process_1kgp.smk -c1`** `r fitb("results/all_male.txt")`
 
-9. Let's add a new rule that concatenates the two files you have generated (`all_female.txt` and `all_male.txt`) and saves them into `concatenated.txt`. Remember, all files should be saved into the `results` subdir. Hint: `cat file1.txt file2.txt > output.txt`
+9. Let's add a new rule that concatenates the two files you have generated (`all_female.txt` and `all_male.txt`) and saves them into `concatenated.txt`. Remember, all files should be saved in the `results` subdir. Hint: `cat file1.txt file2.txt > output.txt`
 
 10. Run the pipeline with your own version of the `process_1kgp.smk` file.  
 
