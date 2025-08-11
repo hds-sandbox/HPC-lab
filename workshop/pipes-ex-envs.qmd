@@ -46,7 +46,7 @@ For these exercises, make sure you have submitted a job to UCloud (resources set
 
 :::{.callout-warning}
 - Is the hpc-lab environment not automatically activated? Restart the job following the instructions. 
-- Double-check that your personal drive is properly mounted (e.g. `ls`). Can you see a directory with your name listed (e.g. NmeSurname#XXXX)? Restart the job following the instructions. 
+- Double-check that your personal drive is properly mounted (e.g. `ls`). Can you see a directory with your name listed (e.g. NameSurname#XXXX)? Restart the job following the instructions. 
 - If your session gets disconnected while completing exercise: **Part 2 - Build your conda environment**, you'll need to (re)deactivate `hpclab-env`, activate your own environment, and navigate back to your working directory!
 :::
 
@@ -163,7 +163,7 @@ N.B. You can either name or prefix your environment. We will be using the prefix
 2. Check the available environments. How many environments do you see? `r fitb(answer='4')`
 3. Activate the environment 
 4. Check which Python executable is being used (Hint: `which python`)? Does this executable belong to your conda environment?? `r torf(FALSE)`
-5. Search for snakemake [https://anaconda.org/](https://anaconda.org/). Copy the installation command and run it in your activated conda env. This might take some time! 
+5. Search for snakemake at [https://anaconda.org/](https://anaconda.org/). Copy the installation command and run it in your activated conda env. This might take some time! 
 6. Execute the help command: `snakemake -h`. Seems like snakemake is now installed in our environment!
 7. Does the Python executable now belong to your conda environment?? `r torf(TRUE)`
 8. Is your python version >= 3.12 and packaged by conda-forge? `r torf(TRUE)`. IF NOT, use one of the following commands: `conda update -c conda-forge python` or `conda install -c conda-forge python=3.12.7`
@@ -272,7 +272,7 @@ In this exercise, we will utilize the `fastmixture` Docker image which is availa
 
 Here are some optional resources you might typically review before running the software (though not required for this exercise):
 
-- Santander, Cindy G., Alba Refoyo Martinez, and Jonas Meisner. "Faster model-based estimation of ancestry proportions." bioRxiv (2024): 2024-07 [link to Preprint](https://www.biorxiv.org/content/10.1101/2024.07.08.602454v1).
+- Santander, C.G., Refoyo Martinez, A. and Meisner, J., 2024. Faster model-based estimation of ancestry proportions. Peer Community Journal, 4. [link to paper](https://peercommunityjournal.org/item/10_24072_pcjournal_503).
 - Software GitHub repository [link](https://github.com/Rosemeis/fastmixture).
 
 ![Admixture proportions](./data/admix_toyData.png){width=500 fig-align="left"}
