@@ -1001,7 +1001,7 @@ II - Extend your pipeline
 </div>
 <div class="sourceCode" id="cb16" data-filename="example.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>module step1_workflow:</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    snakefile:</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># You can use plain paths, URL, or host code providers (e.g,. GitHub)</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># You can use plain paths, URL, or host code providers (e.g. GitHub)</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"path/to/snakefile"</span> <span class="co"># path relative to the current snakefile </span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>use rule <span class="op">*</span> <span class="im">from</span> step1_workflow exclude ruleExtra <span class="im">as</span> step1_<span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1078,7 +1078,7 @@ rule step1_all:
 </div>
 </div>
 </div>
-<p>Shell commands can sometimes involve more than just input and output files along with static flags. In particular, there may be situations where additional parameters must be configured based on the wildcard values specific to a job. To facilitate this, Snakemake provides the <code>params</code> directive, enabling you to define custom parameters for your rules.</p>
+<p>Shell commands can sometimes involve more than just input and output files, along with static flags. In particular, there may be situations where additional parameters must be configured based on the wildcard values specific to a job. To facilitate this, Snakemake provides the <code>params</code> directive, enabling you to define custom parameters for your rules.</p>
 <p>Many software tools accept arguments to set specific thresholds. For instance, one such parameter could be the p-value threshold (e.g.&nbsp;default value of 0.05). However, you might need to change the significance level depending on the analysis, such as when correcting for multiple testing or when a stricter criterion is needed. You can see more examples in the <a href="https://snakemake.readthedocs.io/en/stable/tutorial/advanced.html#step-4-rule-parameters">documentation</a>.</p>
 </section>
 <section id="params" class="level4">
