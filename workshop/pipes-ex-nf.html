@@ -641,7 +641,7 @@ Part I. Build your first Nextflow pipeline
 </div></li>
 </ul></li>
 </ul>
-<p>In this task, You’ll now develop a simple Nextflow pipeline based on the first version of the <code>step1_wf.smk</code> Snakemake file you worked with (Day 2, Part 3.I). This pipeline preprocesses a sample metadata file using a Python script.</p>
+<p>In this task, you’ll develop a simple Nextflow pipeline based on the first version of the <code>step1_wf.smk</code> Snakemake file you worked with (Day 2, Part 3.I). This pipeline preprocesses a sample metadata file using a Python script.</p>
 <p>This version is intentionally kept simple: it’s not yet generalized and doesn’t make use of modular pipeline features. We’ll start here and gradually build toward a more flexible and reproducible workflow. Here’s what the original Snakemake pipeline looked like:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -721,7 +721,7 @@ Why publishDir and mode copy?
 <p>The file publishing method. Can be one of the following values:</p>
 <ul>
 <li>‘copy’: Copies the output files into the publish directory.</li>
-<li>‘copyNoFollow’: Copies the output files into the publish directory without following symlinks ie. copies the links themselves.</li>
+<li>‘copyNoFollow’: Copies the output files into the publish directory without following symlinks i.e.&nbsp;copies the links themselves.</li>
 <li>‘link’: Creates a hard link in the publish directory for each output file.</li>
 <li>‘move’: Moves the output files into the publish directory. Note: this is only supposed to be used for a terminal process i.e.&nbsp;a process whose output is not consumed by any other downstream process.</li>
 <li>‘rellink’: Creates a relative symbolic link in the publish directory for each output file.</li>
