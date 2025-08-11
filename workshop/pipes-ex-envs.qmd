@@ -5,7 +5,7 @@ format:
       toc: true
       toc-location: left
       page-layout: full
-summary: intro to workflows
+summary: Intro to workflows
 css: ./web.css
 ---
 
@@ -158,7 +158,7 @@ Is the full path of your envs directory `/work/<NameSurname#xxxx>/envs`? `r torf
 
 Since Miniconda is already pre-installed, you’re ready to create your first environment. Just follow these steps:
 
-1. Create a new environment using `--prefix PATH` (for example, `/work/<YourNameSurname#xxxx>/envs/<name-env>`) and Proceed yes (`y` or enter).
+1. Create a new environment using `--prefix PATH` (for example, `/work/<YourNameSurname#xxxx>/envs/<name-env>`) and proceed yes (`y` or enter).
 N.B. You can either name or prefix your environment. We will be using the prefix as miniconda is installed in a directory where you do not have writing privileges. 
 2. Check the available environments. How many environments do you see? `r fitb(answer='4')`
 3. Activate the environment 
@@ -203,7 +203,7 @@ conda env export > env.yml
 7. Yes, now it is in the bin of our env: 
 `/work/<NameSurname#xxxx>/envs/<test-env>/bin/python`
 8. It should be! 
-9. `conda search bowtie2`. Yes. Go to anaconda.org and search for “bowtie2” to confirm it is available through conda and which software channel it is provided from. You will find that it is available via the “bioconda” channel: https://anaconda.org/bioconda/bowtie2.
+9. `conda search bowtie2`. Yes. Go to anaconda.org and search for “bowtie2” to confirm it is available through conda and which software channel it is provided from. You can find it available via the “bioconda” channel: https://anaconda.org/bioconda/bowtie2.
 10. `conda config --add channels bioconda`. Use `add` so that it has a higher priority. The syntax to install packages is: 
 `conda install --channel <CHANNELNAME> --name <ENVNAME> <SOFTWARE>`
 11. Yes!
@@ -266,7 +266,7 @@ Apptainer/Singularity was specifically designed for HPC platforms; however, the 
 ::: {.webex-check .callout-exercise}
 # V - Running a Docker image
 
-In this exercise, we will utilize the `fastmixture` Docker image which is available on [DockerHub](https://hub.docker.com/r/albarema/fastmixture), the repository for Docker images. The aim is to **understand how to run containerized software**. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.
+In this exercise, we will utilize the `fastmixture` Docker image, which is available on [DockerHub](https://hub.docker.com/r/albarema/fastmixture), the repository for Docker images. The aim is to **understand how to run containerized software**. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.
 
 [Fastmixture](https://www.biorxiv.org/content/10.1101/2024.07.08.602454v2) is a software designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.
 
@@ -334,7 +334,7 @@ fastmixture --bfile data/toy.data --K 3 --out data/toy.fast --threads 8 # run th
 **Note**
 When mounting the data, ensure that the path you provide actually exists. If you encounter an error indicating that the .bfile does not exist, it likely means the data was not mounted correctly. *Tip for Windows users*: The correct path might be `${PWD}\toy\toy` — double-check that the folder structure are accurate.
 
-- **Apptainer** on HPC / local machine: on your local machine you will need to modify lima.yml to make the current directory (`pwd`) writable. Alternatively, write the data out to /tmp/lima! 
+- **Apptainer** on HPC / local machine: on your local machine, you will need to modify lima.yml to make the current directory (`pwd`) writable. Alternatively, write the data out to /tmp/lima! 
 
 ```{.bash}
 apptainer pull docker://albarema/fastmixture
@@ -372,7 +372,7 @@ Alternatively, explore one of the container image repositories and select a tool
 # Mounting is key!
 Make sure to mount a directory when running a container. This ensures that any data generated will be saved to your host system. If you do not mount a directory and use the `--rm` command, all generated data will be lost once the container stops.
 
-- Use `--rm` flag to remove automatically the container once it stops running to avoid cluttering your system with stopped containers.
+- Use `--rm` flag to automatically remove the container once it stops running to avoid cluttering your system with stopped containers.
 - Use `--volume` to mount data into the container (e.g., `/data`), for example, your working directory if you are already located in a project-specific dir. 
 :::
 
@@ -490,7 +490,7 @@ Now that we have fixed that problem, we will test A. using a port to launch a Ju
 # Option A. Start jupyter-notebook or on the server 
 docker run --rm -p 8888:8888 --volume=$(pwd):/home/jovyan sandbox-debian-jupyter:2.0 
 
-# Option B. Start an interactive shells instead 
+# Option B. Start an interactive shell instead 
 docker run -it --rm --volume=$(pwd):/home/jovyan sandbox-debian-jupyter:2.0 /bin/bash
 ```
 
