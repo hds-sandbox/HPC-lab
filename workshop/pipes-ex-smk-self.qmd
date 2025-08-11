@@ -369,7 +369,7 @@ Let's walk through an example of modularization. In the example below, the state
 ```{.python filename="example.smk"}
 module step1_workflow:
     snakefile:
-        # You can use plain paths, URL, or host code providers (e.g,. GitHub)
+        # You can use plain paths, URL, or host code providers (e.g. GitHub)
         "path/to/snakefile" # path relative to the current snakefile 
 
 use rule * from step1_workflow exclude ruleExtra as step1_*
@@ -430,7 +430,7 @@ rule step1_all:
 ```
 :::
 
-Shell commands can sometimes involve more than just input and output files along with static flags. In particular, there may be situations where additional parameters must be configured based on the wildcard values specific to a job. To facilitate this, Snakemake provides the `params` directive, enabling you to define custom parameters for your rules. 
+Shell commands can sometimes involve more than just input and output files, along with static flags. In particular, there may be situations where additional parameters must be configured based on the wildcard values specific to a job. To facilitate this, Snakemake provides the `params` directive, enabling you to define custom parameters for your rules. 
 
 Many software tools accept arguments to set specific thresholds. For instance, one such parameter could be the p-value threshold (e.g. default value of 0.05). However, you might need to change the significance level depending on the analysis, such as when correcting for multiple testing or when a stricter criterion is needed. You can see more examples in the [documentation](https://snakemake.readthedocs.io/en/stable/tutorial/advanced.html#step-4-rule-parameters). 
 
