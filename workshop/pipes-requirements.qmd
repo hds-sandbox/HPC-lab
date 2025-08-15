@@ -94,11 +94,11 @@ Follow the instructions below if you have an account at a Danish university. You
 ### Download the slides
 
 <p align="center">
-    <button class="btn" disabled>Download slides</button> 
+  <a href="./hpcpipes-sandbox.zip" download>
+    <button class="btn">Download slides</button>
+  </a>
 </p>
 
-<!--  <a href="./hpcpipes-sandbox.zip" download="hpcpipes-sandbox.zip"> -->
-<!--  <a -->
 
 ## Discussion and feedback
 
