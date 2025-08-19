@@ -44,7 +44,7 @@ Finally, navigate to your personal drive and use the project directory you creat
 
 <div class="tab-pane fade" id="locally" role="tabpanel" aria-labelledby="locally-tab">
 
-You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.qmd) for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment, and download the data.
+You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.qmd) for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment, and download the data.  The solutions and suggestions below use full paths assuming you are working on UCloud and have followed the setup instructions. If you are running things locally, you will need to adjust these paths accordingly (e.g., `/work/hpclab` will most likely not be valid in your computer).
 
   <a href="./data/snakemake.yml" download="snakemake.yml">
     <button class="btn small-button">Download environment file</button>

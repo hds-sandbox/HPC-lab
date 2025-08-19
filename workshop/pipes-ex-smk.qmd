@@ -107,6 +107,8 @@ Download the `Snakefile` and data required for this exercise using the links bel
   </a>
 </div>
 
+Create a folder named `data` in your working directory and move the input data (`samples_1kgp.tsv`) inside it. The Snakemake pipeline looks for the input in this location and will fail otherwise. If you prefer, you can instead update the pipeline to point to a different relative path. 
+
 :::
 
 We strongly recommend keeping the [Snakemake documentation](https://snakemake.readthedocs.io/en/stable/) open for reference and guidance.
