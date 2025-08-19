@@ -19,7 +19,7 @@ rule preprocess:
     Remove missing from metadata
     """
     input:
-        "/work/HPCLab_workshop/data/samples_1kgp.tsv"
+        "data/samples_1kgp.tsv"
     output:
         tsv="results/samples_1kgp_cleaned.tsv"
     run:
