@@ -140,8 +140,8 @@ With `tmux` you can
 - each terminal run simultaneously and be accessed **(attached)** or exited from **(detached)**
 - the tmux server keeps runninng **without a logged user**
 
+![](../workshop/images/tmux-server.png){fig-align="center" width=400px}
 
-![](img/tmux-server.png){fig-align="center" width=400px}
 
 ---
 
@@ -164,7 +164,7 @@ tmux new -s example1
 
 The command will set you into the session automatically. The window looks something like below:
 
-![](img/tmuxSession.png){fig-align="center" width=600px}
+![](images/tmuxSession.png){fig-align="center" width=600px}
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Managing data
+title: Project structure
 format: 
     html:
       toc: true
@@ -9,6 +9,13 @@ css: ./web.css
 ---
 
 Let's start with some practical exercises focused on implementing tools that will help you with the collect & document data life cycle phase. 
+
+:::{.callout-warning}
+# Start a new job on UCloud. 
+Please submit a new job to UCloud, mounting your personal drive (**hpcLaunch** folder) and using the initialization script provided by the course instructors. Follow to the guidelines in [UCloud job setup](UCloud.qmd). 
+
+Once the job is ready, run `conda activate hpclab-env` in the terminal to access all the required pre-isntalled software.
+:::
 
 ## Data structure with cookiecutter
 
@@ -23,12 +30,6 @@ Establishing a consistent file structure and naming conventions will help you ef
 Creating a folder template is straightforward with [cookiecutter](https://github.com/cookiecutter/cookiecutter) a command-line tool that generates projects from templates (called cookiecutters). You can do it from scratch (see Bonus) or opt for one of our pre-made templates available as a Github repository (recommended for this workshop). 
 
 Let’s give it a try!
-
-:::{.callout-warning}
-If you haven't yet, please submit a new job to UCloud, mounting your personal drive and using the initialization script provided by the course instructors. Follow to the guidelines in [UCloud job setup](UCloud.qmd). 
-
-Once the job is ready, run `conda activate hpclab-env` in the terminal to access all the required pre-isntalled software.
-:::
 
 :::{.callout-exercise}
 # Exercise 1: Get familiar with Cookiecutter
@@ -141,7 +142,7 @@ The command `cookiecutter cookiecutter-template` will initiate an interactive pr
 ls -l myproject_sep24 
 ```
 
-**Optional (for those already familiar with `git` and `GitHub`)**
+**Optional (if you have time)**
 
 The following steps enable version control and make it easy to share the structure with other members of your lab.
 

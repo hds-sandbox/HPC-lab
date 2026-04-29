@@ -1,0 +1,31 @@
+---
+title: Queueing systems
+format: 
+    html:
+      toc: true
+      toc-location: left
+      page-layout: full
+css: ./web.css
+---
+
+## Job submission with SLURM
+
+```
+sbatch → submit a shell script to the queue
+squeue → see all the jobs in the queue
+squeue -u USERNAME → see your jobs only
+scancel JOBID → cancel the job with the specified ID
+scancel -u USERNAME → cancel all your jobs
+seff JOBID → get efficiency information about your job
+```
+
+### Write your commands in a shell script
+
+1. Open text editor
+2. Configure your job options using `#SBATCH` directories
+3. Use `$SLURM_*` environment variables to further customise your commands.
+
+Test your code by requesting a terminal on a compute node using sintr (interactive jobs)
+all the options available with sbatch are also available to sintr (e.g. -c, --mem, -t, etc.)
+Often sintr jobs are limited in maximum time they can run for (e.g. 1h at Cambridge), because this is not a very efficient way to run large-scale analyses.
+

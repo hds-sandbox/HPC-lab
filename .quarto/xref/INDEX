@@ -175,5 +175,29 @@
   },
   "resources/slides/slides_github.qmd": {
     "slides_github.html": "6f159897"
+  },
+  "workshop/launch-cookiecutter.qmd": {
+    "launch-cookiecutter.html": "dd43aec4"
+  },
+  "workshop/launch-final.qmd": {
+    "launch-final.html": "b1d0e2fc"
+  },
+  "workshop/launch-jobs.qmd": {
+    "launch-jobs.html": "6305196d"
+  },
+  "workshop/launch-access.qmd": {
+    "launch-access.html": "1f9db6f1"
+  },
+  "workshop/launch-git.qmd": {
+    "launch-git.html": "9a8eaa6c"
+  },
+  "workshop/launch-envs.qmd": {
+    "launch-envs.html": "62284385"
+  },
+  "workshop/launch-transfers.qmd": {
+    "launch-transfers.html": "71a71ae7"
+  },
+  "workshop/launch-review.qmd": {
+    "launch-review.html": "62ee4d37"
   }
 }

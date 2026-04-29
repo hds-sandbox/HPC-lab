@@ -64,24 +64,20 @@ website:
       style: "docked"
       search: true
       contents:
-        - section: "UCloud setup"
-          contents: 
-            - text: "UCloud project workspace"
-              href: workshop/UCloud.qmd
-            - text: "SSH on UCloud"
-              href: resources/slides/slides_ssh.qmd
-              target: _blank
-            - text: "GitHub on UCloud"
-              href: resources/slides/slides_github.qmd
-              target: _blank
-            - text: "Conda on UCloud"
-              href: resources/slides/slides_conda.qmd
-              target: _blank
         - section: "HPC Launch"
           contents: 
             - workshop/launch-requirements.qmd
-            - workshop/cookiecutter.qmd
-            - develop/exercise_launch.qmd
+            - section: "Day 1"
+              contents: 
+                - workshop/launch-access.qmd                
+                - workshop/launch-transfers.qmd
+                - workshop/launch-git.qmd
+                - workshop/launch-cookiecutter.qmd
+                - workshop/launch-review.qmd
+            - section: "Day 2"
+              contents: 
+                - workshop/launch-envs.qmd
+                - workshop/launch-jobs.qmd
         - section: "HPC Pipes"
           contents: 
             - workshop/pipes-requirements.qmd
@@ -97,7 +93,19 @@ website:
                   href: workshop/pipes-ex-smk-fast.qmd
                 - text: "Day 2 - Part 5"
                   href: workshop/pipes-ex-nf.qmd
-
+        - section: "UCloud setup"
+          contents: 
+            - text: "UCloud project workspace"
+              href: workshop/UCloud.qmd
+            - text: "SSH on UCloud"
+              href: resources/slides/slides_ssh.qmd
+              target: _blank
+            - text: "GitHub on UCloud"
+              href: resources/slides/slides_github.qmd
+              target: _blank
+            - text: "Conda on UCloud"
+              href: resources/slides/slides_conda.qmd
+              target: _blank
             
 copyright: CC-BY-SA 4.0 license
 
