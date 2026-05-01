@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Alba Refoyo">
+<meta name="author" content="Jennifer Bartell">
+<meta name="dcterms.date" content="2026-05-01">
 
-<title>Singularity – HPC Lab</title>
+<title>Package managers – HPC Lab</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -114,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../include/webex.css">
 </head>
 
-<body class="nav-sidebar docked nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -306,11 +309,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">HPC Launch</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../develop/p0-intro.html" aria-current="page"> 
+    <a class="nav-link" href="../develop/p0-intro.html"> 
 <span class="menu-text">HPC Pipes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../workshop/UCloud.html"> 
+    <a class="nav-link active" href="../workshop/UCloud.html" aria-current="page"> 
 <span class="menu-text">Workshop</span></a>
   </li>  
 </ul>
@@ -337,7 +340,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/e1-fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/e3-singularity.html">Singularity</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-envs.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/launch-envs.html">Package managers</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -357,16 +360,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/p0-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Computational environments</span></a>
+ <span class="menu-text">HPC Launch</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -374,73 +371,176 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/e1-fair_envs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FAIR environments</span></a>
+  <a href="../workshop/launch-requirements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to the HPC-Launch workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Day 1</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-access.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HPC setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/e2-docker.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Docker</span></a>
+  <a href="../workshop/launch-transfers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HPC file transfers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/e3-singularity.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Singularity</span></a>
+  <a href="../workshop/launch-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git and Github</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/e4-RDM_containers.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">RDM for containers</span></a>
+  <a href="../workshop/launch-cookiecutter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project structure</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/cheat_sheet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cheat sheet</span></a>
+  <a href="../workshop/launch-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Knowledge Checks</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
+          <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Pipeline languages</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Day 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/p1-fair_workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FAIR computational pipelines</span></a>
+  <a href="../workshop/launch-envs.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Package managers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/p2-smk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Snakemake</span></a>
+  <a href="../workshop/launch-jobs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Queueing systems</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">HPC Pipes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-requirements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to the HPC-Pipes workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Day 1</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-ex-envs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 1 - Part 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/p3-nextflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Nextflow</span></a>
+  <a href="../workshop/pipes-ex-smk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 1 - Part 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Day 2</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-ex-smk-self.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 2 - Part 3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/p4-workflow_envs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workflows &amp; environments</span></a>
+  <a href="../workshop/pipes-ex-smk-fast.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 2 - Part 4</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../develop/exercise_pipes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exercises</span></a>
+  <a href="../workshop/pipes-ex-nf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 2 - Part 5</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">UCloud setup</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/UCloud.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">UCloud project workspace</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/slides/slides_ssh.html" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">SSH on UCloud</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/slides/slides_github.html" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">GitHub on UCloud</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/slides/slides_conda.html" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Conda on UCloud</span></a>
   </div>
 </li>
       </ul>
@@ -450,37 +550,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#building-sif-images" id="toc-building-sif-images" class="nav-link active" data-scroll-target="#building-sif-images">Building SIF images</a></li>
-  <li><a href="#using-docker-images" id="toc-using-docker-images" class="nav-link" data-scroll-target="#using-docker-images">Using Docker images</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../develop/e1-fair_envs.html">Computational environments</a></li><li class="breadcrumb-item"><a href="../develop/e3-singularity.html">Singularity</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-envs.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/launch-envs.html">Package managers</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Singularity</h1>
+<h1 class="title">Package managers</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    
-  
     <div>
-    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">May 1, 2026</p>
+             <p>Alba Refoyo </p>
+             <p>Jennifer Bartell </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 1, 2026</p>
     </div>
   </div>
+  
     
   </div>
   
@@ -489,110 +587,203 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-warning callout-titled" title="Requirements">
+<section id="software-management-on-ucloud" class="level2">
+<h2 class="anchored" data-anchor-id="software-management-on-ucloud">Software management on UCloud</h2>
+<!-- ## UCloud and the Sandbox project workspace
+1. **Create a UCloud account**. You need a Danish university ID so you can sign on to UCloud via WAYF^[Other institutions (e.g. hospitals, libraries, ...) can log on through WAYF. See all institutions [here](https://www.wayf.dk/da/institutioner-i-wayf).]
+
+ <p align="center">
+  <a href="https://cloud.sdu.dk" target="_blank" style="display: inline-block; background-color: #4266A1; color: #FFFFFF; padding: 30px 30px; border-radius: 20px; font-weight: bold;">
+    for UCloud Access
+    click here
+  </a>
+</p>
+
+2. **Use our workspace**. Click the invite link below to accept the invitation to the Sandbox workspace:
+
+
+<div style="text-align: center; margin-top: 20px;">
+  <a href="https://cloud.sdu.dk/app/projects/invite/2eeabcd0-3d78-440e-a1be-425814d1da8a" target="_blank" style="display: inline-block; background-color: #4266A1; color: #FFFFFF; padding: 30px 30px; border-radius: 20px; font-weight: bold;">
+    Ucloud invite to the Sandbox workspace
+  </a>
+</div -->
+<ul>
+<li><p>Every app comes with its pre-defined installed software on UCloud</p></li>
+<li><p>The <code>Terminal</code> app has <strong>no preinstalled (bio)software</strong></p></li>
+<li><p>You can install and manage your <strong>software and its dependencies</strong> using virtual environments</p></li>
+</ul>
+<section id="virtual-environments" class="level3">
+<h3 class="anchored" data-anchor-id="virtual-environments">Virtual environments</h3>
+<p>Each project needs specific software versions dependent on each other for <strong>reproducibility</strong> - without interfering with other projects.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Definition">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Requirements
+<span class="screen-reader-only">Note</span>Definition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ul>
-<li>Install <a href="https://docs.sylabs.io/guides/3.5/user-guide/quick_start.html#quick-installation-steps">singularity</a></li>
-<li>Read the <a href="https://docs.sylabs.io/guides/3.5/user-guide/introduction.html">documentation</a></li>
-</ul>
-</div>
-</div>
-<section id="building-sif-images" class="level2">
-<h2 class="anchored" data-anchor-id="building-sif-images">Building SIF images</h2>
-<p>The equivalent to a <em>Dockerfile</em> for singularity is <em>Singularity definition file</em> where the instructions for the image are specified.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Bootstrap:</span> docker</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">From:</span> debian:stable</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Stage:</span> build</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">%post</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> update <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> install <span class="at">-y</span> jupyter-notebook python3-matplotlib python3-pandas python3-numpy</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">%labels</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Author</span> Name Surname <span class="op">&lt;</span>abc123@ku.dk<span class="op">&gt;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Version</span> v1.0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build the image</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> build <span class="at">--fakeroot</span>  <span class="op">&lt;</span>my-app<span class="op">&gt;</span>.sif <span class="op">&lt;</span>my-app<span class="op">&gt;</span>.def</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the container </span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> run <span class="op">&lt;</span>my-app<span class="op">&gt;</span>.sif jupyter-notebook </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-default callout-note callout-titled" title="Tips">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Tips
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Limitations</p>
-<ul>
-<li>Keep in mind that Singularity always operates using your user ID, meaning you cannot switch to the root user inside a Singularity container. This will cause troubles when installing package managers like <code>apt</code>.</li>
-<li>SIF images are not writable by default.</li>
-</ul>
-<p>Solution</p>
-<ul>
-<li><code>--fakeroot</code> option is used to create a container image with root-like permissions without requiring actual root access on the host system. This is particularly useful for users who need to build or modify containers (installing software) in environments where they do not have superuser privileges.</li>
-</ul>
+<p>A <strong>virtual environment</strong> keeps project-specific software and its dependencies separated.</p>
+<p>A <strong>package manager</strong> is a software that can retrieve, download, install, and upgrade packages <strong>easily and reliably</strong>.</p>
 </div>
 </div>
 </section>
-<section id="using-docker-images" class="level2">
-<h2 class="anchored" data-anchor-id="using-docker-images">Using Docker images</h2>
-<p>Let’s use the same docker image as in the Docker section.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># creates a sif </span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's check a couple commands on the host machine  (as we did in the previous module)</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">gzip</span> <span class="at">--version</span> <span class="co"># same as docker</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span> <span class="co"># vagrant (macß) different</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span> <span class="co"># vagrant (docker is root)</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># deploy the container  </span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> shell debian@sha256_2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912.sif</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Install filter in the container </span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> install filter</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative command to install filter</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec docker://debian@sha256:2171c87301e5ea528cee5c2308a4589f8f2ac819d4d434b679b7cb1dc8de6912 bash <span class="at">-c</span> <span class="st">"apt install filter 2&gt;&amp;1 || true "</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="callout callout-style-default callout-tip callout-titled">
+</section>
+<section id="conda" class="level2">
+<h2 class="anchored" data-anchor-id="conda">Conda</h2>
+<p>Conda is <strong>both</strong> a virtual environment and a package manager.</p>
+<ul>
+<li>easy to use and understand</li>
+<li>can handle quite big environments</li>
+<li>environments are easily shareable</li>
+<li>a <a href="https://anaconda.org">large archive</a> (Anaconda) of packages</li>
+<li>active community of people archiving their packages on Anaconda</li>
+</ul>
+<hr>
+<p>A package manager puts together the dependency trees of requested packages to find all compatible dependency versions.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/condatree.png" class="img-fluid figure-img" width="800"></p>
+<figcaption>Figure: A package’s dependency tree with required versions on the edges</figcaption>
+</figure>
+</div>
+<hr>
+<p>To install a specific package in your environment, search for it on <a href="https://anaconda.org">anaconda.org</a>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/anaconda1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="800"></p>
+</figure>
+</div>
+<p> </p>
+<div class="callout callout-style-default callout-note callout-titled" title="Channels">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+<span class="screen-reader-only">Note</span>Channels
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The docker tag (<code>docker://</code>) step is required as singularity has sometimes trouble handling the sha256, image description.</p>
-<p>Other important information to consider:</p>
+<p>Packages are archived in channels. <code>conda-forge</code> and <code>bioconda</code> include most of the packages for bioinformatics and data science.</p>
+<p><code>conda-forge</code> packages are often the most up-to-date.</p>
+</div>
+</div>
+<hr>
+<section id="part-1.-exploring-an-existing-environment" class="level3">
+<h3 class="anchored" data-anchor-id="part-1.-exploring-an-existing-environment">Part 1. Exploring an existing environment</h3>
+<p>Let’s open the Terminal app. Since Conda is not pre-installed in the Terminal app on UCloud, we will need to:</p>
+<ol type="1">
+<li>Mount a drive with a pre-installed Miniconda setup.</li>
+<li>Run a bash script to add conda to the search path.</li>
+</ol>
+<p><img src="./images/ucloud_setup.png" class="img-fluid"></p>
+<hr>
+<p><strong>We will run the following commands to get familiar with Conda environments.</strong></p>
 <ul>
-<li>Singularity Hub is no longer maintained. Alternatives: git-annex for hosting images.</li>
-<li>SIF images are much smaller than Docker images.</li>
+<li>What is the conda version?</li>
 </ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> info</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Check the name of all the different environments available to you.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Let’s explore one of the environments. To do this, let’s activate <code>hpclab-env</code> environment</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate hpclab-env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+<ul>
+<li>How many packages are available in this environment?</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list <span class="kw">|</span><span class="fu">grep</span> <span class="at">-v</span> <span class="st">'#'</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Imagine you need to share your environment with a collaborator so they can replicate your analysis. How do we do this?</p>
+<ul>
+<li>Export the environment specifications and save them to your personal drive (e.g., <yourname-hpclab>.yml)</yourname-hpclab></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="at">--from-history</span> <span class="op">&gt;</span> <span class="op">&lt;</span>yourname-hpclab<span class="op">&gt;</span>.yml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Deactivate the environment.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="part-2-building-your-conda-environment" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-building-your-conda-environment">Part 2: Building your conda environment</h3>
+<p>Let’s create a new directory in your personal drive:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="op">&lt;</span>path-to-personal-drive<span class="op">&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> envs </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Now, add a new environment using the argument <code>--prefix PATH</code> (e.g., <code>/work/&lt;YourNameSurname#xxxx&gt;/envs/&lt;name-env&gt;</code>). We need to do this as miniconda is installed in a directory that you don’t have write rights to.</p>
+<p>Locally, you would typically run the command: <code>conda create --name &lt;myenv&gt;</code></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
 </div>
 </div>
-<!--
-```{.bash title="Singularity on MAC OS"}
-export VM=sylabs/singularity-3.0-ubuntu-bionic64 && \
-vagrant init $VM && \
-vagrant up && \
-vagrant ssh
-```
--->
+<div class="callout-body-container callout-body">
+<p>Always specify the location using <code>--prefix PATH</code> regardless of the UCloud app you use, especially if the app has conda pre-installed (e.g.&nbsp;Jupyterlab). The path must be on your personal drive or a shared drive with colleagues that you have access to. Otherwise, the environment won’t be saved, as you’re working within a temporary container instance.</p>
+</div>
+</div>
+<hr>
+<ul>
+<li>Create the environment</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--prefix</span> /work/<span class="op">&lt;</span>NameSurname#xxxx<span class="op">&gt;</span>/envs/<span class="op">&lt;</span>test-env<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Confirm the environment location</li>
+</ul>
+<pre><code>Proceed ([y]/n)? y</code></pre>
+<ul>
+<li>Double-check that the new environment exists</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Activate the env</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate <span class="op">&lt;</span>myenv<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>By default, we won’t have conda-forge or bioconda added to the environment. Let’s fix this.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--remove</span> channels defaults</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels bioconda </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels conda-forge</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+<ul>
+<li>Add the latest Python version to the environment</li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Search available versions</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-filename="Search available versions"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> search python </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Install the latest</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-filename="Install the latest"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install python=3.13.2 </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ul>
+<li>Install samtools, a tool for manipulating DNA sequencing data</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> bioconda samtools</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Uninstall samtools</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove samtools </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Deactivate your environment</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->

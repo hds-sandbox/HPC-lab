@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>pipes-ex-smk-self – HPC Lab</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,14 +74,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-47622e22ebe8bf406fd0e3741e261aa5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-83c8fe0dc834bcf5c02d922e0e7b98cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-47622e22ebe8bf406fd0e3741e261aa5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-198383c28e94e56e1812d048be91cd65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9c2ca81c002af579fc311bcf98e6e3e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-198383c28e94e56e1812d048be91cd65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -282,7 +285,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="http://hds-sandbox.github.io/" class="navbar-brand navbar-brand-logo">
-    <img src="../img/logo.png" alt="" class="navbar-logo">
+    <img src="../img/logo.png" alt="" class="navbar-logo light-content">
+    <img src="../img/logo.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="http://hds-sandbox.github.io/">
     <span class="navbar-title">HPC Lab</span>
@@ -357,12 +361,162 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">UCloud setup</span></a>
+ <span class="menu-text">HPC Launch</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-requirements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to the HPC-Launch workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Day 1</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-access.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HPC setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-transfers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HPC file transfers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git and Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-cookiecutter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project structure</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Knowledge Checks</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Day 2</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-envs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Package managers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-jobs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Queueing systems</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">HPC Pipes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-requirements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to the HPC-Pipes workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Day 1</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-ex-envs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 1 - Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-ex-smk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 1 - Part 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+ <span class="menu-text">Day 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-ex-smk-self.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Day 2 - Part 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-ex-smk-fast.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 2 - Part 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-ex-nf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 2 - Part 5</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">UCloud setup</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/UCloud.html" class="sidebar-item-text sidebar-link">
@@ -387,104 +541,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Conda on UCloud</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">HPC Launch</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/launch-requirements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome to the HPC-Launch workshop</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/cookiecutter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Managing data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/exercise_launch.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Knowledge Checks</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">HPC Pipes</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-requirements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome to the HPC-Pipes workshop</span></a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Day 1</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-envs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 1 - Part 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-smk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 1 - Part 2</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
- <span class="menu-text">Day 2</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-smk-self.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Day 2 - Part 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-smk-fast.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 2 - Part 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-nf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 2 - Part 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
       </ul>
   </li>
     </ul>
@@ -560,9 +616,9 @@ Local Setup
 <li><code>shared/hpclab-workshop</code>: contains input files and scripts. You can read-only access from this directory (no write permissions).</li>
 </ul>
 <p>Next, activate <code>snakemake</code> environment.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure no env is active!</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snakemake </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snakemake </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Finally, navigate to your personal drive and use the project directory you created yesterday to save all the output files from the exercises!</p>
 </div>
 <div id="locally" class="tab-pane fade" role="tabpanel" aria-labelledby="locally-tab">
@@ -592,12 +648,12 @@ Tip
 </div>
 <p>In this section, we will be working with a tabulated metadata file, <code>samples_EB.tsv</code>, which documents samples from a project on bearded seals (sp. <em>Erignathus barbatus</em>). Each row represents a sample, and the columns contain various attributes for that sample. The file is designed to be simple and small, making it easy to work with and manipulate across tasks. However, the specifics of the data aren’t the primary focus.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-What information is available in the metadata columns?
+<span class="screen-reader-only">Note</span>What information is available in the metadata columns?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -631,7 +687,7 @@ What information is available in the metadata columns?
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-I - Build your pipeline from scratch
+<span class="screen-reader-only">Exercise</span>I - Build your pipeline from scratch
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -657,15 +713,15 @@ I - Build your pipeline from scratch
 <li><strong>File creation</strong>: You will need to create two files for this exercise:
 <ul>
 <li><p>Open a new file named <code>step1_wf.smk</code> in the <code>rules</code> dir and include the following two lines of code:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># -*- coding: utf-8 -*-</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># -*- coding: utf-8 -*-</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-What are those lines for?
+<span class="screen-reader-only">Hint</span>What are those lines for?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -687,7 +743,7 @@ What are those lines for?
 <div class="code-with-filename-file">
 <pre><strong>preprocess.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb3" data-filename="preprocess.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="preprocess.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># -*- coding: utf-8 -*-</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
@@ -701,12 +757,12 @@ What are those lines for?
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    input_file <span class="op">=</span> sys.argv[<span class="dv">1</span>]  <span class="co"># First argument: input file</span></span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    output_file <span class="op">=</span> sys.argv[<span class="dv">2</span>]  <span class="co"># Second argument: output file</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    preprocess(input_file, output_file)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    preprocess(input_file, output_file)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div></li>
 </ul></li>
 </ul>
 <p>Your directory layout should look like this:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Project structure  </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Project structure  </span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mypersonaldrive/</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> envs/</span>
@@ -719,7 +775,7 @@ What are those lines for?
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> rules/</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│</span>   ├── step1_wf.smk </span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> scripts </span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="ex">└──</span> preprocess.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="ex">└──</span> preprocess.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="part-1-writing-the-first-rule" class="level5">
 <h5 class="anchored" data-anchor-id="part-1-writing-the-first-rule">Part 1: Writing the first rule</h5>
@@ -739,37 +795,37 @@ What are those lines for?
 <div class="code-with-filename-file">
 <pre><strong>step1_wf.smk</strong></pre>
 </div>
-<div class="sourceCode" id="cb5" data-filename="step1_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rule firstrule:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" data-filename="step1_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>rule firstrule:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">input</span>: <span class="st">"/path/to/input"</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  output: <span class="st">"/path/to/output"</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  shell: </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"somecommand {output}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"somecommand {output}"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Your rule should replicate the behavior of the bash script shown below.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb6" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">INFILE</span><span class="op">=</span><span class="st">"/work/HPCLab_workshop/data/samples_EB.tsv"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">INFILE</span><span class="op">=</span><span class="st">"/work/HPCLab_workshop/data/samples_EB.tsv"</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">OUTPUT</span><span class="op">=</span><span class="st">"/work/&lt;nameSurname#xxx&gt;/hpclab/results_eb/samples_EB_cleaned.tsv"</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This is what the pipeline's task is:</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/preprocess.py <span class="va">$INFILE</span> <span class="va">$OUTFILE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/preprocess.py <span class="va">$INFILE</span> <span class="va">$OUTFILE</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="running-the-workflow" class="level6">
 <h6 class="anchored" data-anchor-id="running-the-workflow">Running the workflow</h6>
 <p>All set! You’re ready to run the workflow now. As a best practice, we recommend starting with a dry-run to ensure everything works correctly before executing the full workflow:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> rules/step1_wf.smk <span class="at">-n</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> rules/step1_wf.smk <span class="at">-n</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>If there are no errors, go ahead and run it!</strong>. Since this workflow contains only one rule, defining the target (e.g., through <code>rule all</code> or using the name of the rule) is unnecessary—snakemake will execute the <code>preprocess rule</code> directly with the following command:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> rules/step1_wf.smk <span class="at">-c1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> rules/step1_wf.smk <span class="at">-c1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Did the pipeline create the expected output file in the <code>results</code> folder? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution S.1
+<span class="screen-reader-only">Hint</span>Solution S.1
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -781,7 +837,7 @@ Solution S.1
 <div class="code-with-filename-file">
 <pre><strong>step1_wf.smk</strong></pre>
 </div>
-<div class="sourceCode" id="cb9" data-filename="step1_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>rule preprocess:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-filename="step1_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>rule preprocess:</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">input</span>:</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"/work/HPCLab_workshop/data/samples_EB.tsv"</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  output:</span>
@@ -789,7 +845,7 @@ Solution S.1
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  shell:</span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">    python scripts/preprocess.py {input} {output}</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -802,12 +858,12 @@ Solution S.1
 <h5 class="anchored" data-anchor-id="part-2-generalising-the-rule">Part 2: Generalising the rule</h5>
 <p>What if we wanted to run this same rule for the dataset used in the previous Snakemake exercise? <strong>How could we modify the rule (and so, the workflow) to accommodate other datasets?</strong></p>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Details about the previous dataset
+<span class="screen-reader-only">Hint</span>Details about the previous dataset
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -837,12 +893,12 @@ Details about the previous dataset
 <p>Let’s explore other commands! You can force a run in Snakemake even if the output file already exists by using the <code>--force</code> option in your command. Try it out!</p>
 <p><strong>Did Snakemake rerun the workflow and successfully produce the output file again?</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution S.2
+<span class="screen-reader-only">Hint</span>Solution S.2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -854,7 +910,7 @@ Solution S.2
 <div class="code-with-filename-file">
 <pre><strong>step1_wf.smk</strong></pre>
 </div>
-<div class="sourceCode" id="cb10" data-filename="step1_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rule preprocess:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-filename="step1_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>rule preprocess:</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">input</span>:</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"/work/HPCLab_workshop/data/samples_{dataset}.tsv"</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  output:</span>
@@ -862,16 +918,16 @@ Solution S.2
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  shell:</span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">    python scripts/preprocess.py {input} {output}</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb11" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dry-run </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dry-run </span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> rules/step1_wf.smk <span class="at">-n</span> results/samples_EB_cleaned.tsv</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># force re-running preprocess step </span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> rules/step1_wf.smk <span class="at">--force</span> <span class="at">-c1</span> results/samples_EB_cleaned.tsv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> rules/step1_wf.smk <span class="at">--force</span> <span class="at">-c1</span> results/samples_EB_cleaned.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -886,7 +942,7 @@ Solution S.2
 <div class="code-with-filename-file">
 <pre><strong>option1.smk</strong></pre>
 </div>
-<div class="sourceCode" id="cb12" data-filename="option1.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rule <span class="bu">all</span>:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-filename="option1.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rule <span class="bu">all</span>:</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">input</span>:</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">"ds1.file.A.gz"</span>,</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"ds2.file.A.gz"</span>,</span>
@@ -898,29 +954,29 @@ Solution S.2
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    output:</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>        <span class="co">"{dataset}/file.{group}.gz"</span></span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    shell:</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">"somecommand {input} &gt; {output}"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">"somecommand {input} &gt; {output}"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Alternatively, you can use a Python list to define the inputs:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>option2.smk</strong></pre>
 </div>
-<div class="sourceCode" id="cb13" data-filename="option2.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>DATASETS <span class="op">=</span> [<span class="st">"ds1"</span>, <span class="st">"ds2"</span>, <span class="st">"ds3"</span>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-filename="option2.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>DATASETS <span class="op">=</span> [<span class="st">"ds1"</span>, <span class="st">"ds2"</span>, <span class="st">"ds3"</span>]</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>rule <span class="bu">all</span>:</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">input</span>:</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        [<span class="ss">f"</span><span class="sc">{</span>dataset<span class="sc">}</span><span class="ss">/file.A.gz"</span> <span class="cf">for</span> dataset <span class="kw">in</span> DATASETS]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        [<span class="ss">f"</span><span class="sc">{</span>dataset<span class="sc">}</span><span class="ss">/file.A.gz"</span> <span class="cf">for</span> dataset <span class="kw">in</span> DATASETS]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>But how does it look if we use a helper function, e.g., <code>expand()</code>:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>option3.smk</strong></pre>
 </div>
-<div class="sourceCode" id="cb14" data-filename="option3.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>DATASETS<span class="op">=</span>[<span class="st">"ds1"</span>, <span class="st">"ds2"</span>, <span class="st">"ds3"</span>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-filename="option3.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>DATASETS<span class="op">=</span>[<span class="st">"ds1"</span>, <span class="st">"ds2"</span>, <span class="st">"ds3"</span>]</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>rule <span class="bu">all</span>:</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">input</span>:</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        expand(<span class="st">"</span><span class="sc">{dataset}</span><span class="st">/file.A.gz"</span>, dataset<span class="op">=</span>DATASETS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        expand(<span class="st">"</span><span class="sc">{dataset}</span><span class="st">/file.A.gz"</span>, dataset<span class="op">=</span>DATASETS)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In all cases, for each dataset in the Python list <code>DATASETS</code>, the file <code>{dataset}/file.A.gz</code> is requested. Snakemake will recognise that these files can be created by multiple applications (executions) of the rule <code>file_conversion</code>.</p>
 <p>It’s time for you to define the target rule <code>rule all</code> within the Snakefile and utilize helper functions. Instead of using a Python list comprehension to specify input files, please use <code>expand()</code> function!</p>
@@ -932,12 +988,12 @@ Solution S.2
 <p><strong>Does your Snakefile resemble the one in the solution above?</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 <p><strong>Do you get any error if you do a dry-run?</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution S.3
+<span class="screen-reader-only">Hint</span>Solution S.3
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -949,7 +1005,7 @@ Solution S.3
 <div class="code-with-filename-file">
 <pre><strong>step1_wf.smk</strong></pre>
 </div>
-<div class="sourceCode" id="cb15" data-filename="step1_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>DATASETS <span class="op">=</span> [<span class="st">"EB"</span>, <span class="st">"1kgp"</span>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" data-filename="step1_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>DATASETS <span class="op">=</span> [<span class="st">"EB"</span>, <span class="st">"1kgp"</span>]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>rule <span class="bu">all</span>: </span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">input</span>:</span>
@@ -963,7 +1019,7 @@ Solution S.3
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    shell:</span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co">        python scripts/preprocess.py {input} {output}</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -984,7 +1040,7 @@ Solution S.3
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-II - Extend your pipeline
+<span class="screen-reader-only">Exercise</span>II - Extend your pipeline
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -999,12 +1055,12 @@ II - Extend your pipeline
 <div class="code-with-filename-file">
 <pre><strong>example.smk</strong></pre>
 </div>
-<div class="sourceCode" id="cb16" data-filename="example.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>module step1_workflow:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" data-filename="example.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>module step1_workflow:</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    snakefile:</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># You can use plain paths, URL, or host code providers (e.g. GitHub)</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">"path/to/snakefile"</span> <span class="co"># path relative to the current snakefile </span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>use rule <span class="op">*</span> <span class="im">from</span> step1_workflow exclude ruleExtra <span class="im">as</span> step1_<span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>use rule <span class="op">*</span> <span class="im">from</span> step1_workflow exclude ruleExtra <span class="im">as</span> step1_<span class="op">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now it’s time to implement it following these steps:</p>
 <ol type="1">
@@ -1013,12 +1069,12 @@ II - Extend your pipeline
 <li>Dry-run <code>step2_wf.smk</code> using the <code>-p</code> command (<code>--printshellcmds</code>)</li>
 </ol>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution S.4
+<span class="screen-reader-only">Hint</span>Solution S.4
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1030,24 +1086,24 @@ Solution S.4
 <div class="code-with-filename-file">
 <pre><strong>step2_wf.smk</strong></pre>
 </div>
-<div class="sourceCode" id="cb17" data-filename="step2_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" data-filename="step2_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python </span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># -*- coding: utf-8 -*-</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>module step1_wf:</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  snakefile:</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"step1_wf.smk"</span></span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>use rule <span class="op">*</span> <span class="im">from</span> step1_wf <span class="im">as</span> step1_<span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>use rule <span class="op">*</span> <span class="im">from</span> step1_wf <span class="im">as</span> step1_<span class="op">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Did you run these commands:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb18" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rm file</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rm file</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> results/samples_EB_cleaned.tsv</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dry-run </span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> rules/step2_wf.smk <span class="at">-np</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> rules/step2_wf.smk <span class="at">-np</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <pre><code>Building DAG of jobs...
 Job stats:
@@ -1088,22 +1144,22 @@ rule step1_all:
 <div class="code-with-filename-file">
 <pre><strong>filter_year.sh</strong></pre>
 </div>
-<div class="sourceCode" id="cb20" data-filename="filter_year.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="va">INFILE</span><span class="op">=</span><span class="st">"results/samples_EB_cleaned.tsv"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" data-filename="filter_year.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="va">INFILE</span><span class="op">=</span><span class="st">"results/samples_EB_cleaned.tsv"</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="va">OUTFILE</span><span class="op">=</span><span class="st">"results/samples_EB_filtered.tsv"</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="va">CUTOFF</span><span class="op">=</span>2000</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Python script filters the metadata based on the year the samples were collected </span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/filter_year.py <span class="at">-i</span> <span class="va">$INFILE</span> <span class="at">-o</span> <span class="va">$OUTFILE</span> <span class="at">-y</span> <span class="va">$CUTOFF</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/filter_year.py <span class="at">-i</span> <span class="va">$INFILE</span> <span class="at">-o</span> <span class="va">$OUTFILE</span> <span class="at">-y</span> <span class="va">$CUTOFF</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Please, use named inputs (e.g., <code>meta</code> for the input and <code>fi</code> for the output). Named inputs are particularly useful when multiple files are needed for running a software tool.</p>
 <p>You can find the Python file on UCloud: <code>PATH="/work/HPCLab_workshop/scripts/filter_year.py"</code>. Copy it to your <code>scripts</code> directory.</p>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-You want to have a look at the Python code?
+<span class="screen-reader-only">Hint</span>You want to have a look at the Python code?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1115,7 +1171,7 @@ You want to have a look at the Python code?
 <div class="code-with-filename-file">
 <pre><strong>filter_year.py</strong></pre>
 </div>
-<div class="sourceCode" id="cb21" data-filename="filter_year.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21" data-filename="filter_year.py"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># -*- coding: utf-8 -*-</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1143,7 +1199,7 @@ You want to have a look at the Python code?
 <span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    args <span class="op">=</span> parser.parse_args()</span>
 <span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Call the filter function with the parsed arguments</span></span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>    filter_year(args.<span class="bu">input</span>, args.output, args.year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>    filter_year(args.<span class="bu">input</span>, args.output, args.year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1152,12 +1208,12 @@ You want to have a look at the Python code?
 </div>
 <p>Now, run <code>step2_wf.smk</code>. <strong>How many samples got filtered out?</strong> Compared the <code>*_cleaned.tsv</code> vs the <code>*_filtered.tsv</code>. <input class="webex-solveme nospaces" size="1" data-answer="[&quot;2&quot;]"></p>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution S.5
+<span class="screen-reader-only">Hint</span>Solution S.5
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1165,7 +1221,7 @@ Solution S.5
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>rule filter_year:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>rule filter_year:</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">input</span>:</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        meta<span class="op">=</span><span class="st">"results/samples_EB_cleaned.tsv"</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    output:</span>
@@ -1175,7 +1231,7 @@ Solution S.5
 <span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    shell:</span>
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
 <span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="co">        python scripts/filter_year.py -i {input.meta} -o {output.fi} -y {params.cutoff}</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1187,12 +1243,12 @@ Solution S.5
 <h4 class="anchored" data-anchor-id="config-files">Config files</h4>
 <p>Modify your Snakemake workflow to include a YAML configuration file and use it within the <code>filter_year</code> rule. Configuration files are typically located at the top level of the project directory, e.g., <code>hpclab</code> (often alongside the Snakefile). While you usually reuse a pipeline, it’s advisable to create a new config file for each new dataset or project. This approach helps isolate project-specific configurations and avoids modifying the original pipeline.</p>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Not familiar with YAML format? Read this!
+<span class="screen-reader-only">Hint</span>Not familiar with YAML format? Read this!
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1213,8 +1269,8 @@ Not familiar with YAML format? Read this!
 <div class="code-with-filename-file">
 <pre><strong>config_step2.yml</strong></pre>
 </div>
-<div class="sourceCode" id="cb23" data-filename="config_step2.yml"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">year:</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">cutoff:</span> 2000</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23" data-filename="config_step2.yml"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">year:</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">cutoff:</span> 2000</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="2" type="1">
 <li>Define the config file at the top of your Snakefile</li>
@@ -1223,7 +1279,7 @@ Not familiar with YAML format? Read this!
 <div class="code-with-filename-file">
 <pre><strong>step2_wf.smk</strong></pre>
 </div>
-<div class="sourceCode" id="cb24" data-filename="step2_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>configfile:<span class="st">"/path/to/config_step2.yml"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24" data-filename="step2_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>configfile:<span class="st">"/path/to/config_step2.yml"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="3" type="1">
 <li>Modify the <code>filter_year</code> rule</li>
@@ -1232,9 +1288,9 @@ Not familiar with YAML format? Read this!
 <div class="code-with-filename-file">
 <pre><strong>step2_wf.smk</strong></pre>
 </div>
-<div class="sourceCode" id="cb25" data-filename="step2_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rule ...:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25" data-filename="step2_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rule ...:</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  params: </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    cutoff<span class="op">=</span>config[<span class="st">'year'</span>][<span class="st">'cutoff'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    cutoff<span class="op">=</span>config[<span class="st">'year'</span>][<span class="st">'cutoff'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Verify that the workflow functions correctly by testing with various cutoff values. Use the <code>--forceall</code> flag.</p>
 </section>
@@ -1244,12 +1300,12 @@ Not familiar with YAML format? Read this!
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Bonus exercise
+<span class="screen-reader-only">Tip</span>Bonus exercise
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1546,13 +1602,14 @@ window.onload = function() {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

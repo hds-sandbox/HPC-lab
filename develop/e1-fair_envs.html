@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>FAIR environments – HPC Lab</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,14 +74,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-47622e22ebe8bf406fd0e3741e261aa5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-83c8fe0dc834bcf5c02d922e0e7b98cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-47622e22ebe8bf406fd0e3741e261aa5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-198383c28e94e56e1812d048be91cd65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9c2ca81c002af579fc311bcf98e6e3e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-198383c28e94e56e1812d048be91cd65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -281,7 +284,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="http://hds-sandbox.github.io/" class="navbar-brand navbar-brand-logo">
-    <img src="../img/logo.png" alt="" class="navbar-logo">
+    <img src="../img/logo.png" alt="" class="navbar-logo light-content">
+    <img src="../img/logo.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="http://hds-sandbox.github.io/">
     <span class="navbar-title">HPC Lab</span>
@@ -475,7 +479,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 19, 2025</p>
+      <p class="date-modified">May 1, 2026</p>
     </div>
   </div>
     
@@ -519,12 +523,12 @@ Warning
 </p></li>
 <li><p><strong>Kernel mechanisms</strong> such as chroot, namespaces and control groups can also be used for process isolation and resource management.</p>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Kernel mechanisms
+<span class="screen-reader-only">Note</span>Kernel mechanisms
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -541,12 +545,12 @@ Kernel mechanisms
 <li><p><strong>Containerization platforms</strong> (e.g., Docker, Singularity): allow the researcher to package their software and dependencies into a standardized container image.</p></li>
 <li><p><strong>Virtual Machines</strong> (e.g., VirtualBox): can share an entire virtualized computing environment (OS, software and dependencies).</p>
 <div class="callout callout-style-default callout-note callout-titled" title="More on Virtual Machine">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-More on Virtual Machine
+<span class="screen-reader-only">Note</span>More on Virtual Machine
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -597,7 +601,7 @@ More on Virtual Machine
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Mamba vs.&nbsp;conda
+<span class="screen-reader-only">Tip</span>Mamba vs.&nbsp;conda
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -611,7 +615,7 @@ Mamba vs.&nbsp;conda
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Build your mamba environment
+<span class="screen-reader-only">Exercise</span>Build your mamba environment
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -620,7 +624,7 @@ Build your mamba environment
 <div>
 <div class="callout-exercise">
 <p>Follow <a href="https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html">mamba instructions</a> to install it. Let’s also include <code>bioconda</code> and <code>conda-forge</code> channels which will come very handy.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels defaults<span class="kw">;</span> <span class="ex">conda</span> config <span class="at">--add</span> channels bioconda<span class="kw">;</span> <span class="ex">conda</span> config <span class="at">--add</span> channels conda-forge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels defaults<span class="kw">;</span> <span class="ex">conda</span> config <span class="at">--add</span> channels bioconda<span class="kw">;</span> <span class="ex">conda</span> config <span class="at">--add</span> channels conda-forge</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now you are set to create your first environment. Follow these steps:</p>
 <ol type="1">
 <li>Create a new environment named myenv</li>
@@ -631,12 +635,12 @@ Build your mamba environment
 <li>Deactivate the environment</li>
 </ol>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Hint
+<span class="screen-reader-only">Hint</span>Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -645,25 +649,25 @@ Hint
 <div>
 <div class="callout-hint">
 <p>Here are some of the commands you need for the exercise.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use conda or mamba commands </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use conda or mamba commands </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> create <span class="at">-n</span> <span class="op">&lt;</span>ENV-NAME<span class="op">&gt;</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> install <span class="at">--channel</span> <span class="op">&lt;</span>CHANNEL-NAME<span class="op">&gt;</span> --name <span class="op">&lt;</span>ENV-NAME<span class="op">&gt;</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env list</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># mamba init </span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate <span class="op">&lt;</span>ENV-NAME<span class="op">&gt;</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> deactivate </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> deactivate </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+<span class="screen-reader-only">Hint</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -694,24 +698,24 @@ Solution
 </div>
 </div>
 <p>If you have different environments set up for various projects, you can switch between them or run commands directly within a specific environment using:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> run <span class="at">-n</span> <span class="op">&lt;</span>ENV-NAME<span class="op">&gt;</span> python myscript.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> run <span class="at">-n</span> <span class="op">&lt;</span>ENV-NAME<span class="op">&gt;</span> python myscript.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Loading mamba environments in shell scripts
+<span class="screen-reader-only">Important</span>Loading mamba environments in shell scripts
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>If you need to activate an environment in a shell script that will be submitted to SLURM, you must first source Mamba’s configuration file. For instance, to load the <code>myenv</code> environment we created, the script would include the following code:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Always add these two commands to your scripts</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Always add these two commands to your scripts</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="ex">conda</span> shell.bash hook<span class="va">)</span><span class="st">"</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> <span class="va">$CONDA_PREFIX</span>/etc/profile.d/mamba.sh</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># then you can activate the environment</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate myenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> activate myenv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>When jobs are submitted to SLURM, they run in a non-interactive shell where Mamba isn’t automatically set up. By running the <code>source</code> command, you ensure that Mamba’s activate function is available. It’s important to remember that even if the environment is loaded on the login node, the scripts will execute on a different machine (one of the compute nodes). Therefore, always include the command to load the Mamba environment in your SLURM submission scripts.</p>
 </div>
 </div>
@@ -719,12 +723,12 @@ Loading mamba environments in shell scripts
 <h4 class="anchored" data-anchor-id="base-environment">Base environment</h4>
 <p>It is the primary environment that contains the conda package manager itself. It is activated by default unless indicated.</p>
 <p>Your command prompt will show which env is activated within parentheses.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">[username@node-01</span> ~]$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">(</span><span class="ex">base</span><span class="kw">)</span> <span class="ex">[username@node-01</span> ~]$</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To enhance package installation performance, we will update conda to utilize the <code>libmamba solver</code> (check documentation <a href="https://github.com/conda/conda-libmamba-solver">here</a>), which significantly improves the speed of installing multiple packages concurrently.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Installation </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Installation </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-n</span> base <span class="at">--yes</span> conda-libmamba-solver</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># configuration </span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--set</span> solver libmamba </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--set</span> solver libmamba </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -739,7 +743,7 @@ Warning
 </div>
 </div>
 <p>A common practice is to disable the automatic activation of the base environment. There are several reasons but it helps creating a more organized and efficient workflow (e.g.&nbsp;activation time), reduce potential errors (e.g.&nbsp;unintended modifications), and maintain better control over your development environment.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--set</span> auto_activate_base false</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--set</span> auto_activate_base false</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="containers" class="level2">
@@ -793,7 +797,7 @@ Warning
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Docker vs.&nbsp;Singularity
+<span class="screen-reader-only">Note</span>Docker vs.&nbsp;Singularity
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -819,18 +823,18 @@ Docker vs.&nbsp;Singularity
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Installation
+<span class="screen-reader-only">Note</span>Installation
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <ul>
 <li><a href="https://docs.sylabs.io/guides/3.0/user-guide/installation.html#">Singularity installation guides</a></li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You will only need to vagrant init once </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># You will only need to vagrant init once </span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">VM</span><span class="op">=</span>sylabs/singularity-3.0-ubuntu-bionic64 <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">vagrant</span> init <span class="va">$VM</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">vagrant</span> up <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">vagrant</span> ssh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">vagrant</span> ssh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -858,7 +862,7 @@ Tip
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise
+<span class="screen-reader-only">Exercise</span>Exercise
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -868,12 +872,12 @@ Exercise
 <div class="callout-exercise">
 <p>Download a singularity image from one of the two repositories listed above (choose a software like bcftools, bedtools, bowtie2, seqkit…) and run the <code>--help</code> command. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.</p>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Solution
+<span class="screen-reader-only">Hint</span>Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -881,14 +885,14 @@ Solution
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory for our singularity images</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory for our singularity images</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> images</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># download the image</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull images/bowtie2-2.5.4.sif https://depot.galaxyproject.org/singularity/bowtie2%3A2.5.4--he20e202_2</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># run the image: singularity run &lt;PATH-TO-IMAGE&gt; &lt;YOUR COMMANDS&gt;</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> run images/bowtie2-2.5.4.sif bowtie2 <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> run images/bowtie2-2.5.4.sif bowtie2 <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -1198,13 +1202,14 @@ window.onload = function() {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

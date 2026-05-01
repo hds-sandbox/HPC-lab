@@ -6,11 +6,11 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.33">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
 
   <meta name="author" content="Alba Refoyo">
-  <meta name="dcterms.date" content="2025-08-19">
+  <meta name="dcterms.date" content="2026-05-01">
   <title>HPC Lab – Tips UCloud</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -96,7 +99,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
   <link rel="stylesheet" href="styles.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -208,7 +211,7 @@ Alba Refoyo
 </div>
 </div>
 
-  <p class="date">2025-08-19</p>
+  <p class="date">2026-05-01</p>
 </section>
 <section id="syncronizations-downloads-multiple-terminals" class="slide level2">
 <h2>Syncronizations, downloads, multiple terminals</h2>
@@ -248,10 +251,10 @@ Alba Refoyo
 <section id="exercise" class="slide level2">
 <h2>Exercise</h2>
 <p>Log into UCloud. Submit a job using the Terminal app, and mount your personal drive. Once, your job is running, open the terminal and create a folder called <code>sandboxWS</code> containing <code>rsync/data</code> (in your personal drive)</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> sandboxWS/rsync/data</span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> sandboxWS/rsync</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> sandboxWS/rsync/data</span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> sandboxWS/rsync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Create 100 files with extensions <code>fastq</code> and <code>log</code> in the data folder</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> data/file{1..100}.fastq data/file{1..100}.log</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> data/file{1..100}.fastq data/file{1..100}.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
@@ -272,7 +275,7 @@ Alba Refoyo
 </div>
 <p>&nbsp;</p>
 <p>An archive (incremental) copy can be done with the options <code>a</code>. You can add a progress bar with <code>P</code>. You can exclude files: here we want only the ones with <code>fastq</code> extension. Run the command</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> data backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> data backup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will copy all the <code>fastq</code> files in <code>backup/data</code>. You can check with <code>ls</code>.</p>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -291,13 +294,13 @@ Alba Refoyo
 <section class="slide level2">
 
 <p>Change the first ten <code>fastq</code> files with some text:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">10</span><span class="dt">}</span><span class="kw">;</span> <span class="cf">do</span> <span class="bu">echo</span> hello <span class="op">&gt;&gt;</span> data/file<span class="va">$i</span>.fastq<span class="kw">;</span> <span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">10</span><span class="dt">}</span><span class="kw">;</span> <span class="cf">do</span> <span class="bu">echo</span> hello <span class="op">&gt;&gt;</span> data/file<span class="va">$i</span>.fastq<span class="kw">;</span> <span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now, we do not only want to do an incremental copy of those file with <code>rsync</code>, but also keep the previous version of those files. We create a folder to backup those, naming it with date and time (you will find it in your <code>backup</code> directory):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> <span class="dt">\</span></span>
 <span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">--backup</span> <span class="dt">\</span></span>
 <span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">--backup-dir</span><span class="op">=</span>versioning_<span class="va">$(</span><span class="fu">date</span> +%F_%T<span class="va">)</span>/ <span class="dt">\</span></span>
 <span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a>      data <span class="dt">\</span></span>
-<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a>      backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a>      backup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -317,9 +320,9 @@ Alba Refoyo
 
 <h3 id="transfer-between-local-and-remote">Transfer between local and remote</h3>
 <p>You can in the same way transfer and backup data between your local host (your PC, or GenomeDK) and another remote host (another cluster). You need Linux or Mac on the local host. For example, to get on your computer the same <code>fastq</code> files:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> USERNAME@login.genome.au.dk:PATH_TO/advancedGDK/data PATH_TO/backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> USERNAME@login.genome.au.dk:PATH_TO/advancedGDK/data PATH_TO/backup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The opposite can be done uploading data from your computer. For example:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> PATH_TO/data USERNAME@login.genome.au.dk:PATH_TO/backup</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> PATH_TO/data USERNAME@login.genome.au.dk:PATH_TO/backup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>&nbsp;</p>
 <p>All <code>rsync</code> options will work as usual in these cases. You need to type your password if you do not make use of <code>ssh</code> keys.</p>
 </section>
@@ -333,19 +336,19 @@ Alba Refoyo
 <li>the tmux server keeps runninng <strong>without a logged user</strong></li>
 </ul>
 
-<img data-src="img/tmux-server.png" class="quarto-figure quarto-figure-center r-stretch" width="400"></section>
+<img data-src="../workshop/images/tmux-server.png" class="quarto-figure quarto-figure-center r-stretch" width="400"></section>
 <section id="exercise-1" class="slide level2">
 <h2>Exercise</h2>
 <p><code>tmux</code> was a keyboard-only software. But you can set it up also to change windows and panes with the mouse. Simply write this setting on the configuration file:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"set -g mouse"</span> <span class="op">&gt;&gt;</span> ~/.tmux.conf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"set -g mouse"</span> <span class="op">&gt;&gt;</span> ~/.tmux.conf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can start a <code>tmux</code> session anywhere. It is easier to navigate sessions giving them a name. For example start a session called <code>example1</code>:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new <span class="at">-s</span> example1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new <span class="at">-s</span> example1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
 <p>The command will set you into the session automatically. The window looks something like below:</p>
 
-<img data-src="img/tmuxSession.png" class="quarto-figure quarto-figure-center r-stretch" width="600"></section>
+<img data-src="images/tmuxSession.png" class="quarto-figure quarto-figure-center r-stretch" width="600"></section>
 <section class="slide level2">
 
 <p>Now, you are in session <code>example1</code> and have one window, which you are using now. You can split the window in multiple terminals. Try both those combinations of buttons:</p>
@@ -362,7 +365,7 @@ Ctrl + b + ""</code></pre>
 <p>Create a new window with <code>Ctrl + b + c</code>. Or keep right-clicked on the window bar and create a new window.</p>
 <p>You should see another window added in the bottom window bar. Again, switch between windows with your mouse (left-click!)</p>
 <p>In the new window, let’s look at which tmux sessions and windows are open. Run</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> ls</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The output will tell you that session <code>example1</code> is in use (attached) and has 2 windows. Something like this:</p>
 <pre><code>example1: 2 windows (created Wed Apr  2 16:12:54 2025) (attached)</code></pre>
 </section>
@@ -370,7 +373,7 @@ Ctrl + b + ""</code></pre>
 
 <h3 id="launching-separate-downloads-at-the-same-time">Launching separate downloads at the same time</h3>
 <p>Start a new session without attaching to it (<code>d</code> option), and call it <code>downloads</code>:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new-session <span class="at">-d</span> <span class="at">-s</span> downloads</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new-session <span class="at">-d</span> <span class="at">-s</span> downloads</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>verify the session is there with <code>tmux ls</code>.</p>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -386,7 +389,7 @@ Ctrl + b + ""</code></pre>
 </div>
 </div>
 <p>Create a text file with few example files for this workshop to be downloaded.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> https://api.github.com/repos/hds-sandbox/GDKworkshops/contents/Examples/rsync <span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.[] | .download_url'</span> <span class="op">&gt;</span> downloads.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> https://api.github.com/repos/hds-sandbox/GDKworkshops/contents/Examples/rsync <span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.[] | .download_url'</span> <span class="op">&gt;</span> downloads.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
@@ -585,7 +588,7 @@ Ctrl + b + ""</code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -659,13 +662,14 @@ Ctrl + b + ""</code></pre>
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

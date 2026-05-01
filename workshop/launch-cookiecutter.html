@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Managing data – HPC Lab</title>
+<title>Project structure – HPC Lab</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,14 +74,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-47622e22ebe8bf406fd0e3741e261aa5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-83c8fe0dc834bcf5c02d922e0e7b98cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-47622e22ebe8bf406fd0e3741e261aa5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-198383c28e94e56e1812d048be91cd65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9c2ca81c002af579fc311bcf98e6e3e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-198383c28e94e56e1812d048be91cd65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -282,7 +285,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="http://hds-sandbox.github.io/" class="navbar-brand navbar-brand-logo">
-    <img src="../img/logo.png" alt="" class="navbar-logo">
+    <img src="../img/logo.png" alt="" class="navbar-logo light-content">
+    <img src="../img/logo.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="http://hds-sandbox.github.io/">
     <span class="navbar-title">HPC Lab</span>
@@ -334,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">Managing data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-access.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Project structure</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -357,12 +361,162 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">UCloud setup</span></a>
+ <span class="menu-text">HPC Launch</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-requirements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to the HPC-Launch workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Day 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-access.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HPC setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-transfers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">HPC file transfers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-git.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Git and Github</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-cookiecutter.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Project structure</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Knowledge Checks</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Day 2</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-envs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Package managers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-jobs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Queueing systems</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">HPC Pipes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-requirements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to the HPC-Pipes workshop</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Day 1</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-ex-envs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 1 - Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-ex-smk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 1 - Part 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Day 2</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-ex-smk-self.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 2 - Part 3</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-ex-smk-fast.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 2 - Part 4</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-ex-nf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 2 - Part 5</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">UCloud setup</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/UCloud.html" class="sidebar-item-text sidebar-link">
@@ -389,104 +543,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">HPC Launch</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/launch-requirements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome to the HPC-Launch workshop</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/cookiecutter.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Managing data</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../develop/exercise_launch.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Knowledge Checks</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">HPC Pipes</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-requirements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome to the HPC-Pipes workshop</span></a>
-  </div>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Day 1</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-envs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 1 - Part 1</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-smk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 1 - Part 2</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
- <span class="menu-text">Day 2</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-smk-self.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 2 - Part 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-smk-fast.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 2 - Part 4</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-nf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 2 - Part 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
     </ul>
     </div>
     <nav id="TOC" role="doc-toc" class="toc-active">
@@ -511,9 +567,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content column-page-right" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/cookiecutter.html">Managing data</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-access.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Project structure</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Managing data</h1>
+<h1 class="title">Project structure</h1>
 </div>
 
 
@@ -531,6 +587,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Let’s start with some practical exercises focused on implementing tools that will help you with the collect &amp; document data life cycle phase.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Start a new job on UCloud.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Please submit a new job to UCloud, mounting your personal drive (<strong>hpcLaunch</strong> folder) and using the initialization script provided by the course instructors. Follow to the guidelines in <a href="../workshop/UCloud.html">UCloud job setup</a>.</p>
+<p>Once the job is ready, run <code>conda activate hpclab-env</code> in the terminal to access all the required pre-isntalled software.</p>
+</div>
+</div>
 <section id="data-structure-with-cookiecutter" class="level2">
 <h2 class="anchored" data-anchor-id="data-structure-with-cookiecutter">Data structure with cookiecutter</h2>
 <p>Establishing a consistent file structure and naming conventions will help you efficiently manage your data. We will classify your data and data analyses into two distinct types of folders to ensure the data can be used and shared by many lab members while preventing modifications by any individual:</p>
@@ -542,27 +612,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="setting-up-folder-templates">Setting up folder templates</h3>
 <p>Creating a folder template is straightforward with <a href="https://github.com/cookiecutter/cookiecutter">cookiecutter</a> a command-line tool that generates projects from templates (called cookiecutters). You can do it from scratch (see Bonus) or opt for one of our pre-made templates available as a Github repository (recommended for this workshop).</p>
 <p>Let’s give it a try!</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you haven’t yet, please submit a new job to UCloud, mounting your personal drive and using the initialization script provided by the course instructors. Follow to the guidelines in <a href="../workshop/UCloud.html">UCloud job setup</a>.</p>
-<p>Once the job is ready, run <code>conda activate hpclab-env</code> in the terminal to access all the required pre-isntalled software.</p>
-</div>
-</div>
 <div class="callout callout-style-default callout-exercise callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 1: Get familiar with Cookiecutter
+<span class="screen-reader-only">Exercise</span>Exercise 1: Get familiar with Cookiecutter
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -577,7 +633,7 @@ Exercise 1: Get familiar with Cookiecutter
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb1" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cookiecutter</span> https://github.com/hds-sandbox/cookiecutter-template</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cookiecutter</span> https://github.com/hds-sandbox/cookiecutter-template</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="2" type="1">
 <li>Explore the project structure (e.g., <code>ls -l</code>)</li>
@@ -592,7 +648,7 @@ Exercise 1: Get familiar with Cookiecutter
 <div class="code-with-filename-file">
 <pre><strong>Project folder structure</strong></pre>
 </div>
-<div class="sourceCode" id="cb2" data-filename="Project folder structure"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>project<span class="op">&gt;</span>_<span class="op">&lt;</span>keyword<span class="op">&gt;</span>_YYYYMMDD</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="Project folder structure"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;</span>project<span class="op">&gt;</span>_<span class="op">&lt;</span>keyword<span class="op">&gt;</span>_YYYYMMDD</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> data                    <span class="co"># symlinks or shortcuts to the actual data files </span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └── <span class="op">&lt;</span>ID<span class="op">&gt;</span>_<span class="op">&lt;</span>keyword<span class="op">&gt;</span>_YYYYMMDD</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> documents               <span class="co"># docs and files relevant to the project </span></span>
@@ -623,15 +679,15 @@ Exercise 1: Get familiar with Cookiecutter
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  │  └── step1_data_processing.smk</span>
 <span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>  └── pipeline.md</span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> scratch                 <span class="co"># temporary files or workspace for dev </span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> scripts                 <span class="co"># other scripts </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> scripts                 <span class="co"># other scripts </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 2 for non-GitHub users
+<span class="screen-reader-only">Warning</span>Exercise 2 for non-GitHub users
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -642,7 +698,7 @@ Exercise 2 for non-GitHub users
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb3" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/hds-sandbox/cookiecutter-template</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/hds-sandbox/cookiecutter-template</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If you have a GitHub Desktop, click <em>Add</em> and select <em>Clone repository</em> from the options.</p>
 </div>
@@ -654,7 +710,7 @@ Exercise 2 for non-GitHub users
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 2: Use and adapt the Sandbox template
+<span class="screen-reader-only">Exercise</span>Exercise 2: Use and adapt the Sandbox template
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -672,7 +728,7 @@ Exercise 2: Use and adapt the Sandbox template
 </figure>
 </div></li>
 <li><p>Open the Coder app on UCloud (locally, if you don’t have access), copy the URL of your fork and <strong>clone</strong> the repository to your personal drive on UCloud (the URL should look something like https://github.com/your_username/cookiecutter-template):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>your URL to the template<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>your URL to the template<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Access the cloned repository (<code>cd cookiecutter-template</code>) and navigate through the different subdirectories.</p></li>
 <li><p>The Cookiecutter template you just cloned is missing the <code>reports</code> directory and the <code>requirements.txt</code> file. Create these, along with a subdirectory named <code>reports/figures</code>.</p>
 <pre class="plaintext"><code>│...
@@ -681,12 +737,12 @@ Exercise 2: Use and adapt the Sandbox template
 ├── requirements.txt</code></pre></li>
 </ol>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Hint
+<span class="screen-reader-only">Hint</span>Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -695,10 +751,10 @@ Hint
 <div>
 <div class="callout-hint">
 <p>Here’s an example of how to do it. Open your terminal and navigate to your template directory</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="dt">\{\{\ </span>cookiecutter.project_name\ \}\}/  </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="dt">\{\{\ </span>cookiecutter.project_name\ \}\}/  </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> reports </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> requirements.txt</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -712,17 +768,17 @@ Hint
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb7" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cookiecutter</span> cookiecutter-template</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cookiecutter</span> cookiecutter-template</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The command <code>cookiecutter cookiecutter-template</code> will initiate an interactive prompt. Fill up the variables and verify that the new structure (and folders) looks like you would expect. Have any new folders been added, or have some been removed?</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Example bash commands</strong></pre>
 </div>
-<div class="sourceCode" id="cb8" data-filename="Example bash commands"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming the name of the project is 'myproject_sep24'</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> myproject_sep24 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-filename="Example bash commands"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming the name of the project is 'myproject_sep24'</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> myproject_sep24 </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>Optional (for those already familiar with <code>git</code> and <code>GitHub</code>)</strong></p>
+<p><strong>Optional (if you have time)</strong></p>
 <p>The following steps enable version control and make it easy to share the structure with other members of your lab.</p>
 <ol start="6" type="1">
 <li>Commit and push changes when you are done with your modifications.</li>
@@ -742,12 +798,12 @@ Hint
 </div>
 <p>If you’ve completed the tasks quickly and have time left, feel free to tackle the optional final exercise.</p>
 <div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Bonus exercise 2
+<span class="screen-reader-only">Tip</span>Bonus exercise 2
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -765,12 +821,12 @@ Bonus exercise 2
 <li>Step 2: Write a cookiecutter.json file with variables such as project_name and author.</li>
 </ul>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Hint
+<span class="screen-reader-only">Hint</span>Hint
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -778,11 +834,11 @@ Hint
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<div class="sourceCode" id="cb10"><pre class="sourceCode json code-overflow-wrap code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode json code-overflow-wrap code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"project_name"</span><span class="fu">:</span> <span class="st">"MyProject"</span><span class="fu">,</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"author_name"</span><span class="fu">:</span> <span class="st">"Your Name"</span><span class="fu">,</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"A short description of your project"</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -832,7 +888,7 @@ Hint
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 3
+<span class="screen-reader-only">Exercise</span>Exercise 3
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -841,24 +897,24 @@ Exercise 3
 <div>
 <div class="webex-check callout-exercise">
 Q1. Which naming conventions should be used and why?
-<div id="radio_ZTOTKPSYLC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZTOTKPSYLC" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_ZTOTKPSYLC" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_ZTOTKPSYLC" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
+<div id="radio_GEJGPHTURY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GEJGPHTURY" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_GEJGPHTURY" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_GEJGPHTURY" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
 </div>
-<div id="radio_FZMNVLOJOW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FZMNVLOJOW" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_FZMNVLOJOW" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_FZMNVLOJOW" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
+<div id="radio_RIWDYVPOTX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RIWDYVPOTX" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_RIWDYVPOTX" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_RIWDYVPOTX" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
 </div>
-<div id="radio_PRBBQZVWCO" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PRBBQZVWCO" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_PRBBQZVWCO" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_PRBBQZVWCO" value=""> <span>i. run_pipeline:20241203.sh</span></label>
+<div id="radio_PFFVGZIWEM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PFFVGZIWEM" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_PFFVGZIWEM" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_PFFVGZIWEM" value=""> <span>i. run_pipeline:20241203.sh</span></label>
 </div>
 Q2. Which file name is more readable?
-<div id="radio_HKOJUYGZXA" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HKOJUYGZXA" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_HKOJUYGZXA" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_HKOJUYGZXA" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
+<div id="radio_IVRPBDXPLE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IVRPBDXPLE" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_IVRPBDXPLE" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_IVRPBDXPLE" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
 </div>
-<div id="radio_CZHQVEIPYQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CZHQVEIPYQ" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_CZHQVEIPYQ" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_CZHQVEIPYQ" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
+<div id="radio_FVFHCIPREM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FVFHCIPREM" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_FVFHCIPREM" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_FVFHCIPREM" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
 </div>
-<div id="radio_VCANSRWBGT" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_VCANSRWBGT" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_VCANSRWBGT" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_VCANSRWBGT" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
+<div id="radio_QKXKMPSVQF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QKXKMPSVQF" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_QKXKMPSVQF" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_QKXKMPSVQF" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
 </div>
 </div>
 </div>
@@ -872,7 +928,7 @@ Q2. Which file name is more readable?
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Bonus exercise 3
+<span class="screen-reader-only">Tip</span>Bonus exercise 3
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -904,7 +960,7 @@ Bonus exercise 3
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 4
+<span class="screen-reader-only">Exercise</span>Exercise 4
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -921,16 +977,16 @@ Exercise 4
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb11" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------curl-------</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------curl-------</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LH</span> <span class="st">'Accept: application/x-bibtex'</span> https://zenodo.org/api/records/14106454 <span class="dt">\</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">--output</span> meisner_2024.bib</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ------wget-------</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--header</span><span class="op">=</span><span class="st">"Accept: application/x-bibtex"</span> <span class="at">-q</span> <span class="dt">\</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>     https://zenodo.org/api/records/12683372 <span class="at">-O</span> meisner_2024.bib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>     https://zenodo.org/api/records/12683372 <span class="at">-O</span> meisner_2024.bib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Does the content of your <code>*.bib</code> file look like this?</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">@misc{meisner_2024_14106454,</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">@misc{meisner_2024_14106454,</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">author</span>       = {Meisner, Jonas},</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">title</span>        = {Supplemental data for reproducing <span class="st">"Faster model-</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="st">                   based estimation of ancestry proportions"</span>},</span>
@@ -940,7 +996,7 @@ Exercise 4
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">version</span>      = {v0.93.4},</span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">doi</span>          = {10.5281/zenodo.14106454},</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">url</span>          = {https://doi.org/10.5281/zenodo.14106454},</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="4" type="1">
 <li>Scroll down to files and download the software zip file (<code>fastmixture-0.93.4.zip</code>) using the command below:</li>
 </ol>
@@ -948,15 +1004,15 @@ Exercise 4
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
 </div>
-<div class="sourceCode" id="cb13" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://zenodo.org/records/14106454/files/fastmixture-0.93.4.zip <span class="dt">\</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>--output fastmixture.zip </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://zenodo.org/records/14106454/files/fastmixture-0.93.4.zip <span class="dt">\</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>--output fastmixture.zip </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="5" type="1">
 <li><p>Compute md5 hash and enter the value (no white-spaces) <input class="webex-solveme nospaces" size="32" data-answer="[&quot;4b3c22644bd2e1dabbbbab599491a7e5&quot;]"></p></li>
 <li><p>Is your value tha same as the one shown on zenodo <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p></li>
 <li><p>Finally, compute the sha256 digest (with program sha256)</p></li>
 </ol>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sha256sum</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sha256sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>and enter the value <input class="webex-solveme nospaces" size="64" data-answer="[&quot;37c931cf669033054333ae6c2553cc936db7a28aa13ab776c5adfb1c932bc72b&quot;]"></p>
 </div>
 </div>
@@ -964,12 +1020,12 @@ Exercise 4
 </div>
 </div>
 <div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Bonus exercise 4
+<span class="screen-reader-only">Tip</span>Bonus exercise 4
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -981,7 +1037,7 @@ Bonus exercise 4
 <li>Look for the hash of the file <code>hla_prot.fasta</code></li>
 <li>Create a bash script to download the target files (named “dw_resources.sh” in your current directory).</li>
 </ol>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="va">md5file</span><span class="op">=</span><span class="st">"md5checksum.txt"</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the URL of the files to download</span></span>
@@ -993,7 +1049,7 @@ Bonus exercise 4
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the file</span></span>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="va">$url</span> <span class="at">--output</span> <span class="va">$out_filename</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">md5sum</span> <span class="at">--quiet</span> <span class="at">--ignore-missing</span> <span class="at">--check</span> <span class="va">$md5file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">md5sum</span> <span class="at">--quiet</span> <span class="at">--ignore-missing</span> <span class="at">--check</span> <span class="va">$md5file</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We recommend using the argument <code>--quiet</code> as part of your pipeline so that it only prints the errors (it doesn’t print output when success). The <code>--ignore-missing</code> argument is useful because it allows us to use the raw checksums file while skipping files we may not want to download.</p>
 <p><strong>Did you get any error?</strong></p>
 <ol start="4" type="1">
@@ -1290,13 +1346,14 @@ window.onload = function() {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

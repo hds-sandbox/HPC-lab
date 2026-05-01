@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>hpc-ssh_keys – HPC Lab</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,14 +74,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-bddd24def9503d411330f9585fa8015d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-d51d8168a3ae34f3b1ced828148bbad6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-bddd24def9503d411330f9585fa8015d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-07a36fb6fbeb213cea0295e6076f5e5c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-8d0de9805d1cced7692503dd341fcb58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-07a36fb6fbeb213cea0295e6076f5e5c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -284,7 +287,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="http://hds-sandbox.github.io/" class="navbar-brand navbar-brand-logo">
-    <img src="../img/logo.png" alt="" class="navbar-logo">
+    <img src="../img/logo.png" alt="" class="navbar-logo light-content">
+    <img src="../img/logo.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="http://hds-sandbox.github.io/">
     <span class="navbar-title">HPC Lab</span>
@@ -464,7 +468,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 19, 2025</p>
+      <p class="date-modified">May 1, 2026</p>
     </div>
   </div>
     
@@ -493,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-How SSH keys work
+<span class="screen-reader-only">Note</span>How SSH keys work
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -507,8 +511,8 @@ How SSH keys work
 <h4 class="anchored" data-anchor-id="step-1-creating-a-publicprivate-key-pair"><strong>Step 1: Creating a public/private key pair</strong></h4>
 <p>On your (Mac or Linux) workstation, create the public/private key pair. There are several types of keys and by default you will get an RSA pair. When prompted for a passphrase, just hit enter so that you won’t need a password when logging in.</p>
 <p>When prompted, press <code>Enter</code> to store the keys in <code>.ssh/id_rsa</code> (we recommend not to modify this). Press <code>Enter</code> twice again to skip setting a passphrase, which otherwise would require you to enter it each time (e.g.&nbsp;if you set up SSH keys for authentification in GitHub, you will need to enter the passprhase every time you use <code>git push</code> or <code>git pull</code>). This process generates two files: the public key (<code>~/.ssh/id_rsa.pub</code>) and the private key (<code>~/.ssh/id_rsa</code>).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Generating</span> public/private rsa key pair.</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Generating</span> public/private rsa key pair.</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> file in which to save the key <span class="er">(</span><span class="ex">/Users/abc123/.ssh/id_rsa</span><span class="kw">)</span><span class="bu">:</span> </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Created</span> directory <span class="st">'/Users/abc123/.ssh'</span>.</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> passphrase <span class="er">(</span><span class="ex">empty</span> for no passphrase<span class="kw">)</span><span class="bu">:</span> </span>
@@ -528,9 +532,9 @@ How SSH keys work
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="st">|    =.o.= + . +  |</span></span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="st">|    Eo .o+.o .   |</span></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="st">|      . o*+      |</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="st">+----[SHA256]-----+</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="kw">`</span><span class="ex">~/.ssh/id_rsa.pub</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssh-rsa</span> AAAAB3NzaC1yc2EAAAADAQABAAABgQCs3nqhRr7FyB8UKxqQ5mA3Gk60oty5lGdzcpVxjL08QmjLz15X6Odo2EotmJQuzCyYbzPw4Tq404N3NOmVqYywrn03i3kmCnZd5MYq8yi72Zsk9qFfgEt7pxpf5WJ+AWSDXwUkUQK2FFby2RWbi4gwTmRHfkB999j8F3F/d5EpB0llQfxmZWIIrX9ampgxfI8+yTIyeG8gpx5028h1oR5qukEFJk6nAoj5on+/vBqHdc0AVPd6jNoNCDZ6ur4xwUPam8iQ6A4NfbnCVUPa95Wqt+QWEF6Mn4UB1WIvly+blDzg5rVXvd9B685bZjQWfUsxSiRPkhtV6X2yImklt+KjV0ufB/Yl1O+x6S8r2+I41WSxwJNr5h5L588l3GH4ehT79uCtrxiu4zas+4s9OW02Ox3auCfLi1/jp/CJ5IsuLwM/jPBXrgzw+HREKM2gtm9d12gU2b9o9bmASZVhEKqeTb0aRPjcTYYdnjOWUl+pqkdVPyB7mJs8NAQemN/shvM= abc123@c9b1d769db6e</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="st">+----[SHA256]-----+</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="kw">`</span><span class="ex">~/.ssh/id_rsa.pub</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssh-rsa</span> AAAAB3NzaC1yc2EAAAADAQABAAABgQCs3nqhRr7FyB8UKxqQ5mA3Gk60oty5lGdzcpVxjL08QmjLz15X6Odo2EotmJQuzCyYbzPw4Tq404N3NOmVqYywrn03i3kmCnZd5MYq8yi72Zsk9qFfgEt7pxpf5WJ+AWSDXwUkUQK2FFby2RWbi4gwTmRHfkB999j8F3F/d5EpB0llQfxmZWIIrX9ampgxfI8+yTIyeG8gpx5028h1oR5qukEFJk6nAoj5on+/vBqHdc0AVPd6jNoNCDZ6ur4xwUPam8iQ6A4NfbnCVUPa95Wqt+QWEF6Mn4UB1WIvly+blDzg5rVXvd9B685bZjQWfUsxSiRPkhtV6X2yImklt+KjV0ufB/Yl1O+x6S8r2+I41WSxwJNr5h5L588l3GH4ehT79uCtrxiu4zas+4s9OW02Ox3auCfLi1/jp/CJ5IsuLwM/jPBXrgzw+HREKM2gtm9d12gU2b9o9bmASZVhEKqeTb0aRPjcTYYdnjOWUl+pqkdVPyB7mJs8NAQemN/shvM= abc123@c9b1d769db6e</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The public key can be safely displayed <code>cat</code> and shared with any machine where it will function as a personal lock that can be only opened with your private key.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -544,16 +548,16 @@ Tip
 <div class="callout-body-container callout-body">
 <p><strong>Tip 1</strong>: If you provided a passphrase when generating your keys, you would need to enter this passphrase each time you use your private key. The passphrase adds an extra layer of security in case your private key is compromised. For simplicity, we not always recommend using a passphrase unless you are working in environments where people not part of the project might have access.</p>
 <p><strong>Tip 2</strong>: DSA keys should be avoided. <strong>An RSA key with at least 2048 bits should provide sufficient security</strong>. Finally, ecdsa and ed25519 keys are also fine (don’t worry about the number of bits for these keys).</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recommended</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recommended</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> rsa <span class="at">-b</span> 4096</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternative</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <p><strong>Using an existing public/private key pair</strong></p>
 <p>If you already have an SSH key pair, you can use it without generating a new one. To check the details of your existing key, use the <code>ssh-keygen</code> command to display the key’s fingerprint.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-l</span> <span class="at">-f</span> ~/.ssh/id_rsa</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">2048</span> SHA256:7l0HauYJVRaQhuzmti8XEZImnRbzipu3NKGnE6tDFRk grg@t430s <span class="er">(</span><span class="ex">RSA</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-l</span> <span class="at">-f</span> ~/.ssh/id_rsa</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">2048</span> SHA256:7l0HauYJVRaQhuzmti8XEZImnRbzipu3NKGnE6tDFRk grg@t430s <span class="er">(</span><span class="ex">RSA</span><span class="kw">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Alternatively, check the content of the ssh directory:</p>
 <ul>
 <li>Mac/Unix: <code>ls -la ~/.ssh/</code></li>
@@ -580,7 +584,7 @@ Warning
 </ul>
 </div>
 </div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ONLY if you need to start the ssh agent. First, verify it is not already running: </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ONLY if you need to start the ssh agent. First, verify it is not already running: </span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># pgrep -u $USER ssh-agent</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># If that command returns a process ID, your SSH agent is running! If not, run the command below: </span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># eval "$(ssh-agent -s)"</span></span>
@@ -597,14 +601,14 @@ Warning
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_rsa</span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional, verify the keys are loaded</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> <span class="at">-l</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled" title="Other tips">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Other tips
+<span class="screen-reader-only">Note</span>Other tips
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -626,17 +630,17 @@ Other tips
 <p><strong>Step 3: Transferring the key</strong></p>
 <p><strong>A. Transfer the key to GitHub/GitLab</strong></p>
 <p>Copy your SSH public key <code>~/.ssh/id_rsa.pub</code> with your favorite editor, go to your GitHub profile (top left side) &gt; <code>Settings &gt; Access &gt; SSH and GPG keys &gt; New/Add SSH key</code>. You just need to fill up the title (e.g.: Personal laptop) and paste the copied key (e.g.&nbsp;ssh-rsa or ecdsa-xxx).</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mac/Linux: copy key </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mac/Linux: copy key </span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_rsa.pub <span class="kw">|</span> <span class="ex">pbcopy</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_rsa.pub <span class="kw">|</span> <span class="ex">clip</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_rsa.pub <span class="kw">|</span> <span class="ex">clip</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled" title="GitHub Guidelines Links">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-GitHub Guidelines Links
+<span class="screen-reader-only">Note</span>GitHub Guidelines Links
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -651,7 +655,7 @@ GitHub Guidelines Links
 </div>
 <p><strong>B: Transfer the key to a remote server</strong></p>
 <p>Transfer the public part of your key pair to the remote server. This can be done manually, but the easiest way is using <code>ssh-copy-id</code>:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssh-copy-id</span> <span class="at">-i</span> ~/.ssh/id_rsa.pub <span class="op">&lt;</span>userid<span class="op">&gt;</span>@ssh-myserver.dk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ssh-copy-id</span> <span class="at">-i</span> ~/.ssh/id_rsa.pub <span class="op">&lt;</span>userid<span class="op">&gt;</span>@ssh-myserver.dk</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will prompt for a password to authenticate with the remote server in order to copy the file. Once successful though, future logins will use the key pair for authentication, and will not prompt for a password (assuming you login from your workstation, which has the private part of your key pair).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -705,16 +709,16 @@ Warning
 </figure>
 </div>
 <p>Now, open a terminal and run the command:</p>
-<div class="sourceCode" id="cb12" title="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the 4 digits will change everytime you start a new job</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> ucloud@ssh.cloud.sdu.dk <span class="at">-p</span> 2465</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" title="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the 4 digits will change everytime you start a new job</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> ucloud@ssh.cloud.sdu.dk <span class="at">-p</span> 2465</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>If it is the first time you do this, this message will prompt, write <code>yes</code></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">The</span> authenticity of host <span class="st">'[ssh.cloud.sdu.dk]:2465 ([130.225.164.106]:2465)'</span> can<span class="st">'t be established.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash white-background code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">The</span> authenticity of host <span class="st">'[ssh.cloud.sdu.dk]:2465 ([130.225.164.106]:2465)'</span> can<span class="st">'t be established.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="st">ED25519 key fingerprint is SHA256:0Q5WMne+hzOwj5bEfssH/gQrxFDz2fvclCGsQbfLLb8.</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="st">This key is not known by any other names.</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="st">Are you sure you want to continue connecting (yes/no/[fingerprint])?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="st">Are you sure you want to continue connecting (yes/no/[fingerprint])?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Your terminal will look like the image below which means you can starting interacting with the job from the console on your computer. <img src="./images/sshkey_step5.png" class="black-box img-fluid" alt="Copy ssh command"></p>
 <p>The connection can be closed using the command:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
@@ -991,13 +995,14 @@ window.onload = function() {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>hpc-data_transfer – HPC Lab</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,14 +74,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-47622e22ebe8bf406fd0e3741e261aa5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-83c8fe0dc834bcf5c02d922e0e7b98cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-47622e22ebe8bf406fd0e3741e261aa5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-198383c28e94e56e1812d048be91cd65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9c2ca81c002af579fc311bcf98e6e3e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-198383c28e94e56e1812d048be91cd65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -281,7 +284,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="http://hds-sandbox.github.io/" class="navbar-brand navbar-brand-logo">
-    <img src="../img/logo.png" alt="" class="navbar-logo">
+    <img src="../img/logo.png" alt="" class="navbar-logo light-content">
+    <img src="../img/logo.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="http://hds-sandbox.github.io/">
     <span class="navbar-title">HPC Lab</span>
@@ -458,7 +462,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 19, 2025</p>
+      <p class="date-modified">May 1, 2026</p>
     </div>
   </div>
     
@@ -478,12 +482,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>When transferring files between servers, it’s important to ensure that the files are consistent. Differences in file size can occur due to variations in filesystems, but large differences might indicate an issue. Manually checking file sizes in a terminal (<code>ls -lh</code> or <code>du -sh</code>) to determine if a transfer was successful might not be ideal, as it doesn’t guarantee file integrity. Using checksums provides a more reliable verification method.</p>
 <p>You can use md5sum to verify that the file contents are identical on both servers. Run the following command on each server:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">md5sum</span> /path/to/file</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">md5sum</span> /path/to/file</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Using rsync for <strong>efficient file transfers</strong> <code>rsync</code> is a powerful alternative to <code>scp</code> for transferring files. It only sends data if the file has changed, making it more efficient.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transferring files between local machine-server</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transferring files between local machine-server</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avz</span> local/path/to/file user@server:/remote/path/to/file</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Transferring files between servers</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avz</span> server1:/path/to/my_folder server2:/path/to/destination_folder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avz</span> server1:/path/to/my_folder server2:/path/to/destination_folder</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The <code>-avz</code> flags are commonly used together for efficient file synchronization:</p>
 <ul>
 <li><code>-a</code> (archive): preserves symbolic links, permissions, timestamps, groups, owners, and devices while transferring files</li>
@@ -516,14 +520,14 @@ Note
 <li>Timestamp Preservation: Using the -a flag with rsync preserves the modified timestamps of files, which is particularly useful for tools like Snakemake.</li>
 </ul>
 <p>If you prefer using SCP (Secure Copy Protocol) for transferring files between a local and remote host, or between two remote hosts, here are some useful commands:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># copy from local to remote</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># copy from local to remote</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> /home/my_laptop/files.txt username@login.server.dk:/home/username/myproject/</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># If you want to copy an entire folder, use the option -r (recursive copy)</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> /home/my_laptop/myfolder username@login.server.dk:/home/username/myproject/</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># check other options available </span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">--help</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">--help</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="important-rsync-options" class="level4">
 <h4 class="anchored" data-anchor-id="important-rsync-options">Important rsync options:</h4>
@@ -559,12 +563,12 @@ Note
 <h3 class="anchored" data-anchor-id="data-transfer-1">Data transfer</h3>
 <p>To transfer files between UCloud and your local machine, you must first configure your SSH keys. If you haven’t done so already, follow the instructions in <a href="../develop/hpc-ssh_keys.html">the SSH keys section</a>.</p>
 <p>Next, open an application on UCloud (e.g., Terminal) which will display the login command and the <strong>SSH port</strong> for client connections in the job progress view. Note that the SSH port is randomly generated and will be different each time.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run these commands on a terminal in your local machine</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run these commands on a terminal in your local machine</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Files from UCloud to local</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avP</span> <span class="at">-e</span> <span class="st">"ssh -i ~/.ssh/id_rsa -p &lt;port&gt;"</span> ucloud@ssh.cloud.sdu.dk:/work/<span class="op">&lt;</span>path_to_data<span class="op">&gt;</span> ./<span class="op">&lt;</span>path_local_data<span class="op">&gt;</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Files from local to UCloud</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avP</span> <span class="at">-e</span> <span class="st">"ssh -i ~/.ssh/id_rsa -p &lt;port&gt;"</span> ./<span class="op">&lt;</span>path_local_data<span class="op">&gt;</span> ucloud@ssh.cloud.sdu.dk:/work/<span class="op">&lt;</span>path_to_data<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avP</span> <span class="at">-e</span> <span class="st">"ssh -i ~/.ssh/id_rsa -p &lt;port&gt;"</span> ./<span class="op">&lt;</span>path_local_data<span class="op">&gt;</span> ucloud@ssh.cloud.sdu.dk:/work/<span class="op">&lt;</span>path_to_data<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>~/.ssh/id_rsa</code>: path to your SSH private key on the remote host (locally)</li>
 <li><code>&lt;port&gt;</code>: SSH number, which you will find on UCloud</li>
@@ -572,8 +576,8 @@ Note
 <li><code>/work/&lt;path_to_data&gt;/</code>: data must be synchronized to a folder within the default working directory <code>work</code></li>
 </ul>
 <p>To transfer files between two servers, we recommend performing the transfer from a terminal on UCloud. Below is an example of the command for GenomeDK. Please note that this command will prompt you to enter your password, and you may also be asked to complete a two-factor authentication (2FA) process, if enabled.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From genomeDK to Ucloud</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avP</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@login.genome.au.dk:/home/<span class="op">&lt;</span>username<span class="op">&gt;</span>/data /work/<span class="op">&lt;</span>path_to_data<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># From genomeDK to Ucloud</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-avP</span> <span class="op">&lt;</span>username<span class="op">&gt;</span>@login.genome.au.dk:/home/<span class="op">&lt;</span>username<span class="op">&gt;</span>/data /work/<span class="op">&lt;</span>path_to_data<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><code>/work/&lt;path_to_data&gt;/</code>: data must be synchronized to a folder within the default working directory <code>work</code></li>
 <li>Reverse the order of the command if you need to transfer from UCloud to the GenomeDK server.</li>
@@ -854,13 +858,14 @@ window.onload = function() {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

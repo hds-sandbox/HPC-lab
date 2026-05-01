@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Cheat sheet – HPC Lab</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -71,14 +74,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-47622e22ebe8bf406fd0e3741e261aa5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-83c8fe0dc834bcf5c02d922e0e7b98cf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-47622e22ebe8bf406fd0e3741e261aa5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-198383c28e94e56e1812d048be91cd65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9c2ca81c002af579fc311bcf98e6e3e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-198383c28e94e56e1812d048be91cd65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -281,7 +284,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="http://hds-sandbox.github.io/" class="navbar-brand navbar-brand-logo">
-    <img src="../img/logo.png" alt="" class="navbar-logo">
+    <img src="../img/logo.png" alt="" class="navbar-logo light-content">
+    <img src="../img/logo.png" alt="" class="navbar-logo dark-content">
     </a>
     <a class="navbar-brand" href="http://hds-sandbox.github.io/">
     <span class="navbar-title">HPC Lab</span>
@@ -481,7 +485,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">August 19, 2025</p>
+      <p class="date-modified">May 1, 2026</p>
     </div>
   </div>
     
@@ -503,7 +507,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="shell" class="level2">
 <h2 class="anchored" data-anchor-id="shell">SHELL</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># finds the location of a command by searching through the PATH environment variable</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># finds the location of a command by searching through the PATH environment variable</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> <span class="op">&lt;</span>program<span class="op">&gt;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># lists all occurrences of a command found in the PATH</span></span>
@@ -526,21 +530,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="va">$PYTHONPATH</span> <span class="co"># empty by default</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="va">$PYTHONHOME</span> <span class="co"># python libraries</span></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="va">$RHOME</span> <span class="co"># R libraries</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="va">$LD_LIBRARY_PATH</span> <span class="co"># dynamic loader for shared libraries when running a program</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="va">$LD_LIBRARY_PATH</span> <span class="co"># dynamic loader for shared libraries when running a program</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Understanding <code>PYTHONPATH</code></p>
 <ul>
 <li>PYTHONPATH: you can set the $PYTHONPATH environment variable to include additional directories where Python will look for modules and packages. This allows you to extend the search path beyond the default locations and load packages that has been installed in a different directory. It is highly discouraged to mix different versions of libraries and interpreters! as some libraries are complex packages with dependencies.</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PYTHONPATH</span><span class="op">=</span>/path/to/packages/</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PYTHONPATH</span><span class="op">=</span>/path/to/packages/</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># unset the variable </span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">unset</span> <span class="va">PYTHONPATH</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">unset</span> <span class="va">PYTHONPATH</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="pip" class="level2">
 <h2 class="anchored" data-anchor-id="pip">PIP</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> show <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> show <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install <span class="op">&lt;</span>module<span class="op">&gt;</span>      <span class="co"># install the latest version (and dependencies)</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> uninstall <span class="op">&lt;</span>module<span class="op">&gt;</span>    <span class="co"># remove</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> freeze                <span class="co"># output installed packages in requirements.txt format (similar to pip3 list) which can conveniently be used with: pip3 install -r requirements.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> freeze                <span class="co"># output installed packages in requirements.txt format (similar to pip3 list) which can conveniently be used with: pip3 install -r requirements.txt</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We highly recommend to avoid using <code>pip</code> and start using Python virtualenv management tools, <a href="https://pipenv.pypa.io/en/latest/">pipenv</a>.</p>
 <ul>
 <li>Advantages: it will generates and checks file hashes for locked dependencies when installing from <code>Pipfile.lock</code> and it creates a virtualenv in a standard customizable location.</li>
@@ -548,7 +552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="python" class="level2">
 <h2 class="anchored" data-anchor-id="python">PYTHON</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># version info on installed packages</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># version info on installed packages</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> print_imported_modules():</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="im">import</span> sys</span>
@@ -560,19 +564,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"==== Package list after loading pandas ===="</span>)<span class="op">;</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>print_imported_modules()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>print_imported_modules()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="r" class="level2">
 <h2 class="anchored" data-anchor-id="r">R</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>()     <span class="co"># install a given package</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>()     <span class="co"># install a given package</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>()              <span class="co"># loads a given package</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">remove.packages</span>()      <span class="co"># install a given package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">remove.packages</span>()      <span class="co"># install a given package</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We highly recommend using <a href="https://rstudio.github.io/renv/articles/renv.html">renv</a>.</p>
 </section>
 <section id="conda" class="level2">
 <h2 class="anchored" data-anchor-id="conda">CONDA</h2>
 <p>Agnostic package manager</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> info <span class="co"># conda installed version </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> info <span class="co"># conda installed version </span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list <span class="co"># conda installed packages</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list <span class="co"># list all environments</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--name</span> <span class="op">&lt;</span>envname<span class="op">&gt;</span> <span class="co"># create environment</span></span>
@@ -585,24 +589,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> uninstall pkg1 <span class="co"># uninstall package </span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove <span class="at">-n</span> <span class="op">&lt;</span>envname<span class="op">&gt;</span> <span class="co"># conda remove </span></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="at">--from-history</span> <span class="op">&gt;</span> <span class="op">&lt;</span>myenv<span class="op">&gt;</span>.yml <span class="co"># cross-platform compatinle export of env file</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-n</span> <span class="op">&lt;</span>envname<span class="op">&gt;</span> --file <span class="op">&lt;</span>myenv<span class="op">&gt;</span>.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-n</span> <span class="op">&lt;</span>envname<span class="op">&gt;</span> --file <span class="op">&lt;</span>myenv<span class="op">&gt;</span>.yml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="dpkg" class="level2">
 <h2 class="anchored" data-anchor-id="dpkg">DPKG</h2>
 <p>Low-level tool for package management on Debian-based systems</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-S</span> package_name <span class="co"># Seach   </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-S</span> package_name <span class="co"># Seach   </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-I</span> package.deb  <span class="co"># --info</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-L</span> package_name <span class="co"># --list files installed by a package</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-i</span> package.deb  <span class="co"># --install   [requires sudo]</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">-r</span>   <span class="co"># --remove:  Remove debian_package        [requires sudo]</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">--get-selections</span>    <span class="co"># List all the packages known by dpkg and whether they are installed or not</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg</span> <span class="at">--set-selections</span>    <span class="co"># Set which package should be installed     [requires sudo]</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg-query</span> <span class="at">-W</span> <span class="at">-f</span><span class="op">=</span><span class="st">'${Package} == ${Version}\n'</span> <span class="co"># package version </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">dpkg-query</span> <span class="at">-W</span> <span class="at">-f</span><span class="op">=</span><span class="st">'${Package} == ${Version}\n'</span> <span class="co"># package version </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="apt" class="level2">
 <h2 class="anchored" data-anchor-id="apt">APT</h2>
 <p>High-level tool for package management on Debian-based systems. It also handles package dependencies and repositories.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> update                      <span class="co"># Update the package list                  [sudo]</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> search <span class="op">&lt;</span>package_name<span class="op">&gt;</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> show <span class="op">&lt;</span>package_name<span class="op">&gt;</span></span>
@@ -610,27 +614,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> upgrade                     <span class="co"># Upgrade all your packages                [sudo]</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> clean                       <span class="co"># Delete all the .deb you've downloaded (save some space)</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> remove <span class="at">--purge</span> <span class="op">&lt;</span>package_name<span class="op">&gt;</span> <span class="co"># Remove a debian package                  [sudo]</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-cache</span> search keyword <span class="co"># Search for packages containing a keyword.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-cache</span> search keyword <span class="co"># Search for packages containing a keyword.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="docker-commandline" class="level2">
 <h2 class="anchored" data-anchor-id="docker-commandline">Docker</h2>
 <p>Useful commands to build and deploy a Docker image.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull         <span class="co"># download image from a registry e.g. Docker Hub </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull         <span class="co"># download image from a registry e.g. Docker Hub </span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images       <span class="co"># list all Docker images on your local machine</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="op">&lt;</span>image_name<span class="op">&gt;</span>  <span class="co"># creates and starts a new container from the specified Docker image, -it flag means interactive virtual machine which is very useful during the development-phase for testing the container </span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> <span class="op">&lt;</span>my-app<span class="op">&gt;</span>  <span class="co"># build a Docker image form a Dockerfile and a context </span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> tag <span class="op">&lt;</span>my-app<span class="op">&gt;</span> <span class="op">&lt;</span>myrepo/my-app:v1.0<span class="op">&gt;</span> <span class="co"># creates an new alias for an existing Docker image. Useful for versioning</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> push         <span class="co"># upload image from local machine to Docker registry </span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> login        <span class="co"># logs you into a Docker register (after pull and push), username and pw needed</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> login        <span class="co"># logs you into a Docker register (after pull and push), username and pw needed</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Other common commands use in Dockerfiles to clean up the image and reduce its size:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Dockerfile</strong></pre>
 </div>
-<div class="sourceCode" id="cb10" data-filename="Dockerfile"><pre class="sourceCode bash coder-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt-get <span class="at">-y</span> autoclean <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-filename="Dockerfile"><pre class="sourceCode bash coder-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt-get <span class="at">-y</span> autoclean <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt-get</span> <span class="at">-y</span> autoremove <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rm</span> <span class="at">-rf</span> /var/cache/apt/archives/<span class="pp">*</span>deb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rm</span> <span class="at">-rf</span> /var/cache/apt/archives/<span class="pp">*</span>deb</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
@@ -907,13 +911,14 @@ window.onload = function() {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

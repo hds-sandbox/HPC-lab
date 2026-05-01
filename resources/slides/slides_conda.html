@@ -6,12 +6,12 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.33">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
 
   <meta name="author" content="Alba Refoyo">
   <meta name="author" content="Jennifer Bartell">
-  <meta name="dcterms.date" content="2025-08-19">
+  <meta name="dcterms.date" content="2026-05-01">
   <title>HPC Lab – Package managers</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -19,6 +19,9 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -97,7 +100,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
   <link rel="stylesheet" href="styles.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -214,7 +217,7 @@ Jennifer Bartell
 </div>
 </div>
 
-  <p class="date">2025-08-19</p>
+  <p class="date">2026-05-01</p>
 </section>
 <section id="software-management-on-ucloud" class="slide level2">
 <h2>Software management on UCloud</h2>
@@ -318,38 +321,38 @@ Jennifer Bartell
 <ul>
 <li>What is the conda version?</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> info</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> info</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Check the name of all the different environments available to you.</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Let’s explore one of the environments. To do this, let’s activate <code>hpclab-env</code> environment</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate hpclab-env</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate hpclab-env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
 <ul>
 <li>How many packages are available in this environment?</li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list <span class="kw">|</span><span class="fu">grep</span> <span class="at">-v</span> <span class="st">'#'</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list <span class="kw">|</span><span class="fu">grep</span> <span class="at">-v</span> <span class="st">'#'</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Imagine you need to share your environment with a collaborator so they can replicate your analysis. How do we do this?</p>
 <ul>
 <li>Export the environment specifications and save them to your personal drive (e.g., <yourname-hpclab>.yml)</yourname-hpclab></li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="at">--from-history</span> <span class="op">&gt;</span> <span class="op">&lt;</span>yourname-hpclab<span class="op">&gt;</span>.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env export <span class="at">--from-history</span> <span class="op">&gt;</span> <span class="op">&lt;</span>yourname-hpclab<span class="op">&gt;</span>.yml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Deactivate the environment.</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
 <h3 id="part-2-building-your-conda-environment">Part 2: Building your conda environment</h3>
 <p>Let’s create a new directory in your personal drive:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="op">&lt;</span>path-to-personal-drive<span class="op">&gt;</span></span>
-<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> envs </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="op">&lt;</span>path-to-personal-drive<span class="op">&gt;</span></span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> envs </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now, add a new environment using the argument <code>--prefix PATH</code> (e.g., <code>/work/&lt;YourNameSurname#xxxx&gt;/envs/&lt;name-env&gt;</code>). We need to do this as miniconda is installed in a directory that you don’t have write rights to.</p>
 <p>Locally, you would typically run the command: <code>conda create --name &lt;myenv&gt;</code></p>
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -371,7 +374,7 @@ Jennifer Bartell
 <ul>
 <li>Create the environment</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--prefix</span> /work/<span class="op">&lt;</span>NameSurname#xxxx<span class="op">&gt;</span>/envs/<span class="op">&lt;</span>test-env<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--prefix</span> /work/<span class="op">&lt;</span>NameSurname#xxxx<span class="op">&gt;</span>/envs/<span class="op">&lt;</span>test-env<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Confirm the environment location</li>
 </ul>
@@ -379,17 +382,17 @@ Jennifer Bartell
 <ul>
 <li>Double-check that the new environment exists</li>
 </ul>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Activate the env</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate <span class="op">&lt;</span>myenv<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate <span class="op">&lt;</span>myenv<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>By default, we won’t have conda-forge or bioconda added to the environment. Let’s fix this.</li>
 </ul>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--remove</span> channels defaults</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--remove</span> channels defaults</span>
 <span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels bioconda </span>
-<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels conda-forge</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels conda-forge</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section class="slide level2">
 
@@ -400,26 +403,26 @@ Jennifer Bartell
 <div class="code-with-filename-file">
 <pre><strong>Search available versions</strong></pre>
 </div>
-<div class="sourceCode" id="cb13" data-filename="Search available versions"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> search python </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-filename="Search available versions"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> search python </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Install the latest</strong></pre>
 </div>
-<div class="sourceCode" id="cb14" data-filename="Install the latest"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install python=3.13.2 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-filename="Install the latest"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install python=3.13.2 </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li>Install samtools, a tool for manipulating DNA sequencing data</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> bioconda samtools</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> install <span class="at">-c</span> bioconda samtools</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Uninstall samtools</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove samtools </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> remove samtools </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Deactivate your environment</li>
 </ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>
@@ -615,7 +618,7 @@ Jennifer Bartell
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -689,13 +692,14 @@ Jennifer Bartell
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Day 1 - Part 2 – HPC Lab</title>
+<title>HPC file transfers – HPC Lab</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -338,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk.html">Day 1 - Part 2</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-access.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-transfers.html">HPC file transfers</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -375,13 +375,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Day 1</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/launch-access.html" class="sidebar-item-text sidebar-link">
@@ -390,7 +390,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../workshop/launch-transfers.html" class="sidebar-item-text sidebar-link">
+  <a href="../workshop/launch-transfers.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">HPC file transfers</span></a>
   </div>
 </li>
@@ -456,13 +456,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Day 1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/pipes-ex-envs.html" class="sidebar-item-text sidebar-link">
@@ -471,7 +471,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-smk.html" class="sidebar-item-text sidebar-link active">
+  <a href="../workshop/pipes-ex-smk.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Day 1 - Part 2</span></a>
   </div>
 </li>
@@ -549,8 +549,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#a.-general-knowledge" id="toc-a.-general-knowledge" class="nav-link active" data-scroll-target="#a.-general-knowledge">A. General knowledge</a></li>
-  <li><a href="#b.-snakemake" id="toc-b.-snakemake" class="nav-link" data-scroll-target="#b.-snakemake">B. Snakemake</a></li>
+  <li><a href="#syncs-and-transfer-with-rsync" id="toc-syncs-and-transfer-with-rsync" class="nav-link active" data-scroll-target="#syncs-and-transfer-with-rsync">1. Syncs and transfer with <code>rsync</code></a></li>
+  <li><a href="#you-would-have-to-type-your-password-if-you-do-not-make-use-of-ssh-keys" id="toc-you-would-have-to-type-your-password-if-you-do-not-make-use-of-ssh-keys" class="nav-link" data-scroll-target="#you-would-have-to-type-your-password-if-you-do-not-make-use-of-ssh-keys">You would have to type your password if you do not make use of <code>ssh</code> keys!</a></li>
+  <li><a href="#session-management-using-tmux" id="toc-session-management-using-tmux" class="nav-link" data-scroll-target="#session-management-using-tmux">2. Session management using <code>tmux</code></a></li>
+  <li><a href="#collect-share-using-checksums" id="toc-collect-share-using-checksums" class="nav-link" data-scroll-target="#collect-share-using-checksums">3. Collect &amp; share using checksums</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">4. Documentation</a></li>
   </ul>
 </nav>
 </nav>
@@ -562,9 +565,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content column-page-right" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk.html">Day 1 - Part 2</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-access.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-transfers.html">HPC file transfers</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Day 1 - Part 2</h1>
+<h1 class="title">HPC file transfers</h1>
 </div>
 
 
@@ -581,155 +584,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<style>
-:root {
-    --incorrect: rgb(255, 0, 0);
-    --incorrect_alpha: rgba(255, 0, 0, 0.25);
-    --correct: rgb(0, 255, 0);
-    --correct_alpha: rgba(0, 255, 0, 0.25);
-    --highlight: rgb(178, 34, 34);
-}
-  .webex-incorrect, input.webex-solveme.webex-incorrect,
-  .webex-radiogroup label.webex-incorrect {
-    border: 2px dotted var(--incorrect);
-    background-color: var(--incorrect_alpha);
-  }
-  .webex-correct, input.webex-solveme.webex-correct,
-  .webex-radiogroup label.webex-correct {
-    border: 2px dotted var(--correct);
-    background-color: var(--correct_alpha);
-  }
-  .webex-box, .webex-solution.open {
-    border: 2px solid var(--highlight);n  }
-  .webex-solution button, .webex-check-button {
-    background-color: var(--highlight);
-  }
-</style>
-<p>Put your learning to the test with what you’ve covered so far.</p>
-<section id="a.-general-knowledge" class="level2">
-<h2 class="anchored" data-anchor-id="a.-general-knowledge">A. General knowledge</h2>
-<div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<section id="syncs-and-transfer-with-rsync" class="level2">
+<h2 class="anchored" data-anchor-id="syncs-and-transfer-with-rsync">1. Syncs and transfer with <code>rsync</code></h2>
+<p>Lots of options you can find in the manual (would require a workshop only for that). Here is the manual if you want to learn more: https://linux.die.net/man/1/rsync.</p>
+<p>Create a folder system locally <code>hpcLaunch</code> containing <code>rsync/data</code> (in your personal drive)</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> hpcLaunch/rsync/data</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hpcLaunch/rsync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Create 100 files with extensions <code>fastq</code> and <code>log</code> in the data folder:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> data/file{1..100}.fastq data/file{1..100}.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>let’s check the data dir:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="local-to-local-copy" class="level4">
+<h4 class="anchored" data-anchor-id="local-to-local-copy">Local-to-local copy</h4>
+<p>We first use rsync to create a backup copy of the data we just generated.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Exercise</span>I - General knowledge
+Note
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
-<div>
-<div class="webex-check callout-exercise">
-<strong>G.1. What role does a workflow manager play in computational research?</strong>
-<div id="radio_OWPSWZFJAF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_OWPSWZFJAF" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_OWPSWZFJAF" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_OWPSWZFJAF" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_OWPSWZFJAF" value=""> <span>To minimize the reliance on specific software environments</span></label>
-</div>
-<strong>G.2.What is the primary drawback of using shell scripts for automating computations?</strong>
-<div id="radio_ZMPSRHUWVH" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZMPSRHUWVH" value="answer"> <span>Limited error handling and debugging capabilities</span></label><label><input type="radio" autocomplete="off" name="radio_ZMPSRHUWVH" value=""> <span>Difficulty in integrating with notebooks</span></label><label><input type="radio" autocomplete="off" name="radio_ZMPSRHUWVH" value=""> <span>Not compatible with all operating systems</span></label><label><input type="radio" autocomplete="off" name="radio_ZMPSRHUWVH" value="answer"> <span>They re-run all the steps every time</span></label><label><input type="radio" autocomplete="off" name="radio_ZMPSRHUWVH" value=""> <span>Insufficient support for parallel processing</span></label><label><input type="radio" autocomplete="off" name="radio_ZMPSRHUWVH" value=""> <span>Complex and extensive coding for simple tasks</span></label>
-</div>
-<strong>G.3. What are the key features of workflow manager in computational research?</strong> (Several possible solutions)
-<div id="radio_DGCVIDMGUK" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DGCVIDMGUK" value="answer"> <span>Executing tasks only when required</span></label><label><input type="radio" autocomplete="off" name="radio_DGCVIDMGUK" value="answer"> <span>Managing task dependencies</span></label><label><input type="radio" autocomplete="off" name="radio_DGCVIDMGUK" value="answer"> <span>Overseeing storage and resource allocation</span></label><label><input type="radio" autocomplete="off" name="radio_DGCVIDMGUK" value=""> <span>Providing intuitive graphical interfaces</span></label>
-</div>
-<p><strong>G.4. Workflow managers can run tasks (different) concurrently if there are no dependencies</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
-<p><strong>G.5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
+<p>The syntax of <code>rsync</code> is pretty simple:</p>
+<pre><code>rsync OPTIONS ORIGIN(s) DESTINATION</code></pre>
 </div>
 </div>
-</div>
-</div>
-</div>
-</section>
-<section id="b.-snakemake" class="level2">
-<h2 class="anchored" data-anchor-id="b.-snakemake">B. Snakemake</h2>
-<p>In this section, we will be working with a tabulated metadata file, <code>samples_1kgp_test</code>, which contains information about the samples from the <a href="https://www.internationalgenome.org/">1000 Genomes Project</a>. Each row represents a sample, and the columns contain various attributes for that sample (ID, population, super population, and sex). The file is designed to be simple and small, making it easy to work with and manipulate across tasks. However, the specifics of the data aren’t the primary focus.</p>
+<p>An archive (incremental) copy can be done with <code>-a</code> option. You can add a progress bar durint the transfer with <code>-P</code> option. In this exercse, we want to exclude some files from the transfer: we want to keep only those with <code>fastq</code> extension. Run the following command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> data backup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This will copy all the <code>fastq</code> files in <code>backup/data</code>. You can check with <code>ls</code>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>How to run snakemake on UCloud
+Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>First, mount the following two drives, use the <code>setup.sh</code> initialization file, and ask for 2 CPUs so we can run things in parallel:</p>
-<ul>
-<li><code>YourNameSurname#xxxx</code>: save your results/files here.<br>
-</li>
-<li><code>hpclab-workshop</code>: contains input files and scripts. You can read-only access from this directory (no write permissions).</li>
-</ul>
-<p>Next, activate <code>snakemake</code> environment.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure no env is active!</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snakemake </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Using <code>data</code> will copy the entire folder, while <code>data/</code> will copy only its content! This is common to many other UNIX tools.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled">
+<p>Change the first ten <code>fastq</code> files with some text:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">10</span><span class="dt">}</span><span class="kw">;</span> <span class="cf">do</span> <span class="kw">{</span> <span class="bu">echo</span> ATGC<span class="kw">;</span> <span class="bu">echo</span> TCCA<span class="kw">;</span> <span class="bu">echo</span> NNNN<span class="kw">;</span> <span class="bu">echo</span> NNNN } <span class="op">&gt;&gt;</span> data/file<span class="va">$i</span>.fastq<span class="kw">;</span> <span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use <code>less</code> file reader.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Are you running the exercises locally?
+<span class="screen-reader-only">Tip</span>Not familiar with <code>less</code>?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Download the <code>Snakefile</code> and data required for this exercise using the links below if you are running things locally.</p>
-<div style="display: flex; gap: 10px;">
-<p><a href="../develop/scripts/samples_1kgp_test.tsv" download="samples_1kgp.tsv"> <button class="btn small-button">Download data input</button> </a></p>
-<p><a href="../develop/scripts/process_1kgp.smk" download="process_1kgp.smk"> <button class="btn small-button">Download Snakefile</button> </a></p>
-</div>
-<p>Create a folder named <code>data</code> in your working directory and move the input data (<code>samples_1kgp.tsv</code>) inside it. The Snakemake pipeline looks for the input in this location and will fail otherwise. If you prefer, you can instead update the pipeline to point to a different relative path.</p>
+<p><code>less</code> is ideal for exploring large text files—you can scroll using the arrow keys and exit by pressing q.</p>
+<p>Check the documentation (<code>man less</code> or <code>less --help</code>) to learn how to search for specific text within a file.</p>
 </div>
 </div>
-<p>We strongly recommend keeping the <a href="https://snakemake.readthedocs.io/en/stable/">Snakemake documentation</a> open for reference and guidance.</p>
-<div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Exercise</span>II - Exploring rule invocation in Snakemake
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<div>
-<div class="webex-check callout-exercise">
-<p>In this exercise, we will explore how rules are invoked in a Snakemake workflow. The snakemake file is located at: <code>/work/HPCLab_workshop/rules/process_1kgp.smk</code>. Now follow these steps and answer the questions:</p>
-<ol type="1">
-<li><p>Open the snakefile, named <code>process_1kgp.smk</code>, and try to understand every single line. If you request Snakemake to generate the file <code>results/all_female.txt</code>, <strong>what tasks will be executed and in what sequence?</strong></p></li>
-<li><p>Open a terminal and navigate to your personal drive <code>cd /work/YourNameSurname#xxxx</code>. Create a project directory called, for example, <code>hpclab</code> and make it your working directory. You should save all the results here!</p></li>
-<li><p><strong>Dry-run</strong> the workflow: Check the number of jobs that will be executed.</p>
-<p><strong>Q.1. How many jobs will Snakemake run?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;8&quot;]"></p></li>
-<li><p>Run the workflow from the directory <code>hpclab</code> (the one you just created on your personal drive). Use the name flag <code>--snakefile &lt;/path/to/snakefile&gt;.smk --cores 1</code>, or the abbreviated format <code>-s &lt;/path/to/snakefile&gt;.smk -c 1</code>.</p></li>
-<li><p>Please verify that the output has been successfully generated and saved in your working directory (navigate through the project).</p>
-<p><strong>Q.2. Has Snakemake created a subdirectory that didn’t previously exist? What is its name?</strong> <input class="webex-solveme nospaces" size="7" data-answer="[&quot;results&quot;]"></p>
-<p><strong>Q.3. How many files with the extension <code>*.tsv</code> can you find in that subdirectory?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;6&quot;]"></p></li>
-<li><p><strong>Dry-run</strong> the workflow again (from <code>hpclab</code>).</p>
-<p><strong>Q.4. Would Snakemake run any jobs based on the results of the dry-run?</strong></p>
-<div id="radio_SPJZYFKPPK" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_SPJZYFKPPK" value="answer"> <span><strong>No</strong>. There is nothing to be done. All requested files are present and up to date.</span></label><label><input type="radio" autocomplete="off" name="radio_SPJZYFKPPK" value=""> <span><strong>Yes</strong>. Reasons: input files updated by another job (all, combine, split_by_superpop) and output files have to be generated (combine, preprocess, split_by_superpop)</span></label>
-</div></li>
-<li><p>Remove files starting with <code>E</code> in your <code>results</code> folder (“EAS.tsv” and “EUR.tsv”) and <code>all_female.txt</code>. Then, dry-run once more.</p>
-<p><strong>Q.5. How many jobs will Snakemake run?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;4&quot;]"></p></li>
-<li><p>Under your working directory, create a folder named <code>rules</code> and copy the snakefile (<code>process_1kgp.smk</code>) to that folder so you can edit it! Then, open the file and remove lines 13-15. How else can you run the workflow but generate instead <code>all_male.txt</code> using only the command line?</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>process_1kgp.smk</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="process_1kgp.smk"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">13</span> rule all:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">14</span>    input:</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">15</span>       expand<span class="er">(</span><span class="st">"results/all_{sex}.txt"</span><span class="ex">,</span> sex=<span class="pp">[</span><span class="st">"female"</span><span class="pp">]</span><span class="kw">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><strong>Q.6. Tip: what is missing at the end of the command (e.g.&nbsp;what should be added to ensure <code>all_male.txt</code> is generated)? <code>snakemake -s process_1kgp.smk -c1</code></strong> <input class="webex-solveme nospaces" size="20" data-answer="[&quot;results/all_male.txt&quot;]"></p></li>
-<li><p>Let’s add a new rule that concatenates the two files you have generated (<code>all_female.txt</code> and <code>all_male.txt</code>) and saves them into <code>concatenated.txt</code>. Remember, all files should be saved in the <code>results</code> subdir. Hint: <code>cat file1.txt file2.txt &gt; output.txt</code></p></li>
-<li><p>Run the pipeline with your own version of the <code>process_1kgp.smk</code> file.</p></li>
-</ol>
+<p>Then open the file with <code>less</code>, explore its contents, and check which lines contain an <strong>N</strong>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> data/file1.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>While inside <code>less</code>, type <code>/N</code>. Is some text highlighted?</p>
+<p>Finally, count how many lines contain at least one N in <code>file1.fastq</code>, use the command <code>grep</code>.</p>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -744,49 +662,272 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'N'</span> data/file1.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Now, we also want to preserve earlier versions of any files that get updated. To do this, create a backup directory named with the current date and time (it will appear in your <code>backup</code> directory):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> <span class="dt">\</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">--backup</span> <span class="dt">\</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">--backup-dir</span><span class="op">=</span>versioning_<span class="va">$(</span><span class="fu">date</span> +%F_%T<span class="va">)</span>/ <span class="dt">\</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>      data <span class="dt">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>      backup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you create a folder called <code>backup</code> in your project folder, you can use versioning to store your analysis and results with incremental changes.</p>
+</div>
+</div>
+</section>
+<section id="transfer-between-local-and-remote" class="level4">
+<h4 class="anchored" data-anchor-id="transfer-between-local-and-remote">Transfer between local and remote</h4>
+<p>You can use the same approach to transfer and back up data between a local machine (your PC/laptop) and another remote system (in this case, UCloud). You need Linux or Mac on the local host to perform <code>rsync</code>.</p>
+<p>Let’s transfer the <code>fastq</code> files to UCloud:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> PATH_TO/data </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The opposite can be done uploading data from your computer. For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> <span class="at">-e</span> <span class="st">"ssh -i ~/.ssh/id_rsa -p &lt;port&gt;"</span>  PATH_TO/data ucloud@ssh.cloud.sdu.dk:/work/hpcLaunch/data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="you-would-have-to-type-your-password-if-you-do-not-make-use-of-ssh-keys" class="level2">
+<h2 class="anchored" data-anchor-id="you-would-have-to-type-your-password-if-you-do-not-make-use-of-ssh-keys">You would have to type your password if you do not make use of <code>ssh</code> keys!</h2>
+</section>
+<section id="session-management-using-tmux" class="level2">
+<h2 class="anchored" data-anchor-id="session-management-using-tmux">2. Session management using <code>tmux</code></h2>
+<p><code>tmux</code> was originally desgiend as a keyboard-only software. However, you can also configure it to allow switching between windows and panes using the mouse. To enable this, add the following setting to the configuration file:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"set -g mouse"</span> <span class="op">&gt;&gt;</span> ~/.tmux.conf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can start a <code>tmux</code> session anywhere. It is easier to navigate sessions giving them a name.</p>
 <ol type="1">
-<li>Tasks will be executed in this order: preprocess (1), split_by_superpop (5), and combine (1).</li>
+<li>Start a session called <code>example1</code> (or choose a different name!):</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Create subdir </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /work/AlbaRefoyoMartínez#0753/</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> hpclab</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hpclab</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Dry run </span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> /work/HPCLab_workshop/rules/process_1kgp.smk <span class="at">-n</span> </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Run the workflow </span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> HPCLab_workshop/rules/process_1kgp.smk <span class="at">-c1</span> </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Verify output </span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> results/<span class="pp">*</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Dry run </span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> /work/HPCLab_workshop/rules/process_1kgp.smk <span class="at">-n</span> </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Remove file(s) starting with E and the all_female.txt</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> results/E<span class="pp">*</span>.tsv results/all_female.txt</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. Make a copy of the snakefile and remove the lines </span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> rules </span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /work/HPCLab_workshop/rules/process_1kgp.smk rules/</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. S5. rerun again with the &lt;name_output&gt;</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> rules/process_1kgp.smk <span class="at">-c1</span> results/all_male.txt </span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># 9. Create rule </span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> concat: </span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>   <span class="ex">input:</span> </span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>      <span class="st">"results/all_female.txt"</span><span class="ex">,</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      <span class="st">"results/all_male.txt"</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>   <span class="ex">output:</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      <span class="st">"results/concatenated.txt"</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>   <span class="ex">shell:</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>      <span class="st">"cat {input} &gt; {output}"</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># 10. Run again </span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="ex">snakemake</span> <span class="at">-s</span> rules/process_1kgp.smk <span class="at">-c1</span> results/concatenated.txt </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new <span class="at">-s</span> example1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The command will set you into the session automatically. The window looks something like below:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tmuxSession.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="600"></p>
+</figure>
+</div>
+<p>Now, you are in session <code>example1</code> and have one window, which you are using now.</p>
+<ol start="2" type="1">
+<li>Split the window in multiple terminals.</li>
+</ol>
+<p>Split the window horizontally and vertically, you will be running a total of 3 terminals.</p>
+<pre><code>Ctrl + b + %
+
+Ctrl + b + ""
+
+Ctrl+b, then arrow keys to change pane!
+</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Using the mouse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Right-clicked with the mouse to choose the split.</li>
+<li>Left-click to change pane.</li>
+<li>Right-clicked on the window bar and create a new window.</li>
+</ul>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Create a new window with <code>Ctrl + b + c</code></li>
+<li>Change between windows wirth <code>Ctrl+b</code> then <code>n</code></li>
+</ol>
+<p>Now, you have your 2 windows and three panes running in on of them.</p>
+<p>In the new window, let’s look at which tmux sessions and windows are open. Run</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> ls</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The output will tell you that session <code>example1</code> is in use (attached) and has 2 windows.</p>
+<pre><code>example1: 2 windows (created Wed Apr  2 16:12:54 2025) (attached)</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Bonus exercise
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<section id="launching-separate-downloads-at-the-same-time" class="level3 callout-body-container callout-body">
+<h3 class="anchored" data-anchor-id="launching-separate-downloads-at-the-same-time">Launching separate downloads at the same time</h3>
+<p>Start a new session without attaching to it (<code>d</code> option), and call it <code>downloads</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new-session <span class="at">-d</span> <span class="at">-s</span> downloads</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>verify the session is there with <code>tmux ls</code>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you want a new session attaching to it, you need to detach from the current session with <code>Ctrl + b + d</code>.</p>
+</div>
+</div>
+<p>Create a text file with few example files for this workshop to be downloaded.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> https://api.github.com/repos/hds-sandbox/GDKworkshops/contents/Examples/rsync <span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.[] | .download_url'</span> <span class="op">&gt;</span> downloads.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The script below launches all the URLs from the list in the download session in a new window. The new window closes after the download. If there are less than K downloads active, a new one starts, until the end! You can use this and close your terminal. The downloads will keep going and the window names will be shown to keep an eye on the current downloads. Try it out and use it whenever you have massive number of file downloads</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> downloaded</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="va">K</span><span class="op">=</span>2  <span class="co"># Maximum number of concurrent downloads</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="at">-r</span> <span class="va">url</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Wait until the number of active tmux windows in the "downloads" session is less than K</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="bu">[</span> <span class="st">"</span><span class="va">$(</span><span class="ex">tmux</span> list-windows <span class="at">-t</span> downloads <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span><span class="va">)</span><span class="st">"</span> <span class="ot">-ge</span> <span class="st">"</span><span class="va">$((K</span><span class="op">+</span><span class="dv">1</span><span class="va">))</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">do</span>     </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sleep</span> 1</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract the filename from the URL</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">filename</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">"</span><span class="va">$url</span><span class="st">"</span><span class="va">)</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Start a new tmux window for the download</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">tmux</span> new-window <span class="at">-t</span> downloads <span class="at">-n</span> <span class="st">"</span><span class="va">$filename</span><span class="st">"</span> <span class="st">"wget -c </span><span class="va">$url</span><span class="st"> -O downloaded/</span><span class="va">$filename</span><span class="st"> &amp;&amp; tmux kill-window"</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">tmux</span> list-windows <span class="at">-t</span> downloads <span class="at">-F</span> <span class="st">"#{window_name}"</span>   </span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> downloads.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</div>
+</div>
+<p>You are done for now! It’s time to stop the job, by holding the <code>Stop aplication</code> button to do so.</p>
+<hr>
+</section>
+<section id="collect-share-using-checksums" class="level2">
+<h2 class="anchored" data-anchor-id="collect-share-using-checksums">3. Collect &amp; share using checksums</h2>
+<p>We recommend using <code>md5sum</code> to verify data integrity, particularly when downloading large datasets, as it is a widely used tool. All data and files archived on Zenodo include an MD5 hash for this purpose. Let’s have a look at the content of a newly developed software <code>fastmixture</code> that estimates individual ancestry proportions from genotype data.</p>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Exercise</span>Exercise checksums
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="webex-check callout-exercise">
+<ol type="1">
+<li>Open this <a href="https://zenodo.org/records/14106454">Zenodo link</a></li>
+<li>Enter the DOI of the repo (for all versions): <code>r fitb(answer='10.5281/zenodo.12683371')</code></li>
+<li>Zenodo offers an API at https://zenodo.org/api/, which functions similarly to the DOI API. This allows you to retrieve a BibTeX-formatted reference for a specific record (e.g., <code>records/14106454</code>) using either curl or wget.</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------curl-------</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LH</span> <span class="st">'Accept: application/x-bibtex'</span> https://zenodo.org/api/records/14106454 <span class="dt">\</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">--output</span> meisner_2024.bib</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ------wget-------</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--header</span><span class="op">=</span><span class="st">"Accept: application/x-bibtex"</span> <span class="at">-q</span> <span class="dt">\</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>     https://zenodo.org/api/records/12683372 <span class="at">-O</span> meisner_2024.bib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Does the content of your <code>*.bib</code> file look like this?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">@misc{meisner_2024_14106454,</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">author</span>       = {Meisner, Jonas},</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">title</span>        = {Supplemental data for reproducing <span class="st">"Faster model-</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="st">                   based estimation of ancestry proportions"</span>},</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">month</span>        = nov,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">year</span>         = 2024,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">publisher</span>    = {Zenodo},</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">version</span>      = {v0.93.4},</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">doi</span>          = {10.5281/zenodo.14106454},</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">url</span>          = {https://doi.org/10.5281/zenodo.14106454},</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="4" type="1">
+<li>Scroll down to files and download the software zip file (<code>fastmixture-0.93.4.zip</code>) using the command below:</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://zenodo.org/records/14106454/files/fastmixture-0.93.4.zip <span class="dt">\</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>--output fastmixture.zip </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="5" type="1">
+<li><p>Compute md5 hash and enter the value (no white-spaces) <code>r fitb(answer='4b3c22644bd2e1dabbbbab599491a7e5')</code></p></li>
+<li><p>Is your value tha same as the one shown on zenodo <code>r torf(TRUE)</code></p></li>
+<li><p>Finally, compute the sha256 digest (with program sha256)</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sha256sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>and enter the value <code>r fitb(answer='37c931cf669033054333ae6c2553cc936db7a28aa13ab776c5adfb1c932bc72b')</code></p>
 </div>
 </div>
 </div>
 </div>
 </div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Bonus exercise 4
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We will be using the HLA database for this exercise. Click on <a href="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/">this link</a> or google <code>IMGT HLA&gt; Download</code>. Important: go through the README before downloading! Check if a checksums file is included.</p>
+<ol type="1">
+<li>Download and open the <code>md5checksum.txt</code> (<a href="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/">HLA FTP Directory</a>)</li>
+<li>Look for the hash of the file <code>hla_prot.fasta</code></li>
+<li>Create a bash script to download the target files (named “dw_resources.sh” in your current directory).</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="va">md5file</span><span class="op">=</span><span class="st">"md5checksum.txt"</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the URL of the files to download</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="va">url</span><span class="op">=</span><span class="st">"ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/hla_prot.fasta"</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (Optional 1) Save the original file name: filename=$(basename "$url")</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># (Optional 2) Define a different filename to save the downloaded file (`wget -O $out_filename`)</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># out_filename = "imgt_hla_prot.fasta"</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the file</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="va">$url</span> <span class="at">--output</span> <span class="va">$out_filename</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="fu">md5sum</span> <span class="at">--quiet</span> <span class="at">--ignore-missing</span> <span class="at">--check</span> <span class="va">$md5file</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We recommend using the argument <code>--quiet</code> as part of your pipeline so that it only prints the errors (it doesn’t print output when success). The <code>--ignore-missing</code> argument is useful because it allows us to use the raw checksums file while skipping files we may not want to download.</p>
+<p><strong>Did you get any error?</strong></p>
+<ol start="4" type="1">
+<li>Generate the md5 hash &amp; compare to the one from the original <code>md5checksum.txt</code>.</li>
+</ol>
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">4. Documentation</h2>
+<p>Explore the examples below and consider how effectively the README files communicate key information about the project. Some links point to README files describing databases, while others cover software and tools.</p>
+<ul>
+<li><a href="https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/">1000 Genomes Project</a></li>
+<li><a href="https://ftp.ensembl.org/pub/release-111/fasta/homo_sapiens/dna/README">Homo sapiens, GRCh38</a></li>
+<li><a href="https://github.com/ANHIG/IMGTHLA/blob/Latest/README.md">IPD-IMGT/HLA database</a></li>
+<li><a href="https://github.com/pandas-dev/pandas">Pandas package</a></li>
+<li><a href="https://www.dst.dk/extranet/forskningvariabellister/Oversigt%20over%20registre.html">Danish registers</a></li>
+</ul>
+<p>How does your documentation compare to these?</p>
+<p><strong>Done for today!</strong></p>
 
 
 </section>
