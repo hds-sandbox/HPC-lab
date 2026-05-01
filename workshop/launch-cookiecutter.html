@@ -338,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-access.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Project structure</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-setup.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Project structure</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -384,7 +384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../workshop/launch-access.html" class="sidebar-item-text sidebar-link">
+  <a href="../workshop/launch-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HPC setup</span></a>
   </div>
 </li>
@@ -433,6 +433,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../workshop/launch-jobs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Queueing systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-archive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Archiving</span></a>
   </div>
 </li>
       </ul>
@@ -567,7 +573,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content column-page-right" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-access.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Project structure</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-setup.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Project structure</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Project structure</h1>
 </div>
@@ -858,30 +864,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="naming-conventions" class="level2">
 <h2 class="anchored" data-anchor-id="naming-conventions">Naming conventions</h2>
 <p>A well-structured naming system keeps files organized, easy to search, compatible across different systems, and useful for collaboration.</p>
-<style>
-:root {
-    --incorrect: rgb(255, 0, 0);
-    --incorrect_alpha: rgba(255, 0, 0, 0.25);
-    --correct: rgb(0, 255, 0);
-    --correct_alpha: rgba(0, 255, 0, 0.25);
-    --highlight: rgb(178, 34, 34);
-}
-  .webex-incorrect, input.webex-solveme.webex-incorrect,
-  .webex-radiogroup label.webex-incorrect {
-    border: 2px dotted var(--incorrect);
-    background-color: var(--incorrect_alpha);
-  }
-  .webex-correct, input.webex-solveme.webex-correct,
-  .webex-radiogroup label.webex-correct {
-    border: 2px dotted var(--correct);
-    background-color: var(--correct_alpha);
-  }
-  .webex-box, .webex-solution.open {
-    border: 2px solid var(--highlight);n  }
-  .webex-solution button, .webex-check-button {
-    background-color: var(--highlight);
-  }
-</style>
 <div class="callout callout-style-default callout-exercise callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -897,24 +879,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <div class="webex-check callout-exercise">
 Q1. Which naming conventions should be used and why?
-<div id="radio_GEJGPHTURY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GEJGPHTURY" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_GEJGPHTURY" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_GEJGPHTURY" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
+<div id="radio_YDZUMUGIYY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YDZUMUGIYY" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_YDZUMUGIYY" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_YDZUMUGIYY" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
 </div>
-<div id="radio_RIWDYVPOTX" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RIWDYVPOTX" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_RIWDYVPOTX" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_RIWDYVPOTX" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
+<div id="radio_OWQMGKGTHU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OWQMGKGTHU" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_OWQMGKGTHU" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_OWQMGKGTHU" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
 </div>
-<div id="radio_PFFVGZIWEM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PFFVGZIWEM" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_PFFVGZIWEM" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_PFFVGZIWEM" value=""> <span>i. run_pipeline:20241203.sh</span></label>
+<div id="radio_XHFHHAPAQA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XHFHHAPAQA" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_XHFHHAPAQA" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_XHFHHAPAQA" value=""> <span>i. run_pipeline:20241203.sh</span></label>
 </div>
 Q2. Which file name is more readable?
-<div id="radio_IVRPBDXPLE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IVRPBDXPLE" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_IVRPBDXPLE" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_IVRPBDXPLE" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
+<div id="radio_KJKITBABXQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KJKITBABXQ" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_KJKITBABXQ" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_KJKITBABXQ" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
 </div>
-<div id="radio_FVFHCIPREM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FVFHCIPREM" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_FVFHCIPREM" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_FVFHCIPREM" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
+<div id="radio_TNXHWHONWZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TNXHWHONWZ" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_TNXHWHONWZ" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_TNXHWHONWZ" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
 </div>
-<div id="radio_QKXKMPSVQF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QKXKMPSVQF" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_QKXKMPSVQF" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_QKXKMPSVQF" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
+<div id="radio_JFCOTXWGNY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JFCOTXWGNY" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_JFCOTXWGNY" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_JFCOTXWGNY" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
 </div>
 </div>
 </div>

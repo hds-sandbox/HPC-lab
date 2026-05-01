@@ -386,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../workshop/launch-access.html" class="sidebar-item-text sidebar-link">
+  <a href="../workshop/launch-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HPC setup</span></a>
   </div>
 </li>
@@ -435,6 +435,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../workshop/launch-jobs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Queueing systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-archive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Archiving</span></a>
   </div>
 </li>
       </ul>
@@ -587,101 +593,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="software-management-on-ucloud" class="level2">
-<h2 class="anchored" data-anchor-id="software-management-on-ucloud">Software management on UCloud</h2>
-<!-- ## UCloud and the Sandbox project workspace
-1. **Create a UCloud account**. You need a Danish university ID so you can sign on to UCloud via WAYF^[Other institutions (e.g. hospitals, libraries, ...) can log on through WAYF. See all institutions [here](https://www.wayf.dk/da/institutioner-i-wayf).]
-
- <p align="center">
-  <a href="https://cloud.sdu.dk" target="_blank" style="display: inline-block; background-color: #4266A1; color: #FFFFFF; padding: 30px 30px; border-radius: 20px; font-weight: bold;">
-    for UCloud Access
-    click here
-  </a>
-</p>
-
-2. **Use our workspace**. Click the invite link below to accept the invitation to the Sandbox workspace:
-
-
-<div style="text-align: center; margin-top: 20px;">
-  <a href="https://cloud.sdu.dk/app/projects/invite/2eeabcd0-3d78-440e-a1be-425814d1da8a" target="_blank" style="display: inline-block; background-color: #4266A1; color: #FFFFFF; padding: 30px 30px; border-radius: 20px; font-weight: bold;">
-    Ucloud invite to the Sandbox workspace
-  </a>
-</div -->
-<ul>
-<li><p>Every app comes with its pre-defined installed software on UCloud</p></li>
-<li><p>The <code>Terminal</code> app has <strong>no preinstalled (bio)software</strong></p></li>
-<li><p>You can install and manage your <strong>software and its dependencies</strong> using virtual environments</p></li>
-</ul>
-<section id="virtual-environments" class="level3">
-<h3 class="anchored" data-anchor-id="virtual-environments">Virtual environments</h3>
-<p>Each project needs specific software versions dependent on each other for <strong>reproducibility</strong> - without interfering with other projects.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Definition">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>A <strong>virtual environment</strong> keeps project-specific software and its dependencies separated.</p>
-<p>A <strong>package manager</strong> is a software that can retrieve, download, install, and upgrade packages <strong>easily and reliably</strong>.</p>
-</div>
-</div>
-</section>
-</section>
-<section id="conda" class="level2">
-<h2 class="anchored" data-anchor-id="conda">Conda</h2>
-<p>Conda is <strong>both</strong> a virtual environment and a package manager.</p>
-<ul>
-<li>easy to use and understand</li>
-<li>can handle quite big environments</li>
-<li>environments are easily shareable</li>
-<li>a <a href="https://anaconda.org">large archive</a> (Anaconda) of packages</li>
-<li>active community of people archiving their packages on Anaconda</li>
-</ul>
-<hr>
-<p>A package manager puts together the dependency trees of requested packages to find all compatible dependency versions.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/condatree.png" class="img-fluid figure-img" width="800"></p>
-<figcaption>Figure: A package’s dependency tree with required versions on the edges</figcaption>
-</figure>
-</div>
-<hr>
-<p>To install a specific package in your environment, search for it on <a href="https://anaconda.org">anaconda.org</a>:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/anaconda1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="800"></p>
-</figure>
-</div>
-<p> </p>
-<div class="callout callout-style-default callout-note callout-titled" title="Channels">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Channels
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Packages are archived in channels. <code>conda-forge</code> and <code>bioconda</code> include most of the packages for bioinformatics and data science.</p>
-<p><code>conda-forge</code> packages are often the most up-to-date.</p>
-</div>
-</div>
-<hr>
-<section id="part-1.-exploring-an-existing-environment" class="level3">
-<h3 class="anchored" data-anchor-id="part-1.-exploring-an-existing-environment">Part 1. Exploring an existing environment</h3>
+<section id="managing-software" class="level1">
+<h1>Managing software</h1>
+<section id="exploring-an-existing-environment" class="level3">
+<h3 class="anchored" data-anchor-id="exploring-an-existing-environment">1. Exploring an existing environment</h3>
 <p>Let’s open the Terminal app. Since Conda is not pre-installed in the Terminal app on UCloud, we will need to:</p>
 <ol type="1">
 <li>Mount a drive with a pre-installed Miniconda setup.</li>
 <li>Run a bash script to add conda to the search path.</li>
 </ol>
 <p><img src="./images/ucloud_setup.png" class="img-fluid"></p>
-<hr>
-<p><strong>We will run the following commands to get familiar with Conda environments.</strong></p>
+<p>We will run the following commands to get familiar with Conda environments.</p>
 <ul>
 <li>What is the conda version?</li>
 </ul>
@@ -694,7 +616,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Let’s explore one of the environments. To do this, let’s activate <code>hpclab-env</code> environment</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate hpclab-env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
 <ul>
 <li>How many packages are available in this environment?</li>
 </ul>
@@ -708,10 +629,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Deactivate the environment.</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
 </section>
-<section id="part-2-building-your-conda-environment" class="level3">
-<h3 class="anchored" data-anchor-id="part-2-building-your-conda-environment">Part 2: Building your conda environment</h3>
+<section id="building-your-conda-environment" class="level3">
+<h3 class="anchored" data-anchor-id="building-your-conda-environment">2: Building your conda environment</h3>
 <p>Let’s create a new directory in your personal drive:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="op">&lt;</span>path-to-personal-drive<span class="op">&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> envs </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -730,7 +650,6 @@ Warning
 <p>Always specify the location using <code>--prefix PATH</code> regardless of the UCloud app you use, especially if the app has conda pre-installed (e.g.&nbsp;Jupyterlab). The path must be on your personal drive or a shared drive with colleagues that you have access to. Otherwise, the environment won’t be saved, as you’re working within a temporary container instance.</p>
 </div>
 </div>
-<hr>
 <ul>
 <li>Create the environment</li>
 </ul>
@@ -753,7 +672,6 @@ Warning
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--remove</span> channels defaults</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels bioconda </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> config <span class="at">--add</span> channels conda-forge</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
 <ul>
 <li>Add the latest Python version to the environment</li>
 </ul>

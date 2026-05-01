@@ -338,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-access.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-transfers.html">HPC file transfers</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-setup.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-transfers.html">HPC file transfers</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -384,7 +384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../workshop/launch-access.html" class="sidebar-item-text sidebar-link">
+  <a href="../workshop/launch-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HPC setup</span></a>
   </div>
 </li>
@@ -433,6 +433,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../workshop/launch-jobs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Queueing systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-archive.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Archiving</span></a>
   </div>
 </li>
       </ul>
@@ -565,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content column-page-right" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-access.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-transfers.html">HPC file transfers</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-setup.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-transfers.html">HPC file transfers</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">HPC file transfers</h1>
 </div>
@@ -611,7 +617,7 @@ Note
 <pre><code>rsync OPTIONS ORIGIN(s) DESTINATION</code></pre>
 </div>
 </div>
-<p>An archive (incremental) copy can be done with <code>-a</code> option. You can add a progress bar durint the transfer with <code>-P</code> option. In this exercse, we want to exclude some files from the transfer: we want to keep only those with <code>fastq</code> extension. Run the following command:</p>
+<p>An archive (incremental) copy can be done with <code>-a</code> option. You can add a progress bar during the transfer with <code>-P</code> option. In this exercise, we want to exclude some files from the transfer: we want to keep only those with <code>fastq</code> extension. Run the following command:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> data backup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will copy all the <code>fastq</code> files in <code>backup/data</code>. You can check with <code>ls</code>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -646,8 +652,8 @@ Warning
 </div>
 <p>Then open the file with <code>less</code>, explore its contents, and check which lines contain an <strong>N</strong>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> data/file1.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>While inside <code>less</code>, type <code>/N</code>. Is some text highlighted?</p>
-<p>Finally, count how many lines contain at least one N in <code>file1.fastq</code>, use the command <code>grep</code>.</p>
+<p>While inside <code>less</code>, type <code>/N</code>. Is some text highlighted? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
+<p>Finally, count how many lines contain at least one N in <code>file1.fastq</code>, use the command <code>grep</code>. How many are there? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;2&quot;]"></p>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -702,7 +708,7 @@ Tip
 </section>
 <section id="session-management-using-tmux" class="level2">
 <h2 class="anchored" data-anchor-id="session-management-using-tmux">2. Session management using <code>tmux</code></h2>
-<p><code>tmux</code> was originally desgiend as a keyboard-only software. However, you can also configure it to allow switching between windows and panes using the mouse. To enable this, add the following setting to the configuration file:</p>
+<p><code>tmux</code> was originally designed as a keyboard-only software. However, you can also configure it to allow switching between windows and panes using the mouse. To enable this, add the following setting to the configuration file:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"set -g mouse"</span> <span class="op">&gt;&gt;</span> ~/.tmux.conf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can start a <code>tmux</code> session anywhere. It is easier to navigate sessions giving them a name.</p>
 <ol type="1">
@@ -748,7 +754,7 @@ Ctrl+b, then arrow keys to change pane!
 </div>
 <ol start="3" type="1">
 <li>Create a new window with <code>Ctrl + b + c</code></li>
-<li>Change between windows wirth <code>Ctrl+b</code> then <code>n</code></li>
+<li>Change between windows with <code>Ctrl+b</code> then <code>n</code></li>
 </ol>
 <p>Now, you have your 2 windows and three panes running in on of them.</p>
 <p>In the new window, let’s look at which tmux sessions and windows are open. Run</p>
@@ -805,7 +811,7 @@ Warning
 </section>
 </div>
 </div>
-<p>You are done for now! It’s time to stop the job, by holding the <code>Stop aplication</code> button to do so.</p>
+<p>You are done for now! It’s time to stop the job, by holding the <code>Stop application</code> button to do so.</p>
 <hr>
 </section>
 <section id="collect-share-using-checksums" class="level2">
@@ -827,7 +833,7 @@ Warning
 <div class="webex-check callout-exercise">
 <ol type="1">
 <li>Open this <a href="https://zenodo.org/records/14106454">Zenodo link</a></li>
-<li>Enter the DOI of the repo (for all versions): <code>r fitb(answer='10.5281/zenodo.12683371')</code></li>
+<li>Enter the DOI of the repo (for all versions): <input class="webex-solveme nospaces" size="23" data-answer="[&quot;10.5281/zenodo.12683371&quot;]"></li>
 <li>Zenodo offers an API at https://zenodo.org/api/, which functions similarly to the DOI API. This allows you to retrieve a BibTeX-formatted reference for a specific record (e.g., <code>records/14106454</code>) using either curl or wget.</li>
 </ol>
 <div class="code-with-filename">
@@ -865,12 +871,12 @@ Warning
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>--output fastmixture.zip </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="5" type="1">
-<li><p>Compute md5 hash and enter the value (no white-spaces) <code>r fitb(answer='4b3c22644bd2e1dabbbbab599491a7e5')</code></p></li>
-<li><p>Is your value tha same as the one shown on zenodo <code>r torf(TRUE)</code></p></li>
+<li><p>Compute md5 hash and enter the value (no white-spaces) <input class="webex-solveme nospaces" size="32" data-answer="[&quot;4b3c22644bd2e1dabbbbab599491a7e5&quot;]"></p></li>
+<li><p>Is your value tha same as the one shown on zenodo <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p></li>
 <li><p>Finally, compute the sha256 digest (with program sha256)</p></li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sha256sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>and enter the value <code>r fitb(answer='37c931cf669033054333ae6c2553cc936db7a28aa13ab776c5adfb1c932bc72b')</code></p>
+<p>and enter the value <input class="webex-solveme nospaces" size="64" data-answer="[&quot;37c931cf669033054333ae6c2553cc936db7a28aa13ab776c5adfb1c932bc72b&quot;]"></p>
 </div>
 </div>
 </div>
