@@ -8,13 +8,8 @@ date-format: long
 summary: intro to workflows
 ---
 
-```{r, echo = FALSE, results='asis'}
-library(webexercises)
-
-knitr::opts_chunk$set(echo = FALSE)
-
-# Uncomment to change widget colours:
-style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
+```{r,include=FALSE, results='asis'}
+source("_setup.R")
 ```
 
 Put your learning to the test with what you’ve covered so far.

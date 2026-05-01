@@ -199,5 +199,11 @@
   },
   "workshop/launch-review.qmd": {
     "launch-review.html": "62ee4d37"
+  },
+  "workshop/launch-setup.qmd": {
+    "launch-setup.html": "dd34506a"
+  },
+  "workshop/launch-archive.qmd": {
+    "launch-archive.html": "1436aebc"
   }
 }

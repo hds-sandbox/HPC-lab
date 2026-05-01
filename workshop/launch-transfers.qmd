@@ -8,6 +8,9 @@ format:
 css: ./web.css
 ---
 
+```{r,include=FALSE, results='asis'}
+source("_setup.R")
+```
 
 ## 1. Syncs and transfer with `rsync`
 
@@ -43,7 +46,7 @@ rsync OPTIONS ORIGIN(s) DESTINATION
 ```
 :::
 
-An archive (incremental) copy can be done with `-a` option. You can add a progress bar durint the transfer with `-P` option. In this exercse, we want to exclude some files from the transfer: we want to keep only those with `fastq` extension. Run the following command:
+An archive (incremental) copy can be done with `-a` option. You can add a progress bar during the transfer with `-P` option. In this exercise, we want to exclude some files from the transfer: we want to keep only those with `fastq` extension. Run the following command:
 
 ```{.bash}
 rsync -aP --exclude="*.log" data backup
@@ -76,9 +79,9 @@ Then open the file with `less`, explore its contents, and check which lines cont
 less data/file1.fastq
 ```
 
-While inside `less`, type `/N`. Is some text highlighted?
+While inside `less`, type `/N`. Is some text highlighted? `r torf(TRUE)`
 
-Finally, count how many lines contain at least one N in `file1.fastq`, use the command `grep`. 
+Finally, count how many lines contain at least one N in `file1.fastq`, use the command `grep`. How many are there? `r fitb(2)`
 
 
 :::{.callout-hint}
@@ -124,7 +127,7 @@ You would have to type your password if you do not make use of `ssh` keys!
 
 ## 2. Session management using `tmux`
 
-`tmux` was originally desgiend as a keyboard-only software. However, you can also configure it to allow switching between windows and panes using the mouse. To enable this, add the following setting to the configuration file:
+`tmux` was originally designed as a keyboard-only software. However, you can also configure it to allow switching between windows and panes using the mouse. To enable this, add the following setting to the configuration file:
 
 ```{.bash}
 echo "set -g mouse" >> ~/.tmux.conf
@@ -165,7 +168,7 @@ Ctrl+b, then arrow keys to change pane!
 :::
 
 3. Create a new window with `Ctrl + b + c`
-4. Change between windows wirth `Ctrl+b` then `n`
+4. Change between windows with `Ctrl+b` then `n`
 
 Now, you have your 2 windows and three panes running in on of them.
 
@@ -223,7 +226,7 @@ done < downloads.txt
 ```
 :::
 
-You are done for now! It's time to stop the job, by holding the `Stop aplication` button to do so. 
+You are done for now! It's time to stop the job, by holding the `Stop application` button to do so. 
 
 ---
 

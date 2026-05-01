@@ -69,7 +69,7 @@ website:
             - workshop/launch-requirements.qmd
             - section: "Day 1"
               contents: 
-                - workshop/launch-access.qmd                
+                - workshop/launch-setup.qmd                
                 - workshop/launch-transfers.qmd
                 - workshop/launch-git.qmd
                 - workshop/launch-cookiecutter.qmd
@@ -78,6 +78,7 @@ website:
               contents: 
                 - workshop/launch-envs.qmd
                 - workshop/launch-jobs.qmd
+                - workshop/launch-archive.qmd
         - section: "HPC Pipes"
           contents: 
             - workshop/pipes-requirements.qmd

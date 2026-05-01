@@ -8,6 +8,10 @@ format:
 css: ./web.css
 ---
 
+```{r,include=FALSE, results='asis'}
+source("_setup.R")
+```
+
 Let's start with some practical exercises focused on implementing tools that will help you with the collect & document data life cycle phase. 
 
 :::{.callout-warning}
@@ -191,16 +195,6 @@ my_template/
 
 ## Naming conventions
 A well-structured naming system keeps files organized, easy to search, compatible across different systems, and useful for collaboration.
-
-```{r, echo = FALSE, results='asis'}
-library(webexercises)
-
-knitr::opts_chunk$set(echo = FALSE)
-
-# Uncomment to change widget colours:
-style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
-
-```
 
 ::: {.webex-check .callout-exercise}
 # Exercise 3

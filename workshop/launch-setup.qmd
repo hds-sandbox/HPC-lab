@@ -8,6 +8,10 @@ format:
 css: ./web.css
 ---
 
+```{r,include=FALSE, results='asis'}
+source("_setup.R")
+```
+
 ## 1. SSH keys
 
 Navigate to the location where all SSH keys are stored to generate a new one. Do you have any host keys stored locally?
@@ -98,7 +102,7 @@ cat id_UCloud.pub | pbcopy
 
 You can now paste the public SSH key on UCloud. You'll need to enable SSH access when you submit a job so you can SSH in. 
 
-![](../../develop/images/sshkey_step2.png)
+![](../develop/images/sshkey_step2.png)
 
 ---
 
@@ -119,23 +123,29 @@ Once the job starts, the SSH command appears in the progress view and can be run
 
 Copy the command and paste it on your terminal (e.g. `ssh ucloud@ssh.cloud.sdu.dk -p 2396`). 
 
-## 2. Workking with files on HPC
+## 2. Working with files on HPC
 
 #### FS navigation and text editors
 In this exercise, you will practice working with files and directories on UCloud using the command line. For every task below, you must use Bash commands (no graphical interface).
 
-* What is your working directory (WD) on UCloud?
-* Are there any files in your working directory?
-* Make sure your wd is `hpcLaunch`
-* Can you create a new directory named `day1`?
-* Can you create a new file called `hello.txt` containing the text *Hello*?
-* Can you create an empty file named `emptyFile.csv`?
-* Can you move into the `day1` directory?
-* Edit the hello.txt file using `nano` or `vim`. Add *Hola* on a new line and save it with a new filename (e.g. `greetings.txt`). You can use Ctrl+X to exit/close. 
-* Count lines in both *.txt* files?
-* How many files do you see? Do they have a different sizes?
-* Print the first line in `greetings.txt` (only 1!)
-* Can you remove all *.txt* files (specify the file extension when deleting)?
+:::{.warning}
+Although we have tried to be flexible in the answers, we may not have included all possible working solutions as correct ones. What matters most is that your code runs correctly and produces the desire output — not that it matches the exact command shown in our solution.
+:::
+
+:::{.webex-check .callout-exercise}
+# Exercise
+1. Make sure your wd is `hpcLaunch`
+2. What is your working directory (wd) on UCloud? Type only the top-level directory (the root level) `r fitb(answer='/work')`
+3. Are there any files in your working directory? `r torf(FALSE)`
+4. Create a new directory named `day1` Type the command `r fitb(answer='mkdir day1')`
+5. Create a new file called `hello.txt` containing the text *Hello*?
+6. Create an empty file named `emptyFile.csv`?
+7. Move into the `day1` directory? Type the command `r fitb(answer='cd day1')`
+8. Edit the hello.txt file using `nano` or `vim`. Add *Hola* on a new line and save it with a new filename (e.g. `greetings.txt`). You can use Ctrl+X to exit/close, save changes and type a new filename. 
+9. Count lines in both *.txt* files. Use `wc -l <files>`. Type the command `r fitb(c('wc -l *.txt','cat *.txt | wc -l'))`
+10. Use a command to list **all** files and their sizes in this directory. Type the command `r fitb(answer='ls -lh .')`"
+12. Print the first line in `greetings.txt` (only 1!). Use `head` or `awk`. Type the command `r fitb(c('head -n1 greetings.txt', 'head -1 greetings.txt', 'awk \'NR==1\' greetings.txt'),ignore_ws = TRUE)`
+13. Can you remove all *.txt* files (specify the file extension when deleting)? Type the command `r fitb(answer='rm *.txt')`
 
 Need some help?
 
@@ -169,7 +179,7 @@ ls .
 mkdir -p day1
 
 # Create a text file with content
-echo "hello" > ./day1/hello.txt
+echo "Hello" > ./day1/hello.txt
 
 # Create an empty file
 touch ./day1/emptyFile.txt
@@ -190,4 +200,5 @@ head -n1 greetings.txt
 rm *.txt
 
 ```
+:::
 :::
