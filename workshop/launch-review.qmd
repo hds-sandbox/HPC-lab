@@ -15,6 +15,7 @@ source("_setup.R")
 Put your learning to the test with what you’ve covered so far.
 
 ## General HPC launch 
+### Log-in and compute nodes
 Which of the following operations I should do from the front-end (login) nodes:
 
 **1. Unzip a large file `unzip myfile.zip` to decompress the file?** `r torf(FALSE)`
@@ -25,18 +26,86 @@ Which of the following operations I should do from the front-end (login) nodes:
 
 **4. Run computations?** `r torf(FALSE)`
 
+Which of the following commands would be considered a task to run on the login node?
+
+**1. python myscript.py** `r torf(FALSE)`
+**2. make** `r torf(TRUE)`
+**3. bash create_dirs.sh (you created the file)** `r torf(TRUE)`
+**4. cookiecutter mytemplate** `r torf(TRUE)`
+**5. tar -xvf R-4.6.0.tar.gz** `r torf(TRUE)`
+**6. nextflow run pipeline.nf** `r torf(FALSE)`
+**7. sbatch mypipeline.sh** `r torf(TRUE)`
+**8. nano config.yaml** `r torf(TRUE)`
+**9. git clone https://github.com/user/project.git** `r torf(TRUE)`
+**10. cp -r 5TB_dataset backup/** `r torf(FALSE)`
+**11. rsync -av data/ project_backup/** `r torf(TRUE)`
+**12. top** `r torf(TRUE)`
+
+
 :::{.callout-hint}
-Avoid running anything from the login node as this will slow down all other users. Create instead an **interactive session** to do this! 
+
+Tasks such as compiling software, creating and organizing directories, and extracting compressed files can typically OK to carry out on the login node. Avoid running anything from the login node that might slow down other users. Think carefully about the potential implications of running commands that may use large amounts of resources
+
+Tip: When in doubt, create an **interactive session**, and run the commands there. 
+
+`Rsync` jobs are commonly run from the login node but might not always be the case for very large jobs that can saturate the network bandwidth and overload storage. 
+
 :::
 
+### HPC and data 
 Are the following statements true or false?
 
 **5. Is it a good idea to keep data in the scratch folder until the project is finished?** `r torf(FALSE)`
 
-**6. I must backup all generated files, inlcuding intermediate files, to make sure the analysis are reproducible.** `r torf(FALSE)`
+**6. I must backup all generated files, including intermediate files, to make sure the analysis are reproducible.** `r torf(FALSE)`
 
 **7. I should not fill up my home folder with data. ** `r torf(TRUE)`
 
-**8. Virtual environments keeps project-specific software and their dependencies separted - without interferring with each other. ** `r torf(TRUE)`
+**8. Virtual environments keeps project-specific software and their dependencies separated - without interfering with each other. ** `r torf(TRUE)`
 
 **9. I must always run the analysis/pipeline on a small subset of the data to estimate CPU/RAM resources.** `r torf(TRUE)`
+
+**10. I should run a community-curated pipeline for the first time on all my samples** `r torf(FALSE)`
+
+#### Transferring data
+
+When transferring large datasets, it is important to consider factors that can impact transfer speed and efficiency, such as the number of files, total data size, network performance, and transfer method. Running small benchmark tests beforehand can help estimate how long a full transfer may take.
+
+Imagine you need to transfer 11,570 files to an HPC cluster. Which of the following approaches would likely be the most efficient? `r fitb(answer='E')`
+
+```{.bash}
+# A.
+scp -r data/ user_name@login.genome.au.dk:data/
+# B. 
+rsync -a data/ user_name@login.genome.au.dk:data/
+# C. 
+rsync -az data/ user_name@login.genome.au.dk:data/
+# D. 
+tar -cvf data.tar data/
+rsync -az data.tar user_name@login.genome.au.dk:data/
+# E. 
+tar -cvzf data.tar.gz data/
+rsync -a data.tar.gz user_name@login.genome.au.dk:data/
+```
+
+:::{.callout-hint}
+# Solution 
+A. Copies the dirs recursively. Will take time. 
+B. Similar to the A. but preserved file information (e..g. creation time), slightly better.
+C. Saves some bandwidth as you are adding compression. It's good if you have a strong hardware on both ends of the transfer. 
+D. Here, we merge everything into a file and transfer it with compression. Good idea with such a large number of files. 
+E. Similar to D, but now we compress the archive, then transfer it. For large datasets, is the best combination of high throughput and low latency. 
+:::
+
+## Documentation 
+
+Explore the examples below and consider how effectively the README files communicate key information about the project. Some links point to README files describing databases, while others cover software and tools.
+
+- [1000 Genomes Project](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/)
+- [Homo sapiens, GRCh38](https://ftp.ensembl.org/pub/release-111/fasta/homo_sapiens/dna/README)
+- [IPD-IMGT/HLA database](https://github.com/ANHIG/IMGTHLA/blob/Latest/README.md)
+- [Pandas package](https://github.com/pandas-dev/pandas)
+- [Danish registers](https://www.dst.dk/extranet/forskningvariabellister/Oversigt%20over%20registre.html)
+
+How does your documentation compare to these?
+

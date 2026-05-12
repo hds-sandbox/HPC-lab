@@ -11,13 +11,13 @@ css: ./web.css
 # Welcome to the HPC-Launch workshop 
 :::
 
-#### <span style="color: red;">PLEASE READ BEFORE COURSE!</span>
+#### <span style="color: red;">Please, read before course!</span>
 
 
 :::{.callout-warning title="Required preparation"}
 You are expected to make sure you can sign in to UCloud, SDU’s HPC platform on which we will be running this course. All data, exercises, and tools will be provided on UCloud. Please use your university ID to sign in (instructions below). If you run into problems, please write us (respond to the email that got you to this page).
 
-A Danish university/institution account is required to create a UCloud account.  If you don't have one, click on *Local setup* below. 
+A Danish university/institution account is required to create a UCloud account. If you don't have one, click on *Local setup* below. 
 :::
 
 ### Access Sandbox resources
@@ -43,7 +43,7 @@ Our first choice is to run our tutorials on UCloud, the supercomputer located at
  &nbsp;
 
  <p align="center">
-  <a href="https://cloud.sdu.dk/app/projects/invite/67a8c23a-4eab-4f3d-8d32-745ab537fe9f" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+  <a href="https://cloud.sdu.dk/app/projects/invite/5256d10e-d333-4289-8be2-9e6c95319cb2" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
     Invite link to
     UCloud workspace
   </a>
@@ -57,31 +57,31 @@ Our first choice is to run our tutorials on UCloud, the supercomputer located at
 
 &nbsp;
 
-6. Download the slides (*link active on April 8th*) and RDM figure:
+6. Download the slides (*link active on May 22nd*) and [RDM data lifecycle roadmap](https://hds-sandbox.github.io/RDM_biodata_course/develop/cheatSheet.html):
 
 <!--
  <p align="center">
-  <a href="./GwasSandbox_slides.zip" download="Unavai">
+  <a href="./Sandbox_slides.zip" download="Unavai">
     <button class="btn small-button">Download slides</button>
   </a>
 </p>
 -->
 
-- [RDM roadmap](https://hds-sandbox.github.io/RDM_biodata_course/develop/cheatSheet.html)
 
 #### Independent users 
-If you are interested in running the exercises locally, click on the box below. *Not recommended for paritipants in our workshops*.
+If you are interested in running the exercises locally, click on the box below. *Not recommended for participants in HPC-Launch workshop*.
 
 :::{.callout-warning title="Local setup required if not using UCloud" collapse="true"}
 
 You are expected to complete the required setup, including tool installation and account creation. 
 
-- [Git](https://git-scm.com/downloads) for version control of your projects
-- [GitHub account](https://github.com/) for hosting and collaborating on projects
-- [Python](https://www.python.org/)
-- [pip](https://pip.pypa.io/en/stable/installation/) for managing Python packages
-- [Cookicutter](https://cookiecutter.readthedocs.io/en/stable/) for creating folder structure templates (`pip install cookiecutter`)
-- [md5sum](https://www.gnu.org/software/coreutils/manual/html_node/md5sum-invocation.html). See below how to install
+- [Git](https://git-scm.com/downloads) for version control of your projects.
+- [GitHub account](https://github.com/) for hosting and collaborating on projects.
+- [Python](https://www.python.org/).
+- [pip](https://pip.pypa.io/en/stable/installation/) for managing Python packages.
+- [Cookicutter](https://cookiecutter.readthedocs.io/en/stable/) for creating folder structure templates (`pip install cookiecutter`).
+- [md5sum](https://www.gnu.org/software/coreutils/manual/html_node/md5sum-invocation.html). See below examples on how to install.
+- [conda](https://conda-forge.org/download/). Install Miniforge which comes preconfigured for use with the conda-forge channel.
   ```{.bash filename="Terminal"}
   # ---- cookiecutter -----
   pip install cookiecutter
@@ -98,7 +98,7 @@ You are expected to complete the required setup, including tool installation and
 - [Zenodo account](https://zenodo.org/) for archiving and sharing your research outputs
 - [DeiC DMP](https://dmp.deic.dk/plans)
 
-**If you run into any issues installing the software, don't worry! We will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. Please read the next section carefully.**
+**If you run into any issues installing the software, don't worry! We will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. Please read above carefully.**
 :::
 
 ### Reading material
@@ -115,14 +115,24 @@ About High-Performance Computing (HPC):
 
 ## Agenda
 
+DAY 1 
 | Time | Activity | Time | Activity |
 |:-|:----|:-|:----|
 | *8:45*	|	*Morning coffee (optional)* |  
 | 9:00	|	Introduction to the Sandbox project | 12:00	|	*Lunch break* |
-| 9:15	|	Introduction to HPC: the basics | 13:00	|	RDM Step-by-step I |
+| 9:15	|	Introduction to HPC: the basics | 13:00	|	HPC exercises |
 | 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
-| 10:30	|	HPC workflow | 14:30	|	RDM Step-by-step II |
-| 11:15	|	Intro to RDM | 15:00	|	DK HPC solutions & resources |
+| 10:30	|	Intro to RDM | 14:30	|	HPC workflow II |
+| 11:15	|	HPC workflow | 15:00	|	HPC exercises |
+
+DAY 2
+| Time | Activity | Time | Activity |
+|:-|:----|:-|:----|
+| *8:45*	|	*Morning coffee (optional)* |  
+| 9:00	| Recap	| 12:00	|	*Lunch break* |
+| 9:15	|	HPC workflow III  | 13:00	|	HPC wrap up |
+| 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
+| 10:30	|	HPC exercises | 15:00	|	DK HPC solutions & resources |
 
 ## Discussion and feedback
 

@@ -8,4 +8,12 @@ format:
 css: ./web.css
 ---
 
-## Project Archiving
+## Project Archiving using `tar`
+
+Use the command `tar` to compress the hpcLaunch folder on UCloud. Check the size of the folder and compare the uncompress versus the compress version. 
+
+Calculate the resources in time, transferring the compress versus the uncompress files locally. 
+
+```
+tar –ft mytarfile.tar 
+```

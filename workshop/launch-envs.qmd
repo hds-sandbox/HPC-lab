@@ -1,9 +1,5 @@
 ---
 title: "Package managers"
-author: 
-    - "Alba Refoyo"
-    - "Jennifer Bartell"
-date: last-modified
 format:
   html:
     toc: false
