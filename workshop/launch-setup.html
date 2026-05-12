@@ -311,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">HPC Pipes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../workshop/UCloud.html" aria-current="page"> 
+    <a class="nav-link active" href="../workshop/launch-requirements.html" aria-current="page"> 
 <span class="menu-text">Workshop</span></a>
   </li>  
 </ul>
@@ -555,8 +555,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ssh-keys" id="toc-ssh-keys" class="nav-link active" data-scroll-target="#ssh-keys">1. SSH keys</a></li>
-  <li><a href="#working-with-files-on-hpc" id="toc-working-with-files-on-hpc" class="nav-link" data-scroll-target="#working-with-files-on-hpc">2. Working with files on HPC</a></li>
+  <li><a href="#ssh-keys" id="toc-ssh-keys" class="nav-link active" data-scroll-target="#ssh-keys">1. SSH keys</a>
+  <ul class="collapse">
+  <li><a href="#local-host-keys" id="toc-local-host-keys" class="nav-link" data-scroll-target="#local-host-keys">Local host keys</a></li>
+  <li><a href="#start-a-ucloud-job-with-ssh-access." id="toc-start-a-ucloud-job-with-ssh-access." class="nav-link" data-scroll-target="#start-a-ucloud-job-with-ssh-access.">Start a UCloud job with SSH access.</a></li>
+  </ul></li>
+  <li><a href="#working-with-files-on-hpc" id="toc-working-with-files-on-hpc" class="nav-link" data-scroll-target="#working-with-files-on-hpc">2. Working with files on HPC</a>
+  <ul class="collapse">
+  <li><a href="#fs-navigation-and-text-editors" id="toc-fs-navigation-and-text-editors" class="nav-link" data-scroll-target="#fs-navigation-and-text-editors">FS navigation and text editors</a></li>
+  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -589,6 +596,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="ssh-keys" class="level2">
 <h2 class="anchored" data-anchor-id="ssh-keys">1. SSH keys</h2>
+<section id="local-host-keys" class="level3">
+<h3 class="anchored" data-anchor-id="local-host-keys">Local host keys</h3>
 <p>Navigate to the location where all SSH keys are stored to generate a new one. Do you have any host keys stored locally?</p>
 <p><span style="color:#F54927;"> <strong>SKIP</strong> these first two commands if you haven’t used SSH keys before (the path won’t exit if you’ve never created a key).</span></p>
 <div class="code-with-filename">
@@ -607,35 +616,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> C:<span class="dt">\U</span>sers<span class="dt">\&lt;</span>YourUsername<span class="op">&gt;</span><span class="dt">\.</span>ssh/known_hosts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="generate-ssh-key-pair" class="level4">
-<h4 class="anchored" data-anchor-id="generate-ssh-key-pair">Generate SSH Key Pair</h4>
-<p>We will specify the type of key to create with the option <code>-t</code> (default) and use a filename that describes what the key is for (e.g.&nbsp;<code>id_UCloud</code>), and don’t enter a passphrase (for now!):</p>
+<h4 class="anchored" data-anchor-id="generate-ssh-key-pair">1.1. Generate SSH Key Pair</h4>
+<p>We will specify the type of key to create with the option <code>-t</code> (default) and use a filename that describes what the key is for (e.g.&nbsp;<code>id_UCloud</code>). Don’t enter a passphrase (for now!):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>Generating public/private ed25519 key pair.
 Enter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud
 Your identification has been saved in id_UCloud
 Your public key has been saved in id_UCloud.pub
 ...</code></pre>
-<p>For windows users <strong>only</strong>:</p>
+<section id="windows-users-only" class="level5">
+<h5 class="anchored">Windows users <strong>only</strong></h5>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Command not working?
+<span class="screen-reader-only">Caution</span>Windows: you might need to run a couple more commands!
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>When you run the command above and ~/.ssh does not exist → it is created automatically. IF this didn’t happen in your system, run the following command:</p>
+<section id="ssh-keygen-not-working" class="level4">
+<h4 class="anchored" data-anchor-id="ssh-keygen-not-working"><code>ssh-keygen</code> not working?</h4>
+<p>This might be due to broken permissions.</p>
+<p>When you run the command above and <code>~/.ssh</code> does not exist → it is created automatically. IF this didn’t happen in your system, run the following command:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.ssh</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This might be due to broken permissions.</p>
-</div>
-</div>
-</div>
-<p>By default the ssh-agent service is disabled on Windows. Make sure you’re running as an Administrator.</p>
+</section>
+<section id="ssh-agent-service-disabled" class="level4">
+<h4 class="anchored" data-anchor-id="ssh-agent-service-disabled"><code>ssh-agent</code> service disabled?</h4>
+<p>There is one additional thing you need to take care of. By default, the <code>ssh-agent</code> service is disabled on Windows, so make sure you’re running as an Administrator.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>On Powershell</strong></pre>
@@ -657,22 +669,43 @@ Your public key has been saved in id_UCloud.pub
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="On WSL (Windows Subsystem for Linux)"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="kw">`</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="kw">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>On MombaXterm, follow the instructions <a href="https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/37388673/Creating+and+using+an+SSH+key+pair+with+MobaXterm">here</a>.</p>
-<hr>
+</section>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="add-private-key-to-ssh-agent" class="level4">
+<h4 class="anchored" data-anchor-id="add-private-key-to-ssh-agent">1.2. Add private key to <code>ssh-agent</code></h4>
 <p>Once, we have generated your SSH keys, add the key to your system:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Now load your key files into ssh-agent</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> id_UCloud</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Do you get a message similar to this?</p>
-<pre><code>entity added: id_UCloud (gsd818@SUN1029429)</code></pre>
-<p>Then, copy the public key, either using <code>cat</code> to print the content of the file or as follows:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> id_UCloud.pub <span class="kw">|</span> <span class="ex">pbcopy</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
-<p>You can now paste the public SSH key on UCloud. You’ll need to enable SSH access when you submit a job so you can SSH in.</p>
-<p><img src="../develop/images/sshkey_step2.png" class="img-fluid"></p>
-<hr>
+<p>Do you get a message similar to this? <code>entity added: id_UCloud (gsd818@SUN1029429)</code> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 </section>
-<section id="submit-a-new-job-on-ucloud-and-configure-ssh-access." class="level4">
-<h4 class="anchored" data-anchor-id="submit-a-new-job-on-ucloud-and-configure-ssh-access.">Submit a new job on UCloud and configure SSH access.</h4>
-<p>Start a job from the terminal app and follow these configuration steps (job settings): 1. Enter a job name (descriptive of the task) 2. Select the time (in hours) we want to use a node for (it can be modified afterwards!) and the machine type (selecting a 1 CPU standard node with 6GB memory) 3. Add folders to access while in this job (e.g.: <code>/home</code>). We recommend creating a new folder named HPCLaunch in your personal drive, where you can store all files generated during the workshop. 4. Remember to click on <em>Enable SSH access</em>.</p>
+<section id="copy-ssh-key-to-remote-server" class="level4">
+<h4 class="anchored" data-anchor-id="copy-ssh-key-to-remote-server">1.3. Copy SSH Key to remote server</h4>
+<p>Then, copy the public key, either using <code>cat</code> to print the content of the file or as follows:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> id_UCloud.pub <span class="kw">|</span> <span class="ex">pbcopy</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can now paste the public SSH key on UCloud.</p>
+<p><img src="../develop/images/sshkey_step2.png" class="img-fluid"></p>
+<p>You’ll need to enable SSH access when you submit a job so you can SSH in.</p>
+</section>
+</section>
+<section id="start-a-ucloud-job-with-ssh-access." class="level3">
+<h3 class="anchored" data-anchor-id="start-a-ucloud-job-with-ssh-access.">Start a UCloud job with SSH access.</h3>
+<p>Submit a job from the terminal app and follow these configuration steps (job settings):</p>
+<ol type="1">
+<li>Enter a job name (descriptive of the task, e.g.: <em>SSH myname</em>)</li>
+<li>Select the time (in hours) we want to use a node for (it can be modified afterwards!). Let’s do <strong>2h</strong>.<br>
+</li>
+<li>Number of nodes: 1</li>
+<li>Machine type: and the machine type (selecting a 1 CPU standard node with 3GB memory).</li>
+</ol>
+<p><img src="./images/terminalResources.png" width="800" height="150"></p>
+<ol start="5" type="1">
+<li><p>Add folders to access while in this job . We recommend creating a new folder named HPCLaunch in your personal drive, where you can store all files generated during the workshop (e.g.: <code>/Member Files: username/HPCLaunch</code>). <img src="./images/addFolder.png" width="800" height="150"></p></li>
+<li><p>Scroll down and remember to click on <em>Enable SSH access</em>.</p></li>
+</ol>
 <p><img src="./images/enableSSH.png" width="800" height="150"></p>
 <p>Now you are ready to click on the submit button (and wait!).</p>
 <p>Once the job starts, the SSH command appears in the progress view and can be run locally from your terminal (ssh in) <img src="./images/sshCommand.png" width="900"></p>
@@ -681,9 +714,9 @@ Your public key has been saved in id_UCloud.pub
 </section>
 <section id="working-with-files-on-hpc" class="level2">
 <h2 class="anchored" data-anchor-id="working-with-files-on-hpc">2. Working with files on HPC</h2>
-<section id="fs-navigation-and-text-editors" class="level4">
-<h4 class="anchored" data-anchor-id="fs-navigation-and-text-editors">FS navigation and text editors</h4>
-<p>In this exercise, you will practice working with files and directories on UCloud using the command line. For every task below, you must use Bash commands (no graphical interface).</p>
+<section id="fs-navigation-and-text-editors" class="level3">
+<h3 class="anchored" data-anchor-id="fs-navigation-and-text-editors">FS navigation and text editors</h3>
+<p>In this exercise, you will practice working with files and directories on UCloud using the command line. For every task below, you must use <strong>Bash commands</strong> only (no graphical interface). All required commands are very common and widely used in Linux and HPC environments. Check the hints below if you need help.</p>
 <div class="warning">
 <p>Although we have tried to be flexible in the answers, we may not have included all possible working solutions as correct ones. What matters most is that your code runs correctly and produces the desire output — not that it matches the exact command shown in our solution.</p>
 </div>
@@ -702,17 +735,18 @@ Your public key has been saved in id_UCloud.pub
 <div>
 <div class="webex-check callout-exercise">
 <ol type="1">
-<li>Make sure your wd is <code>hpcLaunch</code></li>
-<li>What is your working directory (wd) on UCloud? Type only the top-level directory (the root level) <input class="webex-solveme nospaces" size="5" data-answer="[&quot;/work&quot;]"></li>
+<li>What is the working directory (wd) on UCloud? Type only the top-level directory (the root level) <input class="webex-solveme nospaces" size="5" data-answer="[&quot;/work&quot;]"></li>
+<li>Make <code>hpcLaunch</code> your wd. Use <code>pwd</code> command to print the current wd and copy/paste it here <input class="webex-solveme nospaces" size="15" data-answer="[&quot;/work/hpcLaunch&quot;]"></li>
 <li>Are there any files in your working directory? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
-<li>Create a new directory named <code>day1</code> Type the command <input class="webex-solveme nospaces" size="10" data-answer="[&quot;mkdir day1&quot;]"></li>
-<li>Create a new file called <code>hello.txt</code> containing the text <em>Hello</em>?</li>
-<li>Create an empty file named <code>emptyFile.csv</code>?</li>
+<li>Create a new directory named <code>day1</code> Type the command <input class="webex-solveme nospaces" size="13" data-answer="[&quot;mkdir day1&quot;,&quot;mkdir -p day1&quot;]"></li>
+<li>Create a new file called <code>hello.txt</code> containing the text <em>Hello</em> in the <strong>day1</strong> directory?</li>
+<li>Create an empty file named <code>emptyFile.csv</code> in the <strong>day1</strong> directory?</li>
 <li>Move into the <code>day1</code> directory? Type the command <input class="webex-solveme nospaces" size="7" data-answer="[&quot;cd day1&quot;]"></li>
-<li>Edit the hello.txt file using <code>nano</code> or <code>vim</code>. Add <em>Hola</em> on a new line and save it with a new filename (e.g.&nbsp;<code>greetings.txt</code>). You can use Ctrl+X to exit/close, save changes and type a new filename.</li>
+<li>Edit the hello.txt file using <code>nano</code> or <code>vim</code>. Add <em>Hola</em> on a new line and save it as a new file (e.g.&nbsp;<code>greetings.txt</code>). In nano, use <code>Ctrl+O</code> to save with a new filename or <code>Ctrl+X</code> to exit/close while choosing to save changes into a new file.</li>
 <li>Count lines in both <em>.txt</em> files. Use <code>wc -l &lt;files&gt;</code>. Type the command <input class="webex-solveme nospaces" size="17" data-answer="[&quot;wc -l *.txt&quot;,&quot;cat *.txt | wc -l&quot;]"></li>
-<li>Use a command to list <strong>all</strong> files and their sizes in this directory. Type the command <input class="webex-solveme nospaces" size="8" data-answer="[&quot;ls -lh .&quot;]">”</li>
-<li>Print the first line in <code>greetings.txt</code> (only 1!). Use <code>head</code> or <code>awk</code>. Type the command <input class="webex-solveme nospaces" size="25" data-answer="[&quot;head -n1 greetings.txt&quot;,&quot;head -1 greetings.txt&quot;,&quot;awk 'NR==1' greetings.txt&quot;]"></li>
+<li>Use a command to list <strong>all</strong> files and their sizes in this directory. Type the command <input class="webex-solveme nospaces" size="8" data-answer="[&quot;ls -lh .&quot;,&quot;du -sh *&quot;]">”</li>
+<li>Print the first line in <code>greetings.txt</code> (only 1!). Use <code>head</code> or <code>awk</code>. Type the command <input class="webex-solveme nospaces" size="25" data-answer="[&quot;head -n1 greetings.txt&quot;,&quot;head -1 greetings.txt&quot;,&quot;awk 'NR==1' greetings.txt&quot;]">.</li>
+<li>Print the last command in <code>greetings.txt</code>. Use <code>head</code> or <code>awk</code>.</li>
 <li>Can you remove all <em>.txt</em> files (specify the file extension when deleting)? Type the command <input class="webex-solveme nospaces" size="8" data-answer="[&quot;rm *.txt&quot;]"></li>
 </ol>
 <p>Need some help?</p>
@@ -730,15 +764,16 @@ Your public key has been saved in id_UCloud.pub
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<p>Here are some of the commands you need:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here are some of the commands you need (random order):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
@@ -759,35 +794,44 @@ Your public key has been saved in id_UCloud.pub
 <div>
 <div class="callout-hint">
 <p>Run the following commands in a terminal. Make sure you understand what each command does before moving on.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check your current working directory</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># List the contents of your working directory</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> . </span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new directory</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> day1</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a text file with content</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello"</span> <span class="op">&gt;</span> ./day1/hello.txt</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an empty file</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> ./day1/emptyFile.txt</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Move into the new directory</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> day1</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Count lines </span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="pp">*</span>.txt</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># List files and their sizes</span></span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span> .</span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first lines</span></span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n1</span> greetings.txt</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove txt files</span></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="pp">*</span>.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Check the default working directory</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Change directory </span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hpcLaunch/</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check your new current working directory</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. List the contents of your working directory</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> . </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Create new directory</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> day1</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Create a text file with content</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello"</span> <span class="op">&gt;</span> ./day1/hello.txt</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Create an empty file</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> ./day1/emptyFile.txt</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Move into the new directory</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> day1</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 9. Count lines </span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="pp">*</span>.txt</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 10. List files and their sizes</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span> .</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co"># 11. Print first lines</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n1</span> greetings.txt</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 12. Print first lines</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-n1</span> greetings.txt</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="co"># 13. Remove txt files</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="pp">*</span>.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>

@@ -311,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">HPC Pipes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../workshop/UCloud.html" aria-current="page"> 
+    <a class="nav-link active" href="../workshop/launch-requirements.html" aria-current="page"> 
 <span class="menu-text">Workshop</span></a>
   </li>  
 </ul>
@@ -555,11 +555,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#syncs-and-transfer-with-rsync" id="toc-syncs-and-transfer-with-rsync" class="nav-link active" data-scroll-target="#syncs-and-transfer-with-rsync">1. Syncs and transfer with <code>rsync</code></a></li>
-  <li><a href="#you-would-have-to-type-your-password-if-you-do-not-make-use-of-ssh-keys" id="toc-you-would-have-to-type-your-password-if-you-do-not-make-use-of-ssh-keys" class="nav-link" data-scroll-target="#you-would-have-to-type-your-password-if-you-do-not-make-use-of-ssh-keys">You would have to type your password if you do not make use of <code>ssh</code> keys!</a></li>
+  <li><a href="#file-integrity-verification" id="toc-file-integrity-verification" class="nav-link active" data-scroll-target="#file-integrity-verification">1. File integrity verification</a></li>
+  <li><a href="#synchronisation-and-transfer-with" id="toc-synchronisation-and-transfer-with" class="nav-link" data-scroll-target="#synchronisation-and-transfer-with">2. Synchronisation and transfer with</a></li>
   <li><a href="#session-management-using-tmux" id="toc-session-management-using-tmux" class="nav-link" data-scroll-target="#session-management-using-tmux">2. Session management using <code>tmux</code></a></li>
-  <li><a href="#collect-share-using-checksums" id="toc-collect-share-using-checksums" class="nav-link" data-scroll-target="#collect-share-using-checksums">3. Collect &amp; share using checksums</a></li>
-  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">4. Documentation</a></li>
   </ul>
 </nav>
 </nav>
@@ -590,19 +588,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="syncs-and-transfer-with-rsync" class="level2">
-<h2 class="anchored" data-anchor-id="syncs-and-transfer-with-rsync">1. Syncs and transfer with <code>rsync</code></h2>
-<p>Lots of options you can find in the manual (would require a workshop only for that). Here is the manual if you want to learn more: https://linux.die.net/man/1/rsync.</p>
-<p>Create a folder system locally <code>hpcLaunch</code> containing <code>rsync/data</code> (in your personal drive)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> hpcLaunch/rsync/data</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hpcLaunch/rsync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Create 100 files with extensions <code>fastq</code> and <code>log</code> in the data folder:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> data/file{1..100}.fastq data/file{1..100}.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>let’s check the data dir:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="file-integrity-verification" class="level2">
+<h2 class="anchored" data-anchor-id="file-integrity-verification">1. File integrity verification</h2>
+<p>We recommend using <code>md5sum</code> to verify data integrity, particularly when downloading large datasets, as it is a widely used tool. All data and files archived on Zenodo include an MD5 hash for this purpose. Let’s have a look at the content of a newly developed software <code>fastmixture</code> that estimates individual ancestry proportions from genotype data.</p>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Exercise</span>Exercise checksums
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="webex-check callout-exercise">
+<ol type="1">
+<li>Open this <a href="https://zenodo.org/records/14106454">Zenodo link</a></li>
+<li>Enter the DOI of the repo (for all versions): <input class="webex-solveme nospaces" size="23" data-answer="[&quot;10.5281/zenodo.12683371&quot;]"></li>
+<li>Zenodo offers an API at https://zenodo.org/api/, which functions similarly to the DOI API. This allows you to retrieve a BibTeX-formatted reference for a specific record (e.g., <code>records/14106454</code>) using either curl or wget.</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------curl-------</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LH</span> <span class="st">'Accept: application/x-bibtex'</span> https://zenodo.org/api/records/14106454 <span class="dt">\</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">--output</span> meisner_2024.bib</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ------wget-------</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--header</span><span class="op">=</span><span class="st">"Accept: application/x-bibtex"</span> <span class="at">-q</span> <span class="dt">\</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     https://zenodo.org/api/records/12683372 <span class="at">-O</span> meisner_2024.bib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Does the content of your <code>*.bib</code> file look like this?</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">@misc{meisner_2024_14106454,</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">author</span>       = {Meisner, Jonas},</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">title</span>        = {Supplemental data for reproducing <span class="st">"Faster model-</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">                   based estimation of ancestry proportions"</span>},</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">month</span>        = nov,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">year</span>         = 2024,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">publisher</span>    = {Zenodo},</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">version</span>      = {v0.93.4},</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">doi</span>          = {10.5281/zenodo.14106454},</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">url</span>          = {https://doi.org/10.5281/zenodo.14106454},</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="4" type="1">
+<li>Scroll down to files and download the software zip file (<code>fastmixture-0.93.4.zip</code>) using the command below:</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://zenodo.org/records/14106454/files/fastmixture-0.93.4.zip <span class="dt">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>--output fastmixture.zip </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="5" type="1">
+<li><p>Compute md5 hash and enter the value (no white-spaces) <input class="webex-solveme nospaces" size="32" data-answer="[&quot;4b3c22644bd2e1dabbbbab599491a7e5&quot;]"></p></li>
+<li><p>Is your value tha same as the one shown on zenodo <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p></li>
+<li><p>Finally, compute the sha256 digest (with program sha256)</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sha256sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>and enter the value <input class="webex-solveme nospaces" size="64" data-answer="[&quot;37c931cf669033054333ae6c2553cc936db7a28aa13ab776c5adfb1c932bc72b&quot;]"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Bonus exercise
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We will be using the HLA database for this exercise. Click on <a href="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/">this link</a> or google <code>IMGT HLA&gt; Download</code>. Important: go through the README before downloading! Check if a checksums file is included.</p>
+<ol type="1">
+<li>Download and open the <code>md5checksum.txt</code> (<a href="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/">HLA FTP Directory</a>)</li>
+<li>Look for the hash of the file <code>hla_prot.fasta</code></li>
+<li>Create a bash script to download the target files (named “dw_resources.sh” in your current directory).</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">md5file</span><span class="op">=</span><span class="st">"md5checksum.txt"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the URL of the files to download</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="va">url</span><span class="op">=</span><span class="st">"ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/hla_prot.fasta"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (Optional 1) Save the original file name: filename=$(basename "$url")</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># (Optional 2) Define a different filename to save the downloaded file (`wget -O $out_filename`)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># out_filename = "imgt_hla_prot.fasta"</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the file</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="va">$url</span> <span class="at">--output</span> <span class="va">$out_filename</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">md5sum</span> <span class="at">--quiet</span> <span class="at">--ignore-missing</span> <span class="at">--check</span> <span class="va">$md5file</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We recommend using the argument <code>--quiet</code> as part of your pipeline so that it only prints the errors (it doesn’t print output when success). The <code>--ignore-missing</code> argument is useful because it allows us to use the raw checksums file while skipping files we may not want to download.</p>
+<p><strong>Did you get any error?</strong></p>
+<ol start="4" type="1">
+<li>Generate the md5 hash &amp; compare to the one from the original <code>md5checksum.txt</code>.</li>
+</ol>
+</div>
+</div>
+</div>
+</section>
+<section id="synchronisation-and-transfer-with" class="level2">
+<h2 class="anchored" data-anchor-id="synchronisation-and-transfer-with">2. Synchronisation and transfer with</h2>
+<p>To explore all <code>rsync</code> options would require a workshop on its own. Check <a href="https://linux.die.net/man/1/rsync">the manual</a> to learn more about the command: https://linux.die.net/man/1/rsync.</p>
+<p>1.1. Create a folder system locally <code>containing</code>rsync/data<code>(inside a folder called</code>hpcLaunch`) and navigate to the data folder.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> hpcLaunch/rsync/data</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hpcLaunch/rsync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>1.2. Generate 100 files with extensions <code>fastq</code> and <code>log</code> in the data folder:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> data/file{1..100}.fastq data/file{1..100}.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>1.3. Check the data directory:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="local-to-local-copy" class="level4">
 <h4 class="anchored" data-anchor-id="local-to-local-copy">Local-to-local copy</h4>
-<p>We first use rsync to create a backup copy of the data we just generated.</p>
+<p>We are going to use <code>rsync</code> to create a backup copy of the data we just generated.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -617,9 +723,10 @@ Note
 <pre><code>rsync OPTIONS ORIGIN(s) DESTINATION</code></pre>
 </div>
 </div>
-<p>An archive (incremental) copy can be done with <code>-a</code> option. You can add a progress bar during the transfer with <code>-P</code> option. In this exercise, we want to exclude some files from the transfer: we want to keep only those with <code>fastq</code> extension. Run the following command:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> data backup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This will copy all the <code>fastq</code> files in <code>backup/data</code>. You can check with <code>ls</code>.</p>
+<p>An archive (incremental) copy can be done with <code>-a</code> option. You can add a progress bar during the transfer with <code>-P</code> option. In this exercise, we want to exclude some files from the backup: we want to keep only those with <code>fastq</code> extension.</p>
+<p>Run the following command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> data backup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This will copy all the <code>fastq</code> files in <code>backup/data</code>. Check the new folders with <code>ls</code> using a terminal.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -634,7 +741,7 @@ Warning
 </div>
 </div>
 <p>Change the first ten <code>fastq</code> files with some text:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">10</span><span class="dt">}</span><span class="kw">;</span> <span class="cf">do</span> <span class="kw">{</span> <span class="bu">echo</span> ATGC<span class="kw">;</span> <span class="bu">echo</span> TCCA<span class="kw">;</span> <span class="bu">echo</span> NNNN<span class="kw">;</span> <span class="bu">echo</span> NNNN } <span class="op">&gt;&gt;</span> data/file<span class="va">$i</span>.fastq<span class="kw">;</span> <span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="dt">{</span><span class="dv">1</span><span class="dt">..</span><span class="dv">10</span><span class="dt">}</span><span class="kw">;</span> <span class="cf">do</span> <span class="kw">{</span> <span class="bu">echo</span> ATGC<span class="kw">;</span> <span class="bu">echo</span> TCCA<span class="kw">;</span> <span class="bu">echo</span> NNNN<span class="kw">;</span> <span class="bu">echo</span> NNNN } <span class="op">&gt;&gt;</span> data/file<span class="va">$i</span>.fastq<span class="kw">;</span> <span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Use <code>less</code> file reader.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -646,16 +753,16 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>less</code> is ideal for exploring large text files—you can scroll using the arrow keys and exit by pressing q.</p>
+<p><code>less</code> is ideal for exploring large text files—you can scroll using the arrow keys and exit by pressing <code>q</code>.</p>
 <p>Check the documentation (<code>man less</code> or <code>less --help</code>) to learn how to search for specific text within a file.</p>
 </div>
 </div>
 <p>Then open the file with <code>less</code>, explore its contents, and check which lines contain an <strong>N</strong>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> data/file1.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>While inside <code>less</code>, type <code>/N</code>. Is some text highlighted? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
-<p>Finally, count how many lines contain at least one N in <code>file1.fastq</code>, use the command <code>grep</code>. How many are there? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;2&quot;]"></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> data/file1.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>While inside <code>less</code>, type <code>/N</code> and press enter. Is some text highlighted? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
+<p>Finally, count how many lines contain at least one <em>N</em> in <code>file1.fastq</code> using the command <code>grep</code>. How many are there? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;2&quot;]"></p>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -664,22 +771,22 @@ Warning
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'N'</span> data/file1.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">'N'</span> data/file1.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Now, we also want to preserve earlier versions of any files that get updated. To do this, create a backup directory named with the current date and time (it will appear in your <code>backup</code> directory):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> <span class="dt">\</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">--backup</span> <span class="dt">\</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">--backup-dir</span><span class="op">=</span>versioning_<span class="va">$(</span><span class="fu">date</span> +%F_%T<span class="va">)</span>/ <span class="dt">\</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>      data <span class="dt">\</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>      backup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We also want to preserve earlier versions of any files that get updated. To do this, create a backup directory named with the current date and time (it will appear in your <code>backup</code> directory):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> <span class="dt">\</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">--backup</span> <span class="dt">\</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">--backup-dir</span><span class="op">=</span>versioning_<span class="va">$(</span><span class="fu">date</span> +%F_%T<span class="va">)</span> <span class="dt">\</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>      data <span class="dt">\</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>      backup</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -696,25 +803,26 @@ Tip
 </section>
 <section id="transfer-between-local-and-remote" class="level4">
 <h4 class="anchored" data-anchor-id="transfer-between-local-and-remote">Transfer between local and remote</h4>
-<p>You can use the same approach to transfer and back up data between a local machine (your PC/laptop) and another remote system (in this case, UCloud). You need Linux or Mac on the local host to perform <code>rsync</code>.</p>
-<p>Let’s transfer the <code>fastq</code> files to UCloud:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> PATH_TO/data </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can use the same approach to transfer and back up data between a local machine (your PC/laptop) and another remote system (in this case, UCloud). You need Linux, Mac or WSL/MobaXterm on the local host to perform <code>rsync</code>.</p>
+<p>Let’s transfer the <code>fastq</code> files to UCloud. In this case, we want the content in the data folder to be transfer and not the folder itself (<code>PATH_TO/data/</code>).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> <span class="at">-e</span> <span class="st">"ssh -i ~/.ssh/id_rsa -p &lt;port&gt;"</span> PATH_TO/data/ ucloud@ssh.cloud.sdu.dk:/work/hpcLaunch/data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Go to UCloud and check the content in <code>/work/hpcLaunch/data</code>.</p>
 <p>The opposite can be done uploading data from your computer. For example:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> <span class="at">-e</span> <span class="st">"ssh -i ~/.ssh/id_rsa -p &lt;port&gt;"</span>  PATH_TO/data ucloud@ssh.cloud.sdu.dk:/work/hpcLaunch/data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># LOCAL_PATH can be . if you are running the command from the rsync folder you created before</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-aP</span> <span class="at">--exclude</span><span class="op">=</span><span class="st">"*.log"</span> <span class="at">-e</span> <span class="st">"ssh -i ~/.ssh/id_rsa -p &lt;port&gt;"</span>  ucloud@ssh.cloud.sdu.dk:/work/hpcLaunch/day1 LOCAL_PATH</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Do you now have all files generated in the previous exercise locally? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
+<p>You would have to type your password if you do not make use of <code>ssh</code> keys!</p>
 </section>
-</section>
-<section id="you-would-have-to-type-your-password-if-you-do-not-make-use-of-ssh-keys" class="level2">
-<h2 class="anchored" data-anchor-id="you-would-have-to-type-your-password-if-you-do-not-make-use-of-ssh-keys">You would have to type your password if you do not make use of <code>ssh</code> keys!</h2>
 </section>
 <section id="session-management-using-tmux" class="level2">
 <h2 class="anchored" data-anchor-id="session-management-using-tmux">2. Session management using <code>tmux</code></h2>
 <p><code>tmux</code> was originally designed as a keyboard-only software. However, you can also configure it to allow switching between windows and panes using the mouse. To enable this, add the following setting to the configuration file:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"set -g mouse"</span> <span class="op">&gt;&gt;</span> ~/.tmux.conf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"set -g mouse"</span> <span class="op">&gt;&gt;</span> ~/.tmux.conf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can start a <code>tmux</code> session anywhere. It is easier to navigate sessions giving them a name.</p>
 <ol type="1">
 <li>Start a session called <code>example1</code> (or choose a different name!):</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new <span class="at">-s</span> example1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new <span class="at">-s</span> example1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The command will set you into the session automatically. The window looks something like below:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -733,7 +841,7 @@ Ctrl + b + ""
 Ctrl+b, then arrow keys to change pane!
 </code></pre>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -742,7 +850,7 @@ Ctrl+b, then arrow keys to change pane!
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>Right-clicked with the mouse to choose the split.</li>
@@ -758,11 +866,11 @@ Ctrl+b, then arrow keys to change pane!
 </ol>
 <p>Now, you have your 2 windows and three panes running in on of them.</p>
 <p>In the new window, let’s look at which tmux sessions and windows are open. Run</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> ls</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> ls</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The output will tell you that session <code>example1</code> is in use (attached) and has 2 windows.</p>
 <pre><code>example1: 2 windows (created Wed Apr  2 16:12:54 2025) (attached)</code></pre>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -771,11 +879,11 @@ Ctrl+b, then arrow keys to change pane!
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <section id="launching-separate-downloads-at-the-same-time" class="level3 callout-body-container callout-body">
 <h3 class="anchored" data-anchor-id="launching-separate-downloads-at-the-same-time">Launching separate downloads at the same time</h3>
 <p>Start a new session without attaching to it (<code>d</code> option), and call it <code>downloads</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new-session <span class="at">-d</span> <span class="at">-s</span> downloads</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new-session <span class="at">-d</span> <span class="at">-s</span> downloads</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>verify the session is there with <code>tmux ls</code>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -791,149 +899,27 @@ Warning
 </div>
 </div>
 <p>Create a text file with few example files for this workshop to be downloaded.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> https://api.github.com/repos/hds-sandbox/GDKworkshops/contents/Examples/rsync <span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.[] | .download_url'</span> <span class="op">&gt;</span> downloads.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> https://api.github.com/repos/hds-sandbox/GDKworkshops/contents/Examples/rsync <span class="kw">|</span> <span class="ex">jq</span> <span class="at">-r</span> <span class="st">'.[] | .download_url'</span> <span class="op">&gt;</span> downloads.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The script below launches all the URLs from the list in the download session in a new window. The new window closes after the download. If there are less than K downloads active, a new one starts, until the end! You can use this and close your terminal. The downloads will keep going and the window names will be shown to keep an eye on the current downloads. Try it out and use it whenever you have massive number of file downloads</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> downloaded</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="va">K</span><span class="op">=</span>2  <span class="co"># Maximum number of concurrent downloads</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="at">-r</span> <span class="va">url</span><span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Wait until the number of active tmux windows in the "downloads" session is less than K</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="bu">[</span> <span class="st">"</span><span class="va">$(</span><span class="ex">tmux</span> list-windows <span class="at">-t</span> downloads <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span><span class="va">)</span><span class="st">"</span> <span class="ot">-ge</span> <span class="st">"</span><span class="va">$((K</span><span class="op">+</span><span class="dv">1</span><span class="va">))</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">do</span>     </span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sleep</span> 1</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract the filename from the URL</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">filename</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">"</span><span class="va">$url</span><span class="st">"</span><span class="va">)</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Start a new tmux window for the download</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">tmux</span> new-window <span class="at">-t</span> downloads <span class="at">-n</span> <span class="st">"</span><span class="va">$filename</span><span class="st">"</span> <span class="st">"wget -c </span><span class="va">$url</span><span class="st"> -O downloaded/</span><span class="va">$filename</span><span class="st"> &amp;&amp; tmux kill-window"</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">tmux</span> list-windows <span class="at">-t</span> downloads <span class="at">-F</span> <span class="st">"#{window_name}"</span>   </span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> downloads.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> downloaded</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="va">K</span><span class="op">=</span>2  <span class="co"># Maximum number of concurrent downloads</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="at">-r</span> <span class="va">url</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Wait until the number of active tmux windows in the "downloads" session is less than K</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="bu">[</span> <span class="st">"</span><span class="va">$(</span><span class="ex">tmux</span> list-windows <span class="at">-t</span> downloads <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span><span class="va">)</span><span class="st">"</span> <span class="ot">-ge</span> <span class="st">"</span><span class="va">$((K</span><span class="op">+</span><span class="dv">1</span><span class="va">))</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">do</span>     </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sleep</span> 1</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">done</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract the filename from the URL</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">filename</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">"</span><span class="va">$url</span><span class="st">"</span><span class="va">)</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Start a new tmux window for the download</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    <span class="ex">tmux</span> new-window <span class="at">-t</span> downloads <span class="at">-n</span> <span class="st">"</span><span class="va">$filename</span><span class="st">"</span> <span class="st">"wget -c </span><span class="va">$url</span><span class="st"> -O downloaded/</span><span class="va">$filename</span><span class="st"> &amp;&amp; tmux kill-window"</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    <span class="ex">tmux</span> list-windows <span class="at">-t</span> downloads <span class="at">-F</span> <span class="st">"#{window_name}"</span>   </span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> downloads.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </div>
 </div>
 <p>You are done for now! It’s time to stop the job, by holding the <code>Stop application</code> button to do so.</p>
-<hr>
-</section>
-<section id="collect-share-using-checksums" class="level2">
-<h2 class="anchored" data-anchor-id="collect-share-using-checksums">3. Collect &amp; share using checksums</h2>
-<p>We recommend using <code>md5sum</code> to verify data integrity, particularly when downloading large datasets, as it is a widely used tool. All data and files archived on Zenodo include an MD5 hash for this purpose. Let’s have a look at the content of a newly developed software <code>fastmixture</code> that estimates individual ancestry proportions from genotype data.</p>
-<div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Exercise</span>Exercise checksums
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<div>
-<div class="webex-check callout-exercise">
-<ol type="1">
-<li>Open this <a href="https://zenodo.org/records/14106454">Zenodo link</a></li>
-<li>Enter the DOI of the repo (for all versions): <input class="webex-solveme nospaces" size="23" data-answer="[&quot;10.5281/zenodo.12683371&quot;]"></li>
-<li>Zenodo offers an API at https://zenodo.org/api/, which functions similarly to the DOI API. This allows you to retrieve a BibTeX-formatted reference for a specific record (e.g., <code>records/14106454</code>) using either curl or wget.</li>
-</ol>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Terminal</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------curl-------</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LH</span> <span class="st">'Accept: application/x-bibtex'</span> https://zenodo.org/api/records/14106454 <span class="dt">\</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">--output</span> meisner_2024.bib</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ------wget-------</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--header</span><span class="op">=</span><span class="st">"Accept: application/x-bibtex"</span> <span class="at">-q</span> <span class="dt">\</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>     https://zenodo.org/api/records/12683372 <span class="at">-O</span> meisner_2024.bib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Does the content of your <code>*.bib</code> file look like this?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">@misc{meisner_2024_14106454,</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">author</span>       = {Meisner, Jonas},</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">title</span>        = {Supplemental data for reproducing <span class="st">"Faster model-</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="st">                   based estimation of ancestry proportions"</span>},</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">month</span>        = nov,</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">year</span>         = 2024,</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">publisher</span>    = {Zenodo},</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">version</span>      = {v0.93.4},</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">doi</span>          = {10.5281/zenodo.14106454},</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">url</span>          = {https://doi.org/10.5281/zenodo.14106454},</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="4" type="1">
-<li>Scroll down to files and download the software zip file (<code>fastmixture-0.93.4.zip</code>) using the command below:</li>
-</ol>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Terminal</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://zenodo.org/records/14106454/files/fastmixture-0.93.4.zip <span class="dt">\</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>--output fastmixture.zip </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ol start="5" type="1">
-<li><p>Compute md5 hash and enter the value (no white-spaces) <input class="webex-solveme nospaces" size="32" data-answer="[&quot;4b3c22644bd2e1dabbbbab599491a7e5&quot;]"></p></li>
-<li><p>Is your value tha same as the one shown on zenodo <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p></li>
-<li><p>Finally, compute the sha256 digest (with program sha256)</p></li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sha256sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>and enter the value <input class="webex-solveme nospaces" size="64" data-answer="[&quot;37c931cf669033054333ae6c2553cc936db7a28aa13ab776c5adfb1c932bc72b&quot;]"></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Bonus exercise 4
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>We will be using the HLA database for this exercise. Click on <a href="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/">this link</a> or google <code>IMGT HLA&gt; Download</code>. Important: go through the README before downloading! Check if a checksums file is included.</p>
-<ol type="1">
-<li>Download and open the <code>md5checksum.txt</code> (<a href="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/">HLA FTP Directory</a>)</li>
-<li>Look for the hash of the file <code>hla_prot.fasta</code></li>
-<li>Create a bash script to download the target files (named “dw_resources.sh” in your current directory).</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="va">md5file</span><span class="op">=</span><span class="st">"md5checksum.txt"</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the URL of the files to download</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="va">url</span><span class="op">=</span><span class="st">"ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/hla_prot.fasta"</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (Optional 1) Save the original file name: filename=$(basename "$url")</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># (Optional 2) Define a different filename to save the downloaded file (`wget -O $out_filename`)</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="co"># out_filename = "imgt_hla_prot.fasta"</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the file</span></span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="va">$url</span> <span class="at">--output</span> <span class="va">$out_filename</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="fu">md5sum</span> <span class="at">--quiet</span> <span class="at">--ignore-missing</span> <span class="at">--check</span> <span class="va">$md5file</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>We recommend using the argument <code>--quiet</code> as part of your pipeline so that it only prints the errors (it doesn’t print output when success). The <code>--ignore-missing</code> argument is useful because it allows us to use the raw checksums file while skipping files we may not want to download.</p>
-<p><strong>Did you get any error?</strong></p>
-<ol start="4" type="1">
-<li>Generate the md5 hash &amp; compare to the one from the original <code>md5checksum.txt</code>.</li>
-</ol>
-</div>
-</div>
-</div>
-</section>
-<section id="documentation" class="level2">
-<h2 class="anchored" data-anchor-id="documentation">4. Documentation</h2>
-<p>Explore the examples below and consider how effectively the README files communicate key information about the project. Some links point to README files describing databases, while others cover software and tools.</p>
-<ul>
-<li><a href="https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/">1000 Genomes Project</a></li>
-<li><a href="https://ftp.ensembl.org/pub/release-111/fasta/homo_sapiens/dna/README">Homo sapiens, GRCh38</a></li>
-<li><a href="https://github.com/ANHIG/IMGTHLA/blob/Latest/README.md">IPD-IMGT/HLA database</a></li>
-<li><a href="https://github.com/pandas-dev/pandas">Pandas package</a></li>
-<li><a href="https://www.dst.dk/extranet/forskningvariabellister/Oversigt%20over%20registre.html">Danish registers</a></li>
-</ul>
-<p>How does your documentation compare to these?</p>
-<p><strong>Done for today!</strong></p>
 
 
 </section>

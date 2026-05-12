@@ -311,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">HPC Pipes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../workshop/UCloud.html" aria-current="page"> 
+    <a class="nav-link active" href="../workshop/launch-requirements.html" aria-current="page"> 
 <span class="menu-text">Workshop</span></a>
   </li>  
 </ul>
@@ -578,7 +578,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Welcome to the HPC-Launch workshop</h1>
 </section>
 <section id="please-read-before-course" class="level4">
-<h4 class="anchored" data-anchor-id="please-read-before-course"><span style="color: red;">PLEASE READ BEFORE COURSE!</span></h4>
+<h4 class="anchored" data-anchor-id="please-read-before-course"><span style="color: red;">Please, read before course!</span></h4>
 <div class="callout callout-style-default callout-warning callout-titled" title="Required preparation">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -611,7 +611,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>&nbsp;</p>
 <p align="center">
-<a href="https://cloud.sdu.dk/app/projects/invite/67a8c23a-4eab-4f3d-8d32-745ab537fe9f" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Invite link to UCloud workspace </a>
+<a href="https://cloud.sdu.dk/app/projects/invite/5256d10e-d333-4289-8be2-9e6c95319cb2" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Invite link to UCloud workspace </a>
 </p>
 <p>&nbsp;</p>
 <ol start="4" type="1">
@@ -620,21 +620,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>&nbsp;</p>
 <ol start="6" type="1">
-<li>Download the slides (<em>link active on April 8th</em>) and RDM figure:</li>
+<li>Download the slides (<em>link active on May 22nd</em>) and <a href="https://hds-sandbox.github.io/RDM_biodata_course/develop/cheatSheet.html">RDM data lifecycle roadmap</a>:</li>
 </ol>
 <!--
  <p align="center">
-  <a href="./GwasSandbox_slides.zip" download="Unavai">
+  <a href="./Sandbox_slides.zip" download="Unavai">
     <button class="btn small-button">Download slides</button>
   </a>
 </p>
 -->
-<ul>
-<li><a href="https://hds-sandbox.github.io/RDM_biodata_course/develop/cheatSheet.html">RDM roadmap</a></li>
-</ul>
 <section id="independent-users" class="level4">
 <h4 class="anchored" data-anchor-id="independent-users">Independent users</h4>
-<p>If you are interested in running the exercises locally, click on the box below. <em>Not recommended for paritipants in our workshops</em>.</p>
+<p>If you are interested in running the exercises locally, click on the box below. <em>Not recommended for participants in HPC-Launch workshop</em>.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="Local setup required if not using UCloud">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -649,12 +646,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <p>You are expected to complete the required setup, including tool installation and account creation.</p>
 <ul>
-<li><p><a href="https://git-scm.com/downloads">Git</a> for version control of your projects</p></li>
-<li><p><a href="https://github.com/">GitHub account</a> for hosting and collaborating on projects</p></li>
-<li><p><a href="https://www.python.org/">Python</a></p></li>
-<li><p><a href="https://pip.pypa.io/en/stable/installation/">pip</a> for managing Python packages</p></li>
-<li><p><a href="https://cookiecutter.readthedocs.io/en/stable/">Cookicutter</a> for creating folder structure templates (<code>pip install cookiecutter</code>)</p></li>
-<li><p><a href="https://www.gnu.org/software/coreutils/manual/html_node/md5sum-invocation.html">md5sum</a>. See below how to install</p>
+<li><p><a href="https://git-scm.com/downloads">Git</a> for version control of your projects.</p></li>
+<li><p><a href="https://github.com/">GitHub account</a> for hosting and collaborating on projects.</p></li>
+<li><p><a href="https://www.python.org/">Python</a>.</p></li>
+<li><p><a href="https://pip.pypa.io/en/stable/installation/">pip</a> for managing Python packages.</p></li>
+<li><p><a href="https://cookiecutter.readthedocs.io/en/stable/">Cookicutter</a> for creating folder structure templates (<code>pip install cookiecutter</code>).</p></li>
+<li><p><a href="https://www.gnu.org/software/coreutils/manual/html_node/md5sum-invocation.html">md5sum</a>. See below examples on how to install.</p></li>
+<li><p><a href="https://conda-forge.org/download/">conda</a>. Install Miniforge which comes preconfigured for use with the conda-forge channel.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Terminal</strong></pre>
@@ -674,7 +672,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://zenodo.org/">Zenodo account</a> for archiving and sharing your research outputs</li>
 <li><a href="https://dmp.deic.dk/plans">DeiC DMP</a></li>
 </ul>
-<p><strong>If you run into any issues installing the software, don’t worry! We will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. Please read the next section carefully.</strong></p>
+<p><strong>If you run into any issues installing the software, don’t worry! We will provide access to a Danish HPC platform, UCloud, with all the necessary software pre-installed. Please read above carefully.</strong></p>
 </div>
 </div>
 </div>
@@ -694,60 +692,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="agenda" class="level2">
 <h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 14%">
-<col style="width: 35%">
-<col style="width: 14%">
-<col style="width: 35%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Time</th>
-<th style="text-align: left;">Activity</th>
-<th style="text-align: left;">Time</th>
-<th style="text-align: left;">Activity</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><em>8:45</em></td>
-<td style="text-align: left;"><em>Morning coffee (optional)</em></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">9:00</td>
-<td style="text-align: left;">Introduction to the Sandbox project</td>
-<td style="text-align: left;">12:00</td>
-<td style="text-align: left;"><em>Lunch break</em></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">9:15</td>
-<td style="text-align: left;">Introduction to HPC: the basics</td>
-<td style="text-align: left;">13:00</td>
-<td style="text-align: left;">RDM Step-by-step I</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">10:15</td>
-<td style="text-align: left;"><em>Coffee break</em></td>
-<td style="text-align: left;">14:15</td>
-<td style="text-align: left;"><em>Coffee break</em></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">10:30</td>
-<td style="text-align: left;">HPC workflow</td>
-<td style="text-align: left;">14:30</td>
-<td style="text-align: left;">RDM Step-by-step II</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">11:15</td>
-<td style="text-align: left;">Intro to RDM</td>
-<td style="text-align: left;">15:00</td>
-<td style="text-align: left;">DK HPC solutions &amp; resources</td>
-</tr>
-</tbody>
-</table>
+<p>DAY 1 | Time | Activity | Time | Activity | |:-|:—-|:-|:—-| | <em>8:45</em> | <em>Morning coffee (optional)</em> |<br>
+| 9:00 | Introduction to the Sandbox project | 12:00 | <em>Lunch break</em> | | 9:15 | Introduction to HPC: the basics | 13:00 | HPC exercises | | 10:15 | <em>Coffee break</em> | 14:15 | <em>Coffee break</em> | | 10:30 | Intro to RDM | 14:30 | HPC workflow II | | 11:15 | HPC workflow | 15:00 | HPC exercises |</p>
+<p>DAY 2 | Time | Activity | Time | Activity | |:-|:—-|:-|:—-| | <em>8:45</em> | <em>Morning coffee (optional)</em> |<br>
+| 9:00 | Recap | 12:00 | <em>Lunch break</em> | | 9:15 | HPC workflow III | 13:00 | HPC wrap up | | 10:15 | <em>Coffee break</em> | 14:15 | <em>Coffee break</em> | | 10:30 | HPC exercises | 15:00 | DK HPC solutions &amp; resources |</p>
 </section>
 <section id="discussion-and-feedback" class="level2">
 <h2 class="anchored" data-anchor-id="discussion-and-feedback">Discussion and feedback</h2>
