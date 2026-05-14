@@ -10,10 +10,18 @@ css: ./web.css
 
 ## Project Archiving using `tar`
 
-Use the command `tar` to compress the hpcLaunch folder on UCloud. Check the size of the folder and compare the uncompress versus the compress version. 
+1. Use the command `tar` to compress the hpcLaunch folder on UCloud
+2. Check the size of the folder and compare it to the uncompress version. Use the `du` command (disk usage)
+3. Without unpacking the file, print the “table of contents” 
+4. Unpack and save it to a new directory `day1-copy`
+5. Transfer the compress folder locally and calculate the resources in time (`rsync --progress`).
+6. Now, do the same for the uncompress version
 
-Calculate the resources in time, transferring the compress versus the uncompress files locally. 
-
+:::{.callout-hint}
+# Solution
+2. Use the -t flag, for the file specified with the -f flag followed by the filename
 ```
 tar –ft mytarfile.tar 
 ```
+:::
+

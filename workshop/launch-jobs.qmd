@@ -19,13 +19,252 @@ scancel -u USERNAME → cancel all your jobs
 seff JOBID → get efficiency information about your job
 ```
 
-### Write your commands in a shell script
+### Submitting a Batch Job with SLURM
 
-1. Open text editor
-2. Configure your job options using `#SBATCH` directories
-3. Use `$SLURM_*` environment variables to further customise your commands.
+In this exercise, you will prepare sequencing data, create a software environment, write a SLURM batch script, and submit an alignment job to the cluster queueing system.
 
-Test your code by requesting a terminal on a compute node using sintr (interactive jobs)
-all the options available with sbatch are also available to sintr (e.g. -c, --mem, -t, etc.)
-Often sintr jobs are limited in maximum time they can run for (e.g. 1h at Cambridge), because this is not a very efficient way to run large-scale analyses.
+1. Create a new subdirectory called batchLaunch inside your hpcLaunch/Day2 folder and move (`cd`) into it:
 
+```{.bash}
+mkdir -p ~/advancedGDK/batchLaunch
+cd ~/advancedGDK/batchLaunch
+```
+
+2. Download the Input Data (FASTQ files)
+
+```{.bash}
+wget https://github.com/hartwigmedical/testdata/raw/master/100k_reads_hiseq/TESTX/TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz \
+     -O ./data.fastq.gz
+
+wget https://github.com/hartwigmedical/testdata/raw/master/100k_reads_hiseq/TESTX/TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz \
+     -O ./data2.fastq.gz
+
+wget https://github.com/hartwigmedical/testdata/raw/master/100k_reads_hiseq/TESTX/TESTX_H7YRLADXX_S1_L002_R1_001.fastq.gz \
+     -O ./data3.fastq.gz
+
+wget https://github.com/hartwigmedical/testdata/raw/master/100k_reads_hiseq/TESTX/TESTX_H7YRLADXX_S1_L002_R2_001.fastq.gz \
+     -O ./data4.fastq.gz
+```
+Uncompress the FASTQ files:
+
+```{.bash}
+gunzip data*.fastq.gz
+```
+Download the reference genome:
+
+```{.bash}
+wget http://genomedata.org/rnaseq-tutorial/fasta/GRCh38/chr22_with_ERCC92.fa \
+     -O ref.fasta
+```
+
+3. Create a Conda environment containing bwa-mem2 and samtools.
+
+```{.bash}
+conda create -c conda-forge -c bioconda -n batchLaunch bwa-mem2 samtools
+```
+4. Create a Batch script called `align.sh` using a text editor (e.g. `nano`) and add the following content to the file: 
+
+```{.bash filename="align.sh"}
+#!/bin/bash
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16g
+#SBATCH --time=04:00:00
+
+# Initialise conda
+source ~/miniconda3/etc/profile.d/conda.sh
+
+# Activate environment
+conda activate batchLaunch
+
+# Index reference
+bwa-mem2 index ref.fasta
+
+# Align reads and sort BAM file
+bwa-mem2 mem -t 4 ref.fasta \
+    data.fastq \
+    | samtools sort \
+        -@ 3 \
+        -n \
+        -O BAM \
+    > data.bam
+
+exit 0
+```
+
+5. Submit the batch script to SLURM:
+
+````{.bash}
+sbatch align.sh
+```
+
+6. Monitor the Job (check the status)
+
+7. Cancel a Job (Optional)
+
+If needed, you can cancel a running or queued job using:
+scancel <myjobID>
+
+### Submitting a batch array
+
+In this exercise, you will run the same alignment operation on multiple FASTQ files in parallel using a SLURM job array.
+
+1. Create directories for output files and log files, then generate a list containing all FASTQ files:
+```{.bash}
+mkdir -p results logs
+
+#  List of FASTQ files
+ls *.fastq > fastq_list.txt
+```
+
+3. Open a text editor and create a new batch script called `align_array.sh`.
+
+```{.bash filename="align_array.sh"}
+#!/bin/bash
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=8g
+#SBATCH --time=01:00:00
+#SBATCH --array=1-4%2
+#SBATCH --job-name=alignArray
+#SBATCH --output=logs/align_%A_%a.out
+#SBATCH --error=logs/align_%A_%a.err
+
+set -euo pipefail
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate batchGDK
+
+mapfile -t fastqs < fastq_list.txt
+fq="${fastqs[$((SLURM_ARRAY_TASK_ID-1))]}"
+sample=$(basename "$fq" .fastq)
+
+bwa-mem2 mem -t "$SLURM_CPUS_PER_TASK" ref.fasta "$fq" \
+  | samtools sort -@ 1 -O BAM \
+  > "results/${sample}.bam"
+
+exit 0
+```
+
+:::{.callout-tip collapse="true"}
+# set -euo pipefail
+Make your pipelines easier to debug by using this command to avoid silent errors and incomplete outputs.
+```{.bash}
+set -euo pipefail
+```
+
+```
+-e # Exit immediately if any command returns a non-zero exit status.
+-u # Treat the use of undefined variables as an error.
+-o pipefail # Make a pipeline fail if any command in the pipeline fails, not just the last one.
+```
+
+:::
+
+4. Submit and monitor the array job:
+````{.bash}
+sbatch align_array.sh
+```
+
+5. Check that outputs and logs are separated by array task id (%a) and parent job id (%A). Open of the log files!
+
+```{.bash}
+ls results/
+ls logs/
+```
+
+:::{.callout-note}
+# TaskID SLURM_ARRAY_TASK_ID
+With `-`-array=1-4%2, SLURM creates 4 tasks and runs at most 2 concurrently.
+
+Each task gets its own SLURM_ARRAY_TASK_ID, used to pick one input file from fastq_list.txt.
+:::
+
+:::{.callout-tip collapse="true"}
+# Bonus exercise: Job dependencies
+### Chained Jobs with Dependencies
+
+In this exercise, you will create a simple 3-step pipeline using SLURM job dependencies. The indexing step should only start if the alignment step completes successfully.
+
+Create a second batch script called `index_array.sh`:
+```{.bash filename="index_array.sh"}
+#!/bin/bash
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=4g
+#SBATCH --time=00:30:00
+#SBATCH --array=1-4
+#SBATCH --job-name=indexArray
+#SBATCH --output=logs/index_%A_%a.out
+#SBATCH --error=logs/index_%A_%a.err
+
+set -euo pipefail
+
+# Initialise conda
+source ~/miniconda3/etc/profile.d/conda.sh
+
+# Activate environment
+conda activate batchGDK
+
+# Create an array containing BAM files
+mapfile -t bams=(results/*.bam)
+
+# Select the BAM file corresponding to the current array task
+bam="${bams[$((SLURM_ARRAY_TASK_ID-1))]}"
+
+# Index BAM file
+samtools index "$bam"
+
+exit 0
+```
+
+After creating the script, submit the indexing job so that it only starts after the alignment array job has completed successfully. Use the `--dependency=afterok:<jobid>` option with sbatch.
+
+Create a final reporting job called report_job.sh. This job will generate a simple summary file listing all BAM and BAI files produced by the pipeline.
+
+```{.bash filename="report_job.sh"}
+
+#!/bin/bash
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=1g
+#SBATCH --time=00:10:00
+#SBATCH --job-name=arrayReport
+#SBATCH --output=logs/report_%j.out
+
+set -euo pipefail
+
+echo "BAM files" > results/summary.txt
+ls -1 results/*.bam >> results/summary.txt
+
+echo "" >> results/summary.txt
+
+echo "BAI files" >> results/summary.txt
+ls -1 results/*.bam.bai >> results/summary.txt
+
+exit 0
+```
+Submit all jobs so that:
+
+- indexing starts only after alignment succeeds
+- reporting starts only after indexing succeeds
+
+```{.bash}
+ALIGN_ID=$(sbatch --parsable align_array.sh)
+
+INDEX_ID=$(sbatch --parsable \
+    --dependency=afterok:${ALIGN_ID} \
+    index_array.sh)
+
+REPORT_ID=$(sbatch --parsable \
+    --dependency=afterok:${INDEX_ID} \
+    report_job.sh)
+
+echo "ALIGN=${ALIGN_ID} INDEX=${INDEX_ID} REPORT=${REPORT_ID}"
+
+squeue --me -n alignArray,indexArray,arrayReport
+```
+
+After all jobs have completed, inspect the generated summary file:
+```{.bash}
+cat results/summary.txt
+```
+
+With the `Afterok` option the job will only start if the specified parent job finishes successful. 
+
+:::
