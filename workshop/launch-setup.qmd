@@ -116,7 +116,11 @@ Submit a job from the terminal app and follow these configuration steps (job set
 2. Select the time (in hours) we want to use a node for (it can be modified afterwards!). Let's do **2h**.  
 3. Number of nodes: 1
 4. Machine type: and the machine type (selecting a 1 CPU standard node with 3GB memory). 
+<<<<<<< Updated upstream
 ![](./images/terminalResources.png){width="750" height="250"}
+=======
+![](./images/terminalResources.png){width="750" height="300"}
+>>>>>>> Stashed changes
 
 5. Add folders to access while in this job . We recommend creating a new folder named HPCLaunch in your personal drive, where you can store all files generated during the workshop (e.g.: `/Member Files: username/HPCLaunch`).
 ![](./images/addFolder.png){width="700" height="225"}
@@ -159,7 +163,7 @@ Although we have tried to be flexible in the answers, we may not have included a
 12. Print the last command in `greetings.txt` using `tail`. Type the command `r fitb(c('tail -n1 greetings.txt', 'tail -1 greetings.txt'),ignore_ws = TRUE)`
 13. Can you remove all *.txt* files (specify the file extension when deleting)? Type the command `r fitb(answer='rm *.txt')`
 
-Need some help? See the hints and solutions below. Once you are done with this exercise, click on 'Stop application'. 
+Need some help? See the hints and solutions below. 
 
 
 :::{.callout-hint}
