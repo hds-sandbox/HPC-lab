@@ -156,7 +156,7 @@ Although we have tried to be flexible in the answers, we may not have included a
 9. Count lines in both *.txt* files. Use `wc -l <files>`. Type the command `r fitb(c('wc -l *.txt','cat *.txt | wc -l'))`
 10. Use a command to list **all** files and their sizes in this directory. Type the command `r fitb(c('ls -lh .','du -sh *'))`"
 11. Print the first line in `greetings.txt` (only 1!). Use `head` or `awk`. Type the command `r fitb(c('head -n1 greetings.txt', 'head -1 greetings.txt', 'awk \'NR==1\' greetings.txt'),ignore_ws = TRUE)`. 
-12. Print the last command in `greetings.txt`.  Use `head` or `awk`.
+12. Print the last command in `greetings.txt` using `tail`. `r fitb(c('tail -n1 greetings.txt', 'tail -1 greetings.txt'),ignore_ws = TRUE`)
 13. Can you remove all *.txt* files (specify the file extension when deleting)? Type the command `r fitb(answer='rm *.txt')`
 
 Need some help?
