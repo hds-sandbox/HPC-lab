@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9353a1027effa619166b4f62414e9a92.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-b82aa2307c276b8029b5c370a3bff3d2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-9353a1027effa619166b4f62414e9a92.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-198383c28e94e56e1812d048be91cd65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9c2ca81c002af579fc311bcf98e6e3e5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-198383c28e94e56e1812d048be91cd65.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -590,7 +590,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <p>You are expected to make sure you can sign in to UCloud, SDU’s HPC platform on which we will be running this course. All data, exercises, and tools will be provided on UCloud. Please use your university ID to sign in (instructions below). If you run into problems, please write us (respond to the email that got you to this page).</p>
-<p>A Danish university/institution account is required to create a UCloud account. If you don’t have one, click on <em>Local setup</em> below.</p>
+<p>A Danish university/institution account is required to create a UCloud account. If you don’t have one, click on <em>Local setup</em> below. However, you will need access to be able to submit SLURM job scripts (a cluster management and job scheduling system).</p>
 </div>
 </div>
 </section>
@@ -615,8 +615,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </p>
 <p>&nbsp;</p>
 <ol start="4" type="1">
-<li><p>Create an account on GitHub. Follow <a href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github">these instructions</a>.</p></li>
-<li><p>You’re all set! You will receive instructions on how to navigate through UCloud during the course.</p></li>
+<li>Create an account on GitHub. Follow <a href="https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github">these instructions</a>.</li>
+</ol>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Are you a Windows user working at a hospital?</strong> If so, please contact us, as one of the exercises involves creating SSH keys, and you may not have the necessary permissions to do this on your system.</p>
+</div>
+</div>
+<ol start="5" type="1">
+<li>You’re all set! You will receive instructions on how to navigate through UCloud during the course.</li>
 </ol>
 <p>&nbsp;</p>
 <ol start="6" type="1">
@@ -633,7 +648,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="independent-users">Independent users</h4>
 <p>If you are interested in running the exercises locally, click on the box below. <em>Not recommended for participants in HPC-Launch workshop</em>.</p>
 <div class="callout callout-style-default callout-warning callout-titled" title="Local setup required if not using UCloud">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -642,7 +657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>You are expected to complete the required setup, including tool installation and account creation.</p>
 <ul>
@@ -692,10 +707,105 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="agenda" class="level2">
 <h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
-<p>DAY 1 | Time | Activity | Time | Activity | |:-|:—-|:-|:—-| | <em>8:45</em> | <em>Morning coffee (optional)</em> |<br>
-| 9:00 | Introduction to the Sandbox project | 12:00 | <em>Lunch break</em> | | 9:15 | Introduction to HPC: the basics | 13:00 | HPC exercises | | 10:15 | <em>Coffee break</em> | 14:15 | <em>Coffee break</em> | | 10:30 | Intro to RDM | 14:30 | HPC workflow II | | 11:15 | HPC workflow | 15:00 | HPC exercises |</p>
-<p>DAY 2 | Time | Activity | Time | Activity | |:-|:—-|:-|:—-| | <em>8:45</em> | <em>Morning coffee (optional)</em> |<br>
-| 9:00 | Recap | 12:00 | <em>Lunch break</em> | | 9:15 | HPC workflow III | 13:00 | HPC wrap up | | 10:15 | <em>Coffee break</em> | 14:15 | <em>Coffee break</em> | | 10:30 | HPC exercises | 15:00 | DK HPC solutions &amp; resources |</p>
+<p>A more detailed program will be posted just before we begin.</p>
+<p>DAY 1</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 35%">
+<col style="width: 14%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Time</th>
+<th style="text-align: left;">Activity</th>
+<th style="text-align: left;">Time</th>
+<th style="text-align: left;">Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><em>8:45</em></td>
+<td style="text-align: left;"><em>Morning coffee (optional)</em></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">9:00</td>
+<td style="text-align: left;">Introduction to the Sandbox project</td>
+<td style="text-align: left;">12:00</td>
+<td style="text-align: left;"><em>Lunch break</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9:15</td>
+<td style="text-align: left;">Introduction to HPC: the basics</td>
+<td style="text-align: left;">13:00</td>
+<td style="text-align: left;">HPC exercises</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10:15</td>
+<td style="text-align: left;"><em>Coffee break</em></td>
+<td style="text-align: left;">14:15</td>
+<td style="text-align: left;"><em>Coffee break</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10:30</td>
+<td style="text-align: left;">Intro to RDM</td>
+<td style="text-align: left;">14:30</td>
+<td style="text-align: left;">HPC workflow II</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">11:15</td>
+<td style="text-align: left;">HPC workflow</td>
+<td style="text-align: left;">15:00</td>
+<td style="text-align: left;">HPC exercises</td>
+</tr>
+</tbody>
+</table>
+<p>DAY 2</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Time</th>
+<th style="text-align: left;">Activity</th>
+<th style="text-align: left;">Time</th>
+<th style="text-align: left;">Activity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><em>8:45</em></td>
+<td style="text-align: left;"><em>Morning coffee (optional)</em></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">9:00</td>
+<td style="text-align: left;">Recap</td>
+<td style="text-align: left;">12:00</td>
+<td style="text-align: left;"><em>Lunch break</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9:15</td>
+<td style="text-align: left;">HPC workflow III</td>
+<td style="text-align: left;">13:00</td>
+<td style="text-align: left;">HPC wrap up</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10:15</td>
+<td style="text-align: left;"><em>Coffee break</em></td>
+<td style="text-align: left;">14:15</td>
+<td style="text-align: left;"><em>Coffee break</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">10:30</td>
+<td style="text-align: left;">HPC exercises</td>
+<td style="text-align: left;">15:00</td>
+<td style="text-align: left;">DK HPC solutions &amp; resources</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="discussion-and-feedback" class="level2">
 <h2 class="anchored" data-anchor-id="discussion-and-feedback">Discussion and feedback</h2>
