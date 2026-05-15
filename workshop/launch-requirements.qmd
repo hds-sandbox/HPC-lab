@@ -17,7 +17,7 @@ css: ./web.css
 :::{.callout-warning title="Required preparation"}
 You are expected to make sure you can sign in to UCloud, SDU’s HPC platform on which we will be running this course. All data, exercises, and tools will be provided on UCloud. Please use your university ID to sign in (instructions below). If you run into problems, please write us (respond to the email that got you to this page).
 
-A Danish university/institution account is required to create a UCloud account. If you don't have one, click on *Local setup* below. However, you will need access to be able to submit SLURM job scripts (a cluster management and job scheduling system). 
+A Danish university/institution account is required to create a UCloud account. If you don't have one, click on *Local setup* below. However, you will need access an HPC to be able to submit SLURM job scripts (a cluster management and job scheduling system). 
 :::
 
 ### Access Sandbox resources
