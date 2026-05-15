@@ -117,14 +117,14 @@ Submit a job from the terminal app and follow these configuration steps (job set
 3. Number of nodes: 1
 4. Machine type: and the machine type (selecting a 1 CPU standard node with 3GB memory). 
 
-![](./images/terminalResources.png){width="800" height="150"}
+![](./images/terminalResources.png)
 
 5. Add folders to access while in this job . We recommend creating a new folder named HPCLaunch in your personal drive, where you can store all files generated during the workshop (e.g.: `/Member Files: username/HPCLaunch`).
-![](./images/addFolder.png){width="800" height="150"}
+![](./images/addFolder.png)
 
 6. Scroll down and remember to click on  *Enable SSH access*. 
 
-![](./images/enableSSH.png){width="800" height="150"}
+![](./images/enableSSH.png)
 
 Now you are ready to click on the submit button (and wait!). 
 
