@@ -116,27 +116,27 @@ Submit a job from the terminal app and follow these configuration steps (job set
 2. Select the time (in hours) we want to use a node for (it can be modified afterwards!). Let's do **2h**.  
 3. Number of nodes: 1
 4. Machine type: and the machine type (selecting a 1 CPU standard node with 3GB memory). 
-
-![](./images/terminalResources.png){width="900" height="420"}
+![](./images/terminalResources.png){width="750" height="250"}
 
 5. Add folders to access while in this job . We recommend creating a new folder named HPCLaunch in your personal drive, where you can store all files generated during the workshop (e.g.: `/Member Files: username/HPCLaunch`).
-![](./images/addFolder.png){width="900" height="150"}
+![](./images/addFolder.png){width="700" height="225"}
 
 6. Scroll down and remember to click on  *Enable SSH access*. 
-
-![](./images/enableSSH.png){width="900" height="120"}
+![](./images/enableSSH.png){width="750" height="200"}
 
 Now you are ready to click on the submit button (and wait!). 
 
-Once the job starts, the SSH command appears in the progress view and can be run locally from your terminal (`ssh` in)
-![](./images/sshCommand.png){width="900" height="320"}
+Once the job starts, the SSH command appears in the progress view and can be run locally from your terminal (ssh in)
+![](./images/sshCommand.png){width="900" height=320"}
 
 Copy the command and paste it on your terminal (e.g. `ssh ucloud@ssh.cloud.sdu.dk -p 2396`). 
 
 ## 2. Working with files on HPC
 
 ### FS navigation and text editors
-In this exercise, you will practice working with files and directories on UCloud using the command line. For every task below, you must use **Bash commands** only (no graphical interface). All required commands are very common and widely used in Linux and HPC environments. Check the hints below if you need help.
+In this exercise, you will practice working with files and directories on UCloud using the command line. Go back to your job on UCloud and click on 'Open Interface'. 
+
+For every task below, you must use **Bash commands** only (no graphical interface). All required commands are very common and widely used in Linux and HPC environments. Check the hints below if you need help.
 
 :::{.warning}
 Although we have tried to be flexible in the answers, we may not have included all possible working solutions as correct ones. What matters most is that your code runs correctly and produces the desire output — not that it matches the exact command shown in our solution.
@@ -148,18 +148,18 @@ Although we have tried to be flexible in the answers, we may not have included a
 1. What is the working directory (wd) on UCloud? Type only the top-level directory (the root level) `r fitb(answer='/work')`
 2. Make `hpcLaunch` your wd. Use `pwd` command to print the current wd and copy/paste it here `r fitb(answer='/work/hpcLaunch')`
 3. Are there any files in your working directory? `r torf(FALSE)`
-4. Create a new directory named `day1` Type the command `r fitb(c('mkdir day1', 'mkdir -p day1'))`
-5. Create a new file called `hello.txt` containing the text *Hello* in the **day1** directory?
-6. Create an empty file named `emptyFile.csv` in the **day1** directory?
+4. Create a new directory named `day1` Type the full command `r fitb(c('mkdir day1', 'mkdir -p day1'))`
+5. Create a new file called `hello.txt` containing the text *Hello* in the **day1** directory. 
+6. Create an empty file named `emptyFile.csv` in the **day1** directory? Type *only* the unix command to do this operation `r fitb(answer='touch')`
 7. Move into the `day1` directory? Type the command `r fitb(answer='cd day1')`
 8. Edit the hello.txt file using `nano` or `vim`. Add *Hola* on a new line and save it as a new file (e.g. `greetings.txt`). In nano, use `Ctrl+O` to save with a new filename or `Ctrl+X` to exit/close while choosing to save changes into a new file. 
 9. Count lines in both *.txt* files. Use `wc -l <files>`. Type the command `r fitb(c('wc -l *.txt','cat *.txt | wc -l'))`
 10. Use a command to list **all** files and their sizes in this directory. Type the command `r fitb(c('ls -lh .','du -sh *'))`
 11. Print the first line in `greetings.txt` (only 1!). Use `head` or `awk`. Type the command `r fitb(c('head -n1 greetings.txt', 'head -1 greetings.txt', 'awk \'NR==1\' greetings.txt'),ignore_ws = TRUE)`
-12. Print the last command in `greetings.txt` using `tail`. `r fitb(c('tail -n1 greetings.txt', 'tail -1 greetings.txt'),ignore_ws = TRUE)`
+12. Print the last command in `greetings.txt` using `tail`. Type the command `r fitb(c('tail -n1 greetings.txt', 'tail -1 greetings.txt'),ignore_ws = TRUE)`
 13. Can you remove all *.txt* files (specify the file extension when deleting)? Type the command `r fitb(answer='rm *.txt')`
 
-Need some help?
+Need some help? See the hints and solutions below. Once you are done with this exercise, click on 'Stop application'. 
 
 
 :::{.callout-hint}

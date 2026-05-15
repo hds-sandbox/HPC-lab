@@ -17,7 +17,7 @@ css: ./web.css
 :::{.callout-warning title="Required preparation"}
 You are expected to make sure you can sign in to UCloud, SDU’s HPC platform on which we will be running this course. All data, exercises, and tools will be provided on UCloud. Please use your university ID to sign in (instructions below). If you run into problems, please write us (respond to the email that got you to this page).
 
-A Danish university/institution account is required to create a UCloud account. If you don't have one, click on *Local setup* below. 
+A Danish university/institution account is required to create a UCloud account. If you don't have one, click on *Local setup* below. However, you will need access to be able to submit SLURM job scripts (a cluster management and job scheduling system). 
 :::
 
 ### Access Sandbox resources
@@ -52,6 +52,10 @@ Our first choice is to run our tutorials on UCloud, the supercomputer located at
 &nbsp;
 
 4. Create an account on GitHub. Follow [these instructions](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github). 
+
+:::{.callout-warning}
+**Are you a Windows user working at a hospital?** If so, please contact us, as one of the exercises involves creating SSH keys, and you may not have the necessary permissions to do this on your system.
+:::
 
 5. You’re all set! You will receive instructions on how to navigate through UCloud during the course.
 
@@ -114,11 +118,13 @@ About High-Performance Computing (HPC):
 
 
 ## Agenda
+A more detailed program will be posted just before we begin.
 
 DAY 1 
+
 | Time | Activity | Time | Activity |
 |:-|:----|:-|:----|
-| *8:45*	|	*Morning coffee (optional)* |  
+| *8:45*	|	*Morning coffee (optional)* | | | 
 | 9:00	|	Introduction to the Sandbox project | 12:00	|	*Lunch break* |
 | 9:15	|	Introduction to HPC: the basics | 13:00	|	HPC exercises |
 | 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
@@ -126,9 +132,10 @@ DAY 1
 | 11:15	|	HPC workflow | 15:00	|	HPC exercises |
 
 DAY 2
+
 | Time | Activity | Time | Activity |
 |:-|:----|:-|:----|
-| *8:45*	|	*Morning coffee (optional)* |  
+| *8:45*	|	*Morning coffee (optional)* |  | |
 | 9:00	| Recap	| 12:00	|	*Lunch break* |
 | 9:15	|	HPC workflow III  | 13:00	|	HPC wrap up |
 | 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |

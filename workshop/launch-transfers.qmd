@@ -55,16 +55,19 @@ curl https://zenodo.org/records/14106454/files/fastmixture-0.93.4.zip \
 
 5. Compute md5 hash and enter the value (no white-spaces) `r fitb(answer='4b3c22644bd2e1dabbbbab599491a7e5')`
 
-6. Is your value tha same as the one shown on zenodo `r torf(TRUE)`
+6. Is your value tha same as the one shown on Zenodo `r torf(TRUE)`
 
-7. Finally, compute the sha256 digest (with program sha256) 
-```{.bash} 
-sha256sum
-```
-and enter the value `r fitb(answer='37c931cf669033054333ae6c2553cc936db7a28aa13ab776c5adfb1c932bc72b')`
+7. Finally, compute the sha256 digest (with program sha256) and enter the value `r fitb(answer='37c931cf669033054333ae6c2553cc936db7a28aa13ab776c5adfb1c932bc72b')`
 
 :::
 
+:::{.callout-hint}
+# Solution
+```{.bash} 
+md5sum fastmixture.zip
+sha256sum fastmixture.zip
+```
+:::
 
 :::{.callout-tip collapse="true" appearance="simple"}
 # Bonus exercise 
@@ -147,7 +150,7 @@ Using `data` will copy the entire folder, while `data/` will copy only its conte
 Change the first ten `fastq` files with some text:
 
 ```{.bash}
-for i in {1..10}; do { echo ATGC; echo TCCA; echo NNNN; echo NNNN } >> data/file$i.fastq; done
+for i in {1..10}; do { echo ATGC; echo TCCA; echo NNNN; echo NNNN; } >> data/file$i.fastq; done
 ```
 
 Use `less` file reader. 
