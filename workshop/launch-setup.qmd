@@ -135,7 +135,7 @@ Copy the command and paste it on your terminal (e.g. `ssh ucloud@ssh.cloud.sdu.d
 ## 2. Working with files on HPC
 
 ### FS navigation and text editors
-In this exercise, you will practice working with files and directories on UCloud using the command line. Go back to your job on UCloud and click on 'Open Interface'. 
+In this exercise, you will practice working with files and directories on UCloud using the command line. Go back to your job on UCloud and click on 'Open Interface', or run the exercises through the SSH session. 
 
 For every task below, you must use **Bash commands** only (no graphical interface). All required commands are very common and widely used in Linux and HPC environments. Check the hints below if you need help.
 
@@ -160,8 +160,7 @@ Although we have tried to be flexible in the answers, we may not have included a
 12. Print the last command in `greetings.txt` using `tail`. Type the command `r fitb(c('tail -n1 greetings.txt', 'tail -1 greetings.txt'),ignore_ws = TRUE)`
 13. Can you remove all *.txt* files (specify the file extension when deleting)? Type the command `r fitb(answer='rm *.txt')`
 
-Need some help? See the hints and solutions below. 
-
+Need some help? See the hints and solutions below. When you are done with the exercise, cancel the job by holding the `Stop application` button. 
 
 :::{.callout-hint}
 Here are some of the commands you need (in random order):

@@ -7,14 +7,25 @@ logo: ../../img/logo.png
 ---
 # Managing software 
 
+:::{.callout-warning collapse="true"}
+# Coder App
+
+You need to use the Coder app as we had configured it for the cookiecutter exercises. If your job is not longer running, submit a new one!
+
+1. Name and version of the app to run: `Coder - 1.117.0`. 
+2. Job settings: selecting a 1 CPU standard node with 3GB memory.
+3. Add folders to access while in this job (select your own drive!)
+    - You need access to our shared folder so that you can get the correct software environment and other material for the exercises (shared/HPCLab_workshop).
+    - You need to select your hpcLaunch in your own drive, to save any output from the exercise! You won't have writing permissions on our shared drive. 
+4. Optional Parameters. Choose `shared/HPCLab_workshop/setup.sh` as the initialization file.
+5. Click on the Submit button (and wait!)
+:::
+
+
 ### 1. Exploring an existing environment
+Conda is not pre-installed in the Terminal or Coder app on UCloud, so how can we use conda? with a **local installation of Miniconda**, say miniconda3, mounted inside the app. If you want to know how to do this, follow the instructions on UCloud docs (*Setting Up Conda on UCloud*). 
 
-Let's open the Terminal app. Since Conda is not pre-installed in the Terminal app on UCloud, we will need to:  
-
-1. Mount a drive with a pre-installed Miniconda setup.
-2. Run a bash script to add conda to the search path.
-
-![](./images/ucloud_setup.png)
+In the interest of time, we will skip the installation of Miniconda and instead use the version available on our shared drive. There is nothing you need to do, as you have already mounted the shared drive, which includes a pre-installed Miniconda setup. The initialization script (`setup.sh`) adds Conda to the search path and activates the environment automatically, so it is ready to use.
 
 We will run the following commands to get familiar with Conda environments.
 

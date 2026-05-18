@@ -11,15 +11,25 @@ css: ./web.css
 ```{r,include=FALSE, results='asis'}
 source("_setup.R")
 ```
+:::{.callout-warning}
+# Start a new job using Coder on UCloud. 
+
+Please submit a new job to UCloud, mounting your **hpcLaunch** folder in personal drive and using the initialization script provided by the course instructors. Search for the the `Coder` application (you might be familiar with its original name, Visual Studio Code, shown in the image above) using the search bar. Make the app your favorite.
+
+Follow these steps to configure the settings: 
+
+1. Name and version of the app to run: `Coder - 1.117.0`. 
+2. Job settings: enter a job name (descriptive of the task), select the time (in hours) we want to use a node for (it can be modified afterward!), and the machine type (selecting a 1 CPU standard node with 3GB memory).
+3. Add folders to access while in this job (select your own drive!)
+  - You need access to our shared folder so that you can get the correct software environment and other material for the exercises (shared/HPCLab_workshop).
+  - You need to select your hpcLaunch in your own drive, to save any output from the exercise! You won't have writing permissions on our shared drive. 
+4. Optional Parameters. Choose `shared/HPCLab_workshop/setup.sh` as the initialization file.
+5. Click on the Submit button (and wait!)
+
+![Example Job submission using Coder](./images/coderApp.png)
+:::
 
 Let's start with some practical exercises focused on implementing tools that will help you with the collect & document data life cycle phase. 
-
-:::{.callout-warning}
-# Start a new job on UCloud. 
-Please submit a new job to UCloud, mounting your personal drive (**hpcLaunch** folder) and using the initialization script provided by the course instructors. Follow to the guidelines in [UCloud job setup](UCloud.qmd). 
-
-Once the job is ready, run `conda activate hpclab-env` in the terminal to access all the required pre-isntalled software.
-:::
 
 ## Data structure with cookiecutter
 
@@ -38,7 +48,10 @@ Let’s give it a try!
 :::{.callout-exercise}
 # Exercise 1: Get familiar with Cookiecutter
 
-1. Use our cookiecuter-template and fill-up the variables
+Create a new subdirectory `day2` under hpcLaunch and make it your WD! 
+
+1. Use our cookiecuter-template to create a project directory
+Run this command which will initiate an interactive prompt. Fill up the variables!
 ```{.bash filename="Terminal"}
 cookiecutter https://github.com/hds-sandbox/cookiecutter-template
 ```
@@ -103,7 +116,7 @@ You will first fork our Sandbox repository, and then clone it to UCloud. This al
 1. Go to our [Cookicutter template](https://github.com/hds-sandbox/cookiecutter-template) and click on the **Fork** button at the top-right corner of the repository page to create a copy of the repository on your own GitHub account.
 
     ![fork_repo_example](./images/fork_repo_project.png)
-2. Open the Coder app on UCloud (locally, if you don't have access), copy the URL of your fork and **clone** the repository to your personal drive on UCloud (the URL should look something like https://github.com/your_username/cookiecutter-template):
+2. Go back to the Coder app on UCloud and copy the URL of your fork and **clone** the repository to your personal drive on UCloud (the URL should look something like https://github.com/your_username/cookiecutter-template):
 
     ```{.bash}
     git clone <your URL to the template>
@@ -139,11 +152,11 @@ touch requirements.txt
 cookiecutter cookiecutter-template
 ```
 
-The command `cookiecutter cookiecutter-template` will initiate an interactive prompt. Fill up the variables and verify that the new structure (and folders) looks like you would expect. Have any new folders been added, or have some been removed?
+The command `cookiecutter cookiecutter-template` will initiate again an interactive prompt. Fill up the variables and verify that the new structure (and folders) looks like you would expect. Have any new folders been added, or have some been removed?
 
 ```{.bash filename="Example bash commands"}
-# Assuming the name of the project is 'myproject_sep24'
-ls -l myproject_sep24 
+# Assuming the name of the project is 'myproject_may26'
+ls -l myproject_may26 
 ```
 
 **Optional (if you have time)**
@@ -269,102 +282,3 @@ Which of the regexps below match **ONLY** the filenames shown in bold?
 
 `rna_seq/2021/03/results/Sample_.*_.*\.tsv` `r torf(TRUE)`
 :::
-
-## Collect & share using checksums 
-We recommend using `md5sum` to verify data integrity, particularly when downloading large datasets, as it is a widely used tool. All data and files archived on Zenodo include an MD5 hash for this purpose. Let's have a look at the content of a newly developed software `fastmixture` that estimates individual ancestry proportions from genotype data. 
-
-:::{.webex-check .callout-exercise}
-# Exercise 4
-
-1. Open this [Zenodo link](https://zenodo.org/records/14106454) 
-2. Enter the DOI of the repo (for all versions): `r fitb(answer='10.5281/zenodo.12683371')`
-3. Zenodo offers an API at https://zenodo.org/api/, which functions similarly to the DOI API. This allows you to retrieve a BibTeX-formatted reference for a specific record (e.g., `records/14106454`) using either curl or wget.
-```{.bash filename="Terminal"}
-# ------curl-------
-curl -LH 'Accept: application/x-bibtex' https://zenodo.org/api/records/14106454 \
-     --output meisner_2024.bib
-
-# ------wget-------
-wget --header="Accept: application/x-bibtex" -q \
-     https://zenodo.org/api/records/12683372 -O meisner_2024.bib
-```
-
-Does the content of your `*.bib` file look like this?
-```{.bash}
-@misc{meisner_2024_14106454,
-  author       = {Meisner, Jonas},
-  title        = {Supplemental data for reproducing "Faster model-
-                   based estimation of ancestry proportions"},
-  month        = nov,
-  year         = 2024,
-  publisher    = {Zenodo},
-  version      = {v0.93.4},
-  doi          = {10.5281/zenodo.14106454},
-  url          = {https://doi.org/10.5281/zenodo.14106454},
-}
-```
-4. Scroll down to files and download the software zip file (`fastmixture-0.93.4.zip`) using the command below: 
-
-```{.bash filename="Terminal"}
-curl https://zenodo.org/records/14106454/files/fastmixture-0.93.4.zip \
---output fastmixture.zip 
-```
-
-5. Compute md5 hash and enter the value (no white-spaces) `r fitb(answer='4b3c22644bd2e1dabbbbab599491a7e5')`
-
-6. Is your value tha same as the one shown on zenodo `r torf(TRUE)`
-
-7. Finally, compute the sha256 digest (with program sha256) 
-```{.bash} 
-sha256sum
-```
-and enter the value `r fitb(answer='37c931cf669033054333ae6c2553cc936db7a28aa13ab776c5adfb1c932bc72b')`
-
-:::
-
-
-:::{.callout-tip collapse="true" appearance="simple"}
-# Bonus exercise 4
-
-We will be using the HLA database for this exercise. Click on [this link](ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/) or google `IMGT HLA> Download`. Important: go through the README before downloading! Check if a checksums file is included. 
-
-1. Download and open the `md5checksum.txt` ([HLA FTP Directory](ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/))
-2. Look for the hash of the file `hla_prot.fasta`
-3. Create a bash script to download the target files (named "dw_resources.sh" in your current directory). 
-```{.bash .code-overflow-wrap} 
-#!/bin/bash
-md5file="md5checksum.txt"
-
-# Define the URL of the files to download
-url="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/hla_prot.fasta"
-
-# (Optional 1) Save the original file name: filename=$(basename "$url")
-# (Optional 2) Define a different filename to save the downloaded file (`wget -O $out_filename`)
-# out_filename = "imgt_hla_prot.fasta"
-
-# Download the file
-wget $url --output $out_filename && \
-md5sum --quiet --ignore-missing --check $md5file
-````
-We recommend using the argument `--quiet` as part of your pipeline so that it only prints the errors (it doesn't print output when success). The `--ignore-missing` argument is useful because it allows us to use the raw checksums file while skipping files we may not want to download.
-
-**Did you get any error?** 
-
-4. Generate the md5 hash & compare to the one from the original `md5checksum.txt`. 
-:::
-
-
-## Documentation 
-
-Explore the examples below and consider how effectively the README files communicate key information about the project. Some links point to README files describing databases, while others cover software and tools.
-
-- [1000 Genomes Project](https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/)
-- [Homo sapiens, GRCh38](https://ftp.ensembl.org/pub/release-111/fasta/homo_sapiens/dna/README)
-- [IPD-IMGT/HLA database](https://github.com/ANHIG/IMGTHLA/blob/Latest/README.md)
-- [Pandas package](https://github.com/pandas-dev/pandas)
-- [Danish registers](https://www.dst.dk/extranet/forskningvariabellister/Oversigt%20over%20registre.html)
-
-How does your documentation compare to these?
-
-
-**Done for today!** 

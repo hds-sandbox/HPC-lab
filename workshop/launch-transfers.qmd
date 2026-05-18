@@ -12,6 +12,17 @@ css: ./web.css
 source("_setup.R")
 ```
 
+Let's start a new UCloud job with **SSH access and tmux enabled**.
+
+Submit a job from the terminal app and follow these configuration steps (job settings):
+
+1. Enter a job name (descriptive of the task, e.g.: *Transfer myname*)
+2. Select the time (in hours) we want to use a node for (it can be modified afterwards!). Let's do **2h**.  
+3. Number of nodes: 1
+4. Machine type: and the machine type (selecting a 1 CPU standard node with 3GB memory).
+5. Additional Parameters. Enable tmux > *true*. 
+6. Configure SSH access, click on enable SSH server. 
+
 
 ## 1. File integrity verification
 We recommend using `md5sum` to verify data integrity, particularly when downloading large datasets, as it is a widely used tool. All data and files archived on Zenodo include an MD5 hash for this purpose. Let's have a look at the content of a newly developed software `fastmixture` that estimates individual ancestry proportions from genotype data. 
@@ -101,27 +112,27 @@ We recommend using the argument `--quiet` as part of your pipeline so that it on
 
 ## 2. Synchronisation and transfer with 
 
-To explore all `rsync` options would require a workshop on its own. Check [the manual](https://linux.die.net/man/1/rsync) to learn more about the command: https://linux.die.net/man/1/rsync. 
+To explore all `rsync` options would require a workshop on its own. Check [the manual](https://linux.die.net/man/1/rsync) to learn more about the command. 
 
-1.1. Create a folder system locally `containing `rsync/data` (inside a folder called `hpcLaunch`) and navigate to the data folder.
+2.1. Create a folder system containing `rsync/data` (inside the folder called `hpcLaunch`) and navigate to the data folder.
 
 ```{.bash}
 mkdir -p hpcLaunch/rsync/data
 cd hpcLaunch/rsync
 ```
 
-1.2. Generate 100 files with extensions `fastq` and `log` in the data folder:
+2.2. Generate 100 files with extensions `fastq` and `log` in the data folder:
 
 ```{.bash}
 touch data/file{1..100}.fastq data/file{1..100}.log
 ```
 
-1.3. Check the data directory:
+2.3. Check the data directory:
 ```{.bash}
 ls data
 ```
 
-#### Local-to-local copy
+#### Backup copy
 
 We are going to use `rsync` to create a backup copy of the data we just generated. 
 
@@ -135,25 +146,27 @@ rsync OPTIONS ORIGIN(s) DESTINATION
 
 An archive (incremental) copy can be done with `-a` option. You can add a progress bar during the transfer with `-P` option. In this exercise, we want to exclude some files from the backup: we want to keep only those with `fastq` extension. 
 
-Run the following command:
+2.4. Run the following command:
 
 ```{.bash}
 rsync -aP --exclude="*.log" data backup
 ```
 
-This will copy all the `fastq` files in `backup/data`. Check the new folders with `ls` using a terminal.
+This will copy all the `fastq` files in `backup/data`. 
+
+2.5. Check the new folders with `ls` using a terminal.
 
 :::{.callout-warning}
 Using `data` will copy the entire folder, while `data/` will copy only its content! This is common to many other UNIX tools.
 :::
 
-Change the first ten `fastq` files with some text:
+2.6. Change the first ten `fastq` files with some text:
 
 ```{.bash}
 for i in {1..10}; do { echo ATGC; echo TCCA; echo NNNN; echo NNNN; } >> data/file$i.fastq; done
 ```
 
-Use `less` file reader. 
+2.7. Use `less` file reader. 
 
 :::{.callout-tip}
 # Not familiar with `less`?
@@ -170,7 +183,7 @@ less data/file1.fastq
 
 While inside `less`, type `/N` and press enter. Is some text highlighted? `r torf(TRUE)`
 
-Finally, count how many lines contain at least one *N* in `file1.fastq` using the command `grep`. How many are there? `r fitb(2)`
+2.8. Finally, count how many lines contain at least one *N* in `file1.fastq` using the command `grep`. How many are there? `r fitb(2)`
 
 
 :::{.callout-hint}
@@ -180,7 +193,7 @@ grep -c 'N' data/file1.fastq
 ```
 :::
 
-We also want to preserve earlier versions of any files that get updated. To do this, create a backup directory named with the current date and time (it will appear in your `backup` directory):
+2.9. We also want to preserve earlier versions of any files that get updated. To do this, create a backup directory named with the current date and time (it will appear in your `backup` directory):
 
 ```{.bash}
 rsync -aP --exclude="*.log" \
@@ -197,33 +210,44 @@ If you create a folder called `backup` in your project folder, you can use versi
 
 #### Transfer between local and remote
 
-You can use the same approach to transfer and back up data between a local machine (your PC/laptop) and another remote system (in this case, UCloud). You need Linux, Mac or WSL/MobaXterm on the local host to perform `rsync`. 
+You can use the same approach to transfer and back up data between a remote system (in this case, UCloud) and a local machine (your PC/laptop). You need Linux, Mac or WSL/MobaXterm on the local host to perform `rsync`. 
 
-Let's transfer the `fastq` files to UCloud. In this case, we want the content in the data folder to be transfer and not the folder itself (`PATH_TO/data/`). 
+:::{.callout-warning}
+# Powershell users
+You will need to use a different command: `robocopy` equivalent to `rsync`. Here is the [manual](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy?redirectedfrom=MSDN).
+:::
+
+Let's transfer the `fastq` files from UCloud to your laptop. You should have enabled `SSH server`, if you haven't, submit a new job. 
+
+In this case, we want the content in the data folder to be transfer and not the folder itself (`PATH_TO/data/`). Choose your working directory where you want the data to be downloaded. You will need to run the following commands locally: 
 
 ```{.bash}
-rsync -aP --exclude="*.log" -e "ssh -i ~/.ssh/id_rsa -p <port>" PATH_TO/data/ ucloud@ssh.cloud.sdu.dk:/work/hpcLaunch/data
+# cd to your local working directory
+# create a data folder  
+mkdir data
+# Transfer data content to the data folder
+rsync -aP --exclude="*.log" -e "ssh -i ~/.ssh/id_rsa -p <port>" ucloud@ssh.cloud.sdu.dk:/work/hpcLaunch/rsync/data/ data
 ```
-Go to UCloud and check the content in `/work/hpcLaunch/data`. 
 
-The opposite can be done uploading data from your computer. For example:
+Check that the content has transferred successfully. Has it? `r torf(TRUE)`
+
+The opposite can be done, let's upload some files from your computer to UCloud. We will generate extra files and transfer them to our data folder on UCloud. For example:
 
 ```{.bash}
-# LOCAL_PATH can be . if you are running the command from the rsync folder you created before
-rsync -aP --exclude="*.log" -e "ssh -i ~/.ssh/id_rsa -p <port>"  ucloud@ssh.cloud.sdu.dk:/work/hpcLaunch/day1 LOCAL_PATH
+# Run these commands from your working directory to generate new files (same as before!) 
+for i in {101..105}; do { echo ATGC; echo TCCA; echo NNNN; echo NNNN; } >> data/file$i.fastq; done
+
+touch data/file{101..105}.log
+
+# Transfer content in data (not the dir)
+rsync -aP -e "ssh -i ~/.ssh/id_rsa -p <port>" data/ ucloud@ssh.cloud.sdu.dk:/work/hpcLaunch/rsync/data 
 ```
 
-Do you now have all files generated in the previous exercise locally? `r torf(TRUE)`
+Do you now have all new files on UCloud (e.g.: *file10{1..5}.fastq, log*)? Check using a bash command or navigate to Files in the interface: `r torf(TRUE)`
 
-You would have to type your password if you do not make use of `ssh` keys!
+You would have had to type your password if you do not make use of `SSH` keys!
 
 ## 2. Session management using `tmux`
-
-`tmux` was originally designed as a keyboard-only software. However, you can also configure it to allow switching between windows and panes using the mouse. To enable this, add the following setting to the configuration file:
-
-```{.bash}
-echo "set -g mouse" >> ~/.tmux.conf
-```
 
 You can start a `tmux` session anywhere. It is easier to navigate sessions giving them a name.
 
@@ -236,7 +260,6 @@ The command will set you into the session automatically. The window looks someth
 
 ![](images/tmuxSession.png){fig-align="center" width=600px}
 
-
 Now, you are in session `example1` and have one window, which you are using now. 
 
 2. Split the window in multiple terminals. 
@@ -248,23 +271,31 @@ Ctrl + b + %
 
 Ctrl + b + ""
 
-Ctrl+b, then arrow keys to change pane!
-
+Ctrl+b , then arrow keys (>) to change pane! 
 ```
 
 :::{.callout-tip collapse="true"}
 # Using the mouse
+`tmux` was originally designed as a keyboard-only software. However, you can also configure it to allow switching between windows and panes using the mouse. Usually to enable this, you need to add the following setting to the configuration file:
+
+```{.bash}
+echo "set -g mouse" >> ~/.tmux.conf
+```
+Then, 
+
 - Right-clicked with the mouse to choose the split.
 - Left-click to change pane.
 -  Right-clicked on the window bar and create a new window.
 :::
 
 3. Create a new window with `Ctrl + b + c`
-4. Change between windows with `Ctrl+b` then `n`
+4. Change between windows. You can choose to which window you want to change by using with `Ctrl+b` then [0-9].  
 
-Now, you have your 2 windows and three panes running in on of them.
+![Example tmux session w. 3 windows. Blue indicates the window you are at.](./images/tmux_windows.png)
 
-In the new window, let's look at which tmux sessions and windows are open. Run
+In your case, you now have your 2 windows and three panes running in one of them.
+
+In the new window, let's look at which tmux sessions and windows are open. Run the following command: 
 
 ```{.bash}
 tmux ls
@@ -275,6 +306,48 @@ The output will tell you that session `example1` is in use (attached) and has 2 
 ```
 example1: 2 windows (created Wed Apr  2 16:12:54 2025) (attached)
 ```
+Let's detach from this tmux session. 
+
+```
+# Option 1
+Ctrl + a + d
+# Option 2
+tmux detach
+```
+
+Once, again, attach and detach from `example1`. This operation is performed many times in a short period when working with tmux sessions, so let's practice! 
+
+```{.bash}
+tmux attach-session -t <session_name/number>
+#OR
+tmux a -t <session_name/number>
+```
+
+Once you are detached, create a new session called `example2`. Then, detach from it. Run `tmux ls` once more. Two sessions will be listed now. 
+
+```{.bash}
+tmux ls
+```
+```
+example1: 1 windows (created Mon May 18 14:02:08 2026)
+example2: 1 windows (created Mon May 18 14:02:15 2026)
+```
+
+Kill example1 session. 
+```{.bash}
+tmux kill-session -t  <session_name/number>
+```
+
+Finally, attach to example2, and type `exit`. This way the session will also be killed. 
+
+```{.bash}
+tmux a -t  <session_name/number>
+# Then,
+exit
+```
+```
+[exited]
+```
 
 :::{.callout-tip collapse="true"}
 # Bonus exercise
@@ -284,7 +357,6 @@ Start a new session without attaching to it (`d` option), and call it `downloads
 ```{.bash}
 tmux new-session -d -s downloads
 ```
-
 verify the session is there with `tmux ls`.
 
 :::{.callout-warning}
@@ -318,4 +390,3 @@ done < downloads.txt
 ```
 :::
 
-You are done for now! It's time to stop the job, by holding the `Stop application` button to do so. 

@@ -72,9 +72,9 @@ website:
                 - workshop/launch-setup.qmd                
                 - workshop/launch-transfers.qmd
                 - workshop/launch-git.qmd
-                - workshop/launch-cookiecutter.qmd
             - section: "Day 2"
               contents: 
+                - workshop/launch-cookiecutter.qmd
                 - workshop/launch-envs.qmd
                 - workshop/launch-jobs.qmd
                 - workshop/launch-archive.qmd

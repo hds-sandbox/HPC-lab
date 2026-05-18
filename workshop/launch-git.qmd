@@ -10,7 +10,7 @@ code-line-numbers: false
 logo: ../../img/logo.png
 ---
 
-## Connecting GitHub with UCloud
+## 1. Connecting GitHub with UCloud
 
 Create a new GitHub account if you don't have one yet. Then, go to repositories and create a new one (e.g. *HPCIntro*). Finally, create a **token classic** (for general use). 
 
@@ -42,7 +42,7 @@ Then, we will generate SSH key on UCloud following these steps
 
 Finally, to streamline pushing changes...
 
-  7. Create a new initialization bash script or modify an existing one to include this code. Here, we named the file `setup.sh`: 
+  7. Create a new initialization bash script or modify an existing one to include this code (*if* you have one). Here, we named the file `setup.sh`: 
 
   ```{.bash filename="setup.sh"}
   eval `ssh-agent -s`
@@ -52,11 +52,11 @@ Finally, to streamline pushing changes...
   bash -i 
   ```
 
-Remember to save this file in your personal drive (`/work/myNameXXX/hpcLaunch`). Once you have saved the file, click on `stop the aplication`. 
+Remember to save this file in your personal drive (`/work/myNameXXX/hpcLaunch`). Once you have saved the file, click on `stop the application`. 
 
 You are now ready to git commit and push using the token as password and save all changes to your repository. Let's give it a try!
 
-Submit a new job on UCloud (e.g. through the `Terminal` app). Do not forget to mount your personal drive (hpcLaunch folder) and use the initialization bash script you just created (`setup.sh`). Once, the job is running, change directory to your personal drive, and clone the repository you created. 
+Submit a new job on UCloud (e.g. through the `Terminal` app). Do not forget to mount the hpcLaunch folder on your personal drive and use the initialization bash script you just created (`setup.sh`). Once, the job is running, change directory to day1, and clone the repository you created. 
 
 ```{.bash filename="Example repo"}
 git clone <https://github.com/hds-sandbox/cookiecutter-template>
@@ -76,4 +76,6 @@ git push
 You will be asked to enter your GitHub username and the password. When you work from HPCs, you need to enter the token as your password. 
 
 Go to GitHub and check if those changes are now visible. 
+
+You are done for now! Remember to stop the job when you are done with this exercise ('Stop Application').
 
