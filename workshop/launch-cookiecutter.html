@@ -338,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-setup.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Project structure</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Project structure</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -375,13 +375,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Day 1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/launch-setup.html" class="sidebar-item-text sidebar-link">
@@ -400,23 +400,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Git and Github</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Day 2</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/launch-cookiecutter.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Project structure</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">Day 2</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/launch-envs.html" class="sidebar-item-text sidebar-link">
@@ -560,8 +560,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#setting-up-folder-templates" id="toc-setting-up-folder-templates" class="nav-link" data-scroll-target="#setting-up-folder-templates">Setting up folder templates</a></li>
   </ul></li>
   <li><a href="#naming-conventions" id="toc-naming-conventions" class="nav-link" data-scroll-target="#naming-conventions">Naming conventions</a></li>
-  <li><a href="#collect-share-using-checksums" id="toc-collect-share-using-checksums" class="nav-link" data-scroll-target="#collect-share-using-checksums">Collect &amp; share using checksums</a></li>
-  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
   </ul>
 </nav>
 </nav>
@@ -573,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content column-page-right" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-setup.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Project structure</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Project structure</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Project structure</h1>
 </div>
@@ -592,21 +590,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Let’s start with some practical exercises focused on implementing tools that will help you with the collect &amp; document data life cycle phase.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Start a new job on UCloud.
+<span class="screen-reader-only">Warning</span>Start a new job using Coder on UCloud.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Please submit a new job to UCloud, mounting your personal drive (<strong>hpcLaunch</strong> folder) and using the initialization script provided by the course instructors. Follow to the guidelines in <a href="../workshop/UCloud.html">UCloud job setup</a>.</p>
-<p>Once the job is ready, run <code>conda activate hpclab-env</code> in the terminal to access all the required pre-isntalled software.</p>
+<p>Please submit a new job to UCloud, mounting your <strong>hpcLaunch</strong> folder in personal drive and using the initialization script provided by the course instructors. Search for the the <code>Coder</code> application (you might be familiar with its original name, Visual Studio Code, shown in the image above) using the search bar. Make the app your favorite.</p>
+<p>Follow these steps to configure the settings:</p>
+<ol type="1">
+<li>Name and version of the app to run: <code>Coder - 1.117.0</code>.</li>
+<li>Job settings: enter a job name (descriptive of the task), select the time (in hours) we want to use a node for (it can be modified afterward!), and the machine type (selecting a 1 CPU standard node with 3GB memory).</li>
+<li>Add folders to access while in this job (select your own drive!)</li>
+</ol>
+<ul>
+<li>You need access to our shared folder so that you can get the correct software environment and other material for the exercises (shared/HPCLab_workshop).</li>
+<li>You need to select your hpcLaunch in your own drive, to save any output from the exercise! You won’t have writing permissions on our shared drive.</li>
+</ul>
+<ol start="4" type="1">
+<li>Optional Parameters. Choose <code>shared/HPCLab_workshop/setup.sh</code> as the initialization file.</li>
+<li>Click on the Submit button (and wait!)</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/coderApp.png" class="img-fluid figure-img"></p>
+<figcaption>Example Job submission using Coder</figcaption>
+</figure>
 </div>
 </div>
+</div>
+<p>Let’s start with some practical exercises focused on implementing tools that will help you with the collect &amp; document data life cycle phase.</p>
 <section id="data-structure-with-cookiecutter" class="level2">
 <h2 class="anchored" data-anchor-id="data-structure-with-cookiecutter">Data structure with cookiecutter</h2>
 <p>Establishing a consistent file structure and naming conventions will help you efficiently manage your data. We will classify your data and data analyses into two distinct types of folders to ensure the data can be used and shared by many lab members while preventing modifications by any individual:</p>
@@ -632,8 +649,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-exercise">
+<p>Create a new subdirectory <code>day2</code> under hpcLaunch and make it your WD!</p>
 <ol type="1">
-<li>Use our cookiecuter-template and fill-up the variables</li>
+<li>Use our cookiecuter-template to create a project directory Run this command which will initiate an interactive prompt. Fill up the variables!</li>
 </ol>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -733,7 +751,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>fork_repo_example</figcaption>
 </figure>
 </div></li>
-<li><p>Open the Coder app on UCloud (locally, if you don’t have access), copy the URL of your fork and <strong>clone</strong> the repository to your personal drive on UCloud (the URL should look something like https://github.com/your_username/cookiecutter-template):</p>
+<li><p>Go back to the Coder app on UCloud and copy the URL of your fork and <strong>clone</strong> the repository to your personal drive on UCloud (the URL should look something like https://github.com/your_username/cookiecutter-template):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>your URL to the template<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>Access the cloned repository (<code>cd cookiecutter-template</code>) and navigate through the different subdirectories.</p></li>
 <li><p>The Cookiecutter template you just cloned is missing the <code>reports</code> directory and the <code>requirements.txt</code> file. Create these, along with a subdirectory named <code>reports/figures</code>.</p>
@@ -776,13 +794,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">cookiecutter</span> cookiecutter-template</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The command <code>cookiecutter cookiecutter-template</code> will initiate an interactive prompt. Fill up the variables and verify that the new structure (and folders) looks like you would expect. Have any new folders been added, or have some been removed?</p>
+<p>The command <code>cookiecutter cookiecutter-template</code> will initiate again an interactive prompt. Fill up the variables and verify that the new structure (and folders) looks like you would expect. Have any new folders been added, or have some been removed?</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Example bash commands</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-filename="Example bash commands"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming the name of the project is 'myproject_sep24'</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> myproject_sep24 </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-filename="Example bash commands"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming the name of the project is 'myproject_may26'</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> myproject_may26 </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Optional (if you have time)</strong></p>
 <p>The following steps enable version control and make it easy to share the structure with other members of your lab.</p>
@@ -879,24 +897,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <div class="webex-check callout-exercise">
 Q1. Which naming conventions should be used and why?
-<div id="radio_CWCYEXSXQB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CWCYEXSXQB" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_CWCYEXSXQB" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_CWCYEXSXQB" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
+<div id="radio_EQLODACQJM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EQLODACQJM" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_EQLODACQJM" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_EQLODACQJM" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
 </div>
-<div id="radio_RIZEMKLPIW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RIZEMKLPIW" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_RIZEMKLPIW" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_RIZEMKLPIW" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
+<div id="radio_LPZYEHRGZM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LPZYEHRGZM" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_LPZYEHRGZM" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_LPZYEHRGZM" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
 </div>
-<div id="radio_NLOJYZSZFM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NLOJYZSZFM" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_NLOJYZSZFM" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_NLOJYZSZFM" value=""> <span>i. run_pipeline:20241203.sh</span></label>
+<div id="radio_QCDLSOEWJA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QCDLSOEWJA" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_QCDLSOEWJA" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_QCDLSOEWJA" value=""> <span>i. run_pipeline:20241203.sh</span></label>
 </div>
 Q2. Which file name is more readable?
-<div id="radio_ASLMLMDCBJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ASLMLMDCBJ" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_ASLMLMDCBJ" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_ASLMLMDCBJ" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
+<div id="radio_ZPILPEHPLA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZPILPEHPLA" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_ZPILPEHPLA" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_ZPILPEHPLA" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
 </div>
-<div id="radio_ERQPOWZKXZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ERQPOWZKXZ" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_ERQPOWZKXZ" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_ERQPOWZKXZ" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
+<div id="radio_QKDQLAJYUA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QKDQLAJYUA" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_QKDQLAJYUA" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_QKDQLAJYUA" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
 </div>
-<div id="radio_VEPUATYKXJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_VEPUATYKXJ" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_VEPUATYKXJ" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_VEPUATYKXJ" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
+<div id="radio_SJCMMAEWUP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SJCMMAEWUP" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_SJCMMAEWUP" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_SJCMMAEWUP" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
 </div>
 </div>
 </div>
@@ -932,127 +950,6 @@ Q2. Which file name is more readable?
 <p><code>rna_seq/2021/03/results/Sample_.*_.*\.tsv</code> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 </div>
 </div>
-</section>
-<section id="collect-share-using-checksums" class="level2">
-<h2 class="anchored" data-anchor-id="collect-share-using-checksums">Collect &amp; share using checksums</h2>
-<p>We recommend using <code>md5sum</code> to verify data integrity, particularly when downloading large datasets, as it is a widely used tool. All data and files archived on Zenodo include an MD5 hash for this purpose. Let’s have a look at the content of a newly developed software <code>fastmixture</code> that estimates individual ancestry proportions from genotype data.</p>
-<div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Exercise</span>Exercise 4
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<div>
-<div class="webex-check callout-exercise">
-<ol type="1">
-<li>Open this <a href="https://zenodo.org/records/14106454">Zenodo link</a></li>
-<li>Enter the DOI of the repo (for all versions): <input class="webex-solveme nospaces" size="23" data-answer="[&quot;10.5281/zenodo.12683371&quot;]"></li>
-<li>Zenodo offers an API at https://zenodo.org/api/, which functions similarly to the DOI API. This allows you to retrieve a BibTeX-formatted reference for a specific record (e.g., <code>records/14106454</code>) using either curl or wget.</li>
-</ol>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Terminal</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ------curl-------</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LH</span> <span class="st">'Accept: application/x-bibtex'</span> https://zenodo.org/api/records/14106454 <span class="dt">\</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">--output</span> meisner_2024.bib</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ------wget-------</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">--header</span><span class="op">=</span><span class="st">"Accept: application/x-bibtex"</span> <span class="at">-q</span> <span class="dt">\</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>     https://zenodo.org/api/records/12683372 <span class="at">-O</span> meisner_2024.bib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Does the content of your <code>*.bib</code> file look like this?</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">@misc{meisner_2024_14106454,</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">author</span>       = {Meisner, Jonas},</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">title</span>        = {Supplemental data for reproducing <span class="st">"Faster model-</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="st">                   based estimation of ancestry proportions"</span>},</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="ex">month</span>        = nov,</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">year</span>         = 2024,</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">publisher</span>    = {Zenodo},</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">version</span>      = {v0.93.4},</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">doi</span>          = {10.5281/zenodo.14106454},</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">url</span>          = {https://doi.org/10.5281/zenodo.14106454},</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="4" type="1">
-<li>Scroll down to files and download the software zip file (<code>fastmixture-0.93.4.zip</code>) using the command below:</li>
-</ol>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Terminal</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> https://zenodo.org/records/14106454/files/fastmixture-0.93.4.zip <span class="dt">\</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>--output fastmixture.zip </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ol start="5" type="1">
-<li><p>Compute md5 hash and enter the value (no white-spaces) <input class="webex-solveme nospaces" size="32" data-answer="[&quot;4b3c22644bd2e1dabbbbab599491a7e5&quot;]"></p></li>
-<li><p>Is your value tha same as the one shown on zenodo <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p></li>
-<li><p>Finally, compute the sha256 digest (with program sha256)</p></li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sha256sum</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>and enter the value <input class="webex-solveme nospaces" size="64" data-answer="[&quot;37c931cf669033054333ae6c2553cc936db7a28aa13ab776c5adfb1c932bc72b&quot;]"></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Bonus exercise 4
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>We will be using the HLA database for this exercise. Click on <a href="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/">this link</a> or google <code>IMGT HLA&gt; Download</code>. Important: go through the README before downloading! Check if a checksums file is included.</p>
-<ol type="1">
-<li>Download and open the <code>md5checksum.txt</code> (<a href="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/">HLA FTP Directory</a>)</li>
-<li>Look for the hash of the file <code>hla_prot.fasta</code></li>
-<li>Create a bash script to download the target files (named “dw_resources.sh” in your current directory).</li>
-</ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="va">md5file</span><span class="op">=</span><span class="st">"md5checksum.txt"</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the URL of the files to download</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="va">url</span><span class="op">=</span><span class="st">"ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/hla_prot.fasta"</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (Optional 1) Save the original file name: filename=$(basename "$url")</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># (Optional 2) Define a different filename to save the downloaded file (`wget -O $out_filename`)</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># out_filename = "imgt_hla_prot.fasta"</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Download the file</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="va">$url</span> <span class="at">--output</span> <span class="va">$out_filename</span> <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">md5sum</span> <span class="at">--quiet</span> <span class="at">--ignore-missing</span> <span class="at">--check</span> <span class="va">$md5file</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>We recommend using the argument <code>--quiet</code> as part of your pipeline so that it only prints the errors (it doesn’t print output when success). The <code>--ignore-missing</code> argument is useful because it allows us to use the raw checksums file while skipping files we may not want to download.</p>
-<p><strong>Did you get any error?</strong></p>
-<ol start="4" type="1">
-<li>Generate the md5 hash &amp; compare to the one from the original <code>md5checksum.txt</code>.</li>
-</ol>
-</div>
-</div>
-</div>
-</section>
-<section id="documentation" class="level2">
-<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
-<p>Explore the examples below and consider how effectively the README files communicate key information about the project. Some links point to README files describing databases, while others cover software and tools.</p>
-<ul>
-<li><a href="https://ftp.1000genomes.ebi.ac.uk/vol1/ftp/">1000 Genomes Project</a></li>
-<li><a href="https://ftp.ensembl.org/pub/release-111/fasta/homo_sapiens/dna/README">Homo sapiens, GRCh38</a></li>
-<li><a href="https://github.com/ANHIG/IMGTHLA/blob/Latest/README.md">IPD-IMGT/HLA database</a></li>
-<li><a href="https://github.com/pandas-dev/pandas">Pandas package</a></li>
-<li><a href="https://www.dst.dk/extranet/forskningvariabellister/Oversigt%20over%20registre.html">Danish registers</a></li>
-</ul>
-<p>How does your documentation compare to these?</p>
-<p><strong>Done for today!</strong></p>
 
 
 </section>

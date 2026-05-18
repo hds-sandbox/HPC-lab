@@ -337,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-envs.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/launch-review.html">Knowledge Checks</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/launch-review.html">Knowledge Checks</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -399,12 +399,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Git and Github</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/launch-cookiecutter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project structure</span></a>
-  </div>
-</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -416,6 +410,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-cookiecutter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project structure</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/launch-envs.html" class="sidebar-item-text sidebar-link">
@@ -558,7 +558,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-envs.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/launch-review.html">Knowledge Checks</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/launch-review.html">Knowledge Checks</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Knowledge Checks</h1>
 </div>
@@ -584,17 +584,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Put your learning to the test with what you’ve covered so far.</p>
-<section id="general-hpc-launch" class="level2">
-<h2 class="anchored" data-anchor-id="general-hpc-launch">General HPC launch</h2>
-<section id="log-in-and-compute-nodes" class="level3">
-<h3 class="anchored" data-anchor-id="log-in-and-compute-nodes">Log-in and compute nodes</h3>
-<p>Which of the following operations I should do from the front-end (login) nodes:</p>
-<p><strong>1. Unzip a large file <code>unzip myfile.zip</code> to decompress the file?</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
-<p><strong>2. Small folders and files managment?</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
-<p><strong>3. Heavy data transfers?</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
-<p><strong>4. Run computations?</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
-<p>Which of the following commands would be considered a task to run on the login node?</p>
-<p><strong>1. python myscript.py</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select> <strong>2. make</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select> <strong>3. bash create_dirs.sh (you created the file)</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select> <strong>4. cookiecutter mytemplate</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select> <strong>5. tar -xvf R-4.6.0.tar.gz</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select> <strong>6. nextflow run pipeline.nf</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select> <strong>7. sbatch mypipeline.sh</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select> <strong>8. nano config.yaml</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select> <strong>9. git clone https://github.com/user/project.git</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select> <strong>10. cp -r 5TB_dataset backup/</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select> <strong>11. rsync -av data/ project_backup/</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select> <strong>12. top</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Exercise</span>Quiz 1: Log-in and compute nodes on HPCs
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="webex-check callout-exercise">
+<p><strong>I. Which of the following operations I should do from the front-end login nodes:</strong></p>
+<ol type="1">
+<li>Unzip a large file <code>unzip myfile.zip</code> to decompress the file? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
+<li>Small folders and files managment? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>Heavy data transfers? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
+<li>Run computations? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
+</ol>
+<p><strong>II. Which of the following commands would be considered a task to run on the login node?</strong></p>
+<ol start="5" type="1">
+<li>python myscript.py <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
+<li>make <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>bash create_dirs.sh (you created the file) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>cookiecutter mytemplate <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>tar -xvf R-4.6.0.tar.gz <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>nextflow run pipeline.nf <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
+<li>sbatch mypipeline.sh <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>nano config.yaml <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>git clone https://github.com/user/project.git** <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>cp -r 5TB_dataset backup/ <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
+<li>rsync -av data/ project_backup/ <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>top <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+</ol>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -617,20 +642,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
-<section id="hpc-and-data" class="level3">
-<h3 class="anchored" data-anchor-id="hpc-and-data">HPC and data</h3>
-<p>Are the following statements true or false?</p>
-<p><strong>5. Is it a good idea to keep data in the scratch folder until the project is finished?</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
-<p><strong>6. I must backup all generated files, including intermediate files, to make sure the analysis are reproducible.</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
-<p><strong>7. I should not fill up my home folder with data. </strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
-<p><strong>8. Virtual environments keeps project-specific software and their dependencies separated - without interfering with each other. </strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
-<p><strong>9. I must always run the analysis/pipeline on a small subset of the data to estimate CPU/RAM resources.</strong> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
-<p><strong>10. I should run a community-curated pipeline for the first time on all my samples</strong> <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></p>
-<section id="transferring-data" class="level4">
-<h4 class="anchored" data-anchor-id="transferring-data">Transferring data</h4>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Exercise</span>Quiz 2: HPC &amp; data
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="webex-check callout-exercise">
+<p><strong>III. Are the following statements true or false?</strong></p>
+<ol type="1">
+<li>Is it a good idea to keep data in the scratch folder until the project is finished? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
+<li>I must backup all generated files, including intermediate files, to make sure the analysis are reproducible. <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
+<li>I should not fill up my home folder with data. <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>Virtual environments keeps project-specific software and their dependencies separated - without interfering with each other. <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>I must always run the analysis/pipeline on a small subset of the data to estimate CPU/RAM resources. <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+<li>I should run a community-curated pipeline for the first time on all my samples. <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
+</ol>
+<p><strong>IV. Transferring data</strong></p>
 <p>When transferring large datasets, it is important to consider factors that can impact transfer speed and efficiency, such as the number of files, total data size, network performance, and transfer method. Running small benchmark tests beforehand can help estimate how long a full transfer may take.</p>
-<p>Imagine you need to transfer 11,570 files to an HPC cluster. Which of the following approaches would likely be the most efficient? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;E&quot;]"></p>
+<p>Imagine you need to transfer 11,570 files to an HPC cluster. Which of the following approaches would likely be the most efficient? Type the letter <input class="webex-solveme nospaces ignorecase" size="1" data-answer="[&quot;E&quot;]"></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> <span class="at">-r</span> data/ user_name@login.genome.au.dk:data/</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># B. </span></span>
@@ -644,7 +686,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cvzf</span> data.tar.gz data/</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rsync</span> <span class="at">-a</span> data.tar.gz user_name@login.genome.au.dk:data/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -653,19 +695,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<p>A. Copies the dirs recursively. Will take time. B. Similar to the A. but preserved file information (e..g. creation time), slightly better. C. Saves some bandwidth as you are adding compression. It’s good if you have a strong hardware on both ends of the transfer. D. Here, we merge everything into a file and transfer it with compression. Good idea with such a large number of files. E. Similar to D, but now we compress the archive, then transfer it. For large datasets, is the best combination of high throughput and low latency.</p>
+<ul>
+<li>A. Copies the dirs recursively. Will take time.</li>
+<li>B. Similar to the A. but preserved file information (e..g. creation time), slightly better.</li>
+<li>C. Saves some bandwidth as you are adding compression. It’s good if you have a strong hardware on both ends of the transfer.</li>
+<li>D. Here, we merge everything into a file and transfer it with compression. Good idea with such a large number of files.</li>
+<li>E. Similar to D, but now we compress the archive, then transfer it. For large datasets, is the best combination of high throughput and low latency.</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
+</div>
+</div>
 <section id="documentation" class="level2">
 <h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
 <p>Explore the examples below and consider how effectively the README files communicate key information about the project. Some links point to README files describing databases, while others cover software and tools.</p>

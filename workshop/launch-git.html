@@ -400,12 +400,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Git and Github</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/launch-cookiecutter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project structure</span></a>
-  </div>
-</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -417,6 +411,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-cookiecutter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project structure</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/launch-envs.html" class="sidebar-item-text sidebar-link">
@@ -555,7 +555,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#connecting-github-with-ucloud" id="toc-connecting-github-with-ucloud" class="nav-link active" data-scroll-target="#connecting-github-with-ucloud">Connecting GitHub with UCloud</a></li>
+  <li><a href="#connecting-github-with-ucloud" id="toc-connecting-github-with-ucloud" class="nav-link active" data-scroll-target="#connecting-github-with-ucloud">1. Connecting GitHub with UCloud</a></li>
   </ul>
 </nav>
 </nav>
@@ -593,7 +593,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <section id="connecting-github-with-ucloud" class="level2">
-<h2 class="anchored" data-anchor-id="connecting-github-with-ucloud">Connecting GitHub with UCloud</h2>
+<h2 class="anchored" data-anchor-id="connecting-github-with-ucloud">1. Connecting GitHub with UCloud</h2>
 <p>Create a new GitHub account if you don’t have one yet. Then, go to repositories and create a new one (e.g.&nbsp;<em>HPCIntro</em>). Finally, create a <strong>token classic</strong> (for general use).</p>
 <p>How? Go to your profile and on the right-side menu select:</p>
 <p><code>Settings &gt; Developer settings (at the bottom) &gt; Personal access tokens &gt; Tokens (classic) &gt; Generate new token (classic)</code>.</p>
@@ -618,7 +618,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>Finally, to streamline pushing changes…</p>
 <ol start="7" type="1">
-<li>Create a new initialization bash script or modify an existing one to include this code. Here, we named the file <code>setup.sh</code>:</li>
+<li>Create a new initialization bash script or modify an existing one to include this code (<em>if</em> you have one). Here, we named the file <code>setup.sh</code>:</li>
 </ol>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -630,9 +630,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"add here your email"</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> <span class="at">-i</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Remember to save this file in your personal drive (<code>/work/myNameXXX/hpcLaunch</code>). Once you have saved the file, click on <code>stop the aplication</code>.</p>
+<p>Remember to save this file in your personal drive (<code>/work/myNameXXX/hpcLaunch</code>). Once you have saved the file, click on <code>stop the application</code>.</p>
 <p>You are now ready to git commit and push using the token as password and save all changes to your repository. Let’s give it a try!</p>
-<p>Submit a new job on UCloud (e.g.&nbsp;through the <code>Terminal</code> app). Do not forget to mount your personal drive (hpcLaunch folder) and use the initialization bash script you just created (<code>setup.sh</code>). Once, the job is running, change directory to your personal drive, and clone the repository you created.</p>
+<p>Submit a new job on UCloud (e.g.&nbsp;through the <code>Terminal</code> app). Do not forget to mount the hpcLaunch folder on your personal drive and use the initialization bash script you just created (<code>setup.sh</code>). Once, the job is running, change directory to day1, and clone the repository you created.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Example repo</strong></pre>
@@ -648,6 +648,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You will be asked to enter your GitHub username and the password. When you work from HPCs, you need to enter the token as your password.</p>
 <p>Go to GitHub and check if those changes are now visible.</p>
+<p>You are done for now! Remember to stop the job when you are done with this exercise (‘Stop Application’).</p>
 
 
 </section>

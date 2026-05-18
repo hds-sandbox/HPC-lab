@@ -337,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-envs.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/launch-envs.html">Package managers</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/launch-envs.html">Package managers</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -399,12 +399,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Git and Github</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../workshop/launch-cookiecutter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project structure</span></a>
-  </div>
-</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -416,6 +410,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/launch-cookiecutter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project structure</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/launch-envs.html" class="sidebar-item-text sidebar-link active">
@@ -558,7 +558,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-envs.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/launch-envs.html">Package managers</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-cookiecutter.html">Day 2</a></li><li class="breadcrumb-item"><a href="../workshop/launch-envs.html">Package managers</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Package managers</h1>
 </div>
@@ -579,14 +579,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="managing-software" class="level1">
 <h1>Managing software</h1>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Coder App
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>You need to use the Coder app as we had configured it for the cookiecutter exercises. If your job is not longer running, submit a new one!</p>
+<ol type="1">
+<li>Name and version of the app to run: <code>Coder - 1.117.0</code>.</li>
+<li>Job settings: selecting a 1 CPU standard node with 3GB memory.</li>
+<li>Add folders to access while in this job (select your own drive!)
+<ul>
+<li>You need access to our shared folder so that you can get the correct software environment and other material for the exercises (shared/HPCLab_workshop).</li>
+<li>You need to select your hpcLaunch in your own drive, to save any output from the exercise! You won’t have writing permissions on our shared drive.</li>
+</ul></li>
+<li>Optional Parameters. Choose <code>shared/HPCLab_workshop/setup.sh</code> as the initialization file.</li>
+<li>Click on the Submit button (and wait!)</li>
+</ol>
+</div>
+</div>
+</div>
 <section id="exploring-an-existing-environment" class="level3">
 <h3 class="anchored" data-anchor-id="exploring-an-existing-environment">1. Exploring an existing environment</h3>
-<p>Let’s open the Terminal app. Since Conda is not pre-installed in the Terminal app on UCloud, we will need to:</p>
-<ol type="1">
-<li>Mount a drive with a pre-installed Miniconda setup.</li>
-<li>Run a bash script to add conda to the search path.</li>
-</ol>
-<p><img src="./images/ucloud_setup.png" class="img-fluid"></p>
+<p>Conda is not pre-installed in the Terminal or Coder app on UCloud, so how can we use conda? with a <strong>local installation of Miniconda</strong>, say miniconda3, mounted inside the app. If you want to know how to do this, follow the instructions on UCloud docs (<em>Setting Up Conda on UCloud</em>).</p>
+<p>In the interest of time, we will skip the installation of Miniconda and instead use the version available on our shared drive. There is nothing you need to do, as you have already mounted the shared drive, which includes a pre-installed Miniconda setup. The initialization script (<code>setup.sh</code>) adds Conda to the search path and activates the environment automatically, so it is ready to use.</p>
 <p>We will run the following commands to get familiar with Conda environments.</p>
 <ul>
 <li>What is the conda version?</li>
