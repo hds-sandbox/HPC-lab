@@ -133,7 +133,7 @@ You should see output similar to:
 ```
 NODELIST   NODES PARTITION       STATE CPUS    S:C:T MEMORY TMP_DISK WEIGHT AVAIL_FE REASON              
 node1          1    CLOUD*        idle 2       1:2:1   6000        0      1   (null) none  
-````
+```
 
 Check your own currently submitted jobs:
 ```{.bash}
@@ -205,7 +205,7 @@ set -euo pipefail
 :::
 
 4. Submit and monitor the array job:
-````{.bash}
+```{.bash}
 sbatch align_array.sh
 ```
 

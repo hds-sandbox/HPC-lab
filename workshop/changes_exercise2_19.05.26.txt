@@ -1,0 +1,99 @@
+Summary of changes to workshop/launch-transfers.qmd
+=====================================================
+
+1. DOI EXPLANATION (section 1, exercise step 2)
+   Added an inline tip after the concept-DOI fill-in-the-blank answer explaining that
+   Zenodo assigns two types of DOIs: a concept DOI (version-independent, always resolves
+   to the latest version) and a version-specific DOI for each individual release.
+   Users are directed to the "Cite all versions" section on the record page to find the
+   concept DOI.
+
+2. FIX WGET RECORD NUMBER (section 1, exercise step 3)
+   The wget command was pointing to record 12683372 (an older version) instead of
+   14106454 (the latest version used everywhere else in the exercise). Fixed:
+     Old: https://zenodo.org/api/records/12683372
+     New: https://zenodo.org/api/records/14106454
+   This ensures the downloaded .bib file matches the expected output shown on the page.
+
+3. BONUS EXERCISE — FTP ACCESS NOTE
+   Replaced the plain FTP link (which does not open in Chrome/Edge on Windows) with a
+   wget command that downloads md5checksum.txt directly:
+     wget ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/md5checksum.txt
+   Added a note explaining that FTP links require a dedicated client (FileZilla or
+   Cyberduck) to browse interactively.
+
+4. BONUS EXERCISE — BASH SCRIPT FIX
+   Fixed the variable assignment which had illegal spaces around the equals sign:
+     Old: # out_filename = "imgt_hla_prot.fasta"
+     New: # out_filename="imgt_hla_prot.fasta"
+   Separated the wget download command and the md5sum verification command so they are
+   no longer chained with && \. The wget line is now commented out (students uncomment
+   and run it first), and the md5sum line runs independently.
+
+5. BONUS EXERCISE — EXPECTED OUTPUT EXPLANATION
+   Updated the "Did you get any error?" prompt to explain what output to expect:
+   the checksum for hla_prot.fasta should pass, but there may be a FAILED result for
+   another entry (e.g. md5checksum.txt itself). Students are prompted to think about
+   whether the file was reprocessed or the checksum was generated for a different version.
+
+6. SECTION HEADER FIX
+   Completed the truncated section 2 header:
+     Old: "## 2. Synchronisation and transfer with"
+     New: "## 2. Synchronisation and transfer with `rsync`"
+   Renumbered the tmux section from "## 2." to "## 3." (there were two section 2s).
+
+7. WINDOWS CALLOUT UPDATE (Transfer between local and remote)
+   Replaced the PowerShell/robocopy note with an accurate warning:
+   rsync is not available natively on Windows; scp should be used for remote SSH
+   transfers (with Windows-specific examples provided below the callout). robocopy
+   is mentioned only for local copies.
+
+8. PORT NOTE (Transfer between local and remote)
+   Added a callout-note before the transfer commands explaining that <port> is the
+   4-digit port shown in the UCloud job's SSH connection details (e.g. 2126), not the
+   default SSH port 22.
+
+9. RSYNC DOWNLOAD COMMAND — SSH KEY AND REMOTE PATH
+   Updated the rsync download command:
+     Old key:  ~/.ssh/id_rsa
+     New key:  ~/.ssh/id_UCloud  (matches the key name from the setup exercise)
+     Old path: ucloud@ssh.cloud.sdu.dk:/work/hpcLaunch/rsync/data/
+     New path: ucloud@ssh.cloud.sdu.dk:~/hpcLaunch/rsync/data/
+   Using ~/ instead of /work/ avoids path-not-found errors in SSH sessions where the
+   home directory is /home/ucloud rather than /work.
+
+10. WINDOWS SCP ALTERNATIVE — DOWNLOAD
+    Wrapped the download section in a tabset (Mac/Linux vs Windows PowerShell) and
+    added a Windows scp equivalent:
+      scp -r -P <port> -i "$env:USERPROFILE\.ssh\id_UCloud" \
+          ucloud@ssh.cloud.sdu.dk:~/hpcLaunch/rsync/data/ data
+
+11. RSYNC UPLOAD COMMAND — SSH KEY AND REMOTE PATH
+    Same fixes as item 9 applied to the upload command:
+      Old key:  ~/.ssh/id_rsa  →  New: ~/.ssh/id_UCloud
+      Old path: /work/hpcLaunch/rsync/data  →  New: ~/hpcLaunch/rsync/data
+
+12. WINDOWS ALTERNATIVES — UPLOAD (file generation + scp)
+    Wrapped the upload section in a tabset and added:
+    - PowerShell equivalent for generating files:
+        foreach ($i in 101..105) { "ATGC","TCCA","NNNN","NNNN" | Add-Content -Path "data\file$i.fastq" }
+        foreach ($i in 101..105) { New-Item -ItemType File "data\file$i.log" }
+    - Windows scp upload command:
+        scp -r -P <port> -i "$env:USERPROFILE\.ssh\id_UCloud" data/ ucloud@ssh.cloud.sdu.dk:~/hpcLaunch/rsync/data
+
+13. TMUX PREFIX KEY EXPLANATION
+    Added a callout-note before the pane-splitting shortcuts explaining that Ctrl+b is a
+    prefix key: press Ctrl+b, release both keys, then press the command key. Do not hold
+    all three keys simultaneously.
+    Also updated the shortcut notation from "Ctrl + b + %" to "Ctrl + b, then %" for
+    clarity.
+
+14. TMUX WINDOW NUMBERING NOTE (step 4)
+    Added a note that windows may be numbered starting from 1 rather than 0 depending
+    on the tmux configuration, and that users should check the status bar to confirm.
+
+15. TMUX DETACH SHORTCUT FIX
+    Fixed an incorrect shortcut (GNU screen prefix, not tmux):
+      Old: Ctrl + a + d
+      New: Ctrl + b, then d
+    Also updated the same shortcut in the bonus exercise callout for consistency.

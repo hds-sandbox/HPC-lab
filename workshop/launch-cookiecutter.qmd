@@ -59,7 +59,7 @@ Run this command which will initiate an interactive prompt. Fill up the variable
 cookiecutter https://github.com/hds-sandbox/cookiecutter-template
 ```
 
-2. Explore the project structure (e.g., `ls -l`)
+2. Explore the project structure (e.g., `tree`)
 :::
 
 You're ready to customize your own template! Explore the following folder structure and the types of files you might encounter. How does it compare to your own setup?
@@ -159,7 +159,7 @@ The command `cookiecutter cookiecutter-template` will initiate again an interact
 
 ```{.bash filename="Example bash commands"}
 # Assuming the name of the project is 'myproject_may26'
-ls -l myproject_may26 
+tree myproject_may26 
 ```
 
 **Optional (if you have time)**
