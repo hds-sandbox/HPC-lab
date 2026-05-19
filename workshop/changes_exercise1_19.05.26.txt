@@ -1,0 +1,67 @@
+Summary of changes to workshop/launch-setup.qmd
+================================================
+
+1. WINDOWS ADMIN WARNING
+   Added a callout-important block at the very top of the page (before section 1)
+   warning Windows users to run PowerShell as Administrator before starting,
+   explaining this avoids cryptic permission errors such as ssh-agent failing.
+
+2. SSH KEY GENERATION (section 1.1)
+   - Replaced the single interactive `ssh-keygen -t ed25519` command with two
+     platform-specific commands that use the -f flag to set the filename directly:
+       Mac/Linux:  ssh-keygen -t ed25519 -f ~/.ssh/id_UCloud
+       Windows:    ssh-keygen -t ed25519 -f "$env:USERPROFILE\.ssh\id_UCloud"
+   - Moved the old interactive approach (with example prompt output) into a
+     collapsed callout-note, with an explicit warning not to press Enter at the
+     filename prompt without typing id_UCloud.
+
+3. SSH-ADD (section 1.2)
+   - Replaced the ambiguous `ssh-add id_UCloud` with full-path, platform-specific
+     commands and a note clarifying that id_UCloud is the filename chosen earlier:
+       Mac/Linux:  ssh-add ~/.ssh/id_UCloud
+       Windows:    ssh-add "$env:USERPROFILE\.ssh\id_UCloud"
+
+4. COPY PUBLIC KEY TO CLIPBOARD (section 1.3)
+   - Replaced the single Mac-only `cat id_UCloud.pub | pbcopy` command with three
+     separate platform-specific code blocks:
+       Mac:     cat ~/.ssh/id_UCloud.pub | pbcopy
+       Linux:   cat ~/.ssh/id_UCloud.pub | xclip -selection clipboard
+       Windows: cat "$env:USERPROFILE\.ssh\id_UCloud.pub" | clip
+
+5. UCLOUD SSH KEY URL (section 1.3)
+   - Added a direct link to the UCloud SSH key creation interface:
+     https://cloud.sdu.dk/app/ssh-keys/create
+     so users do not have to navigate there manually.
+
+6. SSH PROGRESS VIEW TEXT
+   - Updated the description of how to find the SSH command after job start.
+     Old text: "the SSH command appears in the progress view and can be run
+                locally from your terminal"
+     New text: "click the SSH tab in the progress view to reveal the SSH command,
+                then copy it and paste it in your local terminal"
+     This reflects the updated UCloud interface which now uses a dedicated SSH tab.
+
+7. SCREENSHOT REPLACEMENT (workshop/images/sshCommand.png) — MANUAL STEP
+   - The existing sshCommand.png shows the old UCloud progress view where the SSH
+     command appeared inline.
+   - Replace it with the screenshot provided by the user, which shows the new
+     UCloud interface where users must click an "SSH" tab to reveal the command.
+   - The image tag in the .qmd already points to ./images/sshCommand.png, so
+     simply overwrite that file with the new screenshot (keeping the same filename).
+
+8. QUIZ QUESTION 1 — working directory root
+   Old: accepts only '/work'
+   New: accepts '/work', 'work/', '/work/', '/home/ucloud', '/home/ucloud/'
+   Reason: the default working directory varies depending on how the user connects
+   (SSH vs Open Interface), so both /work and /home/ucloud are valid answers.
+
+9. QUIZ QUESTION 2 — working directory after cd hpcLaunch
+   Old: accepts only '/work/hpcLaunch'
+   New: accepts '/work/hpcLaunch', '/work/hpcLaunch/', '/home/ucloud/hpcLaunch',
+        '/home/ucloud/hpcLaunch/'
+   Reason: same as above — pwd output differs by connection method.
+
+10. QUIZ QUESTION 10 — list files with sizes
+    Old: accepts 'ls -lh .' and 'du -sh *'
+    New: accepts 'ls -lh', 'ls -lh .', and 'du -sh *'
+    Reason: ls -lh without a trailing dot is equally valid and commonly used.

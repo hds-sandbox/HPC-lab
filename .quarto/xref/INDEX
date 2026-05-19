@@ -205,5 +205,8 @@
   },
   "workshop/launch-archive.qmd": {
     "launch-archive.html": "1436aebc"
+  },
+  "./workshop/launch-archive.qmd": {
+    "launch-archive.html": "2b72e7a7"
   }
 }
