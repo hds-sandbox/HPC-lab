@@ -167,16 +167,19 @@ ls *.fastq > fastq_list.txt
 ```{.bash filename="align_array.sh"}
 #!/bin/bash
 #SBATCH --cpus-per-task=2
-#SBATCH --mem=8g
-#SBATCH --time=01:00:00
+#SBATCH --mem=5g
+#SBATCH --time=00:30:00
 #SBATCH --array=1-4%2
 #SBATCH --job-name=alignArray
 #SBATCH --output=logs/align_%A_%a.out
 #SBATCH --error=logs/align_%A_%a.err
 
 set -euo pipefail
-source ~/miniconda3/etc/profile.d/conda.sh
-conda activate batchGDK
+
+# Initialise conda
+source /work/HPCLab_workshop/miniconda3/etc/profile.d/conda.sh
+# Activate environment
+conda activate /work/hpcLaunch/day2/envs/batchUCloud
 
 mapfile -t fastqs < fastq_list.txt
 fq="${fastqs[$((SLURM_ARRAY_TASK_ID-1))]}"
@@ -234,7 +237,7 @@ Create a second batch script called `index_array.sh`:
 ```{.bash filename="index_array.sh"}
 #!/bin/bash
 #SBATCH --cpus-per-task=1
-#SBATCH --mem=4g
+#SBATCH --mem=5g
 #SBATCH --time=00:30:00
 #SBATCH --array=1-4
 #SBATCH --job-name=indexArray
@@ -244,10 +247,9 @@ Create a second batch script called `index_array.sh`:
 set -euo pipefail
 
 # Initialise conda
-source ~/miniconda3/etc/profile.d/conda.sh
-
+source /work/HPCLab_workshop/miniconda3/etc/profile.d/conda.sh
 # Activate environment
-conda activate batchGDK
+conda activate /work/hpcLaunch/day2/envs/batchUCloud
 
 # Create an array containing BAM files
 mapfile -t bams=(results/*.bam)
