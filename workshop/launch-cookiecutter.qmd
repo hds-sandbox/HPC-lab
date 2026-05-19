@@ -11,6 +11,7 @@ css: ./web.css
 ```{r,include=FALSE, results='asis'}
 source("_setup.R")
 ```
+
 :::{.callout-warning}
 # Start a new job using Coder on UCloud. 
 
@@ -25,6 +26,8 @@ Follow these steps to configure the settings:
   - You need to select your hpcLaunch in your own drive, to save any output from the exercise! You won't have writing permissions on our shared drive. 
 4. Optional Parameters. Choose `shared/HPCLab_workshop/setup.sh` as the initialization file.
 5. Click on the Submit button (and wait!)
+
+Once the Coder app is running, open a new terminal. 
 
 ![Example Job submission using Coder](./images/coderApp.png)
 :::

@@ -5,12 +5,16 @@ format:
     toc: false
 logo: ../../img/logo.png
 ---
+```{r,include=FALSE, results='asis'}
+source("_setup.R")
+```
+
 # Managing software 
 
 :::{.callout-warning collapse="true"}
 # Coder App
 
-You need to use the Coder app as we had configured it for the cookiecutter exercises. If your job is not longer running, submit a new one!
+You need to use the Coder app as we had configured it for the Cookiecutter exercises. If your job is not longer running, submit a new one!
 
 1. Name and version of the app to run: `Coder - 1.117.0`. 
 2. Job settings: selecting a 1 CPU standard node with 3GB memory.
@@ -19,6 +23,8 @@ You need to use the Coder app as we had configured it for the cookiecutter exerc
     - You need to select your hpcLaunch in your own drive, to save any output from the exercise! You won't have writing permissions on our shared drive. 
 4. Optional Parameters. Choose `shared/HPCLab_workshop/setup.sh` as the initialization file.
 5. Click on the Submit button (and wait!)
+
+Once the Coder app is running, open a new terminal. 
 :::
 
 
@@ -27,14 +33,21 @@ Conda is not pre-installed in the Terminal or Coder app on UCloud, so how can we
 
 In the interest of time, we will skip the installation of Miniconda and instead use the version available on our shared drive. There is nothing you need to do, as you have already mounted the shared drive, which includes a pre-installed Miniconda setup. The initialization script (`setup.sh`) adds Conda to the search path and activates the environment automatically, so it is ready to use.
 
+Let's deactivate the environment before starting the exercise. 
+```{.bash}
+conda deactivate
+```
+
+Did you notice something? The `hpclab-env` text indicating that a Conda environment was active has disappeared.
+
 We will run the following commands to get familiar with Conda environments.
 
-- What is the conda version?
+- What is the conda version? `r fitb(answer="24.9.2")`
 
 ```{.bash}
 conda info
 ```
-- Check the name of all the different environments available to you. 
+- How many different environments are available to you (excluding `base` which is automatically created with Conda)? `r fitb(answer="2")`
 
 ```{.bash}
 conda env list
@@ -46,7 +59,7 @@ conda env list
 conda activate hpclab-env
 ```
 
-- How many packages are available in this environment? 
+- How many packages are available in this environment? `r fitb(answer="81")`
 
 ```{.bash}
 conda list |grep -v '#' | wc -l
@@ -60,22 +73,22 @@ Imagine you need to share your environment with a collaborator so they can repli
 conda env export --from-history > <yourname-hpclab>.yml
 ```
 
-- Deactivate the environment.
+- Deactivate the environment again. 
 
 ```{.bash}
 conda deactivate
 ```
 
-### 2: Building your conda environment
+### 2: Building your own conda environment
 
 Let's create a new directory in your personal drive:
 
 ```{.bash}
-cd <path-to-personal-drive>
+cd /work/hpcLaunch/day2
 mkdir envs 
 ```
 
-Now, add a new environment using the argument `--prefix PATH` (e.g., `/work/<YourNameSurname#xxxx>/envs/<name-env>`). We need to do this as miniconda is installed in a directory that you don't have write rights to. 
+Now, add a new environment using the argument `--prefix PATH` (e.g., `/work/hpcLaunch/day2/envs/<name-env>`). We need to do this as miniconda is installed in a directory that you don't have write rights to. 
 
 Locally, you would typically run the command: `conda create --name <myenv>`
 
@@ -86,7 +99,7 @@ Always specify the location using `--prefix PATH` regardless of the UCloud app y
 - Create the environment 
 
 ```{.bash}
-conda create --prefix /work/<NameSurname#xxxx>/envs/<test-env>
+conda create --prefix /work/hpcLaunch/day2/envs/<test-env>
 ```
 
 - Confirm the environment location
@@ -100,11 +113,15 @@ Proceed ([y]/n)? y
 ```{.bash}
 conda env list
 ```
-- Activate the env 
+
+The new environment doesn't have a name as we use prefix to create the env outside the `envs` subdirectory in the Conda installation but don't worry about it!
+
+- Activate the env (e.g. myenv -> `/work/hpcLaunch/day2/envs/test-arm`)
 
 ```{.bash}
 conda activate <myenv>
 ```
+
 - By default, we won't have conda-forge or bioconda added to the environment. Let's fix this.
 
 ```{.bash}
@@ -114,12 +131,12 @@ conda config --add channels conda-forge
 ```
 
 - Add the latest Python version to the environment
-```{.bash filename="Search available versions"}
-conda search python 
+```{.bash filename="Search available versions > 3.12"}
+conda search "python>=3.12"
 ```
 
 ```{.bash filename="Install the latest"}
-conda install python=3.13.2 
+conda install python=3.14.4 
 ```
 - Install samtools, a tool for manipulating DNA sequencing data
 
@@ -136,3 +153,5 @@ conda remove samtools
 ```{.bash}
 conda deactivate
 ```
+
+You can cancel the job when you are done with this exercise ('Stop Application').
