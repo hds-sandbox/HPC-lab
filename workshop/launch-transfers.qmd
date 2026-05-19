@@ -20,8 +20,7 @@ Submit a job from the terminal app and follow these configuration steps (job set
 2. Select the time (in hours) we want to use a node for (it can be modified afterwards!). Let's do **2h**.  
 3. Number of nodes: 1
 4. Machine type: and the machine type (selecting a 1 CPU standard node with 3GB memory).
-5. Additional Parameters. Enable tmux > *true*. 
-6. Configure SSH access, click on enable SSH server. 
+5. Additional Parameters. Enable tmux > *true*.
 
 
 ## 1. File integrity verification
@@ -32,6 +31,9 @@ We recommend using `md5sum` to verify data integrity, particularly when download
 
 1. Open this [Zenodo link](https://zenodo.org/records/14106454) 
 2. Enter the DOI of the repo (for all versions): `r fitb(answer='10.5281/zenodo.12683371')`
+
+   *Tip: Zenodo assigns two types of DOIs — a **concept DOI** (version-independent, always resolves to the latest version) and a **version-specific DOI** for each individual release. On the record page, scroll to the bottom right and look for the "Cite all versions? You can use the concept DOI" section — that is the version-independent DOI we want here.*
+
 3. Zenodo offers an API at https://zenodo.org/api/, which functions similarly to the DOI API. This allows you to retrieve a BibTeX-formatted reference for a specific record (e.g., `records/14106454`) using either curl or wget.
 ```{.bash filename="Terminal"}
 # ------curl-------
@@ -40,7 +42,7 @@ curl -LH 'Accept: application/x-bibtex' https://zenodo.org/api/records/14106454 
 
 # ------wget-------
 wget --header="Accept: application/x-bibtex" -q \
-     https://zenodo.org/api/records/12683372 -O meisner_2024.bib
+     https://zenodo.org/api/records/14106454 -O meisner_2024.bib
 ```
 
 Does the content of your `*.bib` file look like this?
@@ -81,36 +83,45 @@ sha256sum fastmixture.zip
 :::
 
 :::{.callout-tip collapse="true" appearance="simple"}
-# Bonus exercise 
+# Bonus exercise
 
-We will be using the HLA database for this exercise. Click on [this link](ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/) or google `IMGT HLA> Download`. Important: go through the README before downloading! Check if a checksums file is included. 
+We will be using the HLA database for this exercise. Important: go through the README before downloading! Check if a checksums file is included.
 
-1. Download and open the `md5checksum.txt` ([HLA FTP Directory](ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/))
+1. Download the `md5checksum.txt` from the IMGT HLA FTP directory:
+
+```{.bash filename="Terminal"}
+wget ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/md5checksum.txt
+```
+
+   **Note:** FTP links (e.g. `ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/`) do not open in standard browsers (Chrome, Edge). To browse the directory interactively, use a dedicated FTP client such as [FileZilla](https://filezilla-project.org/) or [Cyberduck](https://cyberduck.io/).
+
 2. Look for the hash of the file `hla_prot.fasta`
-3. Create a bash script to download the target files (named "dw_resources.sh" in your current directory). 
-```{.bash .code-overflow-wrap} 
+
+3. Create a bash script to download the target files (named "dw_resources.sh" in your current directory).
+```{.bash .code-overflow-wrap}
 #!/bin/bash
 md5file="md5checksum.txt"
 
 # Define the URL of the files to download
 url="ftp://ftp.ebi.ac.uk/pub/databases/ipd/imgt/hla/hla_prot.fasta"
 
-# (Optional 1) Save the original file name: filename=$(basename "$url")
-# (Optional 2) Define a different filename to save the downloaded file (`wget -O $out_filename`)
-# out_filename = "imgt_hla_prot.fasta"
+# (Optional) Define a different filename to save the downloaded file (wget -O $out_filename)
+# out_filename="imgt_hla_prot.fasta"
 
 # Download the file
-wget $url --output $out_filename && \
+# wget $url --output $out_filename
+
+# Verify checksums
 md5sum --quiet --ignore-missing --check $md5file
 ````
-We recommend using the argument `--quiet` as part of your pipeline so that it only prints the errors (it doesn't print output when success). The `--ignore-missing` argument is useful because it allows us to use the raw checksums file while skipping files we may not want to download.
+We recommend using `--quiet` so that only errors are printed (success is silent). The `--ignore-missing` argument lets you use the full checksums file while skipping files you have not downloaded.
 
-**Did you get any error?** 
+**What output do you get from the `md5sum` command?** You will see that the checksum for `hla_prot.fasta` passes, but you may also get a FAILED result for another entry in the file (for example, `md5checksum.txt` itself or a related file). Think about why — was the file reprocessed, or was its checksum generated for a different version?
 
-4. Generate the md5 hash & compare to the one from the original `md5checksum.txt`. 
+4. Generate the md5 hash & compare to the one from the original `md5checksum.txt`.
 :::
 
-## 2. Synchronisation and transfer with 
+## 2. Synchronisation and transfer with `rsync`
 
 To explore all `rsync` options would require a workshop on its own. Check [the manual](https://linux.die.net/man/1/rsync) to learn more about the command. 
 
@@ -213,41 +224,78 @@ If you create a folder called `backup` in your project folder, you can use versi
 You can use the same approach to transfer and back up data between a remote system (in this case, UCloud) and a local machine (your PC/laptop). You need Linux, Mac or WSL/MobaXterm on the local host to perform `rsync`. 
 
 :::{.callout-warning}
-# Powershell users
-You will need to use a different command: `robocopy` equivalent to `rsync`. Here is the [manual](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy?redirectedfrom=MSDN).
+# Windows users
+`rsync` is not available natively on Windows. For **remote transfers over SSH**, use `scp` instead (Windows-specific examples are provided below). For **local copies**, `robocopy` is the Windows equivalent ([manual](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy?redirectedfrom=MSDN)).
 :::
 
 Let's transfer the `fastq` files from UCloud to your laptop. You should have enabled `SSH server`, if you haven't, submit a new job. 
 
-In this case, we want the content in the data folder to be transfer and not the folder itself (`PATH_TO/data/`). Choose your working directory where you want the data to be downloaded. You will need to run the following commands locally: 
+In this case, we want the content in the data folder to be transfer and not the folder itself (`PATH_TO/data/`). Choose your working directory where you want the data to be downloaded. You will need to run the following commands **locally** (on your laptop):
 
-```{.bash}
+:::{.callout-note}
+The `<port>` is shown in your UCloud job's SSH connection details (typically a 4-digit number such as `2126`, not the default SSH port 22). Use the port provided by UCloud for your current session.
+:::
+
+::: {.panel-tabset}
+
+## Mac/Linux
+
+```{.bash filename="Terminal (local)"}
 # cd to your local working directory
-# create a data folder  
+# create a data folder
 mkdir data
 # Transfer data content to the data folder
-rsync -aP --exclude="*.log" -e "ssh -i ~/.ssh/id_rsa -p <port>" ucloud@ssh.cloud.sdu.dk:/work/hpcLaunch/rsync/data/ data
+rsync -aP --exclude="*.log" -e "ssh -i ~/.ssh/id_UCloud -p <port>" ucloud@ssh.cloud.sdu.dk:~/hpcLaunch/rsync/data/ data
 ```
+
+## Windows (PowerShell)
+
+```{.powershell filename="PowerShell (local)"}
+# create a data folder
+mkdir data
+# Transfer data content to the data folder
+scp -r -P <port> -i "$env:USERPROFILE\.ssh\id_UCloud" ucloud@ssh.cloud.sdu.dk:~/hpcLaunch/rsync/data/ data
+```
+
+:::
 
 Check that the content has transferred successfully. Has it? `r torf(TRUE)`
 
 The opposite can be done, let's upload some files from your computer to UCloud. We will generate extra files and transfer them to our data folder on UCloud. For example:
 
-```{.bash}
-# Run these commands from your working directory to generate new files (same as before!) 
+::: {.panel-tabset}
+
+## Mac/Linux
+
+```{.bash filename="Terminal (local)"}
+# Run these commands from your working directory to generate new files (same as before!)
 for i in {101..105}; do { echo ATGC; echo TCCA; echo NNNN; echo NNNN; } >> data/file$i.fastq; done
 
 touch data/file{101..105}.log
 
 # Transfer content in data (not the dir)
-rsync -aP -e "ssh -i ~/.ssh/id_rsa -p <port>" data/ ucloud@ssh.cloud.sdu.dk:/work/hpcLaunch/rsync/data 
+rsync -aP -e "ssh -i ~/.ssh/id_UCloud -p <port>" data/ ucloud@ssh.cloud.sdu.dk:~/hpcLaunch/rsync/data
 ```
+
+## Windows (PowerShell)
+
+```{.powershell filename="PowerShell (local)"}
+# Generate new files
+mkdir data/
+foreach ($i in 101..105) { "ATGC", "TCCA", "NNNN", "NNNN" | Add-Content -Path "data\file$i.fastq" }
+foreach ($i in 101..105) { New-Item -ItemType File "data\file$i.log" }
+
+# Transfer content in data (not the dir)
+scp -r -P <port> -i "$env:USERPROFILE\.ssh\id_UCloud" data/ ucloud@ssh.cloud.sdu.dk:~/hpcLaunch/rsync/data
+```
+
+:::
 
 Do you now have all new files on UCloud (e.g.: *file10{1..5}.fastq, log*)? Check using a bash command or navigate to Files in the interface: `r torf(TRUE)`
 
 You would have had to type your password if you do not make use of `SSH` keys!
 
-## 2. Session management using `tmux`
+## 3. Session management using `tmux`
 
 You can start a `tmux` session anywhere. It is easier to navigate sessions giving them a name.
 
@@ -262,16 +310,20 @@ The command will set you into the session automatically. The window looks someth
 
 Now, you are in session `example1` and have one window, which you are using now. 
 
-2. Split the window in multiple terminals. 
+2. Split the window in multiple terminals.
 
-Split the window horizontally and vertically, you will be running a total of 3 terminals. 
+Split the window horizontally and vertically, you will be running a total of 3 terminals.
+
+:::{.callout-note}
+`tmux` uses a **prefix key** (`Ctrl+b`). For every shortcut below, press `Ctrl+b`, **release both keys**, then press the command key. Do not hold all three keys at once.
+:::
 
 ```
-Ctrl + b + %
+Ctrl + b, then %       (split vertically)
 
-Ctrl + b + ""
+Ctrl + b, then "       (split horizontally)
 
-Ctrl+b , then arrow keys (>) to change pane! 
+Ctrl + b, then arrow keys    (move between panes)
 ```
 
 :::{.callout-tip collapse="true"}
@@ -288,8 +340,8 @@ Then,
 -  Right-clicked on the window bar and create a new window.
 :::
 
-3. Create a new window with `Ctrl + b + c`
-4. Change between windows. You can choose to which window you want to change by using with `Ctrl+b` then [0-9].  
+3. Create a new window with `Ctrl + b`, then `c`
+4. Change between windows. Press `Ctrl+b`, then a window number key [0-9]. Note: depending on your tmux configuration, windows may be numbered starting from **1** rather than 0 — check the status bar at the bottom to see your window numbers.
 
 ![Example tmux session w. 3 windows. Blue indicates the window you are at.](./images/tmux_windows.png)
 
@@ -310,7 +362,7 @@ Let's detach from this tmux session.
 
 ```
 # Option 1
-Ctrl + a + d
+Ctrl + b, then d
 # Option 2
 tmux detach
 ```
@@ -360,7 +412,7 @@ tmux new-session -d -s downloads
 verify the session is there with `tmux ls`.
 
 :::{.callout-warning}
-If you want a new session attaching to it, you need to detach from the current session with `Ctrl + b + d`.
+If you want a new session attaching to it, you need to detach from the current session with `Ctrl + b`, then `d`.
 :::
 
 Create a text file with few example files for this workshop to be downloaded.
