@@ -558,8 +558,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#job-submission-with-slurm" id="toc-job-submission-with-slurm" class="nav-link active" data-scroll-target="#job-submission-with-slurm">Job submission with SLURM</a>
   <ul class="collapse">
   <li><a href="#submitting-a-batch-job-with-slurm" id="toc-submitting-a-batch-job-with-slurm" class="nav-link" data-scroll-target="#submitting-a-batch-job-with-slurm">Submitting a Batch Job with SLURM</a></li>
-  <li><a href="#submitting-a-batch-array" id="toc-submitting-a-batch-array" class="nav-link" data-scroll-target="#submitting-a-batch-array">Submitting a batch array</a></li>
+  <li><a href="#job-monitoring" id="toc-job-monitoring" class="nav-link" data-scroll-target="#job-monitoring">Job monitoring</a></li>
   </ul></li>
+  <li><a href="#job-monitoring-1" id="toc-job-monitoring-1" class="nav-link" data-scroll-target="#job-monitoring-1">Job monitoring</a></li>
   </ul>
 </nav>
 </nav>
@@ -590,24 +591,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>New Terminal Job configuration
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Slurm workload manager is installed and configured in the Terminal app so we will be using:</p>
+<ol type="1">
+<li>Enter a job name (descriptive of the task, e.g.: <em>slurm myname</em>)</li>
+<li>Select the time (in hours): <strong>1h</strong>.<br>
+</li>
+<li>Number of nodes: 2</li>
+<li>Machine type: and the machine type (selecting a 1 CPU standard node with 3GB memory).</li>
+<li>Select folders to use:
+<ul>
+<li><code>&lt;Member Files: Username/hpcLaunch&gt;</code></li>
+<li><code>/shared/HPCLab_workshop</code></li>
+</ul></li>
+<li>Additional Parameters.
+<ul>
+<li>Enable tmux &gt; <em>true</em>.</li>
+<li>Slurm cluster &gt; <em>true</em> (alternatively, run the following command on any terminal <code>init_slurm_cluster</code>)</li>
+<li>Initialization: <code>/shared/HPCLab_workshop/setup.sh</code><br>
+</li>
+</ul></li>
+</ol>
+</div>
+</div>
 <section id="job-submission-with-slurm" class="level2">
 <h2 class="anchored" data-anchor-id="job-submission-with-slurm">Job submission with SLURM</h2>
+<p>Here is a list of SLURM common commands:</p>
 <pre><code>sbatch → submit a shell script to the queue
 squeue → see all the jobs in the queue
 squeue -u USERNAME → see your jobs only
 scancel JOBID → cancel the job with the specified ID
 scancel -u USERNAME → cancel all your jobs
-seff JOBID → get efficiency information about your job</code></pre>
+sacct --user=$USER → get efficiency information about your job
+srun → launch tasks within hob allocation. It can be used in batch scripts and on the command line
+srun --pty bash -i → to run interactive jobs 
+sinfo → info about SLURM nodes and partitions</code></pre>
+<p>If you are unsure how to use the commands run <code>man &lt;SLURM_command&gt;</code> on the terminal.</p>
 <section id="submitting-a-batch-job-with-slurm" class="level3">
 <h3 class="anchored" data-anchor-id="submitting-a-batch-job-with-slurm">Submitting a Batch Job with SLURM</h3>
 <p>In this exercise, you will prepare sequencing data, create a software environment, write a SLURM batch script, and submit an alignment job to the cluster queueing system.</p>
 <ol type="1">
-<li>Create a new subdirectory called batchLaunch inside your hpcLaunch/Day2 folder and move (<code>cd</code>) into it:</li>
+<li>Create a new subdirectory called batchUCloud inside your hpcLaunch/Day2 folder and move (<code>cd</code>) into it:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/advancedGDK/batchLaunch</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/advancedGDK/batchLaunch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> hpcLaunch/Day2/batchUCloud</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /work/hpcLaunch/Day2/batchUCloud</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
-<li>Download the Input Data (FASTQ files)</li>
+<li>Download the input data (FASTQ files) for the exercise</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/hartwigmedical/testdata/raw/master/100k_reads_hiseq/TESTX/TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz <span class="dt">\</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">-O</span> ./data.fastq.gz</span>
@@ -628,7 +666,7 @@ seff JOBID → get efficiency information about your job</code></pre>
 <ol start="3" type="1">
 <li>Create a Conda environment containing bwa-mem2 and samtools.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda <span class="at">-n</span> batchLaunch bwa-mem2 samtools</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda <span class="at">--prefix</span> /work/hpcLaunch/day2/envs/batchUCloud  bwa-mem2 samtools</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="4" type="1">
 <li>Create a Batch script called <code>align.sh</code> using a text editor (e.g.&nbsp;<code>nano</code>) and add the following content to the file:</li>
 </ol>
@@ -642,10 +680,10 @@ seff JOBID → get efficiency information about your job</code></pre>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=04:00:00</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialise conda</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/miniconda3/etc/profile.d/conda.sh</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /work/hpcLaunch_workshop/miniconda3/etc/profile.d/conda.sh</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Activate environment</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate batchLaunch</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate /work/hpcLaunch/day2/envs/batchUCloud</span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Index reference</span></span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa-mem2</span> index ref.fasta</span>
@@ -664,23 +702,46 @@ seff JOBID → get efficiency information about your job</code></pre>
 <ol start="5" type="1">
 <li>Submit the batch script to SLURM:</li>
 </ol>
-<p>`<code>{.bash} sbatch align.sh</code></p>
-<ol start="6" type="1">
-<li><p>Monitor the Job (check the status)</p></li>
-<li><p>Cancel a Job (Optional)</p></li>
-</ol>
-<p>If needed, you can cancel a running or queued job using: scancel <myjobid></myjobid></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> align.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="submitting-a-batch-array" class="level3">
+<section id="job-monitoring" class="level3">
+<h3 class="anchored" data-anchor-id="job-monitoring">Job monitoring</h3>
+<ol start="6" type="1">
+<li>Monitor the job and the cluster nodes</li>
+</ol>
+<p>Check available compute nodes</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sinfo</span> <span class="at">-N</span> <span class="at">-l</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You should see output similar to:</p>
+<pre><code>NODELIST   NODES PARTITION       STATE CPUS    S:C:T MEMORY TMP_DISK WEIGHT AVAIL_FE REASON              </code></pre>
+<p>Check your own currently submitted jobs:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">--me</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Find the JOBID of your running or pending job(s) and note the state. Is the job running?</p>
+<ol start="7" type="1">
+<li>Cancel a Job (Optional)</li>
+</ol>
+<p>If needed, you can cancel a running or queued job using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> <span class="op">&lt;</span>JOBID<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Bonus exercise 2
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<section id="submitting-a-batch-array" class="level3 callout-body-container callout-body">
 <h3 class="anchored" data-anchor-id="submitting-a-batch-array">Submitting a batch array</h3>
 <p>In this exercise, you will run the same alignment operation on multiple FASTQ files in parallel using a SLURM job array.</p>
 <ol type="1">
 <li>Create directories for output files and log files, then generate a list containing all FASTQ files:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> results logs</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  List of FASTQ files</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="pp">*</span>.fastq <span class="op">&gt;</span> fastq_list.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> results logs</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  List of FASTQ files</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="pp">*</span>.fastq <span class="op">&gt;</span> fastq_list.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="3" type="1">
 <li>Open a text editor and create a new batch script called <code>align_array.sh</code>.</li>
 </ol>
@@ -688,31 +749,31 @@ seff JOBID → get efficiency information about your job</code></pre>
 <div class="code-with-filename-file">
 <pre><strong>align_array.sh</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" data-filename="align_array.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=2</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=8g</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=01:00:00</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --array=1-4%2</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=alignArray</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=logs/align_%A_%a.out</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=logs/align_%A_%a.err</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/miniconda3/etc/profile.d/conda.sh</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate batchGDK</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="ex">mapfile</span> <span class="at">-t</span> fastqs <span class="op">&lt;</span> fastq_list.txt</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="va">fq</span><span class="op">=</span><span class="st">"</span><span class="va">${fastqs</span><span class="op">[</span><span class="va">$((SLURM_ARRAY_TASK_ID</span><span class="op">-</span><span class="dv">1</span><span class="va">))</span><span class="op">]</span><span class="va">}</span><span class="st">"</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="va">sample</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">"</span><span class="va">$fq</span><span class="st">"</span> .fastq<span class="va">)</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa-mem2</span> mem <span class="at">-t</span> <span class="st">"</span><span class="va">$SLURM_CPUS_PER_TASK</span><span class="st">"</span> ref.fasta <span class="st">"</span><span class="va">$fq</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">|</span> <span class="ex">samtools</span> sort <span class="at">-@</span> 1 <span class="at">-O</span> BAM <span class="dt">\</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="op">&gt;</span> <span class="st">"results/</span><span class="va">${sample}</span><span class="st">.bam"</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-filename="align_array.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=2</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=8g</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=01:00:00</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --array=1-4%2</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=alignArray</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=logs/align_%A_%a.out</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=logs/align_%A_%a.err</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/miniconda3/etc/profile.d/conda.sh</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate batchGDK</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="ex">mapfile</span> <span class="at">-t</span> fastqs <span class="op">&lt;</span> fastq_list.txt</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="va">fq</span><span class="op">=</span><span class="st">"</span><span class="va">${fastqs</span><span class="op">[</span><span class="va">$((SLURM_ARRAY_TASK_ID</span><span class="op">-</span><span class="dv">1</span><span class="va">))</span><span class="op">]</span><span class="va">}</span><span class="st">"</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="va">sample</span><span class="op">=</span><span class="va">$(</span><span class="fu">basename</span> <span class="st">"</span><span class="va">$fq</span><span class="st">"</span> .fastq<span class="va">)</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="ex">bwa-mem2</span> mem <span class="at">-t</span> <span class="st">"</span><span class="va">$SLURM_CPUS_PER_TASK</span><span class="st">"</span> ref.fasta <span class="st">"</span><span class="va">$fq</span><span class="st">"</span> <span class="dt">\</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">|</span> <span class="ex">samtools</span> sort <span class="at">-@</span> 1 <span class="at">-O</span> BAM <span class="dt">\</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  <span class="op">&gt;</span> <span class="st">"results/</span><span class="va">${sample}</span><span class="st">.bam"</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -721,10 +782,10 @@ seff JOBID → get efficiency information about your job</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Make your pipelines easier to debug by using this command to avoid silent errors and incomplete outputs.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <pre><code>-e # Exit immediately if any command returns a non-zero exit status.
 -u # Treat the use of undefined variables as an error.
 -o pipefail # Make a pipeline fail if any command in the pipeline fails, not just the last one.</code></pre>
@@ -754,8 +815,11 @@ ls logs/</code></pre>
 <p>Each task gets its own SLURM_ARRAY_TASK_ID, used to pick one input file from fastq_list.txt.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+</section>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -764,7 +828,7 @@ ls logs/</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <section id="chained-jobs-with-dependencies" class="level3 callout-body-container callout-body">
 <h3 class="anchored" data-anchor-id="chained-jobs-with-dependencies">Chained Jobs with Dependencies</h3>
 <p>In this exercise, you will create a simple 3-step pipeline using SLURM job dependencies. The indexing step should only start if the alignment step completes successfully.</p>
@@ -773,33 +837,33 @@ ls logs/</code></pre>
 <div class="code-with-filename-file">
 <pre><strong>index_array.sh</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-filename="index_array.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=4g</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:30:00</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --array=1-4</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=indexArray</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=logs/index_%A_%a.out</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=logs/index_%A_%a.err</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialise conda</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/miniconda3/etc/profile.d/conda.sh</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Activate environment</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate batchGDK</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an array containing BAM files</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="ex">mapfile</span> <span class="at">-t</span> bams=<span class="er">(</span><span class="ex">results/*.bam</span><span class="kw">)</span></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the BAM file corresponding to the current array task</span></span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="va">bam</span><span class="op">=</span><span class="st">"</span><span class="va">${bams</span><span class="op">[</span><span class="va">$((SLURM_ARRAY_TASK_ID</span><span class="op">-</span><span class="dv">1</span><span class="va">))</span><span class="op">]</span><span class="va">}</span><span class="st">"</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Index BAM file</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index <span class="st">"</span><span class="va">$bam</span><span class="st">"</span></span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" data-filename="index_array.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=4g</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:30:00</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --array=1-4</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=indexArray</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=logs/index_%A_%a.out</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=logs/index_%A_%a.err</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialise conda</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/miniconda3/etc/profile.d/conda.sh</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Activate environment</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate batchGDK</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an array containing BAM files</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="ex">mapfile</span> <span class="at">-t</span> bams=<span class="er">(</span><span class="ex">results/*.bam</span><span class="kw">)</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the BAM file corresponding to the current array task</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="va">bam</span><span class="op">=</span><span class="st">"</span><span class="va">${bams</span><span class="op">[</span><span class="va">$((SLURM_ARRAY_TASK_ID</span><span class="op">-</span><span class="dv">1</span><span class="va">))</span><span class="op">]</span><span class="va">}</span><span class="st">"</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Index BAM file</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> index <span class="st">"</span><span class="va">$bam</span><span class="st">"</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>After creating the script, submit the indexing job so that it only starts after the alignment array job has completed successfully. Use the <code>--dependency=afterok:&lt;jobid&gt;</code> option with sbatch.</p>
 <p>Create a final reporting job called report_job.sh. This job will generate a simple summary file listing all BAM and BAI files produced by the pipeline.</p>
@@ -807,53 +871,61 @@ ls logs/</code></pre>
 <div class="code-with-filename-file">
 <pre><strong>report_job.sh</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-filename="report_job.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=1g</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:10:00</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=arrayReport</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=logs/report_%j.out</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"BAM files"</span> <span class="op">&gt;</span> results/summary.txt</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-1</span> results/<span class="pp">*</span>.bam <span class="op">&gt;&gt;</span> results/summary.txt</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">""</span> <span class="op">&gt;&gt;</span> results/summary.txt</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"BAI files"</span> <span class="op">&gt;&gt;</span> results/summary.txt</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-1</span> results/<span class="pp">*</span>.bam.bai <span class="op">&gt;&gt;</span> results/summary.txt</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" data-filename="report_job.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=1g</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:10:00</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=arrayReport</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=logs/report_%j.out</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"BAM files"</span> <span class="op">&gt;</span> results/summary.txt</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-1</span> results/<span class="pp">*</span>.bam <span class="op">&gt;&gt;</span> results/summary.txt</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">""</span> <span class="op">&gt;&gt;</span> results/summary.txt</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"BAI files"</span> <span class="op">&gt;&gt;</span> results/summary.txt</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-1</span> results/<span class="pp">*</span>.bam.bai <span class="op">&gt;&gt;</span> results/summary.txt</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> 0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Submit all jobs so that:</p>
 <ul>
 <li>indexing starts only after alignment succeeds</li>
 <li>reporting starts only after indexing succeeds</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="va">ALIGN_ID</span><span class="op">=</span><span class="va">$(</span><span class="ex">sbatch</span> <span class="at">--parsable</span> align_array.sh<span class="va">)</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="va">INDEX_ID</span><span class="op">=</span><span class="va">$(</span><span class="ex">sbatch</span> <span class="at">--parsable</span> <span class="dt">\</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--dependency</span><span class="op">=</span>afterok:<span class="va">${ALIGN_ID}</span> <span class="dt">\</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    index_array.sh<span class="va">)</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="va">REPORT_ID</span><span class="op">=</span><span class="va">$(</span><span class="ex">sbatch</span> <span class="at">--parsable</span> <span class="dt">\</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--dependency</span><span class="op">=</span>afterok:<span class="va">${INDEX_ID}</span> <span class="dt">\</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    report_job.sh<span class="va">)</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"ALIGN=</span><span class="va">${ALIGN_ID}</span><span class="st"> INDEX=</span><span class="va">${INDEX_ID}</span><span class="st"> REPORT=</span><span class="va">${REPORT_ID}</span><span class="st">"</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">--me</span> <span class="at">-n</span> alignArray,indexArray,arrayReport</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="va">ALIGN_ID</span><span class="op">=</span><span class="va">$(</span><span class="ex">sbatch</span> <span class="at">--parsable</span> align_array.sh<span class="va">)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="va">INDEX_ID</span><span class="op">=</span><span class="va">$(</span><span class="ex">sbatch</span> <span class="at">--parsable</span> <span class="dt">\</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">--dependency</span><span class="op">=</span>afterok:<span class="va">${ALIGN_ID}</span> <span class="dt">\</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    index_array.sh<span class="va">)</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="va">REPORT_ID</span><span class="op">=</span><span class="va">$(</span><span class="ex">sbatch</span> <span class="at">--parsable</span> <span class="dt">\</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">--dependency</span><span class="op">=</span>afterok:<span class="va">${INDEX_ID}</span> <span class="dt">\</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    report_job.sh<span class="va">)</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"ALIGN=</span><span class="va">${ALIGN_ID}</span><span class="st"> INDEX=</span><span class="va">${INDEX_ID}</span><span class="st"> REPORT=</span><span class="va">${REPORT_ID}</span><span class="st">"</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">--me</span> <span class="at">-n</span> alignArray,indexArray,arrayReport</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>After all jobs have completed, inspect the generated summary file:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> results/summary.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> results/summary.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>With the <code>Afterok</code> option the job will only start if the specified parent job finishes successful.</p>
 </section>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="job-monitoring-1" class="level2">
+<h2 class="anchored" data-anchor-id="job-monitoring-1">Job monitoring</h2>
+<p>Onces, you have run the sbatch jobs and are completed. Looks at the status information about historical jobs.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># all jobs from this session</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">sacct</span> <span class="at">--user</span><span class="op">=</span>ucloud</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># display info about a specific job </span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">sacct</span> <span class="at">-j</span> <span class="op">&lt;</span>JOBID<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
