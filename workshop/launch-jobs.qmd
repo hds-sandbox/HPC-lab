@@ -8,29 +8,52 @@ format:
 css: ./web.css
 ---
 
+:::{.callout-warning}
+# New Terminal Job configuration
+The Slurm workload manager is installed and configured in the Terminal app so we will be using: 
+
+1. Enter a job name (descriptive of the task, e.g.: *slurm myname*)
+2. Select the time (in hours): **1h**.  
+3. Number of nodes: 2
+4. Machine type: and the machine type (selecting a 1 CPU standard node with 3GB memory).
+5. Select folders to use: 
+     - `<Member Files: Username/hpcLaunch>`
+     - `/shared/HPCLab_workshop`
+6. Additional Parameters. 
+     - Enable tmux > *true*. 
+     - Slurm cluster > *true* (alternatively, run the following command on any terminal `init_slurm_cluster`)
+     - Initialization: `/shared/HPCLab_workshop/setup.sh`  
+:::
+
 ## Job submission with SLURM
 
+Here is a list of SLURM common commands: 
 ```
 sbatch → submit a shell script to the queue
 squeue → see all the jobs in the queue
 squeue -u USERNAME → see your jobs only
 scancel JOBID → cancel the job with the specified ID
 scancel -u USERNAME → cancel all your jobs
-seff JOBID → get efficiency information about your job
+sacct --user=$USER → get efficiency information about your job
+srun → launch tasks within hob allocation. It can be used in batch scripts and on the command line
+srun --pty bash -i → to run interactive jobs 
+sinfo → info about SLURM nodes and partitions
 ```
+
+If you are unsure how to use the commands run `man <SLURM_command>` on the terminal. 
 
 ### Submitting a Batch Job with SLURM
 
 In this exercise, you will prepare sequencing data, create a software environment, write a SLURM batch script, and submit an alignment job to the cluster queueing system.
 
-1. Create a new subdirectory called batchLaunch inside your hpcLaunch/Day2 folder and move (`cd`) into it:
+1. Create a new subdirectory called batchUCloud inside your hpcLaunch/Day2 folder and move (`cd`) into it:
 
 ```{.bash}
-mkdir -p ~/advancedGDK/batchLaunch
-cd ~/advancedGDK/batchLaunch
+mkdir -p hpcLaunch/Day2/batchUCloud
+cd /work/hpcLaunch/Day2/batchUCloud
 ```
 
-2. Download the Input Data (FASTQ files)
+2. Download the input data (FASTQ files) for the exercise
 
 ```{.bash}
 wget https://github.com/hartwigmedical/testdata/raw/master/100k_reads_hiseq/TESTX/TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz \
@@ -60,7 +83,7 @@ wget http://genomedata.org/rnaseq-tutorial/fasta/GRCh38/chr22_with_ERCC92.fa \
 3. Create a Conda environment containing bwa-mem2 and samtools.
 
 ```{.bash}
-conda create -c conda-forge -c bioconda -n batchLaunch bwa-mem2 samtools
+conda create -c conda-forge -c bioconda --prefix /work/hpcLaunch/day2/envs/batchUCloud  bwa-mem2 samtools
 ```
 4. Create a Batch script called `align.sh` using a text editor (e.g. `nano`) and add the following content to the file: 
 
@@ -71,10 +94,10 @@ conda create -c conda-forge -c bioconda -n batchLaunch bwa-mem2 samtools
 #SBATCH --time=04:00:00
 
 # Initialise conda
-source ~/miniconda3/etc/profile.d/conda.sh
+source /work/hpcLaunch_workshop/miniconda3/etc/profile.d/conda.sh
 
 # Activate environment
-conda activate batchLaunch
+conda activate /work/hpcLaunch/day2/envs/batchUCloud
 
 # Index reference
 bwa-mem2 index ref.fasta
@@ -93,17 +116,39 @@ exit 0
 
 5. Submit the batch script to SLURM:
 
-````{.bash}
+```{.bash}
 sbatch align.sh
 ```
 
-6. Monitor the Job (check the status)
+### Job monitoring
+
+6. Monitor the job and the cluster nodes
+
+Check available compute nodes
+```{.bash}
+sinfo -N -l
+```
+
+You should see output similar to:
+```
+NODELIST   NODES PARTITION       STATE CPUS    S:C:T MEMORY TMP_DISK WEIGHT AVAIL_FE REASON              
+````
+
+Check your own currently submitted jobs:
+```{.bash}
+squeue --me
+```
+Find the JOBID of your running or pending job(s) and note the state. Is the job running?
 
 7. Cancel a Job (Optional)
 
 If needed, you can cancel a running or queued job using:
-scancel <myjobID>
+```{.bash}
+scancel <JOBID>
+```
 
+:::{.callout-tip collapse="true" appearance="simple"}
+# Bonus exercise 2
 ### Submitting a batch array
 
 In this exercise, you will run the same alignment operation on multiple FASTQ files in parallel using a SLURM job array.
@@ -176,8 +221,9 @@ With `-`-array=1-4%2, SLURM creates 4 tasks and runs at most 2 concurrently.
 
 Each task gets its own SLURM_ARRAY_TASK_ID, used to pick one input file from fastq_list.txt.
 :::
+:::
 
-:::{.callout-tip collapse="true"}
+:::{.callout-tip collapse="true" appearance="simple"}
 # Bonus exercise: Job dependencies
 ### Chained Jobs with Dependencies
 
@@ -268,3 +314,14 @@ cat results/summary.txt
 With the `Afterok` option the job will only start if the specified parent job finishes successful. 
 
 :::
+
+## Job monitoring 
+
+Onces, you have run the sbatch jobs and are completed. Looks at the status information about historical jobs.
+
+```{.bash}
+# all jobs from this session
+sacct --user=ucloud
+# display info about a specific job 
+sacct -j <JOBID>
+```

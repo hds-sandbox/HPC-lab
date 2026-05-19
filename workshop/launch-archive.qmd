@@ -10,7 +10,7 @@ css: ./web.css
 
 ## Project Archiving using `tar`
 
-1. Use the command `tar` to compress the hpcLaunch folder on UCloud
+1. Use the command `tar` to compress (gzip) the hpcLaunch folder on UCloud
 2. Check the size of the folder and compare it to the uncompress version. Use the `du` command (disk usage)
 3. Without unpacking the file, print the “table of contents” 
 4. Unpack and save it to a new directory `day1-copy`
@@ -19,9 +19,19 @@ css: ./web.css
 
 :::{.callout-hint}
 # Solution
-2. Use the -t flag, for the file specified with the -f flag followed by the filename
+```{.bash}
+# 1. Tar and compress 
+tar  tar -czvf hpcLaunch.tar.gz hpcLaunch
 ```
-tar –ft mytarfile.tar 
-```
+# 2. Size comparison 
+du -sh hpcLaunch
+du -sh hpcLaunch.tar.gz
+# 3.  Use the -t flag, for the file specified with the -f flag followed by the filename
+tar –ftz mytarfile.tar 
+# 4. Unpack into new dir
+mkdir -p day1-copy
+tar -xzvf hpcLaunch.tar -C day1-copy
+# Transfer the compressed and uncompress folder using rsync (locally)
+rsync -aP -e "ssh -i ~/.ssh/id_rsa -p <port>" ucloud@ssh.cloud.sdu.dk:/work/hpcLaunch PATH_LOCAL
 :::
 
