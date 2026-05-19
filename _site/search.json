@@ -2235,7 +2235,7 @@
     "href": "workshop/launch-archive.html",
     "title": "Archiving",
     "section": "",
-    "text": "Use the command tar to compress the hpcLaunch folder on UCloud\nCheck the size of the folder and compare it to the uncompress version. Use the du command (disk usage)\nWithout unpacking the file, print the “table of contents”\nUnpack and save it to a new directory day1-copy\nTransfer the compress folder locally and calculate the resources in time (rsync --progress).\nNow, do the same for the uncompress version\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\nUse the -t flag, for the file specified with the -f flag followed by the filename\n\ntar –ft mytarfile.tar",
+    "text": "Use the command tar to compress the hpcLaunch folder on UCloud\nCheck the size of the folder and compare it to the uncompress version. Use the du command (disk usage)\nWithout unpacking the file, print the “table of contents”\nUnpack and save it to a new directory day1-copy\nTransfer the compress folder locally and calculate the resources in time (rsync --progress).\nNow, do the same for the uncompress version\n\n\n\n\n\n\n\nHintSolution\n\n\n\n\n\n\n\n\nUse the -t flag, for the file specified with the -f flag followed by the filename\n\ntar –ft mytarfile.tar",
     "crumbs": [
       "Workshop",
       "HPC Launch",
@@ -2248,7 +2248,7 @@
     "href": "workshop/launch-archive.html#project-archiving-using-tar",
     "title": "Archiving",
     "section": "",
-    "text": "Use the command tar to compress the hpcLaunch folder on UCloud\nCheck the size of the folder and compare it to the uncompress version. Use the du command (disk usage)\nWithout unpacking the file, print the “table of contents”\nUnpack and save it to a new directory day1-copy\nTransfer the compress folder locally and calculate the resources in time (rsync --progress).\nNow, do the same for the uncompress version\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\n\n\nUse the -t flag, for the file specified with the -f flag followed by the filename\n\ntar –ft mytarfile.tar",
+    "text": "Use the command tar to compress the hpcLaunch folder on UCloud\nCheck the size of the folder and compare it to the uncompress version. Use the du command (disk usage)\nWithout unpacking the file, print the “table of contents”\nUnpack and save it to a new directory day1-copy\nTransfer the compress folder locally and calculate the resources in time (rsync --progress).\nNow, do the same for the uncompress version\n\n\n\n\n\n\n\nHintSolution\n\n\n\n\n\n\n\n\nUse the -t flag, for the file specified with the -f flag followed by the filename\n\ntar –ft mytarfile.tar",
     "crumbs": [
       "Workshop",
       "HPC Launch",
