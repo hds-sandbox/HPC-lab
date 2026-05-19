@@ -15,6 +15,8 @@ source("_setup.R")
 :::{.callout-important}
 # Windows users: run PowerShell as Administrator
 Several commands in this section require elevated privileges on Windows. Right-click **PowerShell** and select **Run as Administrator** before you start, otherwise you may encounter cryptic permission errors (e.g. `ssh-agent` failing to start).
+
+*If you are using a different terminal application, ensure you run it as an administrator.*
 :::
 
 ## 1. SSH keys
@@ -49,27 +51,9 @@ ssh-keygen -t ed25519 -f ~/.ssh/id_UCloud
 ssh-keygen -t ed25519 -f "$env:USERPROFILE\.ssh\id_UCloud"
 ```
 
-:::{.callout-note collapse="true"}
-# Alternative: interactive approach (you will be prompted for a filename)
-```{.bash}
-ssh-keygen -t ed25519
-```
-```
-Generating public/private ed25519 key pair.
-Enter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud
-Your identification has been saved in id_UCloud
-Your public key has been saved in id_UCloud.pub
-...
-```
-When prompted **Enter file in which to save the key**, type `id_UCloud` (do not just press Enter — that keeps the default name and will cause the later steps to fail).
-:::
-
-
-##### Windows users **only**
-
-:::{.callout-caution collapse="true"}
-# Windows: you might need to run a couple more commands!
-#### `ssh-keygen` not working?
+:::{.callout-important collapse="true"}
+# Windows users: you might need to run a couple more commands!
+##### `ssh-keygen` not working?
 
 This might be due to broken permissions. 
 
@@ -79,7 +63,7 @@ mkdir -p ~/.ssh
 ssh-keygen -t ed25519
 ```
 
-#### `ssh-agent` service disabled? 
+##### `ssh-agent` service disabled? 
 There is one additional thing you need to take care of. By default, the `ssh-agent` service is disabled on Windows, so make sure you're running as an Administrator.
 
 ```{.bash filename="On Powershell"}
@@ -99,6 +83,21 @@ eval `ssh-agent -s`
 ```
 
 On MombaXterm, follow the instructions [here](https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/37388673/Creating+and+using+an+SSH+key+pair+with+MobaXterm).
+:::
+
+:::{.callout-note collapse="true"}
+# Alternative: interactive approach (you will be prompted for a filename)
+```{.bash}
+ssh-keygen -t ed25519
+```
+```
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud
+Your identification has been saved in id_UCloud
+Your public key has been saved in id_UCloud.pub
+...
+```
+When prompted **Enter file in which to save the key**, type `id_UCloud` (do not just press Enter — that keeps the default name and will cause the later steps to fail).
 :::
 
 #### 1.2. Add private key to `ssh-agent`
@@ -145,22 +144,20 @@ Submit a job from the terminal app and follow these configuration steps (job set
 2. Select the time (in hours) we want to use a node for (it can be modified afterwards!). Let's do **2h**.  
 3. Number of nodes: 1
 4. Machine type: and the machine type (selecting a 1 CPU standard node with 3GB memory). 
-
-![](./images/terminalResources.png){width="750" height="250"}
+![](./images/terminalResources.png){width="750" height="300"}
 
 5. Add folders to access while in this job . We recommend creating a new folder named HPCLaunch in your personal drive, where you can store all files generated during the workshop (e.g.: `/Member Files: username/HPCLaunch`).
-![](./images/addFolder.png){width="700" height="225"}
+![](./images/addFolder.png){width="750" height="225"}
 
 6. Scroll down and remember to click on  *Enable SSH access*. 
-![](./images/enableSSH.png){width="750" height="200"}
+![](./images/enableSSH.png){width="750" height="225"}
 
 Now you are ready to click on the submit button (and wait!). 
 
 Once the job starts, click the **SSH** tab in the progress view to reveal the SSH command, then copy it and paste it in your local terminal:
+![](./images/sshCommand.png)
 
-![](./images/sshCommand.png){width="900"}
-
-For example: `ssh ucloud@ssh.cloud.sdu.dk -p 2396` 
+For example: `ssh ucloud@ssh.cloud.sdu.dk -p 2126` 
 
 ## 2. Working with files on HPC
 
