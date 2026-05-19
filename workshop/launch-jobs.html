@@ -607,7 +607,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Select the time (in hours): <strong>1h</strong>.<br>
 </li>
 <li>Number of nodes: 2</li>
-<li>Machine type: and the machine type (selecting a 1 CPU standard node with 3GB memory).</li>
+<li>Machine type: and the machine type (selecting a 2 CPU standard node with 6GB memory).</li>
 <li>Select folders to use:
 <ul>
 <li><code>&lt;Member Files: Username/hpcLaunch&gt;</code></li>
@@ -666,7 +666,7 @@ sinfo → info about SLURM nodes and partitions</code></pre>
 <ol start="3" type="1">
 <li>Create a Conda environment containing bwa-mem2 and samtools.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda <span class="at">--prefix</span> /work/hpcLaunch/day2/envs/batchUCloud  bwa-mem2 samtools</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda <span class="at">--prefix</span> /work/hpcLaunch/day2/envs/batchUCloud bwa-mem2 samtools</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="4" type="1">
 <li>Create a Batch script called <code>align.sh</code> using a text editor (e.g.&nbsp;<code>nano</code>) and add the following content to the file:</li>
 </ol>
@@ -675,12 +675,12 @@ sinfo → info about SLURM nodes and partitions</code></pre>
 <pre><strong>align.sh</strong></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="align.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=4</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=16g</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=04:00:00</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=2</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=4g</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=00:30:00</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialise conda</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /work/hpcLaunch_workshop/miniconda3/etc/profile.d/conda.sh</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /work/HPCLab_workshop/miniconda3/etc/profile.d/conda.sh</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Activate environment</span></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate /work/hpcLaunch/day2/envs/batchUCloud</span>
@@ -712,7 +712,8 @@ sinfo → info about SLURM nodes and partitions</code></pre>
 <p>Check available compute nodes</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sinfo</span> <span class="at">-N</span> <span class="at">-l</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You should see output similar to:</p>
-<pre><code>NODELIST   NODES PARTITION       STATE CPUS    S:C:T MEMORY TMP_DISK WEIGHT AVAIL_FE REASON              </code></pre>
+<pre><code>NODELIST   NODES PARTITION       STATE CPUS    S:C:T MEMORY TMP_DISK WEIGHT AVAIL_FE REASON              
+node1          1    CLOUD*        idle 2       1:2:1   6000        0      1   (null) none  </code></pre>
 <p>Check your own currently submitted jobs:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">--me</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Find the JOBID of your running or pending job(s) and note the state. Is the job running?</p>
