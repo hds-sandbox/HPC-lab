@@ -46,11 +46,11 @@ If you are unsure how to use the commands run `man <SLURM_command>` on the termi
 
 In this exercise, you will prepare sequencing data, create a software environment, write a SLURM batch script, and submit an alignment job to the cluster queueing system.
 
-1. Create a new subdirectory called batchUCloud inside your hpcLaunch/Day2 folder and move (`cd`) into it:
+1. Create a new subdirectory called batchUCloud inside your hpcLaunch/day2 folder and move (`cd`) into it:
 
 ```{.bash}
-mkdir -p hpcLaunch/Day2/batchUCloud
-cd /work/hpcLaunch/Day2/batchUCloud
+mkdir -p hpcLaunch/day2/batchUCloud
+cd /work/hpcLaunch/day2/batchUCloud
 ```
 
 2. Download the input data (FASTQ files) for the exercise
