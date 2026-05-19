@@ -116,10 +116,10 @@ conda env list
 
 The new environment doesn't have a name as we use prefix to create the env outside the `envs` subdirectory in the Conda installation but don't worry about it!
 
-- Activate the env (e.g. myenv -> `/work/hpcLaunch/day2/envs/test-arm`)
+- Activate the env
 
 ```{.bash}
-conda activate <myenv>
+conda activate /work/hpcLaunch/day2/envs/<test-env>
 ```
 
 - By default, we won't have conda-forge or bioconda added to the environment. Let's fix this.
