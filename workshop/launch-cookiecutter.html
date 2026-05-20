@@ -438,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/launch-review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Knowledge Checks</span></a>
+ <span class="menu-text">Final Quiz</span></a>
   </div>
 </li>
       </ul>
@@ -555,7 +555,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-structure-with-cookiecutter" id="toc-data-structure-with-cookiecutter" class="nav-link active" data-scroll-target="#data-structure-with-cookiecutter">Data structure with cookiecutter</a>
+  <li><a href="#data-structure-with-cookiecutter" id="toc-data-structure-with-cookiecutter" class="nav-link active" data-scroll-target="#data-structure-with-cookiecutter">Data structure with Cookiecutter</a>
   <ul class="collapse">
   <li><a href="#setting-up-folder-templates" id="toc-setting-up-folder-templates" class="nav-link" data-scroll-target="#setting-up-folder-templates">Setting up folder templates</a></li>
   </ul></li>
@@ -605,6 +605,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Name and version of the app to run: <code>Coder - 1.117.0</code>.</li>
 <li>Job settings: enter a job name (descriptive of the task), select the time (in hours) we want to use a node for (it can be modified afterward!), and the machine type (selecting a 1 CPU standard node with 3GB memory).</li>
+</ol>
+<ul>
+<li>Job description in the example: task + user’s initials</li>
+</ul>
+<ol start="3" type="1">
 <li>Add folders to access while in this job (select your own drive!)</li>
 </ol>
 <ul>
@@ -619,14 +624,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./images/coderApp.png" class="img-fluid figure-img"></p>
-<figcaption>Example Job submission using Coder</figcaption>
+<figcaption>Example Job submission using Coder.</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Let’s start with some practical exercises focused on implementing tools that will help you with the collect &amp; document data life cycle phase.</p>
 <section id="data-structure-with-cookiecutter" class="level2">
-<h2 class="anchored" data-anchor-id="data-structure-with-cookiecutter">Data structure with cookiecutter</h2>
+<h2 class="anchored" data-anchor-id="data-structure-with-cookiecutter">Data structure with Cookiecutter</h2>
 <p>Establishing a consistent file structure and naming conventions will help you efficiently manage your data. We will classify your data and data analyses into two distinct types of folders to ensure the data can be used and shared by many lab members while preventing modifications by any individual:</p>
 <ul>
 <li>Data folders: store raw and processed datasets, the workflow/pipeline used, data provenance, and quality control reports. These folders should be locked and read-only to prevent changes, with MD5 checksums used to verify data integrity.</li>
@@ -898,24 +903,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <div class="webex-check callout-exercise">
 Q1. Which naming conventions should be used and why?
-<div id="radio_EWWHIQHFNJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EWWHIQHFNJ" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_EWWHIQHFNJ" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_EWWHIQHFNJ" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
+<div id="radio_CZZVOHLLDR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CZZVOHLLDR" value=""> <span>a. Grant proposal final.doc</span></label><label><input type="radio" autocomplete="off" name="radio_CZZVOHLLDR" value="answer"> <span>b. differential_expression_results_clara.csv</span></label><label><input type="radio" autocomplete="off" name="radio_CZZVOHLLDR" value=""> <span>c.&nbsp;sequence_alignment$v1.py</span></label>
 </div>
-<div id="radio_IZCUWPGTYD" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IZCUWPGTYD" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_IZCUWPGTYD" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_IZCUWPGTYD" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
+<div id="radio_CKZMEGAPLQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CKZMEGAPLQ" value=""> <span>d.&nbsp;scripts/data_processing_carlo's.py</span></label><label><input type="radio" autocomplete="off" name="radio_CKZMEGAPLQ" value=""> <span>e. data/raw_sequences_V#20241111.fasta</span></label><label><input type="radio" autocomplete="off" name="radio_CKZMEGAPLQ" value="answer"> <span>f.&nbsp;data/gene_annotations_20201107.gff</span></label>
 </div>
-<div id="radio_IYDWWSSBLK" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IYDWWSSBLK" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_IYDWWSSBLK" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_IYDWWSSBLK" value=""> <span>i. run_pipeline:20241203.sh</span></label>
+<div id="radio_SQSMGVFZTS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SQSMGVFZTS" value="answer"> <span>g. alpha~1.0/beta~2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_SQSMGVFZTS" value=""> <span>h. alpha=1.0/beta=2.0/reg_2024-05-98.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_SQSMGVFZTS" value=""> <span>i. run_pipeline:20241203.sh</span></label>
 </div>
 Q2. Which file name is more readable?
-<div id="radio_EFDBAMJVVE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_EFDBAMJVVE" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_EFDBAMJVVE" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_EFDBAMJVVE" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
+<div id="radio_PDPXUBOCTH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PDPXUBOCTH" value=""> <span>1a. forecast2000122420240724.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_PDPXUBOCTH" value="answer"> <span>1b. forecast_2000-12-24_2024-07-24.tsv</span></label><label><input type="radio" autocomplete="off" name="radio_PDPXUBOCTH" value=""> <span>1c. forecast_2000_12_24_2024_07_24.tsv</span></label>
 </div>
-<div id="radio_ZUAKAVMHRM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZUAKAVMHRM" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_ZUAKAVMHRM" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_ZUAKAVMHRM" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
+<div id="radio_SDBQYMPKZA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SDBQYMPKZA" value="answer"> <span>2a. 01_data_preprocessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_SDBQYMPKZA" value=""> <span>2b. 1_data_preProcessing.R</span></label><label><input type="radio" autocomplete="off" name="radio_SDBQYMPKZA" value=""> <span>2c. 01_d4t4_pr3processing.R</span></label>
 </div>
-<div id="radio_UYLTBZNTBN" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UYLTBZNTBN" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_UYLTBZNTBN" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_UYLTBZNTBN" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
+<div id="radio_UTJBTRONCG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UTJBTRONCG" value="answer"> <span>3a. B1_2024-12-12_cond~pH7_temp~37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_UTJBTRONCG" value=""> <span>3b. B1.20241212.pH7.37C.fastq</span></label><label><input type="radio" autocomplete="off" name="radio_UTJBTRONCG" value=""> <span>3c. b1_2024-12-12_c0nd~pH7_t3mp~37C.fastq</span></label>
 </div>
 </div>
 </div>
