@@ -125,21 +125,22 @@ DAY 1
 | Time | Activity | Time | Activity |
 |:-|:----|:-|:----|
 | *8:45*	|	*Morning coffee (optional)* | | | 
-| 9:00	|	Introduction to the Sandbox project | 12:00	|	*Lunch break* |
-| 9:15	|	Introduction to HPC: the basics | 13:00	|	HPC exercises |
+| 9:00	|	Introduction to HPC | 12:00	|	*Lunch break* |
+| 9:15	|	HPC architecture | 13:00	|	HPC Access & File systems|
 | 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
-| 10:30	|	Intro to RDM | 14:30	|	HPC workflow II |
-| 11:15	|	HPC workflow | 15:00	|	HPC exercises |
+| 10:30	|	Intro to RDM & GDPR | 14:30	|	Data Transfer |
+| 11:00	|	Danish HPC Providers & UCloud Setup | 15:00	|	HPC session mgmt |
 
 DAY 2
 
 | Time | Activity | Time | Activity |
 |:-|:----|:-|:----|
 | *8:45*	|	*Morning coffee (optional)* |  | |
-| 9:00	| Recap	| 12:00	|	*Lunch break* |
-| 9:15	|	HPC workflow III  | 13:00	|	HPC wrap up |
+| 9:00	| Version control (Git & GitHub)	| 12:00	|	*Lunch break* |
+| 9:20	|	Project and tool mgmt  | 13:00	|	Bioinformatics workflows |
 | 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
-| 10:30	|	HPC exercises | 15:00	|	DK HPC solutions & resources |
+| 10:30	|	Managing & optimising compute | 15:30	|	Data preservation |
+| 11:00	|	Batch jobs (SLURM) & monitoring| 15:00	|	Wrap-up, Q&A |
 
 ## Discussion and feedback
 

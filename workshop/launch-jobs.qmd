@@ -333,6 +333,17 @@ If the parent job fails, the dependent jobs remain pending and are marked with a
 
 :::
 
+:::{.callout-tip collapse="true" appearance="simple"}
+# Bonus exercise 2: Interactive jobs
+Open a tmux session and start an interactive Bash job using `srun` with a duration of 2 minute. After launching the job, detach from the tmux session and use `squeue` command to check how the job is listed. Finally, once the job time has elapsed, reconnect if needed and terminate the session/job.
+
+:::{.callout-hint}
+# Solution
+srun --cpus-per-task=1 --time=00:02:00 --pty bash 
+:::
+
+:::
+
 :::{.webex-check .callout-exercise}
 ### Exercise 3: Job monitoring 
 
