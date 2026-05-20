@@ -22,7 +22,6 @@ css: ./web.css
 ```{.bash}
 # 1. Tar and compress 
 tar  tar -czvf hpcLaunch.tar.gz hpcLaunch
-```
 # 2. Size comparison 
 du -sh hpcLaunch
 du -sh hpcLaunch.tar.gz
@@ -33,5 +32,6 @@ mkdir -p day1-copy
 tar -xzvf hpcLaunch.tar -C day1-copy
 # Transfer the compressed and uncompress folder using rsync (locally)
 rsync -aP -e "ssh -i ~/.ssh/id_rsa -p <port>" ucloud@ssh.cloud.sdu.dk:/work/hpcLaunch PATH_LOCAL
+```
 :::
 
