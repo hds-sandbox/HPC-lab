@@ -181,7 +181,19 @@
     "href": "workshop/launch-requirements.html#discussion-and-feedback",
     "title": "Welcome to the HPC-Launch workshop ",
     "section": "Discussion and feedback",
-    "text": "Discussion and feedback\nWe hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please, fill up the feedback form before you head out for the day 3.\n \n:::{.callout-note  appearance=“simple” icon=false} \n\nNice meeting you and we hope to see you again!\n\n  ::: \n\nAbout the National Sandbox project \nThe Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and can be used on a computing cluster! We work with both UCloud, GenomeDK and Computerome, the major Danish academic supercomputers.",
+    "text": "Discussion and feedback",
+    "crumbs": [
+      "Workshop",
+      "HPC Launch",
+      "Welcome to the HPC-Launch workshop"
+    ]
+  },
+  {
+    "objectID": "workshop/launch-requirements.html#discussion-and-feedback-1",
+    "href": "workshop/launch-requirements.html#discussion-and-feedback-1",
+    "title": "Welcome to the HPC-Launch workshop ",
+    "section": "Discussion and feedback",
+    "text": "Discussion and feedback\nWe hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please, fill up the feedback form before you head out for the day 3.\n \n\n\n\n\n\n\n\nNice meeting you and we hope to see you again!\n\n\n\n\n\nAbout the National Sandbox project\nThe Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and can be used on a computing cluster! We work with both UCloud, GenomeDK and Computerome, the major Danish academic supercomputers.",
     "crumbs": [
       "Workshop",
       "HPC Launch",
