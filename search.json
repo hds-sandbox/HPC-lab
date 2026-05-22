@@ -167,9 +167,9 @@
   {
     "objectID": "workshop/launch-requirements.html#agenda",
     "href": "workshop/launch-requirements.html#agenda",
-    "title": "Welcome to the HPC-Launch workshop",
+    "title": "Welcome to the HPC-Launch workshop ",
     "section": "Agenda",
-    "text": "Agenda\nA more detailed program will be posted just before we begin.\nDAY 1\n\n\n\n\n\n\n\n\n\nTime\nActivity\nTime\nActivity\n\n\n\n\n8:45\nMorning coffee (optional)\n\n\n\n\n9:00\nIntroduction to HPC\n12:00\nLunch break\n\n\n9:15\nHPC architecture\n13:00\nHPC Access & File systems\n\n\n10:15\nCoffee break\n14:15\nCoffee break\n\n\n10:30\nIntro to RDM & GDPR\n14:30\nData Transfer\n\n\n11:00\nDanish HPC Providers & UCloud Setup\n15:00\nHPC session mgmt\n\n\n\nDAY 2\n\n\n\n\n\n\n\n\n\nTime\nActivity\nTime\nActivity\n\n\n\n\n8:45\nMorning coffee (optional)\n\n\n\n\n9:00\nVersion control (Git & GitHub)\n12:00\nLunch break\n\n\n9:20\nProject and tool mgmt\n13:00\nBioinformatics workflows\n\n\n10:15\nCoffee break\n14:15\nCoffee break\n\n\n10:30\nManaging & optimising compute\n15:30\nData preservation\n\n\n11:00\nBatch jobs (SLURM) & monitoring\n15:00\nWrap-up, Q&A",
+    "text": "Agenda\nA more detailed program will be posted just before we begin.\nDAY 1 \n\n\n\n\n\n\n\n\n\nTime\nActivity\nTime\nActivity\n\n\n\n\n8:45\nMorning coffee (optional)\n\n\n\n\n9:00\nIntroduction to HPC\n12:00\nLunch break\n\n\n9:15\nHPC architecture\n13:00\nHPC Access & File systems\n\n\n10:15\nCoffee break\n  14:15\nCoffee break\n\n\n10:30\nIntro to RDM & GDPR\n14:30\nData Transfer\n\n\n11:00\nDanish HPC Providers & UCloud Setup\n15:00\nHPC session mgmt\n\n\n\nDAY 2\n\n\n\n\n\n\n\n\n\nTime\nActivity\nTime\nActivity\n\n\n\n\n8:45\nMorning coffee (optional)\n \n\n\n\n9:00\nVersion control (Git & GitHub)\n12:00\nLunch break\n\n\n9:20\nProject and tool mgmt \n13:00\nBioinformatics workflows\n\n\n10:15\nCoffee break\n  14:15\nCoffee break\n\n\n10:30\nManaging & optimising compute\n15:30\nData preservation\n\n\n11:00\nBatch jobs (SLURM) & monitoring\n15:00\nWrap-up, Q&A",
     "crumbs": [
       "Workshop",
       "HPC Launch",
@@ -179,9 +179,9 @@
   {
     "objectID": "workshop/launch-requirements.html#discussion-and-feedback",
     "href": "workshop/launch-requirements.html#discussion-and-feedback",
-    "title": "Welcome to the HPC-Launch workshop",
+    "title": "Welcome to the HPC-Launch workshop ",
     "section": "Discussion and feedback",
-    "text": "Discussion and feedback\nWe hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please, fill up the feedback form before you head out for the day 3.\n \n\n\n\n\n\n\n\nNice meeting you and we hope to see you again!\n\n\n\n\n\nAbout the National Sandbox project\nThe Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and can be used on a computing cluster! We work with both UCloud, GenomeDK and Computerome, the major Danish academic supercomputers.",
+    "text": "Discussion and feedback\nWe hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please, fill up the feedback form before you head out for the day 3.\n \n:::{.callout-note  appearance=“simple” icon=false} \n\nNice meeting you and we hope to see you again!\n\n  ::: \n\nAbout the National Sandbox project \nThe Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and can be used on a computing cluster! We work with both UCloud, GenomeDK and Computerome, the major Danish academic supercomputers.",
     "crumbs": [
       "Workshop",
       "HPC Launch",
@@ -191,7 +191,7 @@
   {
     "objectID": "workshop/launch-requirements.html#footnotes",
     "href": "workshop/launch-requirements.html#footnotes",
-    "title": "Welcome to the HPC-Launch workshop",
+    "title": "Welcome to the HPC-Launch workshop ",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nOther institutions (e.g. hospitals, libraries, …) can log on through WAYF. See all institutions here.↩︎\nTo use Sandbox materials outside of the workshop: remember that each new user has hundreds of hours of free computing credit and around 50GB of free storage, which can be used to run any UCloud software. If you run out of credit (which takes a long time) you’ll need to check with the local DeiC office at your university about how to request compute hours on UCloud. Contact us at the Sandbox if you need help or want more information.↩︎\nlink activated on the day of the workshop.↩︎",
     "crumbs": [
