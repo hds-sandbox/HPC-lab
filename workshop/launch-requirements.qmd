@@ -65,7 +65,7 @@ Our first choice is to run our tutorials on UCloud, the supercomputer located at
 
 
  <p align="center">
-  <a href="./hpcLaunch_slides.pdf" download="Unavai">
+  <a href="./hpcLaunch_slides.pdf" download="hpcLaunch_slides.pdf">
     <button class="btn small-button">Download slides</button>
   </a>
 </p>
