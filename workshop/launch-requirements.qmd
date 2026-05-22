@@ -63,13 +63,13 @@ Our first choice is to run our tutorials on UCloud, the supercomputer located at
 
 6. Download the slides (*link active on May 22nd*) and [RDM data lifecycle roadmap](https://hds-sandbox.github.io/RDM_biodata_course/develop/cheatSheet.html):
 
-<!--
+
  <p align="center">
-  <a href="./Sandbox_slides.zip" download="Unavai">
+  <a href="./hpcLaunch_slides.pdf" download="Unavai">
     <button class="btn small-button">Download slides</button>
   </a>
 </p>
--->
+
 
 
 #### Independent users 
