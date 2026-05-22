@@ -1,14 +1,18 @@
 ---
-format: 
-    html:
-      toc: true
-      toc-location: left
-      page-layout: full
+format: 
+    html:
+      toc: true
+      toc-location: left
+      page-layout: full
 css: ./web.css
 ---
 
 :::{.hero-banner}
-# Welcome to the HPC-Launch workshop 
+# Welcome to the HPC-Launch workshop 
+:::
+
+:::{.callout-important title="Workshop Feedback"}
+**[Please click here to fill out the feedback survey](https://forms.office.com/Pages/ResponsePage.aspx?id=kX-So6HNlkaviYyfHO_6kVzN3Uhjy29PlwmjB3ntWAlURFZZT0FMQVdNVVhVVzBBVExVM1MwRFRENSQlQCN0PWcu)**
 :::
 
 #### <span style="color: red;">Please, read before course!</span>
@@ -17,41 +21,41 @@ css: ./web.css
 :::{.callout-warning title="Required preparation"}
 You are expected to make sure you can sign in to UCloud, SDU’s HPC platform on which we will be running this course. All data, exercises, and tools will be provided on UCloud. Please use your university ID to sign in (instructions below). If you run into problems, please write us (respond to the email that got you to this page).
 
-A Danish university/institution account is required to create a UCloud account. If you don't have one, click on *Local setup* below. However, you will need access an HPC to be able to submit SLURM job scripts (a cluster management and job scheduling system). 
+A Danish university/institution account is required to create a UCloud account. If you don't have one, click on *Local setup* below. However, you will need access an HPC to be able to submit SLURM job scripts (a cluster management and job scheduling system). 
 :::
 
 ### Access Sandbox resources
 Our first choice is to run our tutorials on UCloud, the supercomputer located at the University of Southern Denmark. Anyone using these resources needs the following:
 
- 1. A Danish university ID so you can sign on to UCloud via WAYF^[Other institutions (e.g. hospitals, libraries, ...) can log on through WAYF. See all institutions [here](https://www.wayf.dk/da/institutioner-i-wayf).]. 
+ 1. A Danish university ID so you can sign on to UCloud via WAYF^[Other institutions (e.g. hospitals, libraries, ...) can log on through WAYF. See all institutions [here](https://www.wayf.dk/da/institutioner-i-wayf).]. 
 
 &nbsp;
 
- <p align="center">
-  <a href="https://cloud.sdu.dk" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
-    for UCloud Access
-    click here
-  </a>
+ <p align="center">
+  <a href="https://cloud.sdu.dk" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    for UCloud Access
+    click here
+  </a>
 </p>
 
 &nbsp;
 
- 2. Basic ability to navigate in Linux. **You don't need to be an expert**, but it is beyond our ambitions (and course material) to teach you how to code from zero.
+ 2. Basic ability to navigate in Linux. **You don't need to be an expert**, but it is beyond our ambitions (and course material) to teach you how to code from zero.
 
- 3. Click the invite link below to accept our the invitation to the Sandbox workspace (after accessing UCloud for the first time). This way, we can provide you with compute resources for the active sessions of the workshop^[To use Sandbox materials outside of the workshop: remember that each new user has hundreds of hours of free computing credit and around 50GB of free storage, which can be used to run any UCloud software. If you run out of credit (which takes a long time) you'll need to check with the [local DeiC office at your university](https://www.deic.dk/en/Front-Office) about how to request compute hours on UCloud. Contact us at the Sandbox if you need help or want more information.].
+ 3. Click the invite link below to accept our the invitation to the Sandbox workspace (after accessing UCloud for the first time). This way, we can provide you with compute resources for the active sessions of the workshop^[To use Sandbox materials outside of the workshop: remember that each new user has hundreds of hours of free computing credit and around 50GB of free storage, which can be used to run any UCloud software. If you run out of credit (which takes a long time) you'll need to check with the [local DeiC office at your university](https://www.deic.dk/en/Front-Office) about how to request compute hours on UCloud. Contact us at the Sandbox if you need help or want more information.].
 
- &nbsp;
+ &nbsp;
 
- <p align="center">
-  <a href="https://cloud.sdu.dk/app/projects/invite/5256d10e-d333-4289-8be2-9e6c95319cb2" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
-    Invite link to
-    UCloud workspace
-  </a>
+ <p align="center">
+  <a href="https://cloud.sdu.dk/app/projects/invite/5256d10e-d333-4289-8be2-9e6c95319cb2" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Invite link to
+    UCloud workspace
+  </a>
 </p>
 
 &nbsp;
 
-4. Create an account on GitHub. Follow [these instructions](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github). 
+4. Create an account on GitHub. Follow [these instructions](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github). 
 
 :::{.callout-warning}
 **Are you a Windows user working at a hospital?** If so, please contact us, as one of the exercises involves creating SSH keys, and you may not have the necessary permissions to do this on your system.
@@ -64,20 +68,20 @@ Our first choice is to run our tutorials on UCloud, the supercomputer located at
 6. Download the slides (*link active on May 22nd*) and [RDM data lifecycle roadmap](https://hds-sandbox.github.io/RDM_biodata_course/develop/cheatSheet.html):
 
 
- <p align="center">
-  <a href="./hpcLaunch_slides.pdf" download="hpcLaunch_slides.pdf">
-    <button class="btn small-button">Download slides</button>
-  </a>
+ <p align="center">
+  <a href="./hpcLaunch_slides.pdf" download="hpcLaunch_slides.pdf">
+    <button class="btn small-button">Download slides</button>
+  </a>
 </p>
 
 
 
-#### Independent users 
+#### Independent users 
 If you are interested in running the exercises locally, click on the box below. *Not recommended for participants in HPC-Launch workshop*.
 
 :::{.callout-warning title="Local setup required if not using UCloud" collapse="true"}
 
-You are expected to complete the required setup, including tool installation and account creation. 
+You are expected to complete the required setup, including tool installation and account creation. 
 
 - [Git](https://git-scm.com/downloads) for version control of your projects.
 - [GitHub account](https://github.com/) for hosting and collaborating on projects.
@@ -86,16 +90,17 @@ You are expected to complete the required setup, including tool installation and
 - [Cookicutter](https://cookiecutter.readthedocs.io/en/stable/) for creating folder structure templates (`pip install cookiecutter`).
 - [md5sum](https://www.gnu.org/software/coreutils/manual/html_node/md5sum-invocation.html). See below examples on how to install.
 - [conda](https://conda-forge.org/download/). Install Miniforge which comes preconfigured for use with the conda-forge channel.
-  ```{.bash filename="Terminal"}
-  # ---- cookiecutter -----
-  pip install cookiecutter
+  
+```{.bash filename="Terminal"}
+  # ---- cookiecutter -----
+  pip install cookiecutter
 
-  # ---- md5sum from coreutils package-----
-  # On Ubuntu/Debian
-  apt-get install coreutils
-  # On macOS
-  brew install coreutils
-  ```
+  # ---- md5sum from coreutils package-----
+  # On Ubuntu/Debian
+  apt-get install coreutils
+  # On macOS
+  brew install coreutils
+  ```
 
 *Highly recommended*
 
@@ -107,12 +112,12 @@ You are expected to complete the required setup, including tool installation and
 
 ### Reading material
 
-About Research Data Management (RDM): 
+About Research Data Management (RDM): 
 
 - [Sandbox Research data management](https://hds-sandbox.github.io/RDM_biodata_course/)
-- [The Turing way](https://the-turing-way.netlify.app/reproducible-research/reproducible-research)  
+- [The Turing way](https://the-turing-way.netlify.app/reproducible-research/reproducible-research)  
 
-About High-Performance Computing (HPC): 
+About High-Performance Computing (HPC): 
 
 - [Nvidia HPC](https://www.nvidia.com/en-us/glossary/high-performance-computing/)
 
@@ -120,14 +125,14 @@ About High-Performance Computing (HPC):
 ## Agenda
 A more detailed program will be posted just before we begin.
 
-DAY 1 
+DAY 1 
 
 | Time | Activity | Time | Activity |
 |:-|:----|:-|:----|
-| *8:45*	|	*Morning coffee (optional)* | | | 
+| *8:45*	|	*Morning coffee (optional)* | | | 
 | 9:00	|	Introduction to HPC | 12:00	|	*Lunch break* |
 | 9:15	|	HPC architecture | 13:00	|	HPC Access & File systems|
-| 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
+| 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
 | 10:30	|	Intro to RDM & GDPR | 14:30	|	Data Transfer |
 | 11:00	|	Danish HPC Providers & UCloud Setup | 15:00	|	HPC session mgmt |
 
@@ -135,23 +140,23 @@ DAY 2
 
 | Time | Activity | Time | Activity |
 |:-|:----|:-|:----|
-| *8:45*	|	*Morning coffee (optional)* |  | |
+| *8:45*	|	*Morning coffee (optional)* |  | |
 | 9:00	| Version control (Git & GitHub)	| 12:00	|	*Lunch break* |
-| 9:20	|	Project and tool mgmt  | 13:00	|	Bioinformatics workflows |
-| 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
+| 9:20	|	Project and tool mgmt  | 13:00	|	Bioinformatics workflows |
+| 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
 | 10:30	|	Managing & optimising compute | 15:30	|	Data preservation |
 | 11:00	|	Batch jobs (SLURM) & monitoring| 15:00	|	Wrap-up, Q&A |
 
 ## Discussion and feedback
 
-We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill up the [feedback form]() before you head out for the day ^[*link activated on the day of the workshop*.].</b>
+We hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. <b>Please, fill up the [feedback form](https://forms.office.com/Pages/ResponsePage.aspx?id=kX-So6HNlkaviYyfHO_6kVzN3Uhjy29PlwmjB3ntWAlURFZZT0FMQVdNVVhVVzBBVExVM1MwRFRENSQlQCN0PWcu) before you head out for the day ^[*link activated on the day of the workshop*.].</b>
 
 &nbsp;
 
-:::{.callout-note  appearance="simple" icon=false} 
-<h4 align=center>Nice meeting you and we hope to see you again!</h4> 
-::: 
+:::{.callout-note  appearance="simple" icon=false} 
+<h4 align=center>Nice meeting you and we hope to see you again!</h4> 
+::: 
 
-#### About the National Sandbox project 
+#### About the National Sandbox project 
 
 The Health Data Science Sandbox aims to be a **training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets**. We are an active and developing project **seeking interested users** (both trainees and educators). All of our open-source materials are available on our [Github page](https://github.com/hds-sandbox) and can be used on a computing cluster! We work with both [UCloud](https://cloud/sdu.dk), [GenomeDK](https://genome.au.dk) and [Computerome](https://www.computerome.dk/), the major Danish academic supercomputers.
