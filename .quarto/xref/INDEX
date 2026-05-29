@@ -208,5 +208,14 @@
   },
   "./workshop/launch-archive.qmd": {
     "launch-archive.html": "2b72e7a7"
+  },
+  "workshop/pipes-ex-envs-pixi.qmd": {
+    "pipes-ex-envs-pixi.html": "0e2531ba"
+  },
+  "workshop/pipes-ex-envs-conda.qmd": {
+    "pipes-ex-envs-conda.html": "0383f801"
+  },
+  "workshop/pipes-ex-envs-containers.qmd": {
+    "pipes-ex-envs-containers.html": "da0ab418"
   }
 }

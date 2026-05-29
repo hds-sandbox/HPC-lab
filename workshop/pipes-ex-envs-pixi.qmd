@@ -1,0 +1,57 @@
+---
+title: "Package managers: Pixi"
+format: 
+    html:
+      toc: true
+      toc-location: left
+      page-layout: full
+summary: Intro to envs
+css: ./web.css
+---
+
+```{r,include=FALSE, results='asis'}
+source("_setup.R")
+```
+
+Put your learning to the test with what you’ve covered so far.
+
+## A. General environment 
+
+::: {.webex-check .callout-exercise}
+# I - General knowledge 
+
+```{r, results='asis', echo = FALSE}
+
+opts_1 <- c(
+   answer="Automating the execution of complex computational processes",
+   "To manually execute each step of a computation",
+   "Offering real-time and intuitive data analysis",
+   "To minimize the reliance on specific software environments"
+)
+
+cat("**G.1. What role does a workflow manager play in computational research??**", longmcq(opts_1))
+```
+
+:::
+
+:::{.panel-tabset .tool-tabs}
+## <img src="images/ucloud.png" height="50"> 
+
+
+:::{.callout-note}
+For these exercises, make sure you have submitted a job to UCloud (resources set to 1 CPU and 1 hour).
+
+- Is the hpc-lab environment not automatically activated? Restart the job following the instructions. 
+- Double-check that your personal drive is properly mounted (e.g. `ls`). Can you see a directory with your name listed (e.g. NameSurname#XXXX)? Restart the job following the instructions. 
+- If your session gets disconnected while completing exercise: **Part 2 - Build your conda environment**, you'll need to (re)deactivate `hpclab-env`, activate your own environment, and navigate back to your working directory!
+
+Unsure which command to use? Refer to the official [Conda cheat sheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) for guidance! 
+:::
+
+
+## <img src="images/genomedk.png" height="50"> 
+
+
+## <img src="images/computer.png" height="50"> 
+
+:::

@@ -84,7 +84,9 @@ website:
             - workshop/pipes-requirements.qmd
             - section: "Day 1"
               contents: 
-                - workshop/pipes-ex-envs.qmd
+                - workshop/pipes-ex-envs-conda.qmd
+                - workshop/pipes-ex-envs-pixi.qmd
+                - workshop/pipes-ex-envs-containers.qmd
                 - workshop/pipes-ex-smk.qmd
             - section: "Day 2"
               contents: 

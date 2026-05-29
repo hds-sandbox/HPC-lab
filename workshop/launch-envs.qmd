@@ -46,6 +46,7 @@ We will run the following commands to get familiar with Conda environments.
 
 ```{.bash}
 conda info
+conda --version
 ```
 - How many different environments are available to you (excluding `base` which is automatically created with Conda)? `r fitb(answer="2")`
 

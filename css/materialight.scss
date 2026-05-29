@@ -229,3 +229,29 @@ div.callout-readme p{
   cursor: none;
   text-decoration: none;
 }
+
+// tabs in panel tabset
+.tool-tabs .nav-tabs {
+  gap: 1rem;
+}
+
+.tool-tabs .nav-tabs .nav-link {
+  border: none !important;
+  background: transparent !important;
+}
+
+.tool-tabs .nav-tabs .nav-link:hover {
+  border: 1px solid hsl(210, 4%, 82%) !important;
+  background: #ffffff !important;
+  box-shadow: none !important;
+  border-radius: 10px !important;
+  transform: scale(1.1);
+
+}
+
+.tool-tabs .nav-tabs .nav-link.active {
+  border: 1px solid hsl(210, 4%, 82%) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 10px !important;
+}

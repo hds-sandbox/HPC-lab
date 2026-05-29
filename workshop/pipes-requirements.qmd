@@ -4,6 +4,9 @@ format:
       toc: true
       toc-location: left
       page-layout: full
+      link-external-icon: true
+      link-external-newwindow: true
+
 css: ./web.css
 ---
 
@@ -11,44 +14,51 @@ css: ./web.css
 # Welcome to the HPC-Pipes workshop 
 :::
 
+## Course requirements 
 #### <span style="color: red;">PLEASE READ BEFORE COURSE!</span>
 
-## Course requirements 
 
-:::{.callout-warning title="Required preparation"}
-You are expected to complete the required setup, including tool installation (Docker) and account creation (UCloud). 
+:::{.callout-important title="Required preparation"}
+You are expected to complete the required setup by installing Docker and creating an account on one of the Danish academic HPC platforms.  
 
 - [Docker](https://www.docker.com/products/docker-desktop/) - click on `Download Docker Desktop`.
 
 **Note for Windows users:** Installing Docker Desktop requires administrative privileges on your computer. You will be prompted to enter your KU username and password during the installation process. Additionally, Docker Desktop depends on the Windows Subsystem for Linux (WSL), which will also need to be installed.
-
-As for other software, we will provide access to a Danish HPC platform, UCloud, with all necessary software pre-installed. **Please read [Using UCloud for exercises](#using-ucloud-for-exercises) carefully**. 
-
-**If you prefer to run the exercises on your personal laptop or a different server, please ensure you have the following software installed:**
-
-- [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) - miniconda or miniforge recommended. 
-- [snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) use conda for this!
-- [nextflow](https://www.nextflow.io/docs/latest/install.html)
-- [Apptainer](https://apptainer.org/docs/admin/latest/installation.html), formerly known as [Singularity](https://docs.sylabs.io/guides/3.0/user-guide/installation.html#).  
-
 :::
 
-### Using UCloud for exercises 
+Whether you need to install more software, depends on which option you choose to follow the course and run the exercises. 
 
-:::{.callout-warning}
-Follow the instructions below if you have an account at a Danish university. You will need your institutional email to proceed. Unfortunately, this will not work for those without a university email.
-:::
+:::{.panel-tabset .tool-tabs group="setup"}
+## <img src="images/ucloud.png" height="50"> 
+If you have chosen UCloud, we provide with all necessary software pre-installed but you will need to follow these instructions to create an account and join our workspace `Sandbox_workshop`. You will need your institutional email to proceed. Unfortunately, this will not work for those without a university email.
 
 1. Create an account on [UCloud](https://cloud.sdu.dk/) with your institution's credentials 
 2. Use the link below to join our workspace where you will find a setup environment^[*link activated a week before the workshop*.]
 
 <p align="center">
-  <a href="https://cloud.sdu.dk/app/projects/invite/77dabc7d-2077-48ef-a046-f396ca6a32ef">
+  <a href="https://cloud.sdu.dk/app/projects/invite/5256d10e-d333-4289-8be2-9e6c95319cb2">
     <button class="btn">Invite link to UCloud workspace</button>
   </a>
 </p>
 
 3. You’re all set! You will receive instructions on how to navigate through UCloud during the course.
+
+
+## <img src="images/genomedk.png" height="50"> {.active}
+
+Create an account via this request form at <https://console.genome.au.dk/user-requests/create> and select the *Open* zone. In the *Reason* field, write something like: *I am currently enrolled in a course called “HPC-pipes: Workflow Languages and Portable Environments for HPC”, organised by the National Project Health Data Science Sandbox.*
+
+## <img src="images/computer.png" height="50"> 
+
+If you prefer to run the exercises on your personal laptop or a different server, please ensure you have the following software installed:
+
+- [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) - miniconda or miniforge recommended. Here is the link to install miniforge: <https://github.com/conda-forge/miniforge/>
+- [snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) use conda for this!
+- [nextflow](https://www.nextflow.io/docs/latest/install.html)
+- [Apptainer](https://apptainer.org/docs/admin/latest/installation.html), formerly known as [Singularity](https://docs.sylabs.io/guides/3.0/user-guide/installation.html#).  
+:::
+
+
 
 ### Reading material (optional)
 
@@ -62,11 +72,11 @@ Follow the instructions below if you have an account at a Danish university. You
 | Time | Activity | Time | Activity |
 |:-|:----|:-|:----|
 | *8:45*	|	*Morning coffee (optional)* |  
-| 9:00	|	Intro to HPC & onboarding | 13:00	|	Software mgmt III (docker) |
-| 9:45	|	Software mgmt I (conda) | 13:45	|	Computations mgmt I (smk) |
+| 9:00	|	Intro to HPC & onboarding | 13:00	|	Software mgmt II - containers |
+| 9:45	|	Software mgmt I - intro | 13:20	|Software mgmt II - docker, apptainer |
 | 10:30	|	*Coffee break* |  14:15	|	*Coffee break* |
-| 10:45	|	Software mgmt II (conda) | 14:30	|	Computations mgmt I (smk) |
-| 12:00	|	*Lunch break* | 15:30	|	Wrap-up |
+| 10:45	|	Software mgmt I - conda envs | 14:30	|	Computations mgmt I - smk structure |
+| 12:00	|	*Lunch break* | 15:15	|	Computations mgmt I - exercises |
 
 ::: {.hero-buttons}
 [Environments exercises](./pipes-ex-envs.qmd){.btn-action .btn .btn-success .btn-lg role="button"}
@@ -78,11 +88,11 @@ Follow the instructions below if you have an account at a Danish university. You
 | Time | Activity | Time | Activity |
 |:-|:----|:-|:----|
 | *8:45*	|	*Morning coffee (optional)* |  
-| 9:00	|	Computations mgmt II (smk) | 12:00	|	*Lunch break* |
-| 9:45	|	Exercise - smk integration | 13:00	|	Exercise nf + wrap up|
-| 10:15	|	*Coffee break* |  14:15	|	*Coffee break* |
-| 10:30	|	Exercise - smk implementation | 14:30	|	Build your own pipeline |
-| 11:15	|	Computations mgmt III (nf) | 15:00	|	Wrap-up |
+| 9:00	|	Computations mgmt II - smk dynamic config |  13:00	|	Computations mgmt III - nf |
+| 9:45	|	Computations mgmt II - Ex. smk integration | 14:15	|	*Coffee break* |
+| 10:15	|	*Coffee break* |  14:30	|	Computations mgmt III - nf exercises |
+| 10:30	|	Computations mgmt II - Ex. smk implementation | 15:00	|	Build your own pipeline |
+| 12:00	|	*Lunch break* | 15:30	|	Wrap up |
 
 ::: {.hero-buttons}
 [Snakemake II exercises](./pipes-ex-smk-self.qmd){.btn-action-smk .btn-action .btn .btn-success .btn-lg role="button"}
