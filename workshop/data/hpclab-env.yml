@@ -1,0 +1,9 @@
+name: hpclab-env
+channels:
+  - defaults
+dependencies:    
+  - cookiecutter=2.6.0
+  - numpy=1.26.4
+  - pandas=2.2.2
+  - pip=24.2
+  - python=3.12
