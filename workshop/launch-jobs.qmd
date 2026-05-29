@@ -74,7 +74,7 @@ wget https://github.com/hartwigmedical/testdata/raw/master/100k_reads_hiseq/TEST
      -O ./data4.fastq.gz
 
 # Reference genome
-# wget http://genomedata.org/rnaseq-tutorial/fasta/GRCh38/chr22_with_ERCC92.fa \
+wget http://genomedata.org/rnaseq-tutorial/fasta/GRCh38/chr22_with_ERCC92.fa \
      -O ref.fasta
 ```
 
