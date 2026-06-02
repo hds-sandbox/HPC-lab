@@ -15,11 +15,116 @@ source("_setup.R")
 
 ## Containers 
 
-Apptainer/Singularity was specifically designed for HPC platforms; however, the UCloud server does not support it for regular users. As a result, **container exercises will need to be run locally**. We will be using Docker locally, as it is commonly employed for developing images. Please remember to install Docker Desktop, as noted on the [Welcome page](./pipes-requirements.qmd). For further guidance, refer to the official [Docker cheat sheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf). 
 
+:::{.panel-tabset .tool-tabs}
+## <img src="images/ucloud.png" height="50"> 
+
+Apptainer/Singularity was specifically designed for HPC platforms; however, the UCloud server does not support it for regular users. As a result, **container exercises will need to be run locally**. We will be using Docker locally, as it is commonly employed for developing images. Please remember to install Docker Desktop, as noted on the [Welcome page](./pipes-requirements.qmd). For further guidance, refer to the official [Docker cheat sheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf). Click on the computer icon or genomedk to continue with the exercises.
+
+
+## <img src="images/genomedk.png" height="50"> 
+
+Apptainer/Singularity was specifically designed for HPC platforms, so let's test it. Before working with containers, we will change some settings that will run at each login.  
+
+We will need a temporary folder for `apptainer` containers (more on those later) when downloaded. Default is your home, which will be filled up in no time (folder `~/.apptainer`) with cache material.
+
+Edit the file `~/.bashrc` (use `nano ~/.bashrc` or any editor you want). Add those lines:
+
+```{.bash filename="~/.bashrc"}
+mkdir -p -m 700 /tmp/$USER
+export APPTAINER_TMPDIR=/tmp/$USER
+export APPTAINER_CACHEDIR=/tmp/$USER
+```
+
+The `-m 700` option for `mkdir` command ensures also **you are the only one which can access the temporary files**. Useful is you use a container with password or sensitive info, so no one can access it (`/tmp/` is a public folder)! 
+
+Containers are usually thought as packing a specific application which can run anywhere (or, which is portable).
+
+- E.g. annoying bioinformatics software requiring specific libraries or long installations.
+- Many containers are done with *Docker*, but this is not installed on GenomeDK
+- GenomeDK has *Apptainer*, which can also run programs installed in Docker containers.
+- Very practical to **pull and use** containers **in workflows**.
+
+### Where to find containers?
+
+Typical repositories with pre-built containers are:
+
+- **[Biocontainers](https://biocontainers.pro)**: community-driven initiative to containerize bioinf softwares.
+  - x10K tools x100K+ containers
+  - [bioconda package index](https://bioconda.github.io/conda-package_index.html) lists all software versions
+  - the [Registry page](https://biocontainers.pro/registry) has a searchable interface to find what you need
+- **[DockerHub](https://hub.docker.com/)** registry: Public hub for Docker images, often including official containers from software developers
+- **[Quay](https://quay.io/)**: Same philosophy of DockerHub.
+
+Once you find a container on the websites, simply use (eventually adapt) the provided code to pull it locally.
+
+Make a folder called `containers101` in the `advancedGDK` directory.
+
+```{.bash}
+mkdir -p advancedGDK/containers101
+cd advancedGDK/containers101
+```
+
+Find a bash bioinformatics software you know on the [Biocontainer Registry](https://biocontainers.pro/registry) and open it to see a detailed description - if you have no good ideas look for the `minimap2` aligner. You should see a software documentation illustrating how to run the software in various ways.
+
+
+Some software docs will suggest to run immediately the container with `apptainer`. We would suggest downloading it first (`pull` instead of `run`) and then running it.
+
+In the case of `minimap2`:
+
+```{.bash}
+apptainer pull minimap2.sif https://depot.galaxyproject.org/singularity/minimap2:2.28--h577a1d6_4
+```
+
+which creates a container file in your current directory, and calls it `minimap2.sif` (better name than the default `minimap2:2.28--h577a1d6_4`).
+
+&nbsp;
+
+You can either `run` the container, which opens a CLI into it, where you can execute the program. A non-interactive way (useful for pipelines) is to write the command directly. For example:
+
+
+This will operate the command line inside the container. Here you can then run `minimap2`.
+```{.bash}
+apptainer run minimap2.sif
+```
+
+This will immediately run `minimap2` from the container - useful for a pipeline where you do not need any interaction with the command line.
+```{.bash}
+apptainer run minimap2.sif minimap2
+```
+
+### Exercise II: docker alternative
+
+You can also pull and run a container from DockerHub. For example, for the `biocontainers/bwa-mem2` container you will need to adapt the command a bit, because it is not a singularity container.
+
+```{.bash}
+apptainer pull samtools_docker.sif docker://biocontainers/samtools:v1.9-4-deb_cv1
+```
+
+&nbsp;
+
+:::{.callout-note}
+The correct path `docker://biocontainers/samtools:v1.9-4-deb_cv1` can be found on the DockerHub page of the container. Here is the [https://hub.docker.com/r/biocontainers/samtools](link to samtools).
+:::
+
+---
+
+Doing operations with a container is really easy For example, you can run a command inside the container like the following, which outputs a `.bam` genome file read from a URL:
+
+```{.bash}
+apptainer run samtools_docker.sif \
+                 samtools view \
+                 -h https://github.com/roryk/tiny-test-data/raw/refs/heads/master/wgs/mt.sorted.bam \
+                 -O bam > test01.bam
+```
+
+You can build a container directly on genomeDK [using apptainer](https://singularity-tutorial.github.io/03-building/).
+
+
+## <img src="images/computer.png" height="50"> 
 
 ::: {.webex-check .callout-exercise}
-# V - Running a Docker image
+# Exercise - Running a Docker image
 
 In this exercise, we will utilize the `fastmixture` Docker image, which is available on [DockerHub](https://hub.docker.com/r/albarema/fastmixture), the repository for Docker images. The aim is to **understand how to run containerized software**. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.
 
@@ -133,7 +238,7 @@ Make sure to mount a directory when running a container. This ensures that any d
 
 
 :::{.callout-tip collapse="true"}
-# V - Bonus 1: Running other containers 
+# Bonus 1: Running other containers 
 ## BLAST - Build a BLAST protein database from zebrafish protein sequences.
 
 Zebrafish is a widely used model organism in genetics. This small dataset will facilitate quick results, allowing us to focus on how to run different bioinformatics tools so that you can easily adapt the commands in future projects.
@@ -174,7 +279,7 @@ singularity run images/bowtie2-2.5.4.sif bowtie2 --help
 Are you ready to build your own Docker image? Let's get started by building a Jupyter Notebook container! We'll share several helpful tips to guide you through the process effectively. You might not be familiar with all the concepts, but Google them if you're uncertain.
 
 :::{.callout-tip collapse="true"}
-# V - Bonus 2: Building a Docker image and running your own container 
+# Bonus 2: Building a Docker image and running your own container 
 
 1. Create a Dockerfile in a project-specific dir (e.g., sandbox-debian-jupyter). We will add a command to clean up the package after installation, which is a common practice to reduce the image size.  
 
@@ -250,4 +355,6 @@ docker run -it --rm --volume=$(pwd):/home/jovyan sandbox-debian-jupyter:2.0 /bin
 ```
 
 If you make changes to the container (incl. installing software), you need to commit the changes to a new image (`docker commit`). 
+:::
+
 :::

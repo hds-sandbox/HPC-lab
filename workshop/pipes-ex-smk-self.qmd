@@ -1,4 +1,5 @@
 ---
+title: "Snakemake advanced"
 format: 
   html: 
     toc: true

@@ -89,13 +89,10 @@ website:
                 - workshop/pipes-ex-envs-containers.qmd
                 - workshop/pipes-ex-smk.qmd
             - section: "Day 2"
-              contents: 
-                - text: "Day 2 - Part 3"            
-                  href: workshop/pipes-ex-smk-self.qmd
-                - text: "Day 2 - Part 4"
-                  href: workshop/pipes-ex-smk-fast.qmd
-                - text: "Day 2 - Part 5"
-                  href: workshop/pipes-ex-nf.qmd
+              contents:        
+                - workshop/pipes-ex-smk-self.qmd
+                - workshop/pipes-ex-smk-fast.qmd
+                - workshop/pipes-ex-nf.qmd
         - section: "UCloud setup"
           contents: 
             - text: "UCloud project workspace"

@@ -76,8 +76,9 @@ Now, `Stop application` and resubmit a new job:
 - Additional Parameters. Initialization: `/work/YourName#1234/hpcPipes/setup_pixi.sh`
 - Make sure your working directory for all exercises is `/work/hpcPipes`
 
-Unsure which command to use in the exercises below? Check [Pixi documentation](https://pixi.prefix.dev/v0.43.1/) for guidance! 
-
+:::{.callout-important}
+If your job gets disconnected, make sure to navigate back to your WD before counting with the exercises. 
+:::
 
 ## <img src="images/genomedk.png" height="50"> 
 
@@ -109,33 +110,18 @@ wget -qO- https://pixi.sh/install.sh | sh
 ```
 :::
 
+Unsure which command to use in the exercises below? Check [Pixi documentation](https://pixi.prefix.dev/v0.43.1/) for guidance! 
 
 ::: {.webex-check .callout-exercise}
 # Exercise: Creating and sharing environments with Pixi
 
-In this exercise, you will create a reproducible software environment using **Pixi**, install packages from multiple channels, and export the environment so it can also be recreated with Conda. Check [Pixi documentation](https://pixi.prefix.dev/v0.43.1/) to complete the exercises below. 
+In this exercise, you will create a reproducible software environment using **Pixi**, install packages from multiple channels, and export the environment so it can also be recreated with Conda.
 
 What is the pixi version you have installed: `r fitb("^([0-9])\\.[0-9]+\\.[0-9]+$", regex = TRUE)`
 
+#### Initialize a Pixi Project
 
-### Navigate to your project directory
-
-Move to the working directory you created earlier (**hpcPipes**), and download the `data.fastq`:
-
-```.bash
-cd ~/hpcPipes
-
-wget https://github.com/hartwigmedical/testdata/raw/master/100k_reads_hiseq/TESTX/TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz \
-     -O ./data.fastq.gz
-
-gunzip data.fastq.gz
-
-head data.fastq
-```
-
-### Initialize a Pixi Project
-
-Create a new Pixi project and configure it to use the `conda-forge` and `bioconda` channels:
+Move to the working directory you created earlier (**hpcPipes**). Create a new Pixi project and configure it to use the `conda-forge` and `bioconda` channels:
 
 ```.bash
 pixi init --channel conda-forge --channel bioconda
@@ -147,7 +133,7 @@ List the files in the directory (`ls`).
 
 You should now see a new file called `pixi.toml`.
 
-### Install software packages
+#### Install software packages
 
 Ensure you are still in the directory containing `pixi.toml`, then install a collection of commonly used packages:
 
@@ -155,7 +141,7 @@ Ensure you are still in the directory containing `pixi.toml`, then install a col
 pixi add python r r-ggplot2 r-dplyr pandas
 ```
 
-### Inspect the configuration
+#### Inspect the configuration
 
 Open `pixi.toml` in your preferred text editor and answer the following questions: 
 
@@ -175,15 +161,15 @@ pixi project platform add
 
 - Does pixi.toml file now look like this `platform = ["linux-64", "osx-64"]`? `r torf(TRUE)`
 
-Additional channels can be added later if required by specific software packages.
+Additional channels can be added later if required by specific software packages. We’ll cover how to do this in the exercise below.
 
-### Add a Bioinformatics Package
+#### Add a Bioinformatics Package
 
 Let's install a package from Bioconda, *fastqc*.  What is the *fastqc* version? Use a pixi command to find out! `r fitb("^(v[0-9])\\.[0-9]+\\.[0-9]+$", regex = TRUE)`
 
 This demonstrates how Pixi can install software from the same package ecosystem commonly used with Conda.
 
-### Compare with Conda
+#### Compare with Conda
 
 Export the environment to a Conda-compatible file:
 
@@ -213,41 +199,56 @@ A collaborator using Conda could instead recreate the environment from the expor
 conda create -f environment.yml
 ```
 
-### Package search
+#### Create a new pixi environment 
+
+Let's create an environment for a new project. Copy the `pixi.toml` file from below into the new project director, which you could named, `project1` and make it your new WD. 
+
+```{.bash filename="pixi.toml"}
+[workspace]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[dependencies]
+python = ">=3.10"
+```
+
+Can you install snakemake in this new environment without any errors? `r torf(FALSE)`
+
+Add the bioconda channel to the project, then install snakemake. Verify that these changes are reflected in the *pixi.toml* file and select *true* if that's the case: `r torf(TRUE)`
+
+#### Package search
 
 Search for a package that interests you and install it with Pixi.
 
-Examples:
-
-```bash
+```{.bash filename="Example"}
 pixi search samtools
-```
-
-```bash
 pixi search blast
 ```
 
 Install one of the packages you find:
 
-```bash
+```{.bash filename="Example"}
 pixi add samtools
-```
-
-or
-
-```bash
 pixi add blast
 ```
 
-Verify the installation:
+Is the newly installed software working as expected? `r torf(TRUE)` If you're experiencing any issues, please ask one of the course teachers. 
 
-```bash
-pixi run samtools --version
+
+:::{.callout-hint}
+
+```.bash
+pixi add
+pixi install
+pixi run 
+pixi run <software> --version
 ```
+`pixi run` command checks if environment is up to date adn install anything missing (so pixi install is not always necessary). 
+:::
 
-### Share your environment
+#### Share your environment
 
-Create a compressed archive containing the files needed to reproduce your environment:
+Export the environment to a Conda-compatible file, then, create a compressed archive containing the files needed to reproduce your environment:
 
 ```bash
 zip environment.zip pixi.toml environment.yml
@@ -276,32 +277,40 @@ pixi add fastqc
 # Pixi command, fastqc version
 pixi run fastqc --version!
 ```
+
 Conda does not natively manage a single environment definition that targets multiple platforms at once in the same way tools like Pixi do.
+
+```{.bash}
+mkdir project1; cd project1
+# Add the bioconda channel to new env
+pixi project channel add bioconda
+pixi add snakemake
+```
 :::
 
 
 :::{.callout-tip collapse="true"}
 ## Bonus: Creating a multi-platform environment
 
-One advantage of Pixi is that a single environment can be made reproducible across different operating systems.
+For this exercise, set the project1 directory as your WD. Let's keep modifying/adapting the environment you just created to suit our requirements. 
 
-Check which platforms are currently supported by your project and add support for Linux, macOS, and Windows:
-
-```.bash
-pixi project platform list
-pixi project platform add linux-64 osx-64 osx-arm64 win-64
-```
-
-Verify all platforms have been added: 
-
-```.bash
-pixi project platform list
-```
+One advantage of Pixi is that a single environment can be made reproducible across different operating systems. Check which platforms are currently supported by your project and add support for Linux, macOS, and Windows. Then, verify all platforms have been added. 
 
 Open `pixi.toml` and find the platforms section. 
 
 - Why is a multi-platform environment useful when sharing software with a broader community?
 - What challenges might arise if a package is not available on all platforms?
+:::
+
+:::{.callout-hint}
+# Solution - Bonus: Creating a multi-platform environment
+```.bash
+pixi project platform list
+# Add 
+pixi project platform add linux-64 osx-64 osx-arm64 win-64
+# Verify all platforms have been added: 
+pixi project platform list
+```
 
 :::
 
@@ -312,13 +321,13 @@ So far, we have created a single environment containing all required software. I
 
 For example:
 
-* A **production** environment containing only the software required to run an application or analysis.
+* A **default** environment containing only the software required to run an pipeline or analysis.
 * A **test** environment containing additional tools used for testing and validation.
 * A **development** environment containing debugging and development utilities.
 * A **GPU** environment containing libraries that require GPU support.
 * A **CPU** environment that can run on systems without GPUs.
 
-Pixi allows multiple environments to coexist within the same project while sharing dependencies whenever possible.
+Pixi allows multiple environments to coexist within the same project while sharing dependencies whenever possible. Choose the challenge below that best matches your own research needs. Create a new directory, for example, *project2*, for the new environment. 
 
 ### Challenge 1: CPU & GPU environments
 
@@ -342,57 +351,94 @@ gpu
 
 This approach allows the same project to run on a laptop, HPC cluster, or cloud system while only installing the software required for the available hardware. Could you build a pixi environment with that setup?
 
-### Challenge 2: Teaching & course environments
+### Challenge 2: Default & testing environments
 
-Imagine you maintain materials for a bioinformatics course. Participants only need software required to complete the exercises, while course developers need additional tools for creating and testing content.
+Imagine you are developing a bioinformatics pipeline. The default environment includes only the software required to run the pipeline (e.g., Snakemake and core tools), ensuring it remains lightweight and reproducible for users. At the same time, you maintain a separate testing or development environment that includes additional tools for validating and improving the pipeline, such as testing new tools. 
 
 The following pixi.toml illustrates this idea:
 
-````.toml 
+```{.bash filename="pixi.toml"}
 [workspace]
-name = "gdk-course"
-channels = ["conda-forge", "bioconda"]
-platforms = ["linux-64", "osx-arm64"]
-
-[tasks]
-launch = "jupyter lab"
-build-course = "quarto render"
+channels = ["conda-forge"]
+platforms = ["linux-64"]
 
 [dependencies]
-python = ">=3.12"
-jupyterlab = "*"
-pandas = "*"
-samtools = "*"
-fastqc = "*"
-
-[feature.developer.dependencies]
-quarto = "*"
-pytest = "*"
-ruff = "*"
-
-[feature.developer.tasks]
-check = "pytest"
+python = ">=3.10"
 
 [environments]
-default = {features = [], solve-group = "course-group"}
-developer = {features = ["developer"], solve-group = "course-group"}
+default = { features = [] }
+dev = { features = ["dev"] }
+
+[feature.dev.dependencies]
+# empty for now
 ```
 
-In this example:
+Modify the configuration so that snakemake is included in the default environment and pytest is included in the development (dev) environment. Then, use Pixi commands to verify that both tools can be executed successfully. Try executing the different environments (e.g., checking the versions of the different tools) to confirm that each tool is only available in the correct environment.
 
-*default contains only the software needed by workshop participants.
-*developer contains everything in default plus tools for creating and testing course material.
-*Both environments share the same versions of common packages through the solve-group.
+Get an interactive hell inside Pixi ro run all commands installed in either dev or default environemnt. 
 
-A workshop participant would typically run:
+:::{.callout-hint}
+```.bash
+pixi add --feature <name> <package>
+pixi run --environment
 ```
-pixi run launch
-```
-A course developer could run:
-```
-pixi run check
-pixi run build-course
-```
-Build the multi-env in Pixi that supports that specific setup and make sure it works as intended. 
+:::
 
+:::
+
+
+:::{.callout-hint}
+# Solution - Challenge 1: CPU & GPU environments
+```.bash 
+mkdir project2
+pixi init --channel conda-forge --channel bioconda
+
+pixi add python pandas scikit-learn
+pixi add pytorch
+```
+
+Make sure you edit the pixi.toml: 
+
+```{.bash filename="pixi.toml"}
+[environments]
+default = { features = [] }
+gpu = { features = ["gpu"] }
+```
+
+# Then, make things ready for the GPU env: 
+
+```.bash 
+pixi project channel add pytorch nvidia
+pixi add --feature gpu pytorch-cuda
+```
+
+Finally, `pixi install`.
+
+:::
+
+:::{.callout-hint}
+# Solution - Challenge 2: Default & testing environments
+
+Below are several commands that can be used to install the required software. Some of them are alternative approaches that achieve the same result. If you are checking the solution, focus on using only the commands you need and make sure you understand how they differ.
+
+```.bash 
+mkdir -p project2
+touch pixi.toml 
+
+pixi project channel add bioconda
+pixi add snakemake
+pixi add --feature dev pytest
+
+# Make sure both environment are installed
+pixi isntall
+pixi install --environment dev
+
+# Running one of the envs or testing tools installed in only one env
+pixi run --environment dev pytest
+
+# genomedk/laptop (not UCloud)
+pixi shell --environment dev 
+# OR
+pixi run --environment dev bash
+```
 :::
