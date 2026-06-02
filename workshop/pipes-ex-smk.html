@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Day 1 - Part 2 – HPC Lab</title>
+<title>Snakemake – HPC Lab</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-5ac8c471ccf1385116f64b31ed448e67.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-703624462c9310198f16965231dabed8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-81e8bcade493de2668280996f2822cb0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-5ac8c471ccf1385116f64b31ed448e67.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-703624462c9310198f16965231dabed8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -338,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-conda.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk.html">Day 1 - Part 2</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-conda.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk.html">Snakemake</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -490,7 +490,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/pipes-ex-smk.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Day 1 - Part 2</span></a>
+ <span class="menu-text">Snakemake</span></a>
   </div>
 </li>
       </ul>
@@ -507,19 +507,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/pipes-ex-smk-self.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 2 - Part 3</span></a>
+ <span class="menu-text">Snakemake advanced</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/pipes-ex-smk-fast.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 2 - Part 4</span></a>
+ <span class="menu-text">Snakemake - envs</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/pipes-ex-nf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 2 - Part 5</span></a>
+ <span class="menu-text">Nextflow</span></a>
   </div>
 </li>
       </ul>
@@ -580,9 +580,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content column-page-right" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-conda.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk.html">Day 1 - Part 2</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-conda.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-smk.html">Snakemake</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Day 1 - Part 2</h1>
+<h1 class="title">Snakemake</h1>
 </div>
 
 
@@ -641,16 +641,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research?</strong>
-<div id="radio_ZNTWTDNEWB" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZNTWTDNEWB" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_ZNTWTDNEWB" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_ZNTWTDNEWB" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_ZNTWTDNEWB" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_CJUINMUPIV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CJUINMUPIV" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_CJUINMUPIV" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_CJUINMUPIV" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_CJUINMUPIV" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 <strong>G.2.What is the primary drawback of using shell scripts for automating computations?</strong>
-<div id="radio_TNBMOJDLVF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TNBMOJDLVF" value="answer"> <span>Limited error handling and debugging capabilities</span></label><label><input type="radio" autocomplete="off" name="radio_TNBMOJDLVF" value=""> <span>Difficulty in integrating with notebooks</span></label><label><input type="radio" autocomplete="off" name="radio_TNBMOJDLVF" value=""> <span>Not compatible with all operating systems</span></label><label><input type="radio" autocomplete="off" name="radio_TNBMOJDLVF" value="answer"> <span>They re-run all the steps every time</span></label><label><input type="radio" autocomplete="off" name="radio_TNBMOJDLVF" value=""> <span>Insufficient support for parallel processing</span></label><label><input type="radio" autocomplete="off" name="radio_TNBMOJDLVF" value=""> <span>Complex and extensive coding for simple tasks</span></label>
+<div id="radio_ZBMOIRMQUZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZBMOIRMQUZ" value="answer"> <span>Limited error handling and debugging capabilities</span></label><label><input type="radio" autocomplete="off" name="radio_ZBMOIRMQUZ" value=""> <span>Difficulty in integrating with notebooks</span></label><label><input type="radio" autocomplete="off" name="radio_ZBMOIRMQUZ" value=""> <span>Not compatible with all operating systems</span></label><label><input type="radio" autocomplete="off" name="radio_ZBMOIRMQUZ" value="answer"> <span>They re-run all the steps every time</span></label><label><input type="radio" autocomplete="off" name="radio_ZBMOIRMQUZ" value=""> <span>Insufficient support for parallel processing</span></label><label><input type="radio" autocomplete="off" name="radio_ZBMOIRMQUZ" value=""> <span>Complex and extensive coding for simple tasks</span></label>
 </div>
 <strong>G.3. What are the key features of workflow manager in computational research?</strong> (Several possible solutions)
-<div id="radio_ZAGCBJOZLM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZAGCBJOZLM" value="answer"> <span>Executing tasks only when required</span></label><label><input type="radio" autocomplete="off" name="radio_ZAGCBJOZLM" value="answer"> <span>Managing task dependencies</span></label><label><input type="radio" autocomplete="off" name="radio_ZAGCBJOZLM" value="answer"> <span>Overseeing storage and resource allocation</span></label><label><input type="radio" autocomplete="off" name="radio_ZAGCBJOZLM" value=""> <span>Providing intuitive graphical interfaces</span></label>
+<div id="radio_VLZDHTOPUQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VLZDHTOPUQ" value="answer"> <span>Executing tasks only when required</span></label><label><input type="radio" autocomplete="off" name="radio_VLZDHTOPUQ" value="answer"> <span>Managing task dependencies</span></label><label><input type="radio" autocomplete="off" name="radio_VLZDHTOPUQ" value="answer"> <span>Overseeing storage and resource allocation</span></label><label><input type="radio" autocomplete="off" name="radio_VLZDHTOPUQ" value=""> <span>Providing intuitive graphical interfaces</span></label>
 </div>
 <p><strong>G.4. Workflow managers can run tasks (different) concurrently if there are no dependencies</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 <p><strong>G.5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
@@ -730,8 +730,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Q.3. How many files with the extension <code>*.tsv</code> can you find in that subdirectory?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;6&quot;]"></p></li>
 <li><p><strong>Dry-run</strong> the workflow again (from <code>hpclab</code>).</p>
 <p><strong>Q.4. Would Snakemake run any jobs based on the results of the dry-run?</strong></p>
-<div id="radio_IRWQCXMBAO" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IRWQCXMBAO" value="answer"> <span><strong>No</strong>. There is nothing to be done. All requested files are present and up to date.</span></label><label><input type="radio" autocomplete="off" name="radio_IRWQCXMBAO" value=""> <span><strong>Yes</strong>. Reasons: input files updated by another job (all, combine, split_by_superpop) and output files have to be generated (combine, preprocess, split_by_superpop)</span></label>
+<div id="radio_JKEJKANFGF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JKEJKANFGF" value="answer"> <span><strong>No</strong>. There is nothing to be done. All requested files are present and up to date.</span></label><label><input type="radio" autocomplete="off" name="radio_JKEJKANFGF" value=""> <span><strong>Yes</strong>. Reasons: input files updated by another job (all, combine, split_by_superpop) and output files have to be generated (combine, preprocess, split_by_superpop)</span></label>
 </div></li>
 <li><p>Remove files starting with <code>E</code> in your <code>results</code> folder (“EAS.tsv” and “EUR.tsv”) and <code>all_female.txt</code>. Then, dry-run once more.</p>
 <p><strong>Q.5. How many jobs will Snakemake run?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;4&quot;]"></p></li>
