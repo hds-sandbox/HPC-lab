@@ -87,6 +87,7 @@ website:
                 - workshop/pipes-ex-envs-conda.qmd
                 - workshop/pipes-ex-envs-pixi.qmd
                 - workshop/pipes-ex-envs-containers.qmd
+                - workshop/pipes-ex-envs-cont-docker.qmd
                 - workshop/pipes-ex-smk.qmd
             - section: "Day 2"
               contents:        

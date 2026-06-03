@@ -1,10 +1,11 @@
 ---
-title: "Containers"
+title: "Containers: Apptainer"
 format: 
     html:
       toc: true
       toc-location: left
       page-layout: full
+      code-overflow: wrap
 summary: Intro to envs
 css: ./web.css
 ---
@@ -13,22 +14,45 @@ css: ./web.css
 source("_setup.R")
 ```
 
-## Containers 
+Containers are typically used to package applications along with all their dependencies, making them portable and reproducible across different environments. For example, Bioinformatics tools that require complex dependencies or lengthy installations can be distributed as containers, removing the need for manual setup.
 
+Many containers are built using Docker, a widely used container platform. However, Docker is not available on HPCs. Instead, HPCs like GenomeDK, provide Apptainer, which can run containers originally built for Docker. This makes it very practical to pull and integrate containers directly into analysis workflows.
+
+The aim of these exercises is to **understand how to run containerized software**. 
+
+:::{.callout-tip collapse="true"}
+# Containers registries
+
+There are several repositories where you can find pre-built containers:
+
+- **[Biocontainers](https://biocontainers.pro)**: community-driven initiative to containerize bioinf softwares (x100K+ container images available) 
+- [bioconda package index](https://bioconda.github.io/conda-package_index.html) lists all software versions and how to run it as containers
+- **[DockerHub](https://hub.docker.com/)** registry: Public hub for Docker images, often including official containers from software developers
+- **[Quay](https://quay.io/)**: another registry similar to DockerHub.
+- **[NVIDIA GPU Cloud](https://catalog.ngc.nvidia.com/search?filters=resourceType|Container|container)**
+- **[Singularity Cloud Library](https://cloud.sylabs.io/library)
+:::
 
 :::{.panel-tabset .tool-tabs}
 ## <img src="images/ucloud.png" height="50"> 
 
-Apptainer/Singularity was specifically designed for HPC platforms; however, the UCloud server does not support it for regular users. As a result, **container exercises will need to be run locally**. We will be using Docker locally, as it is commonly employed for developing images. Please remember to install Docker Desktop, as noted on the [Welcome page](./pipes-requirements.qmd). For further guidance, refer to the official [Docker cheat sheet](https://docs.docker.com/get-started/docker_cheatsheet.pdf). Click on the computer icon or genomedk to continue with the exercises.
+Apptainer/Singularity was specifically designed for HPC platforms; however, the UCloud server does not support it for regular users.
 
+Select *GenomeDK*, where you can directly run existing Apptainer containers for the exercises. *IF* you haven't created an account on GenomeDK, you have two options: 
+
+- Go to the next section (*recommended*): [Containers - Docker](./pipes-ex-envs-cont-docker.qmd) 
+- Run apptainer locally -> click on the computer icon. 
 
 ## <img src="images/genomedk.png" height="50"> 
 
-Apptainer/Singularity was specifically designed for HPC platforms, so let's test it. Before working with containers, we will change some settings that will run at each login.  
+Apptainer (formerly Singularity) was specifically designed for High Performance Computing (HPC) environments. 
+First, we’ll walk through the initial setup needed to get started.
 
-We will need a temporary folder for `apptainer` containers (more on those later) when downloaded. Default is your home, which will be filled up in no time (folder `~/.apptainer`) with cache material.
+### Practical setup 
 
-Edit the file `~/.bashrc` (use `nano ~/.bashrc` or any editor you want). Add those lines:
+It’s important to configure a few settings that will automatically be applied each time you log in. Apptainer uses a cache directory to store downloaded container images and related files. By default, this cache is located in your home directory ( `~/.apptainer`). Since HPC home directories often have limited storage, this cache can quickly fill up and cause issues.
+
+To avoid this, we recommend configuring a temporary directory with more available space for Apptainer to use. Add the code below to `~/.bashrc` (use `nano ~/.bashrc` or any editor you want).
 
 ```{.bash filename="~/.bashrc"}
 mkdir -p -m 700 /tmp/$USER
@@ -36,124 +60,136 @@ export APPTAINER_TMPDIR=/tmp/$USER
 export APPTAINER_CACHEDIR=/tmp/$USER
 ```
 
-The `-m 700` option for `mkdir` command ensures also **you are the only one which can access the temporary files**. Useful is you use a container with password or sensitive info, so no one can access it (`/tmp/` is a public folder)! 
+When creating directories for container use, the `-m 700` option with the mkdir command ensures that only you have access to the files inside. This is particularly important when working with containers that may include passwords or other sensitive data. By restricting permissions, you prevent other users from accessing your files (`/tmp/` is a public folder)! 
 
-Containers are usually thought as packing a specific application which can run anywhere (or, which is portable).
-
-- E.g. annoying bioinformatics software requiring specific libraries or long installations.
-- Many containers are done with *Docker*, but this is not installed on GenomeDK
-- GenomeDK has *Apptainer*, which can also run programs installed in Docker containers.
-- Very practical to **pull and use** containers **in workflows**.
-
-### Where to find containers?
-
-Typical repositories with pre-built containers are:
-
-- **[Biocontainers](https://biocontainers.pro)**: community-driven initiative to containerize bioinf softwares.
-  - x10K tools x100K+ containers
-  - [bioconda package index](https://bioconda.github.io/conda-package_index.html) lists all software versions
-  - the [Registry page](https://biocontainers.pro/registry) has a searchable interface to find what you need
-- **[DockerHub](https://hub.docker.com/)** registry: Public hub for Docker images, often including official containers from software developers
-- **[Quay](https://quay.io/)**: Same philosophy of DockerHub.
-
-Once you find a container on the websites, simply use (eventually adapt) the provided code to pull it locally.
-
-Make a folder called `containers101` in the `advancedGDK` directory.
+Now, create a folder called `containers101` in the `hpcPipes` directory.
 
 ```{.bash}
-mkdir -p advancedGDK/containers101
-cd advancedGDK/containers101
+mkdir -p hpcPipes/containers101
+cd hpcPipes/containers101
 ```
 
-Find a bash bioinformatics software you know on the [Biocontainer Registry](https://biocontainers.pro/registry) and open it to see a detailed description - if you have no good ideas look for the `minimap2` aligner. You should see a software documentation illustrating how to run the software in various ways.
+::: {.webex-check .callout-exercise}
+# Exercise I: Apptainer 
 
+Go to the [Biocontainer Registry](https://biocontainers.pro/registry) and search for a bioinformatics tools you are familiar with. 
+- If you are unsure, look for the *minimap2* aligner.
+- Open the container page and explore the documentation.
+- Identify how the software is typically executed inside a container.
 
-Some software docs will suggest to run immediately the container with `apptainer`. We would suggest downloading it first (`pull` instead of `run`) and then running it.
+Some software docs will suggest to run immediately the container with `apptainer run`, but we will instead download it first (`pull`) and then run it.
 
-In the case of `minimap2`:
+Let's download the image from `minimap2`:
 
 ```{.bash}
 apptainer pull minimap2.sif https://depot.galaxyproject.org/singularity/minimap2:2.28--h577a1d6_4
 ```
 
-which creates a container file in your current directory, and calls it `minimap2.sif` (better name than the default `minimap2:2.28--h577a1d6_4`).
+This command downloads the container into your current directory, and saves it as `minimap2.sif` (better name than the default `minimap2:2.28--h577a1d6_4`). There are two ways of running the container, let's explore both. 
 
-&nbsp;
+You can launch the container, using the `run` command, which opens a CLI inside the environment. From there, you can manually execute the program and run other commands. 
 
-You can either `run` the container, which opens a CLI into it, where you can execute the program. A non-interactive way (useful for pipelines) is to write the command directly. For example:
+1. Start the container and enter its environment
+2. List the contents of the working directory
+3. Create an empty file named `test.txt` in the current directory
+4. Verify the file was created. How many files are there now? `r fitb(answer=2)`
+5. Check the version of minimap2: `r fitb("^(2[4-9])\\.[0-9]+\\.[0-9]+$", regex = TRUE)`
+6. Exit the container 
 
+Alternatively, you can run the container in a non-interactive way. For workflows and pipelines, it is often more practical to execute commands directly: 
 
-This will operate the command line inside the container. Here you can then run `minimap2`.
-```{.bash}
-apptainer run minimap2.sif
-```
-
-This will immediately run `minimap2` from the container - useful for a pipeline where you do not need any interaction with the command line.
 ```{.bash}
 apptainer run minimap2.sif minimap2
 ```
 
-### Exercise II: docker alternative
+- This runs minimap2 immediately and exist immediately after the command has run
+- No interactive session is opened
+- This approach is ideal for scripting and pipelines
 
-You can also pull and run a container from DockerHub. For example, for the `biocontainers/bwa-mem2` container you will need to adapt the command a bit, because it is not a singularity container.
+Run the same commands from the exercise above but now in a non-interactively manner. 
 
-```{.bash}
-apptainer pull samtools_docker.sif docker://biocontainers/samtools:v1.9-4-deb_cv1
-```
+- Print minimap2 version using the `exec`
+- Delete the `test.txt` file 
+- How many files are there now? `r fitb(answer=1)`
 
-&nbsp;
+When to use each:
 
-:::{.callout-note}
-The correct path `docker://biocontainers/samtools:v1.9-4-deb_cv1` can be found on the DockerHub page of the container. Here is the [https://hub.docker.com/r/biocontainers/samtools](link to samtools).
+- `run`: when testing or exploring a container. It will execute a runscript if one is defined for that container.
+- `exec`: in pipelines, scripts, and HPC jobs (this is the most common in practice)
 :::
 
----
-
-Doing operations with a container is really easy For example, you can run a command inside the container like the following, which outputs a `.bam` genome file read from a URL:
-
+:::{.callout-hint}
+# Solution - Apptainer
+### Apptainer - interactively 
 ```{.bash}
-apptainer run samtools_docker.sif \
-                 samtools view \
-                 -h https://github.com/roryk/tiny-test-data/raw/refs/heads/master/wgs/mt.sorted.bam \
-                 -O bam > test01.bam
+# Launch container
+apptainer run minimap2.sif
+
+# Run commands
+ls 
+touch test.txt
+ls | wc -l
+minimap2 --version
+exit 
 ```
 
-You can build a container directly on genomeDK [using apptainer](https://singularity-tutorial.github.io/03-building/).
+### Apptainer - non-interactive
 
+```{.bash}
+apptainer exec minimap2.sif minimap2 --version
+apptainer run  minimap2.sif rm test.txt
+```
+:::
 
-## <img src="images/computer.png" height="50"> 
+:::{.callout-tip}
+# Bonus - using GPUs with Apptainer
+Apptainer supports GPU acceleration, allowing you to run containerized applications that take advantage of NVIDIA GPUs. Pull tensorflow image and test that it works. 
+
+- https://www.tensorflow.org/install/docker
+- https://hub.docker.com/r/tensorflow/tensorflow
+:::
+
+:::{.callout-hint}
+# Solution - using GPUs with Apptainer
+```.bash
+# pull image
+apptainer pull docker://nvcr.io/nvidia/tensorflow:23.08-tf2-py3
+
+# run the container on GPU node
+apptainer run --nv tensorflow_23.08-tf2-py3.sif python3 --version
+```
+:::
 
 ::: {.webex-check .callout-exercise}
-# Exercise - Running a Docker image
+# Exercise II: Running a Docker image
 
-In this exercise, we will utilize the `fastmixture` Docker image, which is available on [DockerHub](https://hub.docker.com/r/albarema/fastmixture), the repository for Docker images. The aim is to **understand how to run containerized software**. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.
+In this exercise, we will utilize the `fastmixture` Docker image, which is available on [DockerHub](https://hub.docker.com/r/albarema/fastmixture), the repository for Docker images. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, [Fastmixture](https://www.biorxiv.org/content/10.1101/2024.07.08.602454v2), and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.
 
+:::{.callout-hint}
+# More on fastmixture software
 [Fastmixture](https://www.biorxiv.org/content/10.1101/2024.07.08.602454v2) is a software designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.
 
 Here are some optional resources you might typically review before running the software (though not required for this exercise):
 
-- Santander, C.G., Refoyo Martinez, A. and Meisner, J., 2024. Faster model-based estimation of ancestry proportions. Peer Community Journal, 4. [link to paper](https://peercommunityjournal.org/item/10_24072_pcjournal_503).
-- Software GitHub repository [link](https://github.com/Rosemeis/fastmixture).
+- Santander, C.G., Refoyo Martinez, A. and Meisner, J., 2024. Faster model-based estimation of ancestry proportions. Peer Community Journal, 4 [link to paper](https://peercommunityjournal.org/item/10_24072_pcjournal_503)
+- Software GitHub repository [link](https://github.com/Rosemeis/fastmixture)
 
 ![Admixture proportions](./data/admix_toyData.png){width=500 fig-align="left"}
 
-<div style="display: flex; gap: 10px;">
-  <a href="./data/toy.zip" download="toy.zip">
-    <button class="btn small-button">Download toy data</button>
-  </a>
-</div>
+:::
 
 
-1. Pull `fastmixture` image from [DockerHub](https://hub.docker.com/r/albarema/fastmixture) using the following command: 
-  
-    ```{.bash filename="Terminal"}
-    docker pull albarema/fastmixture
-    ```
-    Make sure to pull the latest version. 
+1. Pull `fastmixture` image from [DockerHub](https://hub.docker.com/r/albarema/fastmixture) and save it locally as *fastmixture.sif*. Make sure to pull the latest version
+2. Download and unzip the toy data
 
-2. Download and unzip the toy data (you may move the files to any preferred folder on your laptop).
-3. What is the command you need to run the container? Do not forget to mount the data (using the flag `-v /path/toy:/path/mnt`). Before executing the software, verify that the data has been correctly mounted (e.g., running the `ls` command inside the container).
-4. Run `fastmixture` software using the command below. We will set *K* to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both `--bfile` and `--out` require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named `toy.data.*`; therefore, use `--bfile toy.data`.
+    <div style="display: flex; gap: 5px;">
+    <a href="./data/toy.zip" download="toy.zip">
+        <button class="btn small-button">Download toy data</button>
+    </a>
+    </div>
+
+3. Run a command to display the `fastmixture` version and enter the version number: `r fitb("^(v[0-9])\\.[0-9]+\\.[0-9]+$", regex = TRUE)`
+4. Run `fastmixture` software using the command below. We will set *K* to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both `--bfile` and `--out` require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named `toy.data.*`; therefore, use `--bfile toy.data`
 
     In `fastmixture`, the main arguments used in this exercise are:
 
@@ -165,95 +201,103 @@ Here are some optional resources you might typically review before running the s
     ```{.bash}
     fastmixture --bfile <input.prefix> --K 3 --threads 4 --seed 1 --out <output.prefix>
     ```
-5. Do you have the results in the folder on your local system? You should look for files named `toy.fast.K3.s1.{ext}`, where `{ext}=["Q", "P", "log"]`.
+5. Do you have the results in the folder on your local system? `r torf(TRUE)` 
+
+You should look for files named `toy.fast.K3.s1.{ext}`, where `{ext}=["Q", "P", "log"]`.
+
+:::
+
 
 :::{.callout-hint}
-# Solution 
+# Solution - Running a Docker image
 
-- **Docker**
-```{.bash}
-docker pull albarema/fastmixture  # Pull 
-```
 This solution assumes you're running the container from the directory that contains the `toy` data folder: 
 
-```{.bash filename="Linux/Mac"}
-docker run -v `pwd`/toy/:/data/ albarema/fastmixture
-
-fastmixture --bfile data/toy.data --K 3 --out data/toy.fast --threads 8 # run the command 
-```
-
-```{.bash filename="Windows"}
-# Option 1
-docker run -v ${PWD}\toy:/data albarema/fastmixture 
-# Option 2
-docker run -v C:\Users\YourName\toy:/data albarema/fastmixture
-
-fastmixture --bfile data/toy.data --K 3 --out data/toy.fast --threads 8 # run the command 
-```
-
-**Note**
-When mounting the data, ensure that the path you provide actually exists. If you encounter an error indicating that the .bfile does not exist, it likely means the data was not mounted correctly. *Tip for Windows users*: The correct path might be `${PWD}\toy\toy` — double-check that the folder structure are accurate.
-
-- **Apptainer** on HPC / local machine: on your local machine, you will need to modify lima.yml to make the current directory (`pwd`) writable. Alternatively, write the data out to /tmp/lima! 
-
 ```{.bash}
-apptainer pull docker://albarema/fastmixture
-apptainer run fastmixture_latest.sif fastmixture --version
+# Pull image 
+apptainer pull fastmixture.sif docker://albarema/fastmixture
+# Unzip data
+unzip data.zip -d data 
+# Check version 
+apptainer exec fastmixture.sif fastmixture --version 
 
-# on local machine (using LIMA)
-cd toy # from data folder 
-apptainer pull /tmp/lima/fastmixture_latest.sif docker:/albarema/fastmixture
-apptainer run /tmp/lima/fastmixture_latest.sif fastmixture --bfile toy.data --K 3 --out toy.fast --threads 8
+apptainer exec fastmixture.sif fastmixture --bfile data/toy.data --K 3 --out data/toy.fast --threads 8
+
+ls 
 ```
 :::
 
-:::
 
-### Containers bonus exercises 
+### Bonus exercises 
 
-There are several repositories where you can find containerised bioinformatics tools:
+You will get to test other containerised tools, for example: 
 
-- [DockerHub](https://hub.docker.com/)
-- [biocontainers](https://biocontainers.pro/) 
-- [Cloud sylabs](https://cloud.sylabs.io/)
-- [SingularityHub](https://singularityhub.github.io/library-api/#/?id=library-api)
-- [Galaxy-singularity](https://depot.galaxyproject.org/singularity/)
-
-If you want to run the first bonus exercise locally, use Docker. However, if you have access to an HPC platform, check the documentation to see if Singularity/Apptainer is installed; now would be a great time to give it a try. Don’t hesitate to ask for help if needed!
-
-In the first bonus exercise, you will get to test other containerised tools: 
-
+- [samtools](https://www.htslib.org/doc/samtools.html) (view and convert sam/bam/cram files)
 - [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) (local alignment search tool) 
-- [BOWTIE2](https://bowtie-bio.sourceforge.net/bowtie2/index.shtml) (sequencing reads aligner to reference)
 
-Alternatively, explore one of the container image repositories and select a tool that you use regularly. Once you have pulled an image, we recommend starting by running the `--help` command, as all software has one. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.
-
-:::{.callout-important}
-# Mounting is key!
-Make sure to mount a directory when running a container. This ensures that any data generated will be saved to your host system. If you do not mount a directory and use the `--rm` command, all generated data will be lost once the container stops.
-
-- Use `--rm` flag to automatically remove the container once it stops running to avoid cluttering your system with stopped containers.
-- Use `--volume` to mount data into the container (e.g., `/data`), for example, your working directory if you are already located in a project-specific dir. 
-:::
-
+Alternatively, explore one of the container image repositories and select a tool that you use regularly. Once you have pulled an image, we recommend starting by running the `--help` command, as all software has one. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software. Don’t hesitate to ask for help if needed!
 
 :::{.callout-tip collapse="true"}
-# Bonus 1: Running other containers 
+# Bonus 1: samtools 
+You can also pull and run a container from DockerHub. Let's try to do so using the `biocontainers/bwa-mem2` container, choose the tag `v1.9-4-deb_cv1`. We will use samtools to view and convert BAM files. Once the image is saved in your wd, use the container to:
+
+- Save image as `samtools_docker.sif`
+- Read a `.bam` file from an URL (https://github.com/roryk/tiny-test-data/raw/refs/heads/master/wgs/mt.sorted.bam)
+- Use samtools to read the file and save it locally into BAM format (using the `-h` flag to ensure the header is included, and the `-O` to choose the BAM format as input)
+- Save the output to a new file called `test01.bam`
+- Does your bam file look like this (see below)? `r torf(TRUE)` 
+
+
+```{.bash}
+198d4514-09bb-4f68-bdec-15f2699d3fb9	163	chr1	630214	0	101M	630449	336	CAGTTCTACCGTACAACCCTAACATAACCATTCTTAATCTAACTATTTATATTATCCTAACTACTACCGCATTCCTACTACTCAACTTAAACTCCAGCACC	<@B?@AB@@B:@@A@CABCC@CAAAADACAABCCBAA?CCADACAACBAAAACAACCDBDBDABCAAC;CAABCCDABCABDCADBDCBDCBDD?ADCAB?	NM:i:1	MD:Z:38T62	MC:Z:101M	AS:i:96	XS:i:96	XA:Z:chrM,+5044,101M,1;
+```
+
+:::{.callout-hint}
+Check the [samtools documentation](https://www.htslib.org/doc/samtools-view.html)
+
+```{.bash}
+samtools view -h <bamfile> -O bam 
+```
+
+Use `samtools view` to check the first 1-2 lines of the file. 
+:::
+
+:::
+
+
+:::{.callout-hint}
+# Solution - samtools
+
+You can find the image path: [https://hub.docker.com/r/biocontainers/samtools](link to samtools).
+
+```{.bash}
+# Pull image as .sif
+apptainer pull samtools_docker.sif docker://biocontainers/samtools:v1.9-4-deb_cv1
+# Run samtools 
+apptainer exec samtools_docker.sif \
+                samtools view \
+                -h https://github.com/roryk/tiny-test-data/raw/refs/heads/master/wgs/mt.sorted.bam \
+                -O bam > test01.bam
+```
+
+
+:::
+
+:::{.callout-tip collapse="true"}
+# Bonus 2: BLAST 
 ## BLAST - Build a BLAST protein database from zebrafish protein sequences.
 
 Zebrafish is a widely used model organism in genetics. This small dataset will facilitate quick results, allowing us to focus on how to run different bioinformatics tools so that you can easily adapt the commands in future projects.
 
-**Docker**: follow the steps in *Running BLAST*: https://biocontainers-edu.readthedocs.io/en/latest/running_example.html. 
-```{.bash}
-docker pull biocontainers/blast:2.2.31
-docker run biocontainers/blast:2.2.31 blastp -help
-mkdir zebrafish-ref
-docker run -v `pwd`/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 curl -O ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRNA_Prot/zebrafish.1.protein.faa.gz
-docker run -v `pwd`/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 gunzip zebrafish.1.protein.faa.gz
-docker run -v `pwd`/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 makeblastdb -in zebrafish.1.protein.faa -dbtype prot
-```
+1. Download a BLAST container
+2. Explore how to run BLAST tools
+3. Download a reference dataset (zebrafish proteins)
+4. Prepare it as a BLAST database
 
-**Apptainer**: You might need to mount data folders if you test the container on your own computer! Ask if you an in doubt! 
+:::
+
+:::{.callout-hint}
+# Solution - BLAST
 
 ```{.bash}
 apptainer pull docker://biocontainers/blast:2.2.31
@@ -263,98 +307,32 @@ apptainer run blast_2.2.31.sif curl -O ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRN
 apptainer run gunzip zebrafish.1.protein.faa.gz
 apptainer run blast_2.2.31.sif makeblastdb -in zebrafish.1.protein.faa -dbtype prot
 ```
-
-## BOWTIE2 
-
-**Singularity**: 
-```{.bash}
-# download the image
-singularity pull images/bowtie2-2.5.4.sif https://depot.galaxyproject.org/singularity/bowtie2%3A2.5.4--he20e202_2
-
-# run the image: singularity run <PATH-TO-IMAGE> <YOUR COMMANDS>
-singularity run images/bowtie2-2.5.4.sif bowtie2 --help
-```
 :::
-
-Are you ready to build your own Docker image? Let's get started by building a Jupyter Notebook container! We'll share several helpful tips to guide you through the process effectively. You might not be familiar with all the concepts, but Google them if you're uncertain.
 
 :::{.callout-tip collapse="true"}
-# Bonus 2: Building a Docker image and running your own container 
+# Bonus 3: Build your own container
+You can build a container directly on genomeDK [using apptainer](https://singularity-tutorial.github.io/03-building/). Create a new project-specific dir, e.g. *jupyter-project*. The image should include jupyter-notebook, and the python libs, matplotlib, pandas and numpy. 
+:::
 
-1. Create a Dockerfile in a project-specific dir (e.g., sandbox-debian-jupyter). We will add a command to clean up the package after installation, which is a common practice to reduce the image size.  
 
-```{.bash filename="Dockerfile"}
-FROM debian:stable 
+## <img src="images/computer.png" height="50"> 
 
-LABEL maintainer="Name Surname <abd123@ku.dk>"
+You will need to install a Linux virtual machine to be able to run Apptainer. Follow the instructions [here](https://apptainer.org/docs/admin/main/installation.html#installation-on-windows-or-mac). 
 
-# Update package list and install necessary packages
-RUN apt update \
-    && apt install -y jupyter-notebook \
-                      python3-matplotlib \
-                      python3-pandas \
-                      python3-numpy \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* # cleanup tmp files created by apt
+Once you are ready, click on GenomeDK to follow the exercises, but note that the commands must be adapted to run inside a virtual machine. Check the solutions below for an example of how the commands should be modified.
 
-# You may consider adding a working directory
-WORKDIR /notebooks
-```
+:::{.callout-hint}
+# Solution - Running a Docker image
 
-2. From the project-specific dir, build the Docker image using, for example, `docker build -t sandbox-debian-jupyter:1.0 .`
+````.bash
+# on local machine (using LIMA)
 
-3. Testing the custom image. Let's verify if the custom image functions as expected by running the following command: 
+cd toy # from data folder 
 
-```{.bash .code-overflow-wrap filename="Terminal"}
-docker run --rm -p 8888:8888 --volume=$(pwd):/root sandbox-debian-jupyter:1.0 jupyter-notebook
-```
-
-Jupyter typically refuses to run as root or accept network connections by default. To address this, you need to either add `--ip=0.0.0.0 --allow-root` when starting Jupyter to the command above or uncomment the last line in the Dockerfile above (`CMD ["jupyter-notebook", "--ip=0.0.0.0", "--allow-root"]`). Test this before moving on! 
-
-*Alternatively, you can run the container with the flag `--user=$(id -u):$(id -g)` to ensure that files created in the container have matching user and group ownership with those on the host machine, preventing permission issues. However, this restricts the container from performing root-level operations.*
-
-For broader usability and security, it is advisable to create a non-root user (e.g., jovyan) within the Docker image by adding user setup commands to the Dockerfile (see below). This approach makes the image more user-friendly and avoids file ownership conflicts.
-
-```{.bash filename="Dockerfile2"}
-##
-## ----- ADD CONTENT FROM Dockerfile HERE ----- 
-## 
-
-# Creating a group & user
-RUN addgroup --gid 1000 user && \
-    adduser --uid 1000 --gid 1000 --gecos "" --disabled-password jovyan
-
-# Setting active user 
-USER jovyan
-
-# setting working directory 
-WORKDIR /home/jovyan
-
-# let' automatically start Jupyter Notebook
-CMD ["jupyter-notebook", "--ip=0.0.0.0"]
-```
-
-:::{.callout-tip}
-- Use `--rm` flag to automatically remove the container once it stops running
-- Use `--volume` to mount data into the container (e.g. `/home/jovyan`)
-- Use `--file` flag to test two Dockerfile versions (default: "PATH/Dockerfile")
-
-```{.bash .code-overflow-wrap}
-docker build -t sandbox-debian-jupyter:2.0 sandbox-debian-jupyter -f sandbox-debian-jupyter/Dockerfile2
+apptainer pull /tmp/lima/fastmixture_latest.sif docker:/albarema/fastmixture
+apptainer run /tmp/lima/fastmixture_latest.sif fastmixture --bfile toy.data --K 3 --out toy.fast --threads 8
 ```
 :::
 
-Now that we have fixed that problem, we will test A. using a port to launch a Jupyter Notebook (or RStudio server) and B. starting a bash shell interactively. 
-
-```{.bash .code-overflow-wrap}
-# Option A. Start jupyter-notebook or on the server 
-docker run --rm -p 8888:8888 --volume=$(pwd):/home/jovyan sandbox-debian-jupyter:2.0 
-
-# Option B. Start an interactive shell instead 
-docker run -it --rm --volume=$(pwd):/home/jovyan sandbox-debian-jupyter:2.0 /bin/bash
-```
-
-If you make changes to the container (incl. installing software), you need to commit the changes to a new image (`docker commit`). 
-:::
 
 :::

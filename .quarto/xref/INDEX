@@ -217,5 +217,8 @@
   },
   "workshop/pipes-ex-envs-containers.qmd": {
     "pipes-ex-envs-containers.html": "da0ab418"
+  },
+  "workshop/pipes-ex-envs-cont-docker.qmd": {
+    "pipes-ex-envs-cont-docker.html": "140684ba"
   }
 }
