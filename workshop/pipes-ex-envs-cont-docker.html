@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HPC setup – HPC Lab</title>
+<title>Containers: Docker – HPC Lab</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-703624462c9310198f16965231dabed8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-81e8bcade493de2668280996f2822cb0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-703624462c9310198f16965231dabed8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ffabff8aed0c19f8c4b7ef35d0830bf3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-850aa386becee55dde2b6405353ed82f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-ffabff8aed0c19f8c4b7ef35d0830bf3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -338,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-setup.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-setup.html">HPC setup</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-conda.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-cont-docker.html">Containers: Docker</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -375,16 +375,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Day 1</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../workshop/launch-setup.html" class="sidebar-item-text sidebar-link active">
+  <a href="../workshop/launch-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">HPC setup</span></a>
   </div>
 </li>
@@ -462,13 +462,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Day 1</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/pipes-ex-envs-conda.html" class="sidebar-item-text sidebar-link">
@@ -489,7 +489,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../workshop/pipes-ex-envs-cont-docker.html" class="sidebar-item-text sidebar-link">
+  <a href="../workshop/pipes-ex-envs-cont-docker.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Containers: Docker</span></a>
   </div>
 </li>
@@ -573,15 +573,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#ssh-keys" id="toc-ssh-keys" class="nav-link active" data-scroll-target="#ssh-keys">1. SSH keys</a>
-  <ul class="collapse">
-  <li><a href="#local-host-keys" id="toc-local-host-keys" class="nav-link" data-scroll-target="#local-host-keys">Local host keys</a></li>
-  <li><a href="#start-a-ucloud-job-with-ssh-access." id="toc-start-a-ucloud-job-with-ssh-access." class="nav-link" data-scroll-target="#start-a-ucloud-job-with-ssh-access.">Start a UCloud job with SSH access.</a></li>
-  </ul></li>
-  <li><a href="#working-with-files-on-hpc" id="toc-working-with-files-on-hpc" class="nav-link" data-scroll-target="#working-with-files-on-hpc">2. Working with files on HPC</a>
-  <ul class="collapse">
-  <li><a href="#fs-navigation-and-text-editors" id="toc-fs-navigation-and-text-editors" class="nav-link" data-scroll-target="#fs-navigation-and-text-editors">FS navigation and text editors</a></li>
-  </ul></li>
+  <li><a href="#containers-registries" id="toc-containers-registries" class="nav-link active" data-scroll-target="#containers-registries">Containers registries</a></li>
   </ul>
 </nav>
 </nav>
@@ -593,9 +585,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content column-page-right" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/launch-requirements.html">HPC Launch</a></li><li class="breadcrumb-item"><a href="../workshop/launch-setup.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/launch-setup.html">HPC setup</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-conda.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-cont-docker.html">Containers: Docker</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">HPC setup</h1>
+<h1 class="title">Containers: Docker</h1>
 </div>
 
 
@@ -612,199 +604,171 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>The aim of these exercises is to <strong>understand how to run containerized software</strong> and build a simple one.</p>
+<section id="containers-registries" class="level3">
+<h3 class="anchored">Containers registries</h3>
+<p>There are several repositories where you can find containerised bioinformatics tools:</p>
+<ul>
+<li><a href="https://hub.docker.com/">DockerHub</a></li>
+<li><a href="https://biocontainers.pro/">biocontainers</a></li>
+<li><a href="https://cloud.sylabs.io/">Cloud sylabs</a></li>
+<li><a href="https://singularityhub.github.io/library-api/#/?id=library-api">SingularityHub</a></li>
+<li><a href="https://depot.galaxyproject.org/singularity/">Galaxy-singularity</a></li>
+</ul>
+<div class="tabset-margin-container"></div><div class="panel-tabset tool-tabs">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href=""><img src="images/computer.png" height="50"></a></li></ul>
+<div class="tab-content tool-tabs">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>We will be using Docker locally, as it is commonly employed for developing images. Please remember to install Docker Desktop, as noted on the <a href="../workshop/pipes-requirements.html">Welcome page</a>. For further guidance, refer to the official <a href="https://docs.docker.com/get-started/docker_cheatsheet.pdf">Docker cheat sheet</a>.</p>
+<p>In the first bonus exercise, you will get to test other containerised tools:</p>
+<ul>
+<li><a href="(https://github.com/Rosemeis/fastmixture)">fastmixture</a> (estimate ancestry proportions, for example, in humans)</li>
+<li><a href="https://www.htslib.org/doc/samtools.html">samtools</a> (view and convert sam/bam/cram files)</li>
+<li><a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">BLAST</a> (local alignment search tool)</li>
+<li><a href="https://bowtie-bio.sourceforge.net/bowtie2/index.shtml">BOWTIE2</a> (sequencing reads aligner to reference)</li>
+</ul>
+<p>Alternatively, explore one of the container image repositories and select a tool that you use regularly. Once you have pulled an image, we recommend starting by running the <code>--help</code> command, as all software has one. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software. Don’t hesitate to ask for help if needed!</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Windows users: run PowerShell as Administrator
+<span class="screen-reader-only">Important</span>Mounting is key!
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Several commands in this section require elevated privileges on Windows. Right-click <strong>PowerShell</strong> and select <strong>Run as Administrator</strong> before you start, otherwise you may encounter cryptic permission errors (e.g.&nbsp;<code>ssh-agent</code> failing to start).</p>
-<p><em>If you are using a different terminal application, ensure you run it as an administrator.</em></p>
+<p>Make sure to mount a directory when running a container. This ensures that any data generated will be saved to your host system. If you do not mount a directory and use the <code>--rm</code> command, all generated data will be lost once the container stops.</p>
+<ul>
+<li>Use <code>--rm</code> flag to automatically remove the container once it stops running to avoid cluttering your system with stopped containers.</li>
+<li>Use <code>--volume</code> to mount data into the container (e.g., <code>/data</code>), for example, your working directory if you are already located in a project-specific dir.</li>
+</ul>
 </div>
 </div>
-<section id="ssh-keys" class="level2">
-<h2 class="anchored" data-anchor-id="ssh-keys">1. SSH keys</h2>
-<section id="local-host-keys" class="level3">
-<h3 class="anchored" data-anchor-id="local-host-keys">Local host keys</h3>
-<p>Navigate to the location where all SSH keys are stored to generate a new one. Do you have any host keys stored locally?</p>
-<p><span style="color:#F54927;"> <strong>SKIP</strong> these first two commands if you haven’t used SSH keys before (the path won’t exit if you’ve never created a key).</span></p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Mac/Linux</strong></pre>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-filename="Mac/Linux"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/.ssh </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/known_hosts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Exercise</span>Exercise I: fastmixture
 </div>
-<p> </p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Windows</strong></pre>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="Windows"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> C:<span class="dt">\U</span>sers<span class="dt">\&lt;</span>YourUsername<span class="op">&gt;</span><span class="dt">\.</span>ssh</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> C:<span class="dt">\U</span>sers<span class="dt">\&lt;</span>YourUsername<span class="op">&gt;</span><span class="dt">\.</span>ssh/known_hosts</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<section id="generate-ssh-key-pair" class="level4">
-<h4 class="anchored" data-anchor-id="generate-ssh-key-pair">1.1. Generate SSH Key Pair</h4>
-<p>We will specify the type of key with <code>-t</code> and save it under a descriptive filename (e.g.&nbsp;<code>id_UCloud</code>). Don’t enter a passphrase (for now!).</p>
-<p>The commands below generate the key pair directly without any interactive prompts:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Mac/Linux</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="Mac/Linux"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-f</span> ~/.ssh/id_UCloud</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p> </p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Windows (PowerShell)</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="Windows (PowerShell)"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-f</span> <span class="st">"</span><span class="va">$env</span><span class="st">:USERPROFILE\.ssh\id_UCloud"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="callout callout-style-default callout-important callout-titled">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="webex-check callout-exercise">
+<p>In this exercise, we will utilize the <code>fastmixture</code> Docker image, which is available on <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHub</a>, the repository for Docker images. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, <a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v2">Fastmixture</a>, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.</p>
+<div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Windows users: you might need to run a couple more commands!
+<span class="screen-reader-only">Hint</span>More on fastmixture software
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<section id="ssh-keygen-not-working" class="level5">
-<h5 class="anchored" data-anchor-id="ssh-keygen-not-working"><code>ssh-keygen</code> not working?</h5>
-<p>This might be due to broken permissions.</p>
-<p>When you run the command above and <code>~/.ssh</code> does not exist → it is created automatically. IF this didn’t happen in your system, run the following command:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.ssh</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="ssh-agent-service-disabled" class="level5">
-<h5 class="anchored" data-anchor-id="ssh-agent-service-disabled"><code>ssh-agent</code> service disabled?</h5>
-<p>There is one additional thing you need to take care of. By default, the <code>ssh-agent</code> service is disabled on Windows, so make sure you’re running as an Administrator.</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>On Powershell</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="On Powershell"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Configure it to start automatically.</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Set-Service</span> <span class="at">-Name</span> ssh-agent <span class="at">-StartupType</span> Automatic</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Start the service</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Start-Service</span> ssh-agent</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># This should return a status of Running</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Get-Service</span> ssh-agent</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p> </p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>On WSL (Windows Subsystem for Linux)</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="On WSL (Windows Subsystem for Linux)"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="kw">`</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="kw">`</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>On MombaXterm, follow the instructions <a href="https://servicedesk.surf.nl/wiki/spaces/WIKI/pages/37388673/Creating+and+using+an+SSH+key+pair+with+MobaXterm">here</a>.</p>
-</section>
+<div>
+<div class="callout-hint">
+<p><a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v2">Fastmixture</a> is a software designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.</p>
+<p>Here are some optional resources you might typically review before running the software (though not required for this exercise):</p>
+<ul>
+<li>Santander, C.G., Refoyo Martinez, A. and Meisner, J., 2024. Faster model-based estimation of ancestry proportions. Peer Community Journal, 4 <a href="https://peercommunityjournal.org/item/10_24072_pcjournal_503">link to paper</a></li>
+<li>Software GitHub repository <a href="https://github.com/Rosemeis/fastmixture">link</a></li>
+</ul>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="./data/admix_toyData.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>Admixture proportions</figcaption>
+</figure>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p>Pull the latest version of <code>fastmixture</code> image from <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHub</a></p></li>
+<li><p>Download and unzip the toy data (you may move the files to any preferred folder on your laptop).</p>
+<div style="display: flex; gap: 5px;">
+<a href="./data/toy.zip" download="toy.zip"> <button class="btn small-button">Download toy data</button> </a>
+</div></li>
+<li><p>Run a command to display the <code>fastmixture</code> version and enter the version number: <input class="webex-solveme nospaces regex" size="26" data-answer="[&quot;^(v[0-9])\\.[0-9]+\\.[0-9]+$&quot;]"></p></li>
+<li><p>Run <code>fastmixture</code> software using the command below. We will set <em>K</em> to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both <code>--bfile</code> and <code>--out</code> require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named <code>toy.data.*</code>; therefore, use <code>--bfile toy.data</code>.</p>
+<p>In <code>fastmixture</code>, the main arguments used in this exercise are:</p>
+<ul>
+<li><code>--K</code>: Specifies the number of ancestral components, representing the sources in the mixture model.</li>
+<li><code>--seed</code>: Sets the random seed to ensure reproducibility of the analysis across different runs.</li>
+<li><code>--bfile</code>: prefix for PLINK files (.bed, .bim, .fam).</li>
+<li><code>--out</code>: Prefix output name.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastmixture</span> <span class="at">--bfile</span> <span class="op">&lt;</span>input.prefix<span class="op">&gt;</span> --K 3 <span class="at">--threads</span> 4 <span class="at">--seed</span> 1 <span class="at">--out</span> <span class="op">&lt;</span>output.prefix<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Do not forget to mount the data (using the flag <code>-v /path/toy:/path/mnt</code>). Before executing the software, verify that the data has been correctly mounted (e.g., running the <code>ls</code> command inside the container).</p></li>
+<li><p>Do you have the results in the folder on your local system? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p></li>
+</ol>
+<p>You should look for files named <code>toy.fast.K3.s1.{ext}</code>, where <code>{ext}=["Q", "P", "log"]</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Alternative: interactive approach (you will be prompted for a filename)
+<span class="screen-reader-only">Hint</span>Solution - fastmixture
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>Generating public/private ed25519 key pair.
-Enter file in which to save the key (/Users/gsd818/.ssh/id_ed25519): id_UCloud
-Your identification has been saved in id_UCloud
-Your public key has been saved in id_UCloud.pub
-...</code></pre>
-<p>When prompted <strong>Enter file in which to save the key</strong>, type <code>id_UCloud</code> (do not just press Enter — that keeps the default name and will cause the later steps to fail).</p>
-</div>
-</div>
-</div>
-</section>
-<section id="add-private-key-to-ssh-agent" class="level4">
-<h4 class="anchored" data-anchor-id="add-private-key-to-ssh-agent">1.2. Add private key to <code>ssh-agent</code></h4>
-<p>Once you have generated your SSH keys, add the private key to your system’s <code>ssh-agent</code> (<code>id_UCloud</code> is the filename you specified when generating the key):</p>
+<div>
+<div class="callout-hint">
+<ul>
+<li><strong>Docker</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull albarema/fastmixture  <span class="co"># Pull </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This solution assumes you’re running the container from the directory that contains the <code>toy</code> data folder:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Mac/Linux</strong></pre>
+<pre><strong>Linux/Mac</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-filename="Mac/Linux"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_UCloud</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" data-filename="Linux/Mac"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/toy/:/data/ albarema/fastmixture</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fastmixture</span> <span class="at">--bfile</span> data/toy.data <span class="at">--K</span> 3 <span class="at">--out</span> data/toy.fast <span class="at">--threads</span> 8 <span class="co"># run the command </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p> </p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
-<pre><strong>Windows (PowerShell)</strong></pre>
+<pre><strong>Windows</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="Windows (PowerShell)"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> <span class="st">"</span><span class="va">$env</span><span class="st">:USERPROFILE\.ssh\id_UCloud"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-filename="Windows"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="va">${PWD}</span><span class="dt">\t</span>oy:/data albarema/fastmixture </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 2</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> C:\Users\YourName\toy:/data albarema/fastmixture</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">fastmixture</span> <span class="at">--bfile</span> data/toy.data <span class="at">--K</span> 3 <span class="at">--out</span> data/toy.fast <span class="at">--threads</span> 8 <span class="co"># run the command </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Do you get a message similar to this? <code>entity added: id_UCloud (gsd818@SUN1029429)</code> <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
-</section>
-<section id="copy-ssh-key-to-remote-server" class="level4">
-<h4 class="anchored" data-anchor-id="copy-ssh-key-to-remote-server">1.3. Copy SSH Key to remote server</h4>
-<p>Then, copy the public key to your clipboard:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Mac</strong></pre>
+<p><strong>Note</strong> When mounting the data, ensure that the path you provide actually exists. If you encounter an error indicating that the .bfile does not exist, it likely means the data was not mounted correctly. <em>Tip for Windows users</em>: The correct path might be <code>${PWD}\toy\toy</code> — double-check that the folder structure are accurate.</p>
+<ul>
+<li><strong>Apptainer</strong> on HPC / local machine: on your local machine, you will need to modify lima.yml to make the current directory (<code>pwd</code>) writable. Alternatively, write the data out to /tmp/lima!</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://albarema/fastmixture</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run fastmixture_latest.sif fastmixture <span class="at">--version</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># on local machine (using LIMA)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> toy <span class="co"># from data folder </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull /tmp/lima/fastmixture_latest.sif docker:/albarema/fastmixture</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run /tmp/lima/fastmixture_latest.sif fastmixture <span class="at">--bfile</span> toy.data <span class="at">--K</span> 3 <span class="at">--out</span> toy.fast <span class="at">--threads</span> 8</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-filename="Mac"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_UCloud.pub <span class="kw">|</span> <span class="ex">pbcopy</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p> </p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Linux</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-filename="Linux"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_UCloud.pub <span class="kw">|</span> <span class="ex">xclip</span> <span class="at">-selection</span> clipboard</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p> </p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Windows (PowerShell)</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-filename="Windows (PowerShell)"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="st">"</span><span class="va">$env</span><span class="st">:USERPROFILE\.ssh\id_UCloud.pub"</span> <span class="kw">|</span> <span class="ex">clip</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>You can now paste the public SSH key on UCloud. Go to <a href="https://cloud.sdu.dk/app/ssh-keys/create"><strong>UCloud → SSH Keys → Create</strong></a> and paste the key there.</p>
-<p><img src="../develop/images/sshkey_step2.png" class="img-fluid"></p>
-<p>You’ll need to enable SSH access when you submit a job so you can SSH in.</p>
-</section>
-</section>
-<section id="start-a-ucloud-job-with-ssh-access." class="level3">
-<h3 class="anchored" data-anchor-id="start-a-ucloud-job-with-ssh-access.">Start a UCloud job with SSH access.</h3>
-<p>Submit a job from the terminal app and follow these configuration steps (job settings):</p>
-<ol type="1">
-<li><p>Enter a job name (descriptive of the task, e.g.: <em>SSH myname</em>)</p></li>
-<li><p>Select the time (in hours) we want to use a node for (it can be modified afterwards!). Let’s do <strong>2h</strong>.<br>
-</p></li>
-<li><p>Number of nodes: 1</p></li>
-<li><p>Machine type: and the machine type (selecting a 1 CPU standard node with 3GB memory). <img src="./images/terminalResources.png" width="750" height="300"></p></li>
-<li><p>Add folders to access while in this job . We recommend creating a new folder named HPCLaunch in your personal drive, where you can store all files generated during the workshop (e.g.: <code>/Member Files: username/HPCLaunch</code>). <img src="./images/addFolder.png" width="750" height="225"></p></li>
-<li><p>Scroll down and remember to click on <em>Enable SSH access</em>. <img src="./images/enableSSH.png" width="750" height="225"></p></li>
-</ol>
-<p>Now you are ready to click on the submit button (and wait!).</p>
-<p>Once the job starts, click the <strong>SSH</strong> tab in the progress view to reveal the SSH command, then copy it and paste it in your local terminal: <img src="./images/sshCommand.png" class="img-fluid"></p>
-<p>For example: <code>ssh ucloud@ssh.cloud.sdu.dk -p 2126</code></p>
-</section>
-</section>
-<section id="working-with-files-on-hpc" class="level2">
-<h2 class="anchored" data-anchor-id="working-with-files-on-hpc">2. Working with files on HPC</h2>
-<section id="fs-navigation-and-text-editors" class="level3">
-<h3 class="anchored" data-anchor-id="fs-navigation-and-text-editors">FS navigation and text editors</h3>
-<p>In this exercise, you will practice working with files and directories on UCloud using the command line. Go back to your job on UCloud and click on ‘Open Interface’, or run the exercises through the SSH session.</p>
-<p>For every task below, you must use <strong>Bash commands</strong> only (no graphical interface). All required commands are very common and widely used in Linux and HPC environments. Check the hints below if you need help.</p>
-<div class="warning">
-<p>Although we have tried to be flexible in the answers, we may not have included all possible working solutions as correct ones. What matters most is that your code runs correctly and produces the desire output — not that it matches the exact command shown in our solution.</p>
 </div>
 <div class="callout callout-style-default callout-exercise callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="true" aria-label="Toggle callout">
@@ -812,7 +776,7 @@ Your public key has been saved in id_UCloud.pub
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Exercise</span>Exercise
+<span class="screen-reader-only">Exercise</span>Exercise II: samtools
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -820,24 +784,17 @@ Your public key has been saved in id_UCloud.pub
 <div class="callout-body-container callout-body">
 <div>
 <div class="webex-check callout-exercise">
-<ol type="1">
-<li>What is the working directory (wd) on UCloud? Type only the top-level directory (the root level) <input class="webex-solveme nospaces" size="13" data-answer="[&quot;/work&quot;,&quot;work/&quot;,&quot;/work/&quot;,&quot;/home/ucloud&quot;,&quot;/home/ucloud/&quot;]"></li>
-<li>Make <code>hpcLaunch</code> your wd. Use <code>pwd</code> command to print the current wd and copy/paste it here <input class="webex-solveme nospaces" size="23" data-answer="[&quot;/work/hpcLaunch&quot;,&quot;/work/hpcLaunch/&quot;,&quot;/home/ucloud/hpcLaunch&quot;,&quot;/home/ucloud/hpcLaunch/&quot;]"></li>
-<li>Are there any files in your working directory? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
-<li>Create a new directory named <code>day1</code> Type the full command <input class="webex-solveme nospaces" size="13" data-answer="[&quot;mkdir day1&quot;,&quot;mkdir -p day1&quot;]"></li>
-<li>Create a new file called <code>hello.txt</code> containing the text <em>Hello</em> in the <strong>day1</strong> directory.</li>
-<li>Create an empty file named <code>emptyFile.csv</code> in the <strong>day1</strong> directory? Type <em>only</em> the unix command to do this operation <input class="webex-solveme nospaces" size="5" data-answer="[&quot;touch&quot;]"></li>
-<li>Move into the <code>day1</code> directory? Type the command <input class="webex-solveme nospaces" size="7" data-answer="[&quot;cd day1&quot;]"></li>
-<li>Edit the hello.txt file using <code>nano</code> or <code>vim</code>. Add <em>Hola</em> on a new line and save it as a new file (e.g.&nbsp;<code>greetings.txt</code>). In nano, use <code>Ctrl+O</code> to save with a new filename or <code>Ctrl+X</code> to exit/close while choosing to save changes into a new file.</li>
-<li>Count lines in both <em>.txt</em> files. Use <code>wc -l &lt;files&gt;</code>. Type the command <input class="webex-solveme nospaces" size="17" data-answer="[&quot;wc -l *.txt&quot;,&quot;cat *.txt | wc -l&quot;]"></li>
-<li>Use a command to list <strong>all</strong> files and their sizes in this directory. Type the command <input class="webex-solveme nospaces" size="8" data-answer="[&quot;ls -lh&quot;,&quot;ls -lh .&quot;,&quot;du -sh *&quot;]"></li>
-<li>Print the first line in <code>greetings.txt</code> (only 1!). Use <code>head</code> or <code>awk</code>. Type the command <input class="webex-solveme nospaces" size="25" data-answer="[&quot;head -n1 greetings.txt&quot;,&quot;head -1 greetings.txt&quot;,&quot;awk 'NR==1' greetings.txt&quot;]"></li>
-<li>Print the last command in <code>greetings.txt</code> using <code>tail</code>. Type the command <input class="webex-solveme nospaces" size="22" data-answer="[&quot;tail -n1 greetings.txt&quot;,&quot;tail -1 greetings.txt&quot;]"></li>
-<li>Can you remove all <em>.txt</em> files (specify the file extension when deleting)? Type the command <input class="webex-solveme nospaces" size="8" data-answer="[&quot;rm *.txt&quot;]"></li>
-</ol>
-<p>Need some help? See the hints and solutions below. When you are done with the exercise, cancel the job by holding the <code>Stop application</code> button.</p>
+<p>You run a container from DockerHub, the <code>biocontainers/bwa-mem2</code> container. Choose the tag <code>v1.9-4-deb_cv1</code>. We will use samtools to view and convert BAM files. Once the image is saved in your wd, use the container to:</p>
+<ul>
+<li>Pull the image from Dockerhub (<a href="https://hub.docker.com/r/biocontainers/samtools" class="uri">https://hub.docker.com/r/biocontainers/samtools</a>)</li>
+<li>Read a <code>.bam</code> file from an URL (<a href="https://github.com/roryk/tiny-test-data/raw/refs/heads/master/wgs/mt.sorted.bam" class="uri">https://github.com/roryk/tiny-test-data/raw/refs/heads/master/wgs/mt.sorted.bam</a>)</li>
+<li>Use samtools to read the file and save it locally into BAM format (using the <code>-h</code> flag to ensure the header is included, and the <code>-O</code> to choose the BAM format as input)</li>
+<li>Save the output to a new file called <code>test01.bam</code> (be careful with the mounting!)</li>
+<li>Does your bam file look like this (see below)? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">198d4514-09bb-4f68-bdec-15f2699d3fb9</span>    163 chr1    630214  0   101M    630449  336 CAGTTCTACCGTACAACCCTAACATAACCATTCTTAATCTAACTATTTATATTATCCTAACTACTACCGCATTCCTACTACTCAACTTAAACTCCAGCACC   <span class="op">&lt;</span>@B<span class="pp">?</span>@AB@@B:@@A@CABCC@CAAAADACAABCCBAA<span class="pp">?</span>CCADACAACBAAAACAACCDBDBDABCAAC<span class="kw">;</span><span class="ex">CAABCCDABCABDCADBDCBDCBDD?ADCAB?</span>   NM:i:1  MD:Z:38T62  MC:Z:101M   AS:i:96 XS:i:96 XA:Z:chrM,+5044,101M,1<span class="kw">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -846,91 +803,202 @@ Your public key has been saved in id_UCloud.pub
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<p>Here are some of the commands you need (in random order):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-h</span> <span class="op">&lt;</span>bamfile<span class="op">&gt;</span> -O bam </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use <code>samtools view</code> to check the first 1-2 lines of the file.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Hint</span>Solution
+<span class="screen-reader-only">Hint</span>Solution - samtools
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<p>Run the following commands in a terminal. Make sure you understand what each command does before moving on.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Check the default working directory</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Change directory </span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hpcLaunch/</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check your new current working directory</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. List the contents of your working directory</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> . </span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Create new directory</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> day1</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Create a text file with content</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hello"</span> <span class="op">&gt;</span> ./day1/hello.txt</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Create an empty file</span></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> ./day1/emptyFile.txt</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Move into the new directory</span></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> day1</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="co"># 9. Count lines </span></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> <span class="pp">*</span>.txt</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a><span class="co"># 10. List files and their sizes</span></span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span> .</span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a><span class="co"># 11. Print first lines</span></span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-n1</span> greetings.txt</span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 12. Print first lines</span></span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-n1</span> greetings.txt</span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a><span class="co"># 13. Remove txt files</span></span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="pp">*</span>.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can find the image path: <a href="link to samtools">https://hub.docker.com/r/biocontainers/samtools</a>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull biocontainers/samtools:v1.9-4-deb_cv1</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Run samtools </span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>:/data/ <span class="dt">\</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">--platform</span> linux/amd64 <span class="dt">\</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">--rm</span> biocontainers/samtools:v1.9-4-deb_cv1 <span class="dt">\</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        samtools view <span class="dt">\</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">-h</span> https://github.com/roryk/tiny-test-data/raw/refs/heads/master/wgs/mt.sorted.bam <span class="dt">\</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">-O</span> bam <span class="op">&gt;</span> test01.bam</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Bonus 1: Running other containers
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-</div>
-</div>
-
-
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<section id="blast---build-a-blast-protein-database-from-zebrafish-protein-sequences." class="level2 callout-body-container callout-body">
+<h2 class="anchored" data-anchor-id="blast---build-a-blast-protein-database-from-zebrafish-protein-sequences.">BLAST - Build a BLAST protein database from zebrafish protein sequences.</h2>
+<p>Zebrafish is a widely used model organism in genetics. This small dataset will facilitate quick results, allowing us to focus on how to run different bioinformatics tools so that you can easily adapt the commands in future projects.</p>
+<ol type="1">
+<li>Download a BLAST container</li>
+<li>Explore how to run BLAST tools</li>
+<li>Download a reference dataset (zebrafish proteins)</li>
+<li>Prepare it as a BLAST database</li>
+</ol>
+<p><strong>Docker</strong>: follow the steps in <em>Running BLAST</em>: https://biocontainers-edu.readthedocs.io/en/latest/running_example.html.</p>
 </section>
+</div>
+</div>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hint</span>Solution - BLAST
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull biocontainers/blast:2.2.31</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run biocontainers/blast:2.2.31 blastp <span class="at">-help</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> zebrafish-ref</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 curl <span class="at">-O</span> ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRNA_Prot/zebrafish.1.protein.faa.gz</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 gunzip zebrafish.1.protein.faa.gz</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 makeblastdb <span class="at">-in</span> zebrafish.1.protein.faa <span class="at">-dbtype</span> prot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Are you ready to build your own Docker image? Let’s get started by building a Jupyter Notebook container! We’ll share several helpful tips to guide you through the process effectively. You might not be familiar with all the concepts, but Google them if you’re uncertain.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Bonus 2: Building a Docker image and running your own container
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Create a Dockerfile in a project-specific dir (e.g., sandbox-debian-jupyter). We will add a command to clean up the package after installation, which is a common practice to reduce the image size.</li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Dockerfile</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-filename="Dockerfile"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> debian:stable </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">LABEL</span> maintainer=<span class="st">"Name Surname &lt;abd123@ku.dk&gt;"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Update package list and install necessary packages</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt update <span class="dt">\</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install <span class="at">-y</span> jupyter-notebook <span class="dt">\</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>                      python3-matplotlib <span class="dt">\</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                      python3-pandas <span class="dt">\</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                      python3-numpy <span class="dt">\</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> clean <span class="dt">\</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span> <span class="co"># cleanup tmp files created by apt</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># You may consider adding a working directory</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /notebooks</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="2" type="1">
+<li><p>From the project-specific dir, build the Docker image using, for example, <code>docker build -t sandbox-debian-jupyter:1.0 .</code></p></li>
+<li><p>Testing the custom image. Let’s verify if the custom image functions as expected by running the following command:</p></li>
+</ol>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Terminal</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="Terminal"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-p</span> 8888:8888 <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/root sandbox-debian-jupyter:1.0 jupyter-notebook</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Jupyter typically refuses to run as root or accept network connections by default. To address this, you need to either add <code>--ip=0.0.0.0 --allow-root</code> when starting Jupyter to the command above or uncomment the last line in the Dockerfile above (<code>CMD ["jupyter-notebook", "--ip=0.0.0.0", "--allow-root"]</code>). Test this before moving on!</p>
+<p><em>Alternatively, you can run the container with the flag <code>--user=$(id -u):$(id -g)</code> to ensure that files created in the container have matching user and group ownership with those on the host machine, preventing permission issues. However, this restricts the container from performing root-level operations.</em></p>
+<p>For broader usability and security, it is advisable to create a non-root user (e.g., jovyan) within the Docker image by adding user setup commands to the Dockerfile (see below). This approach makes the image more user-friendly and avoids file ownership conflicts.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Dockerfile2</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-filename="Dockerfile2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">##</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">## ----- ADD CONTENT FROM Dockerfile HERE ----- </span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">## </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a group &amp; user</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> addgroup <span class="at">--gid</span> 1000 user <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">adduser</span> <span class="at">--uid</span> 1000 <span class="at">--gid</span> 1000 <span class="at">--gecos</span> <span class="st">""</span> <span class="at">--disabled-password</span> jovyan</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting active user </span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="ex">USER</span> jovyan</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># setting working directory </span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /home/jovyan</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co"># let' automatically start Jupyter Notebook</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="ex">CMD</span> [<span class="st">"jupyter-notebook"</span>, <span class="st">"--ip=0.0.0.0"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Use <code>--rm</code> flag to automatically remove the container once it stops running</li>
+<li>Use <code>--volume</code> to mount data into the container (e.g.&nbsp;<code>/home/jovyan</code>)</li>
+<li>Use <code>--file</code> flag to test two Dockerfile versions (default: “PATH/Dockerfile”)</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> sandbox-debian-jupyter:2.0 sandbox-debian-jupyter <span class="at">-f</span> sandbox-debian-jupyter/Dockerfile2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+<p>Now that we have fixed that problem, we will test A. using a port to launch a Jupyter Notebook (or RStudio server) and B. starting a bash shell interactively.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option A. Start jupyter-notebook or on the server </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-p</span> 8888:8888 <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/home/jovyan sandbox-debian-jupyter:2.0 </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Option B. Start an interactive shell instead </span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="at">--rm</span> <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/home/jovyan sandbox-debian-jupyter:2.0 /bin/bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you make changes to the container (incl.&nbsp;installing software), you need to commit the changes to a new image (<code>docker commit</code>).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Containers – HPC Lab</title>
+<title>Containers: Apptainer – HPC Lab</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-703624462c9310198f16965231dabed8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-81e8bcade493de2668280996f2822cb0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-703624462c9310198f16965231dabed8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-ffabff8aed0c19f8c4b7ef35d0830bf3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-850aa386becee55dde2b6405353ed82f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-ffabff8aed0c19f8c4b7ef35d0830bf3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -338,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-conda.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-containers.html">Containers</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-conda.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-containers.html">Containers: Apptainer</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -484,7 +484,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../workshop/pipes-ex-envs-containers.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Containers</span></a>
+ <span class="menu-text">Containers: Apptainer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshop/pipes-ex-envs-cont-docker.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Containers: Docker</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -563,13 +569,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
     </ul>
     </div>
-    <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#containers" id="toc-containers" class="nav-link active" data-scroll-target="#containers">Containers</a></li>
-  </ul>
-</nav>
+    
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -579,9 +579,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <main class="content column-page-right" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-conda.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-containers.html">Containers</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../workshop/pipes-requirements.html">HPC Pipes</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-conda.html">Day 1</a></li><li class="breadcrumb-item"><a href="../workshop/pipes-ex-envs-containers.html">Containers: Apptainer</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Containers</h1>
+<h1 class="title">Containers: Apptainer</h1>
 </div>
 
 
@@ -598,18 +598,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="containers" class="level2">
-<h2 class="anchored" data-anchor-id="containers">Containers</h2>
+<p>Containers are typically used to package applications along with all their dependencies, making them portable and reproducible across different environments. For example, Bioinformatics tools that require complex dependencies or lengthy installations can be distributed as containers, removing the need for manual setup.</p>
+<p>Many containers are built using Docker, a widely used container platform. However, Docker is not available on HPCs. Instead, HPCs like GenomeDK, provide Apptainer, which can run containers originally built for Docker. This makes it very practical to pull and integrate containers directly into analysis workflows.</p>
+<p>The aim of these exercises is to <strong>understand how to run containerized software</strong>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Containers registries
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>There are several repositories where you can find pre-built containers:</p>
+<ul>
+<li><strong><a href="https://biocontainers.pro">Biocontainers</a></strong>: community-driven initiative to containerize bioinf softwares (x100K+ container images available)</li>
+<li><a href="https://bioconda.github.io/conda-package_index.html">bioconda package index</a> lists all software versions and how to run it as containers</li>
+<li><strong><a href="https://hub.docker.com/">DockerHub</a></strong> registry: Public hub for Docker images, often including official containers from software developers</li>
+<li><strong><a href="https://quay.io/">Quay</a></strong>: another registry similar to DockerHub.</li>
+<li><strong><a href="https://catalog.ngc.nvidia.com/search?filters=resourceType%7CContainer%7Ccontainer">NVIDIA GPU Cloud</a></strong></li>
+<li>**<a href="https://cloud.sylabs.io/library">Singularity Cloud Library</a></li>
+</ul>
+</div>
+</div>
+</div>
 <div class="tabset-margin-container"></div><div class="panel-tabset tool-tabs">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href=""><img src="images/ucloud.png" height="50"></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href=""><img src="images/genomedk.png" height="50"></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href=""><img src="images/computer.png" height="50"></a></li></ul>
 <div class="tab-content tool-tabs">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>Apptainer/Singularity was specifically designed for HPC platforms; however, the UCloud server does not support it for regular users. As a result, <strong>container exercises will need to be run locally</strong>. We will be using Docker locally, as it is commonly employed for developing images. Please remember to install Docker Desktop, as noted on the <a href="../workshop/pipes-requirements.html">Welcome page</a>. For further guidance, refer to the official <a href="https://docs.docker.com/get-started/docker_cheatsheet.pdf">Docker cheat sheet</a>. Click on the computer icon or genomedk to continue with the exercises.</p>
+<p>Apptainer/Singularity was specifically designed for HPC platforms; however, the UCloud server does not support it for regular users.</p>
+<p>Select <em>GenomeDK</em>, where you can directly run existing Apptainer containers for the exercises. <em>IF</em> you haven’t created an account on GenomeDK, you have two options:</p>
+<ul>
+<li>Go to the next section (<em>recommended</em>): <a href="../workshop/pipes-ex-envs-cont-docker.html">Containers - Docker</a></li>
+<li>Run apptainer locally -&gt; click on the computer icon.</li>
+</ul>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>Apptainer/Singularity was specifically designed for HPC platforms, so let’s test it. Before working with containers, we will change some settings that will run at each login.</p>
-<p>We will need a temporary folder for <code>apptainer</code> containers (more on those later) when downloaded. Default is your home, which will be filled up in no time (folder <code>~/.apptainer</code>) with cache material.</p>
-<p>Edit the file <code>~/.bashrc</code> (use <code>nano ~/.bashrc</code> or any editor you want). Add those lines:</p>
+<p>Apptainer (formerly Singularity) was specifically designed for High Performance Computing (HPC) environments. First, we’ll walk through the initial setup needed to get started.</p>
+<section id="practical-setup" class="level3">
+<h3 class="anchored" data-anchor-id="practical-setup">Practical setup</h3>
+<p>It’s important to configure a few settings that will automatically be applied each time you log in. Apptainer uses a cache directory to store downloaded container images and related files. By default, this cache is located in your home directory ( <code>~/.apptainer</code>). Since HPC home directories often have limited storage, this cache can quickly fill up and cause issues.</p>
+<p>To avoid this, we recommend configuring a temporary directory with more available space for Apptainer to use. Add the code below to <code>~/.bashrc</code> (use <code>nano ~/.bashrc</code> or any editor you want).</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>~/.bashrc</strong></pre>
@@ -618,91 +650,172 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">APPTAINER_TMPDIR</span><span class="op">=</span>/tmp/<span class="va">$USER</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">APPTAINER_CACHEDIR</span><span class="op">=</span>/tmp/<span class="va">$USER</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The <code>-m 700</code> option for <code>mkdir</code> command ensures also <strong>you are the only one which can access the temporary files</strong>. Useful is you use a container with password or sensitive info, so no one can access it (<code>/tmp/</code> is a public folder)!</p>
-<p>Containers are usually thought as packing a specific application which can run anywhere (or, which is portable).</p>
-<ul>
-<li>E.g. annoying bioinformatics software requiring specific libraries or long installations.</li>
-<li>Many containers are done with <em>Docker</em>, but this is not installed on GenomeDK</li>
-<li>GenomeDK has <em>Apptainer</em>, which can also run programs installed in Docker containers.</li>
-<li>Very practical to <strong>pull and use</strong> containers <strong>in workflows</strong>.</li>
-</ul>
-<section id="where-to-find-containers" class="level3">
-<h3 class="anchored" data-anchor-id="where-to-find-containers">Where to find containers?</h3>
-<p>Typical repositories with pre-built containers are:</p>
-<ul>
-<li><strong><a href="https://biocontainers.pro">Biocontainers</a></strong>: community-driven initiative to containerize bioinf softwares.
-<ul>
-<li>x10K tools x100K+ containers</li>
-<li><a href="https://bioconda.github.io/conda-package_index.html">bioconda package index</a> lists all software versions</li>
-<li>the <a href="https://biocontainers.pro/registry">Registry page</a> has a searchable interface to find what you need</li>
-</ul></li>
-<li><strong><a href="https://hub.docker.com/">DockerHub</a></strong> registry: Public hub for Docker images, often including official containers from software developers</li>
-<li><strong><a href="https://quay.io/">Quay</a></strong>: Same philosophy of DockerHub.</li>
-</ul>
-<p>Once you find a container on the websites, simply use (eventually adapt) the provided code to pull it locally.</p>
-<p>Make a folder called <code>containers101</code> in the <code>advancedGDK</code> directory.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> advancedGDK/containers101</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> advancedGDK/containers101</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Find a bash bioinformatics software you know on the <a href="https://biocontainers.pro/registry">Biocontainer Registry</a> and open it to see a detailed description - if you have no good ideas look for the <code>minimap2</code> aligner. You should see a software documentation illustrating how to run the software in various ways.</p>
-<p>Some software docs will suggest to run immediately the container with <code>apptainer</code>. We would suggest downloading it first (<code>pull</code> instead of <code>run</code>) and then running it.</p>
-<p>In the case of <code>minimap2</code>:</p>
+<p>When creating directories for container use, the <code>-m 700</code> option with the mkdir command ensures that only you have access to the files inside. This is particularly important when working with containers that may include passwords or other sensitive data. By restricting permissions, you prevent other users from accessing your files (<code>/tmp/</code> is a public folder)!</p>
+<p>Now, create a folder called <code>containers101</code> in the <code>hpcPipes</code> directory.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> hpcPipes/containers101</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hpcPipes/containers101</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Exercise</span>Exercise I: Apptainer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<div>
+<div class="webex-check callout-exercise">
+<p>Go to the <a href="https://biocontainers.pro/registry">Biocontainer Registry</a> and search for a bioinformatics tools you are familiar with. - If you are unsure, look for the <em>minimap2</em> aligner. - Open the container page and explore the documentation. - Identify how the software is typically executed inside a container.</p>
+<p>Some software docs will suggest to run immediately the container with <code>apptainer run</code>, but we will instead download it first (<code>pull</code>) and then run it.</p>
+<p>Let’s download the image from <code>minimap2</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull minimap2.sif https://depot.galaxyproject.org/singularity/minimap2:2.28--h577a1d6_4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>which creates a container file in your current directory, and calls it <code>minimap2.sif</code> (better name than the default <code>minimap2:2.28--h577a1d6_4</code>).</p>
-<p>&nbsp;</p>
-<p>You can either <code>run</code> the container, which opens a CLI into it, where you can execute the program. A non-interactive way (useful for pipelines) is to write the command directly. For example:</p>
-<p>This will operate the command line inside the container. Here you can then run <code>minimap2</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run minimap2.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This will immediately run <code>minimap2</code> from the container - useful for a pipeline where you do not need any interaction with the command line.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run minimap2.sif minimap2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This command downloads the container into your current directory, and saves it as <code>minimap2.sif</code> (better name than the default <code>minimap2:2.28--h577a1d6_4</code>). There are two ways of running the container, let’s explore both.</p>
+<p>You can launch the container, using the <code>run</code> command, which opens a CLI inside the environment. From there, you can manually execute the program and run other commands.</p>
+<ol type="1">
+<li>Start the container and enter its environment</li>
+<li>List the contents of the working directory</li>
+<li>Create an empty file named <code>test.txt</code> in the current directory</li>
+<li>Verify the file was created. How many files are there now? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;2&quot;]"></li>
+<li>Check the version of minimap2: <input class="webex-solveme nospaces regex" size="26" data-answer="[&quot;^(2[4-9])\\.[0-9]+\\.[0-9]+$&quot;]"></li>
+<li>Exit the container</li>
+</ol>
+<p>Alternatively, you can run the container in a non-interactive way. For workflows and pipelines, it is often more practical to execute commands directly:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run minimap2.sif minimap2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>This runs minimap2 immediately and exist immediately after the command has run</li>
+<li>No interactive session is opened</li>
+<li>This approach is ideal for scripting and pipelines</li>
+</ul>
+<p>Run the same commands from the exercise above but now in a non-interactively manner.</p>
+<ul>
+<li>Print minimap2 version using the <code>exec</code></li>
+<li>Delete the <code>test.txt</code> file</li>
+<li>How many files are there now? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;1&quot;]"></li>
+</ul>
+<p>When to use each:</p>
+<ul>
+<li><code>run</code>: when testing or exploring a container. It will execute a runscript if one is defined for that container.</li>
+<li><code>exec</code>: in pipelines, scripts, and HPC jobs (this is the most common in practice)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hint</span>Solution - Apptainer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<section id="apptainer---interactively" class="level3">
+<h3 class="anchored" data-anchor-id="apptainer---interactively">Apptainer - interactively</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Launch container</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run minimap2.sif</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run commands</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> test.txt</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">minimap2</span> <span class="at">--version</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="bu">exit</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="exercise-ii-docker-alternative" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-ii-docker-alternative">Exercise II: docker alternative</h3>
-<p>You can also pull and run a container from DockerHub. For example, for the <code>biocontainers/bwa-mem2</code> container you will need to adapt the command a bit, because it is not a singularity container.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull samtools_docker.sif docker://biocontainers/samtools:v1.9-4-deb_cv1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>&nbsp;</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="apptainer---non-interactive" class="level3">
+<h3 class="anchored" data-anchor-id="apptainer---non-interactive">Apptainer - non-interactive</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec minimap2.sif minimap2 <span class="at">--version</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run  minimap2.sif rm test.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Tip</span>Bonus - using GPUs with Apptainer
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The correct path <code>docker://biocontainers/samtools:v1.9-4-deb_cv1</code> can be found on the DockerHub page of the container. Here is the <a href="link to samtools">https://hub.docker.com/r/biocontainers/samtools</a>.</p>
+<p>Apptainer supports GPU acceleration, allowing you to run containerized applications that take advantage of NVIDIA GPUs. Pull tensorflow image and test that it works.</p>
+<ul>
+<li>https://www.tensorflow.org/install/docker</li>
+<li>https://hub.docker.com/r/tensorflow/tensorflow</li>
+</ul>
 </div>
 </div>
-<hr>
-<p>Doing operations with a container is really easy For example, you can run a command inside the container like the following, which outputs a <code>.bam</code> genome file read from a URL:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run samtools_docker.sif <span class="dt">\</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                 samtools view <span class="dt">\</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">-h</span> https://github.com/roryk/tiny-test-data/raw/refs/heads/master/wgs/mt.sorted.bam <span class="dt">\</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">-O</span> bam <span class="op">&gt;</span> test01.bam</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You can build a container directly on genomeDK <a href="https://singularity-tutorial.github.io/03-building/">using apptainer</a>.</p>
-</section>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<div class="callout callout-style-default callout-exercise callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Exercise</span>Exercise - Running a Docker image
+<span class="screen-reader-only">Hint</span>Solution - using GPUs with Apptainer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull image</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://nvcr.io/nvidia/tensorflow:23.08-tf2-py3</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run the container on GPU node</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run <span class="at">--nv</span> tensorflow_23.08-tf2-py3.sif python3 <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-exercise callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Exercise</span>Exercise II: Running a Docker image
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <div>
 <div class="webex-check callout-exercise">
-<p>In this exercise, we will utilize the <code>fastmixture</code> Docker image, which is available on <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHub</a>, the repository for Docker images. The aim is to <strong>understand how to run containerized software</strong>. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.</p>
+<p>In this exercise, we will utilize the <code>fastmixture</code> Docker image, which is available on <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHub</a>, the repository for Docker images. To enhance the learning experience, we have chosen a simple genomics analysis, an efficient software tool, <a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v2">Fastmixture</a>, and a sample dataset. Focus on executing the commands, ensuring that this approach is easily adaptable to your own projects and software needs.</p>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hint</span>More on fastmixture software
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
 <p><a href="https://www.biorxiv.org/content/10.1101/2024.07.08.602454v2">Fastmixture</a> is a software designed to estimate ancestry proportions in unrelated individuals. It analyses genetic data to determine the percentage of various ancestral backgrounds present in a given individual. This tool is essential for understanding demographic histories and modeling population structure. You can view the results of running such analyses in the figure below.</p>
 <p>Here are some optional resources you might typically review before running the software (though not required for this exercise):</p>
 <ul>
-<li>Santander, C.G., Refoyo Martinez, A. and Meisner, J., 2024. Faster model-based estimation of ancestry proportions. Peer Community Journal, 4. <a href="https://peercommunityjournal.org/item/10_24072_pcjournal_503">link to paper</a>.</li>
-<li>Software GitHub repository <a href="https://github.com/Rosemeis/fastmixture">link</a>.</li>
+<li>Santander, C.G., Refoyo Martinez, A. and Meisner, J., 2024. Faster model-based estimation of ancestry proportions. Peer Community Journal, 4 <a href="https://peercommunityjournal.org/item/10_24072_pcjournal_503">link to paper</a></li>
+<li>Software GitHub repository <a href="https://github.com/Rosemeis/fastmixture">link</a></li>
 </ul>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
@@ -710,21 +823,19 @@ Note
 <figcaption>Admixture proportions</figcaption>
 </figure>
 </div>
-<div style="display: flex; gap: 10px;">
-<p><a href="./data/toy.zip" download="toy.zip"> <button class="btn small-button">Download toy data</button> </a></p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <ol type="1">
-<li><p>Pull <code>fastmixture</code> image from <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHub</a> using the following command:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Terminal</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" data-filename="Terminal"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull albarema/fastmixture</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Make sure to pull the latest version.</p></li>
-<li><p>Download and unzip the toy data (you may move the files to any preferred folder on your laptop).</p></li>
-<li><p>What is the command you need to run the container? Do not forget to mount the data (using the flag <code>-v /path/toy:/path/mnt</code>). Before executing the software, verify that the data has been correctly mounted (e.g., running the <code>ls</code> command inside the container).</p></li>
-<li><p>Run <code>fastmixture</code> software using the command below. We will set <em>K</em> to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both <code>--bfile</code> and <code>--out</code> require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named <code>toy.data.*</code>; therefore, use <code>--bfile toy.data</code>.</p>
+<li><p>Pull <code>fastmixture</code> image from <a href="https://hub.docker.com/r/albarema/fastmixture">DockerHub</a> and save it locally as <em>fastmixture.sif</em>. Make sure to pull the latest version</p></li>
+<li><p>Download and unzip the toy data</p>
+<div style="display: flex; gap: 5px;">
+<a href="./data/toy.zip" download="toy.zip"> <button class="btn small-button">Download toy data</button> </a>
+</div></li>
+<li><p>Run a command to display the <code>fastmixture</code> version and enter the version number: <input class="webex-solveme nospaces regex" size="26" data-answer="[&quot;^(v[0-9])\\.[0-9]+\\.[0-9]+$&quot;]"></p></li>
+<li><p>Run <code>fastmixture</code> software using the command below. We will set <em>K</em> to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both <code>--bfile</code> and <code>--out</code> require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named <code>toy.data.*</code>; therefore, use <code>--bfile toy.data</code></p>
 <p>In <code>fastmixture</code>, the main arguments used in this exercise are:</p>
 <ul>
 <li><code>--K</code>: Specifies the number of ancestral components, representing the sources in the mixture model.</li>
@@ -732,249 +843,223 @@ Note
 <li><code>--bfile</code>: prefix for PLINK files (.bed, .bim, .fam).</li>
 <li><code>--out</code>: Prefix output name.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastmixture</span> <span class="at">--bfile</span> <span class="op">&lt;</span>input.prefix<span class="op">&gt;</span> --K 3 <span class="at">--threads</span> 4 <span class="at">--seed</span> 1 <span class="at">--out</span> <span class="op">&lt;</span>output.prefix<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p>Do you have the results in the folder on your local system? You should look for files named <code>toy.fast.K3.s1.{ext}</code>, where <code>{ext}=["Q", "P", "log"]</code>.</p></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">fastmixture</span> <span class="at">--bfile</span> <span class="op">&lt;</span>input.prefix<span class="op">&gt;</span> --K 3 <span class="at">--threads</span> 4 <span class="at">--seed</span> 1 <span class="at">--out</span> <span class="op">&lt;</span>output.prefix<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p>Do you have the results in the folder on your local system? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p></li>
 </ol>
+<p>You should look for files named <code>toy.fast.K3.s1.{ext}</code>, where <code>{ext}=["Q", "P", "log"]</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Hint</span>Solution
+<span class="screen-reader-only">Hint</span>Solution - Running a Docker image
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<ul>
-<li><strong>Docker</strong></li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull albarema/fastmixture  <span class="co"># Pull </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This solution assumes you’re running the container from the directory that contains the <code>toy</code> data folder:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Linux/Mac</strong></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull image </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull fastmixture.sif docker://albarema/fastmixture</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Unzip data</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> data.zip <span class="at">-d</span> data </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Check version </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec fastmixture.sif fastmixture <span class="at">--version</span> </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec fastmixture.sif fastmixture <span class="at">--bfile</span> data/toy.data <span class="at">--K</span> 3 <span class="at">--out</span> data/toy.fast <span class="at">--threads</span> 8</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="Linux/Mac"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/toy/:/data/ albarema/fastmixture</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">fastmixture</span> <span class="at">--bfile</span> data/toy.data <span class="at">--K</span> 3 <span class="at">--out</span> data/toy.fast <span class="at">--threads</span> 8 <span class="co"># run the command </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Windows</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-filename="Windows"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="va">${PWD}</span><span class="dt">\t</span>oy:/data albarema/fastmixture </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 2</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> C:\Users\YourName\toy:/data albarema/fastmixture</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">fastmixture</span> <span class="at">--bfile</span> data/toy.data <span class="at">--K</span> 3 <span class="at">--out</span> data/toy.fast <span class="at">--threads</span> 8 <span class="co"># run the command </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>Note</strong> When mounting the data, ensure that the path you provide actually exists. If you encounter an error indicating that the .bfile does not exist, it likely means the data was not mounted correctly. <em>Tip for Windows users</em>: The correct path might be <code>${PWD}\toy\toy</code> — double-check that the folder structure are accurate.</p>
+</div>
+</section>
+<section id="bonus-exercises" class="level3">
+<h3 class="anchored">Bonus exercises</h3>
+<p>You will get to test other containerised tools, for example:</p>
 <ul>
-<li><strong>Apptainer</strong> on HPC / local machine: on your local machine, you will need to modify lima.yml to make the current directory (<code>pwd</code>) writable. Alternatively, write the data out to /tmp/lima!</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://albarema/fastmixture</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run fastmixture_latest.sif fastmixture <span class="at">--version</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># on local machine (using LIMA)</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> toy <span class="co"># from data folder </span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull /tmp/lima/fastmixture_latest.sif docker:/albarema/fastmixture</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run /tmp/lima/fastmixture_latest.sif fastmixture <span class="at">--bfile</span> toy.data <span class="at">--K</span> 3 <span class="at">--out</span> toy.fast <span class="at">--threads</span> 8</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<section id="containers-bonus-exercises" class="level3">
-<h3 class="anchored">Containers bonus exercises</h3>
-<p>There are several repositories where you can find containerised bioinformatics tools:</p>
-<ul>
-<li><a href="https://hub.docker.com/">DockerHub</a></li>
-<li><a href="https://biocontainers.pro/">biocontainers</a></li>
-<li><a href="https://cloud.sylabs.io/">Cloud sylabs</a></li>
-<li><a href="https://singularityhub.github.io/library-api/#/?id=library-api">SingularityHub</a></li>
-<li><a href="https://depot.galaxyproject.org/singularity/">Galaxy-singularity</a></li>
-</ul>
-<p>If you want to run the first bonus exercise locally, use Docker. However, if you have access to an HPC platform, check the documentation to see if Singularity/Apptainer is installed; now would be a great time to give it a try. Don’t hesitate to ask for help if needed!</p>
-<p>In the first bonus exercise, you will get to test other containerised tools:</p>
-<ul>
+<li><a href="https://www.htslib.org/doc/samtools.html">samtools</a> (view and convert sam/bam/cram files)</li>
 <li><a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">BLAST</a> (local alignment search tool)</li>
-<li><a href="https://bowtie-bio.sourceforge.net/bowtie2/index.shtml">BOWTIE2</a> (sequencing reads aligner to reference)</li>
 </ul>
-<p>Alternatively, explore one of the container image repositories and select a tool that you use regularly. Once you have pulled an image, we recommend starting by running the <code>--help</code> command, as all software has one. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Mounting is key!
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Make sure to mount a directory when running a container. This ensures that any data generated will be saved to your host system. If you do not mount a directory and use the <code>--rm</code> command, all generated data will be lost once the container stops.</p>
-<ul>
-<li>Use <code>--rm</code> flag to automatically remove the container once it stops running to avoid cluttering your system with stopped containers.</li>
-<li>Use <code>--volume</code> to mount data into the container (e.g., <code>/data</code>), for example, your working directory if you are already located in a project-specific dir.</li>
-</ul>
-</div>
-</div>
+<p>Alternatively, explore one of the container image repositories and select a tool that you use regularly. Once you have pulled an image, we recommend starting by running the <code>--help</code> command, as all software has one. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software. Don’t hesitate to ask for help if needed!</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Bonus 1: Running other containers
+<span class="screen-reader-only">Tip</span>Bonus 1: samtools
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<section id="blast---build-a-blast-protein-database-from-zebrafish-protein-sequences." class="level2">
+<p>You can also pull and run a container from DockerHub. Let’s try to do so using the <code>biocontainers/bwa-mem2</code> container, choose the tag <code>v1.9-4-deb_cv1</code>. We will use samtools to view and convert BAM files. Once the image is saved in your wd, use the container to:</p>
+<ul>
+<li>Save image as <code>samtools_docker.sif</code></li>
+<li>Read a <code>.bam</code> file from an URL (https://github.com/roryk/tiny-test-data/raw/refs/heads/master/wgs/mt.sorted.bam)</li>
+<li>Use samtools to read the file and save it locally into BAM format (using the <code>-h</code> flag to ensure the header is included, and the <code>-O</code> to choose the BAM format as input)</li>
+<li>Save the output to a new file called <code>test01.bam</code></li>
+<li>Does your bam file look like this (see below)? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">198d4514-09bb-4f68-bdec-15f2699d3fb9</span>    163 chr1    630214  0   101M    630449  336 CAGTTCTACCGTACAACCCTAACATAACCATTCTTAATCTAACTATTTATATTATCCTAACTACTACCGCATTCCTACTACTCAACTTAAACTCCAGCACC   <span class="op">&lt;</span>@B<span class="pp">?</span>@AB@@B:@@A@CABCC@CAAAADACAABCCBAA<span class="pp">?</span>CCADACAACBAAAACAACCDBDBDABCAAC<span class="kw">;</span><span class="ex">CAABCCDABCABDCADBDCBDCBDD?ADCAB?</span>   NM:i:1  MD:Z:38T62  MC:Z:101M   AS:i:96 XS:i:96 XA:Z:chrM,+5044,101M,1<span class="kw">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hint</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>Check the <a href="https://www.htslib.org/doc/samtools-view.html">samtools documentation</a></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-h</span> <span class="op">&lt;</span>bamfile<span class="op">&gt;</span> -O bam </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use <code>samtools view</code> to check the first 1-2 lines of the file.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hint</span>Solution - samtools
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>You can find the image path: <a href="link to samtools">https://hub.docker.com/r/biocontainers/samtools</a>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull image as .sif</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull samtools_docker.sif docker://biocontainers/samtools:v1.9-4-deb_cv1</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Run samtools </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec samtools_docker.sif <span class="dt">\</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                samtools view <span class="dt">\</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">-h</span> https://github.com/roryk/tiny-test-data/raw/refs/heads/master/wgs/mt.sorted.bam <span class="dt">\</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">-O</span> bam <span class="op">&gt;</span> test01.bam</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Bonus 2: BLAST
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<section id="blast---build-a-blast-protein-database-from-zebrafish-protein-sequences." class="level2 callout-body-container callout-body">
 <h2 class="anchored" data-anchor-id="blast---build-a-blast-protein-database-from-zebrafish-protein-sequences.">BLAST - Build a BLAST protein database from zebrafish protein sequences.</h2>
 <p>Zebrafish is a widely used model organism in genetics. This small dataset will facilitate quick results, allowing us to focus on how to run different bioinformatics tools so that you can easily adapt the commands in future projects.</p>
-<p><strong>Docker</strong>: follow the steps in <em>Running BLAST</em>: https://biocontainers-edu.readthedocs.io/en/latest/running_example.html.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull biocontainers/blast:2.2.31</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run biocontainers/blast:2.2.31 blastp <span class="at">-help</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> zebrafish-ref</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 curl <span class="at">-O</span> ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRNA_Prot/zebrafish.1.protein.faa.gz</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 gunzip zebrafish.1.protein.faa.gz</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-v</span> <span class="kw">`</span><span class="bu">pwd</span><span class="kw">`</span>/zebrafish-ref/:/data/ biocontainers/blast:2.2.31 makeblastdb <span class="at">-in</span> zebrafish.1.protein.faa <span class="at">-dbtype</span> prot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Apptainer</strong>: You might need to mount data folders if you test the container on your own computer! Ask if you an in doubt!</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://biocontainers/blast:2.2.31</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run blast_2.2.31.sif blastp <span class="at">-help</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> zebrafish-ref</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run blast_2.2.31.sif curl <span class="at">-O</span> ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRNA_Prot/zebrafish.1.protein.faa.gz</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run gunzip zebrafish.1.protein.faa.gz</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run blast_2.2.31.sif makeblastdb <span class="at">-in</span> zebrafish.1.protein.faa <span class="at">-dbtype</span> prot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="bowtie2" class="level2">
-<h2 class="anchored" data-anchor-id="bowtie2">BOWTIE2</h2>
-<p><strong>Singularity</strong>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># download the image</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull images/bowtie2-2.5.4.sif https://depot.galaxyproject.org/singularity/bowtie2%3A2.5.4--he20e202_2</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run the image: singularity run &lt;PATH-TO-IMAGE&gt; &lt;YOUR COMMANDS&gt;</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> run images/bowtie2-2.5.4.sif bowtie2 <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol type="1">
+<li>Download a BLAST container</li>
+<li>Explore how to run BLAST tools</li>
+<li>Download a reference dataset (zebrafish proteins)</li>
+<li>Prepare it as a BLAST database</li>
+</ol>
 </section>
 </div>
 </div>
-</div>
-<p>Are you ready to build your own Docker image? Let’s get started by building a Jupyter Notebook container! We’ll share several helpful tips to guide you through the process effectively. You might not be familiar with all the concepts, but Google them if you’re uncertain.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Bonus 2: Building a Docker image and running your own container
+<span class="screen-reader-only">Hint</span>Solution - BLAST
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li>Create a Dockerfile in a project-specific dir (e.g., sandbox-debian-jupyter). We will add a command to clean up the package after installation, which is a common practice to reduce the image size.</li>
-</ol>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Dockerfile</strong></pre>
+<div>
+<div class="callout-hint">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://biocontainers/blast:2.2.31</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run blast_2.2.31.sif blastp <span class="at">-help</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> zebrafish-ref</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run blast_2.2.31.sif curl <span class="at">-O</span> ftp://ftp.ncbi.nih.gov/refseq/D_rerio/mRNA_Prot/zebrafish.1.protein.faa.gz</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run gunzip zebrafish.1.protein.faa.gz</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run blast_2.2.31.sif makeblastdb <span class="at">-in</span> zebrafish.1.protein.faa <span class="at">-dbtype</span> prot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" data-filename="Dockerfile"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">FROM</span> debian:stable </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">LABEL</span> maintainer=<span class="st">"Name Surname &lt;abd123@ku.dk&gt;"</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Update package list and install necessary packages</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> apt update <span class="dt">\</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt</span> install <span class="at">-y</span> jupyter-notebook <span class="dt">\</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>                      python3-matplotlib <span class="dt">\</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>                      python3-pandas <span class="dt">\</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>                      python3-numpy <span class="dt">\</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="ex">apt-get</span> clean <span class="dt">\</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&amp;&amp;</span> <span class="fu">rm</span> <span class="at">-rf</span> /var/lib/apt/lists/<span class="pp">*</span> <span class="co"># cleanup tmp files created by apt</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># You may consider adding a working directory</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /notebooks</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<ol start="2" type="1">
-<li><p>From the project-specific dir, build the Docker image using, for example, <code>docker build -t sandbox-debian-jupyter:1.0 .</code></p></li>
-<li><p>Testing the custom image. Let’s verify if the custom image functions as expected by running the following command:</p></li>
-</ol>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Terminal</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" data-filename="Terminal"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-p</span> 8888:8888 <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/root sandbox-debian-jupyter:1.0 jupyter-notebook</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Jupyter typically refuses to run as root or accept network connections by default. To address this, you need to either add <code>--ip=0.0.0.0 --allow-root</code> when starting Jupyter to the command above or uncomment the last line in the Dockerfile above (<code>CMD ["jupyter-notebook", "--ip=0.0.0.0", "--allow-root"]</code>). Test this before moving on!</p>
-<p><em>Alternatively, you can run the container with the flag <code>--user=$(id -u):$(id -g)</code> to ensure that files created in the container have matching user and group ownership with those on the host machine, preventing permission issues. However, this restricts the container from performing root-level operations.</em></p>
-<p>For broader usability and security, it is advisable to create a non-root user (e.g., jovyan) within the Docker image by adding user setup commands to the Dockerfile (see below). This approach makes the image more user-friendly and avoids file ownership conflicts.</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>Dockerfile2</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" data-filename="Dockerfile2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">##</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">## ----- ADD CONTENT FROM Dockerfile HERE ----- </span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co">## </span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a group &amp; user</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="ex">RUN</span> addgroup <span class="at">--gid</span> 1000 user <span class="kw">&amp;&amp;</span> <span class="dt">\</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">adduser</span> <span class="at">--uid</span> 1000 <span class="at">--gid</span> 1000 <span class="at">--gecos</span> <span class="st">""</span> <span class="at">--disabled-password</span> jovyan</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting active user </span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="ex">USER</span> jovyan</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co"># setting working directory </span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="ex">WORKDIR</span> /home/jovyan</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co"># let' automatically start Jupyter Notebook</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="ex">CMD</span> [<span class="st">"jupyter-notebook"</span>, <span class="st">"--ip=0.0.0.0"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+<span class="screen-reader-only">Tip</span>Bonus 3: Build your own container
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<ul>
-<li>Use <code>--rm</code> flag to automatically remove the container once it stops running</li>
-<li>Use <code>--volume</code> to mount data into the container (e.g.&nbsp;<code>/home/jovyan</code>)</li>
-<li>Use <code>--file</code> flag to test two Dockerfile versions (default: “PATH/Dockerfile”)</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> sandbox-debian-jupyter:2.0 sandbox-debian-jupyter <span class="at">-f</span> sandbox-debian-jupyter/Dockerfile2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<p>Now that we have fixed that problem, we will test A. using a port to launch a Jupyter Notebook (or RStudio server) and B. starting a bash shell interactively.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option A. Start jupyter-notebook or on the server </span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-p</span> 8888:8888 <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/home/jovyan sandbox-debian-jupyter:2.0 </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Option B. Start an interactive shell instead </span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-it</span> <span class="at">--rm</span> <span class="at">--volume</span><span class="op">=</span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/home/jovyan sandbox-debian-jupyter:2.0 /bin/bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If you make changes to the container (incl.&nbsp;installing software), you need to commit the changes to a new image (<code>docker commit</code>).</p>
+<p>You can build a container directly on genomeDK <a href="https://singularity-tutorial.github.io/03-building/">using apptainer</a>. Create a new project-specific dir, e.g.&nbsp;<em>jupyter-project</em>. The image should include jupyter-notebook, and the python libs, matplotlib, pandas and numpy.</p>
 </div>
 </div>
 </div>
 </section>
 </div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p>You will need to install a Linux virtual machine to be able to run Apptainer. Follow the instructions <a href="https://apptainer.org/docs/admin/main/installation.html#installation-on-windows-or-mac">here</a>.</p>
+<p>Once you are ready, click on GenomeDK to follow the exercises, but note that the commands must be adapted to run inside a virtual machine. Check the solutions below for an example of how the commands should be modified.</p>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hint</span>Solution - Running a Docker image
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<p>````.bash # on local machine (using LIMA)</p>
+<p>cd toy # from data folder</p>
+<p>apptainer pull /tmp/lima/fastmixture_latest.sif docker:/albarema/fastmixture apptainer run /tmp/lima/fastmixture_latest.sif fastmixture –bfile toy.data –K 3 –out toy.fast –threads 8 ```</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
 
-</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
 <script>
