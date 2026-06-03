@@ -571,24 +571,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="course-requirements">Course requirements</h2>
 <section id="please-read-before-course" class="level4">
 <h4 class="anchored" data-anchor-id="please-read-before-course"><span style="color: red;">PLEASE READ BEFORE COURSE!</span></h4>
-<div class="callout callout-style-default callout-important callout-titled" title="Required preparation">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Required preparation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You are expected to complete the required setup by installing Docker and creating an account on one of the Danish academic HPC platforms.</p>
-<ul>
-<li><a href="https://www.docker.com/products/docker-desktop/">Docker</a> - click on <code>Download Docker Desktop</code>.</li>
-</ul>
-<p><strong>Note for Windows users:</strong> Installing Docker Desktop requires administrative privileges on your computer. You will be prompted to enter your KU username and password during the installation process. Additionally, Docker Desktop depends on the Windows Subsystem for Linux (WSL), which will also need to be installed.</p>
-</div>
-</div>
-<p>Whether you need to install more software, depends on which option you choose to follow the course and run the exercises.</p>
+<p>Whether you need to install some software, depends on which option you choose to follow the course and run the exercises. We recommend creating an account on one of the Danish academic HPC platforms (UCloud or GenomeDK) but you could run all exercises locally (computer icon).</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset tool-tabs" data-group="setup">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="false" href=""><img src="images/ucloud.png" height="50"></a></li><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="true" href=""><img src="images/genomedk.png" height="50"></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href=""><img src="images/computer.png" height="50"></a></li></ul>
 <div class="tab-content tool-tabs" data-group="setup">
@@ -602,21 +585,38 @@ ul.task-list li input[type="checkbox"] {
 <a href="https://cloud.sdu.dk/app/projects/invite/5256d10e-d333-4289-8be2-9e6c95319cb2"> <button class="btn">Invite link to UCloud workspace</button> </a>
 </p>
 <ol start="3" type="1">
+<li>Install Docker or Apptainer to run the container exercises.</li>
+</ol>
+<ul>
+<li><a href="https://www.docker.com/products/docker-desktop/">Docker</a> - click on <code>Download Docker Desktop</code>.</li>
+<li><a href="https://apptainer.org/docs/admin/latest/installation.html">Apptainer</a></li>
+</ul>
+<ol start="4" type="1">
 <li>You’re all set! You will receive instructions on how to navigate through UCloud during the course.</li>
 </ol>
 </div>
 <div id="tabset-1-2" class="active tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>Create an account via this request form at <a href="https://console.genome.au.dk/user-requests/create" class="uri">https://console.genome.au.dk/user-requests/create</a> and select the <em>Open</em> zone. In the <em>Reason</em> field, write something like: <em>I am currently enrolled in a course called “HPC-pipes: Workflow Languages and Portable Environments for HPC”, organised by the National Project Health Data Science Sandbox.</em></p>
+<p><em>Optional (if you want to run docker commands locally)</em>: - <a href="https://www.docker.com/products/docker-desktop/">Docker</a> - click on <code>Download Docker Desktop</code>.</p>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>If you prefer to run the exercises on your personal laptop or a different server, please ensure you have the following software installed:</p>
+<p>One of the package managers:</p>
 <ul>
 <li><a href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html">conda</a> - miniconda or miniforge recommended. Here is the link to install miniforge: <a href="https://github.com/conda-forge/miniforge/" class="uri">https://github.com/conda-forge/miniforge/</a></li>
+<li>OR <a href="https://pixi.prefix.dev/latest/installation/">pixi</a></li>
+</ul>
+<p>One container software:</p>
+<ul>
+<li><a href="https://www.docker.com/products/docker-desktop/">Docker</a> - click on <code>Download Docker Desktop</code>.</li>
+<li>OR <a href="https://apptainer.org/docs/admin/main/installation.html#installation-on-windows-or-mac">Apptainer</a>. You will also need a Linux virtual machine.</li>
+</ul>
+<p>Both workflow mgmt systems:</p>
+<ul>
 <li><a href="https://snakemake.readthedocs.io/en/stable/getting_started/installation.html">snakemake</a> use conda for this!</li>
 <li><a href="https://www.nextflow.io/docs/latest/install.html">nextflow</a></li>
-<li><a href="https://apptainer.org/docs/admin/latest/installation.html">Apptainer</a>, formerly known as <a href="https://docs.sylabs.io/guides/3.0/user-guide/installation.html#">Singularity</a>.<br>
-</li>
 </ul>
+<p><strong>Note for Windows users:</strong> Installing Docker Desktop requires administrative privileges on your computer. You will be prompted to enter your KU username and password during the installation process. Additionally, Docker Desktop depends on the Windows Subsystem for Linux (WSL), which will also need to be installed.</p>
 </div>
 </div>
 </div>
@@ -689,7 +689,7 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <div class="hero-buttons">
-<p><a href="./pipes-ex-envs.qmd" class="btn-action btn btn-success btn-lg" role="button">Environments exercises</a> <a href="../workshop/pipes-ex-smk.html" class="btn-action-smk btn btn-info btn-lg" role="button">Snakemake I exercises</a></p>
+<p><a href="../workshop/pipes-ex-envs-conda.html" class="btn-action btn btn-success btn-lg" role="button">Conda exercises</a> <a href="../workshop/pipes-ex-envs-pixi.html" class="btn-action btn btn-success btn-lg" role="button">Pixi exercises</a> <a href="../workshop/pipes-ex-envs-containers.html" class="btn-action btn btn-success btn-lg" role="button">Apptainer exercises</a> <a href="../workshop/pipes-ex-envs-cont-docker.html" class="btn-action btn btn-success btn-lg" role="button">Docker exercises</a> <a href="../workshop/pipes-ex-smk.html" class="btn-action-smk btn btn-info btn-lg" role="button">Snakemake I exercises</a></p>
 </div>
 </section>
 <section id="day-2" class="level3">
@@ -749,7 +749,7 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <div class="hero-buttons">
-<p><a href="../workshop/pipes-ex-smk-self.html" class="btn-action-smk btn-action btn btn-success btn-lg" role="button">Snakemake II exercises</a> <a href="../workshop/pipes-ex-smk-fast.html" class="btn-action-smk btn-action btn btn-success btn-lg" role="button">Snakemake III exercises</a> <a href="../workshop/pipes-ex-nf.html" class="btn-action-smk btn-action btn btn-success btn-lg" role="button" style="background-color: #14b393ff !important">Nextflow I exercises</a></p>
+<p><a href="../workshop/pipes-ex-smk-self.html" class="btn-action-smk btn-action btn btn-success btn-lg" role="button">Snakemake advanced exercises</a> <a href="../workshop/pipes-ex-smk-fast.html" class="btn-action-smk btn-action btn btn-success btn-lg" role="button">Snakemake + envs exercises</a> <a href="../workshop/pipes-ex-nf.html" class="btn-action-smk btn-action btn btn-success btn-lg" role="button" style="background-color: #14b393ff !important">Nextflow exercises</a></p>
 </div>
 </section>
 <section id="download-the-slides" class="level3">
