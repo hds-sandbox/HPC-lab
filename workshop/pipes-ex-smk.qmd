@@ -76,13 +76,15 @@ cat("**G.3. What are the key features of workflow manager in computational resea
 
 In this section, we will be working with a tabulated metadata file, `samples_1kgp_test`, which contains information about the samples from the [1000 Genomes Project](https://www.internationalgenome.org/). Each row represents a sample, and the columns contain various attributes for that sample (ID, population, super population, and sex). The file is designed to be simple and small, making it easy to work with and manipulate across tasks. However, the specifics of the data aren’t the primary focus.
 
-:::{.callout-warning}
-# How to run snakemake on UCloud
+
+::: {.panel-tabset .tool-tabs}
+## <img src="images/ucloud.png" height="50"> 
 
 First, mount the following two drives, use the `setup.sh` initialization file, and ask for 2 CPUs so we can run things in parallel: 
 
-- `YourNameSurname#xxxx`: save your results/files here.  
-- `hpclab-workshop`: contains input files and scripts. You can read-only access from this directory (no write permissions). 
+- `hpcPipes/smk`: save your results/files here (create the new subdir).  
+- `hpclab-workshop`: contains input files and scripts. You can read-only access from this directory (no write permissions). The snakemake file is located at: `/work/HPCLab_workshop/rules/process_1kgp.smk`. 
+- Additional parameters - Initialization. Use a setup.sh script that contains snakemake software. You can also use ours, `shared/hpclab-workshop/setup.sh`
 
 Next, activate `snakemake` environment. 
 
@@ -91,10 +93,16 @@ conda deactivate
 # make sure no env is active!
 conda activate snakemake 
 ```
-:::
 
-:::{.callout-warning}
-# Are you running the exercises locally?
+## <img src="images/genomedk.png" height="50"> 
+
+Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
+
+The necessary files can be found in `smk-exercises`. The snakemake file is located at: `rules/process_1kgp.smk`.
+
+## <img src="images/computer.png" height="50"> 
+
+#### Are you running the exercises locally?
 Download the `Snakefile` and data required for this exercise using the links below if you are running things locally. 
 
 <div style="display: flex; gap: 10px;">
@@ -108,7 +116,6 @@ Download the `Snakefile` and data required for this exercise using the links bel
 </div>
 
 Create a folder named `data` in your working directory and move the input data (`samples_1kgp.tsv`) inside it. The Snakemake pipeline looks for the input in this location and will fail otherwise. If you prefer, you can instead update the pipeline to point to a different relative path. 
-
 :::
 
 We strongly recommend keeping the [Snakemake documentation](https://snakemake.readthedocs.io/en/stable/) open for reference and guidance.
@@ -117,21 +124,21 @@ We strongly recommend keeping the [Snakemake documentation](https://snakemake.re
 ::: {.webex-check .callout-exercise}
 # II - Exploring rule invocation in Snakemake
 
-In this exercise, we will explore how rules are invoked in a Snakemake workflow. The snakemake file is located at: `/work/HPCLab_workshop/rules/process_1kgp.smk`. Now follow these steps and answer the questions: 
+In this exercise, we will explore how rules are invoked in a Snakemake workflow. 
 
-1. Open the snakefile, named `process_1kgp.smk`, and try to understand every single line. If you request Snakemake to generate the file `results/all_female.txt`, **what tasks will be executed and in what sequence?**
-2. Open a terminal and navigate to your personal drive `cd /work/YourNameSurname#xxxx`. Create a project directory called, for example, `hpclab` and make it your working directory. You should save all the results here!
+1. Navigate to your working directory and create a new one, `smk` to save the input for these exercises. 
+2. Open the snakefile, named `process_1kgp.smk`, and try to understand every single line. If you request Snakemake to generate the file `results/all_female.txt`, **what tasks will be executed and in what sequence?**
 3. **Dry-run** the workflow: Check the number of jobs that will be executed.
 
    **Q.1. How many jobs will Snakemake run?** `r fitb(8)`
 
-4. Run the workflow from the directory `hpclab` (the one you just created on your personal drive). Use the name flag `--snakefile </path/to/snakefile>.smk --cores 1`, or the abbreviated format `-s </path/to/snakefile>.smk -c 1`. 
+4. Run the workflow from the directory `smk` (the one you just created on your personal drive). Use the name flag `--snakefile </path/to/snakefile>.smk --cores 1`, or the abbreviated format `-s </path/to/snakefile>.smk -c 1`. 
 5. Please verify that the output has been successfully generated and saved in your working directory (navigate through the project).
 
    **Q.2. Has Snakemake created a subdirectory that didn't previously exist? What is its name?** `r fitb("results")`
 
    **Q.3. How many files with the extension `*.tsv` can you find in that subdirectory?** `r fitb(6)`
-6. **Dry-run** the workflow again (from `hpclab`). 
+6. **Dry-run** the workflow again (from `smk`). 
 
    ```{r, results='asis', echo = FALSE}
    #| echo: false
@@ -168,22 +175,21 @@ In this exercise, we will explore how rules are invoked in a Snakemake workflow.
 
 ```{.bash}
 # 2. Create subdir 
-cd /work/AlbaRefoyoMartínez#0753/
-mkdir hpclab
-cd hpclab
+mkdir smk
+cd smk
 # 3. Dry run 
-snakemake -s /work/HPCLab_workshop/rules/process_1kgp.smk -n 
+snakemake -s <PATH/TO/rules/process_1kgp.smk> -n 
 # 4. Run the workflow 
-snakemake -s HPCLab_workshop/rules/process_1kgp.smk -c1 
+snakemake -s <PATH/TO/rules/process_1kgp.smk> -c1 
 # 5. Verify output 
 ls results/*
 # 6. Dry run 
-snakemake -s /work/HPCLab_workshop/rules/process_1kgp.smk -n 
+snakemake -s<PATH/TO/rules/process_1kgp.smk> -n 
 # 7. Remove file(s) starting with E and the all_female.txt
 rm results/E*.tsv results/all_female.txt
 # 8. Make a copy of the snakefile and remove the lines 
 mkdir rules 
-cp /work/HPCLab_workshop/rules/process_1kgp.smk rules/
+cp <PATH/TO/rules/process_1kgp.smk> rules/
 # 8. S5. rerun again with the <name_output>
 snakemake -s rules/process_1kgp.smk -c1 results/all_male.txt 
 # 9. Create rule 

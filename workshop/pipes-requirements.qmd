@@ -18,15 +18,7 @@ css: ./web.css
 #### <span style="color: red;">PLEASE READ BEFORE COURSE!</span>
 
 
-:::{.callout-important title="Required preparation"}
-You are expected to complete the required setup by installing Docker and creating an account on one of the Danish academic HPC platforms.  
-
-- [Docker](https://www.docker.com/products/docker-desktop/) - click on `Download Docker Desktop`.
-
-**Note for Windows users:** Installing Docker Desktop requires administrative privileges on your computer. You will be prompted to enter your KU username and password during the installation process. Additionally, Docker Desktop depends on the Windows Subsystem for Linux (WSL), which will also need to be installed.
-:::
-
-Whether you need to install more software, depends on which option you choose to follow the course and run the exercises. 
+Whether you need to install some software, depends on which option you choose to follow the course and run the exercises. We recommend creating an account on one of the Danish academic HPC platforms (UCloud or GenomeDK) but you could run all exercises locally (computer icon).  
 
 :::{.panel-tabset .tool-tabs group="setup"}
 ## <img src="images/ucloud.png" height="50"> 
@@ -41,24 +33,41 @@ If you have chosen UCloud, we provide with all necessary software pre-installed 
   </a>
 </p>
 
-3. You’re all set! You will receive instructions on how to navigate through UCloud during the course.
+3. Install Docker or Apptainer to run the container exercises. 
+  - [Docker](https://www.docker.com/products/docker-desktop/) - click on `Download Docker Desktop`.
+  - [Apptainer](https://apptainer.org/docs/admin/latest/installation.html)
+4. You’re all set! You will receive instructions on how to navigate through UCloud during the course.
 
 
 ## <img src="images/genomedk.png" height="50"> {.active}
 
-Create an account via this request form at <https://console.genome.au.dk/user-requests/create> and select the *Open* zone. In the *Reason* field, write something like: *I am currently enrolled in a course called “HPC-pipes: Workflow Languages and Portable Environments for HPC”, organised by the National Project Health Data Science Sandbox.*
+Create an account via this request form at <https://console.genome.au.dk/user-requests/create> and select the *Open* zone. In the *Reason* field, write something like: *I am currently enrolled in a course called “HPC-pipes: Workflow Languages and Portable Environments for HPC”, organised by the National Project Health Data Science Sandbox.* 
+
+*Optional (if you want to run docker commands locally)*: 
+- [Docker](https://www.docker.com/products/docker-desktop/) - click on `Download Docker Desktop`.
+
 
 ## <img src="images/computer.png" height="50"> 
 
 If you prefer to run the exercises on your personal laptop or a different server, please ensure you have the following software installed:
 
-- [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) - miniconda or miniforge recommended. Here is the link to install miniforge: <https://github.com/conda-forge/miniforge/>
+One of the package managers: 
+
+- [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) - miniconda or miniforge recommended. Here is the link to install miniforge: <https://github.com/conda-forge/miniforge/> 
+- OR [pixi](https://pixi.prefix.dev/latest/installation/) 
+
+One container software: 
+
+- [Docker](https://www.docker.com/products/docker-desktop/) - click on `Download Docker Desktop`.
+- OR [Apptainer](https://apptainer.org/docs/admin/main/installation.html#installation-on-windows-or-mac). You will also need a Linux virtual machine. 
+
+Both workflow mgmt systems: 
+
 - [snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) use conda for this!
 - [nextflow](https://www.nextflow.io/docs/latest/install.html)
-- [Apptainer](https://apptainer.org/docs/admin/latest/installation.html), formerly known as [Singularity](https://docs.sylabs.io/guides/3.0/user-guide/installation.html#).  
+
+**Note for Windows users:** Installing Docker Desktop requires administrative privileges on your computer. You will be prompted to enter your KU username and password during the installation process. Additionally, Docker Desktop depends on the Windows Subsystem for Linux (WSL), which will also need to be installed.
 :::
-
-
 
 ### Reading material (optional)
 
@@ -79,7 +88,10 @@ If you prefer to run the exercises on your personal laptop or a different server
 | 12:00	|	*Lunch break* | 15:15	|	Computations mgmt I - exercises |
 
 ::: {.hero-buttons}
-[Environments exercises](./pipes-ex-envs.qmd){.btn-action .btn .btn-success .btn-lg role="button"}
+[Conda exercises](./pipes-ex-envs-conda.qmd){.btn-action .btn .btn-success .btn-lg role="button"}
+[Pixi exercises](./pipes-ex-envs-pixi.qmd){.btn-action .btn .btn-success .btn-lg role="button"}
+[Apptainer exercises](./pipes-ex-envs-containers.qmd){.btn-action .btn .btn-success .btn-lg role="button"}
+[Docker exercises](./pipes-ex-envs-cont-docker.qmd){.btn-action .btn .btn-success .btn-lg role="button"}
 [Snakemake I exercises](./pipes-ex-smk.qmd){.btn-action-smk .btn .btn-info .btn-lg role="button"}
 ::: 
 
@@ -95,9 +107,9 @@ If you prefer to run the exercises on your personal laptop or a different server
 | 12:00	|	*Lunch break* | 15:30	|	Wrap up |
 
 ::: {.hero-buttons}
-[Snakemake II exercises](./pipes-ex-smk-self.qmd){.btn-action-smk .btn-action .btn .btn-success .btn-lg role="button"}
-[Snakemake III exercises](./pipes-ex-smk-fast.qmd){.btn-action-smk .btn-action .btn .btn-success .btn-lg role="button"}
-[Nextflow I exercises](./pipes-ex-nf.qmd){.btn-action-smk .btn-action .btn .btn-success .btn-lg role="button"  style="background-color: #14b393ff !important"}
+[Snakemake advanced exercises](./pipes-ex-smk-self.qmd){.btn-action-smk .btn-action .btn .btn-success .btn-lg role="button"}
+[Snakemake + envs exercises](./pipes-ex-smk-fast.qmd){.btn-action-smk .btn-action .btn .btn-success .btn-lg role="button"}
+[Nextflow exercises](./pipes-ex-nf.qmd){.btn-action-smk .btn-action .btn .btn-success .btn-lg role="button"  style="background-color: #14b393ff !important"}
 ::: 
 
 
