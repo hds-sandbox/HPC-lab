@@ -160,7 +160,7 @@ conda env export > env.yml
 
 ## <img src="images/genomedk.png" height="50"> 
 
-We will start by installing conda locally. 
+We will start by installing conda on your home directory. 
 
 ```{.bash}
 echo "Installing conda..."

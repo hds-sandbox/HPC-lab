@@ -146,45 +146,6 @@ div.callout-readme p{
 
 }
 
-// exercise actions 
-
-.hello-exercise {
-  padding-bottom: 0rem;
-}
-
-.hello-exercise-banner .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-  border: none;
-  border-bottom: 4px solid #39729E !important;
-  color: #39729E;
-  background-color: transparent;
-}
-
-.hello-exercise-banner .nav-pills button {
-  width: 125px;
-}
-
-.hello-exercise .tab-content {
-  border: none;
-  padding: 10px;
-  color: rgb(84, 85, 85);
-}
-
-.hello-exercise .tab-content p {
-  font-size: 1em;
-  margin-bottom: .5em;
-}
-
-.hello-exercise div.sourceCode {
-  background-color: white;
-  border: 1px solid #dee2e6;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-  color: #fff;
-  background-color: #ff7518;
-  border-radius: 0 !important;
-}
-
 // button actions exercises 
 
 .btn-action {
@@ -230,17 +191,19 @@ div.callout-readme p{
 }
 
 // tabs in panel tabset
-.tool-tabs .nav-tabs {
-  gap: 1rem;
+
+
+.panel-tabset *{
+  margin-bottom: 7px;
+  padding-bottom: 0px !important;
 }
 
-.tool-tabs .nav-tabs .nav-link {
-  border: none !important;
-  background: transparent !important;
+.tool-tabs .nav-tabs {
+  gap: 1.2rem;
 }
 
 .tool-tabs .nav-tabs .nav-link:hover {
-  border: 1px solid hsl(210, 4%, 82%) !important;
+  border: 1px solid hsl(210, 70%, 88%) !important;
   background: #ffffff !important;
   box-shadow: none !important;
   border-radius: 10px !important;
@@ -249,7 +212,7 @@ div.callout-readme p{
 }
 
 .tool-tabs .nav-tabs .nav-link.active {
-  border: 1px solid hsl(210, 4%, 82%) !important;
+  border: 2px solid hsl(210, 70%, 88%) !important;
   background: transparent !important;
   box-shadow: none !important;
   border-radius: 10px !important;

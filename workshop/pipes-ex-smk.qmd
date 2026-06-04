@@ -9,14 +9,8 @@ summary: intro to workflows
 css: ./web.css
 ---
 
-```{r, echo = FALSE, results='asis'}
-library(webexercises)
-
-knitr::opts_chunk$set(echo = FALSE)
-
-# Uncomment to change widget colours:
-style_widgets(incorrect = "red", correct = "green", highlight = "firebrick")
-
+```{r,include=FALSE, results='asis'}
+source("_setup.R")
 ```
 
 Put your learning to the test with what you’ve covered so far.
@@ -80,19 +74,19 @@ In this section, we will be working with a tabulated metadata file, `samples_1kg
 ::: {.panel-tabset .tool-tabs}
 ## <img src="images/ucloud.png" height="50"> 
 
-First, mount the following two drives, use the `setup.sh` initialization file, and ask for 2 CPUs so we can run things in parallel: 
+First, mount the following two drives, select an initialization file, and ask for 2 CPUs so we can run things in parallel: 
 
 - `hpcPipes/smk`: save your results/files here (create the new subdir).  
 - `hpclab-workshop`: contains input files and scripts. You can read-only access from this directory (no write permissions). The snakemake file is located at: `/work/HPCLab_workshop/rules/process_1kgp.smk`. 
-- Additional parameters - Initialization. Use a setup.sh script that contains snakemake software. You can also use ours, `shared/hpclab-workshop/setup.sh`
+- Additional parameters - Initialization. Use a setup.sh script that contains snakemake software. You can also use ours, `shared/hpclab-workshop/pipes/setup.sh`
 
 Next, activate `snakemake` environment. 
 
 ```{.bash}
-conda deactivate 
-# make sure no env is active!
 conda activate snakemake 
 ```
+
+Finally, navigate to your wd. 
 
 ## <img src="images/genomedk.png" height="50"> 
 
@@ -103,7 +97,7 @@ The necessary files can be found in `smk-exercises`. The snakemake file is locat
 ## <img src="images/computer.png" height="50"> 
 
 #### Are you running the exercises locally?
-Download the `Snakefile` and data required for this exercise using the links below if you are running things locally. 
+Download the `Snakefile` and data required for this exercise using the links below. Activate your environment where you have the software install.  
 
 <div style="display: flex; gap: 10px;">
   <a href="../develop/scripts/samples_1kgp_test.tsv" download="samples_1kgp.tsv">

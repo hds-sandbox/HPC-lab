@@ -20,7 +20,10 @@ css: ./web.css
 
 Whether you need to install some software, depends on which option you choose to follow the course and run the exercises. We recommend creating an account on one of the Danish academic HPC platforms (UCloud or GenomeDK) but you could run all exercises locally (computer icon).  
 
-:::{.panel-tabset .tool-tabs group="setup"}
+- **UCloud**: Recommended for users who need (or plan) to use this HPC platform, for those with limited experience with HPCs, and for anyone curious to explore how this platform works.
+- **GenomeDK**: Recommended **only** for users who already have experience working with HPC systems, clusters, or supercomputers. Familiarity with the Unix command line and queueing systems is expected.
+
+:::{.panel-tabset .tool-tabs group="setup" .compact}
 ## <img src="images/ucloud.png" height="50"> 
 If you have chosen UCloud, we provide with all necessary software pre-installed but you will need to follow these instructions to create an account and join our workspace `Sandbox_workshop`. You will need your institutional email to proceed. Unfortunately, this will not work for those without a university email.
 
@@ -33,18 +36,20 @@ If you have chosen UCloud, we provide with all necessary software pre-installed 
   </a>
 </p>
 
-3. Install Docker or Apptainer to run the container exercises. 
-  - [Docker](https://www.docker.com/products/docker-desktop/) - click on `Download Docker Desktop`.
-  - [Apptainer](https://apptainer.org/docs/admin/latest/installation.html)
+3. Install Docker to run the container exercises:
+    - [Docker](https://www.docker.com/products/docker-desktop/) - click on `Download Docker Desktop` (recommended).
 4. You’re all set! You will receive instructions on how to navigate through UCloud during the course.
 
 
 ## <img src="images/genomedk.png" height="50"> {.active}
 
-Create an account via this request form at <https://console.genome.au.dk/user-requests/create> and select the *Open* zone. In the *Reason* field, write something like: *I am currently enrolled in a course called “HPC-pipes: Workflow Languages and Portable Environments for HPC”, organised by the National Project Health Data Science Sandbox.* 
+If you have chosen GenomeDK, 
 
-*Optional (if you want to run docker commands locally)*: 
-- [Docker](https://www.docker.com/products/docker-desktop/) - click on `Download Docker Desktop`.
+1. Create an account via this request form at <https://console.genome.au.dk/user-requests/create> and select the *Open* zone. In the *Reason* field, write something like: *I am currently enrolled in a course called “HPC-pipes: Workflow Languages and Portable Environments for HPC”, organised by the National Project Health Data Science Sandbox.* 
+2. Write your genomedk username in this [excelsheet](https://alumni.sharepoint.com/:x:/s/UCPH_hds-Sandbox/IQBgecJdmclvS6MzAtej0agdARxfAVGFEgzBB2-uYZ7HG-s?e=2Ggnhq).
+3. *Optional (if you would like to run Docker commands locally; otherwise, you will work with Apptainer on GenomeDK)*: 
+    - [Docker](https://www.docker.com/products/docker-desktop/) - click on `Download Docker Desktop`.
+4. You’re all set! You will receive instructions on how to navigate through GenomeDK during the course.
 
 
 ## <img src="images/computer.png" height="50"> 
@@ -65,8 +70,11 @@ Both workflow mgmt systems:
 
 - [snakemake](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) use conda for this!
 - [nextflow](https://www.nextflow.io/docs/latest/install.html)
+:::
 
-**Note for Windows users:** Installing Docker Desktop requires administrative privileges on your computer. You will be prompted to enter your KU username and password during the installation process. Additionally, Docker Desktop depends on the Windows Subsystem for Linux (WSL), which will also need to be installed.
+:::{.callout-important}
+# Windows users
+**Note for Windows users:** Installing **Docker Desktop** requires administrative privileges on your computer. You will be prompted to enter your KU username and password during the installation process. Additionally, Docker Desktop depends on the Windows Subsystem for Linux (WSL), which will also need to be installed.
 :::
 
 ### Reading material (optional)

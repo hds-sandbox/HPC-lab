@@ -7,61 +7,49 @@ summary: workflows advance
 css: ./web.css
 ---
 
-::: {.hello-exercise .alt-background}
-:::{.content-block}
+```{r,include=FALSE, results='asis'}
+source("_setup.R")
+```
 
-:::{.hello-exercise-banner}
+::: {.panel-tabset .tool-tabs}
+## <img src="images/ucloud.png" height="50"> 
 
-<ul class="nav nav-pills" id="exercise-guide" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="ucloud-tab" data-bs-toggle="tab" data-bs-target="#ucloud" type="button" role="tab" aria-controls="ucloud" aria-selected="true">UCloud</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="locally-tab" data-bs-toggle="tab" data-bs-target="#locally" type="button" role="tab" aria-controls="locally" aria-selected="false">Local Setup</button>
-  </li>
-</ul>
-:::
+First, mount the following two drives and select an initialization file, and ask for 2 CPUs so we can run things in parallel: 
 
-
-<div class="tab-content" id="hello-exercise-tabcontent">
-
-<div class="tab-pane fade  show active" id="ucloud" role="tabpanel" aria-labelledby="ucloud-tab">
-
-Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the `setup.sh` initialization file, and ask for 2 CPUs so we can run things in parallel: 
-
-- `YourNameSurname#xxxx`: save your results/files here. 
-- `hpclab-workshop`: contains input files and scripts. You can read-only access from this directory (no write permissions). 
+- `hpcPipes`: from your personal drive.
+- `shared/hpclab-workshop`: contains input files and scripts. You can read-only access from this directory (no write permissions). 
+- Additional parameters - Initialization. Use a setup.sh script that contains snakemake software. You can also use ours, `shared/hpclab-workshop/pipes/setup.sh`
 
 Next, activate `snakemake` environment. 
 
 ```{.bash}
-# Make sure no other env is active!
 conda activate snakemake 
 ```
 
-Finally, navigate to your personal drive and use the project directory you created yesterday, `hpclab`, to create a new subdirectory `fastmixture` and save here all files from this exercise (Snakefile, config.yml, output file, etc.).
+Finally, navigate to your WD, `hpcPipes`, and to create a new subdirectory `fastmixture` and save here all files from this exercise (Snakefile, config.yml, output file, etc.).
 
-</div>
 
-<div class="tab-pane fade" id="locally" role="tabpanel" aria-labelledby="locally-tab">
+## <img src="images/genomedk.png" height="50"> 
 
-You can choose to run your tasks either locally or on an accessible HPC. Refer to the [Welcome page](./pipes-requirements.qmd) for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment, and download the data.  The solutions and suggestions below use full paths assuming you are working on UCloud and have followed the setup instructions. If you are running things locally, you will need to adjust these paths accordingly (e.g., `/work/hpclab` will most likely not be valid in your computer).
+1. Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
 
+2. The necessary files can be found in `smk-exercises`. The snakemake file is located at: `rules/process_1kgp.smk`.
+
+## <img src="images/computer.png" height="50"> 
+
+Download the environment YAML file and the data required for this exercise using the links below if you are running things locally.
+
+<div style="display: flex; gap: 10px;">
   <a href="./data/snakemake.yml" download="snakemake.yml">
     <button class="btn small-button">Download environment file</button>
   </a>
-    <a href="./data/fastmix.zip" download="fastmix.zip">
+
+  <a href="./data/fastmix.zip" download="fastmix.zip">
     <button class="btn small-button">Download data</button>
   </a>
-
-</div>
-
 </div>
 
 :::
-:::
-
-# Day 2 - Part 4 
 
 Create workflows that are both **reproducible** and easy to distribute. Use the `config.yml` file to define all variable values, and rely on separate environment YAML files for tasks that use software outside of the provided Conda environment.
 
@@ -73,7 +61,7 @@ In this exercise, you will run the software `fastmixture` as a Snakemake pipelin
 
 - File paths for UCloud users: 
   - Rscript: `/work/HPCLab_workshop/scripts/plotAdmixture.R`
-  - Input PLINK files: `/work/HPCLab_workshop/data/plink_sim/sim.small.*`
+  - Input PLINK files: `/work/HPCLab_workshop/pipes/data/plink_sim/sim.small.*`
 
 `fastmixture` is not pre-installed in the `snakemake` environment, and we don't want to include it for the purpose of this exercise. You will have to git clone the [GitHub repository](https://github.com/Rosemeis/fastmixture). There are two options on how to proceed:
 
@@ -176,7 +164,7 @@ rule ...:
 This is one possible solution. How does yours look? 
 
 ```{.yaml filename="config.yml"}
-PLINKPATH: "/work/HPCLab_workshop/data/plink_sim"
+PLINKPATH: "/work/HPCLab_workshop/pipes/data/plink_sim"
 FPREFIX: "sim.small"
 THREADS_FAST: 2  # Threads for fastmixture
 THREADS_R: 1            # Threads for R plotting
@@ -185,7 +173,7 @@ SEEDS:
   - 1
   - 2
   - 3    # Seed values
-PATH_SCRIPT: "/work/HPCLab_workshop/scripts"
+PATH_SCRIPT: "/work/HPCLab_workshop/pipes/scripts"
 ```
 
 ```{.python filename="Snakefile"}
