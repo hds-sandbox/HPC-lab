@@ -623,16 +623,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research?</strong>
-<div id="radio_CHUTZTBCPA" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CHUTZTBCPA" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_CHUTZTBCPA" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_CHUTZTBCPA" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_CHUTZTBCPA" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_UUEQSPMRLB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UUEQSPMRLB" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_UUEQSPMRLB" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_UUEQSPMRLB" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_UUEQSPMRLB" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 <strong>G.2.What is the primary drawback of using shell scripts for automating computations?</strong>
-<div id="radio_DSFKZDIJLC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DSFKZDIJLC" value="answer"> <span>Limited error handling and debugging capabilities</span></label><label><input type="radio" autocomplete="off" name="radio_DSFKZDIJLC" value=""> <span>Difficulty in integrating with notebooks</span></label><label><input type="radio" autocomplete="off" name="radio_DSFKZDIJLC" value=""> <span>Not compatible with all operating systems</span></label><label><input type="radio" autocomplete="off" name="radio_DSFKZDIJLC" value="answer"> <span>They re-run all the steps every time</span></label><label><input type="radio" autocomplete="off" name="radio_DSFKZDIJLC" value=""> <span>Insufficient support for parallel processing</span></label><label><input type="radio" autocomplete="off" name="radio_DSFKZDIJLC" value=""> <span>Complex and extensive coding for simple tasks</span></label>
+<div id="radio_YUKOIXJGIE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YUKOIXJGIE" value="answer"> <span>Limited error handling and debugging capabilities</span></label><label><input type="radio" autocomplete="off" name="radio_YUKOIXJGIE" value=""> <span>Difficulty in integrating with notebooks</span></label><label><input type="radio" autocomplete="off" name="radio_YUKOIXJGIE" value=""> <span>Not compatible with all operating systems</span></label><label><input type="radio" autocomplete="off" name="radio_YUKOIXJGIE" value="answer"> <span>They re-run all the steps every time</span></label><label><input type="radio" autocomplete="off" name="radio_YUKOIXJGIE" value=""> <span>Insufficient support for parallel processing</span></label><label><input type="radio" autocomplete="off" name="radio_YUKOIXJGIE" value=""> <span>Complex and extensive coding for simple tasks</span></label>
 </div>
 <strong>G.3. What are the key features of workflow manager in computational research?</strong> (Several possible solutions)
-<div id="radio_BBKQADOQQZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BBKQADOQQZ" value="answer"> <span>Executing tasks only when required</span></label><label><input type="radio" autocomplete="off" name="radio_BBKQADOQQZ" value="answer"> <span>Managing task dependencies</span></label><label><input type="radio" autocomplete="off" name="radio_BBKQADOQQZ" value="answer"> <span>Overseeing storage and resource allocation</span></label><label><input type="radio" autocomplete="off" name="radio_BBKQADOQQZ" value=""> <span>Providing intuitive graphical interfaces</span></label>
+<div id="radio_PBRNILOWFN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PBRNILOWFN" value="answer"> <span>Executing tasks only when required</span></label><label><input type="radio" autocomplete="off" name="radio_PBRNILOWFN" value="answer"> <span>Managing task dependencies</span></label><label><input type="radio" autocomplete="off" name="radio_PBRNILOWFN" value="answer"> <span>Overseeing storage and resource allocation</span></label><label><input type="radio" autocomplete="off" name="radio_PBRNILOWFN" value=""> <span>Providing intuitive graphical interfaces</span></label>
 </div>
 <p><strong>G.4. Workflow managers can run tasks (different) concurrently if there are no dependencies</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 <p><strong>G.5. A workflow manager can execute a single parallelized task on multiple nodes in a computing cluster</strong> (True or False) <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
@@ -661,19 +661,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Finally, navigate to your wd.</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node.</p>
-<p>The necessary files can be found in <code>smk-exercises</code>. The snakemake file is located at: <code>rules/process_1kgp.smk</code>.</p>
+<ol type="1">
+<li><p>Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node.</p></li>
+<li><p>The necessary files can be found in <code>smk-exercises</code>. The snakemake file is located at: <code>rules/process_1kgp.smk</code>.</p></li>
+</ol>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<section id="are-you-running-the-exercises-locally" class="level4">
-<h4 class="anchored" data-anchor-id="are-you-running-the-exercises-locally">Are you running the exercises locally?</h4>
-<p>Download the <code>Snakefile</code> and data required for this exercise using the links below. Activate your environment where you have the software install.</p>
+<p>Download the <code>Snakefile</code> and data required for this exercise using the links below to run the exercises locally. Activate your environment where you have the software install.</p>
 <div style="display: flex; gap: 10px;">
 <p><a href="../develop/scripts/samples_1kgp_test.tsv" download="samples_1kgp.tsv"> <button class="btn small-button">Download data input</button> </a></p>
 <p><a href="../develop/scripts/process_1kgp.smk" download="process_1kgp.smk"> <button class="btn small-button">Download Snakefile</button> </a></p>
 </div>
 <p>Create a folder named <code>data</code> in your working directory and move the input data (<code>samples_1kgp.tsv</code>) inside it. The Snakemake pipeline looks for the input in this location and will fail otherwise. If you prefer, you can instead update the pipeline to point to a different relative path.</p>
-</section>
 </div>
 </div>
 </div>
@@ -704,8 +703,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Q.3. How many files with the extension <code>*.tsv</code> can you find in that subdirectory?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;6&quot;]"></p></li>
 <li><p><strong>Dry-run</strong> the workflow again (from <code>smk</code>).</p>
 <p><strong>Q.4. Would Snakemake run any jobs based on the results of the dry-run?</strong></p>
-<div id="radio_DMJAWKUCFC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DMJAWKUCFC" value="answer"> <span><strong>No</strong>. There is nothing to be done. All requested files are present and up to date.</span></label><label><input type="radio" autocomplete="off" name="radio_DMJAWKUCFC" value=""> <span><strong>Yes</strong>. Reasons: input files updated by another job (all, combine, split_by_superpop) and output files have to be generated (combine, preprocess, split_by_superpop)</span></label>
+<div id="radio_MQYFEXEAZG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MQYFEXEAZG" value="answer"> <span><strong>No</strong>. There is nothing to be done. All requested files are present and up to date.</span></label><label><input type="radio" autocomplete="off" name="radio_MQYFEXEAZG" value=""> <span><strong>Yes</strong>. Reasons: input files updated by another job (all, combine, split_by_superpop) and output files have to be generated (combine, preprocess, split_by_superpop)</span></label>
 </div></li>
 <li><p>Remove files starting with <code>E</code> in your <code>results</code> folder (“EAS.tsv” and “EUR.tsv”) and <code>all_female.txt</code>. Then, dry-run once more.</p>
 <p><strong>Q.5. How many jobs will Snakemake run?</strong> <input class="webex-solveme nospaces" size="1" data-answer="[&quot;4&quot;]"></p></li>
