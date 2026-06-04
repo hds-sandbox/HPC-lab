@@ -63,6 +63,7 @@ website:
     - title: "Workshop"
       style: "docked"
       search: true
+      href: workshop/pipes-requirements.qmd
       contents:
         - section: "HPC Launch"
           contents: 

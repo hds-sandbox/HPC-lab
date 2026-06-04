@@ -662,7 +662,6 @@
     "text": "Course requirements\n\nPLEASE READ BEFORE COURSE!\nWhether you need to install some software, depends on which option you choose to follow the course and run the exercises. We recommend creating an account on one of the Danish academic HPC platforms (UCloud or GenomeDK) but you could run all exercises locally (computer icon).\n\nUCloud: Recommended for users who need (or plan) to use this HPC platform, for those with limited experience with HPCs, and for anyone curious to explore how this platform works.\nGenomeDK: Recommended only for users who already have experience working with HPC systems, clusters, or supercomputers. Familiarity with the Unix command line and queueing systems is expected.\n\n\n\n\n\nIf you have chosen UCloud, we provide with all necessary software pre-installed but you will need to follow these instructions to create an account and join our workspace Sandbox_workshop. You will need your institutional email to proceed. Unfortunately, this will not work for those without a university email.\n\nCreate an account on UCloud with your institution’s credentials\nUse the link below to join our workspace where you will find a setup environment1\n\n\n Invite link to UCloud workspace \n\n\nInstall Docker to run the container exercises:\n\nDocker - click on Download Docker Desktop (recommended).\n\nYou’re all set! You will receive instructions on how to navigate through UCloud during the course.\n\n\n\nIf you have chosen GenomeDK,\n\nCreate an account via this request form at https://console.genome.au.dk/user-requests/create and select the Open zone. In the Reason field, write something like: I am currently enrolled in a course called “HPC-pipes: Workflow Languages and Portable Environments for HPC”, organised by the National Project Health Data Science Sandbox.\nWrite your genomedk username in this excelsheet.\nOptional (if you would like to run Docker commands locally; otherwise, you will work with Apptainer on GenomeDK):\n\nDocker - click on Download Docker Desktop.\n\nYou’re all set! You will receive instructions on how to navigate through GenomeDK during the course.\n\n\n\nIf you prefer to run the exercises on your personal laptop or a different server, please ensure you have the following software installed:\nOne of the package managers:\n\nconda - miniconda or miniforge recommended. Here is the link to install miniforge: https://github.com/conda-forge/miniforge/\nOR pixi\n\nOne container software:\n\nDocker - click on Download Docker Desktop.\nOR Apptainer. You will also need a Linux virtual machine.\n\nBoth workflow mgmt systems:\n\nsnakemake use conda for this!\nnextflow\n\n\n\n\n\n\n\n\n\n\nWindows users\n\n\n\nNote for Windows users: Installing Docker Desktop requires administrative privileges on your computer. You will be prompted to enter your KU username and password during the installation process. Additionally, Docker Desktop depends on the Windows Subsystem for Linux (WSL), which will also need to be installed.\n\n\n\n\nReading material (optional)\n\nThe Turing way. It offers comprehensive guidance on reproducible research practices, including setting up computational environments and managing reproducible workflows.\nMölder, Felix, et al. “Sustainable data analysis with Snakemake.” F1000Research 10 (2021). Link to article. Best practices using Snakemake to develop your pipelines.\nCheck our content on HPC pipes.",
     "crumbs": [
       "Workshop",
-      "HPC Pipes",
       "Welcome to the HPC-Pipes workshop"
     ]
   },
@@ -674,7 +673,6 @@
     "text": "Agenda\n\nDay 1\n\n\n\n\n\n\n\n\n\nTime\nActivity\nTime\nActivity\n\n\n\n\n8:45\nMorning coffee (optional)\n\n\n\n\n9:00\nIntro to HPC & onboarding\n13:00\nSoftware mgmt II - containers\n\n\n9:45\nSoftware mgmt I - intro\n13:20\nSoftware mgmt II - docker, apptainer\n\n\n10:30\nCoffee break\n14:15\nCoffee break\n\n\n10:45\nSoftware mgmt I - conda envs\n14:30\nComputations mgmt I - smk structure\n\n\n12:00\nLunch break\n15:15\nComputations mgmt I - exercises\n\n\n\n\nConda exercises Pixi exercises Apptainer exercises Docker exercises Snakemake I exercises\n\n\n\nDay 2\n\n\n\n\n\n\n\n\n\nTime\nActivity\nTime\nActivity\n\n\n\n\n8:45\nMorning coffee (optional)\n\n\n\n\n9:00\nComputations mgmt II - smk dynamic config\n13:00\nComputations mgmt III - nf\n\n\n9:45\nComputations mgmt II - Ex. smk integration\n14:15\nCoffee break\n\n\n10:15\nCoffee break\n14:30\nComputations mgmt III - nf exercises\n\n\n10:30\nComputations mgmt II - Ex. smk implementation\n15:00\nBuild your own pipeline\n\n\n12:00\nLunch break\n15:30\nWrap up\n\n\n\n\nSnakemake advanced exercises Snakemake + envs exercises Nextflow exercises\n\n\n\nCourse material\n\n Download slides",
     "crumbs": [
       "Workshop",
-      "HPC Pipes",
       "Welcome to the HPC-Pipes workshop"
     ]
   },
@@ -686,7 +684,6 @@
     "text": "Discussion and feedback\nWe hope you enjoyed the workshop. As data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please, fill up the feedback form before you head out for the day 2.\n \n\n\n\n\n\n\n\nNice meeting you and we hope to see you again!\n\n\n\n\n\nAbout the National Sandbox project\nThe Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and can be used on a computing cluster! We work with both UCloud, GenomeDK and Computerome, the major Danish academic supercomputers.",
     "crumbs": [
       "Workshop",
-      "HPC Pipes",
       "Welcome to the HPC-Pipes workshop"
     ]
   },
@@ -698,7 +695,6 @@
     "text": "Footnotes\n\n\nlink activated a week before the workshop.↩︎\nlink activated on the day of the workshop.↩︎",
     "crumbs": [
       "Workshop",
-      "HPC Pipes",
       "Welcome to the HPC-Pipes workshop"
     ]
   },
