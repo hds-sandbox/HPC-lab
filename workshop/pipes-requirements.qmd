@@ -121,7 +121,7 @@ Both workflow mgmt systems:
 ::: 
 
 
-### Download the slides
+### Course material
 
 <p align="center">
   <a href="./hpcpipes-sandbox.zip" download>
