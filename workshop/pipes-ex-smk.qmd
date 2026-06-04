@@ -90,9 +90,17 @@ Finally, navigate to your wd.
 
 ## <img src="images/genomedk.png" height="50"> 
 
-1. Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
+1. Use the conda or pixi environment you have already created to run the exercises. 
 
-2. The necessary files can be found in `smk-exercises`. The snakemake file is located at: `rules/process_1kgp.smk`.
+2. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
+
+```.bash
+srun --account DeiC-KU-L65 -t 00:00:30 --pty bash
+```
+
+3. The necessary files can be found in `smk-exercises`. The snakemake file is located at: `rules/process_1kgp.smk`.
+
+4. `exit` the interactive job when you are done with the exercise! 
 
 ## <img src="images/computer.png" height="50"> 
 

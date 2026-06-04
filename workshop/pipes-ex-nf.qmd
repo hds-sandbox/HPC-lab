@@ -26,11 +26,24 @@ Then, select two optional parameters:
 - Interactive mode (true): to get access to a terminal and run the commands yourself.
 - Initialization: use the `/shared/HPCLab_workshop/hpc-pipes/setup.sh`. 
 
-Finally, navigate to your personal drive and use the project directory you created yesterday to save all the output files from the exercises!
+Finally, navigate to your wd, *hpcPipes*!
 
 ## <img src="images/genomedk.png" height="50"> 
 
-Install Nextflow. 
+1. Create a conda env with nextflow and activate the environment 
+```.bash
+conda create --name nf-env bioconda::nextflow
+source activate nf-env
+```
+
+You can also follow the [instructions](https://docs.seqera.io/nextflow/install#self-install) to self-install the package (which is usually recommended). 
+
+2. Remember to get an interactive session in SLURM and do not run any nextflow command on the login node. 
+```.bash
+srun --account DeiC-KU-L65 -t 00:00:30 --pty bash
+```
+3. `exit` the interactive job when you are done with the exercise! 
+
 
 ## <img src="images/computer.png" height="50"> 
 
@@ -69,7 +82,7 @@ Two nextflow examples for inspiration:
 
 ##### Preparation step 
 
-- **Directory setup**: Assuming you've followed the setup instructions and launched the Nextflow app by selecting `Open terminal`, create a new subdirectory inside `hpcPipes`—for example,`nf-pipes`, to store your pipeline and resulting outputs. Make sure it's set as your working directory (e.g. `cd hpcPipes/nf-pipes`). 
+- **Directory setup**: Assuming you've followed the setup instructions, create a new subdirectory inside `hpcPipes`—for example,`nf-pipes`, to store your pipeline and resulting outputs. Make sure it's set as your working directory (e.g. `cd hpcPipes/nf-pipes`). 
 
 - **File creation**: you will need to create two files for this exercise:
   - Open a new file named `step1.nf` and include the following line of code. The script below shows how to comment out lines as well:
@@ -93,7 +106,7 @@ This version is intentionally kept simple: it’s not yet generalized and doesn�
 ```{.bash filename="step1_wf.smk"}
 rule preprocess:
   input:
-    "/work/HPCLab_workshop/pipes/data/samples_EB.tsv"
+    "/PATH/TO/data/samples_EB.tsv"
   output:
     "results/samples_EB_cleaned.tsv"
   shell:
@@ -106,7 +119,7 @@ rule preprocess:
 In your Nextflow version:
 
 - Open the Nextflow script you just created, `step1.nf`, and make sure it mirrors the logic of the Snakemake version.
-- Set the `HOME` environment variable in your terminal to your project directory (e.g., `export HOME=/work/hpcPipes/nf-pipes`). 
+- Set the `HOME` environment variable in your terminal to your project directory (e.g., on UCloud `export HOME=/work/hpcPipes/nf-pipes`). 
 - Define pipeline parameters at the top of the script. These variables help make the workflow more reusable later on: 
   - Use `params.input_dir` to define the location of the input files, pointing to the shared input data directory (`/shared/HPCLab_workshop`).
   - Use `params.output_dir` to define where the results should be saved. Use your project directory for outputs (e.g., `${HOME}/results`).
@@ -114,7 +127,7 @@ In your Nextflow version:
   - Use `input`: to read samples_EB.tsv
   - Use `output`: to declare samples_EB_cleaned.tsv
   - Use `publishDir` to copy the output file to your results directory. `publishDir` makes your output files easier to locate by copying them to a defined location. It also ensures outputs are not buried in .nextflow folders.
-- Use a hardcoded path to the Python script for now: `/work/<YourPersonalDrive>/hpclab/scripts/preprocess.py`
+- Use a hardcoded path to the Python script for now: `/PATH/TO/hpcPipes/scripts/preprocess.py`
 - Use the `conda` profile to manage the software environment for your pipeline. Among other options, you can include the conda environment within a process itself or specify it from the command line using the `--with-conda` flag, or use a config file to define it. We recommend specifying it via the command line (`--with-conda`) and incorporating the environment within the process in the next exercise, once the pipeline is working.
 - Take a look inside `work` directory and explore some of the files (e.g. `.command.sh` and `.command.log`). Did Nextflow execute the command you expected? 
 - The structure of the pipeline should look like: 
@@ -198,6 +211,7 @@ It is very important to set HOME to a directory where you are working - your pro
 ### How to run this workflow?
 
 ```{.bash filename="Example 1"}
+# on UCloud, path is different for genomedk/local setup
 nextflow run step1.nf -with-conda /work/HPCLab_workshop/miniconda3/envs/snakemake
 ```
 
@@ -271,7 +285,7 @@ process PREPROCESS {
 
     script:
     """
-    python /work/<YourNameSurname>/hpclab/scripts/preprocess.py $input_samples samples_EB_cleaned.tsv
+    python /PATH/TO/hpcPipes/scripts/preprocess.py $input_samples samples_EB_cleaned.tsv
     """
 }
 
@@ -284,6 +298,7 @@ workflow {
 2. Command-line 
 
 ```{.bash filename="Option 1"}
+# on UCloud, path is different for genomedk/local setup.
 nextflow run step1.nf -with-conda /work/HPCLab_workshop/miniconda3/envs/snakemake
 ```
 :::
@@ -316,7 +331,7 @@ rule all:
 
 rule preprocess:
     input:
-        "/work/HPCLab_workshop/data/samples_{dataset}.tsv"
+        "/PATH/TO/data/samples_{dataset}.tsv"
     output:
         tsv="results/samples_{dataset}_cleaned.tsv"
     shell:
@@ -396,6 +411,8 @@ nextflow run step1.nf -c profile_conda.config
 :::{.callout-hint}
 # My Solution II 
 
+This solution has been run on UCloud, so /work/HPCLab_workshop/miniconda3/envs/snakemake would have to be changed to  /path/to/an/existing/env/directory. 
+
 ```{.bash filename="step1_flex.nf"}
 #!/usr/bin/env nextflow
 
@@ -451,7 +468,7 @@ rule all:
 
 rule preprocess:
     input:
-        "/work/HPCLab_workshop/data/samples_{dataset}.tsv"
+        "/PATH/TO/HPCLab_workshop/data/samples_{dataset}.tsv"
     output:
         tsv="results/samples_{dataset}_cleaned.tsv"
     shell:

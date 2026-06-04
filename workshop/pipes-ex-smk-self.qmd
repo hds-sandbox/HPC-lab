@@ -40,6 +40,14 @@ Finally, navigate to your wd.
 
 2. The necessary files can be found in `smk-exercises`. The snakemake file is located at: `rules/process_1kgp.smk`.
 
+3. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
+
+```.bash
+srun --account DeiC-KU-L65 -t 00:00:30 --pty bash
+```
+4. `exit` the interactive job when you are done with the exercise! 
+
+
 ## <img src="images/computer.png" height="50"> 
 
 Download the `Snakefile` and data required for this exercise using the links below if you are running things locally. Activate your environment where you have the software install. 
