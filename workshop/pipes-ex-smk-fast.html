@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-703624462c9310198f16965231dabed8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b61f6b691c9bb44af82dab945e91b8bc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-81e8bcade493de2668280996f2822cb0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-703624462c9310198f16965231dabed8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b61f6b691c9bb44af82dab945e91b8bc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -596,43 +596,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="hello-exercise alt-background">
-<div class="content-block">
-<div class="hello-exercise-banner">
-<ul class="nav nav-pills" id="exercise-guide" role="tablist">
-<li class="nav-item" role="presentation">
-<button class="nav-link active" id="ucloud-tab" data-bs-toggle="tab" data-bs-target="#ucloud" type="button" role="tab" aria-controls="ucloud" aria-selected="true">
-UCloud
-</button>
-</li>
-<li class="nav-item" role="presentation">
-<button class="nav-link" id="locally-tab" data-bs-toggle="tab" data-bs-target="#locally" type="button" role="tab" aria-controls="locally" aria-selected="false">
-Local Setup
-</button>
-</li>
-</ul>
-</div>
-<div id="hello-exercise-tabcontent" class="tab-content">
-<div id="ucloud" class="tab-pane fade show active" role="tabpanel" aria-labelledby="ucloud-tab">
-<p>Follow these steps to run the exercises on UCloud. First, mount the following two drives, use the <code>setup.sh</code> initialization file, and ask for 2 CPUs so we can run things in parallel:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset tool-tabs">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href=""><img src="images/ucloud.png" height="50"></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href=""><img src="images/genomedk.png" height="50"></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href=""><img src="images/computer.png" height="50"></a></li></ul>
+<div class="tab-content tool-tabs">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>First, mount the following two drives and select an initialization file, and ask for 2 CPUs so we can run things in parallel:</p>
 <ul>
-<li><code>YourNameSurname#xxxx</code>: save your results/files here.</li>
-<li><code>hpclab-workshop</code>: contains input files and scripts. You can read-only access from this directory (no write permissions).</li>
+<li><code>hpcPipes</code>: from your personal drive.</li>
+<li><code>shared/hpclab-workshop</code>: contains input files and scripts. You can read-only access from this directory (no write permissions).</li>
+<li>Additional parameters - Initialization. Use a setup.sh script that contains snakemake software. You can also use ours, <code>shared/hpclab-workshop/pipes/setup.sh</code></li>
 </ul>
 <p>Next, activate <code>snakemake</code> environment.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure no other env is active!</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snakemake </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Finally, navigate to your personal drive and use the project directory you created yesterday, <code>hpclab</code>, to create a new subdirectory <code>fastmixture</code> and save here all files from this exercise (Snakefile, config.yml, output file, etc.).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snakemake </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Finally, navigate to your WD, <code>hpcPipes</code>, and to create a new subdirectory <code>fastmixture</code> and save here all files from this exercise (Snakefile, config.yml, output file, etc.).</p>
 </div>
-<div id="locally" class="tab-pane fade" role="tabpanel" aria-labelledby="locally-tab">
-<p>You can choose to run your tasks either locally or on an accessible HPC. Refer to the <a href="../workshop/pipes-requirements.html">Welcome page</a> for the software you need to install. Next, create a new environment using the YAML file, activate the conda environment, and download the data. The solutions and suggestions below use full paths assuming you are working on UCloud and have followed the setup instructions. If you are running things locally, you will need to adjust these paths accordingly (e.g., <code>/work/hpclab</code> will most likely not be valid in your computer).</p>
-<p><a href="./data/snakemake.yml" download="snakemake.yml"> <button class="btn small-button">Download environment file</button> </a> <a href="./data/fastmix.zip" download="fastmix.zip"> <button class="btn small-button">Download data</button> </a></p>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<ol type="1">
+<li><p>Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node.</p></li>
+<li><p>The necessary files can be found in <code>smk-exercises</code>. The snakemake file is located at: <code>rules/process_1kgp.smk</code>.</p></li>
+</ol>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p>Download the environment YAML file and the data required for this exercise using the links below if you are running things locally.</p>
+<div style="display: flex; gap: 10px;">
+<p><a href="./data/snakemake.yml" download="snakemake.yml"> <button class="btn small-button">Download environment file</button> </a></p>
+<p><a href="./data/fastmix.zip" download="fastmix.zip"> <button class="btn small-button">Download data</button> </a></p>
 </div>
 </div>
 </div>
 </div>
-<section id="day-2---part-4" class="level1">
-<h1>Day 2 - Part 4</h1>
 <p>Create workflows that are both <strong>reproducible</strong> and easy to distribute. Use the <code>config.yml</code> file to define all variable values, and rely on separate environment YAML files for tasks that use software outside of the provided Conda environment.</p>
 <div class="callout callout-style-default callout-exercise callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
@@ -653,7 +645,7 @@ Local Setup
 <li>File paths for UCloud users:
 <ul>
 <li>Rscript: <code>/work/HPCLab_workshop/scripts/plotAdmixture.R</code></li>
-<li>Input PLINK files: <code>/work/HPCLab_workshop/data/plink_sim/sim.small.*</code></li>
+<li>Input PLINK files: <code>/work/HPCLab_workshop/pipes/data/plink_sim/sim.small.*</code></li>
 </ul></li>
 </ul>
 <p><code>fastmixture</code> is not pre-installed in the <code>snakemake</code> environment, and we don’t want to include it for the purpose of this exercise. You will have to git clone the <a href="https://github.com/Rosemeis/fastmixture">GitHub repository</a>. There are two options on how to proceed:</p>
@@ -772,7 +764,7 @@ Local Setup
 <div class="code-with-filename-file">
 <pre><strong>config.yml</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="config.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">PLINKPATH</span><span class="kw">:</span><span class="at"> </span><span class="st">"/work/HPCLab_workshop/data/plink_sim"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" data-filename="config.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">PLINKPATH</span><span class="kw">:</span><span class="at"> </span><span class="st">"/work/HPCLab_workshop/pipes/data/plink_sim"</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FPREFIX</span><span class="kw">:</span><span class="at"> </span><span class="st">"sim.small"</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">THREADS_FAST</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span><span class="co">  # Threads for fastmixture</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">THREADS_R</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span><span class="co">            # Threads for R plotting</span></span>
@@ -781,7 +773,7 @@ Local Setup
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="dv">1</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="dv">2</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="dv">3</span><span class="co">    # Seed values</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">PATH_SCRIPT</span><span class="kw">:</span><span class="at"> </span><span class="st">"/work/HPCLab_workshop/scripts"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">PATH_SCRIPT</span><span class="kw">:</span><span class="at"> </span><span class="st">"/work/HPCLab_workshop/pipes/scripts"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -904,7 +896,6 @@ Local Setup
 </div>
 
 
-</section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-copyright"><h2 class="anchored quarto-appendix-heading">Copyright</h2><div class="quarto-appendix-contents"><div>CC-BY-SA 4.0 license</div></div></section></div></main> <!-- /main -->
 <script>
