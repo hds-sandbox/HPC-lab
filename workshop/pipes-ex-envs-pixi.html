@@ -622,8 +622,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_FMHJNJPPRR" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FMHJNJPPRR" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_FMHJNJPPRR" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_FMHJNJPPRR" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_FMHJNJPPRR" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_ENOEZZPYAT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ENOEZZPYAT" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_ENOEZZPYAT" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_ENOEZZPYAT" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_ENOEZZPYAT" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -1031,7 +1031,7 @@ gpu
 <span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co"># empty for now</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Modify the configuration so that snakemake is included in the default environment and pytest is included in the development (dev) environment. Then, use Pixi commands to verify that both tools can be executed successfully. Try executing the different environments (e.g., checking the versions of the different tools) to confirm that each tool is only available in the correct environment.</p>
-<p>Get an interactive hell inside Pixi ro run all commands installed in either dev or default environemnt.</p>
+<p>Get an interactive shell inside Pixi ro run all commands installed in either dev or default environemnt.</p>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1071,19 +1071,21 @@ gpu
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> project2</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> project2 <span class="kw">;</span> <span class="bu">cd</span> project2</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init <span class="at">--channel</span> conda-forge <span class="at">--channel</span> bioconda</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add python pandas scikit-learn</span>
 <span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add pytorch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Make sure you edit the pixi.toml:</p>
+<p>Make sure you edit the pixi.toml to add the two different envs and declare the features you will be using for the multi-environment settings.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>pixi.toml</strong></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26" data-filename="pixi.toml"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[environments]</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">default</span> = { features = [] }</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gpu</span> = { features = <span class="pp">[</span><span class="st">"gpu"</span><span class="pp">]</span> }</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gpu</span> = { features = <span class="pp">[</span><span class="st">"gpu"</span><span class="pp">]</span> }</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[feature.gpu.dependencies]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="then-make-things-ready-for-the-gpu-env" class="level1">
 <h1>Then, make things ready for the GPU env:</h1>
@@ -1111,7 +1113,7 @@ gpu
 <div>
 <div class="callout-hint">
 <p>Below are several commands that can be used to install the required software. Some of them are alternative approaches that achieve the same result. If you are checking the solution, focus on using only the commands you need and make sure you understand how they differ.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> project2</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> project2<span class="kw">;</span> <span class="bu">cd</span> project2</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> pixi.toml </span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> project channel add bioconda</span>
