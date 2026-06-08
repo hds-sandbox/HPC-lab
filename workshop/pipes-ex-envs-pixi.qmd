@@ -43,9 +43,12 @@ For this exercise, you will need to submit two jobs using the Terminal app.
 
 First job:
 
-- Resources: 1 CPU and 1 hour
-- Mount `pipesOut` folder and double-check you have mounted the right directory (e.g. `ls`). Do not mount the full personal drive (e.g. YourName###1234). 
-- Once the job is running, make sure your working directory for all exercises is `/work/pipesOut`. 
+- Enter a job name (descriptive of the task, e.g.: pixi installation)
+- Job settings: selecting a 1 CPU standard node with 3GB memory.
+- Add folders to access while in this job 
+   - *IF* you have already run some of the conda exercises already, mount `pipesOut` folder.
+   - *Otherwise*, create a folder names, `pipesOut`, on your own drive, that you will use to save any output from the exercises. 
+- Once the job is running, make sure your working directory for all exercises is `/work/pipesOut` and that you have not mount the full personal drive (e.g. YourName###1234). 
 :::
 
 We will now install pixi and save it to your WD. 
@@ -71,8 +74,8 @@ source ~/.bashrc
 
 Now, `Stop application` and resubmit a new job:
 
-- Resources: 1 CPU and 1 hour
-- Mount pipesOut folder and double-check you have mounted the right directory (e.g. `ls`). Do not mount the full personal drive (e.g. YourName###1234)
+- Job settings: selecting a 1 CPU standard node with 3GB memory.
+- Mount `pipesOut` folder and double-check you have mounted the right directory (e.g. `ls`). Do not mount the full personal drive (e.g. YourName###1234)
 - Additional Parameters. Initialization: `/work/YourName#1234/pipesOut/setup_pixi.sh`
 - Make sure your working directory for all exercises is `/work/pipesOut`
 
