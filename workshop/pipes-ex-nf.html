@@ -616,7 +616,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>You will use the <code>Nextflow</code> app, version <code>24.10.5</code>. First, mount the two drives below, and ask for 2 CPUs so we can run things in parallel:</p>
 <ul>
-<li><code>hpcPipes</code>: from your personal drive and save your results/files here.<br>
+<li><code>pipesOut</code>: from your personal drive and save your results/files here.<br>
 </li>
 <li><code>/shared/HPCLab_workshop</code>: contains input files and scripts. You have read-only access from this directory (no write permissions).</li>
 </ul>
@@ -625,7 +625,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Interactive mode (true): to get access to a terminal and run the commands yourself.</li>
 <li>Initialization: use the <code>/shared/HPCLab_workshop/hpc-pipes/setup.sh</code>.</li>
 </ul>
-<p>Finally, navigate to your wd, <em>hpcPipes</em>!</p>
+<p>Finally, navigate to your wd, <em>pipesOut</em>!</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <ol type="1">
@@ -635,7 +635,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> activate nf-env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You can also follow the <a href="https://docs.seqera.io/nextflow/install#self-install">instructions</a> to self-install the package (which is usually recommended).</p>
 <ol start="2" type="1">
-<li><p>Navigate to the directory you created in your workspace to save all output.</p></li>
+<li><p>Navigate to the directory you created in your workspace to save all output (<code>pipesOut</code>).</p></li>
 <li><p>Remember to get an interactive session in SLURM and do not run any nextflow command on the login node.</p></li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--account</span> DeiC-KU-L65 <span class="at">-t</span> 00:00:30 <span class="at">--pty</span> bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -692,7 +692,7 @@ Tip
 <section id="preparation-step" class="level5">
 <h5 class="anchored" data-anchor-id="preparation-step">Preparation step</h5>
 <ul>
-<li><p><strong>Directory setup</strong>: Assuming you’ve followed the setup instructions, create a new subdirectory inside <code>hpcPipes</code>—for example,<code>nf-pipes</code>, to store your pipeline and resulting outputs. Make sure it’s set as your working directory (e.g.&nbsp;<code>cd hpcPipes/nf-pipes</code>).</p></li>
+<li><p><strong>Directory setup</strong>: Assuming you’ve followed the setup instructions, create a new subdirectory in your WD—for example,<code>nf-pipes</code>, to store your pipeline and resulting outputs. Make sure it’s set as your working directory (e.g.&nbsp;<code>cd nf-pipes</code>).</p></li>
 <li><p><strong>File creation</strong>: you will need to create two files for this exercise:</p>
 <ul>
 <li><p>Open a new file named <code>step1.nf</code> and include the following line of code. The script below shows how to comment out lines as well:</p>
@@ -733,7 +733,7 @@ Tip
 <p>In your Nextflow version:</p>
 <ul>
 <li><p>Open the Nextflow script you just created, <code>step1.nf</code>, and make sure it mirrors the logic of the Snakemake version.</p></li>
-<li><p>Set the <code>HOME</code> environment variable in your terminal to your project directory (e.g., on UCloud <code>export HOME=/work/hpcPipes/nf-pipes</code>).</p></li>
+<li><p>Set the <code>HOME</code> environment variable in your terminal to your project directory (e.g., on UCloud <code>export HOME=/work/pipesOut/nf-pipes</code>).</p></li>
 <li><p>Define pipeline parameters at the top of the script. These variables help make the workflow more reusable later on:</p>
 <ul>
 <li>Use <code>params.input_dir</code> to define the location of the input files, pointing to the shared input data directory (<code>/shared/HPCLab_workshop</code>).</li>
@@ -745,7 +745,7 @@ Tip
 <li>Use <code>output</code>: to declare samples_EB_cleaned.tsv</li>
 <li>Use <code>publishDir</code> to copy the output file to your results directory. <code>publishDir</code> makes your output files easier to locate by copying them to a defined location. It also ensures outputs are not buried in .nextflow folders.</li>
 </ul></li>
-<li><p>Use a hardcoded path to the Python script for now: <code>/PATH/TO/hpcPipes/scripts/preprocess.py</code></p></li>
+<li><p>Use a hardcoded path to the Python script for now: <code>/PATH/TO/scripts/preprocess.py</code></p></li>
 <li><p>Use the <code>conda</code> profile to manage the software environment for your pipeline. Among other options, you can include the conda environment within a process itself or specify it from the command line using the <code>--with-conda</code> flag, or use a config file to define it. We recommend specifying it via the command line (<code>--with-conda</code>) and incorporating the environment within the process in the next exercise, once the pipeline is working.</p></li>
 <li><p>Take a look inside <code>work</code> directory and explore some of the files (e.g.&nbsp;<code>.command.sh</code> and <code>.command.log</code>). Did Nextflow execute the command you expected?</p></li>
 <li><p>The structure of the pipeline should look like:</p>
@@ -970,7 +970,7 @@ Tip
 <span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    <span class="ex">script:</span></span>
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"""</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="st">    python /PATH/TO/hpcPipes/scripts/preprocess.py </span><span class="va">$input_samples</span><span class="st"> samples_EB_cleaned.tsv</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="st">    python /PATH/TO/pipesOut/scripts/preprocess.py </span><span class="va">$input_samples</span><span class="st"> samples_EB_cleaned.tsv</span></span>
 <span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span></span>
 <span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
 <span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>

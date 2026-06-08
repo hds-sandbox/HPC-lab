@@ -628,8 +628,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_MTURKDYVSN" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MTURKDYVSN" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_MTURKDYVSN" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_MTURKDYVSN" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_MTURKDYVSN" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_ZXDRBYGTKM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZXDRBYGTKM" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_ZXDRBYGTKM" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_ZXDRBYGTKM" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_ZXDRBYGTKM" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -648,12 +648,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Add folders to access while in this job (select your own drive!)
 <ul>
 <li>You need access to our shared folder so that you can get the correct software environment and other material for the exercises (shared/HPCLab_workshop).</li>
-<li>You need to create a folder called <code>hpcPipes</code> in your own drive, where you will save any output from the exercises. You won’t have writing permissions on our shared drive.</li>
+<li>You need to create a folder called <code>pipesOut</code> in your own drive, where you will save any output from the exercises. You won’t have writing permissions on our shared drive.</li>
 </ul></li>
 <li>Additional Parameters. Choose <code>shared/HPCLab_workshop/setup.sh</code> as the initialization file. Click on the Submit button (and wait!).</li>
 </ol>
 <ul>
-<li>Double-check that you have mounted the <code>hpcPipes</code> folder properly (e.g.&nbsp;<code>ls</code>) making sure you have not mounted your entire personal drive. Can you see directory with your name listed (e.g.&nbsp;NameSurname#XXXX)? Restart the job following the instructions.</li>
+<li>Double-check that you have mounted the <code>pipesOut</code> folder properly (e.g.&nbsp;<code>ls</code>) making sure you have not mounted your entire personal drive. Can you see directory with your name listed (e.g.&nbsp;NameSurname#XXXX)? Restart the job following the instructions.</li>
 <li>If your session gets disconnected while completing exercise, activate your the required environment, and navigate back to your working directory!</li>
 </ul>
 <p>Unsure which command to use? Refer to the official <a href="https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf">Conda cheat sheet</a> for guidance!</p>
@@ -742,17 +742,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-body-container callout-body">
 <div>
 <div class="webex-check callout-exercise">
-<p>Let’s prepare to build our own environment. First, make sure the <code>hpclab-env</code> environment is deactivated. Next, create a new directory by running <code>mkdir envs</code> in your hpcPipes folder. This directory will be used to save your environments.</p>
+<p>Let’s prepare to build our own environment. First, make sure the <code>hpclab-env</code> environment is deactivated. Next, create a new directory by running <code>mkdir envs</code> in your pipesOut folder. This directory will be used to save your environments.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-overflow-wrap code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Deactivate hpclab-env </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Navigate to the folder from your personal drive and create a new environment directory with the command mkdir envs</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /work/hpcPipes</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /work/pipesOut</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> envs </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Is the full path of your envs directory <code>/work/hpcPipes/envs</code>? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
+<p>Is the full path of your envs directory <code>/work/pipesOut/envs</code>? <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="">FALSE</option></select></p>
 <p>Since Miniconda is already pre-installed, you’re ready to create your first environment. Just follow these steps:</p>
 <ol type="1">
-<li>Create a new environment using <code>--prefix PATH</code> (for example, <code>/work/hpcPipes/envs/&lt;name-env&gt;</code>) and proceed yes (<code>y</code> or enter). N.B. You can either name or prefix your environment. We will be using the prefix as miniconda is installed in a directory where you do not have writing privileges.</li>
+<li>Create a new environment using <code>--prefix PATH</code> (for example, <code>/work/pipesOut/envs/&lt;name-env&gt;</code>) and proceed yes (<code>y</code> or enter). N.B. You can either name or prefix your environment. We will be using the prefix as miniconda is installed in a directory where you do not have writing privileges.</li>
 <li>Check the available environments. How many environments do you see? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;4&quot;]"></li>
 <li>Activate the environment</li>
 <li>Check which Python executable is being used (Hint: <code>which python</code>)? Does this executable belong to your conda environment?? <select class="webex-select"><option value="blank"></option><option value="">TRUE</option><option value="answer">FALSE</option></select></li>
@@ -861,7 +861,7 @@ channel_priority: strict
 auto_activate: false</code></pre>
 <p>Now, create an environment using a YAML file.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/DeiC-KU-L65/Workspaces/<span class="op">&lt;</span>username<span class="op">&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> hpcPipes/hpclab-env.yml </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> pipesOut/hpclab-env.yml </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-exercise callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1067,13 +1067,13 @@ short_version = version.split("+")[0]</code></pre>
 <div>
 <div class="callout-hint">
 <ol type="1">
-<li>The syntax to create a new environment is: <code>conda create --prefix /work/hpcPipes/envs/&lt;test-env&gt;</code> <code>conda create --name &lt;my-env&gt;</code></li>
+<li>The syntax to create a new environment is: <code>conda create --prefix /work/pipesOut/envs/&lt;test-env&gt;</code> <code>conda create --name &lt;my-env&gt;</code></li>
 <li>UCloud: There are 4 environments available: <code>base</code>, <code>hpclab-env</code>, <code>snakemake</code>, and the one you just created; genomedk: 3 envs, <code>base</code>, <code>hpclab-env</code> and the one you just created</li>
-<li>UCloud: <code>conda activate /work/hpcPipes/envs/&lt;test-env&gt;</code> or genomedk: <code>conda activate &lt;myenv&gt;</code></li>
+<li>UCloud: <code>conda activate /work/pipesOut/envs/&lt;test-env&gt;</code> or genomedk: <code>conda activate &lt;myenv&gt;</code></li>
 <li>The executable is located at <code>/usr/bin/python</code> in the system</li>
 <li>conda install bioconda::snakemake</li>
 <li>Snakemake is working!</li>
-<li>Yes, now it is in the bin of our env: <code>/work/hpcPipes/envs/&lt;test-env&gt;/bin/python</code> or <code>~/miniforge3/envs/test/bin/python</code></li>
+<li>Yes, now it is in the bin of our env: <code>/work/pipesOut/envs/&lt;test-env&gt;/bin/python</code> or <code>~/miniforge3/envs/test/bin/python</code></li>
 <li>It should be! <code>conda list python</code><br>
 </li>
 <li><code>conda search bowtie2</code>. Yes. Go to anaconda.org and search for “bowtie2” to confirm it is available through conda and which software channel it is provided from. You can find it available via the “bioconda” channel: https://anaconda.org/bioconda/bowtie2.</li>
@@ -1102,11 +1102,11 @@ short_version = version.split("+")[0]</code></pre>
 <div>
 <div class="callout-hint">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. UCloud </span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">--file</span> /work/HPCLab_workshop/data/test-env.yml <span class="at">--prefix</span> /work/hpcPipes/envs/test-env</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">--file</span> /work/HPCLab_workshop/data/test-env.yml <span class="at">--prefix</span> /work/pipesOut/envs/test-env</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># genomedk / local </span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">--file</span> test-env.yml</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. </span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate<span class="kw">;</span> <span class="ex">UCloud:</span> <span class="kw">`</span><span class="ex">conda</span> activate /work/hpcPipes/envs/test-env<span class="kw">`</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate<span class="kw">;</span> <span class="ex">UCloud:</span> <span class="kw">`</span><span class="ex">conda</span> activate /work/pipesOut/envs/test-env<span class="kw">`</span> </span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3.</span></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> list </span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. </span></span>
@@ -1115,7 +1115,7 @@ short_version = version.split("+")[0]</code></pre>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> update python </span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># OR conda list | grep python ; conda list python </span></span>
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. UCloud </span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">--prefix</span> /work/hpcPipes/envs/test-env </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env remove <span class="at">--prefix</span> /work/pipesOut/envs/test-env </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>

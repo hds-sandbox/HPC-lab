@@ -628,8 +628,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_DYUPEADUDE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DYUPEADUDE" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_DYUPEADUDE" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_DYUPEADUDE" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_DYUPEADUDE" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_AAVGPDAGKI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_AAVGPDAGKI" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_AAVGPDAGKI" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_AAVGPDAGKI" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_AAVGPDAGKI" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -654,8 +654,8 @@ Note
 <p>First job:</p>
 <ul>
 <li>Resources: 1 CPU and 1 hour</li>
-<li>Mount hpcPipes folder and double-check you have mounted the right directory (e.g.&nbsp;<code>ls</code>). Do not mount the full personal drive (e.g.&nbsp;YourName###1234).</li>
-<li>Once the job is running, make sure your working directory for all exercises is <code>/work/hpcPipes</code>.</li>
+<li>Mount <code>pipesOut</code> folder and double-check you have mounted the right directory (e.g.&nbsp;<code>ls</code>). Do not mount the full personal drive (e.g.&nbsp;YourName###1234).</li>
+<li>Once the job is running, make sure your working directory for all exercises is <code>/work/pipesOut</code>.</li>
 </ul>
 </div>
 </div>
@@ -665,7 +665,7 @@ Note
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Move pixi </span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /work/pixi</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> ~/.pixi/bin /work/hpcPipes/pixi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> ~/.pixi/bin /work/pipesOut/pixi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>After installation, create an initialization file to update your shell configuration whenever a new terminal session starts. This step is essential in UCloud environments, without it, Pixi will not be available once the running job is closed. Since the Pixi binary has been moved to a custom directory (which you will be mounting every time you start a new job), the initialization file ensures that its location is correctly added to your PATH each time a new session begins.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -673,16 +673,16 @@ Note
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-filename="setup_pixi.sh"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'export PATH="$PATH:/work/hpcpipes/pixi/bin""'</span><span class="op">&gt;&gt;</span> /home/ucloud/.bashrc</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'export PATH="$PATH:/work/pipesOut/pixi/bin""'</span><span class="op">&gt;&gt;</span> /home/ucloud/.bashrc</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now, <code>Stop application</code> and resubmit a new job:</p>
 <ul>
 <li>Resources: 1 CPU and 1 hour</li>
-<li>Mount hpcPipes folder and double-check you have mounted the right directory (e.g.&nbsp;<code>ls</code>). Do not mount the full personal drive (e.g.&nbsp;YourName###1234)</li>
-<li>Additional Parameters. Initialization: <code>/work/YourName#1234/hpcPipes/setup_pixi.sh</code></li>
-<li>Make sure your working directory for all exercises is <code>/work/hpcPipes</code></li>
+<li>Mount pipesOut folder and double-check you have mounted the right directory (e.g.&nbsp;<code>ls</code>). Do not mount the full personal drive (e.g.&nbsp;YourName###1234)</li>
+<li>Additional Parameters. Initialization: <code>/work/YourName#1234/pipesOut/setup_pixi.sh</code></li>
+<li>Make sure your working directory for all exercises is <code>/work/pipesOut</code></li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">

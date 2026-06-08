@@ -608,7 +608,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>First, mount the following two drives and select an initialization file, and ask for 2 CPUs so we can run things in parallel:</p>
 <ul>
-<li><code>hpcPipes</code>: from your personal drive.</li>
+<li><code>pipesOut</code>: from your personal drive.</li>
 <li><code>shared/hpclab-workshop</code>: contains input files and scripts. You can read-only access from this directory (no write permissions). Here are the paths you will need during the exercises:
 <ul>
 <li><code>/work/HPCLab_workshop/scripts/</code>: path to scripts</li>
@@ -618,12 +618,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Next, activate <code>snakemake</code> environment.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snakemake </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Finally, navigate to your WD, <code>hpcPipes</code>, and to create a new subdirectory <code>fastmixture</code> and save here all files from this exercise (Snakefile, config.yml, output file, etc.).</p>
+<p>Finally, navigate to your WD, <code>pipesOut</code>, and to create a new subdirectory <code>fastmixture</code> and save here all files from this exercise (Snakefile, config.yml, output file, etc.).</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <ol type="1">
 <li><p>Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node.</p></li>
-<li><p>The necessary files can be found in <code>hpcPipes</code>. The snakemake file is located at: <code>rules/process_1kgp.smk</code>.</p></li>
+<li><p>The necessary files can be found in <code>pipes</code>. The snakemake file is located at: <code>rules/process_1kgp.smk</code>.</p></li>
 <li><p>Remember to get an interactive session in SLURM and do not run any snakemake command on the login node.</p></li>
 <li><p>Save all the output in the directory you created for this purpose.</p></li>
 </ol>
