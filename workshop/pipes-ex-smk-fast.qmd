@@ -17,7 +17,9 @@ source("_setup.R")
 First, mount the following two drives and select an initialization file, and ask for 2 CPUs so we can run things in parallel: 
 
 - `hpcPipes`: from your personal drive.
-- `shared/hpclab-workshop`: contains input files and scripts. You can read-only access from this directory (no write permissions). 
+- `shared/hpclab-workshop`: contains input files and scripts. You can read-only access from this directory (no write permissions). Here are the paths you will need during the exercises:
+    - `/work/HPCLab_workshop/scripts/`: path to scripts 
+    - `/work/HPCLab_workshop/pipes/data`: path to plink simulated data
 - Additional parameters - Initialization. Use a setup.sh script that contains snakemake software. You can also use ours, `shared/hpclab-workshop/pipes/setup.sh`
 
 Next, activate `snakemake` environment. 
@@ -33,9 +35,11 @@ Finally, navigate to your WD, `hpcPipes`, and to create a new subdirectory `fast
 
 1. Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
 
-2. The necessary files can be found in `smk-exercises`. The snakemake file is located at: `hpcPipes/rules/process_1kgp.smk`.
+2. The necessary files can be found in `hpcPipes`. The snakemake file is located at: `rules/process_1kgp.smk`.
 
 3. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
+
+4. Save all the output in the directory you created for this purpose. 
 
 ```.bash
 srun --account DeiC-KU-L65 -t 00:00:30 --pty bash
@@ -66,9 +70,9 @@ Create workflows that are both **reproducible** and easy to distribute. Use the 
 
 In this exercise, you will run the software `fastmixture` as a Snakemake pipeline by converting the following bash script. Pay attention to the prefix for input and output files and the specified number of cores. 
 
-- File paths for UCloud users: 
-  - Rscript: `/work/HPCLab_workshop/scripts/plotAdmixture.R`
-  - Input PLINK files: `/work/HPCLab_workshop/pipes/data/plink_sim/sim.small.*`
+- File paths: 
+  - Rscript: `/PATH/TO/scripts/plotAdmixture.R`
+  - Input PLINK files: `/PATH/TO/plink_sim/sim.small.*`
 
 `fastmixture` is not pre-installed in the `snakemake` environment, and we don't want to include it for the purpose of this exercise. You will have to git clone the [GitHub repository](https://github.com/Rosemeis/fastmixture). There are two options on how to proceed:
 
@@ -171,7 +175,7 @@ rule ...:
 This is one possible solution. How does yours look? 
 
 ```{.yaml filename="config.yml"}
-PLINKPATH: "/work/HPCLab_workshop/pipes/data/plink_sim"
+PLINKPATH: "/PATH/TO/data/plink_sim"
 FPREFIX: "sim.small"
 THREADS_FAST: 2  # Threads for fastmixture
 THREADS_R: 1            # Threads for R plotting
@@ -180,7 +184,7 @@ SEEDS:
   - 1
   - 2
   - 3    # Seed values
-PATH_SCRIPT: "/work/HPCLab_workshop/pipes/scripts"
+PATH_SCRIPT: "/PATH TO/scripts"
 ```
 
 ```{.python filename="Snakefile"}

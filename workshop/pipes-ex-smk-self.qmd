@@ -20,6 +20,7 @@ First, mount the following two drives and select an initialization file, and ask
 
 - `hpcPipes`: from your personal drive. Save your results/files here.  
 - `shared/hpclab-workshop`: contains input files and scripts. You can read-only access from this directory (no write permissions). 
+    - `/work/HPCLab_workshop/pipes/data`: data input files 
 - Additional parameters - Initialization. Use a setup.sh script that contains snakemake software. You can also use ours, `shared/hpclab-workshop/pipes/setup.sh`
 
 Launch the Coder application (by selecting `Open interface`). 
@@ -38,7 +39,7 @@ Finally, navigate to your wd.
 
 1. Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
 
-2. The necessary files can be found in `smk-exercises`. The snakemake file is located at: `rules/process_1kgp.smk`.
+2. The necessary files can be found in `hpcPipes`. The snakemake file is located at: `rules/process_1kgp.smk`.
 
 3. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
 
@@ -73,7 +74,7 @@ If you need help, try to find answers to your questions by consulting the [Snake
 
 It's time to create your own pipeline and experiment with its different components! 
 
-In this section, we will be working with a tabulated metadata file, `samples_EB.tsv`, which documents samples from a project on bearded seals (sp. *Erignathus barbatus*). Each row represents a sample, and the columns contain various attributes for that sample. The file is designed to be simple and small, making it easy to work with and manipulate across tasks. However, the specifics of the data aren’t the primary focus.
+In this section, we will be working with a tabulated metadata file, `data/samples_EB.tsv`, which documents samples from a project on bearded seals (sp. *Erignathus barbatus*). Each row represents a sample, and the columns contain various attributes for that sample. The file is designed to be simple and small, making it easy to work with and manipulate across tasks. However, the specifics of the data aren’t the primary focus.
 
 :::{.callout-note collapse="true"}
 # What information is available in the metadata columns?
@@ -167,7 +168,7 @@ Let's define a very simple workflow of one task (S.1). With `step1_wf.smk` open,
 - Name of the rule: `preprocess`  
 - **Avoid using wildcards for now**
 - Define inputs and outputs:
-  - Input: metadata file ('/work/HPCLab_workshop/pipes/data/samples_EB.tsv')
+  - Input: metadata file ('data/samples_EB.tsv')
   - Output: preprocessed file ('results/samples_EB_cleaned.tsv')
 - Use the `shell` directive to run a Python script that removes samples with missing values (NA)
 
@@ -182,8 +183,8 @@ rule firstrule:
 Your rule should replicate the behavior of the bash script shown below.
 
 ```{.bash filename="Terminal"}
-INFILE="/work/HPCLab_workshop/pipes/data/samples_EB.tsv"
-OUTPUT="/work/hpcPipes/results_eb/samples_EB_cleaned.tsv"
+INFILE="data/samples_EB.tsv"
+OUTPUT="results_eb/samples_EB_cleaned.tsv"
 
 # This is what the pipeline's task is:
 python scripts/preprocess.py $INFILE $OUTFILE
@@ -210,7 +211,7 @@ Did the pipeline create the expected output file in the `results` folder?  `r to
 ```{.python filename="step1_wf.smk"}
 rule preprocess:
   input:
-    "/work/HPCLab_workshop/data/samples_EB.tsv"
+    "PATH/TO/data/samples_EB.tsv"
   output:
     "results/samples_EB_cleaned.tsv"
   shell:
@@ -401,14 +402,14 @@ step1_preprocess        1
 total                   2
 
 rule step1_preprocess:
-    input: /work/HPCLab_workshop/pipes/data/samples_EB.tsv
+    input: /PATH/TO/data/samples_EB.tsv
     output: results/samples_EB_cleaned.tsv
     jobid: 1
     reason: Missing output files: results/samples_EB_cleaned.tsv
     wildcards: dataset=EB
     resources: tmpdir=<TBD>
 
-        python scripts/preprocess.py /work/HPCLab_workshop/pipes/data/samples_EB.tsv results/samples_EB_cleaned.tsv
+        python scripts/preprocess.py </PATH/TO/data/samples_EB.tsv> results/samples_EB_cleaned.tsv
         
 
 rule step1_all:

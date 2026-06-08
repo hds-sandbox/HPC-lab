@@ -38,11 +38,13 @@ source activate nf-env
 
 You can also follow the [instructions](https://docs.seqera.io/nextflow/install#self-install) to self-install the package (which is usually recommended). 
 
-2. Remember to get an interactive session in SLURM and do not run any nextflow command on the login node. 
+2. Navigate to the directory you created in your workspace to save all output. 
+
+3. Remember to get an interactive session in SLURM and do not run any nextflow command on the login node. 
 ```.bash
 srun --account DeiC-KU-L65 -t 00:00:30 --pty bash
 ```
-3. `exit` the interactive job when you are done with the exercise! 
+4. `exit` the interactive job when you are done with the exercise! 
 
 
 ## <img src="images/computer.png" height="50"> 
