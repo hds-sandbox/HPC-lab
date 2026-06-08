@@ -609,7 +609,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>First, mount the following two drives and select an initialization file, and ask for 2 CPUs so we can run things in parallel:</p>
 <ul>
 <li><code>hpcPipes</code>: from your personal drive.</li>
-<li><code>shared/hpclab-workshop</code>: contains input files and scripts. You can read-only access from this directory (no write permissions).</li>
+<li><code>shared/hpclab-workshop</code>: contains input files and scripts. You can read-only access from this directory (no write permissions). Here are the paths you will need during the exercises:
+<ul>
+<li><code>/work/HPCLab_workshop/scripts/</code>: path to scripts</li>
+<li><code>/work/HPCLab_workshop/pipes/data</code>: path to plink simulated data</li>
+</ul></li>
 <li>Additional parameters - Initialization. Use a setup.sh script that contains snakemake software. You can also use ours, <code>shared/hpclab-workshop/pipes/setup.sh</code></li>
 </ul>
 <p>Next, activate <code>snakemake</code> environment.</p>
@@ -619,8 +623,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <ol type="1">
 <li><p>Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node.</p></li>
-<li><p>The necessary files can be found in <code>smk-exercises</code>. The snakemake file is located at: <code>hpcPipes/rules/process_1kgp.smk</code>.</p></li>
+<li><p>The necessary files can be found in <code>hpcPipes</code>. The snakemake file is located at: <code>rules/process_1kgp.smk</code>.</p></li>
 <li><p>Remember to get an interactive session in SLURM and do not run any snakemake command on the login node.</p></li>
+<li><p>Save all the output in the directory you created for this purpose.</p></li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--account</span> DeiC-KU-L65 <span class="at">-t</span> 00:00:30 <span class="at">--pty</span> bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="4" type="1">
@@ -653,10 +658,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="callout-exercise">
 <p>In this exercise, you will run the software <code>fastmixture</code> as a Snakemake pipeline by converting the following bash script. Pay attention to the prefix for input and output files and the specified number of cores.</p>
 <ul>
-<li>File paths for UCloud users:
+<li>File paths:
 <ul>
-<li>Rscript: <code>/work/HPCLab_workshop/scripts/plotAdmixture.R</code></li>
-<li>Input PLINK files: <code>/work/HPCLab_workshop/pipes/data/plink_sim/sim.small.*</code></li>
+<li>Rscript: <code>/PATH/TO/scripts/plotAdmixture.R</code></li>
+<li>Input PLINK files: <code>/PATH/TO/plink_sim/sim.small.*</code></li>
 </ul></li>
 </ul>
 <p><code>fastmixture</code> is not pre-installed in the <code>snakemake</code> environment, and we don’t want to include it for the purpose of this exercise. You will have to git clone the <a href="https://github.com/Rosemeis/fastmixture">GitHub repository</a>. There are two options on how to proceed:</p>
@@ -775,7 +780,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-with-filename-file">
 <pre><strong>config.yml</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="config.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">PLINKPATH</span><span class="kw">:</span><span class="at"> </span><span class="st">"/work/HPCLab_workshop/pipes/data/plink_sim"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-filename="config.yml"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">PLINKPATH</span><span class="kw">:</span><span class="at"> </span><span class="st">"/PATH/TO/data/plink_sim"</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">FPREFIX</span><span class="kw">:</span><span class="at"> </span><span class="st">"sim.small"</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">THREADS_FAST</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span><span class="co">  # Threads for fastmixture</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">THREADS_R</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span><span class="co">            # Threads for R plotting</span></span>
@@ -784,7 +789,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="dv">1</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="dv">2</span></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="dv">3</span><span class="co">    # Seed values</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">PATH_SCRIPT</span><span class="kw">:</span><span class="at"> </span><span class="st">"/work/HPCLab_workshop/pipes/scripts"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">PATH_SCRIPT</span><span class="kw">:</span><span class="at"> </span><span class="st">"/PATH TO/scripts"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
