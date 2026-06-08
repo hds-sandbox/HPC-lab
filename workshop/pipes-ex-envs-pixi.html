@@ -622,8 +622,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_ENOEZZPYAT" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ENOEZZPYAT" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_ENOEZZPYAT" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_ENOEZZPYAT" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_ENOEZZPYAT" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_MDEISUQHAW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MDEISUQHAW" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_MDEISUQHAW" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_MDEISUQHAW" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_MDEISUQHAW" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -970,7 +970,7 @@ Important
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -979,7 +979,7 @@ Important
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>So far, we have created a single environment containing all required software. In practice, projects often require multiple environments for different purposes.</p>
 <p>For example:</p>
@@ -990,10 +990,10 @@ Important
 <li>A <strong>GPU</strong> environment containing libraries that require GPU support.</li>
 <li>A <strong>CPU</strong> environment that can run on systems without GPUs.</li>
 </ul>
-<p>Pixi allows multiple environments to coexist within the same project while sharing dependencies whenever possible. Choose the challenge below that best matches your own research needs. Create a new directory, for example, <em>project2</em>, for the new environment.</p>
+<p>Pixi allows multiple environments to coexist within the same project while sharing dependencies whenever possible. <strong>Choose the challenge below that best matches your own research needs</strong>. Create a new directory, for example, <em>project2</em>, for the new environment.</p>
 <section id="challenge-1-cpu-gpu-environments" class="level3">
 <h3 class="anchored" data-anchor-id="challenge-1-cpu-gpu-environments">Challenge 1: CPU &amp; GPU environments</h3>
-<p>Many machine learning projects need to support both systems with GPUs and systems without GPUs.</p>
+<p>Many machine learning projects need to support both systems with GPUs and systems without GPUs. To support this, you can define multiple environments within a single Pixi project, where each environment installs only the dependencies it needs.</p>
 <p>A possible setup could look like:</p>
 <pre class="text"><code>default (CPU)
 ├── python
@@ -1006,32 +1006,8 @@ gpu
 ├── pandas
 ├── scikit-learn
 └── pytorch-cuda</code></pre>
-<p>This approach allows the same project to run on a laptop, HPC cluster, or cloud system while only installing the software required for the available hardware. Could you build a pixi environment with that setup?</p>
-</section>
-<section id="challenge-2-default-testing-environments" class="level3">
-<h3 class="anchored" data-anchor-id="challenge-2-default-testing-environments">Challenge 2: Default &amp; testing environments</h3>
-<p>Imagine you are developing a bioinformatics pipeline. The default environment includes only the software required to run the pipeline (e.g., Snakemake and core tools), ensuring it remains lightweight and reproducible for users. At the same time, you maintain a separate testing or development environment that includes additional tools for validating and improving the pipeline, such as testing new tools.</p>
-<p>The following pixi.toml illustrates this idea:</p>
-<div class="code-with-filename">
-<div class="code-with-filename-file">
-<pre><strong>pixi.toml</strong></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23" data-filename="pixi.toml"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[workspace]</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">channels</span> = <span class="pp">[</span><span class="st">"conda-forge"</span><span class="pp">]</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">platforms</span> = <span class="pp">[</span><span class="st">"linux-64"</span><span class="pp">]</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[dependencies]</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> = <span class="st">"&gt;=3.10"</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="ex">[environments]</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="ex">default</span> = { features = [] }</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="ex">dev</span> = { features = <span class="pp">[</span><span class="st">"dev"</span><span class="pp">]</span> }</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="ex">[feature.dev.dependencies]</span></span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co"># empty for now</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Modify the configuration so that snakemake is included in the default environment and pytest is included in the development (dev) environment. Then, use Pixi commands to verify that both tools can be executed successfully. Try executing the different environments (e.g., checking the versions of the different tools) to confirm that each tool is only available in the correct environment.</p>
-<p>Get an interactive shell inside Pixi ro run all commands installed in either dev or default environemnt.</p>
+<p>With this approach, the same project can run anywhere while automatically selecting the appropriate dependencies. Could you build a pixi environment with that setup? Remember to create a new directory and initialize a pixi project.</p>
+<p>Check the hint if you need some help!</p>
 <div class="callout callout-style-default callout-hint callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1046,55 +1022,82 @@ gpu
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add <span class="at">--feature</span> <span class="op">&lt;</span>name<span class="op">&gt;</span> <span class="op">&lt;</span>package<span class="op">&gt;</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run <span class="at">--environment</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Hint</span>Solution - Challenge 1: CPU &amp; GPU environments
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div>
-<div class="callout-hint">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> project2 <span class="kw">;</span> <span class="bu">cd</span> project2</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init <span class="at">--channel</span> conda-forge <span class="at">--channel</span> bioconda</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add python pandas scikit-learn</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add pytorch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Make sure you edit the pixi.toml to add the two different envs and declare the features you will be using for the multi-environment settings.</p>
+<ol type="1">
+<li>Initialize the pixi project</li>
+<li>Add common dependencies (shared by all environments)</li>
+<li>Define two environments in the pixi.toml file.
+<ul>
+<li>default (CPU-only)</li>
+<li>gpu (with GPU support)</li>
+</ul></li>
+<li>Use features to manage the GPU-specific dependencies (<code>pytorch-cuda</code> in our setup)</li>
+</ol>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>pixi.toml</strong></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26" data-filename="pixi.toml"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[environments]</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">default</span> = { features = [] }</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gpu</span> = { features = <span class="pp">[</span><span class="st">"gpu"</span><span class="pp">]</span> }</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[feature.gpu.dependencies]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23" data-filename="pixi.toml"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[environments]</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">default</span> = { features = [] }</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gpu</span> = { features = <span class="pp">[</span><span class="st">"gpu"</span><span class="pp">]</span> }</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[feature.gpu.dependencies]</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># empty for now</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="then-make-things-ready-for-the-gpu-env" class="level1">
-<h1>Then, make things ready for the GPU env:</h1>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> project channel add pytorch nvidia</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add <span class="at">--feature</span> gpu pytorch-cuda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Finally, <code>pixi install</code>.</p>
+<ol start="5" type="1">
+<li>Install the correct PyTorch version in each environment</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
+<section id="challenge-2-default-testing-environments" class="level3">
+<h3 class="anchored" data-anchor-id="challenge-2-default-testing-environments">Challenge 2: Default &amp; testing environments</h3>
+<p>Imagine you are developing a bioinformatics pipeline. The default environment includes only the software required to run the pipeline (e.g., Snakemake and core tools), ensuring it remains lightweight and reproducible for users. At the same time, you maintain a separate testing or development environment that includes additional tools for validating and improving the pipeline, such as testing new tools.</p>
+<p>The following pixi.toml illustrates this idea:</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>pixi.toml</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24" data-filename="pixi.toml"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[workspace]</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">channels</span> = <span class="pp">[</span><span class="st">"conda-forge"</span><span class="pp">]</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">platforms</span> = <span class="pp">[</span><span class="st">"linux-64"</span><span class="pp">]</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[dependencies]</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> = <span class="st">"&gt;=3.10"</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="ex">[environments]</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="ex">default</span> = { features = [] }</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="ex">dev</span> = { features = <span class="pp">[</span><span class="st">"dev"</span><span class="pp">]</span> }</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="ex">[feature.dev.dependencies]</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co"># empty for now</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Modify the configuration so that snakemake is included in the default environment and pytest is included in the development (dev) environment. Then, use Pixi commands to verify that both tools can be executed successfully. Try executing the different environments (e.g., checking the versions of the different tools) to confirm that each tool is only available in the correct environment.</p>
+<p>Get an interactive shell inside Pixi ro run all commands installed in either dev or default environemnt.</p>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hint</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add <span class="at">--feature</span> <span class="op">&lt;</span>name<span class="op">&gt;</span> <span class="op">&lt;</span>package<span class="op">&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run <span class="at">--environment</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
+</div>
+</div>
+</div>
+</section>
 </div>
 </div>
 </div>
@@ -1104,7 +1107,7 @@ gpu
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Hint</span>Solution - Challenge 2: Default &amp; testing environments
+<span class="screen-reader-only">Hint</span>Solution - Challenge 1: CPU &amp; GPU environments
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1112,25 +1115,73 @@ gpu
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
+<p>Create a directory, and initialize a pixi project with two channels. Then, add common dependencies shared by all envs:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> project2<span class="kw">;</span> <span class="bu">cd</span> project2</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init <span class="at">--channel</span> conda-forge <span class="at">--channel</span> bioconda</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add python pandas scikit-learn</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Add CPU version of PyTorch (default environment)</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add pytorch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Configure environments and features</strong> Make sure you edit the pixi.toml to add the two different envs and declare the features you will be using for the multi-environment settings.</p>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>pixi.toml</strong></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27" data-filename="pixi.toml"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[environments]</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="ex">default</span> = { features = [] }</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ex">gpu</span> = { features = <span class="pp">[</span><span class="st">"gpu"</span><span class="pp">]</span> }</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[feature.gpu.dependencies]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This sets up:</p>
+<ul>
+<li>default: uses only base dependencies</li>
+<li>gpu: activates the gpu feature</li>
+</ul>
+<p><strong>Add GPU-specific dependencies</strong> Then, make things ready for the GPU env:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> project channel add pytorch nvidia</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add <span class="at">--feature</span> gpu pytorch-cuda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>CUDA-enabled PyTorch is only installed for the GPU feature:</p>
+<p>Finally, <code>pixi install</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hint</span>Solution - Challenge 2: Default &amp; testing environments
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
 <p>Below are several commands that can be used to install the required software. Some of them are alternative approaches that achieve the same result. If you are checking the solution, focus on using only the commands you need and make sure you understand how they differ.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> project2<span class="kw">;</span> <span class="bu">cd</span> project2</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> pixi.toml </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> project channel add bioconda</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add snakemake</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add <span class="at">--feature</span> dev pytest</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure both environment are installed</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> isntall</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> install <span class="at">--environment</span> dev</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Running one of the envs or testing tools installed in only one env</span></span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run <span class="at">--environment</span> dev pytest</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="co"># genomedk/laptop (not UCloud)</span></span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> shell <span class="at">--environment</span> dev </span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run <span class="at">--environment</span> dev bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> project3<span class="kw">;</span> <span class="bu">cd</span> project3</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> pixi.toml </span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># edit the pixi.toml by copying the example pixi.toml from the instructions</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> project channel add bioconda</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add snakemake</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> add <span class="at">--feature</span> dev pytest</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sure both environment are installed</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> install</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> install <span class="at">--environment</span> dev</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Running one of the envs or testing tools installed in only one env</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run <span class="at">--environment</span> dev pytest</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="co"># genomedk/laptop (not UCloud)</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> shell <span class="at">--environment</span> dev </span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> run <span class="at">--environment</span> dev bash</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </div>
