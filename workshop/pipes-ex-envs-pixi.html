@@ -628,8 +628,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_TTCNIOBGGG" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TTCNIOBGGG" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_TTCNIOBGGG" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_TTCNIOBGGG" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_TTCNIOBGGG" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_UPDUSGCJMB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UPDUSGCJMB" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_UPDUSGCJMB" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_UPDUSGCJMB" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_UPDUSGCJMB" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -653,9 +653,14 @@ Note
 <p>For this exercise, you will need to submit two jobs using the Terminal app.</p>
 <p>First job:</p>
 <ul>
-<li>Resources: 1 CPU and 1 hour</li>
-<li>Mount <code>pipesOut</code> folder and double-check you have mounted the right directory (e.g.&nbsp;<code>ls</code>). Do not mount the full personal drive (e.g.&nbsp;YourName###1234).</li>
-<li>Once the job is running, make sure your working directory for all exercises is <code>/work/pipesOut</code>.</li>
+<li>Enter a job name (descriptive of the task, e.g.: pixi installation)</li>
+<li>Job settings: selecting a 1 CPU standard node with 3GB memory.</li>
+<li>Add folders to access while in this job
+<ul>
+<li><em>IF</em> you have already run some of the conda exercises already, mount <code>pipesOut</code> folder.</li>
+<li><em>Otherwise</em>, create a folder names, <code>pipesOut</code>, on your own drive, that you will use to save any output from the exercises.</li>
+</ul></li>
+<li>Once the job is running, make sure your working directory for all exercises is <code>/work/pipesOut</code> and that you have not mount the full personal drive (e.g.&nbsp;YourName###1234).</li>
 </ul>
 </div>
 </div>
@@ -679,8 +684,8 @@ Note
 </div>
 <p>Now, <code>Stop application</code> and resubmit a new job:</p>
 <ul>
-<li>Resources: 1 CPU and 1 hour</li>
-<li>Mount pipesOut folder and double-check you have mounted the right directory (e.g.&nbsp;<code>ls</code>). Do not mount the full personal drive (e.g.&nbsp;YourName###1234)</li>
+<li>Job settings: selecting a 1 CPU standard node with 3GB memory.</li>
+<li>Mount <code>pipesOut</code> folder and double-check you have mounted the right directory (e.g.&nbsp;<code>ls</code>). Do not mount the full personal drive (e.g.&nbsp;YourName###1234)</li>
 <li>Additional Parameters. Initialization: <code>/work/YourName#1234/pipesOut/setup_pixi.sh</code></li>
 <li>Make sure your working directory for all exercises is <code>/work/pipesOut</code></li>
 </ul>
