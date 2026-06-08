@@ -93,7 +93,7 @@ You can launch the container, using the `run` command, which opens a CLI inside 
 2. List the contents of the working directory
 3. Create an empty file named `test.txt` in the current directory
 4. Verify the file was created. How many files are there now? `r fitb(answer=2)`
-5. Check the version of minimap2: `r fitb("^(2[4-9])\\.[0-9]+\\.[0-9]+$", regex = TRUE)`
+5. Check the version of minimap2: `r fitb("^2\\.[0-9]+\\-r[0-9]+$", regex = TRUE)`
 6. Exit the container 
 
 Alternatively, you can run the container in a non-interactive way. For workflows and pipelines, it is often more practical to execute commands directly: 
@@ -141,24 +141,6 @@ apptainer run  minimap2.sif rm test.txt
 ```
 :::
 
-:::{.callout-tip}
-# Bonus - using GPUs with Apptainer
-Apptainer supports GPU acceleration, allowing you to run containerized applications that take advantage of NVIDIA GPUs. Pull tensorflow image and test that it works. 
-
-- https://www.tensorflow.org/install/docker
-- https://hub.docker.com/r/tensorflow/tensorflow
-:::
-
-:::{.callout-hint}
-# Solution - using GPUs with Apptainer
-```.bash
-# pull image
-apptainer pull docker://nvcr.io/nvidia/tensorflow:23.08-tf2-py3
-
-# run the container on GPU node
-apptainer run --nv tensorflow_23.08-tf2-py3.sif python3 --version
-```
-:::
 
 ::: {.webex-check .callout-exercise}
 # Exercise II: Running a Docker image
@@ -334,5 +316,24 @@ apptainer run /tmp/lima/fastmixture_latest.sif fastmixture --bfile toy.data --K 
 ```
 :::
 
+
+:::{.callout-tip}
+# Bonus 4- using GPUs with Apptainer
+Apptainer supports GPU acceleration, allowing you to run containerized applications that take advantage of NVIDIA GPUs. Pull tensorflow image and test that it works. 
+
+- https://www.tensorflow.org/install/docker
+- https://hub.docker.com/r/tensorflow/tensorflow
+:::
+
+:::{.callout-hint}
+# Solution - using GPUs with Apptainer
+```.bash
+# pull image
+apptainer pull docker://nvcr.io/nvidia/tensorflow:23.08-tf2-py3
+
+# run the container on GPU node
+apptainer run --nv tensorflow_23.08-tf2-py3.sif python3 --version
+```
+:::
 
 :::
