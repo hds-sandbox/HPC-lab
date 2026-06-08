@@ -62,11 +62,11 @@ export APPTAINER_CACHEDIR=/tmp/$USER
 
 When creating directories for container use, the `-m 700` option with the mkdir command ensures that only you have access to the files inside. This is particularly important when working with containers that may include passwords or other sensitive data. By restricting permissions, you prevent other users from accessing your files (`/tmp/` is a public folder)! 
 
-Now, create a folder called `containers101` in the `hpcPipes` directory.
+Now, create a folder called `containers101` in the `pipesOut` directory.
 
 ```{.bash}
-mkdir -p hpcPipes/containers101
-cd hpcPipes/containers101
+mkdir -p pipesOut/containers101
+cd pipesOut/containers101
 ```
 
 ::: {.webex-check .callout-exercise}

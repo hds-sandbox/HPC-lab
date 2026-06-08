@@ -121,7 +121,7 @@ What is the pixi version you have installed: `r fitb("^([0-9])\\.[0-9]+\\.[0-9]+
 
 #### Initialize a Pixi Project
 
-Move to the working directory you created earlier (**hpcPipes**). Create a new Pixi project and configure it to use the `conda-forge` and `bioconda` channels:
+Create a new directory, called `pipesOut`, in your workspace `DeiC-KU-L65/Workspaces/<username>` and make it your WD. Then, create a new Pixi project and configure it to use the `conda-forge` and `bioconda` channels:
 
 ```.bash
 pixi init --channel conda-forge --channel bioconda
