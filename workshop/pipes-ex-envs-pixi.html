@@ -628,8 +628,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div>
 <div class="webex-check callout-exercise">
 <strong>G.1. What role does a workflow manager play in computational research??</strong>
-<div id="radio_HZNANNTBCY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HZNANNTBCY" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_HZNANNTBCY" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_HZNANNTBCY" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_HZNANNTBCY" value=""> <span>To minimize the reliance on specific software environments</span></label>
+<div id="radio_UNWZEQYWKH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UNWZEQYWKH" value="answer"> <span>Automating the execution of complex computational processes</span></label><label><input type="radio" autocomplete="off" name="radio_UNWZEQYWKH" value=""> <span>To manually execute each step of a computation</span></label><label><input type="radio" autocomplete="off" name="radio_UNWZEQYWKH" value=""> <span>Offering real-time and intuitive data analysis</span></label><label><input type="radio" autocomplete="off" name="radio_UNWZEQYWKH" value=""> <span>To minimize the reliance on specific software environments</span></label>
 </div>
 </div>
 </div>
@@ -745,7 +745,7 @@ Important
 <p>What is the pixi version you have installed: <input class="webex-solveme nospaces regex" size="25" data-answer="[&quot;^([0-9])\\.[0-9]+\\.[0-9]+$&quot;]"></p>
 <section id="initialize-a-pixi-project" class="level4">
 <h4 class="anchored" data-anchor-id="initialize-a-pixi-project">Initialize a Pixi Project</h4>
-<p>Move to the working directory you created earlier (<strong>hpcPipes</strong>). Create a new Pixi project and configure it to use the <code>conda-forge</code> and <code>bioconda</code> channels:</p>
+<p>Create a new directory, called <code>pipesOut</code>, in your workspace <code>DeiC-KU-L65/Workspaces/&lt;username&gt;</code> and make it your WD. Then, create a new Pixi project and configure it to use the <code>conda-forge</code> and <code>bioconda</code> channels:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pixi</span> init <span class="at">--channel</span> conda-forge <span class="at">--channel</span> bioconda</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Pixi creates a file called <code>pixi.toml</code>, which contains the information needed to recreate your environment.</p>
 <p>List the files in the directory (<code>ls</code>).</p>

@@ -657,9 +657,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">APPTAINER_CACHEDIR</span><span class="op">=</span>/tmp/<span class="va">$USER</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>When creating directories for container use, the <code>-m 700</code> option with the mkdir command ensures that only you have access to the files inside. This is particularly important when working with containers that may include passwords or other sensitive data. By restricting permissions, you prevent other users from accessing your files (<code>/tmp/</code> is a public folder)!</p>
-<p>Now, create a folder called <code>containers101</code> in the <code>hpcPipes</code> directory.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> hpcPipes/containers101</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> hpcPipes/containers101</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Now, create a folder called <code>containers101</code> in the <code>pipesOut</code> directory.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> pipesOut/containers101</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pipesOut/containers101</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-exercise callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
