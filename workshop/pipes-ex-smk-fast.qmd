@@ -16,7 +16,7 @@ source("_setup.R")
 
 First, mount the following two drives and select an initialization file, and ask for 2 CPUs so we can run things in parallel: 
 
-- `hpcPipes`: from your personal drive.
+- `pipesOut`: from your personal drive.
 - `shared/hpclab-workshop`: contains input files and scripts. You can read-only access from this directory (no write permissions). Here are the paths you will need during the exercises:
     - `/work/HPCLab_workshop/scripts/`: path to scripts 
     - `/work/HPCLab_workshop/pipes/data`: path to plink simulated data
@@ -28,14 +28,14 @@ Next, activate `snakemake` environment.
 conda activate snakemake 
 ```
 
-Finally, navigate to your WD, `hpcPipes`, and to create a new subdirectory `fastmixture` and save here all files from this exercise (Snakefile, config.yml, output file, etc.).
+Finally, navigate to your WD, `pipesOut`, and to create a new subdirectory `fastmixture` and save here all files from this exercise (Snakefile, config.yml, output file, etc.).
 
 
 ## <img src="images/genomedk.png" height="50"> 
 
 1. Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
 
-2. The necessary files can be found in `hpcPipes`. The snakemake file is located at: `rules/process_1kgp.smk`.
+2. The necessary files can be found in `pipes`. The snakemake file is located at: `rules/process_1kgp.smk`.
 
 3. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
 

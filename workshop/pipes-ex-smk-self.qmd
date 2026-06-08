@@ -18,7 +18,7 @@ source("_setup.R")
 
 First, mount the following two drives and select an initialization file, and ask for 2 CPUs so we can run things in parallel: 
 
-- `hpcPipes`: from your personal drive. Save your results/files here.  
+- `pipesOut`: from your personal drive. Save your results/files here.  
 - `shared/hpclab-workshop`: contains input files and scripts. You can read-only access from this directory (no write permissions). 
     - `/work/HPCLab_workshop/pipes/data`: data input files 
 - Additional parameters - Initialization. Use a setup.sh script that contains snakemake software. You can also use ours, `shared/hpclab-workshop/pipes/setup.sh`
@@ -39,7 +39,7 @@ Finally, navigate to your wd.
 
 1. Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
 
-2. The necessary files can be found in `hpcPipes`. The snakemake file is located at: `rules/process_1kgp.smk`.
+2. The necessary files can be found in `pipes`. The snakemake file is located at: `rules/process_1kgp.smk`.
 
 3. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
 
@@ -101,11 +101,11 @@ In this section, we will be working with a tabulated metadata file, `data/sample
 ::: {.webex-check .callout-exercise}
 # I - Build your pipeline from scratch 
 
-You will be working and running the workflow from `hpcPipes`, so make sure it's set as your working directory.
+You will be working and running the workflow from `pipesOut`, so make sure it's set as your working directory.
 
 ##### Preparation step 
 
-- **Directory setup**: Inside `hpcPipes`, create two subdirectories, `scripts` and `rules`. 
+- **Directory setup**: Inside `pipesOut`, create two subdirectories, `scripts` and `rules`. 
   - `scripts`: save all python/r external scripts. 
   - `rules`: save all your snakefiles here!
 - **File creation**: You will need to create two files for this exercise:
@@ -145,13 +145,13 @@ You will be working and running the workflow from `hpcPipes`, so make sure it's 
 Your directory layout should look like this:
 
 ```.bash
-# Project structure  
+# Project structure on UCloud 
 mypersonaldrive/
 │
 ├── envs/
 │   └── [environment files here] 
 │
-└── hpcPipes/
+└── pipesOut/
     ├── results/
     │   ├── EAS.txt 
     │   ...

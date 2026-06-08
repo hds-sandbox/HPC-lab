@@ -44,8 +44,8 @@ For this exercise, you will need to submit two jobs using the Terminal app.
 First job:
 
 - Resources: 1 CPU and 1 hour
-- Mount hpcPipes folder and double-check you have mounted the right directory (e.g. `ls`). Do not mount the full personal drive (e.g. YourName###1234). 
-- Once the job is running, make sure your working directory for all exercises is `/work/hpcPipes`. 
+- Mount `pipesOut` folder and double-check you have mounted the right directory (e.g. `ls`). Do not mount the full personal drive (e.g. YourName###1234). 
+- Once the job is running, make sure your working directory for all exercises is `/work/pipesOut`. 
 :::
 
 We will now install pixi and save it to your WD. 
@@ -56,7 +56,7 @@ curl -fsSL https://pixi.sh/install.sh | bash
 
 # Move pixi 
 mkdir -p /work/pixi
-mv ~/.pixi/bin /work/hpcPipes/pixi
+mv ~/.pixi/bin /work/pipesOut/pixi
 ```
 
 After installation, create an initialization file to update your shell configuration whenever a new terminal session starts. This step is essential in UCloud environments, without it, Pixi will not be available once the running job is closed. Since the Pixi binary has been moved to a custom directory (which you will be mounting every time you start a new job), the initialization file ensures that its location is correctly added to your PATH each time a new session begins.
@@ -64,7 +64,7 @@ After installation, create an initialization file to update your shell configura
 ```{.bash filename="setup_pixi.sh"}
 #!/usr/bin
 
-echo 'export PATH="$PATH:/work/hpcpipes/pixi/bin""'>> /home/ucloud/.bashrc
+echo 'export PATH="$PATH:/work/pipesOut/pixi/bin""'>> /home/ucloud/.bashrc
 
 source ~/.bashrc
 ```
@@ -72,9 +72,9 @@ source ~/.bashrc
 Now, `Stop application` and resubmit a new job:
 
 - Resources: 1 CPU and 1 hour
-- Mount hpcPipes folder and double-check you have mounted the right directory (e.g. `ls`). Do not mount the full personal drive (e.g. YourName###1234)
-- Additional Parameters. Initialization: `/work/YourName#1234/hpcPipes/setup_pixi.sh`
-- Make sure your working directory for all exercises is `/work/hpcPipes`
+- Mount pipesOut folder and double-check you have mounted the right directory (e.g. `ls`). Do not mount the full personal drive (e.g. YourName###1234)
+- Additional Parameters. Initialization: `/work/YourName#1234/pipesOut/setup_pixi.sh`
+- Make sure your working directory for all exercises is `/work/pipesOut`
 
 :::{.callout-important}
 If your job gets disconnected, make sure to navigate back to your WD before counting with the exercises. 
