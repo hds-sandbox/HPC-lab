@@ -162,14 +162,7 @@ Here are some optional resources you might typically review before running the s
 
 
 1. Pull `fastmixture` image from [DockerHub](https://hub.docker.com/r/albarema/fastmixture) and save it locally as *fastmixture.sif*. Make sure to pull the latest version
-2. Download and unzip the toy data
-
-    <div style="display: flex; gap: 5px;">
-    <a href="./data/toy.zip" download="toy.zip">
-        <button class="btn small-button">Download toy data</button>
-    </a>
-    </div>
-
+2. The input data: `pipes/data/toy`
 3. Run a command to display the `fastmixture` version and enter the version number: `r fitb("^(v[0-9])\\.[0-9]+\\.[0-9]+$", regex = TRUE)`
 4. Run `fastmixture` software using the command below. We will set *K* to 3 because there are three populations (clusters) in our PCA analysis (exploratory analysis). Both `--bfile` and `--out` require the prefix of a filename, so do not include the file extension. If you have checked the toy folder, you will find the files named `toy.data.*`; therefore, use `--bfile toy.data`
 
@@ -183,7 +176,7 @@ Here are some optional resources you might typically review before running the s
     ```{.bash}
     fastmixture --bfile <input.prefix> --K 3 --threads 4 --seed 1 --out <output.prefix>
     ```
-5. Do you have the results in the folder on your local system? `r torf(TRUE)` 
+5. Do you have the results in the toy folder? `r torf(TRUE)` 
 
 You should look for files named `toy.fast.K3.s1.{ext}`, where `{ext}=["Q", "P", "log"]`.
 
@@ -193,19 +186,16 @@ You should look for files named `toy.fast.K3.s1.{ext}`, where `{ext}=["Q", "P", 
 :::{.callout-hint}
 # Solution - Running a Docker image
 
-This solution assumes you're running the container from the directory that contains the `toy` data folder: 
-
 ```{.bash}
 # Pull image 
 apptainer pull fastmixture.sif docker://albarema/fastmixture
-# Unzip data
-unzip data.zip -d data 
+
 # Check version 
 apptainer exec fastmixture.sif fastmixture --version 
 
-apptainer exec fastmixture.sif fastmixture --bfile data/toy.data --K 3 --out data/toy.fast --threads 8
+apptainer exec fastmixture.sif fastmixture --bfile /PATH/TO/toy/toy.data --K 3 --out toy/toy.fast --threads 8
 
-ls 
+ls toy
 ```
 :::
 
