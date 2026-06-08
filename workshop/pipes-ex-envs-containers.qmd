@@ -296,6 +296,25 @@ apptainer run blast_2.2.31.sif makeblastdb -in zebrafish.1.protein.faa -dbtype p
 You can build a container directly on genomeDK [using apptainer](https://singularity-tutorial.github.io/03-building/). Create a new project-specific dir, e.g. *jupyter-project*. The image should include jupyter-notebook, and the python libs, matplotlib, pandas and numpy. 
 :::
 
+:::{.callout-tip collapse="true"}
+# Bonus 4- using GPUs with Apptainer
+Apptainer supports GPU acceleration, allowing you to run containerized applications that take advantage of NVIDIA GPUs. Pull tensorflow image and test that it works. *This takes some time*
+
+- https://www.tensorflow.org/install/docker
+- https://hub.docker.com/r/tensorflow/tensorflow
+:::
+
+:::{.callout-hint}
+# Solution - using GPUs with Apptainer
+```.bash
+# pull image
+apptainer pull docker://nvcr.io/nvidia/tensorflow:23.08-tf2-py3
+
+# run the container on GPU node
+apptainer run --nv tensorflow_23.08-tf2-py3.sif python3 --version
+```
+:::
+
 
 ## <img src="images/computer.png" height="50"> 
 
@@ -313,26 +332,6 @@ cd toy # from data folder
 
 apptainer pull /tmp/lima/fastmixture_latest.sif docker:/albarema/fastmixture
 apptainer run /tmp/lima/fastmixture_latest.sif fastmixture --bfile toy.data --K 3 --out toy.fast --threads 8
-```
-:::
-
-
-:::{.callout-tip}
-# Bonus 4- using GPUs with Apptainer
-Apptainer supports GPU acceleration, allowing you to run containerized applications that take advantage of NVIDIA GPUs. Pull tensorflow image and test that it works. 
-
-- https://www.tensorflow.org/install/docker
-- https://hub.docker.com/r/tensorflow/tensorflow
-:::
-
-:::{.callout-hint}
-# Solution - using GPUs with Apptainer
-```.bash
-# pull image
-apptainer pull docker://nvcr.io/nvidia/tensorflow:23.08-tf2-py3
-
-# run the container on GPU node
-apptainer run --nv tensorflow_23.08-tf2-py3.sif python3 --version
 ```
 :::
 
