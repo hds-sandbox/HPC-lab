@@ -15,7 +15,7 @@ website:
       - text: "HPC Pipes"
         file: develop/p0-intro.qmd
       - text: "Workshop"
-        file: workshop/launch-requirements.qmd
+        file: workshop/pipes-requirements.qmd
     right: 
       - icon: github
         href: https://github.com/hds-sandbox
@@ -64,7 +64,6 @@ website:
       style: "docked"
       search: true
       contents:
-        - workshop/pipes-requirements.qmd
         - section: "HPC Launch"
           contents: 
             - workshop/launch-requirements.qmd
