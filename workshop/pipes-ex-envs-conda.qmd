@@ -61,24 +61,22 @@ Type the answers with no white spaces!
 
 **1. What is the version of conda** `r fitb(answer='24.9.2')`
 
-**2. List all environments available to you. What is the name of the active environment** `r fitb(answer='base')`
+**2. List all environments available to you. What is the name of the active environment** `r fitb(answer='hpclab-env')`
 
-**3. Activate the `hpclab-env` environment**
+**3. What is the version of the package `cookiecutter`** (use a conda command) `r fitb(answer='2.6.0')`
 
-**4. What is the version of the package `cookiecutter`** (use a conda command) `r fitb(answer='2.6.0')`
+**4. How many packages are available? ** `r fitb(answer='72')`
 
-**5. How many packages are available? ** `r fitb(answer='72')`
+**5. Export the environment specifications and save it (e.g.`<yourname-hpclab>`.yml)**
 
-**6. Export the environment specifications and save it (e.g.`<yourname-hpclab>`.yml)**
-
-**7. Deactivate the environment**
+**6. Deactivate the environment**
 
 :::{.callout-hint}
 ```{.bash}
 conda --version
 conda env list ; conda info --envs
-conda activate 
 conda list cookiecutter
+conda list | grep -v '#'
 conda env export 
 ```
 :::
@@ -113,7 +111,7 @@ Is the full path of your envs directory `/work/pipesOut/envs`? `r torf(TRUE)`
 Since Miniconda is already pre-installed, you’re ready to create your first environment. Just follow these steps:
 
 1. Create a new environment using `--prefix PATH` (for example, `/work/pipesOut/envs/<name-env>`) and proceed yes (`y` or enter).
-N.B. You can either name or prefix your environment. We will be using the prefix as miniconda is installed in a directory where you do not have writing privileges. 
+N.B. You can either name or prefix your environment. However, we will be using the prefix as miniconda is installed in a directory where you do not have writing privileges. 
 2. Check the available environments. How many environments do you see? `r fitb(answer='4')`
 3. Activate the environment 
 4. Check which Python executable is being used (Hint: `which python`)? Does this executable belong to your conda environment?? `r torf(FALSE)`
@@ -131,7 +129,7 @@ N.B. You can either name or prefix your environment. We will be using the prefix
 Here are some of the commands you need for the exercise. 
 
 ```{.bash}
-# Use conda or mamba commands 
+# Use conda commands 
 conda create --prefix /work/envs/<myenv>
 conda install --channel <CHANNEL-NAME> --name <ENV-NAME>
 conda env list # OR conda info --envs
@@ -149,7 +147,7 @@ conda env export > env.yml
 ::: {.webex-check .callout-exercise}
 # IV - Adapt a colleague's Conda environment to fit your needs.
 
-1. Create a Conda environment using the provided 'test-env.yml' file (`/work/HPCLab_workshop/data/test-env.yml`). Please, use the flag `--prefix` for this purpose. 
+1. Create a Conda environment using the provided 'test-env.yml' file (`/work/HPCLab_workshop/pipes/data/test-env.yml`). Please, use the flag `--prefix` for this purpose. 
 2. Once the environment is set up, activate it (do not forget to deactivate active environments)
 3. Verify the installed packages (you will also see other dependencies installed). Hint: check the `test-env.yml` to see which dependencies are included in this conda environment. 
 4. Uninstall the 'cookiecutter' package from your environment. Then, check again the list of all installed packages. Did you remove cookiecutter successfully? `r torf(TRUE)`
@@ -196,11 +194,16 @@ channel_priority: strict
 auto_activate: false
 ```
 
-Now, create an environment using a YAML file. 
+For the rest of the workshop, navigate to the directory we have created for you, and always run the exercises from here!
 
 ```{.bash}
 cd ~/DeiC-KU-L65/Workspaces/<username>
-conda env create -f pipesOut/hpclab-env.yml 
+```
+
+Now, create an environment using a YAML file. 
+
+```{.bash}
+conda create -f pipesOut/hpclab-env.yml 
 ```
 
 ::: {.webex-check .callout-exercise}
@@ -234,7 +237,7 @@ Let's prepare to build our own environment. First, make sure the `hpclab-env` en
   conda deactivate 
   ```
 
-1. Create a new environment (choose the name) and proceed yes (`y` or enter)
+1. Create a new environment (choose the name) and proceed yes (`y` or press enter)
 2. Check the available environments. How many environments do you see? `r fitb(answer='3')`
 3. Activate the environment 
 4. Check which Python executable is being used (Hint: `which python`)? Does this executable belong to your conda environment?? `r torf(FALSE)`
@@ -321,7 +324,9 @@ If you are running this exercise locally, download the environment YAML files fi
 
 ```{.bash}
 # Different paths depending where you are working from:
+# UCloud
 cat /work/HPCLab_workshop/miniconda3/envs/hpclab-env/lib/python3.12/site-packages/numpy/version.py
+# genomedk
 cat /home/<username>/miniforge3/envs/hpclab-env/lib/python3.12/site-packages/numpy/version.py
 ```
 
@@ -340,14 +345,22 @@ short_version = version.split("+")[0]
 # Solution - Build your conda environment (III)
 
 1. The syntax to create a new environment is: 
+# UCloud (using prefix)
 `conda create --prefix /work/pipesOut/envs/<test-env>` 
+# GenomeDK (using name)
 `conda create --name <my-env>`
 2. UCloud: There are 4 environments available: `base`, `hpclab-env`, `snakemake`, and the one you just created; genomedk: 3 envs,  `base`, `hpclab-env` and the one you just created 
-3. UCloud: `conda activate /work/pipesOut/envs/<test-env>` or genomedk: `conda activate <myenv>`
+3. 
+# UCloud: 
+`conda activate /work/pipesOut/envs/<test-env>` 
+# genomedk: 
+`conda activate <myenv>`
 4. The executable is located at `/usr/bin/python` in the system
 5. conda install bioconda::snakemake
 6. Snakemake is working!
-7. Yes, now it is in the bin of our env: `/work/pipesOut/envs/<test-env>/bin/python` or `~/miniforge3/envs/test/bin/python`
+7. Yes, now it is in the bin of our env: 
+UCloud: `/work/pipesOut/envs/<test-env>/bin/python`
+GenomeDK: `~/miniforge3/envs/test/bin/python`
 8. It should be! `conda list python`    
 9. `conda search bowtie2`. Yes. Go to anaconda.org and search for “bowtie2” to confirm it is available through conda and which software channel it is provided from. You can find it available via the “bioconda” channel: https://anaconda.org/bioconda/bowtie2.
 10. Run this command if the channel has not already been appended: `conda config --add channels bioconda`. Use `add` so that it has a higher priority. The syntax to install packages is: 
@@ -362,11 +375,13 @@ short_version = version.split("+")[0]
 
 ```{.bash}
 # 1. UCloud 
-conda env create --file /work/HPCLab_workshop/data/test-env.yml --prefix /work/pipesOut/envs/test-env
+conda env create --file /work/HPCLab_workshop/pipes/data/test-env.yml --prefix /work/pipesOut/envs/test-env
 # genomedk / local 
 conda create --file test-env.yml
 # 2. 
-conda deactivate; UCloud: `conda activate /work/pipesOut/envs/test-env` 
+conda deactivate ; conda activate <env> 
+# UCloud: `conda activate /work/pipesOut/envs/test-env` 
+# Genomedk `conda activate test-env`
 # 3.
 conda list 
 # 4. 
@@ -374,7 +389,10 @@ conda remove cookiecutter; conda list
 # 5. Check the prompt from running this command 
 conda update python 
 # OR conda list | grep python ; conda list python 
-# 6. UCloud 
+# 6. 
+# UCloud 
 conda env remove --prefix /work/pipesOut/envs/test-env 
+# genomedk 
+conda remove -n test-env --all
 ```
 :::
