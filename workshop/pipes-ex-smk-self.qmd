@@ -41,11 +41,26 @@ Finally, navigate to your wd.
 
 2. The necessary files can be found in `pipes`. The snakemake file is located at: `rules/process_1kgp.smk`.
 
-3. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
+3. All computations must be carried out through the queue. 
 
-```.bash
-srun --account DeiC-KU-L65 -t 00:00:30 --pty bash
+:::{.callout-important}
+# Do not run anything on the login node
+
+Always start an interactive SLURM session before running any Apptainer commands. Do not run Apptainer on the login node.
+`srun --account DeiC-KU-L65 -t 00:00:45 --pty bash`
+
+Alternatively, you can submit a SLURM batch job instead of using an interactive session. 
+
+```{.bash filename=mybash.sh}
+#!/bin/bash
+#SBATCH --account my_project
+#SBATCH -c 1
+#SBATCH --mem 1g
+
+# COMMANDS HERE
 ```
+:::
+
 4. `exit` the interactive job when you are done with the exercise! 
 
 

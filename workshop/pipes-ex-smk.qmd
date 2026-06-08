@@ -92,11 +92,25 @@ Finally, navigate to your wd.
 
 1. Use the conda or pixi environment you have already created to run the exercises. 
 
-2. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
+2. All computations must be carried out through the queue. 
 
-```.bash
-srun --account DeiC-KU-L65 -t 00:00:30 --pty bash
+:::{.callout-important}
+# Do not run anything on the login node
+
+Always start an interactive SLURM session before running any Apptainer commands. Do not run Apptainer on the login node.
+`srun --account DeiC-KU-L65 -t 00:00:45 --pty bash`
+
+Alternatively, you can submit a SLURM batch job instead of using an interactive session. 
+
+```{.bash filename=mybash.sh}
+#!/bin/bash
+#SBATCH --account my_project
+#SBATCH -c 1
+#SBATCH --mem 1g
+
+# COMMANDS HERE
 ```
+:::
 
 3. The necessary files can be found in `smk-exercises`. The snakemake file is located at: `rules/process_1kgp.smk`.
 

@@ -69,6 +69,24 @@ mkdir -p pipesOut/containers101
 cd pipesOut/containers101
 ```
 
+:::{.callout-important}
+# Do not run anything on the login node
+
+Always start an interactive SLURM session before running any Apptainer commands. Do not run Apptainer on the login node.
+`srun --account DeiC-KU-L65 -t 00:00:45 --pty bash`
+
+Alternatively, you can submit a SLURM batch job instead of using an interactive session. 
+
+```{.bash filename=mybash.sh}
+#!/bin/bash
+#SBATCH --account my_project
+#SBATCH -c 1
+#SBATCH --mem 1g
+
+# COMMANDS HERE
+```
+:::
+
 ::: {.webex-check .callout-exercise}
 # Exercise I: Apptainer 
 
