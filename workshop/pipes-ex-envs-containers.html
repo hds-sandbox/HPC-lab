@@ -987,13 +987,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Bonus 4- using GPUs with Apptainer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Apptainer supports GPU acceleration, allowing you to run containerized applications that take advantage of NVIDIA GPUs. Pull tensorflow image and test that it works. <em>This takes some time</em></p>
+<ul>
+<li>https://www.tensorflow.org/install/docker</li>
+<li>https://hub.docker.com/r/tensorflow/tensorflow</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-hint callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Hint</span>Solution - using GPUs with Apptainer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div>
+<div class="callout-hint">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode .bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># pull image</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://nvcr.io/nvidia/tensorflow:23.08-tf2-py3</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># run the container on GPU node</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run <span class="at">--nv</span> tensorflow_23.08-tf2-py3.sif python3 <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>You will need to install a Linux virtual machine to be able to run Apptainer. Follow the instructions <a href="https://apptainer.org/docs/admin/main/installation.html#installation-on-windows-or-mac">here</a>.</p>
 <p>Once you are ready, click on GenomeDK to follow the exercises, but note that the commands must be adapted to run inside a virtual machine. Check the solutions below for an example of how the commands should be modified.</p>
 <div class="callout callout-style-default callout-hint callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1002,32 +1046,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
 <p>````.bash # on local machine (using LIMA)</p>
 <p>cd toy # from data folder</p>
-<p>apptainer pull /tmp/lima/fastmixture_latest.sif docker:/albarema/fastmixture apptainer run /tmp/lima/fastmixture_latest.sif fastmixture –bfile toy.data –K 3 –out toy.fast –threads 8</p>
-<pre><code>:::
-
-
-:::{.callout-tip}
-# Bonus 4- using GPUs with Apptainer
-Apptainer supports GPU acceleration, allowing you to run containerized applications that take advantage of NVIDIA GPUs. Pull tensorflow image and test that it works. 
-
-- https://www.tensorflow.org/install/docker
-- https://hub.docker.com/r/tensorflow/tensorflow
-:::
-
-:::{.callout-hint}
-# Solution - using GPUs with Apptainer
-```.bash
-# pull image
-apptainer pull docker://nvcr.io/nvidia/tensorflow:23.08-tf2-py3
-
-# run the container on GPU node
-apptainer run --nv tensorflow_23.08-tf2-py3.sif python3 --version</code></pre>
+<p>apptainer pull /tmp/lima/fastmixture_latest.sif docker:/albarema/fastmixture apptainer run /tmp/lima/fastmixture_latest.sif fastmixture –bfile toy.data –K 3 –out toy.fast –threads 8 ```</p>
 </div>
 </div>
 </div>
