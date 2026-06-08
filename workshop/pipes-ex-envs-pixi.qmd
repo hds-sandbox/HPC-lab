@@ -378,7 +378,7 @@ dev = { features = ["dev"] }
 
 Modify the configuration so that snakemake is included in the default environment and pytest is included in the development (dev) environment. Then, use Pixi commands to verify that both tools can be executed successfully. Try executing the different environments (e.g., checking the versions of the different tools) to confirm that each tool is only available in the correct environment.
 
-Get an interactive hell inside Pixi ro run all commands installed in either dev or default environemnt. 
+Get an interactive shell inside Pixi ro run all commands installed in either dev or default environemnt. 
 
 :::{.callout-hint}
 ```.bash
@@ -393,19 +393,21 @@ pixi run --environment
 :::{.callout-hint}
 # Solution - Challenge 1: CPU & GPU environments
 ```.bash 
-mkdir project2
+mkdir project2 ; cd project2
 pixi init --channel conda-forge --channel bioconda
 
 pixi add python pandas scikit-learn
 pixi add pytorch
 ```
 
-Make sure you edit the pixi.toml: 
+Make sure you edit the pixi.toml to add the two different envs and declare the features you will be using for the multi-environment settings. 
 
 ```{.bash filename="pixi.toml"}
 [environments]
 default = { features = [] }
 gpu = { features = ["gpu"] }
+
+[feature.gpu.dependencies]
 ```
 
 # Then, make things ready for the GPU env: 
@@ -425,7 +427,7 @@ Finally, `pixi install`.
 Below are several commands that can be used to install the required software. Some of them are alternative approaches that achieve the same result. If you are checking the solution, focus on using only the commands you need and make sure you understand how they differ.
 
 ```.bash 
-mkdir -p project2
+mkdir -p project2; cd project2
 touch pixi.toml 
 
 pixi project channel add bioconda
