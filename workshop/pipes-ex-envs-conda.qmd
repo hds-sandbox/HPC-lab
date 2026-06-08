@@ -160,20 +160,25 @@ conda env export > env.yml
 
 ## <img src="images/genomedk.png" height="50"> 
 
-We will start by installing conda on your home directory. 
+We will start by installing conda on your home directory (`/home/<username>/`). 
 
 ```{.bash}
 echo "Installing conda..."
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -O miniforge.sh
 chmod +x miniforge.sh
 bash miniforge.sh -b
-./miniforge3/bin/conda init bash
+~/miniforge3/bin/conda init bash
+
+# Make conda usable in the current shell (conda init only edits ~/.bashrc;
+# it does not affect the session you're already in)
+source ~/miniforge3/etc/profile.d/conda.sh
 
 echo "Adding conda channels..."
 conda config --append channels conda-forge
 conda config --append channels bioconda
 conda config --append channels genomedk
 
+conda config --set channel_priority strict
 conda config --set auto_activate false
 ```
 
@@ -188,13 +193,14 @@ channels:
   - bioconda
   - genomedk
 channel_priority: strict
-auto_activate_base: false
+auto_activate: false
 ```
 
-Now, create an environment using an YAML file. 
+Now, create an environment using a YAML file. 
 
 ```{.bash}
-conda create -f hpclab-env.yml 
+cd ~/DeiC-KU-L65/Workspaces/<username>
+conda env create -f hpcPipes/hpclab-env.yml 
 ```
 
 ::: {.webex-check .callout-exercise}
