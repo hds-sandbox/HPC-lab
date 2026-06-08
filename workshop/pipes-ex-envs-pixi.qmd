@@ -330,11 +330,11 @@ For example:
 * A **GPU** environment containing libraries that require GPU support.
 * A **CPU** environment that can run on systems without GPUs.
 
-Pixi allows multiple environments to coexist within the same project while sharing dependencies whenever possible. Choose the challenge below that best matches your own research needs. Create a new directory, for example, *project2*, for the new environment. 
+Pixi allows multiple environments to coexist within the same project while sharing dependencies whenever possible. **Choose the challenge below that best matches your own research needs**. Create a new directory, for example, *project2*, for the new environment. 
 
 ### Challenge 1: CPU & GPU environments
 
-Many machine learning projects need to support both systems with GPUs and systems without GPUs.
+Many machine learning projects need to support both systems with GPUs and systems without GPUs. To support this, you can define multiple environments within a single Pixi project, where each environment installs only the dependencies it needs.
 
 A possible setup could look like:
 
@@ -352,7 +352,27 @@ gpu
 └── pytorch-cuda
 ```
 
-This approach allows the same project to run on a laptop, HPC cluster, or cloud system while only installing the software required for the available hardware. Could you build a pixi environment with that setup?
+With this approach, the same project can run anywhere while automatically selecting the appropriate dependencies. Could you build a pixi environment with that setup? Remember to create a new directory and initialize a pixi project. 
+
+Check the hint if you need some help!
+
+:::{.callout-hint}
+1. Initialize the pixi project 
+2. Add common dependencies (shared by all environments)
+3. Define two environments in the pixi.toml file. 
+   - default (CPU-only)
+   - gpu (with GPU support)
+4. Use features to manage the GPU-specific dependencies (`pytorch-cuda` in our setup)
+```{.bash filename="pixi.toml"}
+[environments]
+default = { features = [] }
+gpu = { features = ["gpu"] }
+
+[feature.gpu.dependencies]
+# empty for now
+```
+5. Install the correct PyTorch version in each environment
+:::
 
 ### Challenge 2: Default & testing environments
 
@@ -392,14 +412,17 @@ pixi run --environment
 
 :::{.callout-hint}
 # Solution - Challenge 1: CPU & GPU environments
+
+Create a directory, and initialize a pixi project with two channels. Then, add common dependencies shared by all envs:
 ```.bash 
-mkdir project2 ; cd project2
+mkdir -p project2; cd project2
 pixi init --channel conda-forge --channel bioconda
 
 pixi add python pandas scikit-learn
+# Add CPU version of PyTorch (default environment)
 pixi add pytorch
 ```
-
+**Configure environments and features**
 Make sure you edit the pixi.toml to add the two different envs and declare the features you will be using for the multi-environment settings. 
 
 ```{.bash filename="pixi.toml"}
@@ -410,12 +433,19 @@ gpu = { features = ["gpu"] }
 [feature.gpu.dependencies]
 ```
 
-# Then, make things ready for the GPU env: 
+This sets up:
+
+- default: uses only base dependencies
+- gpu: activates the gpu feature
+
+**Add GPU-specific dependencies**
+Then, make things ready for the GPU env: 
 
 ```.bash 
 pixi project channel add pytorch nvidia
 pixi add --feature gpu pytorch-cuda
 ```
+CUDA-enabled PyTorch is only installed for the GPU feature:
 
 Finally, `pixi install`.
 
@@ -427,15 +457,16 @@ Finally, `pixi install`.
 Below are several commands that can be used to install the required software. Some of them are alternative approaches that achieve the same result. If you are checking the solution, focus on using only the commands you need and make sure you understand how they differ.
 
 ```.bash 
-mkdir -p project2; cd project2
+mkdir -p project3; cd project3
 touch pixi.toml 
+# edit the pixi.toml by copying the example pixi.toml from the instructions
 
 pixi project channel add bioconda
 pixi add snakemake
 pixi add --feature dev pytest
 
 # Make sure both environment are installed
-pixi isntall
+pixi install
 pixi install --environment dev
 
 # Running one of the envs or testing tools installed in only one env
