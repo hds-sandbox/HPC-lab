@@ -902,7 +902,7 @@ Tip
 <div>
 <div class="callout-hint">
 <ul>
-<li>Input: “/work/HPCLab_workshop/data/samples_1kgp.tsv”</li>
+<li>Input: “pipes/data/samples_1kgp.tsv” (UCloud, <code>/work/HPCLab_workshop/</code>)</li>
 <li>Output: “results/samples_1kgp_cleaned.tsv”</li>
 </ul>
 </div>
@@ -928,7 +928,7 @@ Tip
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Hint</span>Solution S.2
+<span class="screen-reader-only">Hint</span>Solution S.2.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -936,13 +936,14 @@ Tip
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
+<p>Filepath for input tweaked for UCloud. You will need to adapt the path for GenomeDK.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>step1_wf.smk</strong></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="step1_wf.smk"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>rule preprocess:</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">input</span>:</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"/work/HPCLab_workshop/data/samples_{dataset}.tsv"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"/work/HPCLab_workshop/pipes/data/samples_{dataset}.tsv"</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  output:</span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    tsv<span class="op">=</span><span class="st">"results/samples_</span><span class="sc">{dataset}</span><span class="st">_cleaned.tsv"</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  shell:</span>
@@ -1023,7 +1024,7 @@ Tip
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Hint</span>Solution S.3
+<span class="screen-reader-only">Hint</span>Solution S.3.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -1031,6 +1032,7 @@ Tip
 <div class="callout-body-container callout-body">
 <div>
 <div class="callout-hint">
+<p>Filepath for input in rule preprocess tweaked for UCloud. You will need to adapt the path for GenomeDK.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>step1_wf.smk</strong></pre>
@@ -1043,7 +1045,7 @@ Tip
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>rule preprocess:</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">input</span>:</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">"/work/HPCLab_workshop/data/samples_{dataset}.tsv"</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">"/work/HPCLab_workshop/pipes/data/samples_{dataset}.tsv"</span></span>
 <span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    output:</span>
 <span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        tsv<span class="op">=</span><span class="st">"results/samples_</span><span class="sc">{dataset}</span><span class="st">_cleaned.tsv"</span></span>
 <span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    shell:</span>
