@@ -18,7 +18,7 @@ Put your learning to the test with what you’ve covered so far.
 ## A. General environment 
 
 ::: {.webex-check .callout-exercise}
-# General knowledge (I)
+# I - General knowledge
 
 ```{r, results='asis', echo = FALSE}
 
@@ -55,7 +55,7 @@ Unsure which command to use? Refer to the official [Conda cheat sheet](https://d
 
 
 ::: {.webex-check .callout-exercise}
-# Understanding an existing environment (II)
+# II - Understanding an existing environment
 
 Type the answers with no white spaces!
 
@@ -83,7 +83,7 @@ conda env export
 :::
 
 :::{.callout-tip collapse="true" appearance="simple"}
-# Bonus exercise (II)
+# II - Bonus exercise
 
 Inspect `numpy` version installed in the `hpclab-env`. Get the version and the full revision id (git_version). Hint: you can find this information in the `version.py` file! Check the installed libraries (`lib`) and look inside Python packages. 
 
