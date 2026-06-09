@@ -18,27 +18,26 @@ First, mount the following two drives and select an initialization file, and ask
 
 - `pipesOut`: from your personal drive.
 - `shared/hpclab-workshop`: contains input files and scripts. You can read-only access from this directory (no write permissions). Here are the paths you will need during the exercises:
-    - `/work/HPCLab_workshop/scripts/`: path to scripts 
-    - `/work/HPCLab_workshop/pipes/data`: path to plink simulated data
-- Additional parameters - Initialization. Use a setup.sh script that contains snakemake software. You can also use ours, `shared/hpclab-workshop/pipes/setup.sh`
-
-Next, activate `snakemake` environment. 
+    - `/work/HPCLab_workshop/pipes/scripts/`: path to scripts 
+    - `/work/HPCLab_workshop/pipes/data`: path to plink simulated data (`plink_sim`)
+- Additional parameters - Initialization
+    -`shared/hpclab-workshop/pipes/setup.sh`. Next, activate `snakemake` environment. 
+    - You can also use your own setup.sh script, if you have created one for an environment that includes Snakemake software.
 
 ```{.bash}
 conda activate snakemake 
 ```
 
-Finally, navigate to your WD, `pipesOut`, and to create a new subdirectory `fastmixture` and save here all files from this exercise (Snakefile, config.yml, output file, etc.).
+Finally, navigate to your WD, `pipesOut`, and create a new subdirectory `fastmixture`. Save here all files from this exercise (Snakefile, config.yml, output file, etc.).
 
 
 ## <img src="images/genomedk.png" height="50"> 
 
 1. Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node. 
 
-2. The necessary files can be found in `pipes`. The snakemake file is located at: `rules/process_1kgp.smk`.
+2. The necessary files can be found in `pipes`. The snakemake file is located at: `rules/process_1kgp.smk`. You will also find here the simulated data (`plink_sim`). 
 
-
-3. All computations must be carried out through the queue. 
+3. All computations must be carried out through the queue! 
 
 :::{.callout-important}
 # Do not run anything on the login node
@@ -95,9 +94,11 @@ In this exercise, you will run the software `fastmixture` as a Snakemake pipelin
 1. Use the provided `environment.yml` file to create a new environment, which you are going to name `fastmixture`. Then, use the full path to the `fastmixture` env in the workflow. Is this the best approach? The workflow will rely on this environment being present on a new system where the workflow is executed. Referring to an existing environment can, however, be useful during development, e.g., when a certain software package is developed in parallel to a workflow that uses it.
 2. Provide the path to `environment.yml` within the workflow. Snakemake will create the environment for you, which takes some time, but will only do this once. This is recommended and preferred for reproducibility reasons. 
 
-Either way, use the `conda` directive!
+Either way, use the `conda` directive! Check the hint below if you need extra help. 
 
-Have a look at the `fastmixture.sh` script below. How many different wildcards would you need? Recommended: Specify the values of the wildcard variables in a separate config file. 
+Have a look at the `fastmixture.sh` script below. How many different wildcards would you need? 
+
+*Recommended*: Specify the values of the wildcard variables in a separate config file. 
 
 ```{.bash filename="fastmixture.sh"}
 ### Run fastmixture for K=2,3 and three different seeds
@@ -130,6 +131,8 @@ In `fastmixture`, the main arguments used in this exercise are:
 - `--bfile`: prefix for PLINK files (.bed, .bim, .fam)
 - `--out`: Prefix output name
 
+In the bash script, `plotAdmixture.R` is in the same directory as you are running the pipeline from, you will need to adapt the path to the script for the pipeline to run. 
+
 You are set to write your own Snakemake pipeline. Need more suggestions?
 
 - Add a `log` directive to every rule. It is best practice to store all log files in a subdirectory `logs/`, prefixed by the rule or tool name.
@@ -161,16 +164,16 @@ git clone https://github.com/Rosemeis/fastmixture.git
 rule fast: 
   input: ...
   output: ...
-  conda: /work/<NameSurname#xxx>/fastmixture/environment.yml
+  conda: /work/pipesOut/fastmixture/environment.yml
 
 # OPTION 2: Create the env and use it (useful if you and your colleague are using the same HPC and won't get the pipeline published)
-cd /work/<NameSurname#xxx>/fastmixture
-conda env create -f environment.yml --prefix /work/<NameSurname#xxx>/envs/fastmixture
+cd /work/pipesOut/fastmixture
+conda env create -f environment.yml --prefix /work/pipesOut/envs/fastmixture
 # Then use the env path 
 rule fast: 
   input: ...
   output: ...
-  conda: /work/<NameSurname#xxx>/envs/fastmixture
+  conda: /work/pipesOut/envs/fastmixture
 ````
 
 
@@ -231,7 +234,7 @@ rule fastmixture:
     benchmark:
         "benchmarks/fastmixture_{prefix}.K{k}.s{s}.txt"
     conda: 
-        "/work/AlbaRefoyoMartínez#0753/fastmixture/environment.yml"
+        "/work/pipesOut/envs/fastmixture/environment.yml"
     shell:
         """
         fastmixture --bfile {params.pathIn}/{params.prefix} --K {wildcards.k} --threads {threads} --seed {wildcards.s} --out {params.prefix} 2> {log}
