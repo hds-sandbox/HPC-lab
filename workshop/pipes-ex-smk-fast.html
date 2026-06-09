@@ -605,20 +605,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>pipesOut</code>: from your personal drive.</li>
 <li><code>shared/hpclab-workshop</code>: contains input files and scripts. You can read-only access from this directory (no write permissions). Here are the paths you will need during the exercises:
 <ul>
-<li><code>/work/HPCLab_workshop/scripts/</code>: path to scripts</li>
-<li><code>/work/HPCLab_workshop/pipes/data</code>: path to plink simulated data</li>
+<li><code>/work/HPCLab_workshop/pipes/scripts/</code>: path to scripts</li>
+<li><code>/work/HPCLab_workshop/pipes/data</code>: path to plink simulated data (<code>plink_sim</code>)</li>
 </ul></li>
-<li>Additional parameters - Initialization. Use a setup.sh script that contains snakemake software. You can also use ours, <code>shared/hpclab-workshop/pipes/setup.sh</code></li>
+<li>Additional parameters - Initialization -<code>shared/hpclab-workshop/pipes/setup.sh</code>. Next, activate <code>snakemake</code> environment.
+<ul>
+<li>You can also use your own setup.sh script, if you have created one for an environment that includes Snakemake software.</li>
+</ul></li>
 </ul>
-<p>Next, activate <code>snakemake</code> environment.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate snakemake </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Finally, navigate to your WD, <code>pipesOut</code>, and to create a new subdirectory <code>fastmixture</code> and save here all files from this exercise (Snakefile, config.yml, output file, etc.).</p>
+<p>Finally, navigate to your WD, <code>pipesOut</code>, and create a new subdirectory <code>fastmixture</code>. Save here all files from this exercise (Snakefile, config.yml, output file, etc.).</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <ol type="1">
 <li><p>Use the conda or pixi environment you have already created to run the exercises. Remember to get an interactive session in SLURM and do not run any snakemake command on the login node.</p></li>
-<li><p>The necessary files can be found in <code>pipes</code>. The snakemake file is located at: <code>rules/process_1kgp.smk</code>.</p></li>
-<li><p>All computations must be carried out through the queue.</p></li>
+<li><p>The necessary files can be found in <code>pipes</code>. The snakemake file is located at: <code>rules/process_1kgp.smk</code>. You will also find here the simulated data (<code>plink_sim</code>).</p></li>
+<li><p>All computations must be carried out through the queue!</p></li>
 </ol>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -687,8 +689,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Use the provided <code>environment.yml</code> file to create a new environment, which you are going to name <code>fastmixture</code>. Then, use the full path to the <code>fastmixture</code> env in the workflow. Is this the best approach? The workflow will rely on this environment being present on a new system where the workflow is executed. Referring to an existing environment can, however, be useful during development, e.g., when a certain software package is developed in parallel to a workflow that uses it.</li>
 <li>Provide the path to <code>environment.yml</code> within the workflow. Snakemake will create the environment for you, which takes some time, but will only do this once. This is recommended and preferred for reproducibility reasons.</li>
 </ol>
-<p>Either way, use the <code>conda</code> directive!</p>
-<p>Have a look at the <code>fastmixture.sh</code> script below. How many different wildcards would you need? Recommended: Specify the values of the wildcard variables in a separate config file.</p>
+<p>Either way, use the <code>conda</code> directive! Check the hint below if you need extra help.</p>
+<p>Have a look at the <code>fastmixture.sh</code> script below. How many different wildcards would you need?</p>
+<p><em>Recommended</em>: Specify the values of the wildcard variables in a separate config file.</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>fastmixture.sh</strong></pre>
@@ -722,6 +725,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>--bfile</code>: prefix for PLINK files (.bed, .bim, .fam)</li>
 <li><code>--out</code>: Prefix output name</li>
 </ul>
+<p>In the bash script, <code>plotAdmixture.R</code> is in the same directory as you are running the pipeline from, you will need to adapt the path to the script for the pipeline to run.</p>
 <p>You are set to write your own Snakemake pipeline. Need more suggestions?</p>
 <ul>
 <li>Add a <code>log</code> directive to every rule. It is best practice to store all log files in a subdirectory <code>logs/</code>, prefixed by the rule or tool name.</li>
@@ -757,16 +761,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> fast: </span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">input:</span> ...</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">output:</span> ...</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">conda:</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/fastmixture/environment.yml</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">conda:</span> /work/pipesOut/fastmixture/environment.yml</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTION 2: Create the env and use it (useful if you and your colleague are using the same HPC and won't get the pipeline published)</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/fastmixture</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml <span class="at">--prefix</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/envs/fastmixture</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /work/pipesOut/fastmixture</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> environment.yml <span class="at">--prefix</span> /work/pipesOut/envs/fastmixture</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Then use the env path </span></span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="ex">rule</span> fast: </span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">input:</span> ...</span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">output:</span> ...</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">conda:</span> /work/<span class="op">&lt;</span>NameSurname#xxx<span class="op">&gt;</span>/envs/fastmixture</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">conda:</span> /work/pipesOut/envs/fastmixture</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Make use of useful directives:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rule ...:</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  output: <span class="st">"results/</span><span class="sc">{wd2}</span><span class="st">.tsv"</span></span>
@@ -840,7 +844,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    benchmark:</span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>        <span class="co">"benchmarks/fastmixture_{prefix}.K{k}.s{s}.txt"</span></span>
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    conda: </span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        <span class="co">"/work/AlbaRefoyoMartínez#0753/fastmixture/environment.yml"</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        <span class="co">"/work/pipesOut/envs/fastmixture/environment.yml"</span></span>
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    shell:</span>
 <span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
 <span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="co">        fastmixture --bfile {params.pathIn}/{params.prefix} --K {wildcards.k} --threads {threads} --seed {wildcards.s} --out {params.prefix} 2&gt; {log}</span></span>
