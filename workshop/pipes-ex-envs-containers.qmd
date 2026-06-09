@@ -228,9 +228,15 @@ You will get to test other containerised tools, for example:
 
 - [samtools](https://www.htslib.org/doc/samtools.html) (view and convert sam/bam/cram files)
 - [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi) (local alignment search tool) 
+- Tensorflow
 
-Alternatively, explore one of the container image repositories and select a tool that you use regularly. Once you have pulled an image, we recommend starting by running the `--help` command, as all software has one. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software. Don’t hesitate to ask for help if needed!
+Alternatively, explore one of the container image repositories and select a tool that you use regularly. Once you have pulled an image, we recommend starting by running the `--help` command, as all software has one. This command displays the help documentation of the program, verifying that our image is functioning correctly and includes the intended software.
 
+You can also choose to: 
+- Build your own container
+
+ Don’t hesitate to ask for help if needed!
+ 
 :::{.callout-tip collapse="true"}
 # Bonus 1: samtools 
 You can also pull and run a container from DockerHub. Let's try to do so using the `biocontainers/bwa-mem2` container, choose the tag `v1.9-4-deb_cv1`. We will use samtools to view and convert BAM files. Once the image is saved in your wd, use the container to:

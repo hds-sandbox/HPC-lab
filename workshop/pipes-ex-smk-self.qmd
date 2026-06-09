@@ -242,7 +242,7 @@ What if we wanted to run this same rule for the dataset used in the previous Sna
 
 :::{.callout-hint}
 # Details about the previous dataset
-- Input: "/work/HPCLab_workshop/data/samples_1kgp.tsv" 
+- Input: "pipes/data/samples_1kgp.tsv" (UCloud, `/work/HPCLab_workshop/`)
 - Output: "results/samples_1kgp_cleaned.tsv"
 :::
 
@@ -264,11 +264,14 @@ Let’s explore other commands! You can force a run in Snakemake even if the out
 **Did Snakemake rerun the workflow and successfully produce the output file again?** `r torf(TRUE)`
 
 :::{.callout-hint}
-# Solution S.2
+# Solution S.2. 
+
+Filepath for input tweaked for UCloud. You will need to adapt the path for GenomeDK. 
+
 ```{.python filename="step1_wf.smk"}
 rule preprocess:
   input:
-    "/work/HPCLab_workshop/data/samples_{dataset}.tsv"
+    "/work/HPCLab_workshop/pipes/data/samples_{dataset}.tsv"
   output:
     tsv="results/samples_{dataset}_cleaned.tsv"
   shell:
@@ -338,7 +341,10 @@ It's time for you to define the target rule `rule all` within the Snakefile and 
 **Do you get any error if you do a dry-run?** `r torf(FALSE)`
 
 :::{.callout-hint}
-# Solution S.3
+# Solution S.3.
+
+Filepath for input in rule preprocess tweaked for UCloud. You will need to adapt the path for GenomeDK. 
+
 ```{.python filename="step1_wf.smk"}
 DATASETS = ["EB", "1kgp"]
 
@@ -348,7 +354,7 @@ rule all:
 
 rule preprocess:
     input:
-        "/work/HPCLab_workshop/data/samples_{dataset}.tsv"
+        "/work/HPCLab_workshop/pipes/data/samples_{dataset}.tsv"
     output:
         tsv="results/samples_{dataset}_cleaned.tsv"
     shell:
