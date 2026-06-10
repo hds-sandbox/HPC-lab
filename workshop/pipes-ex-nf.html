@@ -79,9 +79,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b61f6b691c9bb44af82dab945e91b8bc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-81e8bcade493de2668280996f2822cb0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-b61f6b691c9bb44af82dab945e91b8bc.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-cdf31f6cbf9a6b03560fa514c8bb38b3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-090e4568e165f7d74d1237fe666b9f1c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-cdf31f6cbf9a6b03560fa514c8bb38b3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -765,7 +765,7 @@ Tip
 </ul></li>
 <li><p>Use a hardcoded path to the Python script for now: <code>/PATH/TO/scripts/preprocess.py</code></p></li>
 <li><p>Use the <code>conda</code> profile to manage the software environment for your pipeline. Among other options, you can include the conda environment within a process itself or specify it from the command line using the <code>--with-conda</code> flag, or use a config file to define it. We recommend specifying it via the command line (<code>--with-conda</code>) and incorporating the environment within the process in the next exercise, once the pipeline is working.</p></li>
-<li><p>Take a look inside <code>work</code> directory and explore some of the files (e.g.&nbsp;<code>.command.sh</code> and <code>.command.log</code>). Did Nextflow execute the command you expected?</p></li>
+<li><p>Take a look inside <code>work</code> directory and explore some of the files (e.g.&nbsp;<code>.command.sh</code> and <code>.command.log</code> using <code>tree -a</code>). Did Nextflow execute the command you expected?</p></li>
 <li><p>The structure of the pipeline should look like:</p>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
@@ -970,7 +970,7 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-filename="step1.nf"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env nextflow</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">//</span> Pipeline parameters</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">params.input_dir</span> = <span class="st">"</span><span class="va">${HOME}</span><span class="st">/data"</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">params.input_dir</span> = <span class="st">"work/shared/pipes/data"</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">params.output_dir</span> = <span class="st">"</span><span class="va">${HOME}</span><span class="st">/results"</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">//</span> Primary input</span>
