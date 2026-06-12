@@ -124,7 +124,7 @@ Both workflow mgmt systems:
 ### Course material
 
 <p align="center">
-  <a href="./hpcpipes-sandbox.zip" download>
+  <a href="./hpcPipes.zip" download>
     <button class="btn">Download slides</button>
   </a>
 </p>
