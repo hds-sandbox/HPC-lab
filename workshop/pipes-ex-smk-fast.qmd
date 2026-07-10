@@ -70,7 +70,7 @@ Download the environment YAML file and the data required for this exercise using
     <button class="btn small-button">Download environment file</button>
   </a>
 
-  <a href="./data/fastmix.zip" download="fastmix.zip">
+  <a href="./data/plink_sim.zip" download="plink_sim.zip">
     <button class="btn small-button">Download data</button>
   </a>
 </div>

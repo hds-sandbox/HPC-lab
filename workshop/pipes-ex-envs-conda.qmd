@@ -203,7 +203,7 @@ cd ~/DeiC-KU-L65/Workspaces/<username>
 Now, create an environment using a YAML file. 
 
 ```{.bash}
-conda create -f pipesOut/hpclab-env.yml 
+conda create -f <PATH/TO/hpclab-env.yml>
 ```
 
 ::: {.webex-check .callout-exercise}
@@ -482,3 +482,4 @@ conda env remove --prefix /work/pipesOut/envs/test-env
 # GenomeDK 
 conda remove -n test-env --all
 ```
+:::
